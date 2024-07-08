@@ -21,6 +21,16 @@ public class Actor : MonoBehaviour
         return hp;
     }
 
+    public int GetProtect()
+    {
+        return protect;
+    }
+
+    public int GetWeakenStatck()
+    {
+        return weakenStack;
+    }
+
     public void BeforeAction()
     {
         if (burnStack > 0)
@@ -55,9 +65,12 @@ public class Actor : MonoBehaviour
         int totalDamage = _damage;
         switch(_type)
         {
+            //화상 데미지
             case DamageType.Burn:
 
                 break;
+
+            //일반 데미지
             case DamageType.Beat:
                 if(weakenStack > 0)
                 {
