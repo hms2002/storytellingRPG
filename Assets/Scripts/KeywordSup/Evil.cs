@@ -6,6 +6,6 @@ public class Evil : KeywordSup
 {
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.WeakenControl(1);
+        sentence.WeakenControl(2);
     }
 }

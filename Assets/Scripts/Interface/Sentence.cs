@@ -5,7 +5,9 @@ using UnityEngine;
 public class Sentence : MonoBehaviour
 {
     private int burnStack = 0;
+    private int selfBurnStack = 0;
     private int weakenStack = 0;
+    private int selfWeakenStack = 0;
     private int repeatStack = 0;
     private int damage = 0;
     private int protect = 0;
@@ -43,12 +45,14 @@ public class Sentence : MonoBehaviour
     public void execute(Actor caster, Actor target)
     {
         for (int i = 0; i <= repeatStack; i++)
-        {   
+        {
             target.Burn(burnStack);
             target.Weaken(weakenStack);
             target.Damaged(damage,DamageType.Beat);
             caster.AddProtect(protect);
             caster.AddHp(heal);
+            caster.Weaken(selfWeakenStack);
+            caster.Burn(selfBurnStack);
             Debug.Log(target.gameObject.name + " 현재 체력 : " + target.GetHp());
         }
     }
