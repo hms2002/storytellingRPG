@@ -49,5 +49,6 @@ public class FightManager : MonoBehaviour
         keywordMain.Execute(player, monster, sentence);
 
         sentence.execute(player, monster);
+        sentence = null;
     }
 }

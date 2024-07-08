@@ -10,11 +10,16 @@ public enum DamageType
 
 public class Actor : MonoBehaviour
 {
-    private int hp;
+    private int hp = 100;
     private int protect = 0;
 
     private int burnStack = 0;
     private int weakenStack = 0;
+
+    public int GetHp()
+    {
+        return hp;
+    }
 
     public void BeforeAction()
     {

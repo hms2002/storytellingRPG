@@ -49,6 +49,7 @@ public class Sentence : MonoBehaviour
             target.Damaged(damage,DamageType.Beat);
             caster.AddProtect(protect);
             caster.AddHp(heal);
+            Debug.Log(target.gameObject.name + " 현재 체력 : " + target.GetHp());
         }
     }
 }
