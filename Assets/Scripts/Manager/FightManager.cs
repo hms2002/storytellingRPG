@@ -43,10 +43,11 @@ public class FightManager : MonoBehaviour
         // ShowKeywordMain()
         if (keywordSup == null) return;
         if (keywordMain == null) return;
+        Sentence sentence = new Sentence();
 
-        keywordSup.Execute(keywordMain, player, monster);
-        keywordMain.Execute(player, monster);
+        keywordSup.Execute(keywordMain, player, monster, sentence);
+        keywordMain.Execute(player, monster, sentence);
 
-        sentence.execute();
+        sentence.execute(player, monster);
     }
 }

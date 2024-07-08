@@ -14,7 +14,7 @@ public class Actor : MonoBehaviour
     private int protect = 0;
 
     private int burnStack = 0;
-    private int vulnerableStack = 0;
+    private int weakenStack = 0;
 
     public void BeforeAction()
     {
@@ -30,9 +30,9 @@ public class Actor : MonoBehaviour
         burnStack += _burnRate;
     }
 
-    public void Vulnerable(int _vulnerableRate)
+    public void Weaken(int _weakenRate)
     {
-        vulnerableStack += _vulnerableRate;
+        weakenStack += _weakenRate;
     }
 
     public void AddProtect(int _protectRate)
@@ -54,10 +54,10 @@ public class Actor : MonoBehaviour
 
                 break;
             case DamageType.Beat:
-                if(vulnerableStack > 0)
+                if(weakenStack > 0)
                 {
-                    totalDamage += vulnerableStack;
-                    vulnerableStack -= 1;
+                    totalDamage += weakenStack;
+                    weakenStack -= 1;
                 }
                 break;
         }

@@ -8,7 +8,7 @@ public abstract class KeywordMain : MonoBehaviour
     protected int additionalDamage = 0;
     protected int repeatCount = 1;
 
-    public abstract void Execute(Actor caster, Actor target);
+    public abstract void Execute(Actor caster, Actor target, Sentence sentence);
     public void AddDamage(int addRate)
     {
         additionalDamage += addRate;

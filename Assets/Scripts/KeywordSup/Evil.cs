@@ -6,8 +6,8 @@ public class Evil : KeywordSup
 {
     public override void Execute(KeywordMain mainKeyword, Actor caster, Actor target)
     {
-        Sentence sectence;
-        sentence.vulnerable += 1;
-        target.Vulnerable(1);
+        Sentence sentence;
+        sentence.weaken += 1;
+        target.weaken(1);
     }
 }
