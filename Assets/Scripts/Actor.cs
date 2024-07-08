@@ -8,7 +8,7 @@ public enum DamageType
     Beat
 }
 
-public class Actor
+public class Actor : MonoBehaviour
 {
     private int hp;
     private int protect = 0;
