@@ -16,6 +16,8 @@ public class Actor : MonoBehaviour
     private int burnStack = 0;
     private int weakenStack = 0;
 
+    public bool AttackCount = false; //가시 확인용
+
     public int GetHp()
     {
         return hp;
@@ -24,11 +26,6 @@ public class Actor : MonoBehaviour
     public int GetProtect()
     {
         return protect;
-    }
-
-    public int GetWeakenStatck()
-    {
-        return weakenStack;
     }
 
     public void BeforeAction()
@@ -76,6 +73,7 @@ public class Actor : MonoBehaviour
                 {
                     totalDamage += weakenStack;
                     weakenStack -= 1;
+                    AttackCount = true;
                 }
                 break;
         }

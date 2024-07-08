@@ -54,8 +54,6 @@ public class Sentence : MonoBehaviour
 
     public void execute(Actor caster, Actor target)
     {
-        int _weaken = target.GetWeakenStatck();
-
         for (int i = 0; i <= repeatStack; i++)
         {   
             target.Burn(burnStack);
@@ -66,11 +64,13 @@ public class Sentence : MonoBehaviour
             caster.AddHp(heal);
             Debug.Log(target.gameObject.name + " 현재 체력 : " + target.GetHp());
 
-            if (_weaken != target.GetWeakenStatck())
+            if (target.AttackCount == true)
             {
                 target.Damaged(pike,DamageType.Beat); 
                 //?? actor.isAttack은 언제 초기화 시키지
             }
+
+            target.AttackCount = false;
         }
     }
 }
