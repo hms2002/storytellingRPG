@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Burning : KeywordSup
 {
-    public override void Execute(KeywordMain mainKeyword, Actor caster, Actor target)
+    public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         target.Burn(2);
     }

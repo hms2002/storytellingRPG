@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : KeywordMain
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        sentence.ProtectControl(5);
     }
 }

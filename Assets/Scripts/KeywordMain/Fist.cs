@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class Fist : KeywordMain
 {
-    private void Awake()
-    {
-        damage = 2;
-    }
-    public override void Execute(Actor self, Actor target)
+    public override void Execute(Actor self, Actor target, Sentence sentence)
     {
         Debug.Log("Fist 발동");
-        for (int i = 0; i < repeatCount; i++)
-        {
-            Debug.Log("입히는 데미지" + (damage + additionalDamage));
-            target.Damaged(damage + additionalDamage, DamageType.Beat);
-        }
+        int fistDamage = 1;
+        sentence.DamageControl(fistDamage);
     }
 }

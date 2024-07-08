@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Evil : KeywordSup
 {
-    public override void Execute(KeywordMain mainKeyword, Actor caster, Actor target)
+    public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        Sentence sentence;
-        sentence.weaken += 1;
-        target.weaken(1);
+        sentence.WeakenControl(1);
     }
 }

@@ -45,7 +45,7 @@ public class FightManager : MonoBehaviour
         if (keywordMain == null) return;
         Sentence sentence = new Sentence();
 
-        keywordSup.Execute(keywordMain, player, monster, sentence);
+        keywordSup.Execute(player, monster, sentence);
         keywordMain.Execute(player, monster, sentence);
 
         sentence.execute(player, monster);

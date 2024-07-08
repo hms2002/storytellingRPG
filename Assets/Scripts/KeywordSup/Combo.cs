@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
-    public override void Execute(KeywordMain mainKeyword, Actor caster, Actor target)
+    public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        mainKeyword.UpRepeatCount(1);
+        sentence.ReapeatControl(1);
     }
 }

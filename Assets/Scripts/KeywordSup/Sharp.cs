@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Sharp : KeywordSup
 {
-    public override void Execute(KeywordMain mainKeyword, Actor caster, Actor target)
+    public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        Debug.Log("Sharp ¹ßµ¿");
-        mainKeyword.AddDamage(2);
+        sentence.DamageControl(2);
     }
 }
