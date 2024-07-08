@@ -46,5 +46,7 @@ public class FightManager : MonoBehaviour
 
         keywordSup.Execute(keywordMain, player, monster);
         keywordMain.Execute(player, monster);
+
+        sentence.execute();
     }
 }
