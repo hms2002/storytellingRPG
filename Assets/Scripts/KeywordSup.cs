@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class KeywordSup : MonoBehaviour
 {
-    public abstract void Execute(KeywordMain mainKeyword);
+    public abstract void Execute(KeywordMain mainKeyword, Actor caster, Actor target);
 }

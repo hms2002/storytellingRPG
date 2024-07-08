@@ -44,7 +44,7 @@ public class FightManager : MonoBehaviour
         if (keywordSup == null) return;
         if (keywordMain == null) return;
 
-        keywordSup.Execute(keywordMain);
+        keywordSup.Execute(keywordMain, player, monster);
         keywordMain.Execute(player, monster);
     }
 }
