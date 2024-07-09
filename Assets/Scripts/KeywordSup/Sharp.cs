@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sharp : KeywordSup
-{   
+{
+    private void Awake()
+    {
+        SetKeywordColor(RED);
+    }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.DamageControl(2);

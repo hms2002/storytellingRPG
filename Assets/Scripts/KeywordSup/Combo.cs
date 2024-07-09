@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
+    private void Awake()
+    {
+        SetKeywordColor(RED);
+    }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.ReapeatControl(1);

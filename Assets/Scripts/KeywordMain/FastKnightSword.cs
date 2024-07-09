@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FastKnightSword : KeywordMain
 {
+    private void Awake()
+    {
+        SetKeywordColor(RED);
+    }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.SetXRepeat(2);

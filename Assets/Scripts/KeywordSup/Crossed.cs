@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Crossed : KeywordSup
 {
+    private void Awake()
+    {
+        SetKeywordColor(BLUE);
+    }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         Debug.Log("교차된 발동");

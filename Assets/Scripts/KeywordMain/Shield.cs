@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Shield : KeywordMain
 {
+    private void Awake()
+    {
+        SetKeywordColor(BLUE);
+    }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.ProtectControl(5);

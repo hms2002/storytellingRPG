@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Burning : KeywordSup
 {
+    private void Awake()
+    {
+        SetKeywordColor(RED);
+    }
+
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         target.BurnAttack = true;
