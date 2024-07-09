@@ -104,6 +104,10 @@ public class Actor : MonoBehaviour
     internal void Action(Actor target)
     {
         Sentence sentence = new Sentence();
+
+        keywordSup.Check(keywordMain);
+        keywordMain.Check(keywordSup);
+       
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
         sentence.execute(this, target);
