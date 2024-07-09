@@ -8,4 +8,8 @@ public class Combo : KeywordSup
     {
         sentence.ReapeatControl(1);
     }
+
+    public override void Check(KeywordMain _keywordMain)
+    {
+    }
 }

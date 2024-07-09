@@ -8,4 +8,8 @@ public class Pike : KeywordSup
     {
         sentence.PikeControl(3);
     }
+    public override void Check(KeywordMain _keywordMain)
+    {
+        throw new System.NotImplementedException();
+    }
 }

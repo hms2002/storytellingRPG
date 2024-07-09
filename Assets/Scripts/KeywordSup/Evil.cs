@@ -9,4 +9,7 @@ public class Evil : KeywordSup
         caster.weakenAttack = true;
         sentence.WeakenControl(1);
     }
+    public override void Check(KeywordMain _keywordMain)
+    {
+    }
 }

@@ -8,4 +8,7 @@ public class Sharp : KeywordSup
     {
         sentence.DamageControl(2);
     }
+    public override void Check(KeywordMain _keywordMain)
+    {
+    }
 }
