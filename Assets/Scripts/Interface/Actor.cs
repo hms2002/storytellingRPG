@@ -107,10 +107,13 @@ public class Actor : MonoBehaviour
 
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
-       
+
+        protect = 0;
+
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
         sentence.execute(this, target);
+        
     }
 
     public void Damaged(int _damage, DamageType _type)
@@ -147,6 +150,7 @@ public class Actor : MonoBehaviour
             else
             {
                 protect -= totalDamage;
+                totalDamage = 0;
             }
         }
         hp -= totalDamage;
