@@ -62,16 +62,10 @@ public class Sentence : MonoBehaviour
         pike += _rate;
     }
 
-    public void AdditionalStack(int _rate)
-    {
-        additionalStack += _rate;
-    }
-
     public void execute(Actor caster, Actor target)
     {
         for (int i = 1; i <= repeatStack; i++)
         {
-            target.AdditionalStack(additionalStack);
             target.Burn(burnStack);
             target.Weaken(weakenStack);
             target.Damaged(damage,DamageType.Beat);
@@ -87,7 +81,7 @@ public class Sentence : MonoBehaviour
             Debug.Log(target.gameObject.name + "화염 스택 : " + target.GetBurnStack());
             if (target.AttackCount == true)
             {
-                caster.Damaged(pike,DamageType.Beat); 
+                caster.Damaged(pike,DamageType.Beat);
                 //?? actor.isAttack�� ���� �ʱ�ȭ ��Ű��
             }
 

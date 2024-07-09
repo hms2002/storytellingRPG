@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class BlindSword : KeywordMain
 {
+    [SerializeField]private int stack = 1;
     private void Awake()
     {
         SetKeywordColor(RED);
+        DebuffStack = stack;
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.AdditionalStack(1);
+
     }
 
     public override void Check(KeywordSup keywordSup)
     {
-
+        if(keywordSup.debuffType == "Burn")
+        {
+            keywordSup.SetDebuffStack(keywordSup.debuffStack + GetDebuffStack());
+        }
+        if(keywordSup.debuffType == "Weaken")
+        {
+            keywordSup.SetDebuffStack(keywordSup.GetDebuffStack() + GetDebuffStack());
+        }
     }
 }

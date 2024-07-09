@@ -7,13 +7,15 @@ public class Evil : KeywordSup
     private void Awake()
     {
         SetKeywordColor(RED);
+        SetDebuffType("Weaken");
+        SetDebuffStack(1);
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        caster.weakenAttack = true;
-        sentence.WeakenControl(1);
+        sentence.WeakenControl(GetDebuffStack());
     }
     public override void Check(KeywordMain _keywordMain)
     {
+
     }
 }

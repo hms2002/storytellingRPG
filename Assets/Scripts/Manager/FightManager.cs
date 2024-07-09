@@ -47,6 +47,7 @@ public class FightManager : MonoBehaviour
 
     //}
 
+
     public void Flow()
     {
 

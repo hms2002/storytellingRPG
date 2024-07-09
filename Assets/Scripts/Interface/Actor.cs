@@ -72,23 +72,12 @@ public class Actor : MonoBehaviour
 
     public void Burn(int _burnRate)
     {
-        if(BurnAttack)
-        {
-            burnStack += _burnRate + additionalStack;
-        }
+        burnStack += _burnRate;
     }
 
     public void Weaken(int _weakenRate)
     {
-        if(weakenAttack)
-        {
-            weakenStack += _weakenRate + additionalStack;
-        }
-    }
-
-    public void AdditionalStack(int _additionalStack)
-    {
-        additionalStack += _additionalStack;
+        weakenStack += _weakenRate;
     }
 
     public void AddProtect(int _protectRate)
