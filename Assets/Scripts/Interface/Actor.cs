@@ -21,6 +21,11 @@ public class Actor : MonoBehaviour
         return hp;
     }
 
+    public int GetProtect()
+    {
+        return protect;
+    }
+
     public void BeforeAction()
     {
         if (burnStack > 0)

@@ -54,6 +54,8 @@ public class Sentence : MonoBehaviour
             caster.Weaken(selfWeakenStack);
             caster.Burn(selfBurnStack);
             Debug.Log(target.gameObject.name + " 현재 체력 : " + target.GetHp());
+            Debug.Log("현재 플레이어 공격 데미지 : " + damage);
+            Debug.Log("현재 플레이어 보호 스택 : " + caster.GetProtect());
         }
     }
 }
