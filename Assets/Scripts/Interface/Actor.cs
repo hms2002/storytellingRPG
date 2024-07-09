@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public enum DamageType
 {
@@ -11,6 +13,10 @@ public enum DamageType
 
 public class Actor : MonoBehaviour
 {
+    public Slider hpSlider;
+    public TextMeshProUGUI hpText;
+
+    private const int MAX_HP = 100;
     private int hp = 100;
     private int protect = 0;
 
@@ -140,6 +146,10 @@ public class Actor : MonoBehaviour
             }
         }
         hp -= totalDamage;
+
+        // 체력 UI 조정
+        hpSlider.value = hp/(float)MAX_HP;
+        hpText.text = hp + " / " + MAX_HP;
     }
 
     public void StartTurn()
