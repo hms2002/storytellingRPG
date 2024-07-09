@@ -11,7 +11,9 @@ public class Sentence : MonoBehaviour
     private int protect = 0;
     private int heal = 0;
     private int sheidDamage = 0;
-    private int pike;
+    private int pike = 0;
+    private int additionalStack = 0;
+    
     
     public void DamageControl(int _rate)
     {
@@ -27,6 +29,7 @@ public class Sentence : MonoBehaviour
     {
         burnStack += _rate;
     }
+
     public void WeakenControl(int _rate)
     {
         weakenStack += _rate;
@@ -52,10 +55,16 @@ public class Sentence : MonoBehaviour
         pike += _rate;
     }
 
+    public void AdditionalStack(int _rate)
+    {
+        additionalStack += _rate;
+    }
+
     public void execute(Actor caster, Actor target)
     {
         for (int i = 0; i <= repeatStack; i++)
-        {   
+        {
+            target.AdditionalStack(additionalStack);
             target.Burn(burnStack);
             target.Weaken(weakenStack);
             target.Damaged(damage,DamageType.Beat);
@@ -63,14 +72,16 @@ public class Sentence : MonoBehaviour
             caster.AddProtect(protect);
             caster.AddHp(heal);
             Debug.Log(target.gameObject.name + " 현재 체력 : " + target.GetHp());
-
+            Debug.Log(target.gameObject.name + "화상 스택 : " + target.GetBurnStack());
             if (target.AttackCount == true)
             {
-                target.Damaged(pike,DamageType.Beat); 
+                caster.Damaged(pike,DamageType.Beat); 
                 //?? actor.isAttack은 언제 초기화 시키지
             }
 
             target.AttackCount = false;
+            target.weakenAttack = false;
+            target.BurnAttack = false;
         }
     }
 }

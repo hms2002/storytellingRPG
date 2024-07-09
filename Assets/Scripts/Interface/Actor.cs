@@ -15,7 +15,10 @@ public class Actor : MonoBehaviour
 
     private int burnStack = 0;
     private int weakenStack = 0;
+    private int additionalStack = 0;
 
+    public bool BurnAttack = false;
+    public bool weakenAttack = false;
     public bool AttackCount = false; //가시 확인용
 
     public int GetHp()
@@ -28,6 +31,10 @@ public class Actor : MonoBehaviour
         return protect;
     }
 
+    public int GetBurnStack()
+    {
+        return burnStack;
+    }
     public void BeforeAction()
     {
         if (burnStack > 0)
@@ -39,12 +46,23 @@ public class Actor : MonoBehaviour
 
     public void Burn(int _burnRate)
     {
-        burnStack += _burnRate;
+        if(BurnAttack)
+        {
+            burnStack += _burnRate + additionalStack;
+        }
     }
 
     public void Weaken(int _weakenRate)
     {
-        weakenStack += _weakenRate;
+        if(weakenAttack)
+        {
+            weakenStack += _weakenRate + additionalStack;
+        }
+    }
+
+    public void AdditionalStack(int _additionalStack)
+    {
+        additionalStack += _additionalStack;
     }
 
     public void AddProtect(int _protectRate)
@@ -69,11 +87,14 @@ public class Actor : MonoBehaviour
 
             //일반 데미지
             case DamageType.Beat:
-                if(weakenStack > 0)
+                if(totalDamage > 0)
+                {
+                    AttackCount = true;
+                }
+                if (weakenStack > 0)
                 {
                     totalDamage += weakenStack;
                     weakenStack -= 1;
-                    AttackCount = true;
                 }
                 break;
         }
