@@ -12,6 +12,10 @@ public class Sentence : MonoBehaviour
     private int damage = 0;
     private int protect = 0;
     private int heal = 0;
+    private int sheidDamage = 0;
+    private int pike = 0;
+    private int additionalStack = 0;
+    
     
     public void DamageControl(int _rate)
     {
@@ -27,6 +31,7 @@ public class Sentence : MonoBehaviour
     {
         burnStack += _rate;
     }
+
     public void WeakenControl(int _rate)
     {
         weakenStack += _rate;
@@ -42,20 +47,48 @@ public class Sentence : MonoBehaviour
         heal += _rate;
     }
 
+    public void SheidDamageControl(Actor _caster)
+    {
+        sheidDamage += _caster.GetProtect();
+    }
+
+    public void PikeControl(int _rate) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ý»ï¿½ï¿½
+    {
+        pike += _rate;
+    }
+
+    public void AdditionalStack(int _rate)
+    {
+        additionalStack += _rate;
+    }
+
     public void execute(Actor caster, Actor target)
     {
         for (int i = 0; i <= repeatStack; i++)
         {
+            target.AdditionalStack(additionalStack);
             target.Burn(burnStack);
             target.Weaken(weakenStack);
             target.Damaged(damage,DamageType.Beat);
+            target.Damaged(sheidDamage, DamageType.Beat);
             caster.AddProtect(protect);
             caster.AddHp(heal);
             caster.Weaken(selfWeakenStack);
             caster.Burn(selfBurnStack);
-            Debug.Log(target.gameObject.name + " ÇöÀç Ã¼·Â : " + target.GetHp());
-            Debug.Log("ÇöÀç ÇÃ·¹ÀÌ¾î °ø°Ý µ¥¹ÌÁö : " + damage);
-            Debug.Log("ÇöÀç ÇÃ·¹ÀÌ¾î º¸È£ ½ºÅÃ : " + caster.GetProtect());
+            Debug.Log(target.gameObject.name + " ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ : " + target.GetHp());
+
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : " + damage);
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ : " + caster.GetProtect());
+            Debug.Log(target.gameObject.name + "È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + target.GetBurnStack());
+            if (target.AttackCount == true)
+            {
+                caster.Damaged(pike,DamageType.Beat); 
+                //?? actor.isAttackï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½Å°ï¿½ï¿½
+            }
+
+            target.AttackCount = false;
+            target.weakenAttack = false;
+            target.BurnAttack = false;
         }
     }
 }
