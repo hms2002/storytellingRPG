@@ -10,4 +10,9 @@ public class Crossed : KeywordSup
 
         sentence.DamageControl(caster.GetProtect());
     }
+
+    public override void Check(KeywordMain _keywordMain)
+    {
+        
+    }
 }

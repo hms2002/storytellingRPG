@@ -6,10 +6,11 @@ public class Defensive : KeywordSup
 {
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        Debug.Log("¹æ¾îÀûÀÎ ¹ßµ¿");
+        Debug.Log("ë°©ì–´ì ì¸ ë°œë™");
 
         sentence.ProtectControl(4);
     }
+
     public override void Check(KeywordMain _keywordMain)
     {
     }
