@@ -34,27 +34,6 @@ public class Actor : MonoBehaviour
     KeywordSup keywordSup;
     KeywordMain keywordMain;
 
-    public int GetHp()
-    {
-        return hp;
-    }
-
-    public int GetProtect()
-    {
-        return protect;
-    }
-
-    public int GetBurnStack()
-    {
-        return burnStack;
-    }
-    internal void GetKeywordSup(KeywordSup _keywordSup)
-    {
-        keywordSup = _keywordSup;
-        // ���� Ű���� ���� ���� ���� Ű���� ����
-        ShowKeywordMain();
-    }
-
     public void BeforeAction()
     {
         if (burnStack > 0)
@@ -62,6 +41,13 @@ public class Actor : MonoBehaviour
             Damaged(burnStack * 2, DamageType.Burn);
             burnStack -= 1;
         }
+    }
+
+    internal void GetKeywordSup(KeywordSup _keywordSup)
+    {
+        keywordSup = _keywordSup;
+        // ���� Ű���� ���� ���� ���� Ű���� ����
+        ShowKeywordMain();
     }
 
     internal void GetKeywordMain(KeywordMain _keywordMain)
@@ -96,10 +82,13 @@ public class Actor : MonoBehaviour
 
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
-       
+
+        protect = 0;
+
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
         sentence.execute(this, target);
+        
     }
 
     public void Damaged(int _damage, DamageType _type)
@@ -136,6 +125,7 @@ public class Actor : MonoBehaviour
             else
             {
                 protect -= totalDamage;
+                totalDamage = 0;
             }
         }
         hp -= totalDamage;
@@ -162,4 +152,8 @@ public class Actor : MonoBehaviour
         supKeywords.SetActive(true);
     }
 
+    public int GetHp() { return hp; }
+    public int GetProtect() { return protect; }
+    public int GetBurnStack() { return burnStack; }
+    public int GetWeakenStack() { return weakenStack; }
 }

@@ -10,10 +10,12 @@ public class Evil : KeywordSup
         SetDebuffType("Weaken");
         SetDebuffStack(1);
     }
+
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.WeakenControl(GetDebuffStack());
     }
+
     public override void Check(KeywordMain _keywordMain)
     {
 
