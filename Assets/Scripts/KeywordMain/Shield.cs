@@ -8,4 +8,9 @@ public class Shield : KeywordMain
     {
         sentence.ProtectControl(5);
     }
+
+    public override void Check(KeywordSup _keywordSup)
+    {
+
+    }
 }

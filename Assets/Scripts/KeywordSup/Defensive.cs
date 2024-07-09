@@ -10,4 +10,9 @@ public class Defensive : KeywordSup
 
         sentence.ProtectControl(4);
     }
+
+    public override void Check(KeywordMain _keywordMain)
+    {
+
+    }
 }
