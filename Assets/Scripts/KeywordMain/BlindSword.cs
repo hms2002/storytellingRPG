@@ -8,4 +8,9 @@ public class BlindSword : KeywordMain
     {
         sentence.AdditionalStack(1);
     }
+
+    public override void Check(KeywordSup keywordSup)
+    {
+
+    }
 }

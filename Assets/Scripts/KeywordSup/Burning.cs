@@ -12,5 +12,6 @@ public class Burning : KeywordSup
 
     public override void Check(KeywordMain _keywordMain)
     {
+
     }
 }

@@ -9,4 +9,9 @@ public class FastKnightSword : KeywordMain
         sentence.SetXRepeat(2);
         sentence.DamageControl(2);
     }
+
+    public override void Check(KeywordSup keywordSup)
+    {
+
+    }
 }
