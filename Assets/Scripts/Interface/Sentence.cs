@@ -8,7 +8,7 @@ public class Sentence : MonoBehaviour
     private int selfBurnStack = 0;
     private int weakenStack = 0;
     private int selfWeakenStack = 0;
-    private int repeatStack = 0;
+    private int repeatStack = 1;
     private int damage = 0;
     private int protect = 0;
     private int heal = 0;
@@ -42,6 +42,11 @@ public class Sentence : MonoBehaviour
         repeatStack += _rate;
     }
 
+    public void SetXRepeat(int _times)
+    {
+        repeatStack *= _times;
+    }
+
     public void HealControl(int _rate)
     {
         heal += _rate;
@@ -64,7 +69,7 @@ public class Sentence : MonoBehaviour
 
     public void execute(Actor caster, Actor target)
     {
-        for (int i = 0; i <= repeatStack; i++)
+        for (int i = 1; i <= repeatStack; i++)
         {
             target.AdditionalStack(additionalStack);
             target.Burn(burnStack);
