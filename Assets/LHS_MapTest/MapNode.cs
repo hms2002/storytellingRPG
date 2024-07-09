@@ -29,8 +29,8 @@ namespace Map
         {
             nodeBlueprint = _nodeBlueprint;
 
-            if(render != null) render.sprite = _nodeBlueprint.sprite;
-            if (render != null) image.sprite = _nodeBlueprint.sprite;
+            if(render != null) render.sprite = nodeBlueprint.sprite;
+            if(render != null) image.sprite = nodeBlueprint.sprite;
         }
     }
 }

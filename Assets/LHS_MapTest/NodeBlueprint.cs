@@ -8,7 +8,7 @@ namespace Map
     {
         RestSite,
         NomalEnemy,
-        Boss,
+        BossEnemy,
         Mystery,
     }
 }
