@@ -9,4 +9,9 @@ public class Burning : KeywordSup
         target.BurnAttack = true;
         sentence.BurnControl(2);
     }
+
+    public override void Check(KeywordMain _keywordMain)
+    {
+        
+    }
 }

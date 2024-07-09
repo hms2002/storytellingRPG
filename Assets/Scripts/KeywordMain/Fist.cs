@@ -10,4 +10,8 @@ public class Fist : KeywordMain
         int fistDamage = 1;
         sentence.DamageControl(fistDamage);
     }
+    public override void Check(KeywordSup _keywordSup)
+    {
+
+    }
 }
