@@ -75,11 +75,11 @@ public class Sentence : MonoBehaviour
             caster.AddHp(heal);
             caster.Weaken(selfWeakenStack);
             caster.Burn(selfBurnStack);
-            Debug.Log(target.gameObject.name + " ���� ü�� : " + target.GetHp());
+            Debug.Log(target.gameObject.name + " 체력 : " + target.GetHp());
 
-            Debug.Log("���� �÷��̾� ���� ������ : " + damage);
-            Debug.Log("���� �÷��̾� ��ȣ ���� : " + caster.GetProtect());
-            Debug.Log(target.gameObject.name + "ȭ�� ���� : " + target.GetBurnStack());
+            Debug.Log("입히는 데미지 : " + damage);
+            Debug.Log("상태 방어력 : " + caster.GetProtect());
+            Debug.Log(target.gameObject.name + "화염 스택 : " + target.GetBurnStack());
             if (target.AttackCount == true)
             {
                 caster.Damaged(pike,DamageType.Beat); 

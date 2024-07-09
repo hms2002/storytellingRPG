@@ -26,7 +26,6 @@ public class FightManager : MonoBehaviour
     {
         if (_keywordSup == null)
             return;
-        Debug.Log("보조 키워드 입력됨");
         whoPlaying.GetKeywordSup(_keywordSup);
     }
 
@@ -35,7 +34,6 @@ public class FightManager : MonoBehaviour
     {
         if (_keywordMain == null)
             return;
-        Debug.Log("메인 키워드 입력됨");
         whoPlaying.GetKeywordMain(_keywordMain);
         preparedActorCount++;
         Flow();

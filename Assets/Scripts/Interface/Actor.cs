@@ -110,12 +110,13 @@ public class Actor : MonoBehaviour
         {
             //ȭ�� ������
             case DamageType.Burn:
-
+                Debug.Log(gameObject.name + "화염 피해" + _damage);
                 break;
 
             //�Ϲ� ������
             case DamageType.Beat:
-                if(totalDamage > 0)
+                Debug.Log(gameObject.name + "타격 피해" + _damage);
+                if (totalDamage > 0)
                 {
                     AttackCount = true;
                 }
