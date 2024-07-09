@@ -46,7 +46,6 @@ public class Actor : MonoBehaviour
     internal void GetKeywordSup(KeywordSup _keywordSup)
     {
         keywordSup = _keywordSup;
-        // ���� Ű���� ���� ���� ���� Ű���� ����
         ShowKeywordMain();
     }
 
@@ -96,12 +95,10 @@ public class Actor : MonoBehaviour
         int totalDamage = _damage;
         switch(_type)
         {
-            //ȭ�� ������
             case DamageType.Burn:
                 Debug.Log(gameObject.name + "화염 피해" + _damage);
                 break;
 
-            //�Ϲ� ������
             case DamageType.Beat:
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
                 if (totalDamage > 0)
@@ -137,7 +134,6 @@ public class Actor : MonoBehaviour
 
     public void StartTurn()
     {
-        // ���� Ű���� ����
         ShowKeywordSup();
     }
 

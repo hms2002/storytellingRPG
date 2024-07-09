@@ -40,7 +40,7 @@ public abstract class KeywordSup : MonoBehaviour
     {
         get { return _debuffStack; }
         set { _debuffStack = value; }
-    }
+    } 
 
     private Color keywordColor;
     protected Color RED = new Color(225, 0, 0);
@@ -56,9 +56,9 @@ public abstract class KeywordSup : MonoBehaviour
 
     public void SetKeywordColor(Color color) { keywordColor = color; }
 
-    public void SetDebuffType(string type) { DebuffType = type; }
+    public void SetDebuffType(string type) { debuffType = type; }
 
-    public int GetDebuffStack() { return DebuffStack; }
-    public void SetDebuffStack(int stack) { DebuffStack = stack; }
+    public int GetDebuffStack() { return debuffStack; }
+    public void SetDebuffStack(int stack) { debuffStack = stack; }
 
 }

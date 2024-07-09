@@ -11,31 +11,31 @@ public abstract class KeywordMain : MonoBehaviour
     private int _debuffStack = 0;
 
     // Properties with get and set accessors
-    public string KeywordName
+    public string keywordName
     {
         get { return _keywordName; }
         set { _keywordName = value; }
     }
 
-    public int KeywordDamage
+    public int keywordDamage
     {
         get { return _keywordDamage; }
         set { _keywordDamage = value; }
     }
 
-    public int KeywordProtect
+    public int keywordProtect
     {
         get { return _keywordProtect; }
         set { _keywordProtect = value; }
     }
 
-    public string DebuffType
+    public string debuffType
     {
         get { return _debuffType; }
         set { _debuffType = value; }
     }
 
-    public int DebuffStack
+    public int debuffStack
     {
         get { return _debuffStack; }
         set { _debuffStack = value; }
@@ -52,8 +52,8 @@ public abstract class KeywordMain : MonoBehaviour
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
 
-    public int GetDebuffStack() { return DebuffStack; }
+    public int GetDebuffStack() { return debuffStack; }
 
-    public void SetDebuffStack(int stack) { DebuffStack = stack; }
+    public void SetDebuffStack(int stack) { debuffStack = stack; }
 
 }
