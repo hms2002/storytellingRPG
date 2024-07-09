@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,12 @@ public class Actor : MonoBehaviour
     public bool weakenAttack = false;
     public bool AttackCount = false; //���� Ȯ�ο�
 
+    public GameObject supKeywords;
+    public GameObject mainKeywords;
+
+    KeywordSup keywordSup;
+    KeywordMain keywordMain;
+
     public int GetHp()
     {
         return hp;
@@ -35,6 +42,12 @@ public class Actor : MonoBehaviour
     {
         return burnStack;
     }
+    internal void GetKeywordSup(KeywordSup _keywordSup)
+    {
+        keywordSup = _keywordSup;
+        // ���� Ű���� ���� ���� ���� Ű���� ����
+        ShowKeywordMain();
+    }
 
     public void BeforeAction()
     {
@@ -43,6 +56,12 @@ public class Actor : MonoBehaviour
             Damaged(burnStack * 2, DamageType.Burn);
             burnStack -= 1;
         }
+    }
+
+    internal void GetKeywordMain(KeywordMain _keywordMain)
+    {
+        keywordMain = _keywordMain;
+        mainKeywords.SetActive(false);
     }
 
     public void Burn(int _burnRate)
@@ -74,6 +93,14 @@ public class Actor : MonoBehaviour
     public void AddHp(int _healingRate)
     {
         hp += _healingRate;
+    }
+
+    internal void Action(Actor target)
+    {
+        Sentence sentence = new Sentence();
+        keywordSup.Execute(this, target, sentence);
+        keywordMain.Execute(this, target, sentence);
+        sentence.execute(this, target);
     }
 
     public void Damaged(int _damage, DamageType _type)
@@ -113,4 +140,22 @@ public class Actor : MonoBehaviour
         }
         hp -= totalDamage;
     }
+
+    public void StartTurn()
+    {
+        // ���� Ű���� ����
+        ShowKeywordSup();
+    }
+
+    private void ShowKeywordMain()
+    {
+        supKeywords.SetActive(false);
+        mainKeywords.SetActive(true);
+    }
+
+    private void ShowKeywordSup()
+    {
+        supKeywords.SetActive(true);
+    }
+
 }

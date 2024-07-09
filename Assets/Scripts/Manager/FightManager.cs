@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {
+    int preparedActorCount = 0;
     public Actor player;
     public Actor monster;
+    Actor whoPlaying;
     KeywordSup keywordSup;
     KeywordMain keywordMain;
     // Start is called before the first frame update
     void Start()
     {
-
+        Flow();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class FightManager : MonoBehaviour
         if (_keywordSup == null)
             return;
         Debug.Log("보조 키워드 입력됨");
-        keywordSup = _keywordSup;
+        whoPlaying.GetKeywordSup(_keywordSup);
     }
 
 
@@ -34,21 +36,51 @@ public class FightManager : MonoBehaviour
         if (_keywordMain == null)
             return;
         Debug.Log("메인 키워드 입력됨");
-        keywordMain = _keywordMain;
+        whoPlaying.GetKeywordMain(_keywordMain);
+        preparedActorCount++;
+        Flow();
     }
+
+    //void FightStart()
+    //{
+    //    // 플레이어 생성
+    //    // 몬스터 생성
+    //    // 리스트에 집어넣기
+
+    //}
 
     public void Flow()
     {
-        // ShowKeywordSup()
-        // ShowKeywordMain()
-        if (keywordSup == null) return;
-        if (keywordMain == null) return;
-        Sentence sentence = new Sentence();
 
-        keywordSup.Execute(player, monster, sentence);
-        keywordMain.Execute(player, monster, sentence);
+        // 키워드 선택 전, 버프 디버프 적용
+        if(preparedActorCount == 0)
+        {
+            player.BeforeAction();
+            monster.BeforeAction();
+        }
 
-        sentence.execute(player, monster);
-        sentence = null;
+        // 몬스터 부터 차례로 키워드 선택
+        switch(preparedActorCount)
+        {
+            case 0:
+                whoPlaying = monster;
+                monster.StartTurn();
+                return;
+                
+            case 1:
+                whoPlaying = player;
+                player.StartTurn();
+                return;
+
+            case 2:
+                preparedActorCount = 0;
+                break;
+
+        }
+
+        // 플레이어 부터 키워드 실행
+        player.Action(monster);
+        monster.Action(player);
+        Flow();
     }
 }
