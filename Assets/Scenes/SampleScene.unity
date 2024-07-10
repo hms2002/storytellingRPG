@@ -565,7 +565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &401196138
 Transform:
   m_ObjectHideFlags: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordMain(BlindSword)
+  m_Text: "\uB9F9\uBAA9\uC758 \uAC80"
 --- !u!222 &618900314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1543,7 +1543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Defensive)
+  m_Text: "\uBC29\uC5B4\uC801\uC778"
 --- !u!222 &768385176
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &968404015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpSlider: {fileID: 1079927025}
   hpText: {fileID: 938493809}
-  BurnAttack: 0
+  _protect: 0
   weakenAttack: 0
   AttackCount: 0
   supKeywords: {fileID: 968404014}
@@ -2632,7 +2632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Evil)
+  m_Text: "\uC545\uB784\uD55C"
 --- !u!222 &1321264220
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2925,7 +2925,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Pike)
+  m_Text: "\uAC00\uC2DC\uB3CB\uC740"
 --- !u!222 &1408267568
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3257,7 +3257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordMain(Shield)
+  m_Text: "\uBC29\uD328"
 --- !u!222 &1656717061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3336,7 +3336,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Combo)
+  m_Text: "\uC5F0\uC18D\uB41C"
 --- !u!222 &1670267465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3415,7 +3415,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordMain(Fist)
+  m_Text: "\uC8FC\uBA39"
 --- !u!222 &1680789232
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3494,7 +3494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Sharp)
+  m_Text: "\uB0A0\uCE74\uB85C\uC6B4"
 --- !u!222 &1805121532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3648,7 +3648,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Burning)
+  m_Text: "\uBD88\uD0C0\uB294"
 --- !u!222 &1961963132
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3689,7 +3689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpSlider: {fileID: 76769037}
   hpText: {fileID: 543186338}
-  BurnAttack: 0
+  _protect: 0
   weakenAttack: 0
   AttackCount: 0
   supKeywords: {fileID: 968404014}
@@ -3831,7 +3831,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KeyWordSup(Crossed)
+  m_Text: "\uAD50\uCC28\uB41C"
 --- !u!222 &2042697247
 CanvasRenderer:
   m_ObjectHideFlags: 0
