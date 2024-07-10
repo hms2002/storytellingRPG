@@ -139,7 +139,7 @@ public class Actor : MonoBehaviour
     internal void GetKeywordMain(KeywordMain _keywordMain)
     {
         keywordMain = _keywordMain;
-        mainKeywords.SetActive(false);
+        mainCanvas.SetActive(false);
     }
 
     internal void Action(Actor target)
