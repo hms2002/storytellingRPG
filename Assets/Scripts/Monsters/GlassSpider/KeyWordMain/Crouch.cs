@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Burning : KeywordSup
+public class Crouch : KeywordMain
 {
     private void Awake()
     {
-        SetKeywordColor(RED);
-        debuffType = "Burn";
-        debuffStack = 2;
+        SetKeywordColor(BLUE);
+        keywordProtect = 10;
     }
-
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.burnStack += (debuffStack);
+        sentence.protect = 10;
     }
-
-    public override void Check(KeywordMain _keywordMain)
+    public override void Check(KeywordSup _keywordSup)
     {
 
     }
