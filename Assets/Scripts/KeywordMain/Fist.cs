@@ -12,7 +12,7 @@ public class Fist : KeywordMain
     {
         Debug.Log("Fist ¹ßµ¿");
         int fistDamage = 1;
-        sentence.DamageControl(fistDamage);
+        sentence.damage += fistDamage;
     }
     public override void Check(KeywordSup _keywordSup)
     {

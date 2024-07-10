@@ -12,7 +12,7 @@ public class Defensive : KeywordSup
     {
         Debug.Log("방어적인 발동");
 
-        sentence.ProtectControl(4);
+        sentence.protect += (4);
     }
 
     public override void Check(KeywordMain _keywordMain)

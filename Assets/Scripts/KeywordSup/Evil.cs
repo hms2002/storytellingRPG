@@ -13,7 +13,7 @@ public class Evil : KeywordSup
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.WeakenControl(GetDebuffStack());
+        sentence.weakenStack += (GetDebuffStack());
     }
 
     public override void Check(KeywordMain _keywordMain)

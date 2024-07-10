@@ -13,7 +13,7 @@ public class Red : KeywordSup
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.DamageControl(damage);
+        sentence.damage += (damage);
     }
 
     public override void Check(KeywordMain _keywordMain)

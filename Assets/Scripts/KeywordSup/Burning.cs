@@ -14,7 +14,7 @@ public class Burning : KeywordSup
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.BurnControl(debuffStack);
+        sentence.burnStack += (debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain)

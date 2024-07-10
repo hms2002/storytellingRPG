@@ -12,7 +12,7 @@ public class Crossed : KeywordSup
     {
         Debug.Log("교차된 발동");
 
-        sentence.DamageControl(caster.protect);
+        sentence.damage += caster.protect;
     }
 
     public override void Check(KeywordMain _keywordMain)

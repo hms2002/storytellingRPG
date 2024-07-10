@@ -10,7 +10,7 @@ public class Shield : KeywordMain
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.ProtectControl(5);
+        sentence.protect += (5);
     }
 
     public override void Check(KeywordSup _keywordSup)

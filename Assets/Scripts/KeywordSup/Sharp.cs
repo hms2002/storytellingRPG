@@ -10,7 +10,7 @@ public class Sharp : KeywordSup
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.DamageControl(2);
+        sentence.damage += (2);
     }
     public override void Check(KeywordMain _keywordMain)
     {

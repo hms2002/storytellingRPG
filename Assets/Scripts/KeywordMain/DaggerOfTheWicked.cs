@@ -18,11 +18,11 @@ public class DaggerOfTheWicked : KeywordMain
     {
         if (target.weakenStack > 0) // 타겟이 취약 상태라면
         {
-            sentence.DamageControl(keywordDamage + extraDamage); // 키워드 데미지에 추가데미지 적용
+            sentence.damage += keywordDamage + extraDamage; // 키워드 데미지에 추가데미지 적용
         }
         else // 타겟이 취약 상태가 아니라면
         {
-            sentence.DamageControl(keywordDamage); // 키워드 데미지만 적용
+            sentence.damage += keywordDamage; // 키워드 데미지만 적용
         }
     }
 

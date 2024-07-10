@@ -7,11 +7,13 @@ public class FastKnightSword : KeywordMain
     private void Awake()
     {
         SetKeywordColor(RED);
+        keywordDamage = 2;
+
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.SetXRepeat(2);
-        sentence.DamageControl(2);
+        sentence.repeatStack *= (2);
+        sentence.damage += (keywordDamage);
     }
 
     public override void Check(KeywordSup keywordSup)
