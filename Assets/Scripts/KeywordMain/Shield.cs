@@ -7,10 +7,11 @@ public class Shield : KeywordMain
     private void Awake()
     {
         SetKeywordColor(BLUE);
+        keywordProtect = 5;
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.ProtectControl(5);
+        sentence.ProtectControl(keywordProtect);
     }
 
     public override void Check(KeywordSup _keywordSup)

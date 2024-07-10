@@ -19,11 +19,11 @@ public class BlindSword : KeywordMain
     {
         if(keywordSup.debuffType == "Burn")
         {
-            keywordSup.SetDebuffStack(keywordSup.debuffStack + GetDebuffStack());
+            keywordSup.debuffStack += stack;
         }
         if(keywordSup.debuffType == "Weaken")
         {
-            keywordSup.SetDebuffStack(keywordSup.GetDebuffStack() + GetDebuffStack());
+            keywordSup.debuffStack += stack;
         }
     }
 }
