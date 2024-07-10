@@ -17,6 +17,22 @@ public class Actor : MonoBehaviour
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
 
+    [Header("덱 매니저 오브젝트")]
+    [SerializeField]
+    public GameObject deck;
+    public GameObject supCanvas;
+    public GameObject mainCanvas;
+
+    KeywordSup keywordSup;
+    KeywordMain keywordMain;
+
+    private List<GameObject> supportHand = new List<GameObject>();
+    private List<GameObject> mainHand = new List<GameObject>();
+
+    [Header("손 패 사이즈")]
+    [SerializeField]
+    private int handSize = 3;
+    private bool hasActorDrawnKeywords = false; // 액터가 모든 키워드를 다 드로우했는가
 
     #region 캐릭터 능력치 관련 변수, 함수
     private const int _MAX_HP = 100;
@@ -92,16 +108,22 @@ public class Actor : MonoBehaviour
     }
 
     #endregion
-    public bool AttackCount = false; //���� Ȯ�ο�
+    public bool AttackCount = false;
 
-    public GameObject supKeywords;
-    public GameObject mainKeywords;
-
-    KeywordSup keywordSup;
-    KeywordMain keywordMain;
 
     public virtual void BeforeAction()
     {
+        if (hasActorDrawnKeywords == false) // 액터가 키워드를 안 뽑았다면
+        {
+            for (int i = 0; i < handSize; i++) // 키워드 드로우 3번 반복
+            {
+                supportHand.Add(deck.GetComponent<Deck>().DrawSupportKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
+                mainHand.Add(deck.GetComponent<Deck>().DrawMainKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
+            }
+
+            hasActorDrawnKeywords = true;
+        } // 액터가 키워드를 모두 소진했을 시 hasActorDrawnKeywords = false; 해줘야 함
+
         if (burnStack > 0)
         {
             Damaged(burnStack * 2, DamageType.Burn);
@@ -118,7 +140,7 @@ public class Actor : MonoBehaviour
     internal void GetKeywordMain(KeywordMain _keywordMain)
     {
         keywordMain = _keywordMain;
-        mainKeywords.SetActive(false);
+        mainCanvas.SetActive(false);
     }
 
     internal void Action(Actor target)
@@ -199,12 +221,22 @@ public class Actor : MonoBehaviour
 
     private void ShowKeywordMain()
     {
-        supKeywords.SetActive(false);
-        mainKeywords.SetActive(true);
+        supCanvas.SetActive(false);
+        mainCanvas.SetActive(true);
+
+        for (int i = 0; i < handSize; i++)
+        {
+            supportHand[i].SetActive(true);
+        }
     }
 
     private void ShowKeywordSup()
     {
-        supKeywords.SetActive(true);
+        supCanvas.SetActive(true);
+
+        for (int i = 0; i < handSize; i++)
+        {
+            supportHand[i].SetActive(true);
+        }
     }
 }
