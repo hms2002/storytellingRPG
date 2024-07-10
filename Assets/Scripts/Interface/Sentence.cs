@@ -17,6 +17,12 @@ public class Sentence : MonoBehaviour
     private int _pike = 0;
     private int _additionalStack = 0;
     #endregion
+    
+    
+    public void DamageControl(int _rate)
+    {
+        damage += _rate;
+    }
 
     #region 프로퍼티
     public int burnStack
@@ -82,12 +88,15 @@ public class Sentence : MonoBehaviour
         {
             target.burnStack += burnStack;
             target.weakenStack += weakenStack;
+            target.reductionStack += reductionStack;
             target.Damaged(damage,DamageType.Beat);
             target.Damaged(sheidDamage, DamageType.Beat);
             caster.protect += (protect);
             caster.hp += heal;
             caster.weakenStack += selfWeakenStack;
             caster.burnStack += selfBurnStack;
+            target.reductionStack += selfReductionStack;
+
 
             #region 로그
             Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
@@ -103,8 +112,6 @@ public class Sentence : MonoBehaviour
             }
 
             target.AttackCount = false;
-            target.weakenAttack = false;
-            target.burnAttack = false;
         }
     }
 }
