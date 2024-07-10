@@ -5,11 +5,22 @@ using UnityEngine;
 public abstract class KeywordSup : MonoBehaviour
 {
     // Private backing fields
+    protected FightManager fightManager;
     private string _keywordName = "";
     private int _keywordDamage = 0;
     private int _keywordProtect = 0;
     private string _debuffType = "";
     private int _debuffStack = 0;
+
+    public  void OnClickButton()
+    {
+        fightManager.GetKeywordSup(this);
+    }
+
+    private void Start()
+    {
+        fightManager = FightManager.fightManager;
+    }
 
     #region 키워드 능력치,이름,색 관련 변수
     public string keywordName

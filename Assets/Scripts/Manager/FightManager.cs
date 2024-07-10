@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {
+    public static FightManager fightManager;
+
+
+
     int preparedActorCount = 0;
     public Actor player;
     public Actor monster;
@@ -11,15 +15,16 @@ public class FightManager : MonoBehaviour
     KeywordSup keywordSup;
     KeywordMain keywordMain;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Flow();
+        if (fightManager != null)
+            return;
+        fightManager = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        Flow();
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)

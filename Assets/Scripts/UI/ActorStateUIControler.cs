@@ -12,6 +12,7 @@ public class ActorStateUIControler : MonoBehaviour
         BURN,
         WEAKEN,         // 맞을 때 더 아프게 맞음
         REDUCTION,      // 때릴 때 더 약해하게 때림
+        GLASS_FRAGMENT,
         END_INDEX
     }
 
@@ -74,4 +75,18 @@ public class ActorStateUIControler : MonoBehaviour
         TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].GetComponentInChildren<TextMeshProUGUI>();
         text.text = rate + "";
     }
+
+    public void GlassFragmentOn(int rate)
+    {
+        if (rate <= 0)
+        {
+            stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].SetActive(false);
+            return;
+        }
+
+        stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].SetActive(true);
+        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].GetComponentInChildren<TextMeshProUGUI>();
+        text.text = rate + "";
+    }
+
 }

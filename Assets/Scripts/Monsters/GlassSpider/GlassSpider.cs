@@ -9,9 +9,11 @@ public class GlassSpider : Actor
     public int glassFragmentStack
     {
         get { return _glassFragmentStack; }
-        set { _glassFragmentStack = value; }
+        set { _glassFragmentStack = value;
+            stateUIController.GlassFragmentOn(_glassFragmentStack);
+        }
     }
-
+    
     public override void Damaged(int _damage, DamageType _type)
     {
         if (_damage <= 0)

@@ -4,12 +4,21 @@ using UnityEngine;
 
 public abstract class KeywordMain : MonoBehaviour
 {
+    protected FightManager fightManager;
     private string _keywordName = "";
     private int _keywordDamage = 0;
     private int _keywordProtect = 0;
     private string _debuffType = "";
     private int _debuffStack = 0;
 
+    public void OnClickButton()
+    {
+        fightManager.GetKeywordMain(this);
+    }
+    private void Start()
+    {
+        fightManager = FightManager.fightManager;
+    }
     // Properties with get and set accessors
     #region 키워드 능력치,이름,색 관련 변수
 

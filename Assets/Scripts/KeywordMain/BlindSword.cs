@@ -10,6 +10,8 @@ public class BlindSword : KeywordMain
         SetKeywordColor(RED);
         debuffStack = stack;
     }
+
+
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
 
