@@ -8,13 +8,13 @@ public class Burning : KeywordSup
     private void Awake()
     {
         SetKeywordColor(RED);
-        debuffType = "Burn"
+        debuffType = "Burn";
         debuffStack = 2;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.BurnControl(DebuffStack);
+        sentence.BurnControl(debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain)
