@@ -7,5 +7,4 @@ using TMPro;
 public class ActorStateUIControler : MonoBehaviour
 {
     public Slider hpSlider;
-    public 
 }
