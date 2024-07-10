@@ -8,6 +8,8 @@ public class Sentence : MonoBehaviour
     private int selfBurnStack = 0;
     private int weakenStack = 0;
     private int selfWeakenStack = 0;
+    private int reductionStack = 0;
+    private int selfReductionStack = 0;
     private int repeatStack = 1;
     private int damage = 0;
     private int protect = 0;
@@ -35,6 +37,11 @@ public class Sentence : MonoBehaviour
     public void WeakenControl(int _rate)
     {
         weakenStack += _rate;
+    }
+
+    public void ReductionControl(int _rate)
+    {
+        reductionStack += _rate;
     }
 
     public void ReapeatControl(int _rate)
@@ -68,12 +75,15 @@ public class Sentence : MonoBehaviour
         {
             target.burnStack += burnStack;
             target.weakenStack += weakenStack;
+            target.reductionStack += reductionStack;
             target.Damaged(damage,DamageType.Beat);
             target.Damaged(sheidDamage, DamageType.Beat);
             caster.protect += (protect);
             caster.hp += heal;
             caster.weakenStack += selfWeakenStack;
             caster.burnStack += selfBurnStack;
+            target.reductionStack += selfReductionStack;
+
             Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
 
             Debug.Log("입히는 데미지 : " + damage);
@@ -86,8 +96,6 @@ public class Sentence : MonoBehaviour
             }
 
             target.AttackCount = false;
-            target.weakenAttack = false;
-            target.burnAttack = false;
         }
     }
 }

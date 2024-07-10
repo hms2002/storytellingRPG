@@ -45,6 +45,12 @@ public class Actor : MonoBehaviour
         get { return _weakenStack; }
         set { _weakenStack = value; }
     }
+    private int _reductionStack = 0;
+    public int reductionStack
+    {
+        get { return _reductionStack; }
+        set { _reductionStack = value; }
+    }
     private int _additionalStack = 0;
     public int additionalStack
     {
@@ -53,14 +59,6 @@ public class Actor : MonoBehaviour
     }
 
     #endregion
-
-    private bool _burnAttack = false;
-    public bool burnAttack
-    {
-        get { return _burnAttack; }
-        set { _burnAttack = value; }
-    }    
-    public bool weakenAttack = false;
     public bool AttackCount = false; //���� Ȯ�ο�
 
     public GameObject supKeywords;
@@ -69,7 +67,7 @@ public class Actor : MonoBehaviour
     KeywordSup keywordSup;
     KeywordMain keywordMain;
 
-    public void BeforeAction()
+    public virtual void BeforeAction()
     {
         if (burnStack > 0)
         {
@@ -102,7 +100,6 @@ public class Actor : MonoBehaviour
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
         sentence.execute(this, target);
-        
     }
 
     public void Damaged(int _damage, DamageType _type)
