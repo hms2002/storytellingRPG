@@ -1190,6 +1190,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543186336}
   m_CullTransparentMesh: 1
+--- !u!1 &553160937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553160939}
+  - component: {fileID: 553160938}
+  m_Layer: 0
+  m_Name: MonsterDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &553160938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553160937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5267e1f5782226a4fa55529823013ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportDeck:
+  - {fileID: 7558351786433059675, guid: fa571ca2823245a4790fef83ba9acf84, type: 3}
+  - {fileID: 304267424427448520, guid: ffb9d661ee7605b49b0672ee7f1e5853, type: 3}
+  - {fileID: 8599737858666571188, guid: fa8eccf1f3e530d4da0f5fe011add321, type: 3}
+  - {fileID: 6325824103870312503, guid: a704b9af80f0f4b4c9b7c6036ba612cf, type: 3}
+  - {fileID: 8484443486332913899, guid: 742f0b73ec74a1545bbc4c92c80f7473, type: 3}
+  mainDeck:
+  - {fileID: 8831157699760054587, guid: f9b6496a5d88e4b49b4b454e3303b3c7, type: 3}
+  - {fileID: 1735228574854979793, guid: 43ee569afd656174585c4cf6096281ff, type: 3}
+  - {fileID: 4313671139727451894, guid: 7e5b989f708a342498715caebac98db3, type: 3}
+  - {fileID: 1227236215942277390, guid: 18e37e2ba3d64d243a9ae2b853361b21, type: 3}
+  - {fileID: 4494847663204668198, guid: 0c73c39f12f2383459b25abf9fdfdd10, type: 3}
+  supportDeckSize: 5
+  mainDeckSize: 5
+--- !u!4 &553160939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553160937}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6053398, y: 0.8536338, z: -0.073084764}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &583754717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,10 +2874,12 @@ MonoBehaviour:
   stateUIController: {fileID: 262078896}
   hpSlider: {fileID: 583754719}
   hpText: {fileID: 523643144}
+  deck: {fileID: 1941887823}
+  supCanvas: {fileID: 968404014}
+  mainCanvas: {fileID: 691224748}
+  handSize: 3
   _protect: 0
   AttackCount: 0
-  supKeywords: {fileID: 968404014}
-  mainKeywords: {fileID: 691224748}
 --- !u!212 &1169726943
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4422,6 +4482,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895589245}
   m_CullTransparentMesh: 1
+--- !u!1 &1941887823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941887825}
+  - component: {fileID: 1941887824}
+  m_Layer: 0
+  m_Name: PlayerDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1941887824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941887823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5267e1f5782226a4fa55529823013ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supportDeck:
+  - {fileID: 8593624912257865420, guid: e6cc9f2d76a5be1429ec2c20a680cdf4, type: 3}
+  - {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
+  - {fileID: 4815371659424408160, guid: 9a52c80676d87ea4cac79854b64c5338, type: 3}
+  - {fileID: 7786863483050454387, guid: 31ecf7fe6152efd49b7f4f3c83d9c82d, type: 3}
+  - {fileID: 7960349361044000462, guid: 4e68c3f9975aa104b9817bced2921359, type: 3}
+  - {fileID: 3884476970040358799, guid: 2f9b2b46b6b423a45992a89e401ede26, type: 3}
+  - {fileID: 141455778929894226, guid: 57f6e57c1432b68499a609f0162b6dbe, type: 3}
+  mainDeck:
+  - {fileID: 2310729120196642132, guid: 517236f0ca063184bbd3174ef6efce9e, type: 3}
+  - {fileID: 7891075198919087935, guid: 33978ab1426c7f74a8edf3cdde99aad3, type: 3}
+  - {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
+  - {fileID: 7579075665694996604, guid: 0c109d6c6d6495345abb22cd1f4c0bce, type: 3}
+  - {fileID: 8784785789567149138, guid: 2844faaf10ec1e14a84e6962b0943d43, type: 3}
+  - {fileID: 9042582839630738889, guid: 91f5f1c93578e7649b82724617f6fcc1, type: 3}
+  supportDeckSize: 7
+  mainDeckSize: 6
+--- !u!4 &1941887825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941887823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010656445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,10 +4928,12 @@ MonoBehaviour:
   stateUIController: {fileID: 622263327}
   hpSlider: {fileID: 76769037}
   hpText: {fileID: 543186338}
+  deck: {fileID: 553160937}
+  supCanvas: {fileID: 980484443}
+  mainCanvas: {fileID: 361484037}
+  handSize: 3
   _protect: 0
   AttackCount: 0
-  supKeywords: {fileID: 980484443}
-  mainKeywords: {fileID: 361484037}
 --- !u!224 &2101734158 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2378617191281879467, guid: 4e68c3f9975aa104b9817bced2921359, type: 3}
@@ -7084,3 +7207,5 @@ SceneRoots:
   - {fileID: 2035441626}
   - {fileID: 401196138}
   - {fileID: 1470392322}
+  - {fileID: 1941887825}
+  - {fileID: 553160939}

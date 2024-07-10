@@ -13,20 +13,20 @@ public class Deck : MonoBehaviour
 
     [Header("덱 사이즈")]
     [SerializeField]
-    private int supportDeckSize = 7;
+    private int supportDeckSize = 0;
     [SerializeField]
-    private int mainDeckSize = 3;
+    private int mainDeckSize = 0;
 
     private void Awake()
     {
-        supportDeck = new List<GameObject>(supportDeckSize);
-        mainDeck = new List<GameObject>(mainDeckSize);
-        Debug.Log("카드 드로우" + supportDeck.Count);
+        supportDeckSize = supportDeck.Count;
+        mainDeckSize = mainDeck.Count;
     }
 
     public GameObject DrawSupportKeyword()
     {
         int deckIndex = Random.Range(0, supportDeckSize - 1);
+        Debug.Log("sup 사이즈" + supportDeckSize);
 
         return supportDeck[deckIndex];
     } // 뽑은 키워드는 덱에서 삭제해야 함 
@@ -34,6 +34,7 @@ public class Deck : MonoBehaviour
     public GameObject DrawMainKeyword()
     {
         int deckIndex = Random.Range(0, mainDeckSize - 1);
+        Debug.Log("main 사이즈" + mainDeckSize);
 
         return mainDeck[deckIndex];
     } // 뽑은 키워드는 덱에서 삭제해야 함
