@@ -19,8 +19,13 @@ public class Actor : MonoBehaviour
 
 
     #region 캐릭터 능력치 관련 변수, 함수
-    private const int MAX_HP = 100;
+    private const int _MAX_HP = 100;
     private int _hp = 100;
+
+    public int MAX_HP
+    {
+        get { return _MAX_HP; }
+    }
     public int hp
     {
         get { return _hp; }
@@ -37,6 +42,12 @@ public class Actor : MonoBehaviour
         }
     }
 
+    private int _pike = 0;
+    public int pike
+    {
+        get { return _pike; }
+        set { _pike = value; }
+    }
 
     private int _burnStack = 0;
     public int burnStack
@@ -124,7 +135,7 @@ public class Actor : MonoBehaviour
         sentence.execute(this, target);
     }
 
-    public void Damaged(int _damage, DamageType _type)
+    public virtual void Damaged(int _damage, DamageType _type)
     {
         if (_damage <= 0)
             return;
