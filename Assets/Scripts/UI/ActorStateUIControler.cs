@@ -17,6 +17,7 @@ public class ActorStateUIControler : MonoBehaviour
 
     public Slider hpSlider;
     public List<GameObject> stateUIObjects;
+    public GameObject hpUI;
 
     private void Start()
     {
@@ -27,11 +28,12 @@ public class ActorStateUIControler : MonoBehaviour
     {
         if(rate <= 0)
         {
-
+            hpUI.SetActive(true);
             stateUIObjects[(int)STATE_UI_INDEX.PROTECT].SetActive(false);
             return;
         }
 
+        hpUI.SetActive(false);
         stateUIObjects[(int)STATE_UI_INDEX.PROTECT].SetActive(true);
         TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.PROTECT].GetComponentInChildren<TextMeshProUGUI>();
         text.text = rate + "";
