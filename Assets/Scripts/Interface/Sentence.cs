@@ -54,7 +54,7 @@ public class Sentence : MonoBehaviour
 
     public void SheidDamageControl(Actor _caster)
     {
-        sheidDamage += _caster.GetProtect();
+        sheidDamage += _caster.protect;
     }
 
     public void PikeControl(int _rate) //���� �� �ݻ��
@@ -66,19 +66,19 @@ public class Sentence : MonoBehaviour
     {
         for (int i = 1; i <= repeatStack; i++)
         {
-            target.Burn(burnStack);
-            target.Weaken(weakenStack);
+            target.burnStack += burnStack;
+            target.weakenStack += weakenStack;
             target.Damaged(damage,DamageType.Beat);
             target.Damaged(sheidDamage, DamageType.Beat);
-            caster.AddProtect(protect);
-            caster.AddHp(heal);
-            caster.Weaken(selfWeakenStack);
-            caster.Burn(selfBurnStack);
-            Debug.Log(target.gameObject.name + " 체력 : " + target.GetHp());
+            caster.protect += (protect);
+            caster.hp += heal;
+            caster.weakenStack += selfWeakenStack;
+            caster.burnStack += selfBurnStack;
+            Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
 
             Debug.Log("입히는 데미지 : " + damage);
-            Debug.Log("상태 방어력 : " + caster.GetProtect());
-            Debug.Log(target.gameObject.name + "화염 스택 : " + target.GetBurnStack());
+            Debug.Log("상태 방어력 : " + caster.protect);
+            Debug.Log(target.gameObject.name + "화염 스택 : " + target.burnStack);
             if (target.AttackCount == true)
             {
                 caster.Damaged(pike,DamageType.Beat);
@@ -87,7 +87,7 @@ public class Sentence : MonoBehaviour
 
             target.AttackCount = false;
             target.weakenAttack = false;
-            target.BurnAttack = false;
+            target.burnAttack = false;
         }
     }
 }

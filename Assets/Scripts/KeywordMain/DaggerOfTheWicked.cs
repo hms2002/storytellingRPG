@@ -16,7 +16,7 @@ public class DaggerOfTheWicked : KeywordMain
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        if (target.GetWeakenStack() > 0) // 타겟이 취약 상태라면
+        if (target.weakenStack > 0) // 타겟이 취약 상태라면
         {
             sentence.DamageControl(keywordDamage + extraDamage); // 키워드 데미지에 추가데미지 적용
         }

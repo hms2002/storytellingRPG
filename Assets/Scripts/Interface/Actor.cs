@@ -16,15 +16,50 @@ public class Actor : MonoBehaviour
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
 
+
+    #region 캐릭터 능력치 관련 변수, 함수
     private const int MAX_HP = 100;
-    private int hp = 100;
-    private int protect = 0;
+    private int _hp = 100;
+    public int hp
+    {
+        get { return _hp; }
+        set { _hp = value; }
+    }
+    public int _protect = 0;
+    public int protect
+    {
+        get { return _protect; }
+        set { _protect = value; }
+    }
 
-    private int burnStack = 0;
-    private int weakenStack = 0;
-    private int additionalStack = 0;
 
-    public bool BurnAttack = false;
+    private int _burnStack = 0;
+    public int burnStack
+    {
+        get { return _burnStack; }
+        set { _burnStack = value; }
+    }
+    private int _weakenStack = 0;
+    public int weakenStack
+    {
+        get { return _weakenStack; }
+        set { _weakenStack = value; }
+    }
+    private int _additionalStack = 0;
+    public int additionalStack
+    {
+        get { return _additionalStack; }
+        set { _additionalStack = value; }
+    }
+
+    #endregion
+
+    private bool _burnAttack = false;
+    public bool burnAttack
+    {
+        get { return _burnAttack; }
+        set { _burnAttack = value; }
+    }    
     public bool weakenAttack = false;
     public bool AttackCount = false; //���� Ȯ�ο�
 
@@ -46,7 +81,6 @@ public class Actor : MonoBehaviour
     internal void GetKeywordSup(KeywordSup _keywordSup)
     {
         keywordSup = _keywordSup;
-        // ���� Ű���� ���� ���� ���� Ű���� ����
         ShowKeywordMain();
     }
 
@@ -54,26 +88,6 @@ public class Actor : MonoBehaviour
     {
         keywordMain = _keywordMain;
         mainKeywords.SetActive(false);
-    }
-
-    public void Burn(int _burnRate)
-    {
-        burnStack += _burnRate;
-    }
-
-    public void Weaken(int _weakenRate)
-    {
-        weakenStack += _weakenRate;
-    }
-
-    public void AddProtect(int _protectRate)
-    {
-        protect += _protectRate;
-    }
-
-    public void AddHp(int _healingRate)
-    {
-        hp += _healingRate;
     }
 
     internal void Action(Actor target)
@@ -96,12 +110,10 @@ public class Actor : MonoBehaviour
         int totalDamage = _damage;
         switch(_type)
         {
-            //ȭ�� ������
             case DamageType.Burn:
                 Debug.Log(gameObject.name + "화염 피해" + _damage);
                 break;
 
-            //�Ϲ� ������
             case DamageType.Beat:
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
                 if (totalDamage > 0)
@@ -137,7 +149,6 @@ public class Actor : MonoBehaviour
 
     public void StartTurn()
     {
-        // ���� Ű���� ����
         ShowKeywordSup();
     }
 
@@ -151,9 +162,4 @@ public class Actor : MonoBehaviour
     {
         supKeywords.SetActive(true);
     }
-
-    public int GetHp() { return hp; }
-    public int GetProtect() { return protect; }
-    public int GetBurnStack() { return burnStack; }
-    public int GetWeakenStack() { return weakenStack; }
 }
