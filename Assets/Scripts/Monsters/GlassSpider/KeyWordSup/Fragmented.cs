@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Burning : KeywordSup
+public class Fragmented : KeywordSup
 {
+    GlassSpider glassSpider;
     private void Awake()
     {
         SetKeywordColor(RED);
-        debuffType = "Burn";
-        debuffStack = 2;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.burnStack += (debuffStack);
+        glassSpider = caster as GlassSpider;
+        sentence.damage += glassSpider.glassFragmentStack;
     }
 
     public override void Check(KeywordMain _keywordMain)

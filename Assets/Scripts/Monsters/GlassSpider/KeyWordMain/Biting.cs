@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Burning : KeywordSup
+public class Biting : KeywordMain
 {
     private void Awake()
     {
         SetKeywordColor(RED);
-        debuffType = "Burn";
-        debuffStack = 2;
+        keywordDamage = 10;
     }
-
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.burnStack += (debuffStack);
+        sentence.damage += keywordDamage;
     }
-
-    public override void Check(KeywordMain _keywordMain)
+    public override void Check(KeywordSup _keywordSup)
     {
 
     }

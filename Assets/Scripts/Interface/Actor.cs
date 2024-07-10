@@ -157,6 +157,19 @@ public class Actor : MonoBehaviour
                     totalDamage += weakenStack;
                     weakenStack -= 1;
                 }
+                if(reductionStack > 0)
+                {
+                    if(totalDamage < reductionStack)
+                    {
+                        totalDamage = 0;
+                        reductionStack -= 1;
+                    }
+                    else
+                    {
+                        totalDamage -= reductionStack;
+                        reductionStack -= 1;
+                    }
+                }
                 break;
         }
         if (protect > 0)

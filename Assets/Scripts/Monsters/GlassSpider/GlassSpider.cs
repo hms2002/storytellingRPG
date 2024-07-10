@@ -11,6 +11,7 @@ public class GlassSpider : Actor
         get { return _glassFragmentStack; }
         set { _glassFragmentStack = value; }
     }
+
     public override void Damaged(int _damage, DamageType _type)
     {
         if (_damage <= 0)
