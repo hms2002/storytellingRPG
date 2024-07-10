@@ -9,6 +9,8 @@ public class Sentence : MonoBehaviour
     private int _selfBurnStack = 0;
     private int _weakenStack = 0;
     private int _selfWeakenStack = 0;
+    private int _reductionStack = 0;
+    private int _selfReductionStack = 0;
     private int _repeatStack = 1;
     private int _damage = 0;
     private int _protect = 0;
@@ -45,6 +47,17 @@ public class Sentence : MonoBehaviour
         get { return _selfWeakenStack; }
         set { _selfWeakenStack = value; }
     }
+    public int reductionStack
+    {
+        get { return _reductionStack; }
+        set { _reductionStack = value; }
+    }
+    public int selfReductionStack
+    {
+        get { return _selfReductionStack; }
+        set { _selfReductionStack = value; }
+    }
+
     public int repeatStack
     {
         get { return _repeatStack; }
