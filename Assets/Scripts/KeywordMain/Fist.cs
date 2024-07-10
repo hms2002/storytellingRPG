@@ -7,10 +7,10 @@ public class Fist : KeywordMain
     private void Awake()
     {
         SetKeywordColor(RED);
+        keywordDamage = 1;
     }
     public override void Execute(Actor self, Actor target, Sentence sentence)
     {
-        Debug.Log("Fist ¹ßµ¿");
         int fistDamage = 1;
         sentence.damage += fistDamage;
     }

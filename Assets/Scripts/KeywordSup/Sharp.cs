@@ -7,6 +7,7 @@ public class Sharp : KeywordSup
     private void Awake()
     {
         SetKeywordColor(RED);
+        keywordDamage = 2;
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Red : KeywordSup
 {
-    int damage = 0;
-
     private void Awake()
     {
         SetKeywordColor(RED);
+        keywordDamage = 0;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
@@ -18,13 +17,13 @@ public class Red : KeywordSup
 
     public override void Check(KeywordMain _keywordMain)
     {
-        if (_keywordMain.GetKeywordColor() == RED) // ¸ÞÀÎ Å°¿öµåÀÇ »öÀÌ »¡°£»öÀÌ¸é
+        if (_keywordMain.GetKeywordColor() == RED) // ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         {
-            damage = 3;
+            keywordDamage = 3;
         }
-        else // ¸ÞÀÎ Å°¿öµåÀÇ »öÀÌ »¡°£»öÀÌ ¾Æ´Ï¸é
+        else // ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½
         {
-            damage = 0;
+            keywordDamage = 0;
         }
     }
 }

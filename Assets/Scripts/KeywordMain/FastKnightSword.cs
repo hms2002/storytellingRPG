@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FastKnightSword : KeywordMain
 {
+    int attackNum = 2;
     private void Awake()
     {
         SetKeywordColor(RED);
         keywordDamage = 2;
 
     }
+    
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.repeatStack *= (2);
+        sentence.repeatStack *= (attackNum);
         sentence.damage += (keywordDamage);
     }
 

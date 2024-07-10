@@ -11,7 +11,7 @@ public abstract class KeywordSup : MonoBehaviour
     private string _debuffType = "";
     private int _debuffStack = 0;
 
-    // Properties with get and set accessors
+    #region 키워드 능력치,이름,색 관련 변수
     public string keywordName
     {
         get { return _keywordName; }
@@ -47,6 +47,8 @@ public abstract class KeywordSup : MonoBehaviour
     protected Color BLUE = new Color(0, 255, 0);
     protected Color GREEN = new Color(0, 0, 255);
     protected Color YELLOW = new Color(255, 255, 0);
+
+    #endregion
 
     public abstract void Execute(Actor caster, Actor target, Sentence sentence);
 
