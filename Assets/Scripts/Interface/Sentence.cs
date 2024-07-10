@@ -40,7 +40,9 @@ public class Sentence : MonoBehaviour
     public int weakenStack
     {
         get { return _weakenStack; }
-        set { _weakenStack = value; }
+        set { 
+                _weakenStack = value; 
+            }
     }
     public int selfWeakenStack
     {

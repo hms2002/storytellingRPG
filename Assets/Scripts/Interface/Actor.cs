@@ -13,6 +13,7 @@ public enum DamageType
 
 public class Actor : MonoBehaviour
 {
+    public ActorStateUIControler stateUIController;
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
 
@@ -29,7 +30,11 @@ public class Actor : MonoBehaviour
     public int protect
     {
         get { return _protect; }
-        set { _protect = value; }
+        set 
+        { 
+            _protect = value;
+            stateUIController.ProtectOn(_protect);
+        }
     }
 
 
@@ -37,25 +42,42 @@ public class Actor : MonoBehaviour
     public int burnStack
     {
         get { return _burnStack; }
-        set { _burnStack = value; }
+        set
+        {
+            _burnStack = value;
+            stateUIController.BurnOn(_burnStack);
+        }
     }
     private int _weakenStack = 0;
     public int weakenStack
     {
         get { return _weakenStack; }
-        set { _weakenStack = value; }
+        set
+        {
+            _weakenStack = value;
+            stateUIController.WeakenOn(_weakenStack);
+            Debug.Log("취약 스택" + _weakenStack);
+        }
     }
     private int _reductionStack = 0;
     public int reductionStack
     {
         get { return _reductionStack; }
-        set { _reductionStack = value; }
+        set
+        {
+            _reductionStack = value;
+            stateUIController.ReductionOn(_reductionStack);
+        }
     }
     private int _additionalStack = 0;
     public int additionalStack
     {
         get { return _additionalStack; }
-        set { _additionalStack = value; }
+        set
+        {
+            _additionalStack = value;
+            stateUIController.ReductionOn(_additionalStack);
+        }
     }
 
     #endregion
@@ -104,6 +126,8 @@ public class Actor : MonoBehaviour
 
     public void Damaged(int _damage, DamageType _type)
     {
+        if (_damage <= 0)
+            return;
         int totalDamage = _damage;
         switch(_type)
         {
