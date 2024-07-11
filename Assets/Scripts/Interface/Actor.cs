@@ -26,8 +26,19 @@ public class Actor : MonoBehaviour
     public GameObject supCanvas;
     public GameObject mainCanvas;
 
-    KeywordSup keywordSup;
-    KeywordMain keywordMain;
+    private KeywordSup _keywordSup;
+    private KeywordMain _keywordMain;
+
+    public KeywordSup keywordSup
+    {
+        get { return _keywordSup; }
+        set { _keywordSup = value; }
+    }
+    public KeywordMain keywordMain
+    {
+        get { return _keywordMain; }
+        set { _keywordMain = value; }
+    }
 
     private List<GameObject> supportHand = new List<GameObject>();
     private List<GameObject> mainHand = new List<GameObject>();
@@ -98,6 +109,20 @@ public class Actor : MonoBehaviour
             _reductionStack = value;
             stateUIController.ReductionOn(_reductionStack);
         }
+    }
+
+    private int _nextTurnDamage = 0;
+    public int nextTurnDamage
+    {
+        get { return _nextTurnDamage; }
+        set { _nextTurnDamage = value; }
+    }
+
+    private int _additionalDamage = 0;
+    public int additionalDamage
+    {
+        get { return _additionalDamage; }
+        set { _additionalDamage = value; }
     }
     private int _additionalStack = 0;
     public int additionalStack
@@ -187,7 +212,7 @@ public class Actor : MonoBehaviour
         Debug.Log("hasActorDrawnKeywords" + hasActorDrawnKeywords);
     }
 
-    internal void Action(Actor target)
+    internal virtual void Action(Actor target)
     {
         Sentence sentence = new Sentence();
 
@@ -195,6 +220,7 @@ public class Actor : MonoBehaviour
         keywordMain.Check(keywordSup);
 
         protect = 0;
+        additionalDamage += nextTurnDamage;
 
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
@@ -217,6 +243,11 @@ public class Actor : MonoBehaviour
                 if (totalDamage > 0)
                 {
                     AttackCount = true;
+                }
+                if (additionalDamage > 0)
+                {
+                    totalDamage += additionalDamage;
+                    additionalDamage = 0;
                 }
                 if (weakenStack > 0)
                 {

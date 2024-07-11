@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defensive : KeywordSup
+public class Joyful : KeywordSup
 {
     private void Awake()
     {
-        SetKeywordColor(BLUE);
-        keywordProtect = 4;
+        SetKeywordColor(RED);
+        keywordDamage = 5;
     }
+
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.protect += keywordProtect;
+        sentence.nextTurnDamage += keywordDamage;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
+
     }
 }

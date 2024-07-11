@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GlassSpider : Actor
 {
+    
     private int _glassFragmentStack = 0;
 
     public int glassFragmentStack
@@ -13,7 +14,12 @@ public class GlassSpider : Actor
             stateUIController.GlassFragmentOn(_glassFragmentStack);
         }
     }
-    
+
+    private void Awake()
+    {
+        hp = 50;
+    }
+
     public override void Damaged(int _damage, DamageType _type)
     {
         if (_damage <= 0)

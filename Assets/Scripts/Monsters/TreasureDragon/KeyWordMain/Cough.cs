@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : KeywordMain
+public class Cough : KeywordMain
 {
     private void Awake()
     {
-        SetKeywordColor(BLUE);
-        keywordProtect = 5;
+        SetKeywordColor(RED);
+        keywordDamage = Random.Range(20,30);
+        debuffStack = 5;
+        debuffType = "Burn";
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.protect += keywordProtect;
+        sentence.damage += keywordDamage;
+        sentence.burnStack += debuffStack;
     }
-
     public override void Check(KeywordSup _keywordSup)
     {
 
