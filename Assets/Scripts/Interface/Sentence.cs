@@ -17,6 +17,7 @@ public class Sentence : MonoBehaviour
     private int _heal = 0;
     private int _sheidDamage = 0;
     private int _pike = 0;
+    private int _nextTurnDamage = 0;
     private int _additionalStack = 0;
     #endregion
     
@@ -90,6 +91,11 @@ public class Sentence : MonoBehaviour
         get { return _pike; }
         set { _pike = value; }
     }
+    public int nextTurnDamage
+    {
+        get { return _nextTurnDamage; }
+        set { _nextTurnDamage = value; }
+    }
     public int additionalStack
     {
         get { return _additionalStack; }
@@ -104,14 +110,14 @@ public class Sentence : MonoBehaviour
             target.burnStack += burnStack;
             target.weakenStack += weakenStack;
             target.reductionStack += reductionStack;
+            target.nextTurnDamage += nextTurnDamage;
             target.Damaged(damage,DamageType.Beat);
             target.Damaged(sheidDamage, DamageType.Beat);
             caster.protect += (protect);
             caster.hp += heal;
             caster.weakenStack += selfWeakenStack;
             caster.burnStack += selfBurnStack;
-            target.reductionStack += selfReductionStack;
-
+            caster.reductionStack += selfReductionStack;
 
             #region 로그
             Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
