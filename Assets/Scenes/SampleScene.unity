@@ -1231,8 +1231,6 @@ MonoBehaviour:
   - {fileID: 4313671139727451894, guid: 7e5b989f708a342498715caebac98db3, type: 3}
   - {fileID: 1227236215942277390, guid: 18e37e2ba3d64d243a9ae2b853361b21, type: 3}
   - {fileID: 4494847663204668198, guid: 0c73c39f12f2383459b25abf9fdfdd10, type: 3}
-  supportDeckSize: 5
-  mainDeckSize: 5
 --- !u!4 &553160939
 Transform:
   m_ObjectHideFlags: 0
@@ -2874,10 +2872,9 @@ MonoBehaviour:
   stateUIController: {fileID: 262078896}
   hpSlider: {fileID: 583754719}
   hpText: {fileID: 523643144}
-  deck: {fileID: 1941887823}
+  deck: {fileID: 1941887824}
   supCanvas: {fileID: 968404014}
   mainCanvas: {fileID: 691224748}
-  handSize: 3
   _protect: 0
   AttackCount: 0
 --- !u!212 &1169726943
@@ -4526,8 +4523,6 @@ MonoBehaviour:
   - {fileID: 7579075665694996604, guid: 0c109d6c6d6495345abb22cd1f4c0bce, type: 3}
   - {fileID: 8784785789567149138, guid: 2844faaf10ec1e14a84e6962b0943d43, type: 3}
   - {fileID: 9042582839630738889, guid: 91f5f1c93578e7649b82724617f6fcc1, type: 3}
-  supportDeckSize: 7
-  mainDeckSize: 6
 --- !u!4 &1941887825
 Transform:
   m_ObjectHideFlags: 0
@@ -4928,10 +4923,9 @@ MonoBehaviour:
   stateUIController: {fileID: 622263327}
   hpSlider: {fileID: 76769037}
   hpText: {fileID: 543186338}
-  deck: {fileID: 553160937}
+  deck: {fileID: 553160938}
   supCanvas: {fileID: 980484443}
   mainCanvas: {fileID: 361484037}
-  handSize: 3
   _protect: 0
   AttackCount: 0
 --- !u!224 &2101734158 stripped
