@@ -22,7 +22,6 @@ public class FightManagerUI : MonoBehaviour
 
     public void ChangeTurnText(string name)
     {
-        TMP_Text tMP_Text = turnText;
-        tMP_Text.text = name + "의 키워드";
+        turnText.text = name + "의 키워드";
     }
 }

@@ -69,13 +69,13 @@ public class FightManager : MonoBehaviour
             case 0:
                 whoPlaying = monster;
                 monster.StartTurn();
-                fightManagerUI.ChangeTurnText("몬스터");
+                fightManagerUI.ChangeTurnText("����");
                 return;
                 
             case 1:
                 whoPlaying = player;
                 player.StartTurn();
-                fightManagerUI.ChangeTurnText("플레이어");
+                fightManagerUI.ChangeTurnText("�÷��̾�");
                 return;
 
             case 2:
