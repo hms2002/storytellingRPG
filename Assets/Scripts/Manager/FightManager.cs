@@ -5,6 +5,8 @@ using UnityEngine;
 public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
+    public FightManagerUI fightManagerUI;
+
     int preparedActorCount = 0;
 
     public Actor player;
@@ -22,6 +24,7 @@ public class FightManager : MonoBehaviour
 
     private void Start()
     {
+        fightManagerUI = FightManagerUI.fightManagerUI;
         Flow();
     }
 
@@ -44,33 +47,35 @@ public class FightManager : MonoBehaviour
 
     //void FightStart()
     //{
-    //    // ÇÃ·¹ÀÌ¾î »ý¼º
-    //    // ¸ó½ºÅÍ »ý¼º
-    //    // ¸®½ºÆ®¿¡ Áý¾î³Ö±â
+    //    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //    // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 
     //}
 
 
     public void Flow()
     {
-        // Å°¿öµå ¼±ÅÃ Àü, ¹öÇÁ µð¹öÇÁ Àû¿ë
+        // Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(preparedActorCount == 0)
         {
             player.BeforeAction();
             monster.BeforeAction();
         }
 
-        // ¸ó½ºÅÍ ºÎÅÍ Â÷·Ê·Î Å°¿öµå ¼±ÅÃ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê·ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         switch(preparedActorCount)
         {
             case 0:
                 whoPlaying = monster;
                 monster.StartTurn();
+                fightManagerUI.ChangeTurnText("ï¿½ï¿½ï¿½ï¿½");
                 return;
                 
             case 1:
                 whoPlaying = player;
                 player.StartTurn();
+                fightManagerUI.ChangeTurnText("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
                 return;
 
             case 2:
@@ -79,7 +84,7 @@ public class FightManager : MonoBehaviour
 
         }
 
-        // ÇÃ·¹ÀÌ¾î ºÎÅÍ Å°¿öµå ½ÇÇà
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         player.Action(monster);
         monster.Action(player);
         Flow();
