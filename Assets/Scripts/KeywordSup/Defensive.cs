@@ -11,7 +11,7 @@ public class Defensive : KeywordSup
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.protect += 4;
+        sentence.protect += keywordProtect;
     }
 
     public override void Check(KeywordMain _keywordMain)
