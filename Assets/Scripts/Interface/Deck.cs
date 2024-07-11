@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    //키워드를 담는 덱 뭉치
+    // 키워드를 담는 덱 뭉치
+    // Deck 클래스는 일반 덱 뭉치가 될 수도 있고, 무덤 덱 뭉치가 될 수도 있다
     [Header("키워드 덱 리스트")]
     [SerializeField]
     private List<GameObject> supportDeck;
@@ -21,8 +22,11 @@ public class Deck : MonoBehaviour
 
     public GameObject DrawSupportKeyword()
     {
-        GameObject supportDeckTemp; // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
-        int deckIndex = Random.Range(0, supportDeck.Count - 1); // 무작위 키워드 추출
+        // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
+        GameObject supportDeckTemp;
+
+        // 무작위 키워드 추출을 위한 번호 추첨
+        int deckIndex = Random.Range(0, supportDeck.Count - 1);
 
         supportDeckTemp = supportDeck[deckIndex];
         supportDeck.RemoveAt(deckIndex);
@@ -32,8 +36,11 @@ public class Deck : MonoBehaviour
 
     public GameObject DrawMainKeyword()
     {
-        GameObject mainDeckTemp; // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
-        int deckIndex = Random.Range(0, mainDeck.Count - 1); // 무작위 키워드 추출
+        // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간
+        GameObject mainDeckTemp;
+
+        // 무작위 키워드 추출을 위한 번호 추첨
+        int deckIndex = Random.Range(0, mainDeck.Count - 1);
 
         mainDeckTemp = mainDeck[deckIndex];
         mainDeck.RemoveAt(deckIndex);
@@ -43,6 +50,7 @@ public class Deck : MonoBehaviour
 
     public bool IsSupDeckEmpty()
     {
+        // 서포트 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
         if (supportDeck.Count == 0)
         {
             return true;
@@ -55,6 +63,7 @@ public class Deck : MonoBehaviour
 
     public bool IsMainDeckEmpty()
     {
+        // 서포트 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
         if (mainDeck.Count == 0)
         {
             return true;
