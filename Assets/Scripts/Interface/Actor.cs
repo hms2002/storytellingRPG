@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR;
 
 public enum DamageType
 {
@@ -17,9 +18,11 @@ public class Actor : MonoBehaviour
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
 
-    [Header("덱 매니저 오브젝트")]
+    [Header("덱 오브젝트")]
     [SerializeField]
-    public GameObject deck;
+    public Deck deck;
+    private Deck supGarbageDeck;
+    private Deck garbageField;
     public GameObject supCanvas;
     public GameObject mainCanvas;
 
@@ -31,7 +34,7 @@ public class Actor : MonoBehaviour
 
     [Header("손 패 사이즈")]
     [SerializeField]
-    private int handSize = 3;
+    private const int HANDSIZE = 3;
     private bool hasActorDrawnKeywords = false; // 액터가 모든 키워드를 다 드로우했는가
 
     #region 캐릭터 능력치 관련 변수, 함수
@@ -110,14 +113,37 @@ public class Actor : MonoBehaviour
     #endregion
     public bool AttackCount = false;
 
+    private void Start()
+    {
+        garbageField = new Deck();
+        garbageField.InitDeck();
+    }
+
     public virtual void BeforeAction()
     {
         if (hasActorDrawnKeywords == false) // 액터가 키워드를 안 뽑았다면
         {
-            for (int i = 0; i < handSize; i++) // 키워드 드로우 3번 반복
+            Debug.Log("왔니?");
+            for (int i = 0; i < HANDSIZE; i++) // 키워드 드로우 3번 반복
             {
-                supportHand.Add(deck.GetComponent<Deck>().DrawSupportKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
-                mainHand.Add(deck.GetComponent<Deck>().DrawMainKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
+                if (deck.DrawSupportKeyword() == null)
+                {
+                    for (int j = 0; j < garbageField.GetSupportDeckSize(); j++)
+                    {
+                        deck.AddSupKeywordOnDeck(garbageField.DrawSupportKeyword());
+                    }
+                }
+
+                if (deck.DrawMainKeyword() == null)
+                {
+                    for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
+                    {
+                        deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
+                    }
+                }
+
+                supportHand.Add(deck.DrawSupportKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
+                mainHand.Add(deck.DrawMainKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
             }
 
             hasActorDrawnKeywords = true;
@@ -133,12 +159,30 @@ public class Actor : MonoBehaviour
     internal void GetKeywordSup(KeywordSup _keywordSup)
     {
         keywordSup = _keywordSup;
+
+        for (int i = 0; i < HANDSIZE; i++)
+        {
+            garbageField.AddSupKeywordOnDeck(supportHand[i]); // 사용한 서포트 키워드 + 나머지 서포트 키워드 묘지덱으로 이동
+            supportHand[i].SetActive(false);
+        }
+
+        supportHand.Clear(); // 서포트 키워드 리스트 초기화
+
         ShowKeywordMain();
     }
 
     internal void GetKeywordMain(KeywordMain _keywordMain)
     {
         keywordMain = _keywordMain;
+
+        for (int i = 0; i < HANDSIZE; i++)
+        {
+            garbageField.AddMainKeywordOnDeck(mainHand[i]); // 사용한 메인 키워드 + 나머지 메인 키워드 묘지덱으로 이동
+            mainHand[i].SetActive(false);
+        }
+
+        mainHand.Clear(); // 메인 키워드 리스트 초기화
+
         mainCanvas.SetActive(false);
     }
 
@@ -223,9 +267,9 @@ public class Actor : MonoBehaviour
         supCanvas.SetActive(false);
         mainCanvas.SetActive(true);
 
-        for (int i = 0; i < handSize; i++)
+        for (int i = 0; i < HANDSIZE; i++)
         {
-            supportHand[i].SetActive(true);
+            mainHand[i].SetActive(true);
         }
     }
 
@@ -233,7 +277,7 @@ public class Actor : MonoBehaviour
     {
         supCanvas.SetActive(true);
 
-        for (int i = 0; i < handSize; i++)
+        for (int i = 0; i < HANDSIZE; i++)
         {
             supportHand[i].SetActive(true);
         }
