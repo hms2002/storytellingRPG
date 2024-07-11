@@ -37,7 +37,7 @@ public class GlassSpider : Actor
                 if (totalDamage > 0)
                 {
                     glassFragmentStack += 1;
-                    AttackCount = true;
+                    attackCount = true;
                 }
                 if (weakenStack > 0)
                 {

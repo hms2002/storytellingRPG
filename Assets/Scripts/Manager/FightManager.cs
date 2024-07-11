@@ -7,14 +7,17 @@ public class FightManager : MonoBehaviour
     public static FightManager fightManager;
     public FightManagerUI fightManagerUI;
 
-    int preparedActorCount = 0;
+    private int preparedActorCount = 0;
 
-    public Actor player;
-    public Actor monster;
-    Actor whoPlaying;
-    KeywordSup keywordSup;
-    KeywordMain keywordMain;
-    // Start is called before the first frame update
+    [Header("Actor 오브젝트")]
+    [SerializeField] private Actor player;
+    [SerializeField] private Actor monster;
+
+    private Actor whoPlaying;
+    private KeywordSup keywordSup;
+    private KeywordMain keywordMain;
+
+
     void Awake()
     {
         if (fightManager != null)
@@ -35,7 +38,6 @@ public class FightManager : MonoBehaviour
         whoPlaying.GetKeywordSup(_keywordSup);
     }
 
-
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
         if (_keywordMain == null)
@@ -53,17 +55,16 @@ public class FightManager : MonoBehaviour
 
     //}
 
-
     public void Flow()
     {
-        // Ű���� ���� ��, ���� ����� ����
+        // 
         if(preparedActorCount == 0)
         {
             player.BeforeAction();
             monster.BeforeAction();
         }
 
-        // ���� ���� ���ʷ� Ű���� ����
+        // 
         switch(preparedActorCount)
         {
             case 0:
@@ -84,9 +85,8 @@ public class FightManager : MonoBehaviour
 
         }
 
-        // �÷��̾� ���� Ű���� ����
+        // 
         player.Action(monster);
         monster.Action(player);
-        Flow();
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class KeywordSup : MonoBehaviour
 {
-    // Private backing fields
     protected FightManager fightManager;
+
+    #region ì„œí¬íŠ¸ í‚¤ì›Œë“œ ì œì› ê´€ë ¨ ë³€ìˆ˜ë“¤
     private string _keywordName = "";
     private int _keywordDamage = 0;
     private int _keywordProtect = 0;
@@ -13,17 +14,6 @@ public abstract class KeywordSup : MonoBehaviour
     private int _debuffStack = 0;
     private int _keyWordTension = 0;
 
-    public void OnClickButton()
-    {
-        fightManager.GetKeywordSup(this);
-    }
-
-    private void Start()
-    {
-        fightManager = FightManager.fightManager;
-    }
-
-    #region Å°¿öµå ´É·ÂÄ¡,ÀÌ¸§,»ö °ü·Ã º¯¼ö
     public string keywordName
     {
         get { return _keywordName; }
@@ -53,18 +43,32 @@ public abstract class KeywordSup : MonoBehaviour
         get { return _debuffStack; }
         set { _debuffStack = value; }
     }
+
     public int keyWordTension
     {
         get { return _keyWordTension; }
         set { _keyWordTension = value; }
     }
+    
     private Color keywordColor;
     protected Color RED = new Color(225, 0, 0);
     protected Color BLUE = new Color(0, 255, 0);
     protected Color GREEN = new Color(0, 0, 255);
     protected Color YELLOW = new Color(255, 255, 0);
-
     #endregion
+
+    [Multiline(3)]
+    [SerializeField] private string keywordDescription = "";
+
+    public  void OnClickButton()
+    {
+        fightManager.GetKeywordSup(this);
+    }
+
+    private void Start()
+    {
+        fightManager = FightManager.fightManager;
+    }
 
     public abstract void Execute(Actor caster, Actor target, Sentence sentence);
 
@@ -77,6 +81,7 @@ public abstract class KeywordSup : MonoBehaviour
     public void SetDebuffType(string type) { debuffType = type; }
 
     public int GetDebuffStack() { return debuffStack; }
+    
     public void SetDebuffStack(int stack) { debuffStack = stack; }
 
 }

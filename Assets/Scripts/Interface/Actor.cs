@@ -14,16 +14,19 @@ public enum DamageType
 
 public class Actor : MonoBehaviour
 {
+    [Header("상태창 UI")]
     public ActorStateUIControler stateUIController;
     public Slider hpSlider;
     public TextMeshProUGUI hpText;
 
+    #region Actor의 키워드 관련 변수
     [Header("덱 오브젝트")]
-    [SerializeField]
-    public Deck deck;
-    private Deck garbageField;
-    public GameObject supCanvas;
-    public GameObject mainCanvas;
+    [SerializeField] private Deck deck;          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+
+    [Header("키워드 캔버스")]
+    public GameObject supCanvas;                // Support 키워드를 담고 있는 캔버스
+    public GameObject mainCanvas;               // Main 키워드를 담고 있는 캔버스
 
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
@@ -39,22 +42,32 @@ public class Actor : MonoBehaviour
         set { _keywordMain = value; }
     }
 
-    private List<GameObject> supportHand = new List<GameObject>();
-    private List<GameObject> mainHand = new List<GameObject>();
+    private List<GameObject> supportHand = new List<GameObject>();      // Actor의 SupportHand 리스트
+    private List<GameObject> mainHand = new List<GameObject>();         // Actor의 MainHand 리스트
 
     [Header("손 패 사이즈")]
-    [SerializeField]
-    private const int HANDSIZE = 3;
-    private bool hasActorDrawnKeywords = false; // 액터가 모든 키워드를 다 드로우했는가
+    [SerializeField] private const int HANDSIZE = 3;    // Actor가 가져야 하는 Hand 개수
+    private bool hasActorDrawnKeywords = false;         // Actor의 키워드 드로우 여부 확인용
+    #endregion
 
-    #region 캐릭터 능력치 관련 변수, 함수
+    #region Actor의 능력치 관련 변수, 함수
     protected int _MAX_HP = 100;
     private int _hp = 100;
+    private int _protect = 0;
+    private int _pike = 0;
+    private int _burnStack = 0;
+    private int _weakenStack = 0;
+    private int _reductionStack = 0;
+    private int _nextTurnDamage = 0;
+    private int _additionalDamage = 0;
+    private int _additionalStack = 0;
+    private bool _attackCount = false;
 
     public int MAX_HP
     {
         get { return _MAX_HP; }
     }
+
     public int hp
     {
         get { return _hp; }
@@ -70,7 +83,7 @@ public class Actor : MonoBehaviour
                 }
             }
     }
-    public int _protect = 0;
+    
     public int protect
     {
         get { return _protect; }
@@ -80,15 +93,13 @@ public class Actor : MonoBehaviour
             stateUIController.ProtectOn(_protect);
         }
     }
-
-    private int _pike = 0;
+    
     public int pike
     {
         get { return _pike; }
         set { _pike = value; }
     }
-
-    private int _burnStack = 0;
+    
     public int burnStack
     {
         get { return _burnStack; }
@@ -98,7 +109,7 @@ public class Actor : MonoBehaviour
             stateUIController.BurnOn(_burnStack);
         }
     }
-    private int _weakenStack = 0;
+    
     public int weakenStack
     {
         get { return _weakenStack; }
@@ -109,7 +120,7 @@ public class Actor : MonoBehaviour
             Debug.Log("취약 스택" + _weakenStack);
         }
     }
-    private int _reductionStack = 0;
+    
     public int reductionStack
     {
         get { return _reductionStack; }
@@ -120,20 +131,18 @@ public class Actor : MonoBehaviour
         }
     }
 
-    private int _nextTurnDamage = 0;
     public int nextTurnDamage
     {
         get { return _nextTurnDamage; }
         set { _nextTurnDamage = value; }
     }
 
-    private int _additionalDamage = 0;
     public int additionalDamage
     {
         get { return _additionalDamage; }
         set { _additionalDamage = value; }
     }
-    private int _additionalStack = 0;
+    
     public int additionalStack
     {
         get { return _additionalStack; }
@@ -144,41 +153,27 @@ public class Actor : MonoBehaviour
         }
     }
 
+    public bool attackCount
+    {
+        get { return _attackCount; }
+        set { _attackCount = value; }
+    }
     #endregion
-    public bool AttackCount = false;
 
     private void Start()
     {
-        garbageField = new Deck();
         garbageField.InitDeck();
     }
 
     public virtual void BeforeAction()
     {
-        if (hasActorDrawnKeywords == false) // 액터가 키워드를 안 뽑았다면
+        // Actor가 Keyword를 안 뽑았다면
+        if (hasActorDrawnKeywords == false)
         {
-            for (int i = 0; i < HANDSIZE; i++) // 키워드 드로우 3번 반복
-            {
-                if (deck.IsSupDeckEmpty())
-                {
-                    for (int j = 0; j < garbageField.GetSupportDeckSize(); j++)
-                    {
-                        deck.AddSupKeywordOnDeck(garbageField.DrawSupportKeyword());
-                    }
-                }
+            FillSupHand();
+            FillMainHand();
 
-                if (deck.IsMainDeckEmpty())
-                {
-                    for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
-                    {
-                        deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
-                    }
-                }
-
-                supportHand.Add(deck.DrawSupportKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
-                mainHand.Add(deck.DrawMainKeyword()); // 서포트 키워드 덱에서 1장 랜덤 드로우
-            }
-
+            // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
         
@@ -189,33 +184,80 @@ public class Actor : MonoBehaviour
         }
     }
 
-    internal void GetKeywordSup(KeywordSup _keywordSup)
+    private void FillSupHand()
     {
-        keywordSup = _keywordSup;
-
+        // Keyword 드로우 3번 반복
         for (int i = 0; i < HANDSIZE; i++)
         {
-            garbageField.AddSupKeywordOnDeck(supportHand[i]); // 사용한 서포트 키워드 + 나머지 서포트 키워드 묘지덱으로 이동
+            // Support덱이 비어있다면
+            if (deck.IsSupDeckEmpty())
+            {
+                // 무덤덱에서 카드를 꺼내와 Support덱을 초기화
+                for (int j = 0; j < garbageField.GetSupDeckSize(); j++)
+                {
+                    deck.AddSupKeywordOnDeck(garbageField.DrawSupKeyword());
+                }
+            }
+
+            // Support덱에서 1장 랜덤 드로우
+            supportHand.Add(deck.DrawSupKeyword());
+        }
+    }
+
+    private void FillMainHand()
+    {
+        // Keyword 드로우 3번 반복
+        for (int i = 0; i < HANDSIZE; i++)
+        {
+            // Main덱이 비어있다면
+            if (deck.IsMainDeckEmpty())
+            {
+                // 무덤덱에서 카드를 꺼내와 Main덱을 초기화
+                for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
+                {
+                    deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
+                }
+            }
+
+            // Main덱에서 각각 1장 랜덤 드로우                
+            mainHand.Add(deck.DrawMainKeyword());
+        }
+    }
+
+    internal void GetKeywordSup(KeywordSup _keywordSup)
+    {
+        // Support 키워드를 사용
+        keywordSup = _keywordSup;
+
+        // HANDSIZE만큼 반복하여 사용한 Support 키워드 + 나머지 Support 키워드 무덤덱으로 이동
+        for (int i = 0; i < HANDSIZE; i++)
+        {
+            garbageField.AddSupKeywordOnDeck(supportHand[i]);
             supportHand[i].SetActive(false);
         }
 
-        supportHand.Clear(); // 서포트 키워드 리스트 초기화
+        // Support 키워드 리스트 초기화
+        supportHand.Clear();
 
         ShowKeywordMain();
     }
 
     internal void GetKeywordMain(KeywordMain _keywordMain)
     {
+        // Main 키워드를 사용
         keywordMain = _keywordMain;
 
+        // HANDSIZE만큼 반복하여 사용한 Main 키워드 + 나머지 Main 키워드 무덤덱으로 이동
         for (int i = 0; i < HANDSIZE; i++)
         {
-            garbageField.AddMainKeywordOnDeck(mainHand[i]); // 사용한 메인 키워드 + 나머지 메인 키워드 묘지덱으로 이동
+            garbageField.AddMainKeywordOnDeck(mainHand[i]);
             mainHand[i].SetActive(false);
         }
 
-        mainHand.Clear(); // 메인 키워드 리스트 초기화
+        // Main 키워드 리스트 초기화
+        mainHand.Clear();
 
+        // Actor의 Hand가 비었으니 false로 설정
         hasActorDrawnKeywords = false;
         mainCanvas.SetActive(false);
         Debug.Log("hasActorDrawnKeywords" + hasActorDrawnKeywords);
@@ -251,7 +293,7 @@ public class Actor : MonoBehaviour
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
                 if (totalDamage > 0)
                 {
-                    AttackCount = true;
+                    attackCount = true;
                 }
                 if (additionalDamage > 0)
                 {

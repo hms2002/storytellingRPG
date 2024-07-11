@@ -5,23 +5,14 @@ using UnityEngine;
 public abstract class KeywordMain : MonoBehaviour
 {
     protected FightManager fightManager;
+
+    #region ë©”ì¸ í‚¤ì›Œë“œ ì œì› ê´€ë ¨ ë³€ìˆ˜ë“¤
     private string _keywordName = "";
     private int _keywordDamage = 0;
     private int _keywordProtect = 0;
     private string _debuffType = "";
     private int _debuffStack = 0;
     private int _keyWordTension = 0;
-
-    public void OnClickButton()
-    {
-        fightManager.GetKeywordMain(this);
-    }
-    private void Start()
-    {
-        fightManager = FightManager.fightManager;
-    }
-    // Properties with get and set accessors
-    #region Å°¿öµå ´É·ÂÄ¡,ÀÌ¸§,»ö °ü·Ã º¯¼ö
 
     public string keywordName
     {
@@ -60,11 +51,25 @@ public abstract class KeywordMain : MonoBehaviour
     }
 
     private Color keywordColor;
-    protected Color RED = new Color(225, 0, 0);
-    protected Color BLUE = new Color(0, 255, 0);
-    protected Color GREEN = new Color(0, 0, 255);
-    protected Color YELLOW = new Color(255, 255, 0);
+    [Header("í‚¤ì›Œë“œ íŠ¹ì„±ë³„ ìƒ‰")]
+    [SerializeField] protected Color RED = new Color(255, 0, 0);
+    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
+    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
+    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
     #endregion
+
+    [Multiline(3)]
+    [SerializeField] private string keywordDescription = "";
+
+    public void OnClickButton()
+    {
+        fightManager.GetKeywordMain(this);
+    }
+    private void Start()
+    {
+        fightManager = FightManager.fightManager;
+    }
+    
 
     public abstract void Execute(Actor caster, Actor target, Sentence sentence);
     public abstract void Check(KeywordSup _keywordSup);

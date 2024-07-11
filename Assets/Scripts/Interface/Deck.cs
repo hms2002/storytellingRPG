@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Deck 클래스는 일반 덱 뭉치가 될 수도 있고, 무덤 덱 뭉치가 될 수도 있다
 public class Deck : MonoBehaviour
 {
-    // 키워드를 담는 덱 뭉치
-    // Deck 클래스는 일반 덱 뭉치가 될 수도 있고, 무덤 덱 뭉치가 될 수도 있다
     [Header("키워드 덱 리스트")]
-    [SerializeField]
-    private List<GameObject> supportDeck;
-    [SerializeField]
-    private List<GameObject> mainDeck;
+    [SerializeField] private List<GameObject> supportDeck;  // Support 키워드를 담는 덱 리스트
+    [SerializeField] private List<GameObject> mainDeck;     // Main 키워드를 담는 덱 리스트
 
 
     public void InitDeck()
@@ -19,8 +16,7 @@ public class Deck : MonoBehaviour
         mainDeck = new List<GameObject>();
     }
 
-
-    public GameObject DrawSupportKeyword()
+    public GameObject DrawSupKeyword()
     {
         // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
         GameObject supportDeckTemp;
@@ -89,7 +85,7 @@ public class Deck : MonoBehaviour
         mainDeck.Add(keyword);
     }
 
-    public int GetSupportDeckSize()
+    public int GetSupDeckSize()
     {
         return supportDeck.Count;
     }
