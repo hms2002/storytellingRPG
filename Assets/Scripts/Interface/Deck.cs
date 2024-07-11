@@ -23,6 +23,7 @@ public class Deck : MonoBehaviour
         mainDeckSize = mainDeck.Count;
     }
 
+
     public GameObject DrawSupportKeyword()
     {
         int deckIndex = Random.Range(0, supportDeckSize - 1);
