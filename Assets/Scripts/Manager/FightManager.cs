@@ -55,7 +55,6 @@ public class FightManager : MonoBehaviour
 
     public void Flow()
     {
-
         // 키워드 선택 전, 버프 디버프 적용
         if(preparedActorCount == 0)
         {

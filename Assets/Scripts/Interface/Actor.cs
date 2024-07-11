@@ -123,7 +123,6 @@ public class Actor : MonoBehaviour
     {
         if (hasActorDrawnKeywords == false) // 액터가 키워드를 안 뽑았다면
         {
-            Debug.Log("왔니?");
             for (int i = 0; i < HANDSIZE; i++) // 키워드 드로우 3번 반복
             {
                 if (deck.IsSupDeckEmpty())
@@ -147,8 +146,8 @@ public class Actor : MonoBehaviour
             }
 
             hasActorDrawnKeywords = true;
-        } // 액터가 키워드를 모두 소진했을 시 hasActorDrawnKeywords = false; 해줘야 함
-
+        }
+        
         if (burnStack > 0)
         {
             Damaged(burnStack * 2, DamageType.Burn);
@@ -183,7 +182,9 @@ public class Actor : MonoBehaviour
 
         mainHand.Clear(); // 메인 키워드 리스트 초기화
 
+        hasActorDrawnKeywords = false;
         mainCanvas.SetActive(false);
+        Debug.Log("hasActorDrawnKeywords" + hasActorDrawnKeywords);
     }
 
     internal void Action(Actor target)

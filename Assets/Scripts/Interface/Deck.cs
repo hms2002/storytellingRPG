@@ -24,8 +24,6 @@ public class Deck : MonoBehaviour
         GameObject supportDeckTemp; // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
         int deckIndex = Random.Range(0, supportDeck.Count - 1); // 무작위 키워드 추출
 
-        Debug.Log("서포트 크기 : " + supportDeck.Count);
-
         supportDeckTemp = supportDeck[deckIndex];
         supportDeck.RemoveAt(deckIndex);
 
@@ -36,8 +34,6 @@ public class Deck : MonoBehaviour
     {
         GameObject mainDeckTemp; // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
         int deckIndex = Random.Range(0, mainDeck.Count - 1); // 무작위 키워드 추출
-
-        Debug.Log("메인 크기 : " + mainDeck.Count);
 
         mainDeckTemp = mainDeck[deckIndex];
         mainDeck.RemoveAt(deckIndex);
