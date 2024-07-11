@@ -18,6 +18,7 @@ public class Deck : MonoBehaviour
         mainDeck = new List<GameObject>();
     }
 
+
     public GameObject DrawSupportKeyword()
     {
         if (supportDeck.Count == 0) return null;
