@@ -9,12 +9,14 @@ public class Shiny : KeywordSup
     {
         SetKeywordColor(RED);
         keywordDamage = 3;
+        keyWordTension = 8;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         glassSpider = caster as GlassSpider;
         sentence.damage = keywordDamage;
+        sentence.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

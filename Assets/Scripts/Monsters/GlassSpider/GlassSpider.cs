@@ -18,6 +18,7 @@ public class GlassSpider : Actor
     private void Awake()
     {
         hp = 50;
+        _MAX_HP = 50;
     }
 
     public override void Damaged(int _damage, DamageType _type)

@@ -6,7 +6,7 @@ using TMPro;
 
 public class TensionManager : MonoBehaviour
 {
-    private int _tension;
+    private int _tension = 100;
     private const int BASIC_MAX_TENSION = 100;
     public Slider tensionSlider;
     public TextMeshProUGUI tensionText;
@@ -29,7 +29,12 @@ public class TensionManager : MonoBehaviour
     {
         get { return _tension; }
         set 
-        { _tension = value;
+        {
+            _tension = value;
+            if(_tension > BASIC_MAX_TENSION)
+            {
+                _tension = BASIC_MAX_TENSION;
+            }
             tensionSlider.value = tension / (float)BASIC_MAX_TENSION;
             tensionText.text = tension + " / " + BASIC_MAX_TENSION;
         }
