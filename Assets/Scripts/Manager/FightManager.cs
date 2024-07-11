@@ -5,7 +5,7 @@ using UnityEngine;
 public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
-
+    public FightManagerUI fightManagerUI;
 
 
     int preparedActorCount = 0;
@@ -24,6 +24,7 @@ public class FightManager : MonoBehaviour
 
     private void Start()
     {
+        fightManagerUI = FightManagerUI.fightManagerUI;
         Flow();
     }
 
@@ -68,11 +69,13 @@ public class FightManager : MonoBehaviour
             case 0:
                 whoPlaying = monster;
                 monster.StartTurn();
+                fightManagerUI.ChangeTurnText("몬스터");
                 return;
                 
             case 1:
                 whoPlaying = player;
                 player.StartTurn();
+                fightManagerUI.ChangeTurnText("플레이어");
                 return;
 
             case 2:
