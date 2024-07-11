@@ -20,8 +20,7 @@ public class Sentence : MonoBehaviour
     private int _nextTurnDamage = 0;
     private int _additionalStack = 0;
     #endregion
-    
-    
+
     public void DamageControl(int _rate)
     {
         damage += _rate;

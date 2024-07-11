@@ -5,10 +5,8 @@ using UnityEngine;
 public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
-
-
-
     int preparedActorCount = 0;
+
     public Actor player;
     public Actor monster;
     Actor whoPlaying;
