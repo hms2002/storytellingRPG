@@ -9,6 +9,7 @@ public class ScatteringTreasures : KeywordMain
     {
         SetKeywordColor(RED);
         keywordDamage = Random.Range(12, 18);
+        keyWordTension = -14;
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
@@ -16,6 +17,7 @@ public class ScatteringTreasures : KeywordMain
         sentence.damage += keywordDamage;
         trasureDragon.dragonTrasure -= keywordDamage;
         trasureDragon.trasureDamage += keywordDamage;
+        sentence.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {
