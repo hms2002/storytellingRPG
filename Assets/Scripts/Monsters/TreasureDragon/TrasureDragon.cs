@@ -56,7 +56,7 @@ public class TrasureDragon : Actor
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
                 if (totalDamage > 0)
                 {
-                    AttackCount = true;
+                    attackCount = true;
                 }
                 if (weakenStack > 0)
                 {

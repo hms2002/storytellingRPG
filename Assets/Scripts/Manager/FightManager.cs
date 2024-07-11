@@ -6,15 +6,17 @@ public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
 
+    private int preparedActorCount = 0;
+
+    [Header("플레이어블 오브젝트")]
+    [SerializeField] private Actor player;
+    [SerializeField] private Actor monster;
+
+    private Actor whoPlaying;
+    private KeywordSup keywordSup;
+    private KeywordMain keywordMain;
 
 
-    int preparedActorCount = 0;
-    public Actor player;
-    public Actor monster;
-    Actor whoPlaying;
-    KeywordSup keywordSup;
-    KeywordMain keywordMain;
-    // Start is called before the first frame update
     void Awake()
     {
         if (fightManager != null)
@@ -24,7 +26,10 @@ public class FightManager : MonoBehaviour
 
     private void Start()
     {
-        Flow();
+        while (true)
+        {
+            Flow();
+        }
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)
@@ -33,7 +38,6 @@ public class FightManager : MonoBehaviour
             return;
         whoPlaying.GetKeywordSup(_keywordSup);
     }
-
 
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
@@ -52,7 +56,6 @@ public class FightManager : MonoBehaviour
 
     //}
 
-
     public void Flow()
     {
         // 키워드 선택 전, 버프 디버프 적용
@@ -62,7 +65,7 @@ public class FightManager : MonoBehaviour
             monster.BeforeAction();
         }
 
-        // 몬스터 부터 차례로 키워드 선택
+        // 몬스터부터 차례로 키워드 선택
         switch(preparedActorCount)
         {
             case 0:
@@ -81,9 +84,8 @@ public class FightManager : MonoBehaviour
 
         }
 
-        // 플레이어 부터 키워드 실행
+        // 플레이어, 몬스터 순서로 키워드 실행
         player.Action(monster);
         monster.Action(player);
-        Flow();
     }
 }

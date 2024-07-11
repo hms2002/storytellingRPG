@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class KeywordSup : MonoBehaviour
 {
-    // Private backing fields
     protected FightManager fightManager;
     private string _keywordName = "";
     private int _keywordDamage = 0;
     private int _keywordProtect = 0;
     private string _debuffType = "";
     private int _debuffStack = 0;
+
+    [Multiline(3)]
+    [SerializeField] private string keywordDescription = "";
 
     public  void OnClickButton()
     {
