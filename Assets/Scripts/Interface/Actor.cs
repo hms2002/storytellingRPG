@@ -48,7 +48,7 @@ public class Actor : MonoBehaviour
     private bool hasActorDrawnKeywords = false; // 액터가 모든 키워드를 다 드로우했는가
 
     #region 캐릭터 능력치 관련 변수, 함수
-    private const int _MAX_HP = 100;
+    protected int _MAX_HP = 100;
     private int _hp = 100;
 
     public int MAX_HP
@@ -58,7 +58,17 @@ public class Actor : MonoBehaviour
     public int hp
     {
         get { return _hp; }
-        set { _hp = value; }
+        set { 
+                _hp = value; 
+                if(_hp > _MAX_HP)
+                {
+                    _hp = _MAX_HP;
+                }
+                if (_hp < 0)
+                {
+                    _hp = 0;
+                }
+            }
     }
     public int _protect = 0;
     public int protect

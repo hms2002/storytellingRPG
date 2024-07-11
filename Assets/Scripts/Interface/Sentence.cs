@@ -127,10 +127,9 @@ public class Sentence : MonoBehaviour
             Debug.Log(target.gameObject.name + "화염 스택 : " + target.burnStack);
             #endregion
 
-            if (target.AttackCount == true)
+            if (target.AttackCount == true )
             {
-                caster.Damaged(pike,DamageType.Beat);
-                //?? actor.isAttack�� ���� �ʱ�ȭ ��Ű��
+                caster.Damaged(target.pike,DamageType.Beat);
             }
 
             target.AttackCount = false;
