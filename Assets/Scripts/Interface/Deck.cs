@@ -11,31 +11,68 @@ public class Deck : MonoBehaviour
     [SerializeField]
     private List<GameObject> mainDeck;
 
-    [Header("덱 사이즈")]
-    [SerializeField]
-    private int supportDeckSize = 0;
-    [SerializeField]
-    private int mainDeckSize = 0;
 
-    private void Awake()
+    public void InitDeck()
     {
-        supportDeckSize = supportDeck.Count;
-        mainDeckSize = mainDeck.Count;
+        supportDeck = new List<GameObject>();
+        mainDeck = new List<GameObject>();
     }
 
     public GameObject DrawSupportKeyword()
     {
-        int deckIndex = Random.Range(0, supportDeckSize - 1);
-        Debug.Log("sup 사이즈" + supportDeckSize);
+        if (supportDeck.Count == 0) return null;
 
-        return supportDeck[deckIndex];
-    } // 뽑은 키워드는 덱에서 삭제해야 함 
+        GameObject supportDeckTemp; // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
+        int deckIndex = Random.Range(0, supportDeck.Count - 1); // 무작위 키워드 추출
+
+        Debug.Log("서포트 크기 : " + supportDeck.Count);
+
+        supportDeckTemp = supportDeck[deckIndex];
+        supportDeck.RemoveAt(deckIndex);
+
+        return supportDeckTemp;
+    }
 
     public GameObject DrawMainKeyword()
     {
-        int deckIndex = Random.Range(0, mainDeckSize - 1);
-        Debug.Log("main 사이즈" + mainDeckSize);
+        if (mainDeck.Count == 0) return null;
 
-        return mainDeck[deckIndex];
-    } // 뽑은 키워드는 덱에서 삭제해야 함
+        GameObject mainDeckTemp; // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
+        int deckIndex = Random.Range(0, mainDeck.Count - 1); // 무작위 키워드 추출
+
+        Debug.Log("메인 크기 : " + mainDeck.Count);
+
+        mainDeckTemp = mainDeck[deckIndex];
+        mainDeck.RemoveAt(deckIndex);
+
+        return mainDeckTemp;
+    }
+
+
+    #region Getter, Setter 함수들
+    public void AddSupKeywordOnDeck(GameObject keyword)
+    {
+        if (keyword.GetComponent<KeywordSup>() == null) return;
+
+        supportDeck.Add(keyword);
+    }
+
+    public void AddMainKeywordOnDeck(GameObject keyword)
+    {
+        if (keyword.GetComponent<KeywordMain>() == null) return;
+
+        mainDeck.Add(keyword);
+    }
+
+    public int GetSupportDeckSize()
+    {
+        return supportDeck.Count;
+    }
+
+    public int GetMainDeckSize()
+    {
+        return mainDeck.Count;
+    }
+
+    #endregion
 }

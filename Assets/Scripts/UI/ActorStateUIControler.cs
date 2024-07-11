@@ -20,11 +20,7 @@ public class ActorStateUIControler : MonoBehaviour
     public List<GameObject> stateUIObjects;
     public GameObject hpUI;
 
-    private void Start()
-    {
-        Debug.Log((int)STATE_UI_INDEX.PROTECT);
-        Debug.Log(stateUIObjects[1].name);
-    }
+
     public void ProtectOn(int rate)
     {
         if(rate <= 0)
