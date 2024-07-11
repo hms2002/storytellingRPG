@@ -21,7 +21,6 @@ public class Actor : MonoBehaviour
     [Header("덱 오브젝트")]
     [SerializeField]
     public Deck deck;
-    private Deck supGarbageDeck;
     private Deck garbageField;
     public GameObject supCanvas;
     public GameObject mainCanvas;
