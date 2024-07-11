@@ -1235,17 +1235,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   supportDeck:
-  - {fileID: 642411097}
-  - {fileID: 1851005902}
-  - {fileID: 1899661856}
-  - {fileID: 855637054}
-  - {fileID: 1773318401}
-  mainDeck:
   - {fileID: 2040479639}
   - {fileID: 1929918616}
   - {fileID: 1688600468}
   - {fileID: 929206498}
   - {fileID: 2018945642}
+  mainDeck:
+  - {fileID: 642411097}
+  - {fileID: 1851005902}
+  - {fileID: 1899661856}
+  - {fileID: 855637054}
+  - {fileID: 1773318401}
 --- !u!4 &553160939
 Transform:
   m_ObjectHideFlags: 0
