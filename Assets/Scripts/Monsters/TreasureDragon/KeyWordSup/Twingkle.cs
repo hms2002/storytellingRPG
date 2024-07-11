@@ -8,11 +8,13 @@ public class Twingkle : KeywordSup
     {
         SetKeywordColor(BLUE);
         keywordProtect = 5;
+        keyWordTension = -6;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.protect = keywordProtect;
+        sentence.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
