@@ -11,8 +11,9 @@ public abstract class KeywordSup : MonoBehaviour
     private int _keywordProtect = 0;
     private string _debuffType = "";
     private int _debuffStack = 0;
+    private int _keyWordTension = 0;
 
-    public  void OnClickButton()
+    public void OnClickButton()
     {
         fightManager.GetKeywordSup(this);
     }
@@ -51,8 +52,12 @@ public abstract class KeywordSup : MonoBehaviour
     {
         get { return _debuffStack; }
         set { _debuffStack = value; }
-    } 
-
+    }
+    public int keyWordTension
+    {
+        get { return _keyWordTension; }
+        set { _keyWordTension = value; }
+    }
     private Color keywordColor;
     protected Color RED = new Color(225, 0, 0);
     protected Color BLUE = new Color(0, 255, 0);

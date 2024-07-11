@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sentence : MonoBehaviour
 {
     #region 프로퍼티로 보호되는 변수들
+    private int _tension = 0;
     private int _burnStack = 0;
     private int _selfBurnStack = 0;
     private int _weakenStack = 0;
@@ -21,12 +22,12 @@ public class Sentence : MonoBehaviour
     private int _additionalStack = 0;
     #endregion
 
-    public void DamageControl(int _rate)
-    {
-        damage += _rate;
-    }
-
     #region 프로퍼티
+    public int tension
+    {
+        get { return _tension; }
+        set { _tension = value; }
+    }
     public int burnStack
     {
         get { return _burnStack; }
@@ -106,6 +107,7 @@ public class Sentence : MonoBehaviour
     {
         for (int i = 1; i <= repeatStack; i++)
         {
+            TensionManager tensionManager = TensionManager.tensionManagerUI;
             target.burnStack += burnStack;
             target.weakenStack += weakenStack;
             target.reductionStack += reductionStack;
@@ -117,7 +119,7 @@ public class Sentence : MonoBehaviour
             caster.weakenStack += selfWeakenStack;
             caster.burnStack += selfBurnStack;
             caster.reductionStack += selfReductionStack;
-
+            tensionManager.tension += tension;
             #region 로그
             Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
             Debug.Log("입히는 데미지 : " + damage);

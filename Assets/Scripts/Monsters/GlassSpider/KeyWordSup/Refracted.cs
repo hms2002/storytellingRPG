@@ -8,12 +8,15 @@ public class Refracted : KeywordSup
     private void Awake()
     {
         SetKeywordColor(BLUE);
+        keywordProtect = 5;
+        keyWordTension = -10;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         glassSpider = caster as GlassSpider;
-        glassSpider.glassFragmentStack += 1;
+        glassSpider.protect += keywordProtect;
+        sentence.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

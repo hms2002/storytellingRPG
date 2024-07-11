@@ -8,13 +8,14 @@ public class Cracked : KeywordSup
     private void Awake()
     {
         SetKeywordColor(BLUE);
-        keywordProtect = 5;
+        keyWordTension = 20; 
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         glassSpider = caster as GlassSpider;
-        glassSpider.protect += keywordProtect;
+        glassSpider.glassFragmentStack += 1;
+        sentence.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

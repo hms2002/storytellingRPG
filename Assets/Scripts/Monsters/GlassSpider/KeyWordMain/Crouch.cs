@@ -8,10 +8,12 @@ public class Crouch : KeywordMain
     {
         SetKeywordColor(BLUE);
         keywordProtect = 10;
+        keyWordTension = 6;
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         sentence.protect = 10;
+        sentence.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

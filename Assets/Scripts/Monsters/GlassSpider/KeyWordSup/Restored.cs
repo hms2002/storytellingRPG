@@ -8,12 +8,14 @@ public class Restored : KeywordSup
     private void Awake()
     {
         SetKeywordColor(BLUE);
+        keyWordTension = -20;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         glassSpider = caster as GlassSpider;
         glassSpider.glassFragmentStack -= 1;
+        sentence.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
