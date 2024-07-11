@@ -126,7 +126,7 @@ public class Actor : MonoBehaviour
             Debug.Log("왔니?");
             for (int i = 0; i < HANDSIZE; i++) // 키워드 드로우 3번 반복
             {
-                if (deck.DrawSupportKeyword() == null)
+                if (deck.IsSupDeckEmpty())
                 {
                     for (int j = 0; j < garbageField.GetSupportDeckSize(); j++)
                     {
@@ -134,7 +134,7 @@ public class Actor : MonoBehaviour
                     }
                 }
 
-                if (deck.DrawMainKeyword() == null)
+                if (deck.IsMainDeckEmpty())
                 {
                     for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
                     {

@@ -21,8 +21,6 @@ public class Deck : MonoBehaviour
 
     public GameObject DrawSupportKeyword()
     {
-        if (supportDeck.Count == 0) return null;
-
         GameObject supportDeckTemp; // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
         int deckIndex = Random.Range(0, supportDeck.Count - 1); // 무작위 키워드 추출
 
@@ -36,8 +34,6 @@ public class Deck : MonoBehaviour
 
     public GameObject DrawMainKeyword()
     {
-        if (mainDeck.Count == 0) return null;
-
         GameObject mainDeckTemp; // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
         int deckIndex = Random.Range(0, mainDeck.Count - 1); // 무작위 키워드 추출
 
@@ -49,6 +45,29 @@ public class Deck : MonoBehaviour
         return mainDeckTemp;
     }
 
+    public bool IsSupDeckEmpty()
+    {
+        if (supportDeck.Count == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool IsMainDeckEmpty()
+    {
+        if (mainDeck.Count == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     #region Getter, Setter 함수들
     public void AddSupKeywordOnDeck(GameObject keyword)
