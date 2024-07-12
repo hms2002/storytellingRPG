@@ -130,8 +130,8 @@ public class Sentence : MonoBehaviour
             target.weakenStack += weakenStack;
             target.reductionStack += reductionStack;
             target.nextTurnDamage += nextTurnDamage;
-            target.Damaged(damage,DamageType.Beat);
-            target.Damaged(sheidDamage, DamageType.Beat);
+            target.Damaged(caster,damage,DamageType.Beat);
+            target.Damaged(caster,sheidDamage, DamageType.Beat);
             caster.protect += (protect);
             caster.hp += heal;
             caster.weakenStack += selfWeakenStack;
@@ -148,7 +148,7 @@ public class Sentence : MonoBehaviour
 
             if (target.attackCount == true)
             {
-                caster.Damaged(target.pike,DamageType.Beat);
+                caster.Damaged(target,target.pike,DamageType.Beat);
             }
 
             target.attackCount = false;
