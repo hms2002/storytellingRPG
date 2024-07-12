@@ -97,10 +97,6 @@ public class PotionGlub : Actor
             }
         }
         hp -= totalDamage;
-
-        // 체력 UI 조정
-        hpSlider.value = hp / (float)MAX_HP;
-        hpText.text = hp + " / " + MAX_HP;
     }
 
     public void ColorChecking()

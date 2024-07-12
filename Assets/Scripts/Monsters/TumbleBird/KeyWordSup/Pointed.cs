@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playful : KeywordSup
+public class Pointed : KeywordSup
 {
-    TrasureDragon trasureDragon;
     private void Awake()
     {
-        SetKeywordColor(BLUE);
-        keyWordTension = -4;
+        SetKeywordColor(RED);
+        keywordDamage = 5;
+        keyWordTension = 8;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonTrasure -= 10;
-        trasureDragon.trasureDamage += 10;
+        sentence.nextTurnDamage += keywordDamage;
         sentence.tension += keyWordTension;
     }
 

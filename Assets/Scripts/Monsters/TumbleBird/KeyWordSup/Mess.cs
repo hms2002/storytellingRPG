@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Twingkle : KeywordSup
+public class Mess : KeywordSup
 {
+    TrasureDragon trasureDragon;
     private void Awake()
     {
         SetKeywordColor(BLUE);
-        keywordProtect = 5;
-        keyWordTension = -6;
+        keyWordTension = -11;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.protect = keywordProtect;
+        trasureDragon = caster as TrasureDragon;
+        trasureDragon.dragonTrasure -= 20;
+        trasureDragon.trasureDamage += 20;
         sentence.tension += keyWordTension;
     }
 
