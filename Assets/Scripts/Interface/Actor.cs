@@ -9,6 +9,7 @@ using UnityEngine.XR;
 public enum DamageType
 {
     Burn,
+    Venom,
     Beat
 }
 
@@ -56,12 +57,16 @@ public class Actor : MonoBehaviour
     private int _protect = 0;
     private int _pike = 0;
     private int _burnStack = 0;
+    private int _venomStack = 0;
     private int _weakenStack = 0;
     private int _reductionStack = 0;
     private int _nextTurnDamage = 0;
+    private int _oneTimeReinforce = 0;
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
     private bool _attackCount = false;
+
+    private int[] _buffList;
 
     public int MAX_HP
     {
@@ -109,7 +114,13 @@ public class Actor : MonoBehaviour
             stateUIController.BurnOn(_burnStack);
         }
     }
-    
+
+    public int venomStack
+    {
+        get { return _venomStack; }
+        set {_venomStack = value; } 
+    }
+
     public int weakenStack
     {
         get { return _weakenStack; }
@@ -136,13 +147,18 @@ public class Actor : MonoBehaviour
         get { return _nextTurnDamage; }
         set { _nextTurnDamage = value; }
     }
+    public int oneTimeReinforce
+    {
+        get { return _oneTimeReinforce; }
+        set { _oneTimeReinforce = value; }
+    }
 
     public int additionalDamage
     {
         get { return _additionalDamage; }
         set { _additionalDamage = value; }
     }
-    
+
     public int additionalStack
     {
         get { return _additionalStack; }
@@ -158,10 +174,19 @@ public class Actor : MonoBehaviour
         get { return _attackCount; }
         set { _attackCount = value; }
     }
+
+    public int[] buffList
+    {
+        get { return _buffList; }
+        set { _buffList = value; }
+    }
+
+
     #endregion
 
     private void Start()
     {
+        buffList = new int[] { burnStack, venomStack, reductionStack, weakenStack, pike };
         garbageField.InitDeck();
     }
 
@@ -176,12 +201,26 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
-        
+        #region 턴중 버프, 디버프 관리
         if (burnStack > 0)
         {
-            Damaged(burnStack * 2, DamageType.Burn);
+            Damaged(this, burnStack * 2, DamageType.Burn);
             burnStack -= 1;
         }
+        if (additionalDamage > 0)
+        {
+            additionalDamage = 0;
+        }
+        if(pike > 0)
+        {
+            pike = 0;
+        }
+        if(venomStack > 0)
+        {
+            Damaged(this, venomStack * 2, DamageType.Burn);
+            venomStack = Mathf.FloorToInt(venomStack);
+        }
+        #endregion
     }
 
     private void FillSupHand()
@@ -278,7 +317,7 @@ public class Actor : MonoBehaviour
         sentence.execute(this, target);
     }
 
-    public virtual void Damaged(int _damage, DamageType _type)
+    public virtual void Damaged(Actor attacker, int _damage, DamageType _type)
     {
         if (_damage <= 0)
             return;
@@ -288,7 +327,9 @@ public class Actor : MonoBehaviour
             case DamageType.Burn:
                 Debug.Log(gameObject.name + "화염 피해" + _damage);
                 break;
-
+            case DamageType.Venom:
+                Debug.Log(gameObject.name + "맹독 피해" + _damage);
+                break;
             case DamageType.Beat:
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
                 if (totalDamage > 0)
@@ -298,7 +339,11 @@ public class Actor : MonoBehaviour
                 if (additionalDamage > 0)
                 {
                     totalDamage += additionalDamage;
-                    additionalDamage = 0;
+                }
+                if (oneTimeReinforce > 0)
+                {
+                    totalDamage += oneTimeReinforce;
+                    oneTimeReinforce = 0;
                 }
                 if (weakenStack > 0)
                 {

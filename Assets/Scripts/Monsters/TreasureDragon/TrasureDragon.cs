@@ -41,7 +41,7 @@ public class TrasureDragon : Actor
         sentence.execute(this, target);
     }
 
-    public override void Damaged(int _damage, DamageType _type)
+    public override void Damaged(Actor attacker, int _damage, DamageType _type)
     {
         if (_damage <= 0)
             return;

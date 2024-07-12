@@ -21,7 +21,7 @@ public class GlassSpider : Actor
         _MAX_HP = 50;
     }
 
-    public override void Damaged(int _damage, DamageType _type)
+    public override void Damaged(Actor attacker, int _damage, DamageType _type)
     {
         if (_damage <= 0)
             return;
