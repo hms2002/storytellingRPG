@@ -19,8 +19,6 @@ public class CanvasData : MonoBehaviour
     }
 
 
-
-
     private void Awake()
     {
         if (_canvasData != null)
