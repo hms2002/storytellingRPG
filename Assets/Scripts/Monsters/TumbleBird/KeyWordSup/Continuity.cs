@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Joyful : KeywordSup
+public class Continuity : KeywordSup
 {
     private void Awake()
     {
-        SetKeywordColor(RED);
-        keywordDamage = 5;
-        keyWordTension = 8;
+        SetKeywordColor(BLUE);
+        keywordProtect = 5;
+        keyWordTension = -6;
     }
 
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        sentence.nextTurnDamage += keywordDamage;
+        sentence.protect = keywordProtect;
         sentence.tension += keyWordTension;
     }
 
