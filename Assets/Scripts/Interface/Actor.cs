@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.XR;
 
 public enum DamageType
@@ -16,8 +14,6 @@ public class Actor : MonoBehaviour
 {
     [Header("상태창 UI")]
     public ActorStateUIControler stateUIController;
-    public Slider hpSlider;
-    public TextMeshProUGUI hpText;
 
     #region Actor의 키워드 관련 변수
     [Header("덱 오브젝트")]
@@ -25,9 +21,9 @@ public class Actor : MonoBehaviour
     private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
 
     [Header("키워드 캔버스")]
-    public GameObject supCanvas;                // Support 키워드를 담고 있는 캔버스
-    public GameObject mainCanvas;               // Main 키워드를 담고 있는 캔버스
-
+    private GameObject supCanvas;                // Support 키워드를 담고 있는 캔버스
+    private GameObject mainCanvas;               // Main 키워드를 담고 있는 캔버스
+        
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
 
@@ -81,6 +77,7 @@ public class Actor : MonoBehaviour
                 {
                     _hp = 0;
                 }
+                stateUIController.UpdateHpUI(_hp, MAX_HP);
             }
     }
     
@@ -160,9 +157,13 @@ public class Actor : MonoBehaviour
     }
     #endregion
 
-    private void Start()
+
+    private void OnEnable()
     {
         garbageField.InitDeck();
+
+        supCanvas = CanvasData.canvasData.supHand;
+        mainCanvas = CanvasData.canvasData.mainHand;
     }
 
     public virtual void BeforeAction()
@@ -334,10 +335,6 @@ public class Actor : MonoBehaviour
             }
         }
         hp -= totalDamage;
-
-        // 체력 UI 조정
-        hpSlider.value = hp/(float)MAX_HP;
-        hpText.text = hp + " / " + MAX_HP;
     }
 
     public void StartTurn()

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GlassSpider : Actor
 {
+
+    GlassSpider()
+    {
+        _MAX_HP = 50;
+    }
     
     private int _glassFragmentStack = 0;
 
@@ -15,10 +20,10 @@ public class GlassSpider : Actor
         }
     }
 
-    private void Awake()
+    private void Start()
     {
+
         hp = 50;
-        _MAX_HP = 50;
     }
 
     public override void Damaged(int _damage, DamageType _type)
@@ -62,9 +67,5 @@ public class GlassSpider : Actor
 
         pike = glassFragmentStack;
         hp -= totalDamage;
-
-        // 체력 UI 조정
-        hpSlider.value = hp / (float)MAX_HP;
-        hpText.text = hp + " / " + MAX_HP;
     }
 }
