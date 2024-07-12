@@ -20,8 +20,8 @@ public class Actor : MonoBehaviour
     public TextMeshProUGUI hpText;
 
     #region Actor의 키워드 관련 변수
-    [Header("덱 오브젝트")]
-    [SerializeField] private Deck deck;          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    [SerializeField] private Deck deck;         // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    private Hand hand;
     private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
 
     [Header("키워드 캔버스")]
