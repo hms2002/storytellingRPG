@@ -15,8 +15,8 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    private List<GameObject> supKeywordPrefab;
-    private List<GameObject> mainKeywordPrefab;
+    private List<GameObject> supKeywordPrefab = new List<GameObject>();
+    private List<GameObject> mainKeywordPrefab = new List<GameObject>();
 
     private List<GameObject> supportHand = new List<GameObject>();      // Support 키워드 실체 타입
     private List<GameObject> mainHand = new List<GameObject>();         // Main 키워드 실체 타입
