@@ -5,12 +5,13 @@ using UnityEngine;
 public class CanvasData : MonoBehaviour
 {
     [SerializeField] private GameObject _handCanvas;
+
+    private static CanvasData _canvasData;
+
     public GameObject handCanvas
     {
         get { return _handCanvas; }
     }
-
-    private static CanvasData _canvasData;
 
     public static CanvasData canvasData
     {
