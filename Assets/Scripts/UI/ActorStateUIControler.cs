@@ -6,6 +6,7 @@ using TMPro;
 
 public class ActorStateUIControler : MonoBehaviour
 {
+
     enum STATE_UI_INDEX
     {
         PROTECT = 0,
@@ -16,9 +17,11 @@ public class ActorStateUIControler : MonoBehaviour
         END_INDEX
     }
 
-    public Slider hpSlider;
+    public Image hpSlider;
+    [Header("방어, 화염, 취약, 약화, 유리조각 순서로 넣기")] 
     public List<GameObject> stateUIObjects;
     public GameObject hpUI;
+    public Text hpText;
 
 
     public void ProtectOn(int rate)
@@ -85,4 +88,10 @@ public class ActorStateUIControler : MonoBehaviour
         text.text = rate + "";
     }
 
+
+    public void UpdateHpUI(int hp, int MAX_HP)
+    {
+        hpSlider.fillAmount = hp / (float)MAX_HP;
+        hpText.text = hp + " / " + MAX_HP;
+    }
 }

@@ -88,5 +88,7 @@ public class FightManager : MonoBehaviour
         // 
         player.Action(monster);
         monster.Action(player);
+
+        Flow();
     }
 }
