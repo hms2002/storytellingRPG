@@ -74,7 +74,7 @@ public class Hand : MonoBehaviour
         mainKeywordPrefab.RemoveAt(index);
 
         Destroy(mainHand[index]);
-        supportHand.RemoveAt(index);
+        mainHand.RemoveAt(index);
 
         return mainKeywordPrefab_temp;
     }

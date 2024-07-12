@@ -35,7 +35,7 @@ public class ActorStateUIControler : MonoBehaviour
 
         hpUI.SetActive(false);
         stateUIObjects[(int)STATE_UI_INDEX.PROTECT].SetActive(true);
-        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.PROTECT].GetComponentInChildren<TextMeshProUGUI>();
+        Text text = stateUIObjects[(int)STATE_UI_INDEX.PROTECT].GetComponentInChildren<Text>();
         text.text = rate + "";
     }
     public void BurnOn(int rate)
@@ -47,7 +47,7 @@ public class ActorStateUIControler : MonoBehaviour
         }
 
         stateUIObjects[(int)STATE_UI_INDEX.BURN].SetActive(true);
-        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.BURN].GetComponentInChildren<TextMeshProUGUI>();
+        Text text = stateUIObjects[(int)STATE_UI_INDEX.BURN].GetComponentInChildren<Text>();
         text.text = rate + "";
     }
     public void WeakenOn(int rate)
@@ -59,7 +59,7 @@ public class ActorStateUIControler : MonoBehaviour
         }
 
         stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].SetActive(true);
-        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].GetComponentInChildren<TextMeshProUGUI>();
+        Text text = stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].GetComponentInChildren<Text>();
         text.text = rate + "";
     }
     public void ReductionOn(int rate)
@@ -71,7 +71,7 @@ public class ActorStateUIControler : MonoBehaviour
         }
 
         stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].SetActive(true);
-        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].GetComponentInChildren<TextMeshProUGUI>();
+        Text text = stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].GetComponentInChildren<Text>();
         text.text = rate + "";
     }
 
@@ -84,7 +84,7 @@ public class ActorStateUIControler : MonoBehaviour
         }
 
         stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].SetActive(true);
-        TextMeshProUGUI text = stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].GetComponentInChildren<TextMeshProUGUI>();
+        Text text = stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].GetComponentInChildren<Text>();
         text.text = rate + "";
     }
 
