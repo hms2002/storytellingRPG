@@ -16,13 +16,9 @@ public class Actor : MonoBehaviour
     public ActorStateUIControler stateUIController;
 
     #region Actor의 키워드 관련 변수
-    [SerializeField] private Deck deck;         // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     private Hand hand;
     private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
-
-    [Header("키워드 캔버스")]
-    private GameObject supCanvas;                // Support 키워드를 담고 있는 캔버스
-    private GameObject mainCanvas;               // Main 키워드를 담고 있는 캔버스
         
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
@@ -38,11 +34,6 @@ public class Actor : MonoBehaviour
         set { _keywordMain = value; }
     }
 
-    private List<GameObject> supportHand = new List<GameObject>();      // Actor의 SupportHand 리스트
-    private List<GameObject> mainHand = new List<GameObject>();         // Actor의 MainHand 리스트
-
-    [Header("손 패 사이즈")]
-    [SerializeField] private const int HANDSIZE = 3;    // Actor가 가져야 하는 Hand 개수
     private bool hasActorDrawnKeywords = false;         // Actor의 키워드 드로우 여부 확인용
     #endregion
 
@@ -160,10 +151,11 @@ public class Actor : MonoBehaviour
 
     private void OnEnable()
     {
+        deck = GetComponent<Deck>();
+        hand = GetComponent<Hand>();
+
         garbageField.InitDeck();
 
-        supCanvas = CanvasData.canvasData.supHand;
-        mainCanvas = CanvasData.canvasData.mainHand;
     }
 
     public virtual void BeforeAction()
@@ -171,8 +163,8 @@ public class Actor : MonoBehaviour
         // Actor가 Keyword를 안 뽑았다면
         if (hasActorDrawnKeywords == false)
         {
-            FillSupHand();
-            FillMainHand();
+            FillSupHandInfo();
+            FillMainHandInfo();
 
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
@@ -185,10 +177,10 @@ public class Actor : MonoBehaviour
         }
     }
 
-    private void FillSupHand()
+    private void FillSupHandInfo()
     {
         // Keyword 드로우 3번 반복
-        for (int i = 0; i < HANDSIZE; i++)
+        for (int i = 0; i < hand.HANDSIZE; i++)
         {
             // Support덱이 비어있다면
             if (deck.IsSupDeckEmpty())
@@ -201,14 +193,14 @@ public class Actor : MonoBehaviour
             }
 
             // Support덱에서 1장 랜덤 드로우
-            supportHand.Add(deck.DrawSupKeyword());
+            hand.SetSupPrefabInfo(deck.DrawSupKeyword());
         }
     }
 
-    private void FillMainHand()
+    private void FillMainHandInfo()
     {
         // Keyword 드로우 3번 반복
-        for (int i = 0; i < HANDSIZE; i++)
+        for (int i = 0; i < hand.HANDSIZE; i++)
         {
             // Main덱이 비어있다면
             if (deck.IsMainDeckEmpty())
@@ -221,7 +213,7 @@ public class Actor : MonoBehaviour
             }
 
             // Main덱에서 각각 1장 랜덤 드로우                
-            mainHand.Add(deck.DrawMainKeyword());
+            hand.SetMainPrefabInfo(deck.DrawMainKeyword());
         }
     }
 
@@ -230,15 +222,7 @@ public class Actor : MonoBehaviour
         // Support 키워드를 사용
         keywordSup = _keywordSup;
 
-        // HANDSIZE만큼 반복하여 사용한 Support 키워드 + 나머지 Support 키워드 무덤덱으로 이동
-        for (int i = 0; i < HANDSIZE; i++)
-        {
-            garbageField.AddSupKeywordOnDeck(supportHand[i]);
-            supportHand[i].SetActive(false);
-        }
-
-        // Support 키워드 리스트 초기화
-        supportHand.Clear();
+        AddToSupGarbageField();
 
         ShowKeywordMain();
     }
@@ -248,20 +232,28 @@ public class Actor : MonoBehaviour
         // Main 키워드를 사용
         keywordMain = _keywordMain;
 
-        // HANDSIZE만큼 반복하여 사용한 Main 키워드 + 나머지 Main 키워드 무덤덱으로 이동
-        for (int i = 0; i < HANDSIZE; i++)
-        {
-            garbageField.AddMainKeywordOnDeck(mainHand[i]);
-            mainHand[i].SetActive(false);
-        }
-
-        // Main 키워드 리스트 초기화
-        mainHand.Clear();
+        AddToMainGarbageField();
 
         // Actor의 Hand가 비었으니 false로 설정
         hasActorDrawnKeywords = false;
-        mainCanvas.SetActive(false);
-        Debug.Log("hasActorDrawnKeywords" + hasActorDrawnKeywords);
+    }
+
+    private void AddToSupGarbageField()
+    {
+        // HANDSIZE만큼 반복하여 사용한 Support 키워드 + 나머지 Support 키워드 무덤덱으로 이동
+        for (int i = 0; i < hand.HANDSIZE; i++)
+        {
+            garbageField.AddSupKeywordOnDeck(hand.ThrowSupKeyword(0));
+        }
+    }
+
+    private void AddToMainGarbageField()
+    {
+        // HANDSIZE만큼 반복하여 사용한 Main 키워드 + 나머지 Main 키워드 무덤덱으로 이동
+        for (int i = 0; i<hand.HANDSIZE; i++)
+        {
+            garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
+        }
     }
 
     internal virtual void Action(Actor target)
@@ -344,22 +336,11 @@ public class Actor : MonoBehaviour
 
     private void ShowKeywordMain()
     {
-        supCanvas.SetActive(false);
-        mainCanvas.SetActive(true);
-
-        for (int i = 0; i < HANDSIZE; i++)
-        {
-            mainHand[i].SetActive(true);
-        }
+        hand.FillMainHand();
     }
 
     private void ShowKeywordSup()
     {
-        supCanvas.SetActive(true);
-
-        for (int i = 0; i < HANDSIZE; i++)
-        {
-            supportHand[i].SetActive(true);
-        }
+        hand.FillSupHand();
     }
 }

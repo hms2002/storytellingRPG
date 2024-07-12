@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CanvasData : MonoBehaviour
 {
-    public GameObject mainHand;
-    public GameObject supHand;
+    [SerializeField] private GameObject _handCanvas;
+    public GameObject handCanvas
+    {
+        get { return _handCanvas; }
+    }
 
     private static CanvasData _canvasData;
 
@@ -13,6 +16,10 @@ public class CanvasData : MonoBehaviour
     {
         get { return _canvasData; }
     }
+
+
+
+
     private void Awake()
     {
         if (_canvasData != null)

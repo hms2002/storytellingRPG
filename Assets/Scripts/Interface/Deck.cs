@@ -10,6 +10,9 @@ public class Deck : MonoBehaviour
     [SerializeField] private List<GameObject> mainDeck;     // Main 키워드를 담는 덱 리스트
 
 
+    /*==================================================================================================================================*/
+
+
     public void InitDeck()
     {
         supportDeck = new List<GameObject>();
