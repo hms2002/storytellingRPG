@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {
-    public static FightManager fightManager;
+    public static FightManager fightManager { get; private set; }
     public FightManagerUI fightManagerUI;
-
-    private int preparedActorCount = 0;
 
     [Header("Actor 오브젝트")]
     [SerializeField] private Actor player;
     [SerializeField] private Actor monster;
+
+    private int preparedActorCount = 0;
 
     private Actor whoPlaying;
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
 
 
+    /*==================================================================================================================================*/
+
+
     void Awake()
     {
-        if (fightManager != null)
+        if (fightManager != null && fightManager != this)
+        {
+            Destroy(this.gameObject);
             return;
+        }
         fightManager = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -33,8 +40,8 @@ public class FightManager : MonoBehaviour
 
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
-        if (_keywordSup == null)
-            return;
+        if (_keywordSup == null) return;
+
         whoPlaying.GetKeywordSup(_keywordSup);
     }
 
