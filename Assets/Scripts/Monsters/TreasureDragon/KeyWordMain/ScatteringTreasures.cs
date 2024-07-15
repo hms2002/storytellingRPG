@@ -15,7 +15,7 @@ public class ScatteringTreasures : KeywordMain
     {
         trasureDragon = caster as TrasureDragon;
         sentence.damage += keywordDamage;
-        trasureDragon.dragonTrasure -= keywordDamage;
+        trasureDragon.dragonsTrasure -= keywordDamage;
         trasureDragon.trasureDamage += keywordDamage;
         sentence.tension += keyWordTension;
     }

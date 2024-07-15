@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GlassSpider : Actor
 {
-
     GlassSpider()
     {
         _MAX_HP = 50;
@@ -23,7 +22,7 @@ public class GlassSpider : Actor
     private void Start()
     {
 
-        hp = 50;
+        hp = MAX_HP;
     }
 
     public override void Damaged(Actor attacker, int _damage, DamageType _type)

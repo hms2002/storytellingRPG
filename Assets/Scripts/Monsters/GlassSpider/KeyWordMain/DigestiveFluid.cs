@@ -6,20 +6,20 @@ public class DigestiveFluid : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "¼ÒÈ­¾×";
         SetKeywordColor(RED);
         keywordDamage = 2;
         debuffType = "Reduction";
         debuffStack = 3;
         keyWordTension = 10;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
+        caster.damage += keywordDamage;
         target.reductionStack += debuffStack;
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

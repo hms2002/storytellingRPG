@@ -5,21 +5,23 @@ using UnityEngine;
 public class Fragmented : KeywordSup
 {
     GlassSpider glassSpider;
+
+
     private void Awake()
     {
+        keywordName = "파편화된";
         SetKeywordColor(RED);
         keyWordTension = 5;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        sentence.damage += glassSpider.glassFragmentStack;
-        sentence.tension += keyWordTension;
+        caster.damage += glassSpider.glassFragmentStack;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }

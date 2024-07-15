@@ -16,7 +16,7 @@ public class Sweep : KeywordMain
     {
         trasureDragon = caster as TrasureDragon;
         sentence.damage += keywordDamage;
-        trasureDragon.dragonTrasure -= 10;
+        trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += 10;
         sentence.tension += keyWordTension;
     }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TrasureDragon : Actor
 {
-    private int _dragonTrasure = 200;
+    private int _dragonsTrasure = 200;
     private int _trasureDamage = 0;
     private int _motherDragonsCall = 5;
 
-    public int dragonTrasure
+    public int dragonsTrasure
     {
-        get { return _dragonTrasure; }
-        set { _dragonTrasure = value; }
+        get { return _dragonsTrasure; }
+        set { _dragonsTrasure = value; }
     }
 
     public int trasureDamage
@@ -78,7 +78,7 @@ public class TrasureDragon : Actor
                 }
                 break;
         }
-        if (dragonTrasure > 0)
+        if (dragonsTrasure > 0)
         {
             if (protect > 0)
             {
@@ -95,15 +95,15 @@ public class TrasureDragon : Actor
             }
             else
             {
-                if (dragonTrasure < totalDamage)
+                if (dragonsTrasure < totalDamage)
                 {
-                    totalDamage -= dragonTrasure;
+                    totalDamage -= dragonsTrasure;
                     trasureDamage = totalDamage;
-                    dragonTrasure = 0;
+                    dragonsTrasure = 0;
                 }
                 else
                 {
-                    dragonTrasure -= totalDamage;
+                    dragonsTrasure -= totalDamage;
                     trasureDamage = totalDamage;
                     totalDamage = 0;
                 }

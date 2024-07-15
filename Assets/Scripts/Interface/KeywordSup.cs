@@ -7,7 +7,7 @@ public abstract class KeywordSup : MonoBehaviour
     protected FightManager fightManager;
 
     #region 서포트 키워드 제원 관련 변수들
-    [Header("키워드 제원")]
+    [Header("서포트 키워드 제원")]
     [SerializeField] private string _keywordName = "";
     [SerializeField] private int _keywordDamage = 0;
     [SerializeField] private int _keywordProtect = 0;
@@ -52,16 +52,18 @@ public abstract class KeywordSup : MonoBehaviour
     }
     
     private Color keywordColor;
-    protected Color RED = new Color(225, 0, 0);
-    protected Color BLUE = new Color(0, 255, 0);
-    protected Color GREEN = new Color(0, 0, 255);
-    protected Color YELLOW = new Color(255, 255, 0);
+    [Header("키워드 특성별 색")]
+    [SerializeField] protected Color RED = new Color(225, 0, 0);
+    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
+    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
+    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
     #endregion
 
     [Multiline(3)]
     [SerializeField] private string keywordDescription = "";
 
-    public  void OnClickButton()
+
+    public void OnClickButton()
     {
         fightManager.GetKeywordSup(this);
     }
@@ -72,17 +74,11 @@ public abstract class KeywordSup : MonoBehaviour
     }
 
     public abstract void Execute(Actor caster, Actor target);
-
     public abstract void Check(KeywordMain _keywordMain);
 
     public Color GetKeywordColor() { return keywordColor; }
-
     public void SetKeywordColor(Color color) { keywordColor = color; }
-
     public void SetDebuffType(string type) { debuffType = type; }
-
     public int GetDebuffStack() { return debuffStack; }
-    
     public void SetDebuffStack(int stack) { debuffStack = stack; }
-
 }

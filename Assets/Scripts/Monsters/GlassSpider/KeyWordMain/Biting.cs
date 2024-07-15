@@ -6,17 +6,19 @@ public class Biting : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "¹°¾î¶â±â";
         SetKeywordColor(RED);
         keywordDamage = 10;
         keyWordTension = 10;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
-        sentence.tension += keyWordTension;
+        caster.damage += keywordDamage;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

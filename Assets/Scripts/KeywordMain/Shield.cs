@@ -6,16 +6,17 @@ public class Shield : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "πÊ∆–";
         SetKeywordColor(BLUE);
         keywordProtect = 5;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect += keywordProtect;
+        caster.protect += keywordProtect;
     }
 
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

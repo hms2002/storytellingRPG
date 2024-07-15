@@ -6,11 +6,13 @@ public class Crossed : KeywordSup
 {
     private void Awake()
     {
+        keywordName = "±³Â÷µÈ";
         SetKeywordColor(BLUE);
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += caster.protect;
+        caster.damage += caster.protect;
     }
 
     public override void Check(KeywordMain _keywordMain)

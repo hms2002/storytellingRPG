@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
+    [Header("연속된 공격 횟수")]
+    private int repeatNum = 1;
+
+
     private void Awake()
     {
+        keywordName = "연속된";
         SetKeywordColor(RED);
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.repeatStack += (1);
+        caster.repeatStack += repeatNum;
     }
 
     public override void Check(KeywordMain _keywordMain)
