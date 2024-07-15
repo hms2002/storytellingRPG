@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Cough : KeywordMain
 {
+    [Header("랜덤 데미지 제어")]
+    [SerializeField] private int maxRange = 30;
+    [SerializeField] private int minRange = 20;
+
     private void Awake()
     {
+        keywordName = "기침(브레스)";
         SetKeywordColor(RED);
-        keywordDamage = Random.Range(20,30);
+        keywordDamage = Random.Range(minRange, maxRange);
         debuffStack = 5;
         debuffType = "Burn";
         keyWordTension = 41;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
-        sentence.burnStack += debuffStack;
-        sentence.tension += keyWordTension;
+        caster.damage += keywordDamage;
+        caster.burnStack += debuffStack;
+        caster.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

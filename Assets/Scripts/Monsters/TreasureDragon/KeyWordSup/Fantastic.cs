@@ -6,13 +6,13 @@ public class Fantastic : KeywordSup
 {
     TrasureDragon trasureDragon;
 
-    [Header("¿ëÀÇ º¸¹° µ¥¹ÌÁö ¼öÄ¡")]
+    [Header("í™˜ìƒì ì¸ í‚¤ì›Œë“œ ë°ë¯¸ì§€ ìˆ˜ì¹˜ ì œì–´")]
     [SerializeField] private int damageFigures = 20;
 
 
     private void Awake()
     {
-        keywordName = "È¯»óÀûÀÎ";
+        keywordName = "í™˜ìƒì ì¸";
         SetKeywordColor(BLUE);
         keyWordTension = -11;
     }

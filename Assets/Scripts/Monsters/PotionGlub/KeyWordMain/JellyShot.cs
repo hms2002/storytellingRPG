@@ -10,12 +10,12 @@ public class JellyShot : KeywordMain
         SetKeywordColor(BLUE);
         keyWordTension = 20;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
         potionGlub.isJellyShot = true;
-        sentence.damage += keywordDamage;
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

@@ -36,8 +36,8 @@ public class TrasureDragon : Actor
         protect = 0;
         motherDragonsCall -= 1;
 
-        keywordSup.Execute(this, target, sentence);
-        keywordMain.Execute(this, target, sentence);
+        keywordSup.Execute(this, target);
+        keywordMain.Execute(this, target);
         sentence.execute(this, target);
     }
 
