@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Roll : KeywordMain
 {
+    [Header("구르기 랜덤 데미지 범위 제어")]
+    [SerializeField] private int minDamage = 20;
+    [SerializeField] private int maxDamage = 20;
+
+
     private void Awake()
     {
+        keywordName = "구르기";
         SetKeywordColor(RED);
-        keywordDamage = Random.Range(20,30);
+        keywordDamage = Random.Range(minDamage, maxDamage);
         debuffStack = 5;
         debuffType = "Burn";
         keyWordTension = 41;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
-        sentence.burnStack += debuffStack;
-        sentence.tension += keyWordTension;
+        caster.damage += keywordDamage;
+        caster.burnStack += debuffStack;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

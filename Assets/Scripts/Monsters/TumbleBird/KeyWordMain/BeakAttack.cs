@@ -6,17 +6,19 @@ public class BeakAttack : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "부리 공격";
         SetKeywordColor(BLUE);
         keywordProtect = 30;
         keyWordTension = -24;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect += keywordProtect;
-        sentence.tension += keyWordTension;
+        caster.protect += keywordProtect;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }
