@@ -374,7 +374,6 @@ public class Actor : MonoBehaviour
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
-        protect = 0;
         additionalDamage += nextTurnDamage;
 
         keywordSup.Execute(this, target);
