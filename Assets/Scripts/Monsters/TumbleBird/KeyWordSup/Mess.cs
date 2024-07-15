@@ -11,12 +11,12 @@ public class Mess : KeywordSup
         keyWordTension = -11;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= 20;
         trasureDragon.trasureDamage += 20;
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
