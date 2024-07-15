@@ -127,7 +127,6 @@ public class Sentence : MonoBehaviour
             target.reductionStack += reductionStack;
             target.nextTurnDamage += nextTurnDamage;
             target.Damaged(caster,damage,DamageType.Beat);
-            target.Damaged(caster,sheidDamage, DamageType.Beat);
             caster.protect += protect;
             caster.hp += heal;
             caster.weakenStack += selfWeakenStack;

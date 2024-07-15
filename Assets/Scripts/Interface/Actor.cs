@@ -35,6 +35,7 @@ public class Actor : MonoBehaviour
         get { return _keywordSup; }
         set { _keywordSup = value; }
     }
+
     public KeywordMain keywordMain
     {
         get { return _keywordMain; }
@@ -45,21 +46,36 @@ public class Actor : MonoBehaviour
     #endregion
 
     #region Actor의 능력치 관련 변수, 함수
+    private int _tension = 0;
+
     protected int _MAX_HP = 100;
     private int _hp = 100;
     private int _protect = 0;
+    private int _heal = 0;
+    private int _damage = 0;
     private int _pike = 0;
     private int _burnStack = 0;
+    private int _selfBurnStack = 0;
     private int _venomStack = 0;
+    private int _selfVenomStack = 0;
     private int _weakenStack = 0;
+    private int _selfWeakenStack = 0;
     private int _reductionStack = 0;
+    private int _selfReductionStack = 0;
     private int _nextTurnDamage = 0;
     private int _oneTimeReinforce = 0;
+    private int _repeatStack = 1;
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
     private bool _attackCount = false;
 
     private int[] _buffList;
+
+    public int tension
+    {
+        get { return _tension; }
+        set { _tension = value; }
+    }
 
     public int MAX_HP
     {
@@ -92,7 +108,12 @@ public class Actor : MonoBehaviour
             stateUIController.ProtectOn(_protect);
         }
     }
-    
+    public int heal
+    {
+        get { return _heal; }
+        set { _heal = value; }
+    }
+
     public int pike
     {
         get { return _pike; }
@@ -108,11 +129,21 @@ public class Actor : MonoBehaviour
             stateUIController.BurnOn(_burnStack);
         }
     }
+    public int selfBurnStack
+    {
+        get { return _selfBurnStack; }
+        set { _selfBurnStack = value; }
+    }
 
     public int venomStack
     {
         get { return _venomStack; }
         set {_venomStack = value; } 
+    }
+    public int selfVenomStack
+    {
+        get { return _selfVenomStack; }
+        set { _selfVenomStack = value; }
     }
 
     public int weakenStack
@@ -125,7 +156,13 @@ public class Actor : MonoBehaviour
             Debug.Log("취약 스택" + _weakenStack);
         }
     }
-    
+
+    public int selfWeakenStack
+    {
+        get { return _selfWeakenStack; }
+        set { _selfWeakenStack = value; }
+    }
+
     public int reductionStack
     {
         get { return _reductionStack; }
@@ -134,6 +171,24 @@ public class Actor : MonoBehaviour
             _reductionStack = value;
             stateUIController.ReductionOn(_reductionStack);
         }
+    }
+
+    public int selfReductionStack
+    {
+        get { return _selfReductionStack; }
+        set { _selfReductionStack = value; }
+    }
+
+    public int damage
+    {
+        get { return _damage; }
+        set { _damage = value; }
+    }
+
+    public int repeatStack
+    {
+        get { return _repeatStack; }
+        set { _repeatStack = value; }
     }
 
     public int nextTurnDamage
@@ -317,7 +372,40 @@ public class Actor : MonoBehaviour
 
         keywordSup.Execute(this, target, sentence);
         keywordMain.Execute(this, target, sentence);
-        sentence.execute(this, target);
+        Execute(target);
+    }
+
+    public void Execute(Actor target)
+    {
+        for (int i = 1; i <= repeatStack; i++)
+        {
+            TensionManager tensionManager = TensionManager.tensionManagerUI;
+            target.burnStack += burnStack;
+            target.weakenStack += weakenStack;
+            target.reductionStack += reductionStack;
+            target.nextTurnDamage += nextTurnDamage;
+            target.Damaged(this, damage, DamageType.Beat);
+            protect += protect;
+            hp += heal;
+            weakenStack += selfWeakenStack;
+            burnStack += selfBurnStack;
+            reductionStack += selfReductionStack;
+            tensionManager.tension += tension;
+
+            #region 디버깅용 임시 로그
+            Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
+            Debug.Log("입히는 데미지 : " + damage);
+            Debug.Log("상태 방어력 : " + protect);
+            Debug.Log(target.gameObject.name + "화염 스택 : " + target.burnStack);
+            #endregion
+
+            if (target.attackCount == true)
+            {
+                Damaged(target, target.pike, DamageType.Beat);
+            }
+
+            target.attackCount = false;
+        }
     }
 
     public virtual void Damaged(Actor attacker, int _damage, DamageType _type)

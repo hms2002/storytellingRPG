@@ -10,13 +10,14 @@ public class Crossed : KeywordSup
     }
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
-        Debug.Log("교차된 발동");
-
         sentence.damage += caster.protect;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-        
+        if(_keywordMain.keywordProtect > 0)
+        {
+
+        }
     }
 }
