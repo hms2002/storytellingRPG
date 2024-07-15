@@ -5,17 +5,19 @@ using UnityEngine;
 public class ScatteringTreasures : KeywordMain
 {
     TrasureDragon trasureDragon;
-    [Header("º¸¹°¿¡ °¡ÇØÁö´Â µ¥¹ÌÁö,·£´ı µ¥¹ÌÁö Á¦¾î")]
+    [Header("ë³´ë¬¼ ë¿Œë¦¬ê¸° í‚¤ì›Œë“œ ëœë¤ ë°ë¯¸ì§€ ë²”ìœ„ ì œì–´")]
     [SerializeField] private int maxRange = 18;
     [SerializeField] private int minRange = 12;
 
+
     private void Awake()
     {
-        keywordName = "º¸¹° ¾µ¾î´ã±â";
+        keywordName = "ë³´ë¬¼ ë¿Œë¦¬ê¸°";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
         keyWordTension = 18;
     }
+
     public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
@@ -24,8 +26,8 @@ public class ScatteringTreasures : KeywordMain
         trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

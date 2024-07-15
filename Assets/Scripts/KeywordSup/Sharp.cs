@@ -6,13 +6,16 @@ public class Sharp : KeywordSup
 {
     private void Awake()
     {
+        keywordName = "날카로운";
         SetKeywordColor(RED);
         keywordDamage = 2;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += (2);
+        caster.damage += keywordDamage;
     }
+
     public override void Check(KeywordMain _keywordMain)
     {
     }

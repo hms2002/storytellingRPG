@@ -6,17 +6,19 @@ public class Crouch : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "¿õÅ©¸®±â";
         SetKeywordColor(BLUE);
         keywordProtect = 10;
         keyWordTension = 6;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect = 10;
-        sentence.tension += keyWordTension;
+        caster.protect = 10;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

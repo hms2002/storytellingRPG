@@ -7,6 +7,7 @@ public class FastKnightSword : KeywordMain
     [Header("속기사의 검 공격 횟수")]
     [SerializeField] private int attackNum = 2;
 
+
     private void Awake()
     {
         keywordName = "속기사의 검";

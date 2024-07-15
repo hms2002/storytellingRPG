@@ -5,22 +5,27 @@ using UnityEngine;
 public class Fantastic : KeywordSup
 {
     TrasureDragon trasureDragon;
+
+    [Header("환상적인 키워드 데미지 수치 제어")]
+    [SerializeField] private int damageFigures = 20;
+
+
     private void Awake()
     {
+        keywordName = "환상적인";
         SetKeywordColor(BLUE);
         keyWordTension = -11;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonsTrasure -= 20;
-        trasureDragon.trasureDamage += 20;
-        sentence.tension += keyWordTension;
+        trasureDragon.dragonsTrasure -= damageFigures;
+        trasureDragon.trasureDamage += damageFigures;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }

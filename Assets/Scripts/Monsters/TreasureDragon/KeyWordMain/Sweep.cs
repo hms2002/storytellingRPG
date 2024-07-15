@@ -5,28 +5,29 @@ using UnityEngine;
 public class Sweep : KeywordMain
 {
     TrasureDragon trasureDragon;
-    [Header("º¸¹°¿¡ °¡ÇØÁö´Â µ¥¹ÌÁö,·£´ı µ¥¹ÌÁö Á¦¾î")]
-    [SerializeField] private int trasureDamage = 10;
+    [Header("ì“¸ì–´ ë‹´ê¸° í‚¤ì›Œë“œ ëœë¤ ë°ë¯¸ì§€ ë²”ìœ„ ì œì–´")]
     [SerializeField] private int maxRange = 18;
     [SerializeField] private int minRange = 15;
 
+
     private void Awake()
     {
-        keywordName = "ÈÛ¾µ±â";
+        keywordName = "ì“¸ì–´ ë‹´ê¸°";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
         keyWordTension = 18;
     }
+
     public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
         trasureDragon.damage += keywordDamage;
         trasureDragon.dragonsTrasure -= 10;
-        trasureDragon.trasureDamage += trasureDamage;
+        trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

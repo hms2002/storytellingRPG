@@ -7,7 +7,7 @@ public abstract class KeywordMain : MonoBehaviour
     protected FightManager fightManager;
 
     #region 메인 키워드 제원 관련 변수들
-    [Header("키워드 제원")]
+    [Header("메인 키워드 제원")]
     [SerializeField] private string _keywordName = "";
     [SerializeField] private int _keywordDamage = 0;
     [SerializeField] private int _keywordProtect = 0;
@@ -62,10 +62,12 @@ public abstract class KeywordMain : MonoBehaviour
     [Multiline(3)]
     [SerializeField] private string keywordDescription = "";
 
+
     public void OnClickButton()
     {
         fightManager.GetKeywordMain(this);
     }
+
     private void Start()
     {
         fightManager = FightManager.fightManager;
@@ -73,6 +75,7 @@ public abstract class KeywordMain : MonoBehaviour
     
     public abstract void Execute(Actor caster, Actor target);
     public abstract void Check(KeywordSup _keywordSup);
+
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
     public int GetDebuffStack() { return debuffStack; }

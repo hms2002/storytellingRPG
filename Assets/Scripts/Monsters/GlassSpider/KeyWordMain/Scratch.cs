@@ -6,17 +6,19 @@ public class Scratch : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "ÇÒÄû±â";
         SetKeywordColor(RED);
         keywordDamage = 3;
         keyWordTension = -20;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
-        sentence.tension += keyWordTension;
+        caster.damage += keywordDamage;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

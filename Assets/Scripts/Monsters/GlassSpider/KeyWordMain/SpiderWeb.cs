@@ -6,17 +6,19 @@ public class SpiderWeb : KeywordMain
 {
     private void Awake()
     {
+        keywordName = "∞≈πÃ¡Ÿ";
         SetKeywordColor(RED);
         keywordDamage = 5;
         keyWordTension = -10;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.damage += keywordDamage;
-        sentence.tension += keyWordTension;
+        caster.damage += keywordDamage;
+        caster.tension += keyWordTension;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

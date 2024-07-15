@@ -6,12 +6,14 @@ public class Defensive : KeywordSup
 {
     private void Awake()
     {
+        keywordName = "방어적인";
         SetKeywordColor(BLUE);
         keywordProtect = 4;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect += keywordProtect;
+        caster.protect += keywordProtect;
     }
 
     public override void Check(KeywordMain _keywordMain)

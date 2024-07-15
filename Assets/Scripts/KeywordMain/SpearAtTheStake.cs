@@ -15,8 +15,8 @@ public class SpearAtTheStake : KeywordMain
         target.Damaged(caster, target.burnStack , DamageType.Beat);
         caster.damage += target.burnStack;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }
