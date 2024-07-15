@@ -70,7 +70,7 @@ public abstract class KeywordSup : MonoBehaviour
         fightManager = FightManager.fightManager;
     }
 
-    public abstract void Execute(Actor caster, Actor target, Sentence sentence);
+    public abstract void Execute(Actor caster, Actor target);
 
     public abstract void Check(KeywordMain _keywordMain);
 

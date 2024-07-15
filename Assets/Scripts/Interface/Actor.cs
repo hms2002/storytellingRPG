@@ -26,7 +26,7 @@ public class Actor : MonoBehaviour
     private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     private Hand hand;
     private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
-        
+
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
 
@@ -70,6 +70,7 @@ public class Actor : MonoBehaviour
     private bool _attackCount = false;
 
     private int[] _buffList;
+    private int[] _debuffList;
 
     public int tension
     {
@@ -85,25 +86,25 @@ public class Actor : MonoBehaviour
     public int hp
     {
         get { return _hp; }
-        set { 
-                _hp = value; 
-                if(_hp > _MAX_HP)
-                {
-                    _hp = _MAX_HP;
-                }
-                if (_hp < 0)
-                {
-                    _hp = 0;
-                }
-                stateUIController.UpdateHpUI(_hp, MAX_HP);
+        set {
+            _hp = value;
+            if (_hp > _MAX_HP)
+            {
+                _hp = _MAX_HP;
             }
+            if (_hp < 0)
+            {
+                _hp = 0;
+            }
+            stateUIController.UpdateHpUI(_hp, MAX_HP);
+        }
     }
-    
+
     public int protect
     {
         get { return _protect; }
-        set 
-        { 
+        set
+        {
             _protect = value;
             stateUIController.ProtectOn(_protect);
         }
@@ -119,7 +120,7 @@ public class Actor : MonoBehaviour
         get { return _pike; }
         set { _pike = value; }
     }
-    
+
     public int burnStack
     {
         get { return _burnStack; }
@@ -138,7 +139,7 @@ public class Actor : MonoBehaviour
     public int venomStack
     {
         get { return _venomStack; }
-        set {_venomStack = value; } 
+        set { _venomStack = value; }
     }
     public int selfVenomStack
     {
@@ -230,6 +231,11 @@ public class Actor : MonoBehaviour
         set { _buffList = value; }
     }
 
+    public int[] debuffList
+    {
+        get { return _debuffList; }
+        set { _debuffList = value; }
+    }
 
     #endregion
 
@@ -242,7 +248,8 @@ public class Actor : MonoBehaviour
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
-        buffList = new int[] { burnStack, venomStack, reductionStack, weakenStack, pike };
+        buffList = new int[] { additionalStack, additionalDamage, pike };
+        debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack };
 
         garbageField.InitDeck();
 
@@ -370,8 +377,8 @@ public class Actor : MonoBehaviour
         protect = 0;
         additionalDamage += nextTurnDamage;
 
-        keywordSup.Execute(this, target, sentence);
-        keywordMain.Execute(this, target, sentence);
+        keywordSup.Execute(this, target);
+        keywordMain.Execute(this, target);
         Execute(target);
     }
 
