@@ -6,10 +6,7 @@ using UnityEngine;
 /*
 #.스크립트 설명
 
-
-
-#.가지고 있는 기능
-
+- 
 
 */
 
@@ -21,13 +18,9 @@ public class Hand : MonoBehaviour
     private List<GameObject> supportHand = new List<GameObject>();      // Support 키워드 실체 타입
     private List<GameObject> mainHand = new List<GameObject>();         // Main 키워드 실체 타입
 
-    [Header("핸드 크기")]
-    [SerializeField] private const int _HANDSIZE = 3;                    // 플레이 주체가 가져야 하는 키워드 개수
-    public int HANDSIZE
-    {
-        get { return _HANDSIZE; }
-    }
-
+    [Header("핸드의 양")]
+    [SerializeField] private const int _HANDSIZE = 3;                   // 플레이 주체가 가져야 하는 키워드 개수
+    public int HANDSIZE { get { return _HANDSIZE; } }
 
     private Vector2 createLocation = new Vector2(0, -930);              // 키워드 생성 위치
 
@@ -36,7 +29,7 @@ public class Hand : MonoBehaviour
 
 
     // keywordData 속 Support 키워드들을 실체화 시켜 supportHand 리스트에 집어 넣는 기능
-    public void FillSupHand()
+    public void SubstantiateSupKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
@@ -45,7 +38,7 @@ public class Hand : MonoBehaviour
     }
 
     // keywordData 속 Main 키워드들을 실체화 시켜 MainHand 리스트에 집어 넣는 기능
-    public void FillMainHand()
+    public void SubstantiateMainKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
@@ -53,7 +46,7 @@ public class Hand : MonoBehaviour
         }
     }
 
-    // 
+    // Hand에 있는 Support 키워드들을 무덤덱으로 버리는 기능
     public GameObject ThrowSupKeyword(int index)
     {
         GameObject supKeywordPrefab_temp = supKeywordPrefab[index];
@@ -66,7 +59,7 @@ public class Hand : MonoBehaviour
         return supKeywordPrefab_temp;
     }
 
-    // 
+    // Hand에 있는 Main 키워드들을 무덤덱으로 버리는 기능
     public GameObject ThrowMainKeyword(int index)
     {
         GameObject mainKeywordPrefab_temp = mainKeywordPrefab[index];
@@ -79,13 +72,7 @@ public class Hand : MonoBehaviour
         return mainKeywordPrefab_temp;
     }
 
-    public void SetSupPrefabInfo(GameObject gameObject)
-    {
-        supKeywordPrefab.Add(gameObject);
-    }
 
-    public void SetMainPrefabInfo(GameObject gameObject)
-    {
-        mainKeywordPrefab.Add(gameObject);
-    }
+    public void SetSupPrefabInfo(GameObject gameObject) { supKeywordPrefab.Add(gameObject); }
+    public void SetMainPrefabInfo(GameObject gameObject) { mainKeywordPrefab.Add(gameObject); }
 }

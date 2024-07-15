@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+/*
+#.스크립트 설명
+
+- 
+*/
+
 public enum DamageType
 {
     Burn,
@@ -173,6 +179,9 @@ public class Actor : MonoBehaviour
     #endregion
 
 
+    /*==================================================================================================================================*/
+
+
     private void OnEnable()
     {
         deck = GetComponent<Deck>();
@@ -257,7 +266,7 @@ public class Actor : MonoBehaviour
         }
     }
 
-    internal void GetKeywordSup(KeywordSup _keywordSup)
+    public void GetKeywordSup(KeywordSup _keywordSup)
     {
         // Support 키워드를 사용
         keywordSup = _keywordSup;
@@ -267,7 +276,7 @@ public class Actor : MonoBehaviour
         ShowKeywordMain();
     }
 
-    internal void GetKeywordMain(KeywordMain _keywordMain)
+    public void GetKeywordMain(KeywordMain _keywordMain)
     {
         // Main 키워드를 사용
         keywordMain = _keywordMain;
@@ -296,7 +305,7 @@ public class Actor : MonoBehaviour
         }
     }
 
-    internal virtual void Action(Actor target)
+    public virtual void Action(Actor target)
     {
         Sentence sentence = new Sentence();
 
@@ -380,13 +389,13 @@ public class Actor : MonoBehaviour
         ShowKeywordSup();
     }
 
-    private void ShowKeywordMain()
-    {
-        hand.FillMainHand();
-    }
-
     private void ShowKeywordSup()
     {
-        hand.FillSupHand();
+        hand.SubstantiateSupKeywordData();
+    }
+
+    private void ShowKeywordMain()
+    {
+        hand.SubstantiateMainKeywordData();
     }
 }

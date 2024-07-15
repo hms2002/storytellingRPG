@@ -7,22 +7,30 @@ public class FightManager : MonoBehaviour
     public static FightManager fightManager;
     public FightManagerUI fightManagerUI;
 
-    private int preparedActorCount = 0;
-
     [Header("Actor 오브젝트")]
     [SerializeField] private Actor player;
     [SerializeField] private Actor monster;
+
+    private int preparedActorCount = 0;
 
     private Actor whoPlaying;
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
 
 
+    /*==================================================================================================================================*/
+
+
     void Awake()
     {
-        if (fightManager != null)
+        // 싱글톤 구조 보강
+        if (fightManager != null && fightManager != this)
+        {
+            Destroy(this.gameObject);
             return;
+        }
         fightManager = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -33,15 +41,14 @@ public class FightManager : MonoBehaviour
 
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
-        if (_keywordSup == null)
-            return;
+        if (_keywordSup == null) return;
+
         whoPlaying.GetKeywordSup(_keywordSup);
     }
 
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
-        if (_keywordMain == null)
-            return;
+        if (_keywordMain == null) return;
         whoPlaying.GetKeywordMain(_keywordMain);
         preparedActorCount++;
         Flow();

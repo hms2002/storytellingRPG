@@ -10,10 +10,10 @@ public class Monster : Actor
         get { return _tension; }
         set { _tension = value; }
     }
-    internal override void Action(Actor target)
+
+
+    public override void Action (Actor target)
     {
         base.Action(target);
-
-        
     }
 }

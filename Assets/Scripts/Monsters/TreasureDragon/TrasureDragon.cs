@@ -26,7 +26,7 @@ public class TrasureDragon : Actor
         set { _motherDragonsCall = value; }
     }
 
-    internal override void Action(Actor target)
+    public override void Action(Actor target)
     {
         Sentence sentence = new Sentence();
 
