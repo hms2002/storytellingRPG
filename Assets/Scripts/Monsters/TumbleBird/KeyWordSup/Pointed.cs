@@ -11,10 +11,10 @@ public class Pointed : KeywordSup
         keyWordTension = 8;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.nextTurnDamage += keywordDamage;
-        sentence.tension += keyWordTension;
+        caster.nextTurnDamage += keywordDamage;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

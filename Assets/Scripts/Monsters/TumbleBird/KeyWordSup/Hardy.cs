@@ -11,12 +11,12 @@ public class Hardy : KeywordSup
         keyWordTension = -4;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += 10;
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

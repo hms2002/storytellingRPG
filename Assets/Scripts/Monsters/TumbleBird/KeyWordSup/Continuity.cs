@@ -11,10 +11,10 @@ public class Continuity : KeywordSup
         keyWordTension = -6;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect = keywordProtect;
-        sentence.tension += keyWordTension;
+        caster.protect = keywordProtect;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
