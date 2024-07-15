@@ -116,10 +116,6 @@ public class Sentence : MonoBehaviour
     }
     #endregion
 
-    public void DamageControl(int _rate)
-    {
-        damage += _rate;
-    }
 
     public void execute(Actor caster, Actor target)
     {
