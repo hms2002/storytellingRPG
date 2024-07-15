@@ -11,11 +11,11 @@ public class Pouring : KeywordMain
         keyWordTension = 10;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
         potionGlub.PotionHitted(target);
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

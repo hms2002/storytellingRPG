@@ -5,20 +5,25 @@ using UnityEngine;
 public class Shaking : KeywordMain
 {
     PotionGlub potionGlub;
+
+    [Header("랜덤 포션수치 제어")]
+    [SerializeField] private int maxRange = 3;
+    [SerializeField] private int minRange = -3;
+
     private void Awake()
     {
+        keywordName = "셰이킹";
         SetKeywordColor(BLUE);
         keyWordTension = -5;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
-        potionGlub.potionNum = Random.Range(-3, 3);
+        potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
-
     public override void Check(KeywordSup _keywordSup)
     {
 

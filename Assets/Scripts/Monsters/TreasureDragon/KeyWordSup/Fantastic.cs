@@ -14,7 +14,7 @@ public class Fantastic : KeywordSup
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonTrasure -= 20;
+        trasureDragon.dragonsTrasure -= 20;
         trasureDragon.trasureDamage += 20;
         sentence.tension += keyWordTension;
     }

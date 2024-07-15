@@ -5,18 +5,24 @@ using UnityEngine;
 public class YellowHerb : KeywordSup
 {
     PotionGlub potionGlub;
+
+    [Header("랜덤 포션수치 제어")]
+    [SerializeField] private int maxRange = 4;
+    [SerializeField] private int minRange = 2;
+
     private void Awake()
     {
+        keywordName = "노란 약초";
         SetKeywordColor(BLUE);
         keyWordTension = -10;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
-        potionGlub.potionNum += Random.Range(2, 4);
+        potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        sentence.tension += keyWordTension;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

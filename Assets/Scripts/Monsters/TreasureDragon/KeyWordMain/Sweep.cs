@@ -5,20 +5,25 @@ using UnityEngine;
 public class Sweep : KeywordMain
 {
     TrasureDragon trasureDragon;
+    [Header("보물에 가해지는 데미지,랜덤 데미지 제어")]
+    [SerializeField] private int trasureDamage = 10;
+    [SerializeField] private int maxRange = 18;
+    [SerializeField] private int minRange = 15;
 
     private void Awake()
     {
+        keywordName = "휩쓸기";
         SetKeywordColor(RED);
-        keywordDamage = Random.Range(15, 18);
+        keywordDamage = Random.Range(minRange, maxRange);
         keyWordTension = 18;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
-        sentence.damage += keywordDamage;
-        trasureDragon.dragonTrasure -= 10;
-        trasureDragon.trasureDamage += 10;
-        sentence.tension += keyWordTension;
+        trasureDragon.damage += keywordDamage;
+        trasureDragon.dragonsTrasure -= 10;
+        trasureDragon.trasureDamage += trasureDamage;
+        caster.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

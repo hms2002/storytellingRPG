@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Scales : KeywordMain
 {
+
     private void Awake()
     {
+        keywordName = "ºñ´Ã";
         SetKeywordColor(BLUE);
         keywordProtect = 30;
         keyWordTension = -24;
     }
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.protect += keywordProtect;
-        sentence.tension += keyWordTension;
+        caster.protect += keywordProtect;
+        caster.tension += keyWordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

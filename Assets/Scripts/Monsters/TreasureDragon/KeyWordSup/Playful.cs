@@ -14,7 +14,7 @@ public class Playful : KeywordSup
     public override void Execute(Actor caster, Actor target, Sentence sentence)
     {
         trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonTrasure -= 10;
+        trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += 10;
         sentence.tension += keyWordTension;
     }
