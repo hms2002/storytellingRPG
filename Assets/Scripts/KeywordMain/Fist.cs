@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class Fist : KeywordMain
 {
+    [Header("¡÷∏‘ µ•πÃ¡ˆ")]
+    [SerializeField] private int fistDamage = 1;
+
+
     private void Awake()
     {
+        keywordName = "¡÷∏‘";
         SetKeywordColor(RED);
         keywordDamage = 1;
     }
-    public override void Execute(Actor self, Actor target, Sentence sentence)
+
+    public override void Execute(Actor caster, Actor target)
     {
-        int fistDamage = 1;
-        sentence.damage += fistDamage;
+        caster.damage += fistDamage;
     }
+
     public override void Check(KeywordSup _keywordSup)
     {
-
     }
 }

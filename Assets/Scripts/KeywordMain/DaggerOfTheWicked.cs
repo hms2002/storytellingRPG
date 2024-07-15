@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DaggerOfTheWicked : KeywordMain
 {
-    [SerializeField]
-    private int extraDamage = 3;
+    [Header("악인의 단검 추가 데미지")]
+    [SerializeField] private int extraDamage = 3;
+
 
     private void Awake()
     {
@@ -14,15 +15,15 @@ public class DaggerOfTheWicked : KeywordMain
         keywordProtect = 0;
     }
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        if (target.weakenStack > 0) // 타겟이 취약 상태라면
+        if (target.weakenStack > 0)     // 타겟이 취약 상태라면
         {
-            sentence.damage += keywordDamage + extraDamage; // 키워드 데미지에 추가데미지 적용
+            caster.damage += keywordDamage + extraDamage;   // 키워드 데미지에 추가데미지 적용
         }
-        else // 타겟이 취약 상태가 아니라면
+        else                            // 타겟이 취약 상태가 아니라면
         {
-            sentence.damage += keywordDamage; // 키워드 데미지만 적용
+            caster.damage += keywordDamage;                 // 키워드 데미지만 적용
         }
     }
 

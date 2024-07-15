@@ -7,12 +7,13 @@ public abstract class KeywordMain : MonoBehaviour
     protected FightManager fightManager;
 
     #region 메인 키워드 제원 관련 변수들
-    private string _keywordName = "";
-    private int _keywordDamage = 0;
-    private int _keywordProtect = 0;
-    private string _debuffType = "";
-    private int _debuffStack = 0;
-    private int _keyWordTension = 0;
+    [Header("키워드 제원")]
+    [SerializeField] private string _keywordName = "";
+    [SerializeField] private int _keywordDamage = 0;
+    [SerializeField] private int _keywordProtect = 0;
+    [SerializeField] private string _debuffType = "";
+    [SerializeField] private int _debuffStack = 0;
+    [SerializeField] private int _keyWordTension = 0;
 
     public string keywordName
     {
@@ -70,7 +71,7 @@ public abstract class KeywordMain : MonoBehaviour
         fightManager = FightManager.fightManager;
     }
     
-    public abstract void Execute(Actor caster, Actor target, Sentence sentence);
+    public abstract void Execute(Actor caster, Actor target);
     public abstract void Check(KeywordSup _keywordSup);
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }

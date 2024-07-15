@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class BlindSword : KeywordMain
 {
-    [SerializeField]private int stack = 1;
+    [Header("맹목의 검 추가 부여 스택 수치")]
+    [SerializeField] private int stack = 1;
+
+
     private void Awake()
     {
+        keywordName = "맹목의 검";
         SetKeywordColor(RED);
-        debuffStack = stack;
     }
 
 
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
 
     }
 
     public override void Check(KeywordSup keywordSup)
     {
-        if(keywordSup.debuffType == "Burn")
+        if (keywordSup.debuffType == "Burn")
         {
             keywordSup.debuffStack += stack;
         }
-        if(keywordSup.debuffType == "Weaken")
+        if (keywordSup.debuffType == "Weaken")
         {
             keywordSup.debuffStack += stack;
         }

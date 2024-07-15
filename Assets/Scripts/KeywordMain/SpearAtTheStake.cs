@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SpearAtTheStake : KeywordMain
 {
-    
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    private void Awake()
+    {
+        keywordName = "화형의 창 날";
+        SetKeywordColor(RED);
+    }
+
+    public override void Execute(Actor caster, Actor target)
     {
         target.Damaged(caster, target.burnStack , DamageType.Beat);
-        sentence.damage += target.burnStack;
+        caster.damage += target.burnStack;
     }
     public override void Check(KeywordSup _keywordSup)
     {

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class FastKnightSword : KeywordMain
 {
-    int attackNum = 2;
+    [Header("속기사의 검 공격 횟수")]
+    [SerializeField] private int attackNum = 2;
+
     private void Awake()
     {
+        keywordName = "속기사의 검";
         SetKeywordColor(RED);
         keywordDamage = 2;
-
     }
     
-    public override void Execute(Actor caster, Actor target, Sentence sentence)
+    public override void Execute(Actor caster, Actor target)
     {
-        sentence.repeatStack *= (attackNum);
-        sentence.damage += (keywordDamage);
+        caster.repeatStack *= (attackNum);
+        caster.damage += (keywordDamage);
     }
 
     public override void Check(KeywordSup keywordSup)
     {
-
     }
 }
