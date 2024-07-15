@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {
-    public static FightManager fightManager { get; private set; }
+    public static FightManager fightManager;
     public FightManagerUI fightManagerUI;
 
     [Header("Actor 오브젝트")]
@@ -23,6 +23,7 @@ public class FightManager : MonoBehaviour
 
     void Awake()
     {
+        // 싱글톤 구조 보강
         if (fightManager != null && fightManager != this)
         {
             Destroy(this.gameObject);
@@ -47,8 +48,7 @@ public class FightManager : MonoBehaviour
 
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
-        if (_keywordMain == null)
-            return;
+        if (_keywordMain == null) return;
         whoPlaying.GetKeywordMain(_keywordMain);
         preparedActorCount++;
         Flow();

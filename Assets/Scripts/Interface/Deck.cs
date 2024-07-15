@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Deck 클래스는 일반 덱 뭉치가 될 수도 있고, 무덤 덱 뭉치가 될 수도 있다
+/*
+#.스크립트 설명
+
+- 키워드들을 담고 있는 기본덱의 역할을 수행
+- 버려진 키워드들이 담겨질 무덤덱의 역할을 수행
+*/
+
 public class Deck : MonoBehaviour
 {
     [Header("키워드 덱 리스트")]
@@ -12,13 +18,14 @@ public class Deck : MonoBehaviour
 
     /*==================================================================================================================================*/
 
-
+    // 무덤덱 리스트 초기화
     public void InitDeck()
     {
         supportDeck = new List<GameObject>();
         mainDeck = new List<GameObject>();
     }
 
+    // Support 키워드 1개 랜덤 드로우
     public GameObject DrawSupKeyword()
     {
         // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
@@ -33,6 +40,7 @@ public class Deck : MonoBehaviour
         return supportDeckTemp;
     }
 
+    // Main 키워드 1개 랜덤 드로우
     public GameObject DrawMainKeyword()
     {
         // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간
@@ -47,9 +55,10 @@ public class Deck : MonoBehaviour
         return mainDeckTemp;
     }
 
+    // 기본 Support 덱이 비어있는지 확인
     public bool IsSupDeckEmpty()
     {
-        // 서포트 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
+        // Support 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
         if (supportDeck.Count == 0)
         {
             return true;
@@ -60,9 +69,10 @@ public class Deck : MonoBehaviour
         }
     }
 
+    // 기본 Main 덱이 비어있는지 확인
     public bool IsMainDeckEmpty()
     {
-        // 서포트 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
+        // Main 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
         if (mainDeck.Count == 0)
         {
             return true;
@@ -73,7 +83,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    #region Getter, Setter 함수들
+    #region Deck 클래스의 Getter, Setter 함수들
     public void AddSupKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordSup>() == null) return;
@@ -88,15 +98,7 @@ public class Deck : MonoBehaviour
         mainDeck.Add(keyword);
     }
 
-    public int GetSupDeckSize()
-    {
-        return supportDeck.Count;
-    }
-
-    public int GetMainDeckSize()
-    {
-        return mainDeck.Count;
-    }
-
+    public int GetSupDeckSize() { return supportDeck.Count; }
+    public int GetMainDeckSize() { return mainDeck.Count; }
     #endregion
 }
