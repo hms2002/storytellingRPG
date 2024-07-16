@@ -130,6 +130,7 @@ public class Actor : MonoBehaviour
             stateUIController.BurnOn(_burnStack);
         }
     }
+
     public int selfBurnStack
     {
         get { return _selfBurnStack; }
@@ -252,7 +253,6 @@ public class Actor : MonoBehaviour
         debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack };
 
         garbageField.InitDeck();
-
     }
 
     public virtual void BeforeAction()
@@ -386,16 +386,16 @@ public class Actor : MonoBehaviour
         for (int i = 1; i <= repeatStack; i++)
         {
             TensionManager tensionManager = TensionManager.tensionManagerUI;
-            target.burnStack += burnStack;
+/*            target.burnStack += burnStack;
             target.weakenStack += weakenStack;
             target.reductionStack += reductionStack;
-            target.nextTurnDamage += nextTurnDamage;
+            target.nextTurnDamage += nextTurnDamage;*/
             target.Damaged(this, damage, DamageType.Beat);
-            protect += protect;
+/*            protect += protect;
             hp += heal;
             weakenStack += selfWeakenStack;
             burnStack += selfBurnStack;
-            reductionStack += selfReductionStack;
+            reductionStack += selfReductionStack;*/
             tensionManager.tension += tension;
 
             #region 디버깅용 임시 로그

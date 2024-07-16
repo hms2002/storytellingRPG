@@ -6,7 +6,7 @@ public class Burning : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "ºÒÅ¸´Â";
+        keywordName = "ë¶ˆíƒ€ëŠ”";
         SetKeywordColor(RED);
         debuffType = "Burn";
         debuffStack = 2;
@@ -14,7 +14,7 @@ public class Burning : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.burnStack += (debuffStack);
+        target.burnStack += debuffStack;
     }
 
     public override void Check(KeywordMain _keywordMain)
