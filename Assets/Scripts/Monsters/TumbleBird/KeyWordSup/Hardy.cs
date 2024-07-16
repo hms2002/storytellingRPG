@@ -12,14 +12,14 @@ public class Hardy : KeywordSup
         keywordName = "튼튼한";
 
         SetKeywordColor(BLUE);
-        keyWordTension = -8;
+        keywordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
         caster.oneTimeProtect += tumbleBird.BuffCount();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
