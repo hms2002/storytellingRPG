@@ -494,7 +494,7 @@ public class Actor : MonoBehaviour
 
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
 
-                if (totalDamage > 0)
+/*                if (totalDamage > 0)
                 {
                     attackCount = true;
                 }
@@ -520,7 +520,7 @@ public class Actor : MonoBehaviour
                         totalDamage -= reductionStack;
                         reductionStack -= 1;
                     }
-                }
+                }*/
 
                 totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
                     if (weakenStack > 0) weakenStack -= 1;
