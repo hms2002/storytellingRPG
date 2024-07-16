@@ -11,14 +11,14 @@ public class Mess : KeywordSup
     {
         keywordName = "엉망진창";
         SetKeywordColor(BLUE);
-        keyWordTension = 12;
+        keywordTension = 12;
     }
     
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
         caster.protect += tumbleBird.BuffCount();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

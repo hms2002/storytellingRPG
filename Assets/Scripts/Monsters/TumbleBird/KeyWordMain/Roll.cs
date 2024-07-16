@@ -17,7 +17,7 @@ public class Roll : KeywordMain
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minDamage, maxDamage);
         debuffStack = 5;
-        keyWordTension = -6;
+        keywordTension = -6;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -25,7 +25,7 @@ public class Roll : KeywordMain
         tumbleBird = caster as TumbleBird;
         caster.damage += keywordDamage;
         tumbleBird.tumbleBirdsBuffList[Random.Range(0, tumbleBird.tumbleBirdsBuffList.Length)] += 5;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

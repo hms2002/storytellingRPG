@@ -9,13 +9,13 @@ public class Shrink : KeywordMain
         keywordName = "웅크리기";
         SetKeywordColor(BLUE);
         keywordProtect = 10;
-        keyWordTension = -21;
+        keywordTension = -21;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect += keywordProtect;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
