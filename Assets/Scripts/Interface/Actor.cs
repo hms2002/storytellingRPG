@@ -256,6 +256,7 @@ public class Actor : MonoBehaviour
 
     private void StackInit()
     {
+        tension = 0;
         heal = 0;
         damage = 0;
         tension = 0;
