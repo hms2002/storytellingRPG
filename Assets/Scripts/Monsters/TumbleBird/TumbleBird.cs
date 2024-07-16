@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TumbleBird : Actor
 {
+    TumbleBird()
+    {
+        _MAX_HP = 72;
+    }
+
     private int _glassFragmentStack = 0;
     private bool _isContinuity = false;
     private int[] _tumbleBirdsBuffList;
@@ -32,10 +37,12 @@ public class TumbleBird : Actor
 
     private void Awake()
     {
+        hp = MAX_HP;
         tumbleBirdsBuffList = new int[] {protect, oneTimeReinforce, glassFragmentStack, reductionStack, weakenStack, oneTimeProtect};
         allStateList = new int[] {protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
             burnStack, venomStack, reductionStack, weakenStack,glassFragmentStack};
     }
+
     public override void Action(Actor target)
     {
         keywordSup.Check(keywordMain);

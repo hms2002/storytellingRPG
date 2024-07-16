@@ -61,6 +61,7 @@ public class Actor : MonoBehaviour
     private int _selfWeakenStack = 0;
     private int _reductionStack = 0;
     private int _selfReductionStack = 0;
+    private int _fearStack = 0;
     private int _nextTurnDamage = 0;
     private int _oneTimeReinforce = 0;
     private int _oneTimeProtect = 0;
@@ -128,6 +129,10 @@ public class Actor : MonoBehaviour
         set
         {
             _burnStack = value;
+            if(_burnStack < 0)
+            {
+                _burnStack = 0;
+            }
             stateUIController.BurnOn(_burnStack);
         }
     }
@@ -141,7 +146,12 @@ public class Actor : MonoBehaviour
     public int venomStack
     {
         get { return _venomStack; }
-        set { _venomStack = value; }
+        set { _venomStack = value;
+            if (_venomStack < 0)
+            {
+                _venomStack = 0;
+            }
+        }
     }
     public int selfVenomStack
     {
@@ -155,6 +165,10 @@ public class Actor : MonoBehaviour
         set
         {
             _weakenStack = value;
+            if (_weakenStack < 0)
+            {
+                _weakenStack = 0;
+            }
             stateUIController.WeakenOn(_weakenStack);
             Debug.Log("취약 스택" + _weakenStack);
         }
@@ -172,6 +186,10 @@ public class Actor : MonoBehaviour
         set
         {
             _reductionStack = value;
+            if (_reductionStack < 0)
+            {
+                _reductionStack = 0;
+            }
             stateUIController.ReductionOn(_reductionStack);
         }
     }
@@ -181,11 +199,22 @@ public class Actor : MonoBehaviour
         get { return _selfReductionStack; }
         set { _selfReductionStack = value; }
     }
+    public int fearStack
+    {
+        get { return _fearStack; }
+        set { _fearStack = value; }
+    }
 
     public int damage
     {
         get { return _damage; }
-        set { _damage = value; }
+        set 
+        { _damage = value;
+            if (_damage < 0)
+            {
+                _damage = 0;
+            }
+        }
     }
 
     public int repeatStack
@@ -249,6 +278,8 @@ public class Actor : MonoBehaviour
         get { return _allStateList; }
         set { _allStateList = value; }
     }
+
+    
 
     #endregion
 
@@ -467,11 +498,7 @@ public class Actor : MonoBehaviour
                     totalDamage += attacker.oneTimeReinforce;
                     attacker.oneTimeReinforce = 0;
                 }
-                if (weakenStack > 0)
-                {
-                    totalDamage += weakenStack;
-                    weakenStack -= 1;
-                }
+
                 if(reductionStack > 0)
                 {
                     if(totalDamage < reductionStack)
@@ -485,8 +512,14 @@ public class Actor : MonoBehaviour
                         reductionStack -= 1;
                     }
                 }
+
+                totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+                    if (weakenStack > 0) weakenStack -= 1;
+                attacker.oneTimeReinforce = 0;
+
                 break;
         }
+                totalDamage = (int)(totalDamage * fearStack * 0.1f);
         if (oneTimeProtect > 0)
         {
             if (oneTimeProtect < totalDamage)
