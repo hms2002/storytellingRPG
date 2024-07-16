@@ -48,11 +48,11 @@ public class PotionGlub : Actor
         switch (_type)
         {
             case DamageType.Burn:
-                Debug.Log(gameObject.name + "È­¿° ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "í™”ì—¼ í”¼í•´" + _damage);
                 break;
 
             case DamageType.Beat:
-                Debug.Log(gameObject.name + "Å¸°Ý ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
                 PotionHitted(attacker);
                 if (totalDamage > 0)
                 {
@@ -139,11 +139,11 @@ public class PotionGlub : Actor
         }
         if (potionColor == PotionColor.Black)
         {
-            for (int i = 0; i < buffList.Length; i++)
+            for (int i = 0; i < allStateList.Length; i++)
             {
-                if (attacker.buffList[i] > 0)
+                if (attacker.allStateList[i] > 0)
                 {
-                    attacker.buffList[i] += 5;
+                    attacker.allStateList[i] += 5;
                 }
             }
         }

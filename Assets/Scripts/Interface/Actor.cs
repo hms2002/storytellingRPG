@@ -64,6 +64,7 @@ public class Actor : MonoBehaviour
     private int _selfReductionStack = 0;
     private int _nextTurnDamage = 0;
     private int _oneTimeReinforce = 0;
+    private int _oneTimeProtect = 0;
     private int _repeatStack = 1;
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
@@ -71,6 +72,7 @@ public class Actor : MonoBehaviour
 
     private int[] _buffList;
     private int[] _debuffList;
+    private int[] _allStateList;
 
     public int tension
     {
@@ -204,6 +206,11 @@ public class Actor : MonoBehaviour
         get { return _oneTimeReinforce; }
         set { _oneTimeReinforce = value; }
     }
+    public int oneTimeProtect
+    {
+        get { return _oneTimeProtect; }
+        set { _oneTimeProtect = value; }
+    }
 
     public int additionalDamage
     {
@@ -239,6 +246,12 @@ public class Actor : MonoBehaviour
         set { _debuffList = value; }
     }
 
+    public int[] allStateList
+    {
+        get { return _allStateList; }
+        set { _allStateList = value; }
+    }
+
     #endregion
 
 
@@ -250,9 +263,10 @@ public class Actor : MonoBehaviour
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
-        buffList = new int[] { additionalStack, additionalDamage, pike };
+        buffList = new int[] {protect,oneTimeProtect, additionalStack, additionalDamage,oneTimeReinforce, pike };
         debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack };
-
+        allStateList = new int[] { protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
+            burnStack, venomStack, reductionStack, weakenStack };
         garbageField.InitDeck();
     }
 
@@ -453,14 +467,14 @@ public class Actor : MonoBehaviour
                 {
                     attackCount = true;
                 }
-                if (additionalDamage > 0)
+                if (attacker.additionalDamage > 0)
                 {
-                    totalDamage += additionalDamage;
+                    totalDamage += attacker.additionalDamage;
                 }
-                if (oneTimeReinforce > 0)
+                if (attacker.oneTimeReinforce > 0)
                 {
-                    totalDamage += oneTimeReinforce;
-                    oneTimeReinforce = 0;
+                    totalDamage += attacker.oneTimeReinforce;
+                    attacker.oneTimeReinforce = 0;
                 }
                 if (weakenStack > 0)
                 {
@@ -482,7 +496,22 @@ public class Actor : MonoBehaviour
                 }
                 break;
         }
-
+        
+        if (oneTimeProtect > 0)
+        {
+            if (oneTimeProtect < totalDamage)
+            {
+                totalDamage -= oneTimeProtect;
+                oneTimeProtect = 0;
+            }
+            else
+            {
+                oneTimeProtect -= totalDamage;
+                totalDamage = 0;
+                oneTimeProtect = 0;
+            }
+        }
+        
         if (protect > 0)
         {
             if (protect < totalDamage)

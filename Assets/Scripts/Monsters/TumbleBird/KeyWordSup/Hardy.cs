@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class Hardy : KeywordSup
 {
-    TrasureDragon trasureDragon;
+    TumbleBird tumbleBird;
+
+    
     private void Awake()
     {
+        keywordName = "튼튼한";
+
         SetKeywordColor(BLUE);
-        keywordTension = -4;
+        keyWordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonsTrasure -= 10;
-        trasureDragon.trasureDamage += 10;
-        caster.tension += keywordTension;
+        tumbleBird = caster as TumbleBird;
+        caster.oneTimeProtect += tumbleBird.BuffCount();
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }

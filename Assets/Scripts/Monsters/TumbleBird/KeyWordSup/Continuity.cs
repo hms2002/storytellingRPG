@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Continuity : KeywordSup
 {
+    TumbleBird tumbleBird;
+
+    
     private void Awake()
     {
+        keywordName = "연속";
         SetKeywordColor(BLUE);
-        keywordProtect = 5;
-        keywordTension = -6;
+        keyWordTension = 10;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect = keywordProtect;
-        caster.tension += keywordTension;
+        tumbleBird = caster as TumbleBird;
+        tumbleBird.isContinuity = true;
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }

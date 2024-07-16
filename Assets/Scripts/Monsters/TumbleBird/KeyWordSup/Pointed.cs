@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Pointed : KeywordSup
 {
+    TumbleBird tumbleBird;
+
+    
     private void Awake()
     {
+        keywordName = "뾰족한";
         SetKeywordColor(RED);
-        keywordDamage = 5;
-        keywordTension = 8;
+        keyWordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.nextTurnDamage += keywordDamage;
-        caster.tension += keywordTension;
+        tumbleBird = caster as TumbleBird;
+        caster.oneTimeReinforce += tumbleBird.BuffCount();
+        caster.tension += keyWordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }
