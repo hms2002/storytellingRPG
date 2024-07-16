@@ -6,7 +6,7 @@ public class Evil : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "¾Ç¶öÇÑ";
+        keywordName = "ì•…ëž„í•œ";
         SetKeywordColor(RED);
         debuffType = "Weaken";
         debuffStack = 2;
@@ -14,7 +14,7 @@ public class Evil : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.weakenStack += debuffStack;
+        target.weakenStack += debuffStack;
     }
 
     public override void Check(KeywordMain _keywordMain)
