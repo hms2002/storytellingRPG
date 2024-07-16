@@ -258,11 +258,11 @@ public class Actor : MonoBehaviour
     {
         heal = 0;
         damage = 0;
-        pike = 0;
+        tension = 0;
         repeatStack = 1;
         additionalDamage = 0;
         additionalStack = 0;
-}
+    }
 
     public virtual void BeforeAction()
     {
