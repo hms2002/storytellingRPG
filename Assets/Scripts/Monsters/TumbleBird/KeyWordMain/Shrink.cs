@@ -6,15 +6,15 @@ public class Shrink : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "øı≈©∏Æ±‚";
-        SetKeywordColor(RED);
-        keywordDamage = Random.Range(6, 10);
-        keyWordTension = -9;
+        keywordName = "ÏõÖÌÅ¨Î¶¨Í∏∞";
+        SetKeywordColor(BLUE);
+        keywordProtect = 10;
+        keyWordTension = -21;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.protect += keywordProtect;
         caster.tension += keyWordTension;
     }
 

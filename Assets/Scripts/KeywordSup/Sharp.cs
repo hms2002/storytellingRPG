@@ -6,7 +6,7 @@ public class Sharp : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "³¯Ä«·Î¿î";
+        keywordName = "ë‚ ì¹´ë¡œìš´";
         SetKeywordColor(RED);
         keywordDamage = 2;
     }
@@ -18,5 +18,6 @@ public class Sharp : KeywordSup
 
     public override void Check(KeywordMain _keywordMain)
     {
+
     }
 }

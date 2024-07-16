@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class Roll : KeywordMain
 {
-    [Header("±¸¸£±â ·£´ı µ¥¹ÌÁö ¹üÀ§ Á¦¾î")]
-    [SerializeField] private int minDamage = 20;
-    [SerializeField] private int maxDamage = 20;
+    TumbleBird tumbleBird;
+
+    [Header("êµ¬ë¥´ê¸° ëœë¤ ë°ë¯¸ì§€ ë²”ìœ„ ì œì–´")]
+    [SerializeField] private int minDamage = 5;
+    [SerializeField] private int maxDamage = 8;
 
 
     private void Awake()
     {
-        keywordName = "±¸¸£±â";
+        keywordName = "êµ¬ë¥´ê¸°";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minDamage, maxDamage);
         debuffStack = 5;
-        debuffType = "Burn";
-        keyWordTension = 41;
+        keyWordTension = -6;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
+        tumbleBird = caster as TumbleBird;
         caster.damage += keywordDamage;
-        caster.burnStack += debuffStack;
+        tumbleBird.tumbleBirdsBuffList[Random.Range(0, tumbleBird.tumbleBirdsBuffList.Length)] += 5;
         caster.tension += keyWordTension;
     }
 

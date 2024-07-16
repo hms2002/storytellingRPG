@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Mess : KeywordSup
 {
-    TrasureDragon trasureDragon;
+    TumbleBird tumbleBird;
     private void Awake()
     {
-        SetKeywordColor(BLUE);
-        keyWordTension = -11;
-    }
+        keywordName = "엉망진창";
 
+        SetKeywordColor(BLUE);
+        keyWordTension = 12;
+    }
+    
     public override void Execute(Actor caster, Actor target)
     {
-        trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonsTrasure -= 20;
-        trasureDragon.trasureDamage += 20;
+        tumbleBird = caster as TumbleBird;
+        caster.protect += tumbleBird.BuffCount();
         caster.tension += keyWordTension;
     }
 
