@@ -259,9 +259,6 @@ public class Actor : MonoBehaviour
         heal = 0;
         damage = 0;
         pike = 0;
-        venomStack = 0;
-        weakenStack = 0;
-        reductionStack = 0;
         repeatStack = 1;
         additionalDamage = 0;
         additionalStack = 0;
