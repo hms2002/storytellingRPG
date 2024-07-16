@@ -28,8 +28,6 @@ public class TrasureDragon : Actor
 
     public override void Action(Actor target)
     {
-        Sentence sentence = new Sentence();
-
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
@@ -38,7 +36,7 @@ public class TrasureDragon : Actor
 
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
-        sentence.execute(this, target);
+        Execute(target);
     }
 
     public override void Damaged(Actor attacker, int _damage, DamageType _type)
@@ -49,11 +47,11 @@ public class TrasureDragon : Actor
         switch (_type)
         {
             case DamageType.Burn:
-                Debug.Log(gameObject.name + "È­¿° ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "í™”ì—¼ í”¼í•´" + _damage);
                 break;
 
             case DamageType.Beat:
-                Debug.Log(gameObject.name + "Å¸°İ ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
                 if (totalDamage > 0)
                 {
                     attackCount = true;

@@ -16,14 +16,14 @@ public class Roll : KeywordMain
         keywordDamage = Random.Range(minDamage, maxDamage);
         debuffStack = 5;
         debuffType = "Burn";
-        keyWordTension = 41;
+        keywordTension = 41;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
         caster.burnStack += debuffStack;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

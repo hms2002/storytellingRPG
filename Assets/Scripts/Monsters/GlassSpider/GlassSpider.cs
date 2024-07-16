@@ -14,14 +14,15 @@ public class GlassSpider : Actor
     public int glassFragmentStack
     {
         get { return _glassFragmentStack; }
-        set { _glassFragmentStack = value;
+        set
+        {
+            _glassFragmentStack = value;
             stateUIController.GlassFragmentOn(_glassFragmentStack);
         }
     }
 
     private void Start()
     {
-
         hp = MAX_HP;
     }
 
@@ -33,11 +34,11 @@ public class GlassSpider : Actor
         switch (_type)
         {
             case DamageType.Burn:
-                Debug.Log(gameObject.name + "È­¿° ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "í™”ì—¼ í”¼í•´" + _damage);
                 break;
 
             case DamageType.Beat:
-                Debug.Log(gameObject.name + "Å¸°Ý ÇÇÇØ" + _damage);
+                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
                 if (totalDamage > 0)
                 {
                     glassFragmentStack += 1;

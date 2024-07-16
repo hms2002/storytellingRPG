@@ -9,13 +9,13 @@ public class Crouch : KeywordMain
         keywordName = "¿õÅ©¸®±â";
         SetKeywordColor(BLUE);
         keywordProtect = 10;
-        keyWordTension = 6;
+        keywordTension = 6;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect = 10;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

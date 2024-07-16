@@ -8,7 +8,7 @@ public class Mess : KeywordSup
     private void Awake()
     {
         SetKeywordColor(BLUE);
-        keyWordTension = -11;
+        keywordTension = -11;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -16,7 +16,7 @@ public class Mess : KeywordSup
         trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= 20;
         trasureDragon.trasureDamage += 20;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

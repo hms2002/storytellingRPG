@@ -9,13 +9,13 @@ public class BeakAttack : KeywordMain
         keywordName = "부리 공격";
         SetKeywordColor(BLUE);
         keywordProtect = 30;
-        keyWordTension = -24;
+        keywordTension = -24;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect += keywordProtect;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

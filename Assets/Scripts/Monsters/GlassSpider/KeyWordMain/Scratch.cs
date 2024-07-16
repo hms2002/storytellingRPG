@@ -9,13 +9,13 @@ public class Scratch : KeywordMain
         keywordName = "ÇÒÄû±â";
         SetKeywordColor(RED);
         keywordDamage = 3;
-        keyWordTension = -20;
+        keywordTension = -20;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

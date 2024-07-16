@@ -6,14 +6,14 @@ public abstract class KeywordSup : MonoBehaviour
 {
     protected FightManager fightManager;
 
-    #region 서포트 키워드 제원 관련 변수들
+    #region 서포트 키워드 제원 관련 변수
     [Header("서포트 키워드 제원")]
     [SerializeField] private string _keywordName = "";
     [SerializeField] private int _keywordDamage = 0;
     [SerializeField] private int _keywordProtect = 0;
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int _debuffStack = 0;
-    [SerializeField] private int _keyWordTension = 0;
+    [SerializeField] private int _keywordTension = 0;
 
     public string keywordName
     {
@@ -45,10 +45,10 @@ public abstract class KeywordSup : MonoBehaviour
         set { _debuffStack = value; }
     }
 
-    public int keyWordTension
+    public int keywordTension
     {
-        get { return _keyWordTension; }
-        set { _keyWordTension = value; }
+        get { return _keywordTension; }
+        set { _keywordTension = value; }
     }
     
     private Color keywordColor;

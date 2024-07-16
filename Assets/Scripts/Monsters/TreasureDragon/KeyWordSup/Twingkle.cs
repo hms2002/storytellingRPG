@@ -9,13 +9,13 @@ public class Twingkle : KeywordSup
         keywordName = "¹ÝÂ¦ÀÌ´Â";
         SetKeywordColor(BLUE);
         keywordProtect = 5;
-        keyWordTension = -6;
+        keywordTension = -6;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect = keywordProtect;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

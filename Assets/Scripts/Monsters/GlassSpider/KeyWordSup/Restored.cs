@@ -14,14 +14,14 @@ public class Restored : KeywordSup
     {
         keywordName = "¼öº¹µÈ";
         SetKeywordColor(BLUE);
-        keyWordTension = -20;
+        keywordTension = -20;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
         glassSpider.glassFragmentStack -= removeAmount;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

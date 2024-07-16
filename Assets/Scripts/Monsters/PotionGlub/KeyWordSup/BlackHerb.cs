@@ -14,7 +14,7 @@ public class BlackHerb : KeywordSup
     {
         keywordName = "검은 약초";
         SetKeywordColor(BLUE);
-        keyWordTension = 10;
+        keywordTension = 10;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class BlackHerb : KeywordSup
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordMain _keywordMain)
     {

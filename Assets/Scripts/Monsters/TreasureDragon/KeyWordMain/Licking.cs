@@ -13,12 +13,12 @@ public class Liking : KeywordMain
         keywordName = "ÇÓ±â";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
-        keyWordTension = -9;
+        keywordTension = -9;
     }
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

@@ -3,35 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-#.½ºÅ©¸³Æ® ¼³¸í
+#.ìŠ¤í¬ë¦½íŠ¸ ì„¤ëª…
 
-- Å°¿öµåµéÀ» ´ã°í ÀÖ´Â ±âº»µ¦ÀÇ ¿ªÇÒÀ» ¼öÇà
-- ¹ö·ÁÁø Å°¿öµåµéÀÌ ´ã°ÜÁú ¹«´ıµ¦ÀÇ ¿ªÇÒÀ» ¼öÇà
+- í‚¤ì›Œë“œë“¤ì„ ë‹´ê³  ìˆëŠ” ê¸°ë³¸ë±ì˜ ì—­í• ì„ ìˆ˜í–‰
+- ë²„ë ¤ì§„ í‚¤ì›Œë“œë“¤ì´ ë‹´ê²¨ì§ˆ ë¬´ë¤ë±ì˜ ì—­í• ì„ ìˆ˜í–‰
 */
 
 public class Deck : MonoBehaviour
 {
-    [Header("Å°¿öµå µ¦ ¸®½ºÆ®")]
-    [SerializeField] private List<GameObject> supportDeck;  // Support Å°¿öµå¸¦ ´ã´Â µ¦ ¸®½ºÆ®
-    [SerializeField] private List<GameObject> mainDeck;     // Main Å°¿öµå¸¦ ´ã´Â µ¦ ¸®½ºÆ®
+    [Header("í‚¤ì›Œë“œ ë± ë¦¬ìŠ¤íŠ¸")]
+    [SerializeField] private List<GameObject> supportDeck;  // Support í‚¤ì›Œë“œë¥¼ ë‹´ëŠ” ë± ë¦¬ìŠ¤íŠ¸
+    [SerializeField] private List<GameObject> mainDeck;     // Main í‚¤ì›Œë“œë¥¼ ë‹´ëŠ” ë± ë¦¬ìŠ¤íŠ¸
 
 
     /*==================================================================================================================================*/
 
-    // ¹«´ıµ¦ ¸®½ºÆ® ÃÊ±âÈ­
+
+    // ë¬´ë¤ë± ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”
     public void InitDeck()
     {
         supportDeck = new List<GameObject>();
         mainDeck = new List<GameObject>();
     }
 
-    // Support Å°¿öµå 1°³ ·£´ı µå·Î¿ì
+    // Support í‚¤ì›Œë“œ 1ê°œ ëœë¤ ë“œë¡œìš°
     public GameObject DrawSupKeyword()
     {
-        // ·£´ıÀ¸·Î »ÌÀº ¼­Æ÷Æ® Å°¿öµå¸¦ µ¦¿¡¼­ Áö¿ì±â À§ÇØ Àá½Ã ´ã¾Æ³õÀ» °ø°£ 
+        // ëœë¤ìœ¼ë¡œ ë½‘ì€ ì„œí¬íŠ¸ í‚¤ì›Œë“œë¥¼ ë±ì—ì„œ ì§€ìš°ê¸° ìœ„í•´ ì ì‹œ ë‹´ì•„ë†“ì„ ê³µê°„ 
         GameObject supportDeckTemp;
 
-        // ¹«ÀÛÀ§ Å°¿öµå ÃßÃâÀ» À§ÇÑ ¹øÈ£ ÃßÃ·
+        // ë¬´ì‘ìœ„ í‚¤ì›Œë“œ ì¶”ì¶œì„ ìœ„í•œ ë²ˆí˜¸ ì¶”ì²¨
         int deckIndex = Random.Range(0, supportDeck.Count - 1);
 
         supportDeckTemp = supportDeck[deckIndex];
@@ -40,13 +41,13 @@ public class Deck : MonoBehaviour
         return supportDeckTemp;
     }
 
-    // Main Å°¿öµå 1°³ ·£´ı µå·Î¿ì
+    // Main í‚¤ì›Œë“œ 1ê°œ ëœë¤ ë“œë¡œìš°
     public GameObject DrawMainKeyword()
     {
-        // ·£´ıÀ¸·Î »ÌÀº ¸ŞÀÎ Å°¿öµå¸¦ µ¦¿¡¼­ Áö¿ì±â À§ÇØ Àá½Ã ´ã¾Æ³õÀ» °ø°£
+        // ëœë¤ìœ¼ë¡œ ë½‘ì€ ë©”ì¸ í‚¤ì›Œë“œë¥¼ ë±ì—ì„œ ì§€ìš°ê¸° ìœ„í•´ ì ì‹œ ë‹´ì•„ë†“ì„ ê³µê°„
         GameObject mainDeckTemp;
 
-        // ¹«ÀÛÀ§ Å°¿öµå ÃßÃâÀ» À§ÇÑ ¹øÈ£ ÃßÃ·
+        // ë¬´ì‘ìœ„ í‚¤ì›Œë“œ ì¶”ì¶œì„ ìœ„í•œ ë²ˆí˜¸ ì¶”ì²¨
         int deckIndex = Random.Range(0, mainDeck.Count - 1);
 
         mainDeckTemp = mainDeck[deckIndex];
@@ -55,10 +56,39 @@ public class Deck : MonoBehaviour
         return mainDeckTemp;
     }
 
-    // ±âº» Support µ¦ÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+    public void ShuffleDeck()
+    {
+        GameObject temp;
+
+        int random1, random2;
+
+        // Supportë± ë¦¬ìŠ¤íŠ¸ ì…”í”Œ
+        for (int i = 0; i < supportDeck.Count; ++i)
+        {
+            random1 = Random.Range(0, supportDeck.Count);
+            random2 = Random.Range(0, supportDeck.Count);
+
+            temp = supportDeck[random1];
+            supportDeck[random1] = supportDeck[random2];
+            supportDeck[random2] = temp;
+        }
+
+        // Mainë± ë¦¬ìŠ¤íŠ¸ ì…”í”Œ
+        for (int i = 0; i < mainDeck.Count; ++i)
+        {
+            random1 = Random.Range(0, mainDeck.Count);
+            random2 = Random.Range(0, mainDeck.Count);
+
+            temp = mainDeck[random1];
+            mainDeck[random1] = mainDeck[random2];
+            mainDeck[random2] = temp;
+        }
+    }
+
+    // ê¸°ë³¸ Support ë±ì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
     public bool IsSupDeckEmpty()
     {
-        // Support µ¦ ¸®½ºÆ®°¡ ºñ¾îÀÖ´Ù¸é return true, ÇÏ³ª ÀÌ»ó Ã¤¿öÁ® ÀÖ´Ù¸é return false
+        // Support ë± ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìˆë‹¤ë©´ return true, í•˜ë‚˜ ì´ìƒ ì±„ì›Œì ¸ ìˆë‹¤ë©´ return false
         if (supportDeck.Count == 0)
         {
             return true;
@@ -69,10 +99,10 @@ public class Deck : MonoBehaviour
         }
     }
 
-    // ±âº» Main µ¦ÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+    // ê¸°ë³¸ Main ë±ì´ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸
     public bool IsMainDeckEmpty()
     {
-        // Main µ¦ ¸®½ºÆ®°¡ ºñ¾îÀÖ´Ù¸é return true, ÇÏ³ª ÀÌ»ó Ã¤¿öÁ® ÀÖ´Ù¸é return false
+        // Main ë± ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìˆë‹¤ë©´ return true, í•˜ë‚˜ ì´ìƒ ì±„ì›Œì ¸ ìˆë‹¤ë©´ return false
         if (mainDeck.Count == 0)
         {
             return true;
@@ -83,7 +113,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    #region Deck Å¬·¡½ºÀÇ Getter, Setter ÇÔ¼öµé
+    #region Deck í´ë˜ìŠ¤ì˜ Getter, Setter í•¨ìˆ˜ë“¤
     public void AddSupKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordSup>() == null) return;

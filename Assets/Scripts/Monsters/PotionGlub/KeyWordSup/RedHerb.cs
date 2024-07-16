@@ -14,7 +14,7 @@ public class RedHerb : KeywordSup
     {
         keywordName = "∫”¿∫ æ‡√ ";
         SetKeywordColor(BLUE);
-        keyWordTension = -3;
+        keywordTension = -3;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class RedHerb : KeywordSup
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

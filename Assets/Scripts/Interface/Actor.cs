@@ -47,7 +47,8 @@ public class Actor : MonoBehaviour
     #region Actor의 능력치 관련 변수, 함수
     private int _tension = 0;
 
-    protected int _MAX_HP = 100;
+    [Header("최대 체력")]
+    [SerializeField] protected int _MAX_HP = 100;
     private int _hp = 100;
     private int _protect = 0;
     private int _heal = 0;
@@ -80,6 +81,7 @@ public class Actor : MonoBehaviour
     public int MAX_HP
     {
         get { return _MAX_HP; }
+        set { _MAX_HP = value; }
     }
 
     public int hp
@@ -270,6 +272,7 @@ public class Actor : MonoBehaviour
         // Actor가 Keyword를 안 뽑았다면
         if (hasActorDrawnKeywords == false)
         {
+            deck.ShuffleDeck();
             FillSupHandInfo();
             FillMainHandInfo();
 
@@ -373,7 +376,7 @@ public class Actor : MonoBehaviour
     private void AddToMainGarbageField()
     {
         // HANDSIZE만큼 반복하여 사용한 Main 키워드 + 나머지 Main 키워드 무덤덱으로 이동
-        for (int i = 0; i<hand.HANDSIZE; i++)
+        for (int i = 0; i < hand.HANDSIZE; i++)
         {
             garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
         }
@@ -381,8 +384,6 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
-        Sentence sentence = new Sentence();
-
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
@@ -428,19 +429,26 @@ public class Actor : MonoBehaviour
 
     public virtual void Damaged(Actor attacker, int _damage, DamageType _type)
     {
-        if (_damage <= 0)
-            return;
+        if (_damage <= 0) return;
+
         int totalDamage = _damage;
+
         switch(_type)
         {
             case DamageType.Burn:
+
                 Debug.Log(gameObject.name + "화염 피해" + _damage);
                 break;
+
             case DamageType.Venom:
+
                 Debug.Log(gameObject.name + "맹독 피해" + _damage);
                 break;
+
             case DamageType.Beat:
+
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
+
                 if (totalDamage > 0)
                 {
                     attackCount = true;
@@ -474,6 +482,7 @@ public class Actor : MonoBehaviour
                 }
                 break;
         }
+
         if (protect > 0)
         {
             if (protect < totalDamage)
@@ -487,6 +496,7 @@ public class Actor : MonoBehaviour
                 totalDamage = 0;
             }
         }
+
         hp -= totalDamage;
     }
 

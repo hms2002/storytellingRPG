@@ -12,14 +12,14 @@ public class Refracted : KeywordSup
         keywordName = "±¼ÀýµÈ";
         SetKeywordColor(BLUE);
         keywordProtect = 5;
-        keyWordTension = -10;
+        keywordTension = -10;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
         glassSpider.protect += keywordProtect;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

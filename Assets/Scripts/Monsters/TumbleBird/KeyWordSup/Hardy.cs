@@ -8,7 +8,7 @@ public class Hardy : KeywordSup
     private void Awake()
     {
         SetKeywordColor(BLUE);
-        keyWordTension = -4;
+        keywordTension = -4;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -16,7 +16,7 @@ public class Hardy : KeywordSup
         trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += 10;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

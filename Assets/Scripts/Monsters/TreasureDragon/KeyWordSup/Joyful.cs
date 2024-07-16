@@ -6,16 +6,16 @@ public class Joyful : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "Αρ°ΕΏξ";
+        keywordName = "μ¦κ±°μ΄";
         SetKeywordColor(RED);
         keywordDamage = 5;
-        keyWordTension = 8;
+        keywordTension = 8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.nextTurnDamage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
