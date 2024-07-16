@@ -13,7 +13,7 @@ public class BeakAttack : KeywordMain
         keywordName = "부리 공격";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
-        keyWordTension = 18;
+        keywordTension = 18;
     }
 
     public override void Execute(Actor caster, Actor target)
