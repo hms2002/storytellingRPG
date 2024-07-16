@@ -133,12 +133,38 @@ namespace Map
 
         private void CreateNodeLine()
         {
-            int beforeNum = 0; // 뒤에 있던 열
+            if (roadeLine != null && roadeLine.Count != 0)
+            {
+                for (int i = roadeLine.Count - 1; i >= 0; i--)
+                {
+                    Destroy(roadeLine[i]);
+                }
+                roadeLine.Clear();
+            }
+
+            int beforeNum = 0; // 뒤에 있는 열
             int nextNum = 0; // 앞에 있는 열
             int roadCount = 0;
 
             Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // nodesEndLineCheck 리스트 값 출력
 
+            for(int i=0; i < nodesEndLineCheck.Count; i++)
+            {
+                if (nextNum != nodesEndLineCheck[nodesEndLineCheck.Count-1]) { nextNum = nodesEndLineCheck[i + 1]; }
+                else { nextNum = nodesEndLineCheck[nodesEndLineCheck.Count-1]; }
+
+                for (; beforeNum < nodesEndLineCheck[i]; beforeNum++)
+                {
+                    for(int startNum = nodesEndLineCheck[i]; startNum < Random.Range(nodesEndLineCheck[i]+1 /*startNum+1*/, nextNum); startNum++)
+                    {
+                        nodes[beforeNum].connectedNodes.Add(nodes[startNum]);
+                        ConnectRoadLine(nodes[beforeNum].GetComponent<RectTransform>(), nodes[startNum].GetComponent<RectTransform>(), roadCount);
+                        roadCount++;
+                    }
+                }
+            }
+
+            /*
             for (int i = 0; i < nodesEndLineCheck.Count - 1; i++) // 줄 세기, 조건 수정
             {
                 if (i != 0)
@@ -168,19 +194,26 @@ namespace Map
                     }
                 }
             }
+            */
         }
 
         private void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans, int count)
         {
-            roadeLine.Add(Instantiate(roadPrefab, transform));
+            // 선 이미지 생성
+            Image line = Instantiate(roadPrefab, mapParent);
+            roadeLine.Add(line);
 
+            // 두 점 사이의 거리 계산
             Vector2 startPos = startTrans.anchoredPosition;
             Vector2 endPos = endTrans.anchoredPosition;
             float distance = Vector2.Distance(startPos, endPos);
 
-            // 길 길이 설정
+            // 선 이미지의 길이 설정
             RectTransform roadRectTransform = roadeLine[count].rectTransform;
             roadRectTransform.sizeDelta = new Vector2(distance, roadRectTransform.sizeDelta.y);
+
+            // 선 이미지의 위치 설정 (두 점의 중간점)
+            roadRectTransform.anchoredPosition = (startPos + endPos) / 2;
 
             // 선 이미지의 회전 설정
             float angle = Mathf.Atan2(endPos.y - startPos.y, endPos.x - startPos.x) * Mathf.Rad2Deg;
