@@ -35,7 +35,6 @@ public class Actor : MonoBehaviour
         get { return _keywordSup; }
         set { _keywordSup = value; }
     }
-
     public KeywordMain keywordMain
     {
         get { return _keywordMain; }
@@ -255,6 +254,20 @@ public class Actor : MonoBehaviour
         garbageField.InitDeck();
     }
 
+    private void StackInit()
+    {
+        heal = 0;
+        damage = 0;
+        pike = 0;
+        burnStack = 0;
+        venomStack = 0;
+        weakenStack = 0;
+        reductionStack = 0;
+        repeatStack = 1;
+        additionalDamage = 0;
+        additionalStack = 0;
+}
+
     public virtual void BeforeAction()
     {
         // Actor가 Keyword를 안 뽑았다면
@@ -285,6 +298,8 @@ public class Actor : MonoBehaviour
             Damaged(this, venomStack * 2, DamageType.Burn);
             venomStack = Mathf.FloorToInt(venomStack);
         }
+
+        StackInit();
         #endregion
     }
 
