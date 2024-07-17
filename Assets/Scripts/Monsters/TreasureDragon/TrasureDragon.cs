@@ -11,9 +11,7 @@ public class TrasureDragon : Actor
     public int dragonsTrasure
     {
         get { return _dragonsTrasure; }
-        set { _dragonsTrasure = value;
-            stateUIController.TreasureOfDragonOn(_dragonsTrasure);
-        }
+        set { _dragonsTrasure = value; }
     }
 
     public int trasureDamage
@@ -25,21 +23,22 @@ public class TrasureDragon : Actor
     public int motherDragonsCall
     {
         get { return _motherDragonsCall; }
-        set { _motherDragonsCall = value;
-            stateUIController.CallingOfMommyOn(_motherDragonsCall);
-        }
+        set { _motherDragonsCall = value; }
     }
 
     public override void Action(Actor target)
     {
+        Sentence sentence = new Sentence();
+
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
+        protect = 0;
         motherDragonsCall -= 1;
 
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
-        Execute(target);
+        sentence.execute(this, target);
     }
 
     public override void Damaged(Actor attacker, int _damage, DamageType _type)
@@ -50,11 +49,11 @@ public class TrasureDragon : Actor
         switch (_type)
         {
             case DamageType.Burn:
-                Debug.Log(gameObject.name + "í™”ì—¼ í”¼í•´" + _damage);
+                Debug.Log(gameObject.name + "È­¿° ÇÇÇØ" + _damage);
                 break;
 
             case DamageType.Beat:
-                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
+                Debug.Log(gameObject.name + "Å¸°İ ÇÇÇØ" + _damage);
                 if (totalDamage > 0)
                 {
                     attackCount = true;

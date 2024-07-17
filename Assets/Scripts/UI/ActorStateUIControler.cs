@@ -9,18 +9,16 @@ public class ActorStateUIControler : MonoBehaviour
 
     enum STATE_UI_INDEX
     {
-        PROTECT = 0,        // ë³´í˜¸ë§‰
-        BURN,               // í™”ìƒ
-        WEAKEN,             // ë§ì„ ë•Œ ë” ì•„í”„ê²Œ ë§ìŒ
-        REDUCTION,          // ë•Œë¦´ ë•Œ ë” ì•½í•´í•˜ê²Œ ë•Œë¦¼
-        GLASS_FRAGMENT,     // ë§ìœ¼ë©´ ìŠ¤íƒë§Œí¼ ë°˜ì‚¬
-        TREASURE_OF_DRAGON, // ìš©ì˜ ë³´ë¬¼
-        CALLING_OF_MOMMY,   // ì–´ë¯¸ ìš©ì˜ ë¶€ë¦„
+        PROTECT = 0,
+        BURN,
+        WEAKEN,         // ¸ÂÀ» ¶§ ´õ ¾ÆÇÁ°Ô ¸ÂÀ½
+        REDUCTION,      // ¶§¸± ¶§ ´õ ¾àÇØÇÏ°Ô ¶§¸²
+        GLASS_FRAGMENT,
         END_INDEX
     }
 
     public Image hpSlider;
-    [Header("ë°©ì–´, í™”ì—¼, ì·¨ì•½, ì•½í™”, ìœ ë¦¬ì¡°ê°, ìš©ì˜ ë³´ë¬¼, ì–´ë¯¸ ìš©ì˜ ë¶€ë¦„ ìˆœì„œë¡œ ë„£ê¸°")] 
+    [Header("¹æ¾î, È­¿°, Ãë¾à, ¾àÈ­, À¯¸®Á¶°¢ ¼ø¼­·Î ³Ö±â")] 
     public List<GameObject> stateUIObjects;
     public GameObject hpUI;
     public Text hpText;
@@ -90,30 +88,7 @@ public class ActorStateUIControler : MonoBehaviour
         text.text = rate + "";
     }
 
-    public void TreasureOfDragonOn(int rate)
-    {
-        if (rate <= 0)
-        {
-            stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].SetActive(false);
-            return;
-        }
 
-        stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].GetComponentInChildren<Text>();
-        text.text = rate + "";
-    }
-    public void CallingOfMommyOn(int rate)
-    {
-        if (rate <= 0)
-        {
-            stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].SetActive(false);
-            return;
-        }
-
-        stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].GetComponentInChildren<Text>();
-        text.text = rate + "";
-    }
     public void UpdateHpUI(int hp, int MAX_HP)
     {
         hpSlider.fillAmount = hp / (float)MAX_HP;

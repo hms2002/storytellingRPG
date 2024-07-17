@@ -9,14 +9,14 @@ public class Playful : KeywordSup
 
     private void Awake()
     {
-        keywordName = "ìž¥ë‚œìŠ¤ëŸ¬ìš´";
+        keywordName = "Àå³­½º·¯¿î";
         SetKeywordColor(BLUE);
         keyWordTension = -4;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        trasureDragon = (TrasureDragon)caster;
+        trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += 10;
         caster.tension += keyWordTension;
