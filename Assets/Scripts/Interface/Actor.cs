@@ -67,6 +67,7 @@ public class Actor : MonoBehaviour
     private int _nextTurnDamage = 0;
     private int _oneTimeReinforce = 0;
     private int _oneTimeProtect = 0;
+    private int _oneTimeReduction = 0;
     private int _repeatStack = 1;
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
@@ -256,6 +257,12 @@ public class Actor : MonoBehaviour
         set { _oneTimeProtect = value; }
     }
 
+    public int oneTimeReduction
+    {
+        get { return _oneTimeReduction; }
+        set { _oneTimeReduction = value; }
+    }
+
     public int additionalDamage
     {
         get { return _additionalDamage; }
@@ -310,7 +317,7 @@ public class Actor : MonoBehaviour
         buffList = new int[] { additionalStack, additionalDamage, pike };
         debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack };
         allStateList = new int[] { protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
-            burnStack, venomStack, reductionStack, weakenStack };
+                                   burnStack, venomStack, reductionStack, weakenStack };
         garbageField.InitDeck();
     }
 
@@ -535,13 +542,18 @@ public class Actor : MonoBehaviour
                     }
                 }*/
 
-                totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
-                    if (weakenStack > 0) weakenStack -= 1;
+                totalDamage += additionalDamage + oneTimeReinforce - oneTimeReduction + weakenStack - reductionStack;
+
+                if (weakenStack > 0) weakenStack -= 1;
+
                 attacker.oneTimeReinforce = 0;
+                attacker.oneTimeReduction = 0;
 
                 break;
         }
-                totalDamage = (int)(totalDamage * fearStack * 0.1f);
+
+        totalDamage = (int)(totalDamage * fearStack * 0.1f);
+
         if (oneTimeProtect > 0)
         {
             if (oneTimeProtect < totalDamage)
