@@ -78,7 +78,5 @@ public abstract class KeywordMain : MonoBehaviour
 
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
-    public int GetDebuffStack() { return debuffStack; }
-    public void SetDebuffStack(int stack) { debuffStack = stack; }
 
 }

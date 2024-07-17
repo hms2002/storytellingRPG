@@ -79,6 +79,4 @@ public abstract class KeywordSup : MonoBehaviour
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
     public void SetDebuffType(string type) { debuffType = type; }
-    public int GetDebuffStack() { return debuffStack; }
-    public void SetDebuffStack(int stack) { debuffStack = stack; }
 }
