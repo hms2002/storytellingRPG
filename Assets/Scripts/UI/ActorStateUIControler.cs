@@ -28,6 +28,7 @@ public class ActorStateUIControler : MonoBehaviour
     {
         if(rate <= 0)
         {
+            protectUIObject.SetActive(false);
             hpUI.SetActive(true);
 
             return;
