@@ -6,7 +6,7 @@ public abstract class KeywordSup : MonoBehaviour
 {
     protected FightManager fightManager;
 
-    #region 서포트 키워드 제원 관련 변수
+    #region 서포트 키워드 제원 변수
     [Header("서포트 키워드 제원")]
     [SerializeField] private string _keywordName = "";
     [SerializeField] private int _keywordDamage = 0;
@@ -14,6 +14,16 @@ public abstract class KeywordSup : MonoBehaviour
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int _debuffStack = 0;
     [SerializeField] private int _keywordTension = 0;
+
+    private Color keywordColor;
+    [Header("키워드 특성별 색")]
+    [SerializeField] protected Color RED = new Color(225, 0, 0);
+    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
+    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
+    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
+
+    [Multiline(3)]
+    [SerializeField] private string keywordDescription = "";
 
     public string keywordName
     {
@@ -50,17 +60,7 @@ public abstract class KeywordSup : MonoBehaviour
         get { return _keywordTension; }
         set { _keywordTension = value; }
     }
-    
-    private Color keywordColor;
-    [Header("키워드 특성별 색")]
-    [SerializeField] protected Color RED = new Color(225, 0, 0);
-    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
-    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
-    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
     #endregion
-
-    [Multiline(3)]
-    [SerializeField] private string keywordDescription = "";
 
 
     public void OnClickButton()
