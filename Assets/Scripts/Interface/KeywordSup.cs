@@ -15,6 +15,8 @@ public abstract class KeywordSup : MonoBehaviour
     [SerializeField] private int _debuffStack = 0;
     [SerializeField] private int _keywordTension = 0;
 
+    private bool _isCanUse = true;
+
     public string keywordName
     {
         get { return _keywordName; }
@@ -50,7 +52,12 @@ public abstract class KeywordSup : MonoBehaviour
         get { return _keywordTension; }
         set { _keywordTension = value; }
     }
-    
+    public bool isCanUse
+    {
+        get { return _isCanUse; }
+        set { _isCanUse = value; }
+    }
+
     private Color keywordColor;
     [Header("키워드 특성별 색")]
     [SerializeField] protected Color RED = new Color(225, 0, 0);
