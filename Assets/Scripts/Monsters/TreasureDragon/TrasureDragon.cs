@@ -11,7 +11,9 @@ public class TrasureDragon : Actor
     public int dragonsTrasure
     {
         get { return _dragonsTrasure; }
-        set { _dragonsTrasure = value; }
+        set { _dragonsTrasure = value;
+            stateUIController.TreasureOfDragonOn(_dragonsTrasure);
+        }
     }
 
     public int trasureDamage
@@ -23,7 +25,9 @@ public class TrasureDragon : Actor
     public int motherDragonsCall
     {
         get { return _motherDragonsCall; }
-        set { _motherDragonsCall = value; }
+        set { _motherDragonsCall = value;
+            stateUIController.CallingOfMommyOn(_motherDragonsCall);
+        }
     }
 
     public override void Action(Actor target)
@@ -31,7 +35,6 @@ public class TrasureDragon : Actor
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
-        protect = 0;
         motherDragonsCall -= 1;
 
         keywordSup.Execute(this, target);
