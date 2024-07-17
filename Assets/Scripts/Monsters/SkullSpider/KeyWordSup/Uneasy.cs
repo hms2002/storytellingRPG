@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hardy : KeywordSup
-{
-    TumbleBird tumbleBird;
+public class Uneasy : KeywordSup
+{ 
     private void Awake()
     {
-        keywordName = "튼튼한";
+        keywordName = "불안한";
 
         SetKeywordColor(BLUE);
-        keyWordTension = -8;
+        keywordTension = 6;
+        debuffStack = 2;
+        debuffType = "Fear";
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        caster.oneTimeProtect += tumbleBird.BuffCount();
-        caster.tension += keyWordTension;
+        target.fearStack += debuffStack;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

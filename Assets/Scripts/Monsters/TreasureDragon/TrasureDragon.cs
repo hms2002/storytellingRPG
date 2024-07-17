@@ -56,6 +56,8 @@ public class TrasureDragon : Actor
             case DamageType.Beat:
                 Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
                 if (totalDamage > 0)
+                Debug.Log(gameObject.name + "?€ê²??¼í•´" + _damage);
+/*                if (totalDamage > 0)
                 {
                     attackCount = true;
                 }
@@ -76,9 +78,13 @@ public class TrasureDragon : Actor
                         totalDamage -= reductionStack;
                         reductionStack -= 1;
                     }
-                }
+                }*/
                 break;
         }
+        totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+        if (weakenStack > 0) weakenStack -= 1;
+        attacker.oneTimeReinforce = 0;
+
         if (dragonsTrasure > 0)
         {
             if (protect > 0)

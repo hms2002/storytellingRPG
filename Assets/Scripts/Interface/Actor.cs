@@ -114,6 +114,7 @@ public class Actor : MonoBehaviour
             stateUIController.ProtectOn(_protect);
         }
     }
+
     public int heal
     {
         get { return _heal; }

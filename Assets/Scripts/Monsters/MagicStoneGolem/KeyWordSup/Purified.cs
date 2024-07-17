@@ -2,26 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Continuity : KeywordSup
+public class Purified : KeywordSup
 {
-    TumbleBird tumbleBird;
     private void Awake()
     {
-        keywordName = "연속";
-
+        keywordName = "장난스러운";
         SetKeywordColor(BLUE);
-        keyWordTension = 10;
+        keywordTension = -4;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        tumbleBird.isContinuity = true;
-        caster.tension += keyWordTension;
+        trasureDragon = caster as TrasureDragon;
+        trasureDragon.dragonsTrasure -= 10;
+        trasureDragon.trasureDamage += 10;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
-
     }
 }

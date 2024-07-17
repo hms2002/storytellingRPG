@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crouch : KeywordMain
+public class BodySlam : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "웅크리기";
-        SetKeywordColor(BLUE);
-        keywordProtect = 10;
-        keywordTension = 6;
+        keywordName = "몸통 박치기";
+
+        SetKeywordColor(RED);
+        keywordTension = -10;
+        keywordDamage = 3;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect = 10;
+        caster.damage += keywordDamage;
         caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
     {
+
     }
 }
