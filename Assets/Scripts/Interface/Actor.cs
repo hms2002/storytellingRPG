@@ -203,10 +203,21 @@ public class Actor : MonoBehaviour
         get { return _selfReductionStack; }
         set { _selfReductionStack = value; }
     }
+
     public int fearStack
     {
         get { return _fearStack; }
         set { _fearStack = value; }
+    }
+
+    public int addictionStack
+    {
+        get { return _addictionStack; }
+        set
+        {
+            _addictionStack = value;
+            //stateUIController.AddictionOn(_addictionStack);
+        }
     }
 
     public int damage
@@ -232,11 +243,13 @@ public class Actor : MonoBehaviour
         get { return _nextTurnDamage; }
         set { _nextTurnDamage = value; }
     }
+
     public int oneTimeReinforce
     {
         get { return _oneTimeReinforce; }
         set { _oneTimeReinforce = value; }
     }
+
     public int oneTimeProtect
     {
         get { return _oneTimeProtect; }
@@ -276,6 +289,7 @@ public class Actor : MonoBehaviour
         get { return _debuffList; }
         set { _debuffList = value; }
     }
+
     public int[] allStateList
     {
         get { return _allStateList; }
