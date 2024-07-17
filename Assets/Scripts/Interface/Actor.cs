@@ -540,7 +540,16 @@ public class Actor : MonoBehaviour
 
                 break;
         }
-                totalDamage = (int)(totalDamage * fearStack * 0.1f);
+
+        if(fearStack <= 10)
+        {
+            totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+        }
+        else
+        {
+            totalDamage = 0;
+        }
+
         if (oneTimeProtect > 0)
         {
             if (oneTimeProtect < totalDamage)
