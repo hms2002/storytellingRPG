@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sticky : KeywordSup
+public class Bubbling : KeywordMain
 {
+    ToxicSlime toxicSlime;
+
     [Header("부여되는 중독 스택의 양")]
     [SerializeField] private const int _amountOfAddictionStack = 1;
     public int amountOfAddictionStack { get { return _amountOfAddictionStack; } }
@@ -11,19 +13,23 @@ public class Sticky : KeywordSup
 
     private void Awake()
     {
-        keywordName = "끈적이는";
-        SetKeywordColor(RED);
+        keywordName = "보글거리기";
+        SetKeywordColor(BLUE);
+        keywordDamage = 2;
         keywordTension = 5;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
+        toxicSlime = caster as ToxicSlime;
+
+        toxicSlime.damage = keywordDamage;
         target.addictionStack += amountOfAddictionStack;
 
         target.tension += keywordTension;
     }
 
-    public override void Check(KeywordMain _keywordMain)
+    public override void Check(KeywordSup _keywordSup)
     {
     }
 }

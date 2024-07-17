@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sweep : KeywordMain
 {
     TrasureDragon trasureDragon;
+
     [Header("쓸어 담기 키워드 랜덤 데미지 범위 제어")]
     [SerializeField] private int maxRange = 18;
     [SerializeField] private int minRange = 15;
