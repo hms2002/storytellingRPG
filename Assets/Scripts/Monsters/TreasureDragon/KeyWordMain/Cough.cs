@@ -20,7 +20,7 @@ public class Cough : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        caster.burnStack += debuffStack;
+        target.burnStack += debuffStack;
         caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
