@@ -13,9 +13,6 @@ public class Purified : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonsTrasure -= 10;
-        trasureDragon.trasureDamage += 10;
         caster.tension += keywordTension;
     }
 
