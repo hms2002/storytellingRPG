@@ -71,13 +71,6 @@ public abstract class KeywordSup : MonoBehaviour
         set { _isCanUse = value; }
     }
 
-    private Color keywordColor;
-    [Header("키워드 특성별 색")]
-    [SerializeField] protected Color RED = new Color(225, 0, 0);
-    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
-    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
-    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
-
     #endregion
 
 
