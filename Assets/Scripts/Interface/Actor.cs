@@ -503,17 +503,20 @@ public class Actor : MonoBehaviour
                     if (weakenStack > 0) weakenStack -= 1;
                 attacker.oneTimeReinforce = 0;
 
+
+
+                if (fearStack <= 10)
+                {
+                    totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                }
+                else
+                {
+                    totalDamage = 0;
+                }
+
                 break;
         }
 
-        if(fearStack <= 10)
-        {
-            totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
-        }
-        else
-        {
-            totalDamage = 0;
-        }
 
         if (oneTimeProtect > 0)
         {
