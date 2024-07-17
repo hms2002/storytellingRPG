@@ -456,16 +456,9 @@ public class Actor : MonoBehaviour
         for (int i = 1; i <= repeatStack; i++)
         {
             TensionManager tensionManager = TensionManager.tensionManagerUI;
-/*            target.burnStack += burnStack;
-            target.weakenStack += weakenStack;
-            target.reductionStack += reductionStack;
-            target.nextTurnDamage += nextTurnDamage;*/
+
             target.Damaged(this, damage, DamageType.Beat);
-/*            protect += protect;
-            hp += heal;
-            weakenStack += selfWeakenStack;
-            burnStack += selfBurnStack;
-            reductionStack += selfReductionStack;*/
+
             tensionManager.tension += tension;
 
             #region 디버깅용 임시 로그
@@ -505,34 +498,6 @@ public class Actor : MonoBehaviour
             case DamageType.Beat:
 
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
-
-/*                if (totalDamage > 0)
-                {
-                    attackCount = true;
-                }
-                if (additionalDamage > 0)
-                {
-                    totalDamage += additionalDamage;
-                }
-                if (oneTimeReinforce > 0)
-                {
-                    totalDamage += oneTimeReinforce;
-                    oneTimeReinforce = 0;
-                }
-
-                if(reductionStack > 0)
-                {
-                    if(totalDamage < reductionStack)
-                    {
-                        totalDamage = 0;
-                        reductionStack -= 1;
-                    }
-                    else
-                    {
-                        totalDamage -= reductionStack;
-                        reductionStack -= 1;
-                    }
-                }*/
 
                 totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
                     if (weakenStack > 0) weakenStack -= 1;

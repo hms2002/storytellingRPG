@@ -81,7 +81,8 @@ public class TrasureDragon : Actor
                 }*/
                 break;
         }
-        totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+
+        totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
         if (weakenStack > 0) weakenStack -= 1;
         attacker.oneTimeReinforce = 0;
 
