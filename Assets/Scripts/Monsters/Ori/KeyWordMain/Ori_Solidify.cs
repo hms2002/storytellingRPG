@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ori_Solidify : KeywordMain
+{
+    private void Awake()
+    {
+        keywordName = "공포감조성";
+
+        SetKeywordColor(RED);
+        keywordTension = -10;
+        keywordDamage = 3;
+        debuffStack = 1;
+        debuffType = "Fear";    
+    }
+
+    public override void Execute(Actor caster, Actor target)
+    {
+        caster.damage += keywordDamage;
+        target.fearStack += debuffStack;
+        caster.tension += keywordTension;
+    }
+
+    public override void Check(KeywordSup _keywordSup)
+    {
+
+    }
+}
