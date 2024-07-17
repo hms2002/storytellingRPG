@@ -80,20 +80,18 @@ public class TrasureDragon : Actor
                     totalDamage = 0;
                 }
             }
+
+            if (dragonsTrasure < totalDamage)
+            {
+                totalDamage -= dragonsTrasure;
+                trasureDamage = totalDamage;
+                dragonsTrasure = 0;
+            }
             else
             {
-                if (dragonsTrasure < totalDamage)
-                {
-                    totalDamage -= dragonsTrasure;
-                    trasureDamage = totalDamage;
-                    dragonsTrasure = 0;
-                }
-                else
-                {
-                    dragonsTrasure -= totalDamage;
-                    trasureDamage = totalDamage;
-                    totalDamage = 0;
-                }
+                dragonsTrasure -= totalDamage;
+                trasureDamage = totalDamage;
+                totalDamage = 0;
             }
         }
         hp -= totalDamage;
