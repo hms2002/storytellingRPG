@@ -33,7 +33,6 @@ public class TrasureDragon : Actor
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
-        protect = 0;
         motherDragonsCall -= 1;
 
         keywordSup.Execute(this, target);
@@ -53,8 +52,13 @@ public class TrasureDragon : Actor
                 break;
 
             case DamageType.Beat:
+<<<<<<< Updated upstream
                 Debug.Log(gameObject.name + "Å¸°Ý ÇÇÇØ" + _damage);
                 if (totalDamage > 0)
+=======
+                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
+/*                if (totalDamage > 0)
+>>>>>>> Stashed changes
                 {
                     attackCount = true;
                 }
@@ -75,9 +79,13 @@ public class TrasureDragon : Actor
                         totalDamage -= reductionStack;
                         reductionStack -= 1;
                     }
-                }
+                }*/
                 break;
         }
+        totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+        if (weakenStack > 0) weakenStack -= 1;
+        attacker.oneTimeReinforce = 0;
+
         if (dragonsTrasure > 0)
         {
             if (protect > 0)

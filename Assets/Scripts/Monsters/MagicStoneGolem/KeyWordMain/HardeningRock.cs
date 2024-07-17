@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shrink : KeywordMain
+public class HardeningRock : KeywordMain
 {
+    MagicStoneGolem magicStoneGolem;
     private void Awake()
     {
-        keywordName = "웅크리기";
+        keywordName = "바위 굳히기";
+
         SetKeywordColor(BLUE);
-        keywordProtect = 10;
-        keyWordTension = -21;
+        keywordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect += keywordProtect;
-        caster.tension += keyWordTension;
+        magicStoneGolem = caster as MagicStoneGolem;
+        magicStoneGolem.stonePiece += 1;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
     {
+
     }
 }
