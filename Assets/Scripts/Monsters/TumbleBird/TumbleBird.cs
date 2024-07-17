@@ -40,7 +40,7 @@ public class TumbleBird : Actor
         hp = MAX_HP;
         tumbleBirdsBuffList = new int[] {protect, oneTimeReinforce, glassFragmentStack, reductionStack, weakenStack, oneTimeProtect};
         allStateList = new int[] {protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
-            burnStack, venomStack, reductionStack, weakenStack,glassFragmentStack};
+                                  burnStack, venomStack, reductionStack, weakenStack,glassFragmentStack};
     }
 
     public override void Action(Actor target)
