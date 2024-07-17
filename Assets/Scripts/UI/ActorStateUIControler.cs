@@ -18,100 +18,133 @@ public class ActorStateUIControler : MonoBehaviour
         CALLING_OF_MOMMY,   // 어미 용의 부름
         END_INDEX
     }
-
+    public Transform pivot;
     public Image hpSlider;
-    [Header("방어, 화염, 취약, 약화, 유리조각, 용의 보물, 어미 용의 부름 순서로 넣기")] 
-    public List<GameObject> stateUIObjects;
+    public GameObject protectUIObject;
     public GameObject hpUI;
     public Text hpText;
-
 
     public void ProtectOn(int rate)
     {
         if(rate <= 0)
         {
             hpUI.SetActive(true);
-            stateUIObjects[(int)STATE_UI_INDEX.PROTECT].SetActive(false);
+
             return;
         }
 
         hpUI.SetActive(false);
-        stateUIObjects[(int)STATE_UI_INDEX.PROTECT].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.PROTECT].GetComponentInChildren<Text>();
+        protectUIObject.SetActive(true);
+        Text text = protectUIObject.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
+    GameObject burnUI;
     public void BurnOn(int rate)
     {
+        if (burnUI == null)
+        {
+            burnUI = Instantiate(StateUIDatabase.stateUIDB.burn);
+            burnUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.BURN].SetActive(false);
+            burnUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.BURN].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.BURN].GetComponentInChildren<Text>();
+        burnUI.SetActive(true);
+        Text text = burnUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
+    GameObject weakUI;
     public void WeakenOn(int rate)
     {
+        if (weakUI == null)
+        {
+            weakUI = Instantiate(StateUIDatabase.stateUIDB.weaken);
+            weakUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].SetActive(false);
+            weakUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.WEAKEN].GetComponentInChildren<Text>();
+        weakUI.SetActive(true);
+        Text text = weakUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
+    GameObject reductionUI;
     public void ReductionOn(int rate)
     {
+        if (reductionUI == null)
+        {
+            reductionUI = Instantiate(StateUIDatabase.stateUIDB.reduction);
+            reductionUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].SetActive(false);
+            reductionUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.REDUCTION].GetComponentInChildren<Text>();
+        reductionUI.SetActive(true);
+        Text text = reductionUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
-
+    GameObject glassFragmentUI;
     public void GlassFragmentOn(int rate)
     {
+        if (glassFragmentUI == null)
+        {
+            glassFragmentUI = Instantiate(StateUIDatabase.stateUIDB.glassFragment);
+            glassFragmentUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].SetActive(false);
+            glassFragmentUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.GLASS_FRAGMENT].GetComponentInChildren<Text>();
+        glassFragmentUI.SetActive(true);
+        Text text = glassFragmentUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
 
+    GameObject treasureOfDragonUI;
     public void TreasureOfDragonOn(int rate)
     {
+        if (treasureOfDragonUI == null) 
+        {
+            treasureOfDragonUI = Instantiate(StateUIDatabase.stateUIDB.treasureOfDragon);
+            treasureOfDragonUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].SetActive(false);
+            treasureOfDragonUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.TREASURE_OF_DRAGON].GetComponentInChildren<Text>();
+        treasureOfDragonUI.SetActive(true);
+        Text text = treasureOfDragonUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
+    GameObject callingOfMommyUI;
     public void CallingOfMommyOn(int rate)
     {
+        if (callingOfMommyUI == null)
+        {
+            callingOfMommyUI = Instantiate(StateUIDatabase.stateUIDB.callingOfMommy);
+            callingOfMommyUI.transform.SetParent(pivot);
+        }
         if (rate <= 0)
         {
-            stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].SetActive(false);
+            callingOfMommyUI.SetActive(false);
             return;
         }
 
-        stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].SetActive(true);
-        Text text = stateUIObjects[(int)STATE_UI_INDEX.CALLING_OF_MOMMY].GetComponentInChildren<Text>();
+        callingOfMommyUI.SetActive(true);
+        Text text = callingOfMommyUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
     public void UpdateHpUI(int hp, int MAX_HP)

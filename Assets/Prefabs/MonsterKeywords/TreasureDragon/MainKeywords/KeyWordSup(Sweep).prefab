@@ -107,7 +107,7 @@ MonoBehaviour:
     +18"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: -7428053507704752696, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -401,7 +401,7 @@ MonoBehaviour:
   _keywordProtect: 0
   _debuffType: 
   _debuffStack: 0
-  _keyWordTension: 0
+  _keywordTension: 0
   RED: {r: 255, g: 0, b: 0, a: 1}
   BLUE: {r: 0, g: 255, b: 0, a: 1}
   GREEN: {r: 0, g: 0, b: 255, a: 1}
