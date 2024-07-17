@@ -14,7 +14,7 @@ public class Stirring : KeywordMain
     {
         keywordName = "Ω∫≈Õ∏µ";
         SetKeywordColor(BLUE);
-        keyWordTension = -8;
+        keywordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class Stirring : KeywordMain
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

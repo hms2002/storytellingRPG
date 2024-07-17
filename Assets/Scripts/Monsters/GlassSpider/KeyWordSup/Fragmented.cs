@@ -11,14 +11,14 @@ public class Fragmented : KeywordSup
     {
         keywordName = "파편화된";
         SetKeywordColor(RED);
-        keyWordTension = 5;
+        keywordTension = 5;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
         caster.damage += glassSpider.glassFragmentStack;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

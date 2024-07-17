@@ -10,14 +10,14 @@ public class Pointed : KeywordSup
         keywordName = "뾰족한";
 
         SetKeywordColor(RED);
-        keyWordTension = -8;
+        keywordTension = -8;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
         caster.oneTimeReinforce += tumbleBird.BuffCount();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

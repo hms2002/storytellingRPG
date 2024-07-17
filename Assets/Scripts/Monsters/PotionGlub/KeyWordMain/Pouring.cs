@@ -8,14 +8,14 @@ public class Pouring : KeywordMain
     private void Awake()
     {
         SetKeywordColor(RED);
-        keyWordTension = 10;
+        keywordTension = 10;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
         potionGlub.PotionHitted(target);
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

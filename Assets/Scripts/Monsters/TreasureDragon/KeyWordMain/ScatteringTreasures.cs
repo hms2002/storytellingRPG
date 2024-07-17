@@ -15,7 +15,7 @@ public class ScatteringTreasures : KeywordMain
         keywordName = "보물 뿌리기";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
-        keyWordTension = 18;
+        keywordTension = 18;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -24,7 +24,7 @@ public class ScatteringTreasures : KeywordMain
         caster.damage += keywordDamage;
         trasureDragon.dragonsTrasure -= keywordDamage;
         trasureDragon.trasureDamage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

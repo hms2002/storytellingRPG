@@ -15,7 +15,7 @@ public class Sweep : KeywordMain
         keywordName = "쓸어 담기";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
-        keyWordTension = 18;
+        keywordTension = 18;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -24,7 +24,7 @@ public class Sweep : KeywordMain
         trasureDragon.damage += keywordDamage;
         trasureDragon.dragonsTrasure -= 10;
         trasureDragon.trasureDamage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

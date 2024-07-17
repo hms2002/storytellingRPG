@@ -9,13 +9,13 @@ public class Biting : KeywordMain
         keywordName = "¹°¾î¶â±â";
         SetKeywordColor(RED);
         keywordDamage = 10;
-        keyWordTension = 10;
+        keywordTension = 10;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

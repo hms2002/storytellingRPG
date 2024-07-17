@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Purified : KeywordSup
 {
-    TrasureDragon trasureDragon;
-
-
     private void Awake()
     {
         keywordName = "장난스러운";

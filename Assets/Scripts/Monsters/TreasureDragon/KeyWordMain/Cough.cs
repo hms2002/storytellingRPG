@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class Cough : KeywordMain
 {
-    [Header("·£´ı µ¥¹ÌÁö Á¦¾î")]
+    [Header("ëœë¤ ë°ë¯¸ì§€ ì œì–´")]
     [SerializeField] private int maxRange = 30;
     [SerializeField] private int minRange = 20;
 
     private void Awake()
     {
-        keywordName = "±âÄ§(ºê·¹½º)";
+        keywordName = "ê¸°ì¹¨(ë¸Œë ˆìŠ¤)";
         SetKeywordColor(RED);
         keywordDamage = Random.Range(minRange, maxRange);
         debuffStack = 5;
         debuffType = "Burn";
-        keyWordTension = 41;
+        keywordTension = 41;
     }
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
         caster.burnStack += debuffStack;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

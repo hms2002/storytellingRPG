@@ -12,7 +12,7 @@ public class GreenHerb : KeywordSup
     {
         keywordName = "초록 약초";
         SetKeywordColor(BLUE);
-        keyWordTension = -7;
+        keywordTension = -7;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -20,7 +20,7 @@ public class GreenHerb : KeywordSup
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum += Random.Range(minRange,maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

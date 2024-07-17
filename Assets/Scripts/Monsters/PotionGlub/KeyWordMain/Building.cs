@@ -14,7 +14,7 @@ public class Building : KeywordMain
     {
         keywordName = "ºôµù";
         SetKeywordColor(BLUE);
-        keyWordTension = -4;
+        keywordTension = -4;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class Building : KeywordMain
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

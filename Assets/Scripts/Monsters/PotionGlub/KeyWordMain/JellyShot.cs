@@ -8,14 +8,14 @@ public class JellyShot : KeywordMain
     private void Awake()
     {
         SetKeywordColor(BLUE);
-        keyWordTension = 20;
+        keywordTension = 20;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
         potionGlub.isJellyShot = true;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

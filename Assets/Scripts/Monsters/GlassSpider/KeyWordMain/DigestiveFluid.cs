@@ -11,13 +11,13 @@ public class DigestiveFluid : KeywordMain
         keywordDamage = 2;
         debuffType = "Reduction";
         debuffStack = 3;
-        keyWordTension = 10;
+        keywordTension = 10;
     }
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
         target.reductionStack += debuffStack;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

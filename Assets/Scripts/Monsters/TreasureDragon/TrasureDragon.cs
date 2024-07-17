@@ -52,13 +52,10 @@ public class TrasureDragon : Actor
                 break;
 
             case DamageType.Beat:
-<<<<<<< Updated upstream
                 Debug.Log(gameObject.name + "Å¸°Ý ÇÇÇØ" + _damage);
                 if (totalDamage > 0)
-=======
-                Debug.Log(gameObject.name + "íƒ€ê²© í”¼í•´" + _damage);
+                Debug.Log(gameObject.name + "?€ê²??¼í•´" + _damage);
 /*                if (totalDamage > 0)
->>>>>>> Stashed changes
                 {
                     attackCount = true;
                 }

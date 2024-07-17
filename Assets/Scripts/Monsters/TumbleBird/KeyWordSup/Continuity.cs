@@ -10,14 +10,14 @@ public class Continuity : KeywordSup
         keywordName = "연속";
 
         SetKeywordColor(BLUE);
-        keyWordTension = 10;
+        keywordTension = 10;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
         tumbleBird.isContinuity = true;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

@@ -6,22 +6,22 @@ public class Cracked : KeywordSup
 {
     GlassSpider glassSpider;
 
-    [Header("±ú¾îÁø Å°¿öµå À¯¸® ÆÄÆí ½ºÅÃ")]
+    [Header("ê¹¨ì–´ì§„ í‚¤ì›Œë“œ ìœ ë¦¬ íŒŒí¸ ìŠ¤íƒ")]
     [SerializeField] private int stack = 1;
 
 
     private void Awake()
     {
-        keywordName = "±ú¾îÁø";
+        keywordName = "ê¹¨ì–´ì§„";
         SetKeywordColor(BLUE);
-        keyWordTension = 20; 
+        keywordTension = 20; 
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
         glassSpider.glassFragmentStack += stack;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

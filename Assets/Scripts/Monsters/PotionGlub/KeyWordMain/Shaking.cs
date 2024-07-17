@@ -14,7 +14,7 @@ public class Shaking : KeywordMain
     {
         keywordName = "ºŒ¿Ã≈∑";
         SetKeywordColor(BLUE);
-        keyWordTension = -5;
+        keywordTension = -5;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class Shaking : KeywordMain
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum = Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
     {

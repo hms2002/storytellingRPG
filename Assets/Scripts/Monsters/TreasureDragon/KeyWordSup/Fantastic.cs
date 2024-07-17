@@ -14,7 +14,7 @@ public class Fantastic : KeywordSup
     {
         keywordName = "환상적인";
         SetKeywordColor(BLUE);
-        keyWordTension = -11;
+        keywordTension = -11;
     }
 
     public override void Execute(Actor caster, Actor target)
@@ -22,7 +22,7 @@ public class Fantastic : KeywordSup
         trasureDragon = caster as TrasureDragon;
         trasureDragon.dragonsTrasure -= damageFigures;
         trasureDragon.trasureDamage += damageFigures;
-        caster.tension += keyWordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
