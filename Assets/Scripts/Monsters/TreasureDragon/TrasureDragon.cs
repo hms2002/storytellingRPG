@@ -57,31 +57,11 @@ public class TrasureDragon : Actor
                 Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
                 if (totalDamage > 0)
                 Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
-/*                if (totalDamage > 0)
-                {
-                    attackCount = true;
-                }
-                if (weakenStack > 0)
-                {
-                    totalDamage += weakenStack;
-                    weakenStack -= 1;
-                }
-                if (reductionStack > 0)
-                {
-                    if (totalDamage < reductionStack)
-                    {
-                        totalDamage = 0;
-                        reductionStack -= 1;
-                    }
-                    else
-                    {
-                        totalDamage -= reductionStack;
-                        reductionStack -= 1;
-                    }
-                }*/
+
                 break;
         }
-        totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+
+        totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
         if (weakenStack > 0) weakenStack -= 1;
         attacker.oneTimeReinforce = 0;
 
