@@ -337,27 +337,26 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
+
+        StackInit();
+    }
+    public void StartTurn()
+    {
         #region 턴중 버프, 디버프 관리
         if (burnStack > 0)
         {
             Damaged(this, burnStack * 2, DamageType.Burn);
             burnStack -= 1;
         }
-        if (additionalDamage > 0)
-        {
-            additionalDamage = 0;
-        }
-        if(pike > 0)
+        if (pike > 0)
         {
             pike = 0;
         }
-        if(venomStack > 0)
+        if (venomStack > 0)
         {
             Damaged(this, venomStack * 2, DamageType.Burn);
             venomStack = Mathf.FloorToInt(venomStack);
         }
-
-        StackInit();
         #endregion
     }
 
@@ -535,7 +534,7 @@ public class Actor : MonoBehaviour
                     }
                 }*/
 
-                totalDamage += additionalDamage + oneTimeReinforce + weakenStack - reductionStack;
+                totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
                     if (weakenStack > 0) weakenStack -= 1;
                 attacker.oneTimeReinforce = 0;
 
@@ -574,7 +573,8 @@ public class Actor : MonoBehaviour
         hp -= totalDamage;
     }
 
-    public void StartTurn()
+
+    public void SelectKeyword()
     {
         ShowKeywordSup();
     }

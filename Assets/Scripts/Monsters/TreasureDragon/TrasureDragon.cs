@@ -50,13 +50,13 @@ public class TrasureDragon : Actor
         switch (_type)
         {
             case DamageType.Burn:
-                Debug.Log(gameObject.name + "화염 피해" + _damage);
+                Debug.Log(gameObject.name + "?붿뿼 ?쇳빐" + _damage);
                 break;
 
             case DamageType.Beat:
-                Debug.Log(gameObject.name + "타격 피해" + _damage);
+                Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
                 if (totalDamage > 0)
-                Debug.Log(gameObject.name + "?��??�해" + _damage);
+                Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
 /*                if (totalDamage > 0)
                 {
                     attackCount = true;
