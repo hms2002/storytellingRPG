@@ -411,6 +411,9 @@ public class Actor : MonoBehaviour
 
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
+        /*if (Resources.Load<GameObject>("Asset/Prefabs/MonsterKeywords/ToxicSlime/SupKeyword/Addicted") == _keywordSup
+            && addictionStack == 0) return;*/
+
         // Support 키워드를 사용
         keywordSup = _keywordSup;
 
