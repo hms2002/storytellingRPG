@@ -298,9 +298,7 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-
     /*==================================================================================================================================*/
-
 
     private void OnEnable()
     {
@@ -337,9 +335,10 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
-
+        
         StackInit();
     }
+
     public void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
