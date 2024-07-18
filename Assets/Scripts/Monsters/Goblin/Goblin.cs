@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : Actor
+public class Goblin : Monster
 {
     private void Start()
     {

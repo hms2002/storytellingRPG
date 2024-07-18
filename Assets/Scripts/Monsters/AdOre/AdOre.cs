@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ori : Actor
+public class AdOre : Monster
 {
     private int _oreStack = 0;
 
@@ -10,5 +10,12 @@ public class Ori : Actor
     {
         get { return _oreStack; }
         set { _oreStack = value; }
+    }
+
+
+    void Start()
+    {
+        MAX_HP = 100;
+        hp = MAX_HP;
     }
 }

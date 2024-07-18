@@ -43,6 +43,7 @@ public class FightManager : MonoBehaviour
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
         if (_keywordSup == null) return;
+        if (!_keywordSup.ActivationConditionCheck())
 
         whoPlaying.GetKeywordSup(_keywordSup);
     }

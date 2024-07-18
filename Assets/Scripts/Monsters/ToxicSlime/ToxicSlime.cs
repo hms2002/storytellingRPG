@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToxicSlime : Actor
+public class ToxicSlime : Monster
 {
     [Header("유독성 슬라임 제원 제어")]
     [SerializeField] private const int _addictionDamage = 5;            // 중독 스택 당 데미지
