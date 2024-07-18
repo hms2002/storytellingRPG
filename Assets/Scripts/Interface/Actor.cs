@@ -266,7 +266,9 @@ public class Actor : MonoBehaviour
     public int additionalDamage
     {
         get { return _additionalDamage; }
-        set { _additionalDamage = value; }
+        set { _additionalDamage = value;
+            stateUIController.PowerOn(_additionalDamage);
+        }
     }
 
     public int additionalStack
@@ -328,7 +330,8 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
-        additionalDamage = 0;
+        additionalDamage = nextTurnDamage;
+        nextTurnDamage = 0;
         additionalStack = 0;
     }
 
@@ -450,8 +453,6 @@ public class Actor : MonoBehaviour
     {
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
-
-        additionalDamage += nextTurnDamage;
 
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);

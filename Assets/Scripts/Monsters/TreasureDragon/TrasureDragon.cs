@@ -40,6 +40,7 @@ public class TrasureDragon : Actor
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
+        additionalDamage += nextTurnDamage;
     }
 
     public override void Damaged(Actor attacker, int _damage, DamageType _type)
