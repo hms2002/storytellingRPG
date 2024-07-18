@@ -684,6 +684,7 @@ MonoBehaviour:
   glassFragment: {fileID: 649827547615506844, guid: faf45b4ad360d3d4c823a0c3691d7c9c, type: 3}
   treasureOfDragon: {fileID: 1073344793545041436, guid: 64b7081064ddaec49b52025379b29c45, type: 3}
   callingOfMommy: {fileID: 6474338348034067855, guid: 8d25f603bb65f254e9bb5e6fad4b32d1, type: 3}
+  power: {fileID: 7593584670278851843, guid: 0e7060ce2df50634aa35ccdca9089b8c, type: 3}
 --- !u!4 &1254263880
 Transform:
   m_ObjectHideFlags: 0

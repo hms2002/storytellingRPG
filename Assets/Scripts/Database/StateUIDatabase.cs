@@ -14,6 +14,7 @@ public class StateUIDatabase : MonoBehaviour
     public GameObject glassFragment;
     public GameObject treasureOfDragon;
     public GameObject callingOfMommy;
+    public GameObject power;
     private void Awake()
     {
         if (stateUIDB != null)
