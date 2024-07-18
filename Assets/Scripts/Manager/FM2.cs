@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FightManager : MonoBehaviour
+public class FM2 : MonoBehaviour
 {
-    public static FightManager fightManager;
+    public static FM2 fightManager;
     public FightManagerUI fightManagerUI;
 
     [Header("Actor 오브젝트")]
@@ -57,14 +57,8 @@ public class FightManager : MonoBehaviour
 
     void FightStart()
     {
-        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet3();
-        MonsterTargetter.monsterTargetter.target = monsterList[0];
-        int pos = 5;
-        foreach(Actor monster in monsterList)
-        {
-            monster.transform.position = new Vector3(pos, 0.07f, 0);
-            pos -= 2;
-        }
+        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet1();
+
     }
 
     public void Flow()
@@ -78,7 +72,7 @@ public class FightManager : MonoBehaviour
         }
 
         // 
-        if (preparedActorCount < monsterList.Count)
+        if(preparedActorCount < monsterList.Count)
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
@@ -86,7 +80,7 @@ public class FightManager : MonoBehaviour
             fightManagerUI.ChangeTurnText("몬스터 : " + monsterList[preparedActorCount].gameObject.name);
             return;
         }
-        else if (preparedActorCount == monsterList.Count)
+        else if(preparedActorCount == monsterList.Count)
         {
             whoPlaying = player;
             player.StartTurn();
