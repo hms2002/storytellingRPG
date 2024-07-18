@@ -266,7 +266,9 @@ public class Actor : MonoBehaviour
     public int additionalDamage
     {
         get { return _additionalDamage; }
-        set { _additionalDamage = value; }
+        set { _additionalDamage = value;
+            stateUIController.PowerOn(_additionalDamage);
+        }
     }
 
     public int additionalStack
@@ -305,9 +307,7 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-
     /*==================================================================================================================================*/
-
 
     private void OnEnable()
     {
@@ -328,7 +328,8 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
-        additionalDamage = 0;
+        additionalDamage = nextTurnDamage;
+        nextTurnDamage = 0;
         additionalStack = 0;
     }
 
@@ -344,9 +345,10 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
-
+        
         StackInit();
     }
+
     public void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
@@ -451,8 +453,6 @@ public class Actor : MonoBehaviour
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
-        additionalDamage += nextTurnDamage;
-
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
@@ -524,10 +524,19 @@ public class Actor : MonoBehaviour
                     totalDamage = 0;
                 }
 
+
+
+                if (fearStack <= 10)
+                {
+                    totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                }
+                else
+                {
+                    totalDamage = 0;
+                }
+
                 break;
         }
-
-        
 
         if (oneTimeProtect > 0)
         {

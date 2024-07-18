@@ -148,6 +148,25 @@ public class ActorStateUIControler : MonoBehaviour
         Text text = callingOfMommyUI.GetComponentInChildren<Text>();
         text.text = rate + "";
     }
+
+    GameObject powerUI;
+    public void PowerOn(int rate)
+    {
+        if (powerUI == null)
+        {
+            powerUI = Instantiate(StateUIDatabase.stateUIDB.power);
+            powerUI.transform.SetParent(pivot);
+        }
+        if (rate <= 0)
+        {
+            powerUI.SetActive(false);
+            return;
+        }
+
+        powerUI.SetActive(true);
+        Text text = powerUI.GetComponentInChildren<Text>();
+        text.text = rate + "";
+    }
     public void UpdateHpUI(int hp, int MAX_HP)
     {
         hpSlider.fillAmount = hp / (float)MAX_HP;
