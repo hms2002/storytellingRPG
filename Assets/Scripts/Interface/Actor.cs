@@ -307,9 +307,7 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-
     /*==================================================================================================================================*/
-
 
     private void OnEnable()
     {
@@ -347,9 +345,10 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
-
+        
         StackInit();
     }
+
     public void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
@@ -523,10 +522,19 @@ public class Actor : MonoBehaviour
                     totalDamage = 0;
                 }
 
+
+
+                if (fearStack <= 10)
+                {
+                    totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                }
+                else
+                {
+                    totalDamage = 0;
+                }
+
                 break;
         }
-
-        
 
         if (oneTimeProtect > 0)
         {
