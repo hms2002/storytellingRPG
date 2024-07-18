@@ -506,10 +506,12 @@ public class Actor : MonoBehaviour
 
                 Debug.Log(gameObject.name + "타격 피해" + _damage);
 
-                totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
+                totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack + (addictionStack * 5) - reductionStack;
                 
                 if (weakenStack > 0) weakenStack -= 1;
-                
+
+                tension += (addictionStack * 5);
+
                 attacker.oneTimeReinforce = 0;
                 attacker.oneTimeReduction = 0;
 

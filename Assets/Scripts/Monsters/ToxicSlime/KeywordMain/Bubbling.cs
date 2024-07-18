@@ -24,7 +24,11 @@ public class Bubbling : KeywordMain
         toxicSlime = caster as ToxicSlime;
 
         toxicSlime.damage = keywordDamage;
-        target.addictionStack += amountOfAddictionStack;
+        
+        if (target.addictionStack <= 8)
+        {
+            target.addictionStack += amountOfAddictionStack;
+        }
 
         target.tension += keywordTension;
     }

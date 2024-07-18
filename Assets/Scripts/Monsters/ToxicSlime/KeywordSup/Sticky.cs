@@ -18,7 +18,10 @@ public class Sticky : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.addictionStack += amountOfAddictionStack;
+        if (target.addictionStack <= 8)
+        {
+            target.addictionStack += amountOfAddictionStack;
+        }
 
         target.tension += keywordTension;
     }

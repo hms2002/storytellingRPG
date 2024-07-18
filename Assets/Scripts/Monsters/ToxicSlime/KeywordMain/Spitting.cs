@@ -25,7 +25,10 @@ public class Spitting : KeywordMain
 
         toxicSlime.damage += keywordDamage;
 
-        target.addictionStack += amountOfAddictionStack;
+        if (target.addictionStack <= 8)
+        {
+            target.addictionStack += amountOfAddictionStack;
+        }
 
         target.tension += keywordTension;
     }

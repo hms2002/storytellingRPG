@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Addicted : KeywordSup
 {
-    ToxicSlime toxicSlime;
-
     [Header("중독 스택 데미지 배수")]
     [SerializeField] private const float _addictionDamageMultiplexes = 2.0f;
     public float addictionDamageMultiplexes { get { return _addictionDamageMultiplexes; } }
@@ -20,6 +18,8 @@ public class Addicted : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
+        if (caster.addictionStack == 0) return;
+
 
         target.tension += keywordTension;
     }
