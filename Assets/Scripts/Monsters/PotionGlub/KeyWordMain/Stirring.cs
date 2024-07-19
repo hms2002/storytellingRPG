@@ -6,13 +6,13 @@ public class Stirring : KeywordMain
 {
     PotionGlub potionGlub;
 
-    [Header("·£´ı Æ÷¼Ç¼öÄ¡ Á¦¾î")]
+    [Header("ëœë¤ í¬ì…˜ìˆ˜ì¹˜ ì œì–´")]
     [SerializeField] private int maxRange = 3;
     [SerializeField] private int minRange = 1;
 
     private void Awake()
     {
-        keywordName = "½ºÅÍ¸µ";
+        keywordName = "ìŠ¤í„°ë§";
         SetKeywordColor(BLUE);
         keywordTension = -8;
     }
@@ -20,7 +20,7 @@ public class Stirring : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
-        potionGlub.potionNum = Random.Range(minRange, maxRange);
+        potionGlub.potionNum += Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
         caster.tension += keywordTension;
     }
