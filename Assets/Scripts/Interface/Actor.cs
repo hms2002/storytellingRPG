@@ -4,11 +4,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-/*
-#.스크립트 설명
+public enum StateType
+{
+    burn, 
+    venom, 
+    reduction, 
+    weaken, 
+    fear,
+    addiction,
+    pike,
+    oneTimeProtect, 
+    oneTimeReinforce,
+    oneTimeReduction,
+    nextTurnDamage
+}
 
-- 
-*/
+public enum BuffType
+{
+    pike,
+    oneTimeProtect,
+    oneTimeReinforce,
+    nextTurnDamage
+}
+
+public enum DebuffType
+{
+    burn,
+    venom,
+    reduction,
+    weaken,
+    fear,
+    addiction,
+    oneTimeReduction
+}
 
 public enum DamageType
 {
@@ -35,6 +63,7 @@ public class Actor : MonoBehaviour
         get { return _keywordSup; }
         set { _keywordSup = value; }
     }
+
     public KeywordMain keywordMain
     {
         get { return _keywordMain; }
@@ -124,17 +153,24 @@ public class Actor : MonoBehaviour
 
     public int pike
     {
-        get { return _pike; }
-        set { _pike = value; }
+        get { return buffList[(int)BuffType.pike]; }
+        set 
+        { 
+            _pike = value;
+            buffList[(int)BuffType.pike] = _pike;
+            allStateList[(int)StateType.pike] = _pike;
+        }
     }
 
     public int burnStack
     {
-        get { return _burnStack; }
+        get { return debuffList[(int)DebuffType.burn]; }
         set
         {
             _burnStack = value;
-            if(_burnStack < 0)
+            debuffList[(int)DebuffType.burn] = _burnStack;
+            allStateList[(int)StateType.burn] = _burnStack;
+            if (_burnStack < 0)
             {
                 _burnStack = 0;
             }
@@ -150,14 +186,19 @@ public class Actor : MonoBehaviour
 
     public int venomStack
     {
-        get { return _venomStack; }
-        set { _venomStack = value;
+        get { return debuffList[(int)DebuffType.venom]; }
+        set
+        {
+            debuffList[(int)DebuffType.venom] = _venomStack;
+            allStateList[(int)StateType.venom] = _venomStack;
             if (_venomStack < 0)
             {
                 _venomStack = 0;
             }
+            _venomStack = value;
         }
     }
+
     public int selfVenomStack
     {
         get { return _selfVenomStack; }
@@ -166,14 +207,18 @@ public class Actor : MonoBehaviour
 
     public int weakenStack
     {
-        get { return _weakenStack; }
+        get { return debuffList[(int)DebuffType.weaken]; }
         set
         {
-            _weakenStack = value;
+
+            debuffList[(int)DebuffType.weaken] = _weakenStack;
+            allStateList[(int)StateType.weaken] = _weakenStack;
             if (_weakenStack < 0)
             {
                 _weakenStack = 0;
             }
+            _weakenStack = value;
+
             stateUIController.WeakenOn(_weakenStack);
             Debug.Log("취약 스택" + _weakenStack);
         }
@@ -187,14 +232,17 @@ public class Actor : MonoBehaviour
 
     public int reductionStack
     {
-        get { return _reductionStack; }
+        get { return debuffList[(int)DebuffType.reduction]; }
         set
         {
-            _reductionStack = value;
+            debuffList[(int)DebuffType.reduction] = _reductionStack;
+            allStateList[(int)StateType.reduction] = _reductionStack;
             if (_reductionStack < 0)
             {
                 _reductionStack = 0;
             }
+            _reductionStack = value;
+
             stateUIController.ReductionOn(_reductionStack);
         }
     }
@@ -207,16 +255,25 @@ public class Actor : MonoBehaviour
 
     public int fearStack
     {
-        get { return _fearStack; }
-        set { _fearStack = value; }
+        get { return debuffList[(int)DebuffType.fear]; }
+        set 
+        { 
+            debuffList[(int)DebuffType.fear] = _fearStack;
+            allStateList[(int)StateType.fear] = _fearStack;
+            _fearStack = value;
+
+        }
     }
 
     public int addictionStack
     {
-        get { return _addictionStack; }
+        get { return debuffList[(int)DebuffType.addiction]; }
         set
         {
+            debuffList[(int)DebuffType.addiction] = _addictionStack;
+            allStateList[(int)StateType.addiction] = _addictionStack;
             _addictionStack = value;
+
             //stateUIController.AddictionOn(_addictionStack);
         }
     }
@@ -241,26 +298,47 @@ public class Actor : MonoBehaviour
 
     public int nextTurnDamage
     {
-        get { return _nextTurnDamage; }
-        set { _nextTurnDamage = value; }
+        get { return buffList[(int)BuffType.nextTurnDamage]; }
+        set 
+        { 
+            buffList[(int)BuffType.nextTurnDamage] = _nextTurnDamage;
+            allStateList[(int)StateType.nextTurnDamage] = _nextTurnDamage;
+            _nextTurnDamage = value;
+        }
     }
 
     public int oneTimeReinforce
     {
-        get { return _oneTimeReinforce; }
-        set { _oneTimeReinforce = value; }
+        get { return buffList[(int)BuffType.oneTimeReinforce]; }
+        set 
+        { 
+            buffList[(int)BuffType.oneTimeReinforce] = _oneTimeReinforce;
+            allStateList[(int)StateType.oneTimeReinforce] = _oneTimeReinforce;
+            _oneTimeReinforce = value;
+        }
     }
 
     public int oneTimeProtect
     {
-        get { return _oneTimeProtect; }
-        set { _oneTimeProtect = value; }
+        get { return (int)BuffType.oneTimeProtect; }
+        set 
+        { 
+            buffList[(int)BuffType.oneTimeProtect] = _oneTimeProtect;
+            allStateList[(int)StateType.oneTimeProtect] = _oneTimeProtect;
+            _oneTimeProtect = value;
+
+        }
     }
 
     public int oneTimeReduction
     {
-        get { return _oneTimeReduction; }
-        set { _oneTimeReduction = value; }
+        get { return debuffList[(int)DebuffType.oneTimeReduction]; }
+        set 
+        { 
+            debuffList[(int)DebuffType.oneTimeReduction] = _oneTimeReduction;
+            allStateList[(int)StateType.oneTimeReduction] = _oneTimeReduction;
+            _oneTimeReduction = value;
+        }
     }
 
     public int additionalDamage
@@ -314,10 +392,13 @@ public class Actor : MonoBehaviour
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
-        buffList = new int[] { additionalStack, additionalDamage, pike };
-        debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack };
-        allStateList = new int[] { protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
-                                   burnStack, venomStack, reductionStack, weakenStack };
+        buffList = new int[] { pike, oneTimeProtect, oneTimeReinforce, nextTurnDamage};
+
+        debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack, fearStack, addictionStack, oneTimeReduction};
+
+        allStateList = new int[] { burnStack, venomStack, reductionStack, weakenStack, fearStack, addictionStack,
+            pike, oneTimeProtect, oneTimeReinforce, oneTimeReduction, nextTurnDamage};
+        
         garbageField.InitDeck();
     }
 

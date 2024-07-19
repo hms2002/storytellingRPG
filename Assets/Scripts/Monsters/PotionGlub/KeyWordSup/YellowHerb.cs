@@ -6,13 +6,13 @@ public class YellowHerb : KeywordSup
 {
     PotionGlub potionGlub;
 
-    [Header("·£´ı Æ÷¼Ç¼öÄ¡ Á¦¾î")]
+    [Header("ëœë¤ í¬ì…˜ìˆ˜ì¹˜ ì œì–´")]
     [SerializeField] private int maxRange = 4;
     [SerializeField] private int minRange = 2;
 
     private void Awake()
     {
-        keywordName = "³ë¶õ ¾àÃÊ";
+        keywordName = "ë…¸ë€ ì•½ì´ˆ";
         SetKeywordColor(BLUE);
         keywordTension = -10;
     }
@@ -20,7 +20,7 @@ public class YellowHerb : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
-        potionGlub.potionNum = Random.Range(minRange, maxRange);
+        potionGlub.potionNum += Random.Range(minRange, maxRange);
         potionGlub.ColorChecking();
         caster.tension += keywordTension;
     }

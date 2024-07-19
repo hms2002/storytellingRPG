@@ -15,6 +15,7 @@ public class PotionGlub : Actor
     private int _potionNum = 0;
     private PotionColor _potionColor = 0;
     private bool _isJellyShot = false;
+    private Animator animator;
 
     public int potionNum
     {
@@ -31,13 +32,18 @@ public class PotionGlub : Actor
     public PotionColor potionColor
     {
         get { return _potionColor; }
-        set { _potionColor = value; }
+        set { _potionColor = PotionColor.Black; }
     }
 
     public bool isJellyShot
     {
         get { return _isJellyShot; }
         set { _isJellyShot = value; }
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
     }
 
     public override void Damaged(Actor attacker, int _damage, DamageType _type)
@@ -101,32 +107,39 @@ public class PotionGlub : Actor
 
     public void ColorChecking()
     {
-        if(potionNum > 1 && potionNum < 4)
+        if(potionNum >= 1 && potionNum < 4)
         {
+            animator.SetTrigger("isPurple");
             potionColor = PotionColor.Purple;
         }
         if(potionNum == 4)
         {
+            animator.SetTrigger("isBlack");
             potionColor = PotionColor.Black;
         }
-        if (potionNum > 5 && potionNum < 8)
+        if (potionNum >= 5 && potionNum < 8)
         {
+            animator.SetTrigger("isGreen");
             potionColor = PotionColor.Green;
         }
         if (potionNum == 8)
         {
+            animator.SetTrigger("isBlack");
             potionColor = PotionColor.Black;
         }
-        if (potionNum > 9 && potionNum < 12)
+        if (potionNum >= 9 && potionNum < 12)
         {
+            animator.SetTrigger("isPurple");
             potionColor = PotionColor.Purple;
         }
-        if (potionNum > 12 && potionNum < 21)
+        if (potionNum >= 12 && potionNum < 21)
         {
+            animator.SetTrigger("isBlack");
             potionColor = PotionColor.Black;
         }
-        if (potionNum > 21)
+        if (potionNum >= 21)
         {
+            animator.SetTrigger("isRed");
             potionColor = PotionColor.Red;
         }
     }
@@ -141,7 +154,7 @@ public class PotionGlub : Actor
         {
             for (int i = 0; i < allStateList.Length; i++)
             {
-                if (attacker.allStateList[i] > 0)
+                if (attacker.allStateList[i] == 0)
                 {
                     attacker.allStateList[i] += 5;
                 }

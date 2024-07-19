@@ -82,8 +82,9 @@ public abstract class KeywordMain : MonoBehaviour
     {
         fightManager = FightManager.fightManager;
     }
-    
+
     public abstract void Execute(Actor caster, Actor target);
+
     public abstract void Check(KeywordSup _keywordSup);
 
     public Color GetKeywordColor() { return keywordColor; }
