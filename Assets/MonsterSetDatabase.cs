@@ -47,4 +47,13 @@ public class MonsterSetDatabase : MonoBehaviour
         }
         return returnList;
     }
+    public List<Actor> GetSet4()
+    {
+        List<Actor> returnList = new List<Actor>();
+        foreach (GameObject monster in monsterSet4)
+        {
+            returnList.Add(Instantiate(monster).GetComponent<Actor>());
+        }
+        return returnList;
+    }
 }

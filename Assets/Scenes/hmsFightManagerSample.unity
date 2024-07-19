@@ -773,7 +773,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -857,7 +857,8 @@ MonoBehaviour:
   monsterSet3:
   - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
   - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet4: []
+  monsterSet4:
+  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet5: []
   monsterSet6: []
   monsterSet7: []
