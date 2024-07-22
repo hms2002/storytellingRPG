@@ -60,10 +60,10 @@ public class FightManager : MonoBehaviour
     {
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
-        int pos = 5;
+        float pos = 4.45f;
         foreach(Actor monster in monsterList)
         {
-            monster.transform.position = new Vector3(pos, 0.07f, 0);
+            monster.transform.position = new Vector3(pos, 0.42f, 0);
             pos -= 2;
         }
     }
@@ -100,9 +100,54 @@ public class FightManager : MonoBehaviour
 
         player.Action(MonsterTargetter.monsterTargetter.target);
 
+<<<<<<< Updated upstream
+=======
+        int dir = 3;
+        Vector3 originPos = player.transform.position;
+        Vector3 objectPos = player.transform.position + new Vector3(dir, 0, 0);
+        const float ACTION_TIME = 0.2f;
+        float curTime = 0;
+
+        while (curTime < ACTION_TIME)
+        {
+            curTime += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+            yield return null;
+        }
+        AudioManager.instance.PlaySound("Character", player.attackSound);
+        curTime = 0;
+        while (curTime < ACTION_TIME)
+        {
+            curTime += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
+>>>>>>> Stashed changes
         foreach (Actor monster in monsterList)
             monster.Action(player);
 
+<<<<<<< Updated upstream
+=======
+            while (curTime < ACTION_TIME)
+            {
+                curTime += Time.deltaTime;
+                monster.transform.position = new Vector3(10, 10, 0);
+                monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+                yield return null;
+            }
+            AudioManager.instance.PlaySound("Character", monster.attackSound);
+
+            curTime = 0;
+            while (curTime < ACTION_TIME)
+            {
+                curTime += Time.deltaTime;
+                monster.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+                yield return null;
+            }
+            yield return new WaitForSeconds(2);
+        }
+>>>>>>> Stashed changes
         Flow();
     }
 }

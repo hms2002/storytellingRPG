@@ -18,6 +18,7 @@ public class Afreid : KeywordSup
     {
         target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
         caster.tension += keywordTension;
+        caster.attackSound = "타격음_주먹2";
     }
 
     public override void Check(KeywordMain _keywordMain)
