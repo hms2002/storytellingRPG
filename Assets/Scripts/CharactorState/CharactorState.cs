@@ -369,6 +369,7 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
     public void ResetState(StateType type)
     {
         if (allStateList[(int)type] == null) return;

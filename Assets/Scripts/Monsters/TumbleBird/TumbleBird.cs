@@ -26,6 +26,7 @@ public class TumbleBird : Actor
         weaken = StateType.weaken,
         oneTimeProtect = StateType.oneTimeProtect,
     }
+
     private void Awake()
     {
         hp = MAX_HP;
