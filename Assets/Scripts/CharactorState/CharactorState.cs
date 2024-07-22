@@ -305,6 +305,7 @@ public class CharactorState : MonoBehaviour
             if (i == null || i.stateData.effectByTurn == false
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
+            AudioManager.instance.PlaySound("Debuff",i.stateData.soundName);
             actor.Damaged(actor, i.stack * i.stateData.damagePerStack);
             stateUIController.UpdateUI(i);
         }
@@ -320,6 +321,7 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
     public void ReductionOnAttack()
     {
         foreach (State i in allStateList)
@@ -331,6 +333,7 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
     public void ReductionOnDamaged()
     {
         foreach (State i in allStateList)
@@ -342,6 +345,7 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
     public void ReductionOnMyTurn()
     {
         foreach (State i in allStateList)
@@ -353,6 +357,7 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
     public void ReductionByValue(StateType type, int val)
     {
         if (allStateList[(int)type] == null) return;

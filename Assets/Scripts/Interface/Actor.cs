@@ -17,7 +17,7 @@ public class Actor : MonoBehaviour
     public ActorStateUIControler stateUIController;
     public readonly CharactorState charactorState = new CharactorState();
 
-
+    public string _attackSound = "타격음_주먹2";
 
     #region Actor의 키워드 관련 변수
     private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
@@ -60,6 +60,12 @@ public class Actor : MonoBehaviour
     private int[] debuffList;
     private int[] allStateList;
 
+
+    public string attackSound
+    {
+        get { return _attackSound; }
+        set { _attackSound = value; }
+    }
     public int tension
     {
         get { return _tension; }

@@ -60,10 +60,10 @@ public class FightManager : MonoBehaviour
     {
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
-        int pos = 5;
+        float pos = 4.45f;
         foreach(Actor monster in monsterList)
         {
-            monster.transform.position = new Vector3(pos, 0.07f, 0);
+            monster.transform.position = new Vector3(pos, 0.42f, 0);
             pos -= 2;
         }
     }
@@ -124,6 +124,9 @@ public class FightManager : MonoBehaviour
             player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
             yield return null;
         }
+
+        AudioManager.instance.PlaySound("Character", player.attackSound);
+
         curTime = 0;
         while (curTime < ACTION_TIME)
         {
@@ -132,6 +135,7 @@ public class FightManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(2);
+
         foreach (Actor monster in monsterList)
         {
             monster.Action(player);
@@ -148,6 +152,10 @@ public class FightManager : MonoBehaviour
                 monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
                 yield return null;
             }
+
+            AudioManager.instance.PlaySound("Character", monster.attackSound);
+
+
             curTime = 0;
             while (curTime < ACTION_TIME)
             {
@@ -157,6 +165,7 @@ public class FightManager : MonoBehaviour
             }
             yield return new WaitForSeconds(2);
         }
+
         Flow();
     }
 }

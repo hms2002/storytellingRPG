@@ -32,6 +32,7 @@ public class StateData : ScriptableObject
     public ReductionTiming reductionTiming;
     public StateProperty stateProperty;
     public Sprite stateImage;
+    public string soundName = "";
 
     public int MAX_STACK;
     public int damagePerStack;
