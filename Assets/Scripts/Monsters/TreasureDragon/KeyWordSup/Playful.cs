@@ -17,7 +17,7 @@ public class Playful : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = (TrasureDragon)caster;
-        trasureDragon.dragonsTrasure -= 10;
+        trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, 10);
         trasureDragon.trasureDamage += 10;
         caster.tension += keywordTension;
     }

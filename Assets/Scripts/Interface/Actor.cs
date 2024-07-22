@@ -4,40 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public enum StateType
-{
-    burn, 
-    venom, 
-    reduction, 
-    weaken, 
-    fear,
-    addiction,
-    pike,
-    oneTimeProtect, 
-    oneTimeReinforce,
-    oneTimeReduction,
-    nextTurnDamage
-}
-
-public enum BuffType
-{
-    pike,
-    oneTimeProtect,
-    oneTimeReinforce,
-    nextTurnDamage
-}
-
-public enum DebuffType
-{
-    burn,
-    venom,
-    reduction,
-    weaken,
-    fear,
-    addiction,
-    oneTimeReduction
-}
-
 public enum DamageType
 {
     Burn,
@@ -49,6 +15,9 @@ public class Actor : MonoBehaviour
 {
     [Header("상태창 UI")]
     public ActorStateUIControler stateUIController;
+    public readonly CharactorState charactorState = new CharactorState();
+
+
 
     #region Actor의 키워드 관련 변수
     private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
@@ -82,29 +51,14 @@ public class Actor : MonoBehaviour
     private int _protect = 0;
     private int _heal = 0;
     private int _damage = 0;
-    private int _pike = 0;
-    private int _burnStack = 0;
-    private int _selfBurnStack = 0;
-    private int _venomStack = 0;
-    private int _selfVenomStack = 0;
-    private int _weakenStack = 0;
-    private int _selfWeakenStack = 0;
-    private int _reductionStack = 0;
-    private int _selfReductionStack = 0;
-    private int _fearStack = 0;
-    private int _addictionStack = 0; 
-    private int _nextTurnDamage = 0;
-    private int _oneTimeReinforce = 0;
-    private int _oneTimeProtect = 0;
-    private int _oneTimeReduction = 0;
     private int _repeatStack = 1;
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
     private bool _attackCount = false;
 
-    private int[] _buffList;
-    private int[] _debuffList;
-    private int[] _allStateList;
+    private int[] buffList;
+    private int[] debuffList;
+    private int[] allStateList;
 
     public int tension
     {
@@ -151,133 +105,6 @@ public class Actor : MonoBehaviour
         set { _heal = value; }
     }
 
-    public int pike
-    {
-        get { return buffList[(int)BuffType.pike]; }
-        set 
-        { 
-            _pike = value;
-            buffList[(int)BuffType.pike] = _pike;
-            allStateList[(int)StateType.pike] = _pike;
-        }
-    }
-
-    public int burnStack
-    {
-        get { return debuffList[(int)DebuffType.burn]; }
-        set
-        {
-            _burnStack = value;
-            debuffList[(int)DebuffType.burn] = _burnStack;
-            allStateList[(int)StateType.burn] = _burnStack;
-            if (_burnStack < 0)
-            {
-                _burnStack = 0;
-            }
-            stateUIController.BurnOn(_burnStack);
-        }
-    }
-
-    public int selfBurnStack
-    {
-        get { return _selfBurnStack; }
-        set { _selfBurnStack = value; }
-    }
-
-    public int venomStack
-    {
-        get { return debuffList[(int)DebuffType.venom]; }
-        set
-        {
-            debuffList[(int)DebuffType.venom] = _venomStack;
-            allStateList[(int)StateType.venom] = _venomStack;
-            if (_venomStack < 0)
-            {
-                _venomStack = 0;
-            }
-            _venomStack = value;
-        }
-    }
-
-    public int selfVenomStack
-    {
-        get { return _selfVenomStack; }
-        set { _selfVenomStack = value; }
-    }
-
-    public int weakenStack
-    {
-        get { return debuffList[(int)DebuffType.weaken]; }
-        set
-        {
-
-            debuffList[(int)DebuffType.weaken] = _weakenStack;
-            allStateList[(int)StateType.weaken] = _weakenStack;
-            if (_weakenStack < 0)
-            {
-                _weakenStack = 0;
-            }
-            _weakenStack = value;
-
-            stateUIController.WeakenOn(_weakenStack);
-            Debug.Log("취약 스택" + _weakenStack);
-        }
-    }
-
-    public int selfWeakenStack
-    {
-        get { return _selfWeakenStack; }
-        set { _selfWeakenStack = value; }
-    }
-
-    public int reductionStack
-    {
-        get { return debuffList[(int)DebuffType.reduction]; }
-        set
-        {
-            debuffList[(int)DebuffType.reduction] = _reductionStack;
-            allStateList[(int)StateType.reduction] = _reductionStack;
-            if (_reductionStack < 0)
-            {
-                _reductionStack = 0;
-            }
-            _reductionStack = value;
-
-            stateUIController.ReductionOn(_reductionStack);
-        }
-    }
-
-    public int selfReductionStack
-    {
-        get { return _selfReductionStack; }
-        set { _selfReductionStack = value; }
-    }
-
-    public int fearStack
-    {
-        get { return debuffList[(int)DebuffType.fear]; }
-        set 
-        { 
-            debuffList[(int)DebuffType.fear] = _fearStack;
-            allStateList[(int)StateType.fear] = _fearStack;
-            _fearStack = value;
-
-        }
-    }
-
-    public int addictionStack
-    {
-        get { return debuffList[(int)DebuffType.addiction]; }
-        set
-        {
-            debuffList[(int)DebuffType.addiction] = _addictionStack;
-            allStateList[(int)StateType.addiction] = _addictionStack;
-            _addictionStack = value;
-
-            //stateUIController.AddictionOn(_addictionStack);
-        }
-    }
-
     public int damage
     {
         get { return _damage; }
@@ -296,68 +123,15 @@ public class Actor : MonoBehaviour
         set { _repeatStack = value; }
     }
 
-    public int nextTurnDamage
-    {
-        get { return buffList[(int)BuffType.nextTurnDamage]; }
-        set 
-        { 
-            buffList[(int)BuffType.nextTurnDamage] = _nextTurnDamage;
-            allStateList[(int)StateType.nextTurnDamage] = _nextTurnDamage;
-            _nextTurnDamage = value;
-        }
-    }
-
-    public int oneTimeReinforce
-    {
-        get { return buffList[(int)BuffType.oneTimeReinforce]; }
-        set 
-        { 
-            buffList[(int)BuffType.oneTimeReinforce] = _oneTimeReinforce;
-            allStateList[(int)StateType.oneTimeReinforce] = _oneTimeReinforce;
-            _oneTimeReinforce = value;
-        }
-    }
-
-    public int oneTimeProtect
-    {
-        get { return (int)BuffType.oneTimeProtect; }
-        set 
-        { 
-            buffList[(int)BuffType.oneTimeProtect] = _oneTimeProtect;
-            allStateList[(int)StateType.oneTimeProtect] = _oneTimeProtect;
-            _oneTimeProtect = value;
-
-        }
-    }
-
-    public int oneTimeReduction
-    {
-        get { return debuffList[(int)DebuffType.oneTimeReduction]; }
-        set 
-        { 
-            debuffList[(int)DebuffType.oneTimeReduction] = _oneTimeReduction;
-            allStateList[(int)StateType.oneTimeReduction] = _oneTimeReduction;
-            _oneTimeReduction = value;
-        }
-    }
-
     public int additionalDamage
     {
         get { return _additionalDamage; }
         set { _additionalDamage = value;
-            stateUIController.PowerOn(_additionalDamage);
+            charactorState.AddState(StateDatabase.stateDatabase.reinforce, 
+                _additionalDamage);
         }
     }
 
-    public int additionalStack
-    {
-        get { return _additionalStack; }
-        set
-        {
-            _additionalStack = value;
-            stateUIController.ReductionOn(_additionalStack);
-        }
-    }
 
     public bool attackCount
     {
@@ -365,23 +139,6 @@ public class Actor : MonoBehaviour
         set { _attackCount = value; }
     }
 
-    public int[] buffList
-    {
-        get { return _buffList; }
-        set { _buffList = value; }
-    }
-
-    public int[] debuffList
-    {
-        get { return _debuffList; }
-        set { _debuffList = value; }
-    }
-
-    public int[] allStateList
-    {
-        get { return _allStateList; }
-        set { _allStateList = value; }
-    }
 
     #endregion
 
@@ -392,14 +149,14 @@ public class Actor : MonoBehaviour
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
-        buffList = new int[] { pike, oneTimeProtect, oneTimeReinforce, nextTurnDamage};
+        buffList = new int[(int)BuffType.Size] ;
 
-        debuffList = new int[] { burnStack, venomStack, reductionStack, weakenStack, fearStack, addictionStack, oneTimeReduction};
+        debuffList = new int[(int)DebuffType.Size];
 
-        allStateList = new int[] { burnStack, venomStack, reductionStack, weakenStack, fearStack, addictionStack,
-            pike, oneTimeProtect, oneTimeReinforce, oneTimeReduction, nextTurnDamage};
-        
+        allStateList = new int[(int)StateType.Size]; 
         garbageField.InitDeck();
+
+        charactorState.Init(stateUIController);
     }
 
     private void StackInit()
@@ -409,9 +166,8 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
-        additionalDamage = nextTurnDamage;
-        nextTurnDamage = 0;
-        additionalStack = 0;
+        additionalDamage = charactorState.GetStateStack(StateType.nextTurnDamage);
+        charactorState.ResetState(StateType.nextTurnDamage);
     }
 
     public virtual void BeforeAction()
@@ -433,9 +189,10 @@ public class Actor : MonoBehaviour
     public void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
-        if (burnStack > 0)
+        charactorState.StartTurnDamage(this);
+        /*if (burnStack > 0)
         {
-            Damaged(this, burnStack * 2, DamageType.Burn);
+            Damaged(this, burnStack * 2);
             burnStack -= 1;
         }
         if (pike > 0)
@@ -444,9 +201,15 @@ public class Actor : MonoBehaviour
         }
         if (venomStack > 0)
         {
-            Damaged(this, venomStack * 2, DamageType.Burn);
+            Damaged(this, venomStack * 2);
             venomStack = Mathf.FloorToInt(venomStack);
         }
+        int addictionStack = (int)charactorState.GetState(StateType.addiction);
+        if (addictionStack > 0)
+        {
+            Damaged(this, addictionStack * 2, DamageType.Burn);
+        }
+        */
         #endregion
     }
 
@@ -548,111 +311,97 @@ public class Actor : MonoBehaviour
         {
             TensionManager tensionManager = TensionManager.tensionManagerUI;
 
-            target.Damaged(this, damage, DamageType.Beat);
+            target.Damaged(this, damage);
 
             tensionManager.tension += tension;
 
-            #region 디버깅용 임시 로그
-            Debug.Log(target.gameObject.name + " 체력 : " + target.hp);
-            Debug.Log("입히는 데미지 : " + damage);
-            Debug.Log("상태 방어력 : " + protect);
-            Debug.Log(target.gameObject.name + "화염 스택 : " + target.burnStack);
-            #endregion
-
             if (target.attackCount == true)
             {
-                Damaged(target, target.pike, DamageType.Beat);
+                Damaged(target, target.charactorState.GetStateStack(StateType.pike));
             }
 
             target.attackCount = false;
         }
     }
 
-    public virtual void Damaged(Actor attacker, int _damage, DamageType _type)
+    public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
 
         int totalDamage = _damage;
 
-        switch(_type)
+        if(attacker == this)
         {
-            case DamageType.Burn:
-
-                Debug.Log(gameObject.name + "화염 피해" + _damage);
-                break;
-
-            case DamageType.Venom:
-
-                Debug.Log(gameObject.name + "맹독 피해" + _damage);
-                break;
-
-            case DamageType.Beat:
-
-                Debug.Log(gameObject.name + "타격 피해" + _damage);
-
-                totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack + (addictionStack * 5) - reductionStack;
-                
-                if (weakenStack > 0) weakenStack -= 1;
-
-                tension += (addictionStack * 5);
-
-                attacker.oneTimeReinforce = 0;
-                attacker.oneTimeReduction = 0;
-
-                if (fearStack <= 10)
+            if (protect > 0)
+            {
+                if (protect < totalDamage)
                 {
-                    totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                    totalDamage -= protect;
+                    protect = 0;
                 }
                 else
                 {
+                    protect -= totalDamage;
                     totalDamage = 0;
                 }
+            }
 
+            hp -= totalDamage;
+            return;
+        }
+        else
+        {
+            totalDamage += attacker.additionalDamage
+                + attacker.charactorState.GetStateStack(StateType.oneTimeReinforce)
+                + charactorState.GetStateStack(StateType.weaken)
+                - charactorState.GetStateStack(StateType.reduction);
+        
+            int fearStack = attacker.charactorState.GetStateStack(StateType.fear);
+            if (fearStack <= 10)
+            {
+                totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+            }
+            else
+            {
+                totalDamage = 0;
+            }
 
-
-                if (fearStack <= 10)
+            int oneTimeProtect = attacker.charactorState.GetStateStack(StateType.oneTimeProtect);
+            if (oneTimeProtect > 0)
+            {
+                if (oneTimeProtect < totalDamage)
                 {
-                    totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                    totalDamage -= oneTimeProtect;
+                    oneTimeProtect = 0;
                 }
                 else
                 {
+                    oneTimeProtect -= totalDamage;
+                    totalDamage = 0;
+                    oneTimeProtect = 0;
+                }
+            }
+
+            if (protect > 0)
+            {
+                if (protect < totalDamage)
+                {
+                    totalDamage -= protect;
+                    protect = 0;
+                }
+                else
+                {
+                    protect -= totalDamage;
                     totalDamage = 0;
                 }
+            }
 
-                break;
+            hp -= totalDamage;
+            attacker.charactorState.ReductionOnAttack();
+            charactorState.ReductionOnDamaged();
         }
-
-        if (oneTimeProtect > 0)
-        {
-            if (oneTimeProtect < totalDamage)
-            {
-                totalDamage -= oneTimeProtect;
-                oneTimeProtect = 0;
-            }
-            else
-            {
-                oneTimeProtect -= totalDamage;
-                totalDamage = 0;
-                oneTimeProtect = 0;
-            }
-        }
-
-        if (protect > 0)
-        {
-            if (protect < totalDamage)
-            {
-                totalDamage -= protect;
-                protect = 0;
-            }
-            else
-            {
-                protect -= totalDamage;
-                totalDamage = 0;
-            }
-        }
-
-        hp -= totalDamage;
     }
+
 
 
     public void SelectKeyword()

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
+  m_Name: Reinforce
+  m_EditorClassIdentifier: 
+  type: 7
+  reductionType: 0
+  reductionTiming: 2
+  stateProperty: 0
+  stateImage: {fileID: 0}
+  MAX_STACK: 0
+  damagePerStack: 0
+  tentionPerStack: 0
+  stateExplanation: "\uAC15\uD654\n\uC2A4\uD0DD \uB9CC\uD07C \uD53C\uD574\uB7C9 \uC99D\uAC00\n\uACF5\uACA9
+    \uC2DC \uC2A4\uD0DD 1 \uAC10\uC18C"
+  effectByTurn: 0

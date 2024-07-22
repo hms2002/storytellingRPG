@@ -16,7 +16,7 @@ public class Ori_Ore : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.fearStack += debuffStack;
+        target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
         caster.tension += keywordTension;
     }
 

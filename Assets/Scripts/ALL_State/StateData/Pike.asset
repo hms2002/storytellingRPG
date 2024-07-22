@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
+  m_Name: Pike
+  m_EditorClassIdentifier: 
+  type: 14
+  reductionType: 2
+  reductionTiming: 3
+  stateProperty: 0
+  stateImage: {fileID: 0}
+  MAX_STACK: 0
+  damagePerStack: 1
+  tentionPerStack: 0
+  stateExplanation: "\uAC00\uC2DC\n\uD53C\uD574\uB97C \uC785\uC73C\uBA74 \uD53C\uD574\uB97C
+    \uC785\uD78C \uB300\uC0C1\uC5D0\uAC8C\n\uC2A4\uD0DD \uB9CC\uD07C\uC758 \uD53C\uD574\uB97C
+    \uC900\uB2E4.\n\uD134 \uC885\uB8CC \uC2DC \uCD08\uAE30\uD654"
+  effectByTurn: 0

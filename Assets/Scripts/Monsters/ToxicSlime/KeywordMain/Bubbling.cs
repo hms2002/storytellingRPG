@@ -25,11 +25,9 @@ public class Bubbling : KeywordMain
 
         toxicSlime.damage = keywordDamage;
         
-        if (target.addictionStack <= 8)
-        {
-            target.addictionStack += amountOfAddictionStack;
-        }
-
+        target.charactorState.AddState
+            (StateDatabase.stateDatabase.addiction, amountOfAddictionStack);
+        
         target.tension += keywordTension;
     }
 

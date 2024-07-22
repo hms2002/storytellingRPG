@@ -20,7 +20,7 @@ public class Fantastic : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
-        trasureDragon.dragonsTrasure -= damageFigures;
+        trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, damageFigures);
         trasureDragon.trasureDamage += damageFigures;
         caster.tension += keywordTension;
     }

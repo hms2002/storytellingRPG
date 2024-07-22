@@ -6,13 +6,13 @@ public class Restored : KeywordSup
 {
     GlassSpider glassSpider;
 
-    [Header("¼öº¹µÈ Å°¿öµå À¯¸® ÆÄÆí Á¦°Å·®")]
+    [Header("ìˆ˜ë³µëœ í‚¤ì›Œë“œ ìœ ë¦¬ íŒŒí¸ ì œê±°ëŸ‰")]
     [SerializeField] private int removeAmount = 1;
 
 
     private void Awake()
     {
-        keywordName = "¼öº¹µÈ";
+        keywordName = "ìˆ˜ë³µëœ";
         SetKeywordColor(BLUE);
         keywordTension = -20;
     }
@@ -20,7 +20,7 @@ public class Restored : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        glassSpider.glassFragmentStack -= removeAmount;
+        glassSpider.charactorState.ReductionByValue(StateType.glassPragment, removeAmount);
         caster.tension += keywordTension;
     }
 

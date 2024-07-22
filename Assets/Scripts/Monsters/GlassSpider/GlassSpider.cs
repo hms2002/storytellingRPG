@@ -9,48 +9,30 @@ public class GlassSpider : Actor
         _MAX_HP = 50;
     }
     
-    private int _glassFragmentStack = 0;
-
-    public int glassFragmentStack
-    {
-        get { return _glassFragmentStack; }
-        set
-        {
-            _glassFragmentStack = value;
-            stateUIController.GlassFragmentOn(_glassFragmentStack);
-        }
-    }
 
     private void Start()
     {
         hp = MAX_HP;
     }
 
-    public override void Damaged(Actor attacker, int _damage, DamageType _type)
+    public override void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0)
             return;
         int totalDamage = _damage;
-        switch (_type)
-        {
-            case DamageType.Burn:
-                Debug.Log(gameObject.name + "화염 피해" + _damage);
-                break;
 
-            case DamageType.Beat:
-                Debug.Log(gameObject.name + "타격 피해" + _damage);
-                if (totalDamage > 0)
-                {
-                    glassFragmentStack += 1;
-                    attackCount = true;
-                }
-                if (weakenStack > 0)
-                {
-                    totalDamage += weakenStack;
-                    weakenStack -= 1;
-                }
-                break;
+        if (totalDamage > 0 && attacker != this)
+        {
+            charactorState.AddState(StateDatabase.stateDatabase.glassPragment, 1);
+            attackCount = true;
         }
+        int weakenStack = charactorState.GetStateStack(StateType.weaken);
+        if (weakenStack > 0)
+        {
+            totalDamage += weakenStack;
+            weakenStack -= 1;
+        }
+
         if (protect > 0)
         {
             if (protect < totalDamage)
@@ -65,7 +47,8 @@ public class GlassSpider : Actor
             }
         }
 
-        pike = glassFragmentStack;
+        charactorState.AddState(StateDatabase.stateDatabase.pike
+            , charactorState.GetStateStack(StateType.glassPragment));
         hp -= totalDamage;
     }
 }

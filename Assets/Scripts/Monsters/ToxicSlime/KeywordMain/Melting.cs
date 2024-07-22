@@ -19,11 +19,12 @@ public class Melting : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += target.addictionStack * damagePerAddictionStack;
+        int addictionStack = target.charactorState.GetStateStack(StateType.addiction);
+        caster.damage += addictionStack * damagePerAddictionStack;
 
-        target.tension += target.addictionStack * keywordTension;
+        target.tension += addictionStack * keywordTension;
 
-        target.addictionStack = 0;
+        target.charactorState.ResetState(StateType.addiction);
     }
 
     public override void Check(KeywordSup _keywordSup)

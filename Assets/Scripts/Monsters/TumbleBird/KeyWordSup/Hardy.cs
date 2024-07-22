@@ -18,7 +18,7 @@ public class Hardy : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
-        caster.oneTimeProtect += tumbleBird.BuffCount();
+        caster.charactorState.AddState(StateDatabase.stateDatabase.oneTimeProtect, tumbleBird.charactorState.BuffCount());
         caster.tension += keywordTension;
     }
 

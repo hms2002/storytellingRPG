@@ -13,15 +13,6 @@ public class TumbleBird : Actor
     private bool _isContinuity = false;
     private int[] _tumbleBirdsBuffList;
 
-    public int glassFragmentStack
-    {
-        get { return _glassFragmentStack; }
-        set
-        {
-            _glassFragmentStack = value;
-            stateUIController.GlassFragmentOn(_glassFragmentStack);
-        }
-    }
 
     public int[] tumbleBirdsBuffList
     {
@@ -35,20 +26,25 @@ public class TumbleBird : Actor
         set { _isContinuity = value; }
     }
 
+    public enum TumbleBirdBuffList
+    {
+        protect = StateType.protect,
+        oneTimeReinforce = StateType.oneTimeReinforce,
+        glassPragment = StateType.glassPragment,
+        reduction = StateType.reduction,
+        weaken = StateType.weaken,
+        oneTimeProtect = StateType.oneTimeProtect,
+        size
+    }
     private void Awake()
     {
         hp = MAX_HP;
-        tumbleBirdsBuffList = new int[] {protect, oneTimeReinforce, glassFragmentStack, reductionStack, weakenStack, oneTimeProtect};
-        allStateList = new int[] {protect, oneTimeProtect, additionalStack, additionalDamage, oneTimeReinforce, pike,
-                                  burnStack, venomStack, reductionStack, weakenStack,glassFragmentStack};
     }
 
     public override void Action(Actor target)
     {
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
-
-        additionalDamage += nextTurnDamage;
 
         keywordSup.Execute(this, target);
         if(isContinuity)
@@ -58,18 +54,8 @@ public class TumbleBird : Actor
         keywordMain.Execute(this, target);
         Execute(target);
         isContinuity = false;
+
+        additionalDamage += charactorState.GetStateStack(StateType.nextTurnDamage);
     }
 
-    public int BuffCount()
-    {
-        int buffCount = 0;
-        for(int i = 0; i < allStateList.Length; i++)
-        {
-            if(allStateList[i] > 0)
-            {
-                buffCount++;
-            }
-        }
-        return buffCount;
-    }
 }

@@ -14,7 +14,7 @@ public class Evil : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.weakenStack += debuffStack;
+        target.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain)

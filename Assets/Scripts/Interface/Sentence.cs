@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sentence : MonoBehaviour
 {
+    /*
     #region Sentence 클래스의 능력치 관련 변수들
     private int _tension = 0;
     private int _burnStack = 0;
@@ -149,4 +150,6 @@ public class Sentence : MonoBehaviour
             target.attackCount = false;
         }
     }
+*/
 }
+

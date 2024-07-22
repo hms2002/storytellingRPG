@@ -14,14 +14,7 @@ public class Purified : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        for (int i = 0; i < caster.debuffList.Length; i++)
-        {
-            if(caster.debuffList[i] > 0)
-            {
-                caster.debuffList[i] = 0;
-                caster.damage += keywordDamage;
-            }
-        }
+        caster.damage += keywordDamage * caster.charactorState.DeleteAllDebuff();
         caster.tension += keywordTension;
     }
 

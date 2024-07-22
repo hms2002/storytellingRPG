@@ -22,7 +22,7 @@ public class ScatteringTreasures : KeywordMain
     {
         trasureDragon = caster as TrasureDragon;
         caster.damage += keywordDamage;
-        trasureDragon.dragonsTrasure -= keywordDamage;
+        trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, keywordDamage);
         trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keywordTension;
     }

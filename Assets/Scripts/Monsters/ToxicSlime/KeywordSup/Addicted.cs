@@ -18,7 +18,7 @@ public class Addicted : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (caster.addictionStack == 0) return;
+        if (caster.charactorState.GetStateStack(StateType.addiction) == 0) return;
 
 
         target.tension += keywordTension;

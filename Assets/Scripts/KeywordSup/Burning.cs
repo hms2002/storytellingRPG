@@ -14,7 +14,7 @@ public class Burning : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.burnStack += debuffStack;
+        target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain)

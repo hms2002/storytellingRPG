@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class TrasureDragon : Actor
 {
-    private int _dragonsTrasure = 200;
     private int _trasureDamage = 0;
-    private int _motherDragonsCall = 5;
 
-    public int dragonsTrasure
-    {
-        get { return _dragonsTrasure; }
-        set { _dragonsTrasure = value;
-            stateUIController.TreasureOfDragonOn(_dragonsTrasure);
-        }
-    }
 
     public int trasureDamage
     {
@@ -22,12 +13,9 @@ public class TrasureDragon : Actor
         set { _trasureDamage = value; }
     }
 
-    public int motherDragonsCall
+    private void Start()
     {
-        get { return _motherDragonsCall; }
-        set { _motherDragonsCall = value;
-            stateUIController.CallingOfMommyOn(_motherDragonsCall);
-        }
+        charactorState.AddState(StateDatabase.stateDatabase.treasureOfDragon, 200);
     }
 
     public override void Action(Actor target)
@@ -35,38 +23,28 @@ public class TrasureDragon : Actor
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
-        motherDragonsCall -= 1;
+        charactorState.ReductionOnMyTurn();
 
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
-        additionalDamage += nextTurnDamage;
+        additionalDamage += charactorState.GetStateStack(StateType.nextTurnDamage);
     }
 
-    public override void Damaged(Actor attacker, int _damage, DamageType _type)
+    public override void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0)
             return;
         int totalDamage = _damage;
-        switch (_type)
-        {
-            case DamageType.Burn:
-                Debug.Log(gameObject.name + "?붿뿼 ?쇳빐" + _damage);
-                break;
 
-            case DamageType.Beat:
-                Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
-                if (totalDamage > 0)
-                Debug.Log(gameObject.name + "?寃??쇳빐" + _damage);
+        totalDamage += attacker.additionalDamage
+                + attacker.charactorState.GetStateStack(StateType.oneTimeReinforce)
+                + charactorState.GetStateStack(StateType.weaken)
+                - charactorState.GetStateStack(StateType.reduction);
 
-                break;
-        }
 
-        totalDamage += attacker.additionalDamage + attacker.oneTimeReinforce + weakenStack - reductionStack;
-        if (weakenStack > 0) weakenStack -= 1;
-        attacker.oneTimeReinforce = 0;
-
-        if (dragonsTrasure > 0)
+        int dragonTreasureStack = charactorState.GetStateStack(StateType.treasureOfDragon);
+        if (dragonTreasureStack > 0)
         {
             if (protect > 0)
             {
@@ -82,19 +60,21 @@ public class TrasureDragon : Actor
                 }
             }
 
-            if (dragonsTrasure < totalDamage)
+            if (dragonTreasureStack < totalDamage)
             {
-                totalDamage -= dragonsTrasure;
+                totalDamage -= dragonTreasureStack;
                 trasureDamage = totalDamage;
-                dragonsTrasure = 0;
+                charactorState.ResetState(StateType.treasureOfDragon);
             }
             else
             {
-                dragonsTrasure -= totalDamage;
+                charactorState.ReductionByValue(StateType.treasureOfDragon, totalDamage);
                 trasureDamage = totalDamage;
                 totalDamage = 0;
             }
         }
         hp -= totalDamage;
+        attacker.charactorState.ReductionOnAttack();
+        charactorState.ReductionOnDamaged();
     }
 }

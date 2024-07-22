@@ -6,18 +6,17 @@ public class Ori_Smash : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "점프스케어";
+        keywordName = "분쇄";
 
         SetKeywordColor(RED);
-        keywordTension = 3;
-        keywordDamage = 7;
+        keywordTension = -10;
+        keywordDamage = 6;
     }
     
     public override void Execute(Actor caster, Actor target)
     {
-        target.damage += keywordDamage * target.fearStack;
-        caster.tension += keywordTension * target.fearStack;
-        target.fearStack = 0;
+        target.damage += (int)Random.Range(keywordDamage, 9);
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

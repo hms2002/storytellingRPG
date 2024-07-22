@@ -14,7 +14,7 @@ public class Joyful : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.nextTurnDamage += keywordDamage;
+        caster.charactorState.AddState(StateDatabase.stateDatabase.nextTurnDamage, keywordDamage);
         caster.tension += keywordTension;
     }
 

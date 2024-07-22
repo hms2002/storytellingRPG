@@ -23,7 +23,7 @@ public class Sweep : KeywordMain
     {
         trasureDragon = caster as TrasureDragon;
         trasureDragon.damage += keywordDamage;
-        trasureDragon.dragonsTrasure -= 10;
+        trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, 10);
         trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keywordTension;
     }

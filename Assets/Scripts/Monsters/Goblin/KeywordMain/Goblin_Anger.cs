@@ -17,7 +17,8 @@ public class Goblin_Anger : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.oneTimeReinforce += amountOfoneTimeReinforce;
+        caster.charactorState.AddState(StateDatabase.stateDatabase.
+            oneTimeReinforce, amountOfoneTimeReinforce);
     }
 
     public override void Check(KeywordSup _keywordSup)

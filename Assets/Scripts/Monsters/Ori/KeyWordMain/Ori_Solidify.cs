@@ -18,7 +18,7 @@ public class Ori_Solidify : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        target.fearStack += debuffStack;
+        target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
         caster.tension += keywordTension;
     }
 

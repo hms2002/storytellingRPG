@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class DaggerOfTheWicked : KeywordMain
 {
-    [Header("¾ÇÀÎÀÇ ´Ü°Ë Ãß°¡ µ¥¹ÌÁö")]
+    [Header("ì•…ì¸ì˜ ë‹¨ê²€ ì¶”ê°€ ë°ë¯¸ì§€")]
     [SerializeField] private int extraDamage = 3;
 
 
     private void Awake()
     {
-        keywordName = "¾ÇÀÎÀÇ ´Ü°Ë";
+        keywordName = "ì•…ì¸ì˜ ë‹¨ê²€";
         keywordDamage = 2;
         keywordProtect = 0;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (target.weakenStack > 0)     // Å¸°ÙÀÌ Ãë¾à »óÅÂ¶ó¸é
+        if (target.charactorState.GetStateStack(StateType.weaken) > 0)     // íƒ€ê²Ÿì´ ì·¨ì•½ ìƒíƒœë¼ë©´
         {
-            caster.damage += keywordDamage + extraDamage;   // Å°¿öµå µ¥¹ÌÁö¿¡ Ãß°¡µ¥¹ÌÁö Àû¿ë
+            caster.damage += keywordDamage + extraDamage;   // í‚¤ì›Œë“œ ë°ë¯¸ì§€ì— ì¶”ê°€ë°ë¯¸ì§€ ì ìš©
         }
-        else                            // Å¸°ÙÀÌ Ãë¾à »óÅÂ°¡ ¾Æ´Ï¶ó¸é
+        else                            // íƒ€ê²Ÿì´ ì·¨ì•½ ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´
         {
-            caster.damage += keywordDamage;                 // Å°¿öµå µ¥¹ÌÁö¸¸ Àû¿ë
+            caster.damage += keywordDamage;                 // í‚¤ì›Œë“œ ë°ë¯¸ì§€ë§Œ ì ìš©
         }
     }
 

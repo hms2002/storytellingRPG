@@ -9,7 +9,7 @@ public class Fragmented : KeywordSup
 
     private void Awake()
     {
-        keywordName = "ÆÄÆíÈ­µÈ";
+        keywordName = "íŒŒí¸í™”ëœ";
         SetKeywordColor(RED);
         keywordTension = 5;
     }
@@ -17,7 +17,7 @@ public class Fragmented : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        caster.damage += glassSpider.glassFragmentStack;
+        caster.damage += glassSpider.charactorState.GetStateStack(StateType.glassPragment);
         caster.tension += keywordTension;
     }
 

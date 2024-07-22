@@ -20,7 +20,8 @@ public class Cracked : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        glassSpider.glassFragmentStack += stack;
+        glassSpider.charactorState.AddState
+            (StateDatabase.stateDatabase.glassPragment, stack);
         caster.tension += keywordTension;
     }
 

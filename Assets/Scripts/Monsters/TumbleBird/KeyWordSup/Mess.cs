@@ -17,7 +17,7 @@ public class Mess : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
-        caster.protect += tumbleBird.BuffCount();
+        caster.protect += tumbleBird.charactorState.BuffCount();
         caster.tension += keywordTension;
     }
 

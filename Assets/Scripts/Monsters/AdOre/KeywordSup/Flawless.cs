@@ -17,7 +17,7 @@ public class Flawless : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += amountOfDamage;
+        //caster.damage += amountOfDamage;
 
         target.tension += keywordTension;
     }

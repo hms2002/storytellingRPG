@@ -46,49 +46,44 @@ public class PotionGlub : Actor
         animator = GetComponent<Animator>();
     }
 
-    public override void Damaged(Actor attacker, int _damage, DamageType _type)
+    public override void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0)
             return;
         int totalDamage = _damage;
-        switch (_type)
-        {
-            case DamageType.Burn:
-                Debug.Log(gameObject.name + "화염 피해" + _damage);
-                break;
 
-            case DamageType.Beat:
-                Debug.Log(gameObject.name + "타격 피해" + _damage);
-                PotionHitted(attacker);
-                if (totalDamage > 0)
-                {
-                    attackCount = true;
-                }
-                if (additionalDamage > 0)
-                {
-                    totalDamage += additionalDamage;
-                    additionalDamage = 0;
-                }
-                if (weakenStack > 0)
-                {
-                    totalDamage += weakenStack;
-                    weakenStack -= 1;
-                }
-                if (reductionStack > 0)
-                {
-                    if (totalDamage < reductionStack)
-                    {
-                        totalDamage = 0;
-                        reductionStack -= 1;
-                    }
-                    else
-                    {
-                        totalDamage -= reductionStack;
-                        reductionStack -= 1;
-                    }
-                }
-                break;
+
+        if(attacker != this)
+            PotionHitted(attacker);
+
+        if (totalDamage > 0)
+        {
+            attackCount = true;
         }
+        if (additionalDamage > 0)
+        {
+            totalDamage += additionalDamage;
+            additionalDamage = 0;
+        }
+        if (charactorState.GetStateStack(StateType.weaken) > 0)
+        {
+            totalDamage += charactorState.GetStateStack(StateType.weaken);
+            charactorState.ReductionByValue(StateType.weaken, 1);
+        }
+        if (attacker.charactorState.GetStateStack(StateType.reduction) > 0)
+        {
+            if (totalDamage < attacker.charactorState.GetStateStack(StateType.reduction))
+            {
+                totalDamage = 0;
+                attacker.charactorState.ReductionByValue(StateType.reduction, 1);
+            }
+            else
+            {
+                totalDamage -= attacker.charactorState.GetStateStack(StateType.reduction);
+                attacker.charactorState.ReductionByValue(StateType.reduction, 1);
+            }
+        }
+
         if (protect > 0)
         {
             if (protect < totalDamage)
@@ -148,21 +143,17 @@ public class PotionGlub : Actor
     {
         if (potionColor == PotionColor.Purple)
         {
-            attacker.venomStack += 3;
+            attacker.charactorState.AddState(StateDatabase.stateDatabase.
+            venom, 3);
         }
         if (potionColor == PotionColor.Black)
         {
-            for (int i = 0; i < allStateList.Length; i++)
-            {
-                if (attacker.allStateList[i] == 0)
-                {
-                    attacker.allStateList[i] += 5;
-                }
-            }
+            charactorState.AddAllActiveState(5);
         }
         if (potionColor == PotionColor.Green)
         {
-            attacker.weakenStack += 3;
+            attacker.charactorState.AddState(StateDatabase.stateDatabase.
+                weaken, 3);
         }
         if (potionColor == PotionColor.Red)
         {

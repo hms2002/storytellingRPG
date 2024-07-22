@@ -6,14 +6,13 @@ public class SpearAtTheStake : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "È­ÇüÀÇ Ã¢ ³¯";
+        keywordName = "í™”í˜•ì˜ ì°½ ë‚ ";
         SetKeywordColor(RED);
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.Damaged(caster, target.burnStack , DamageType.Beat);
-        caster.damage += target.burnStack;
+        caster.damage += target.charactorState.GetStateStack(StateType.burn);
     }
 
     public override void Check(KeywordSup _keywordSup)

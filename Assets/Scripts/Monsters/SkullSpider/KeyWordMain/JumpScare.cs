@@ -15,9 +15,10 @@ public class JumpScare : KeywordMain
     
     public override void Execute(Actor caster, Actor target)
     {
-        target.damage += keywordDamage * target.fearStack;
-        caster.tension += keywordTension * target.fearStack;
-        target.fearStack = 0;
+        int targetFearStack = target.charactorState.GetStateStack(StateType.fear);
+        target.damage += keywordDamage * targetFearStack;
+        caster.tension += keywordTension * targetFearStack;
+        target.charactorState.ResetState(StateType.fear);
     }
 
     public override void Check(KeywordSup _keywordSup)

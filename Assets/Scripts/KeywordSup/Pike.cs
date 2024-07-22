@@ -6,14 +6,15 @@ public class Pike : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "°¡½Ã µ¸Àº";
+        keywordName = "ê°€ì‹œ ë‹ì€";
         SetKeywordColor(BLUE);
         keywordDamage = 3;
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.pike += keywordDamage;
+        caster.charactorState.AddState(StateDatabase.stateDatabase.
+            pike, keywordDamage);
     }
 
     public override void Check(KeywordMain _keywordMain)

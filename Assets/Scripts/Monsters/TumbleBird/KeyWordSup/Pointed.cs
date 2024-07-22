@@ -17,7 +17,8 @@ public class Pointed : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;
-        caster.oneTimeReinforce += tumbleBird.BuffCount();
+        caster.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReinforce
+            , tumbleBird.charactorState.BuffCount());
         caster.tension += keywordTension;
     }
 

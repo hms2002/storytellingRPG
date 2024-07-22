@@ -43,7 +43,7 @@ public class FightManager : MonoBehaviour
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
         if (_keywordSup == null) return;
-        if (!_keywordSup.ActivationConditionCheck())
+        //if (!_keywordSup.ActivationConditionCheck())
 
         whoPlaying.GetKeywordSup(_keywordSup);
     }
@@ -58,7 +58,7 @@ public class FightManager : MonoBehaviour
 
     void FightStart()
     {
-        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet3();
+        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
         int pos = 5;
         foreach(Actor monster in monsterList)

@@ -6,7 +6,7 @@ public class DigestiveFluid : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "¼ÒÈ­¾×";
+        keywordName = "ì†Œí™”ì•¡";
         SetKeywordColor(RED);
         keywordDamage = 2;
         debuffType = "Reduction";
@@ -16,7 +16,8 @@ public class DigestiveFluid : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        target.reductionStack += debuffStack;
+        target.charactorState.AddState(StateDatabase.stateDatabase.
+            reduction, debuffStack);
         caster.tension += keywordTension;
     }
     public override void Check(KeywordSup _keywordSup)
