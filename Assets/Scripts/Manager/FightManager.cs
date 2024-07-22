@@ -98,11 +98,67 @@ public class FightManager : MonoBehaviour
         else
             preparedActorCount = 0;
 
+        StartCoroutine(ActorAction());
+        //player.Action(MonsterTargetter.monsterTargetter.target);
+
+        //foreach (Actor monster in monsterList)
+        //    monster.Action(player);
+
+        //Flow();
+    }
+
+    IEnumerator ActorAction()
+    {
         player.Action(MonsterTargetter.monsterTargetter.target);
+        fightManagerUI.ChangeActionText("플레이어 ");
 
+        int dir = 3;
+        Vector3 originPos = player.transform.position;
+        Vector3 objectPos = player.transform.position + new Vector3(dir, 0, 0);
+        const float ACTION_TIME = 0.2f;
+        float curTime = 0;
+
+        while (curTime < ACTION_TIME)
+        {
+            curTime += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+            yield return null;
+        }
+        curTime = 0;
+        while (curTime < ACTION_TIME)
+        {
+            curTime += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
         foreach (Actor monster in monsterList)
+        {
             monster.Action(player);
+            fightManagerUI.ChangeActionText("몬스터 : " + monsterList[preparedActorCount].gameObject.name);
+            dir = -3;
+            originPos = monster.transform.position;
+            objectPos = monster.transform.position + new Vector3(dir, 0, 0);
+            curTime = 0;
 
+            while (curTime < ACTION_TIME)
+            {
+                curTime += Time.deltaTime;
+                monster.transform.position = new Vector3(10, 10, 0);
+                monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+                yield return null;
+            }
+            curTime = 0;
+            while (curTime < ACTION_TIME)
+            {
+                curTime += Time.deltaTime;
+                monster.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+                yield return null;
+            }
+            yield return new WaitForSeconds(2);
+        }
         Flow();
     }
 }
+
+

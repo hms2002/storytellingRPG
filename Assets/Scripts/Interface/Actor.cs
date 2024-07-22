@@ -303,6 +303,7 @@ public class Actor : MonoBehaviour
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
+
     }
 
     public void Execute(Actor target)

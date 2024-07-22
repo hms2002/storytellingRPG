@@ -22,6 +22,10 @@ public class FightManagerUI : MonoBehaviour
 
     public void ChangeTurnText(string name)
     {
-        turnText.text = name + "ÀÇ Å°¿öµå";
+        turnText.text = name + "ì˜ í‚¤ì›Œë“œ";
+    }
+    public void ChangeActionText(string name)
+    {
+        turnText.text = name + "ì˜ í–‰ë™";
     }
 }

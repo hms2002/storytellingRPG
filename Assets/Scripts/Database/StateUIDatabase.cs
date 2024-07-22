@@ -9,6 +9,7 @@ public class StateUIDatabase : MonoBehaviour
     public static StateUIDatabase stateUIDB;
 
     public GameObject stateUIPrefab;
+    public GameObject stateInfoUI;
     private void Awake()
     {
         if (stateUIDB != null)
