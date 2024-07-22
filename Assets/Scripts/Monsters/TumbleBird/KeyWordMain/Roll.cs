@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Roll : KeywordMain
 {
@@ -15,7 +16,7 @@ public class Roll : KeywordMain
     {
         keywordName = "구르기";
         SetKeywordColor(RED);
-        keywordDamage = Random.Range(minDamage, maxDamage);
+        keywordDamage = UnityEngine.Random.Range(minDamage, maxDamage);
         debuffStack = 5;
         keywordTension = -6;
     }
@@ -24,7 +25,11 @@ public class Roll : KeywordMain
     {
         tumbleBird = caster as TumbleBird;
         caster.damage += keywordDamage;
-        tumbleBird.tumbleBirdsBuffList[Random.Range(0, tumbleBird.tumbleBirdsBuffList.Length)] += 5;
+        
+        int randomIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)).Length);
+        TumbleBird.TumbleBirdBuffList buffEnum = (TumbleBird.TumbleBirdBuffList)Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)).GetValue(randomIndex);
+        caster.charactorState.AddState((StateType)buffEnum, 5);
+
         caster.tension += keywordTension;
     }
 
