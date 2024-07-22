@@ -14,43 +14,45 @@ namespace Map
         public RectTransform mapParent; //맵 판
         [Header("길 라인 보관 위치")]
         public RectTransform roadParent;
-        [Header("시작 위치")]
-        public RectTransform startTransform;
+
+        [Header("시작 노드과 끝 노드")]
+        public GameObject startNode;
+        public GameObject endNode;
 
         [Header("배치 거리 조절(높이)")]
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_height_MIN = 10.0f; //높이 배치 최소 거리
+        public float distanceBetweenNodes_height_MIN = 150.0f; //높이 배치 최소 거리
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_height_MAX = 20.0f; //높이 배치 최대 거리
+        public float distanceBetweenNodes_height_MAX = 300.0f; //높이 배치 최대 거리
         [Header("배치 거리 조절(세로)")]
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_width_MIN = 5.0f; //좌우 배치 최소 거리
+        public float distanceBetweenNodes_width_MIN = 170.0f; //좌우 배치 최소 거리
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_width_MAX = 10.0f; //좌우 배치 최대 거리
+        public float distanceBetweenNodes_width_MAX = 220.0f; //좌우 배치 최대 거리
 
         [Header("가로 세로, 노드 최대 개수 설정")]
         public int maxHeightNodesCount = 3; //높이에서 노드 최대 개수
-        public int maxWidthtNodesCount = 3; //가로에서 노드 최대 개수
+        public int maxWidthtNodesCount = 5; //가로에서 노드 최대 개수
 
         [Header("라인(길) 프리팹")]
         public Image roadPrefab;
-        int roadCount = 0;
+
+        [Header("노드 간 (라인 길) 간극 설정")] 
+        public float nodeGap = 40f; // 노드와 노드 사이 간극
 
         //노드 저장
-        private List<MapNode> nodes = new List<MapNode>();
+        public List<MapNode> nodes = new List<MapNode>();
 
         //노드 한 라인마다 끝 위치 확인
-        private List<int> nodesEndLineCheck = new List<int>();
+        public List<int> nodesEndLineCheck = new List<int>();
 
         //노드 길 저장
-        private List<Image> roadeLine = new List<Image>();
+        public List<GameObject> roadeLine = new List<GameObject>();
 
-
-        public void Start()
+        virtual public void SpawnMap()
         {
-            //if 만약 만들어진 맵이없다면 혹은 클리어했다면
             GeneratorMap();
-            //CreateNodeLine();
+            StartEndConnection();
         }
 
         public void GeneratorMap()
@@ -67,7 +69,7 @@ namespace Map
 
             for (widNum = 0; widNum < maxWidthtNodesCount; widNum++)
             {
-                for (heiNum = 0; heiNum < Random.Range(0, maxHeightNodesCount); heiNum++)
+                for (heiNum = 0; heiNum < Random.Range(1, maxHeightNodesCount); heiNum++)
                 {
                     CreateNode(false, widNum, heiNum);
                     makeCount++;
@@ -75,7 +77,6 @@ namespace Map
                 CreateNode(true, widNum, heiNum);
                 makeCount++;
                 nodesEndLineCheck.Add(makeCount);
-                //Debug.Log(makeCount);
             }
 
             int nodeCount = nodes.Count;
@@ -145,8 +146,6 @@ namespace Map
                 roadeLine.Clear();
             }
 
-            int roadCount = 0;
-
             Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // nodesEndLineCheck 리스트 값 출력
 
             for (int i = 0; i < nodesEndLineCheck.Count - 1; i++)
@@ -168,29 +167,131 @@ namespace Map
                     for (int k = 0; k < connections; k++)
                     {
                         int nextNode = Random.Range(nextColumnStart, nextColumnEnd + 1);
-                        if (!nodes[j].connectedNodes.Contains(nodes[nextNode]))
+                        if (!nodes[j].connectedNodes.Contains(nodes[nextNode]) &&
+                            !HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
                         {
                             nodes[j].connectedNodes.Add(nodes[nextNode]);
-                            ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>(), roadCount);
-                            roadCount++;
+                            ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
                             isConnected[nextNode - nextColumnStart] = true;
+                        }
+                        else
+                        {
+                            // 만약 겹친다면 같은 열의 다른 노드와 연결 시도
+                            for (int l = j - 1; l >= currentColumnStart; l--)
+                            {
+                                if (!HasIntersectingLines(nodes[l].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
+                                {
+                                    nodes[l].connectedNodes.Add(nodes[nextNode]);
+                                    ConnectRoadLine(nodes[l].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                    isConnected[nextNode - nextColumnStart] = true;
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
 
                 // 연결되지 않은 노드 처리
+                for (int j = currentColumnStart; j <= currentColumnEnd; j++)
+                {
+                    if (nodes[j].connectedNodes.Count == 0)
+                    {
+                        bool connectionMade = false;
+                        foreach (int nextNode in availableNodes)
+                        {
+                            if (!HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
+                            {
+                                nodes[j].connectedNodes.Add(nodes[nextNode]);
+                                ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                isConnected[nextNode - nextColumnStart] = true;
+                                connectionMade = true;
+                                break;
+                            }
+                        }
+                        // 만약 연결을 만들지 못한 경우, 연결을 강제로 생성
+                        if (!connectionMade)
+                        {
+                            int nextNode = availableNodes[0];
+                            nodes[j].connectedNodes.Add(nodes[nextNode]);
+                            ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                            isConnected[nextNode - nextColumnStart] = true;
+                        }
+                    }
+                }
+
+                // 다음 열의 연결되지 않은 노드 처리
                 for (int k = 0; k < isConnected.Length; k++)
                 {
                     if (!isConnected[k])
                     {
-                        int randomNode = Random.Range(currentColumnStart, currentColumnEnd + 1);
                         int nextNode = nextColumnStart + k;
-                        nodes[randomNode].connectedNodes.Add(nodes[nextNode]);
-                        ConnectRoadLine(nodes[randomNode].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>(), roadCount);
-                        roadCount++;
+                        bool connectionMade = false;
+                        foreach (int j in Enumerable.Range(currentColumnStart, currentColumnEnd - currentColumnStart + 1))
+                        {
+                            if (!HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
+                            {
+                                nodes[j].connectedNodes.Add(nodes[nextNode]);
+                                ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                connectionMade = true;
+                                break;
+                            }
+                        }
+                        // 만약 연결을 만들지 못한 경우, 연결을 강제로 생성
+                        if (!connectionMade)
+                        {
+                            int randomNode = Random.Range(currentColumnStart, currentColumnEnd + 1);
+                            nodes[randomNode].connectedNodes.Add(nodes[nextNode]);
+                            ConnectRoadLine(nodes[randomNode].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                        }
                     }
                 }
             }
+        }
+
+        private bool HasIntersectingLines(Vector2 startPos, Vector2 endPos)
+        {
+            foreach (var line in roadeLine)
+            {
+                RectTransform lineRectTransform = line.GetComponent<Image>().rectTransform;
+                Vector2 lineStartPos = lineRectTransform.anchoredPosition - new Vector2(lineRectTransform.sizeDelta.x / 2, 0);
+                Vector2 lineEndPos = lineRectTransform.anchoredPosition + new Vector2(lineRectTransform.sizeDelta.x / 2, 0);
+
+                if (LinesIntersect(startPos, endPos, lineStartPos, lineEndPos))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool LinesIntersect(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4)
+        {
+            float d1 = Direction(p3, p4, p1);
+            float d2 = Direction(p3, p4, p2);
+            float d3 = Direction(p1, p2, p3);
+            float d4 = Direction(p1, p2, p4);
+
+            if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) &&
+                ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0)))
+            {
+                return true;
+            }
+
+            return (d1 == 0 && OnSegment(p3, p4, p1)) ||
+                   (d2 == 0 && OnSegment(p3, p4, p2)) ||
+                   (d3 == 0 && OnSegment(p1, p2, p3)) ||
+                   (d4 == 0 && OnSegment(p1, p2, p4));
+        }
+
+        private float Direction(Vector2 pi, Vector2 pj, Vector2 pk)
+        {
+            return (pk.x - pi.x) * (pj.y - pi.y) - (pk.y - pi.y) * (pj.x - pi.x);
+        }
+
+        private bool OnSegment(Vector2 pi, Vector2 pj, Vector2 pk)
+        {
+            return Mathf.Min(pi.x, pj.x) <= pk.x && pk.x <= Mathf.Max(pi.x, pj.x) &&
+                   Mathf.Min(pi.y, pj.y) <= pk.y && pk.y <= Mathf.Max(pi.y, pj.y);
         }
 
         private int GetRandomConnections()
@@ -201,30 +302,39 @@ namespace Map
             {
                 return 1; // 40% 확률로 1개
             }
-            else if (randomValue <= 80)
+            else if (randomValue <= 70)
             {
-                return 2; // 40% 확률로 2개
+                return 2; // 30% 확률로 2개
             }
-            else
+            else if (randomValue <= 90)
             {
                 return 3; // 20% 확률로 3개
             }
+            else
+            {
+                return maxHeightNodesCount; // 10% 확률로 maxHeightNodesCount
+            }
         }
 
-        private void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans, int count)
+        private void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
         {
             // 선 이미지 생성
             Image line = Instantiate(roadPrefab, roadParent);
-            roadeLine.Add(line);
+            roadeLine.Add(line.gameObject);
 
             // 두 점 사이의 거리 계산
             Vector2 startPos = startTrans.anchoredPosition;
             Vector2 endPos = endTrans.anchoredPosition;
             float distance = Vector2.Distance(startPos, endPos);
 
+            // 간극 조절
+            Vector2 direction = (endPos - startPos).normalized;
+            startPos += direction * nodeGap;
+            endPos -= direction * nodeGap;
+
             // 선 이미지의 길이 설정
-            RectTransform roadRectTransform = roadeLine[count].rectTransform;
-            roadRectTransform.sizeDelta = new Vector2(distance, roadRectTransform.sizeDelta.y);
+            RectTransform roadRectTransform = line.rectTransform;
+            roadRectTransform.sizeDelta = new Vector2(distance - (2 * nodeGap), roadRectTransform.sizeDelta.y);
 
             // 선 이미지의 위치 설정 (두 점의 중간점)
             roadRectTransform.anchoredPosition = (startPos + endPos) / 2;
@@ -232,6 +342,22 @@ namespace Map
             // 선 이미지의 회전 설정
             float angle = Mathf.Atan2(endPos.y - startPos.y, endPos.x - startPos.x) * Mathf.Rad2Deg;
             roadRectTransform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        private void StartEndConnection()
+        {
+            //시작 지점 연결
+            for (int i = 0; i <= nodesEndLineCheck[0]; i++)
+            {
+                startNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
+                ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+            }
+            //끝 지점 연결
+            for (int i = nodesEndLineCheck[nodesEndLineCheck.Count - 2]+1; i <= nodesEndLineCheck[nodesEndLineCheck.Count-1]; i++)
+            {
+                endNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
+                ConnectRoadLine(endNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+            }
         }
     }
 }

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 469386949818761421}
-  nodeStates: 2
+  nodeStates: 0
   nodeBlueprint: {fileID: 11400000, guid: e91515611cb17a143a9659d1fa16041a, type: 2}
   initialScale: 1
   HoveScaleFactor: 1.2
