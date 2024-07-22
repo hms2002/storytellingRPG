@@ -194,6 +194,71 @@ public class CharactorState : MonoBehaviour
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
         stateUIController.UpdateUI(allStateList[(int)data.type]);
     }
+    public void AddState(StateType type, int val)
+    {
+        StateDatabase stateDB = StateDatabase.stateDatabase;
+        switch(type)
+        {
+            case StateType.glassPragment:
+                AddState(stateDB.glassPragment, val);
+                break;
+
+            case StateType.treasureOfDragon:
+                AddState(stateDB.treasureOfDragon, val);
+                break;
+            case StateType.callingOfMommyDragon:
+                AddState(stateDB.callingOfMommyDragon, val);
+                break;
+            case StateType.stonePiece:
+                AddState(stateDB.stonePiece, val);
+                break;
+            case StateType.multiplication:
+                AddState(stateDB.multiplication, val);
+                break;
+            case StateType.ore:
+                AddState(stateDB.ore, val);
+                break;
+            case StateType.reinforce:
+                AddState(stateDB.reinforce, val);
+                break;
+            case StateType.burn:
+                AddState(stateDB.burn, val);
+                break;
+            case StateType.venom:
+                AddState(stateDB.venom, val);
+                break;
+            case StateType.reduction:
+                AddState(stateDB.reduction, val);
+                break;
+            case StateType.weaken:
+                AddState(stateDB.weaken, val);
+                break;
+            case StateType.fear:
+                AddState(stateDB.fear, val);
+                break;
+            case StateType.addiction:
+                AddState(stateDB.addiction, val);
+                break;
+            case StateType.pike:
+                AddState(stateDB.pike, val);
+                break;
+            case StateType.oneTimeProtect:
+                AddState(stateDB.oneTimeProtect, val);
+                break;
+            case StateType.oneTimeReinforce:
+                AddState(stateDB.oneTimeReinforce, val);
+                break;
+            case StateType.oneTimeReduction:
+                AddState(stateDB.oneTimeReduction, val);
+                break;
+            case StateType.nextTurnDamage:
+                AddState(stateDB.nextTurnDamage, val);
+                break;
+            default:
+                Debug.LogError("추가되지 않은 상태 입력");
+                break;
+        }
+    }
     public int GetStateStack(StateType type)
     {
         if (allStateList[(int)type] == null) return 0;
