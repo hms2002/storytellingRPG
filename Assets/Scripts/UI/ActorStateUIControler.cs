@@ -26,6 +26,8 @@ public class ActorStateUIControler : MonoBehaviour
             stateUIObjects[typeNum] = Instantiate(StateUIDatabase.stateUIDB.stateUIPrefab, pivot);
             stateUIObjects[typeNum].GetComponent<Image>().sprite
                     = state.stateData.stateImage;
+            stateUIObjects[typeNum].GetComponent<ShowStateInfo>().data
+                    = state.stateData;
         }
 
         if (state.stack <= 0)

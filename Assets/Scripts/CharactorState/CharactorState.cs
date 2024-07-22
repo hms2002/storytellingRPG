@@ -306,6 +306,16 @@ public class CharactorState : MonoBehaviour
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             actor.Damaged(actor, i.stack * i.stateData.damagePerStack);
+            stateUIController.UpdateUI(i);
+        }
+    }
+    public void ReductionOnStartTurn()
+    {
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stack <= 0
+                || i.stateData.reductionTiming != ReductionTiming.OnSelectKeyword)
+                continue;
             i.Reduction();
             stateUIController.UpdateUI(i);
         }

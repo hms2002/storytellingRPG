@@ -16,7 +16,7 @@ MonoBehaviour:
   reductionType: 0
   reductionTiming: 2
   stateProperty: 1
-  stateImage: {fileID: 0}
+  stateImage: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0

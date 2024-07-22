@@ -190,26 +190,7 @@ public class Actor : MonoBehaviour
     {
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
-        /*if (burnStack > 0)
-        {
-            Damaged(this, burnStack * 2);
-            burnStack -= 1;
-        }
-        if (pike > 0)
-        {
-            pike = 0;
-        }
-        if (venomStack > 0)
-        {
-            Damaged(this, venomStack * 2);
-            venomStack = Mathf.FloorToInt(venomStack);
-        }
-        int addictionStack = (int)charactorState.GetState(StateType.addiction);
-        if (addictionStack > 0)
-        {
-            Damaged(this, addictionStack * 2, DamageType.Burn);
-        }
-        */
+        charactorState.ReductionOnStartTurn();
         #endregion
     }
 
