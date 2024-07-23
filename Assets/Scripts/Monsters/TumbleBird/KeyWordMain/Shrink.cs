@@ -7,7 +7,7 @@ public class Shrink : KeywordMain
     private void Awake()
     {
         keywordName = "웅크리기";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 10;
         keywordTension = -21;
     }

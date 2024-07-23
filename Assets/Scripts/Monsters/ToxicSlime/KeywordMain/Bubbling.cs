@@ -14,7 +14,7 @@ public class Bubbling : KeywordMain
     private void Awake()
     {
         keywordName = "보글거리기";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordDamage = 2;
         keywordTension = 5;
     }

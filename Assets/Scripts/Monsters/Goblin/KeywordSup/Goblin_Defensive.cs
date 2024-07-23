@@ -7,7 +7,7 @@ public class Goblin_Defensive : KeywordSup
     private void Awake()
     {
         keywordName = "방어적인";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 4;
         keywordTension = -4;
     }

@@ -12,7 +12,7 @@ public class Goblin_Lucky : KeywordSup
     private void Awake()
     {
         keywordName = "운좋은";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minDamage, maxDamage);
         keywordTension = 4;
     }

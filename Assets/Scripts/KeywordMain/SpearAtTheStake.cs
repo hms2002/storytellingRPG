@@ -7,7 +7,7 @@ public class SpearAtTheStake : KeywordMain
     private void Awake()
     {
         keywordName = "화형의 창 날";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
     }
 
     public override void Execute(Actor caster, Actor target)

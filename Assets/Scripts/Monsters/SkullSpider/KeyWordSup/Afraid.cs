@@ -8,7 +8,7 @@ public class Afreid : KeywordSup
     {
         keywordName = "두려운";
 
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 3;
         debuffStack = 1;
         debuffType = "Fear";

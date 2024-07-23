@@ -13,7 +13,7 @@ public class Cracked : KeywordSup
     private void Awake()
     {
         keywordName = "깨어진";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 20; 
     }
 

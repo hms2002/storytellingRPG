@@ -12,7 +12,7 @@ public class Goblin_WoodClub : KeywordMain
     private void Awake()
     {
         keywordName = "나무 몽둥이";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minDamage, maxDamage);
         keywordTension = 12;
     }

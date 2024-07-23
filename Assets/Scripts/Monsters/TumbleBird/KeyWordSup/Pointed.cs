@@ -10,7 +10,7 @@ public class Pointed : KeywordSup
     private void Awake()
     {
         keywordName = "뾰족한";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -8;
     }
 

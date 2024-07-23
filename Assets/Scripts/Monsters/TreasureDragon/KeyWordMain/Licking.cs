@@ -11,7 +11,7 @@ public class Liking : KeywordMain
     private void Awake()
     {
         keywordName = "ÇÓ±â";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = -9;
     }

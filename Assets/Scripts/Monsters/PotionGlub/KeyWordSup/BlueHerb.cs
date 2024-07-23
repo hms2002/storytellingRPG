@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueHerb : KeywordSup
+public class BHerb : KeywordSup
 {
     PotionGlub potionGlub;
 
@@ -13,7 +13,7 @@ public class BlueHerb : KeywordSup
     private void Awake()
     {
         keywordName = "푸른 약초";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -5;
     }
 

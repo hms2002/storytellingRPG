@@ -8,7 +8,7 @@ public class Keyword : MonoBehaviour
 
     #region 키워드 제원 변수
     [Header("키워드 제원")]
-    [SerializeField] private string _keywordName = "";
+    [SerializeField] private string _keywordName;
     [SerializeField] private int _keywordDamage = 0;
     [SerializeField] private int _keywordProtect = 0;
     [SerializeField] private string _debuffType = "";
@@ -16,11 +16,13 @@ public class Keyword : MonoBehaviour
     [SerializeField] private int _keywordTension = 0;
 
     protected Color keywordColor;
+
     [Header("키워드 특성별 색")]
-    [SerializeField] protected Color RED = new Color(255, 0, 0);
-    [SerializeField] protected Color BLUE = new Color(0, 255, 0);
-    [SerializeField] protected Color GREEN = new Color(0, 0, 255);
-    [SerializeField] protected Color YELLOW = new Color(255, 255, 0);
+    [SerializeField] protected Color R = new Color32(255, 0, 0, 1);
+    [SerializeField] protected Color G = new Color32(0, 255, 0, 1);
+    [SerializeField] protected Color B = new Color32(0, 0, 255, 1);
+    [SerializeField] protected Color Y = new Color32(255, 255, 0, 1);
+
 
     [Multiline(3)]
     [SerializeField] private string keywordDescription = "";
@@ -81,5 +83,6 @@ public class Keyword : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Keyword","키워드_잡기");
     }
-
+    public Color GetKeywordColor() { return keywordColor; }
+    public void SetKeywordColor(Color color) { keywordColor = color; }
 }

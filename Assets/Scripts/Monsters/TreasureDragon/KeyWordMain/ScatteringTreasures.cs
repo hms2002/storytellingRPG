@@ -13,7 +13,7 @@ public class ScatteringTreasures : KeywordMain
     private void Awake()
     {
         keywordName = "보물 뿌리기";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = 18;
     }

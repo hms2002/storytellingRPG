@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlassSpider : Actor
+public class GlassSpider : Monster
 {
     GlassSpider()
     {
+        encounterText = "";
         _MAX_HP = 50;
     }
     
@@ -20,7 +21,7 @@ public class GlassSpider : Actor
         if (_damage <= 0)
             return;
         int totalDamage = _damage;
-
+        
         if (totalDamage > 0 && attacker != this)
         {
             charactorState.AddState(StateDatabase.stateDatabase.glassPragment, 1);

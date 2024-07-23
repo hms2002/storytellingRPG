@@ -20,39 +20,39 @@ public class MonsterSetDatabase : MonoBehaviour
             monsterSetDatabase = this;
         }
     }
-    public List<Actor> GetSet1()
+    public List<Monster> GetSet1()
     {
-        List<Actor> returnList = new List<Actor>();
+        List<Monster> returnList = new List<Monster>();
         foreach (GameObject monster in monsterSet1)
         {
-            returnList.Add(Instantiate(monster).GetComponent<Actor>());
+            returnList.Add(Instantiate(monster).GetComponent<Monster>());
         }
         return returnList;
     }
-    public List<Actor> GetSet2()
+    public List<Monster> GetSet2()
     {
-        List<Actor> returnList = new List<Actor>();
+        List<Monster> returnList = new List<Monster>();
         foreach (GameObject monster in monsterSet2)
         {
-            returnList.Add(Instantiate(monster).GetComponent<Actor>());
+            returnList.Add(Instantiate(monster).GetComponent<Monster>());
         }
         return returnList;
     }
-    public List<Actor> GetSet3()
+    public List<Monster> GetSet3()
     {
-        List<Actor> returnList = new List<Actor>();
+        List<Monster> returnList = new List<Monster>();
         foreach (GameObject monster in monsterSet3)
         {
-            returnList.Add(Instantiate(monster).GetComponent<Actor>());
+            returnList.Add(Instantiate(monster).GetComponent<Monster>());
         }
         return returnList;
     }
-    public List<Actor> GetSet4()
+    public List<Monster> GetSet4()
     {
-        List<Actor> returnList = new List<Actor>();
+        List<Monster> returnList = new List<Monster>();
         foreach (GameObject monster in monsterSet4)
         {
-            returnList.Add(Instantiate(monster).GetComponent<Actor>());
+            returnList.Add(Instantiate(monster).GetComponent<Monster>());
         }
         return returnList;
     }

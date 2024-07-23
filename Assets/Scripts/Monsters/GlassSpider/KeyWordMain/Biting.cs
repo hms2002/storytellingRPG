@@ -7,7 +7,7 @@ public class Biting : KeywordMain
     private void Awake()
     {
         keywordName = "¹°¾î¶â±â";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 10;
         keywordTension = 10;
     }

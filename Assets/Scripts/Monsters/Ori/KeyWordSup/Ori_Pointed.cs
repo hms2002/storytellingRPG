@@ -8,7 +8,7 @@ public class Ori_Pointed : KeywordSup
     {
         keywordName = "달그락거리는";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 3;
     }

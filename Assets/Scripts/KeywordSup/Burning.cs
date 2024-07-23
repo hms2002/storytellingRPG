@@ -7,7 +7,7 @@ public class Burning : KeywordSup
     private void Awake()
     {
         keywordName = "불타는";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         debuffType = "Burn";
         debuffStack = 2;
     }

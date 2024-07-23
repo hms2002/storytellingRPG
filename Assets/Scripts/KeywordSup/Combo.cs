@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
-    [Header("¿¬¼ÓµÈ °ø°İ È½¼ö")]
+    [Header("ì—°ì†ëœ ê³µê²© íšŸìˆ˜")]
     private int repeatNum = 1;
 
 
     private void Awake()
     {
-        keywordName = "¿¬¼ÓµÈ";
-        SetKeywordColor(RED);
+        keywordName = "ì—°ì†ëœ";
+        SetKeywordColor(R);
     }
 
     public override void Execute(Actor caster, Actor target)

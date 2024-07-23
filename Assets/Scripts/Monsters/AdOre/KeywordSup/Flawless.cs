@@ -11,7 +11,7 @@ public class Flawless : KeywordSup
     private void Awake()
     {
         keywordName = "쪼개진";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 8;
     }
 

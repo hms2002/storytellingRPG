@@ -7,7 +7,7 @@ public class SpiderWeb : KeywordMain
     private void Awake()
     {
         keywordName = "∞≈πÃ¡Ÿ";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 5;
         keywordTension = -10;
     }

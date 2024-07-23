@@ -10,7 +10,7 @@ public class Mess : KeywordSup
     private void Awake()
     {
         keywordName = "엉망진창";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 12;
     }
     

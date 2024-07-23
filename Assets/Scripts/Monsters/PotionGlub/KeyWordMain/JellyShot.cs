@@ -7,7 +7,7 @@ public class JellyShot : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 20;
     }
 

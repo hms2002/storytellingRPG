@@ -8,7 +8,7 @@ public class EarthQuake : KeywordMain
     {
         keywordName = "대지 울리기";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -16;
         keywordDamage = 7;
     }

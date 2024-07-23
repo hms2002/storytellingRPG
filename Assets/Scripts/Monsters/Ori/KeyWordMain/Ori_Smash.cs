@@ -8,7 +8,7 @@ public class Ori_Smash : KeywordMain
     {
         keywordName = "분쇄";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 6;
     }

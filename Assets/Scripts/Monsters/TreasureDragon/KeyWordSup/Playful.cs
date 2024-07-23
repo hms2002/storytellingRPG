@@ -10,7 +10,7 @@ public class Playful : KeywordSup
     private void Awake()
     {
         keywordName = "장난스러운";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -4;
     }
 

@@ -13,7 +13,7 @@ public class Shaking : KeywordMain
     private void Awake()
     {
         keywordName = "셰이킹";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -5;
     }
 

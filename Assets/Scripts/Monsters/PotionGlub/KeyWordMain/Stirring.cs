@@ -13,7 +13,7 @@ public class Stirring : KeywordMain
     private void Awake()
     {
         keywordName = "스터링";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -8;
     }
 

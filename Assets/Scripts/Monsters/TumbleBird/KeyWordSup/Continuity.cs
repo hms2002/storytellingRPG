@@ -10,7 +10,7 @@ public class Continuity : KeywordSup
     private void Awake()
     {
         keywordName = "연속";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 10;
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotionGlub : Actor
+public class PotionGlub : Monster
 {
     public enum PotionColor
     {

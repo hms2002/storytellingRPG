@@ -14,7 +14,7 @@ public class Sweep : KeywordMain
     private void Awake()
     {
         keywordName = "쓸어 담기";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = 18;
     }

@@ -7,7 +7,7 @@ public class DigestiveFluid : KeywordMain
     private void Awake()
     {
         keywordName = "소화액";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 2;
         debuffType = "Reduction";
         debuffStack = 3;

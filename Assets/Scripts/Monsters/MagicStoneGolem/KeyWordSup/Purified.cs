@@ -7,7 +7,7 @@ public class Purified : KeywordSup
     private void Awake()
     {
         keywordName = "정화된";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordDamage = 3;
         keywordTension = -4;
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Red : KeywordSup
+public class R : KeywordSup
 {
     [Header("붉은 키워드 추가 데미지")]
     [SerializeField] private int extraDamage = 3;
@@ -12,7 +12,7 @@ public class Red : KeywordSup
     private void Awake()
     {
         keywordName = "붉은";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 0;
     }
 
@@ -23,7 +23,7 @@ public class Red : KeywordSup
 
     public override void Check(KeywordMain _keywordMain)
     {
-        if (_keywordMain.GetKeywordColor() == RED)// Main 키워드의 분류 색이 빨간색이면
+        if (_keywordMain.GetKeywordColor() == R)// Main 키워드의 분류 색이 빨간색이면
         {
             extraDamage = 3;
         }

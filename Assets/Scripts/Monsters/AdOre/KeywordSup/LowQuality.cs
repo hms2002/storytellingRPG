@@ -11,7 +11,7 @@ public class LowQuality : KeywordSup
     private void Awake()
     {
         keywordName = "저품질";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -28;
     }
 

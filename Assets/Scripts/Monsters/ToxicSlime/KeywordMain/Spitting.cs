@@ -14,7 +14,7 @@ public class Spitting : KeywordMain
     private void Awake()
     {
         keywordName = "침 뱉기";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 4;
         keywordTension = 10;
     }

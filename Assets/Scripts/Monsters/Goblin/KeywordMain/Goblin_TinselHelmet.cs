@@ -11,7 +11,7 @@ public class Goblin_TinselHelmet : KeywordMain
     private void Awake()
     {
         keywordName = "양철 투구";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -12;
     }
 

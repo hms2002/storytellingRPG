@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrasureDragon : Actor
+public class TrasureDragon : Monster
 {
     private int _trasureDamage = 0;
 

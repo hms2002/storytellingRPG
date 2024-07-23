@@ -11,7 +11,7 @@ public class Goblin_Anger : KeywordMain
     private void Awake()
     {
         keywordName = "분노";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -20;
     }
 

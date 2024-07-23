@@ -13,6 +13,7 @@ public class DaggerOfTheWicked : KeywordMain
         keywordName = "악인의 단검";
         keywordDamage = 2;
         keywordProtect = 0;
+        SetKeywordColor(R);
     }
 
     public override void Execute(Actor caster, Actor target)

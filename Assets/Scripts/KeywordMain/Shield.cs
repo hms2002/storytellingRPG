@@ -7,7 +7,7 @@ public class Shield : KeywordMain
     private void Awake()
     {
         keywordName = "πÊ∆–";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 5;
     }
 

@@ -11,7 +11,7 @@ public class Goblin_Sloppy : KeywordSup
     private void Awake()
     {
         keywordName = "엉성한";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -18;
     }
 

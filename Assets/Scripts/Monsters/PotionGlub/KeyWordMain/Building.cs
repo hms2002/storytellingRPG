@@ -13,7 +13,7 @@ public class Building : KeywordMain
     private void Awake()
     {
         keywordName = "빌딩";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -4;
     }
 

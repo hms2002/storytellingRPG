@@ -7,7 +7,7 @@ public class Sharp : KeywordSup
     private void Awake()
     {
         keywordName = "날카로운";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 2;
     }
 

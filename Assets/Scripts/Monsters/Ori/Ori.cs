@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ori : Actor
+public class Ori : Monster
 {
     private int _oreStack = 0;
 

@@ -9,7 +9,7 @@ public class FightManager : MonoBehaviour
 
     [Header("Actor 오브젝트")]
     [SerializeField] private Actor player;
-    [SerializeField] private List<Actor> monsterList;
+    [SerializeField] private List<Monster> monsterList;
 
     private int preparedActorCount = 0;
 
@@ -66,6 +66,7 @@ public class FightManager : MonoBehaviour
             monster.transform.position = new Vector3(pos, 0.42f, 0);
             pos -= 2;
         }
+        TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
     }
 
     public void Flow()
@@ -92,6 +93,9 @@ public class FightManager : MonoBehaviour
             whoPlaying = player;
             player.StartTurn();
             player.SelectKeyword();
+
+            TextManager.instance.KeywordTextPlay(player);
+            
             fightManagerUI.ChangeTurnText("플레이어");
             return;
         }
@@ -125,6 +129,7 @@ public class FightManager : MonoBehaviour
             yield return null;
         }
 
+        TextManager.instance.MainKeywordTextPlay(player);
         AudioManager.instance.PlaySound("Character", player.attackSound);
 
         curTime = 0;
@@ -153,6 +158,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
+            TextManager.instance.MainKeywordTextPlay(monster);
             AudioManager.instance.PlaySound("Character", monster.attackSound);
 
 

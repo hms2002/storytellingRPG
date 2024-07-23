@@ -19,8 +19,4 @@ public abstract class KeywordMain : Keyword
     public abstract void Execute(Actor caster, Actor target);
 
     public abstract void Check(KeywordSup _keywordSup);
-
-    public Color GetKeywordColor() { return keywordColor; }
-    public void SetKeywordColor(Color color) { keywordColor = color; }
-
 }

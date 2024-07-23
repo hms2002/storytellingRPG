@@ -7,7 +7,7 @@ public class Scratch : KeywordMain
     private void Awake()
     {
         keywordName = "ÇÒÄû±â";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 3;
         keywordTension = -20;
     }

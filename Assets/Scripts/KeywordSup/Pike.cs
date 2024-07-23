@@ -7,7 +7,7 @@ public class Pike : KeywordSup
     private void Awake()
     {
         keywordName = "가시 돋은";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordDamage = 3;
     }
 

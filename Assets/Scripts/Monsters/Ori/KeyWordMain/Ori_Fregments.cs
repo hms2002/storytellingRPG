@@ -8,7 +8,7 @@ public class Ori_Fregments : KeywordMain
     {
         keywordName = "몸통 박치기";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 3;
     }
