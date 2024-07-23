@@ -9,7 +9,7 @@ public class Hard : KeywordSup
     private void Awake()
     {
         keywordName = "단단한";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 8;
         keywordDamage = 5;
     }

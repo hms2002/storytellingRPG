@@ -12,7 +12,7 @@ public class Sticky : KeywordSup
     private void Awake()
     {
         keywordName = "끈적이는";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 5;
     }
 

@@ -11,7 +11,7 @@ public class Cough : KeywordMain
     private void Awake()
     {
         keywordName = "기침(브레스)";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         debuffStack = 5;
         debuffType = "Burn";

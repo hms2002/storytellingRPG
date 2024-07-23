@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicStoneGolem : Actor
+public class MagicStoneGolem : Monster
 {
     private int _stonePiece = 0;
 

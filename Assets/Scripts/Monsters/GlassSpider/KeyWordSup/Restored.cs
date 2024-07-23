@@ -13,7 +13,7 @@ public class Restored : KeywordSup
     private void Awake()
     {
         keywordName = "수복된";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -20;
     }
 

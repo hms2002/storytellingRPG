@@ -188,7 +188,8 @@ public class Actor : MonoBehaviour
             // Actor의 Hand가 다 채워졌으니 True로 설정
             hasActorDrawnKeywords = true;
         }
-        
+        TextManager.instance.KeywordTextPlay(this);
+
         StackInit();
     }
 
@@ -247,6 +248,7 @@ public class Actor : MonoBehaviour
 
         // Support 키워드를 사용
         keywordSup = _keywordSup;
+        TextManager.instance.SupKeywordTextPlay(this);
 
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
 
@@ -263,6 +265,7 @@ public class Actor : MonoBehaviour
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
         AddToMainGarbageField();
+        TextManager.instance.MainKeywordTextPlay(this);
 
         // Actor의 Hand가 비었으니 false로 설정
         hasActorDrawnKeywords = false;
@@ -294,7 +297,6 @@ public class Actor : MonoBehaviour
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
-
     }
 
     public void Execute(Actor target)

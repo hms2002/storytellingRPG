@@ -8,7 +8,7 @@ public class Giant : KeywordSup
     private void Awake()
     {
         keywordName = "거대한";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -8;
     }
 

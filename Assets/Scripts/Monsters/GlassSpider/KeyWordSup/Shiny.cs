@@ -10,7 +10,7 @@ public class Shiny : KeywordSup
     private void Awake()
     {
         keywordName = "นÝยฆภฬดย";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 3;
         keywordTension = 8;
     }

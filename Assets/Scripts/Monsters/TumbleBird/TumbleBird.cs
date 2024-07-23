@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TumbleBird : Actor
+public class TumbleBird : Monster
 {
     TumbleBird()
     {

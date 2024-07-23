@@ -11,7 +11,7 @@ public class Hardy : KeywordSup
     {
         keywordName = "튼튼한";
 
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -8;
     }
 

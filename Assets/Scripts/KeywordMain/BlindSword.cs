@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BlindSword : KeywordMain
 {
-    [Header("¸Í¸ñÀÇ °Ë Ãß°¡ ºÎ¿© ½ºÅÃ ¼öÄ¡")]
+    [Header("ë§¹ëª©ì˜ ê²€ ì¶”ê°€ ë¶€ì—¬ ìŠ¤íƒ ìˆ˜ì¹˜")]
     [SerializeField] private int stack = 1;
 
 
     private void Awake()
     {
-        keywordName = "¸Í¸ñÀÇ °Ë";
-        SetKeywordColor(RED);
+        keywordName = "ë§¹ëª©ì˜ ê²€";
+        SetKeywordColor(R);
     }
 
 

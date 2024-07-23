@@ -8,7 +8,7 @@ public class CreationFear : KeywordMain
     {
         keywordName = "공포감조성";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 3;
         debuffStack = 1;

@@ -7,7 +7,7 @@ public class Evil : KeywordSup
     private void Awake()
     {
         keywordName = "악랄한";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         debuffType = "Weaken";
         debuffStack = 2;
     }

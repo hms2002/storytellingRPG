@@ -13,7 +13,7 @@ public class Fantastic : KeywordSup
     private void Awake()
     {
         keywordName = "환상적인";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -11;
     }
 

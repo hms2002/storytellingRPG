@@ -7,7 +7,7 @@ public class Firm : KeywordSup
     private void Awake()
     {
         keywordName = "굳어진";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 10;
         keywordTension = -16;
     }

@@ -11,7 +11,7 @@ public class SwingFist : KeywordMain
     {
         keywordName = "주먹 휘두르기";
 
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 5;
         keywordTension = 10;
 

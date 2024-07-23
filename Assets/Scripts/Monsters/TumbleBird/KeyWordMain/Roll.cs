@@ -15,7 +15,7 @@ public class Roll : KeywordMain
     private void Awake()
     {
         keywordName = "구르기";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = UnityEngine.Random.Range(minDamage, maxDamage);
         debuffStack = 5;
         keywordTension = -6;

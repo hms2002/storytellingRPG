@@ -10,7 +10,7 @@ public class Fragmented : KeywordSup
     private void Awake()
     {
         keywordName = "파편화된";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 5;
     }
 

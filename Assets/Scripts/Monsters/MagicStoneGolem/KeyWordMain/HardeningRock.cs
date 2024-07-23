@@ -9,7 +9,7 @@ public class HardeningRock : KeywordMain
     {
         keywordName = "바위 굳히기";
 
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -8;
     }
 

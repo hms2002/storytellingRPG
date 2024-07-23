@@ -11,7 +11,7 @@ public class Fist : KeywordMain
     private void Awake()
     {
         keywordName = "аж╦т";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 1;
     }
 

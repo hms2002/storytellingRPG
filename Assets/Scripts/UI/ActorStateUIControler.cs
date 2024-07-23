@@ -99,22 +99,22 @@ public class ActorStateUIControler : MonoBehaviour
     //    Text text = weakUI.GetComponentInChildren<Text>();
     //    text.text = rate + "";
     //}
-    //GameObject reductionUI;
-    //public void ReductionOn(int rate)
+    //GameObject RuctionUI;
+    //public void RuctionOn(int rate)
     //{
-    //    if (reductionUI == null)
+    //    if (RuctionUI == null)
     //    {
-    //        reductionUI = Instantiate(StateUIDatabase.stateUIDB.reduction);
-    //        reductionUI.transform.SetParent(pivot);
+    //        RuctionUI = Instantiate(StateUIDatabase.stateUIDB.Ruction);
+    //        RuctionUI.transform.SetParent(pivot);
     //    }
     //    if (rate <= 0)
     //    {
-    //        reductionUI.SetActive(false);
+    //        RuctionUI.SetActive(false);
     //        return;
     //    }
 
-    //    reductionUI.SetActive(true);
-    //    Text text = reductionUI.GetComponentInChildren<Text>();
+    //    RuctionUI.SetActive(true);
+    //    Text text = RuctionUI.GetComponentInChildren<Text>();
     //    text.text = rate + "";
     //}
     //GameObject glassFragmentUI;

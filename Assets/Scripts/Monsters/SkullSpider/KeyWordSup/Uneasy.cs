@@ -8,7 +8,7 @@ public class Uneasy : KeywordSup
     {
         keywordName = "불안한";
 
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = 6;
         debuffStack = 2;
         debuffType = "Fear";

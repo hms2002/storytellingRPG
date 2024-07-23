@@ -11,7 +11,7 @@ public class FastKnightSword : KeywordMain
     private void Awake()
     {
         keywordName = "속기사의 검";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 2;
     }
     

@@ -11,7 +11,7 @@ public class BeakAttack : KeywordMain
     private void Awake()
     {
         keywordName = "부리 공격";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = 18;
     }

@@ -8,7 +8,7 @@ public class Scales : KeywordMain
     private void Awake()
     {
         keywordName = "ºñ´Ã";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 30;
         keywordTension = -24;
     }

@@ -7,7 +7,7 @@ public class Joyful : KeywordSup
     private void Awake()
     {
         keywordName = "즐거운";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordDamage = 5;
         keywordTension = 8;
     }

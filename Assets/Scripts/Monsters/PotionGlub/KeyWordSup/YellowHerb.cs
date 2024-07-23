@@ -13,7 +13,7 @@ public class YellowHerb : KeywordSup
     private void Awake()
     {
         keywordName = "노란 약초";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -10;
     }
 

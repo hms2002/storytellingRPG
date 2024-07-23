@@ -14,7 +14,7 @@ public class Flaccid : KeywordSup
     private void Awake()
     {
         keywordName = "흐물거리는";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -5;
     }
 

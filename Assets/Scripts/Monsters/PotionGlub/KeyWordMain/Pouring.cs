@@ -7,7 +7,7 @@ public class Pouring : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 10;
     }
 

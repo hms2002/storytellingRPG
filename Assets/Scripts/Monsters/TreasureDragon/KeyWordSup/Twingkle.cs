@@ -7,7 +7,7 @@ public class Twingkle : KeywordSup
     private void Awake()
     {
         keywordName = "นÝยฆภฬดย";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 5;
         keywordTension = -6;
     }

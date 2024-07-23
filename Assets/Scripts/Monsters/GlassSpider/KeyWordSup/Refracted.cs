@@ -10,7 +10,7 @@ public class Refracted : KeywordSup
     private void Awake()
     {
         keywordName = "±¼ÀýµÈ";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordProtect = 5;
         keywordTension = -10;
     }

@@ -11,7 +11,7 @@ public class GreenHerb : KeywordSup
     private void Awake()
     {
         keywordName = "초록 약초";
-        SetKeywordColor(BLUE);
+        SetKeywordColor(B);
         keywordTension = -7;
     }
 

@@ -12,7 +12,7 @@ public class Addicted : KeywordSup
     private void Awake()
     {
         keywordName = "중독된";
-        SetKeywordColor(RED);
+        SetKeywordColor(R);
         keywordTension = 15;
     }
 
