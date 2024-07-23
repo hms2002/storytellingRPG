@@ -19,6 +19,8 @@ public class Goblin_Anger : KeywordMain
     {
         caster.charactorState.AddState(StateDatabase.stateDatabase.
             oneTimeReinforce, amountOfoneTimeReinforce);
+
+        target.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

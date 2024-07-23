@@ -299,6 +299,12 @@ public class Actor : MonoBehaviour
         {
             TensionManager tensionManager = TensionManager.tensionManagerUI;
 
+            // 강화 버프가 부여된 상태로 공격 키워드 사용 시 강화 수치만큼 데미지 추가
+            if (this.charactorState.GetStateStack(StateType.reinforce) > 0 && damage > 0)
+            {
+                damage += this.charactorState.GetStateStack(StateType.reinforce);
+            }
+
             target.Damaged(this, damage);
 
             tensionManager.tension += tension;

@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class AdOre : Monster
 {
-    private int _oreStack = 0;
-
-    public int oreStack
-    {
-        get { return _oreStack; }
-        set { _oreStack = value; }
-    }
-
+    [Header("광석 스택 초기값 설정")]
+    [SerializeField] private int initOreStack = 25;
 
     void Start()
     {
         MAX_HP = 100;
         hp = MAX_HP;
+        charactorState.AddState(StateType.ore, initOreStack);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flawless : KeywordSup
 {
     [Header("부여되는 강화 수치 제어")]
-    [SerializeField] private int amountOfEnhance = 3;
+    [SerializeField] private int amountOfReinforce = 3;
 
 
     private void Awake()
@@ -17,7 +17,8 @@ public class Flawless : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        //caster.damage += amountOfDamage;
+        // 강화 수치 3 증가
+        caster.charactorState.AddState(StateDatabase.stateDatabase.reinforce, amountOfReinforce);
 
         target.tension += keywordTension;
     }
