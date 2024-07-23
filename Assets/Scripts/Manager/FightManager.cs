@@ -53,7 +53,7 @@ public class FightManager : MonoBehaviour
         if (_keywordMain == null) return;
         whoPlaying.GetKeywordMain(_keywordMain);
         preparedActorCount++;
-        Flow();
+        Invoke("Flow",2);
     }
 
     void FightStart()

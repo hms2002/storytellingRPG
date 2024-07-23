@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-#.½ºÅ©¸³Æ® ¼³¸í
+#.ìŠ¤í¬ë¦½íŠ¸ ì„¤ëª…
 
 - 
 
@@ -15,58 +15,60 @@ public class Hand : MonoBehaviour
     private List<GameObject> supKeywordPrefab = new List<GameObject>();
     private List<GameObject> mainKeywordPrefab = new List<GameObject>();
 
-    private List<GameObject> supportHand = new List<GameObject>();      // Support Å°¿öµå ½ÇÃ¼ Å¸ÀÔ
-    private List<GameObject> mainHand = new List<GameObject>();         // Main Å°¿öµå ½ÇÃ¼ Å¸ÀÔ
+    private List<GameObject> supportHand = new List<GameObject>();      // Support í‚¤ì›Œë“œ ì‹¤ì²´ íƒ€ì…
+    private List<GameObject> mainHand = new List<GameObject>();         // Main í‚¤ì›Œë“œ ì‹¤ì²´ íƒ€ì…
 
-    [Header("ÇÚµåÀÇ ¾ç")]
-    [SerializeField] private const int _HANDSIZE = 3;                   // ÇÃ·¹ÀÌ ÁÖÃ¼°¡ °¡Á®¾ß ÇÏ´Â Å°¿öµå °³¼ö
+    [Header("í•¸ë“œì˜ ì–‘")]
+    [SerializeField] private const int _HANDSIZE = 3;                   // í”Œë ˆì´ ì£¼ì²´ê°€ ê°€ì ¸ì•¼ í•˜ëŠ” í‚¤ì›Œë“œ ê°œìˆ˜
     public int HANDSIZE { get { return _HANDSIZE; } }
 
-    private Vector2 createLocation = new Vector2(0, -930);              // Å°¿öµå »ı¼º À§Ä¡
+    private Vector2 createLocation = new Vector2(0, -930);              // í‚¤ì›Œë“œ ìƒì„± ìœ„ì¹˜
 
 
     /*==================================================================================================================================*/
 
 
-    // keywordData ¼Ó Support Å°¿öµåµéÀ» ½ÇÃ¼È­ ½ÃÄÑ supportHand ¸®½ºÆ®¿¡ Áı¾î ³Ö´Â ±â´É
+    // keywordData ì† Support í‚¤ì›Œë“œë“¤ì„ ì‹¤ì²´í™” ì‹œì¼œ supportHand ë¦¬ìŠ¤íŠ¸ì— ì§‘ì–´ ë„£ëŠ” ê¸°ëŠ¥
     public void SubstantiateSupKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
             supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform));
         }
+        KeywordUIMovement.instance.StretchKeywords(supportHand);
     }
 
-    // keywordData ¼Ó Main Å°¿öµåµéÀ» ½ÇÃ¼È­ ½ÃÄÑ MainHand ¸®½ºÆ®¿¡ Áı¾î ³Ö´Â ±â´É
+    // keywordData ì† Main í‚¤ì›Œë“œë“¤ì„ ì‹¤ì²´í™” ì‹œì¼œ MainHand ë¦¬ìŠ¤íŠ¸ì— ì§‘ì–´ ë„£ëŠ” ê¸°ëŠ¥
     public void SubstantiateMainKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
-            mainHand.Add(Instantiate(mainKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform));
+            GameObject keywordCard = Instantiate(mainKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform);
+
+            mainHand.Add(keywordCard);
         }
+        KeywordUIMovement.instance.StretchKeywords(mainHand);
     }
 
-    // Hand¿¡ ÀÖ´Â Support Å°¿öµåµéÀ» ¹«´ıµ¦À¸·Î ¹ö¸®´Â ±â´É
+    // Handì— ìˆëŠ” Support í‚¤ì›Œë“œë“¤ì„ ë¬´ë¤ë±ìœ¼ë¡œ ë²„ë¦¬ëŠ” ê¸°ëŠ¥
     public GameObject ThrowSupKeyword(int index)
     {
         GameObject supKeywordPrefab_temp = supKeywordPrefab[index];
 
         supKeywordPrefab.RemoveAt(index);
         
-        Destroy(supportHand[index]);
         supportHand.RemoveAt(index);
 
         return supKeywordPrefab_temp;
     }
 
-    // Hand¿¡ ÀÖ´Â Main Å°¿öµåµéÀ» ¹«´ıµ¦À¸·Î ¹ö¸®´Â ±â´É
+    // Handì— ìˆëŠ” Main í‚¤ì›Œë“œë“¤ì„ ë¬´ë¤ë±ìœ¼ë¡œ ë²„ë¦¬ëŠ” ê¸°ëŠ¥
     public GameObject ThrowMainKeyword(int index)
     {
         GameObject mainKeywordPrefab_temp = mainKeywordPrefab[index];
 
         mainKeywordPrefab.RemoveAt(index);
 
-        Destroy(mainHand[index]);
         mainHand.RemoveAt(index);
 
         return mainKeywordPrefab_temp;
