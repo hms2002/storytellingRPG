@@ -248,15 +248,19 @@ public class Actor : MonoBehaviour
         // Support 키워드를 사용
         keywordSup = _keywordSup;
 
+        KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
+
         AddToSupGarbageField();
 
-        ShowKeywordMain();
+        Invoke("ShowKeywordMain",2);
     }
 
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
         // Main 키워드를 사용
         keywordMain = _keywordMain;
+
+        KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
         AddToMainGarbageField();
 

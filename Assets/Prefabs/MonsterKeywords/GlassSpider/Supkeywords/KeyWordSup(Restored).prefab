@@ -146,7 +146,7 @@ RectTransform:
   m_GameObject: {fileID: 6325824103870312503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 23725591732607081}
@@ -269,7 +269,7 @@ MonoBehaviour:
   _keywordProtect: 0
   _debuffType: 
   _debuffStack: 0
-  _keyWordTension: 0
+  _keywordTension: 0
   RED: {r: 225, g: 0, b: 0, a: 1}
   BLUE: {r: 0, g: 255, b: 0, a: 1}
   GREEN: {r: 0, g: 0, b: 255, a: 1}
