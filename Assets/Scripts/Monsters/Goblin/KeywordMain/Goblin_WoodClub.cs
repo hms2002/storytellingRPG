@@ -20,6 +20,8 @@ public class Goblin_WoodClub : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
+
+        target.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

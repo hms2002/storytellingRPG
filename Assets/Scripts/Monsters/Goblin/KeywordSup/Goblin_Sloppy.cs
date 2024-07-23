@@ -18,6 +18,8 @@ public class Goblin_Sloppy : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         caster.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, oneTimeReductionControl);
+
+        target.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

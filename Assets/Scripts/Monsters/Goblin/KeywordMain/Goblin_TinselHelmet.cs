@@ -18,6 +18,8 @@ public class Goblin_TinselHelmet : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect += amountOfProtect;
+
+        target.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
