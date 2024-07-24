@@ -6,11 +6,17 @@ public class RewardManager : MonoBehaviour
 {
     [SerializeField] private Actor player;
     public static RewardManager instance;
-
+    List<List<GameObject>> rewardPrefabSets = new List<List<GameObject>>();
+    [SerializeField] List<GameObject> rewardSet1;
     private void Awake()
     {
         if (instance != null) Destroy(this);
         instance = this;
+    }
+
+    public void  SwowRewards()
+    {
+
     }
 
     public void AddMainKeywordToDeck(GameObject _keywordmain)
