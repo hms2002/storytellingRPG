@@ -38,7 +38,7 @@ public class FightManager : MonoBehaviour
     {
         fightManagerUI = FightManagerUI.fightManagerUI;
         FightStart();
-        Flow();
+        Invoke("Flow", 2);
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)
@@ -143,7 +143,13 @@ public class FightManager : MonoBehaviour
         }
         yield return new WaitForSeconds(2);
 
-        CheckMonsterSurvive();
+        // 남은 몬스터 있는지 확인.
+        if(!CheckMonsterSurvive())
+        {
+            // 전투 승리 문구 출력
+            TextManager.instance.PrintVictory();
+            yield break;
+        }
 
         foreach (Actor monster in monsterList)
         {
@@ -179,7 +185,7 @@ public class FightManager : MonoBehaviour
         CheckPlayerSurvive();
     }
 
-    private void CheckMonsterSurvive()
+    private bool CheckMonsterSurvive()
     {
         for (int i = 0; i < monsterList.Count; i++)
         {
@@ -187,16 +193,16 @@ public class FightManager : MonoBehaviour
             {
                 monsterList[i].DestroySelf();
                 monsterList.RemoveAt(i);
+                MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
             }
         }
 
         if (monsterList.Count == 0)
         {
-            // 전투 승리 문구 출력
-            TextManager.instance.PrintVictory();
+            return false;
         }
         else
-            MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
+            return true;
     }
 
     private void CheckPlayerSurvive()
