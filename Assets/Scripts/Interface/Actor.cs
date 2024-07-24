@@ -250,6 +250,8 @@ public class Actor : MonoBehaviour
         keywordSup = _keywordSup;
         TextManager.instance.SupKeywordTextPlay(this);
 
+        hand.DisableSupHand();
+
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
 
         AddToSupGarbageField();
@@ -261,6 +263,8 @@ public class Actor : MonoBehaviour
     {
         // Main 키워드를 사용
         keywordMain = _keywordMain;
+
+        hand.DisableMainHand();
 
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
