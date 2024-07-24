@@ -11,7 +11,7 @@ public class AdOre_ShardRecovery : KeywordMain
     private void Awake()
     {
         keywordName = "파편 복구";
-        //SetKeywordColor(Y);
+        SetKeywordColor(Y);
         keywordTension = 52;
     }
 

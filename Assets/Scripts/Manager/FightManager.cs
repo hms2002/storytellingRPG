@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,7 +57,7 @@ public class FightManager : MonoBehaviour
         Invoke("Flow",2);
     }
 
-    void FightStart()
+    private void FightStart()
     {
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
@@ -103,6 +104,7 @@ public class FightManager : MonoBehaviour
             preparedActorCount = 0;
 
         StartCoroutine(ActorAction());
+
         //player.Action(MonsterTargetter.monsterTargetter.target);
 
         //foreach (Actor monster in monsterList)
@@ -111,7 +113,7 @@ public class FightManager : MonoBehaviour
         //Flow();
     }
 
-    IEnumerator ActorAction()
+    private IEnumerator ActorAction()
     {
         player.Action(MonsterTargetter.monsterTargetter.target);
         fightManagerUI.ChangeActionText("플레이어 ");
@@ -140,6 +142,8 @@ public class FightManager : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(2);
+
+        CheckMonsterSurvive();
 
         foreach (Actor monster in monsterList)
         {
@@ -172,7 +176,33 @@ public class FightManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
+        CheckPlayerSurvive();
+        CheckTensionRemain();
+
         Flow();
+    }
+
+    private void CheckMonsterSurvive()
+    {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].hp <= 0)
+            {
+                monsterList[i].DestroySelf
+            }
+        }
+
+        MonsterTargetter.monsterTargetter.ReAimTarget()
+    }
+
+    private void CheckPlayerSurvive()
+    {
+
+    }
+
+    private void CheckTensionRemain()
+    {
+
     }
 }
 

@@ -11,7 +11,7 @@ public class AdOre_ShardClaw : KeywordMain
     private void Awake()
     {
         keywordName = "파편 발톱";
-        //SetKeywordColor(R);
+        SetKeywordColor(R);
         keywordDamage = Random.Range(amountOfMinDamage, amountOfMaxDamage);
         keywordTension = -12;
     }

@@ -10,7 +10,7 @@ public class AdOre_ShardSpread : KeywordMain
     private void Awake()
     {
         keywordName = "파편 확산";
-        //SetKeywordColor(R);
+        SetKeywordColor(R);
         keywordDamage = 32;
         keywordTension = 32;
     }

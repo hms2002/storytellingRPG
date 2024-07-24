@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,11 @@ public class MonsterTargetter : MonoBehaviour
                 target = hit.transform.GetComponent<Actor>();
             }
         }
+
+    }
+
+    public void ReAimTarget()
+    {
 
     }
 }

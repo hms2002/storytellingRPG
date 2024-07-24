@@ -15,7 +15,7 @@ public class AdOre_ShardOverload : KeywordMain
     private void Awake()
     {
         keywordName = "파편 폭주";
-        //SetKeywordColor(Y);
+        SetKeywordColor(Y);
         keywordTension = 26;
     }
 
