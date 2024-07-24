@@ -10,7 +10,7 @@ public class AdOre_ShardSpread : KeywordMain
     private void Awake()
     {
         keywordName = "파편 확산";
-        //SetKeywordColor(R);
+        SetKeywordColor(R);
         keywordDamage = 32;
         keywordTension = 32;
     }
@@ -21,7 +21,7 @@ public class AdOre_ShardSpread : KeywordMain
 
         caster.charactorState.ReductionByValue(StateType.ore, amountOfDecrease);
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

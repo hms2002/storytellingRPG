@@ -11,7 +11,7 @@ public class Goblin_Lucky : KeywordSup
 
     private void Awake()
     {
-        keywordName = "운좋은";
+        keywordName = "운 좋은";
         SetKeywordColor(R);
         keywordDamage = Random.Range(minDamage, maxDamage);
         keywordTension = 4;
@@ -22,7 +22,7 @@ public class Goblin_Lucky : KeywordSup
     {
         caster.damage += keywordDamage;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

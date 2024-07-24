@@ -22,7 +22,7 @@ public class Goblin_WoodClub : KeywordMain
     {
         caster.damage += keywordDamage;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

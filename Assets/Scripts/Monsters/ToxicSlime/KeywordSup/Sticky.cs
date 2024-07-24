@@ -23,7 +23,7 @@ public class Sticky : KeywordSup
             target.charactorState.AddState(StateDatabase.stateDatabase.addiction, amountOfAddictionStack);
         }
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

@@ -28,7 +28,7 @@ public class Bubbling : KeywordMain
         target.charactorState.AddState
             (StateDatabase.stateDatabase.addiction, amountOfAddictionStack);
         
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

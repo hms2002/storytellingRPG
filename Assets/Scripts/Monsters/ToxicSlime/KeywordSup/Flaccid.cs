@@ -24,7 +24,7 @@ public class Flaccid : KeywordSup
 
         toxicSlime.protect += amountOfProtectStack;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

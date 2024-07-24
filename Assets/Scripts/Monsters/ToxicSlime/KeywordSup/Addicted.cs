@@ -21,7 +21,7 @@ public class Addicted : KeywordSup
         if (caster.charactorState.GetStateStack(StateType.addiction) == 0) return;
 
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

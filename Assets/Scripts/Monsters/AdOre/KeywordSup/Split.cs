@@ -19,7 +19,7 @@ public class Split : KeywordSup
     {
         caster.damage += amountOfDamage;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

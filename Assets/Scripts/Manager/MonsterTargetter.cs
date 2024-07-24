@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,5 +39,11 @@ public class MonsterTargetter : MonoBehaviour
             }
         }
 
+    }
+
+    public void ReAimTarget(List<Monster> monsterList)
+    {
+        if(monsterList.Count == 0) return;
+        target = monsterList[0];
     }
 }

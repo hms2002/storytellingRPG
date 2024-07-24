@@ -23,4 +23,11 @@ public class Monster : Actor
     {
         base.Action(target);
     }
+
+    public void DestroySelf()
+    {
+        stateUIController.DestroySelf();
+        charactorState.DestroySelf();
+        Destroy(gameObject);
+    }
 }

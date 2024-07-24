@@ -20,7 +20,7 @@ public class Goblin_TinselHelmet : KeywordMain
     {
         caster.protect += amountOfProtect;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

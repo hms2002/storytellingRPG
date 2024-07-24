@@ -17,7 +17,7 @@ public class Goblin_Defensive : KeywordSup
     {
         caster.protect += keywordProtect;
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

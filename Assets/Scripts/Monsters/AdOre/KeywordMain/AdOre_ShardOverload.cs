@@ -15,7 +15,7 @@ public class AdOre_ShardOverload : KeywordMain
     private void Awake()
     {
         keywordName = "파편 폭주";
-        //SetKeywordColor(Y);
+        SetKeywordColor(Y);
         keywordTension = 26;
     }
 
@@ -25,7 +25,7 @@ public class AdOre_ShardOverload : KeywordMain
 
         caster.charactorState.ReductionByValue(StateType.ore, amountOfDecrease);
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

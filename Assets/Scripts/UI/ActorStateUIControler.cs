@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ActorStateUIControler : MonoBehaviour
 {
@@ -37,6 +38,15 @@ public class ActorStateUIControler : MonoBehaviour
 
         Text text = stateUIObjects[typeNum].GetComponentInChildren<Text>();
         text.text = state.stack + "";
+    }
+
+    internal void DestroySelf()
+    {
+        foreach( GameObject i in stateUIObjects)
+        {
+            if (i == null) continue;
+            Destroy(i);
+        }
     }
 
     public void ProtectOn(int rate)
