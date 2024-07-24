@@ -6,13 +6,12 @@ using UnityEngine.EventSystems;
 
 public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    GameObject info;
+    public GameObject info;
     bool onDestroying = false;
     
     
     private void Awake()
     {
-        info = transform.GetChild(0).gameObject;
         info.SetActive(false);
     }
 
