@@ -12,6 +12,7 @@ public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointe
     
     private void Awake()
     {
+        info = transform.GetChild(0).gameObject;
         info.SetActive(false);
     }
 
