@@ -11,6 +11,7 @@ public class Keyword : MonoBehaviour
     [SerializeField] private string _keywordName;
     [SerializeField] private int _keywordDamage = 0;
     [SerializeField] private int _keywordProtect = 0;
+    [SerializeField] private int _keywordHeal = 0;
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int _debuffStack = 0;
     [SerializeField] private int _keywordTension = 0;
@@ -51,6 +52,12 @@ public class Keyword : MonoBehaviour
     {
         get { return _keywordProtect; }
         set { _keywordProtect = value; }
+    }
+
+    public int keywordHeal
+    {
+        get { return _keywordHeal; }
+        set { _keywordHeal = value; }
     }
 
     public string debuffType
