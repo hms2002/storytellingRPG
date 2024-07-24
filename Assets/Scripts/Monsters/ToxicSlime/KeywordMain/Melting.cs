@@ -22,7 +22,7 @@ public class Melting : KeywordMain
         int addictionStack = target.charactorState.GetStateStack(StateType.addiction);
         caster.damage += addictionStack * damagePerAddictionStack;
 
-        target.tension += addictionStack * keywordTension;
+        caster.tension += addictionStack * keywordTension;
 
         target.charactorState.ResetState(StateType.addiction);
     }

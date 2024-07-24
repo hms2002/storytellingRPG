@@ -19,7 +19,7 @@ public class LowQuality : KeywordSup
     {
         caster.charactorState.AddState(StateDatabase.stateDatabase.weaken, amountOfWeakenStack);
  
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

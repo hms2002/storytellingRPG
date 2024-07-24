@@ -55,4 +55,14 @@ public class TextManager : MonoBehaviour
     {
         
     }
+
+    public void PrintVictory()
+    {
+        Text.text = "기사는 승리하였다.";
+    }
+
+    public void PrintPlayerDie()
+    {
+        Text.text = "기사는 사망하였다.";
+    }
 }

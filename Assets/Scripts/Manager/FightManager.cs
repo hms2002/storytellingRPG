@@ -177,9 +177,6 @@ public class FightManager : MonoBehaviour
         }
 
         CheckPlayerSurvive();
-        CheckTensionRemain();
-
-        Flow();
     }
 
     private void CheckMonsterSurvive()
@@ -192,9 +189,11 @@ public class FightManager : MonoBehaviour
                 monsterList.RemoveAt(i);
             }
         }
+
         if (monsterList.Count == 0)
         {
-            // 승리 관련 함수 실행
+            // 전투 승리 문구 출력
+            TextManager.instance.PrintVictory();
         }
         else
             MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
@@ -202,12 +201,17 @@ public class FightManager : MonoBehaviour
 
     private void CheckPlayerSurvive()
     {
+        if (player.hp <= 0 || TensionManager.tensionManagerUI.tension <= 0)
+        {
+            // 플레이어 사망 애니메이션 재생
 
-    }
+            // 플레이어 사망 문구 출력
+            TextManager.instance.PrintPlayerDie();
 
-    private void CheckTensionRemain()
-    {
-
+            // 게임 종료 (씬 전환?)
+        }
+        else
+            Flow();
     }
 }
 

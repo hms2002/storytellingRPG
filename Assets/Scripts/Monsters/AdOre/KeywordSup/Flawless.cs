@@ -20,7 +20,7 @@ public class Flawless : KeywordSup
         // 강화 수치 3 증가
         caster.charactorState.AddState(StateDatabase.stateDatabase.reinforce, amountOfReinforce);
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)

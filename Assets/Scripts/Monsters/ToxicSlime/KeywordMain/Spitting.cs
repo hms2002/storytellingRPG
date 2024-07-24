@@ -27,7 +27,7 @@ public class Spitting : KeywordMain
 
         target.charactorState.AddState(StateDatabase.stateDatabase.addiction, _amountOfAddictionStack);
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

@@ -21,7 +21,7 @@ public class AdOre_ShardSpread : KeywordMain
 
         caster.charactorState.ReductionByValue(StateType.ore, amountOfDecrease);
 
-        target.tension += keywordTension;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
