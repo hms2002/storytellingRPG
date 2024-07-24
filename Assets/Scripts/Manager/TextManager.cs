@@ -24,6 +24,8 @@ public class TextManager : MonoBehaviour
     public void KeywordTextPlay(Actor actor)
     {
         Text.text = $"{actor.name}은 _____ _____을 사용했다.";
+        Text.alignment = TextAlignmentOptions.Top;
+
     }
 
     public void SupKeywordTextPlay(Actor actor)
@@ -32,6 +34,8 @@ public class TextManager : MonoBehaviour
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
         Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";
+        Text.alignment = TextAlignmentOptions.Top;
+
     }
 
     public void MainKeywordTextPlay(Actor actor)
@@ -44,11 +48,14 @@ public class TextManager : MonoBehaviour
         string mainColorHex = ColorUtility.ToHtmlStringRGB(mainColor);
 
         Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";
+        Text.alignment = TextAlignmentOptions.Top;
+
     }
 
     public void EncounterTextPlay(Monster monster)
     {   
         Text.text = monster.encounterText;
+        Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void CombatText(Actor player, Actor monster)
@@ -59,10 +66,12 @@ public class TextManager : MonoBehaviour
     public void PrintVictory()
     {
         Text.text = "기사는 승리하였다.";
+        Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void PrintPlayerDie()
     {
         Text.text = "기사는 사망하였다.";
+        Text.alignment = TextAlignmentOptions.Midline;
     }
 }
