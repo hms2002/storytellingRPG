@@ -188,11 +188,16 @@ public class FightManager : MonoBehaviour
         {
             if (monsterList[i].hp <= 0)
             {
-                monsterList[i].DestroySelf
+                monsterList[i].DestroySelf();
+                monsterList.RemoveAt(i);
             }
         }
-
-        MonsterTargetter.monsterTargetter.ReAimTarget()
+        if (monsterList.Count == 0)
+        {
+            // 승리 관련 함수 실행
+        }
+        else
+            MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
     }
 
     private void CheckPlayerSurvive()

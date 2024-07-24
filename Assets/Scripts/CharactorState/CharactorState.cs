@@ -391,6 +391,10 @@ public class CharactorState : MonoBehaviour
         allStateList[(int)type].ResetStack();
         stateUIController.UpdateUI(allStateList[(int)type]);
     }
+
+    internal void DestroySelf()
+    {
+    }
 }
 
 

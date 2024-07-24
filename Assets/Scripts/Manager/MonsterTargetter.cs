@@ -42,8 +42,9 @@ public class MonsterTargetter : MonoBehaviour
 
     }
 
-    public void ReAimTarget()
+    public void ReAimTarget(List<Monster> monsterList)
     {
-
+        if(monsterList.Count == 0) return;
+        target = monsterList[0];
     }
 }
