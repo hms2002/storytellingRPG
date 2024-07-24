@@ -22,6 +22,11 @@ public class Keyword : MonoBehaviour
     [SerializeField] protected Color G = new Color32(0, 255, 0, 1);
     [SerializeField] protected Color B = new Color32(0, 0, 255, 1);
     [SerializeField] protected Color Y = new Color32(255, 255, 0, 1);
+    /// <summary>
+    /// 검은색임
+    /// </summary>
+    [SerializeField] protected Color D = new Color32(0, 0, 0, 1);
+
 
 
     [Multiline(3)]
