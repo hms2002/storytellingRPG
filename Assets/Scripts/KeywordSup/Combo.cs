@@ -12,6 +12,7 @@ public class Combo : KeywordSup
     {
         keywordName = "연속된";
         SetKeywordColor(R);
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -10,6 +10,7 @@ public class Evil : KeywordSup
         SetKeywordColor(R);
         debuffType = "Weaken";
         debuffStack = 2;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -6,8 +6,9 @@ public class Crossed : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "±³Â÷µÈ";
+        keywordName = "êµì°¨ëœ";
         SetKeywordColor(B);
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

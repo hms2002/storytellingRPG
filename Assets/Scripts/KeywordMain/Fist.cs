@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Fist : KeywordMain
 {
-    [Header("¡÷∏‘ µ•πÃ¡ˆ")]
+    [Header("Ï£ºÎ®π Îç∞ÎØ∏ÏßÄ")]
     [SerializeField] private int fistDamage = 1;
 
 
     private void Awake()
     {
-        keywordName = "¡÷∏‘";
+        keywordName = "Ï£ºÎ®π";
         SetKeywordColor(R);
         keywordDamage = 1;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -13,6 +13,7 @@ public class Goblin_Anger : KeywordMain
         keywordName = "분노";
         SetKeywordColor(B);
         keywordTension = -20;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -13,6 +13,7 @@ public class Goblin_Sloppy : KeywordSup
         keywordName = "엉성한";
         SetKeywordColor(R);
         keywordTension = -18;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

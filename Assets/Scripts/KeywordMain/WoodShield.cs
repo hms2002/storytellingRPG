@@ -9,6 +9,7 @@ public class WoodShield : KeywordMain
         keywordName = "나무방패";
         SetKeywordColor(B);
         keywordProtect = 6;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

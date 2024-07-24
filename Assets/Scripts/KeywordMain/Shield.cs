@@ -6,9 +6,10 @@ public class Shield : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "πÊ∆–";
+        keywordName = "Î∞©Ìå®";
         SetKeywordColor(B);
         keywordProtect = 5;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

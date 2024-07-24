@@ -14,6 +14,7 @@ public class R : KeywordSup
         keywordName = "붉은";
         SetKeywordColor(R);
         keywordDamage = 0;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

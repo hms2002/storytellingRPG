@@ -15,6 +15,7 @@ public class Goblin_Lucky : KeywordSup
         SetKeywordColor(R);
         keywordDamage = Random.Range(minDamage, maxDamage);
         keywordTension = 4;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

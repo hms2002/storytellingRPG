@@ -14,6 +14,7 @@ public class DaggerOfTheWicked : KeywordMain
         keywordDamage = 2;
         keywordProtect = 0;
         SetKeywordColor(R);
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

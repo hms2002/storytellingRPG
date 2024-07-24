@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class FastKnightSword : KeywordMain
 {
-    [Header("¼Ó±â»çÀÇ °Ë °ø°İ È½¼ö")]
+    [Header("ì†ê¸°ì‚¬ì˜ ê²€ ê³µê²© íšŸìˆ˜")]
     [SerializeField] private int attackNum = 2;
 
 
     private void Awake()
     {
-        keywordName = "¼Ó±â»çÀÇ °Ë";
+        keywordName = "ì†ê¸°ì‚¬ì˜ ê²€";
         SetKeywordColor(R);
         keywordDamage = 2;
+        Init();
     }
     
     public override void Execute(Actor caster, Actor target)
