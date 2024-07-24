@@ -92,6 +92,7 @@ public class KeywordUIMovement : MonoBehaviour
         {
             curTime += Time.deltaTime;
             selectedKeyword.transform.position = Vector2.Lerp(selectedPivotOriginPos, selectedPivot.position, curTime / MOVE_TIME);
+            selectedKeyword.transform.localScale = Vector2.Lerp(endSize, startSize, curTime / MOVE_TIME);
             if (curTime > MOVE_TIME)
             {
                 moveSelectedKeywordFlag = false;
