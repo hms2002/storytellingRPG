@@ -7,6 +7,8 @@ public class TextManager : MonoBehaviour
 {
     public static TextManager instance;
     public TextMeshProUGUI Text;
+    [SerializeField] private GameObject theEndIcon;
+
     
     private void Awake()
     {
@@ -64,5 +66,7 @@ public class TextManager : MonoBehaviour
     public void PrintPlayerDie()
     {
         Text.text = "기사는 사망하였다.";
+
+        theEndIcon.SetActive(true);
     }
 }
