@@ -25,6 +25,11 @@ public class Deck : MonoBehaviour
         supportDeck = new List<GameObject>();
         mainDeck = new List<GameObject>();
     }
+    public void InitDeck(Deck _deck)
+    {
+        supportDeck = new List<GameObject>(_deck.supportDeck);
+        mainDeck = new List<GameObject>(_deck.mainDeck);
+    }
 
     // Support 키워드 1개 랜덤 드로우
     public GameObject DrawSupKeyword()

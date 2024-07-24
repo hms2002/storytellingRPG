@@ -19,7 +19,17 @@ public class Actor : MonoBehaviour
 
     public string _attackSound = "타격음_주먹2";
 
+    internal void AddSupKeywordToOriginalDeck(GameObject keywordSup)
+    {
+        OriginalDeck.AddSupKeywordOnDeck(keywordSup);
+    }
+    public void AddMainKeywordToOriginalDeck(GameObject keywordMain)
+    {
+        OriginalDeck.AddMainKeywordOnDeck(keywordMain);
+    }
+
     #region Actor의 키워드 관련 변수
+    private Deck OriginalDeck;
     private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     private Hand hand;
     private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
@@ -152,9 +162,19 @@ public class Actor : MonoBehaviour
 
     private void OnEnable()
     {
+        // 원본 덱 가져오기 전에 있는지 확인
+        if((int)transform.childCount >= 2)
+            OriginalDeck = transform.GetChild(1).GetComponent<Deck>();
+
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
+        // 원본 덱 없으면 복사 X
+        if (OriginalDeck != null)
+        {
+            Debug.Log(OriginalDeck.gameObject.name);
+            deck.InitDeck(OriginalDeck);
+        }
         buffList = new int[(int)BuffType.Size] ;
 
         debuffList = new int[(int)DebuffType.Size];
