@@ -287,13 +287,15 @@ MonoBehaviour:
   _keywordName: 
   _keywordDamage: 0
   _keywordProtect: 0
+  _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
   _keywordTension: 0
-  RED: {r: 255, g: 0, b: 0, a: 1}
-  BLUE: {r: 0, g: 255, b: 0, a: 1}
-  GREEN: {r: 0, g: 0, b: 255, a: 1}
-  YELLOW: {r: 255, g: 255, b: 0, a: 1}
+  R: {r: 1, g: 0, b: 0, a: 0.003921569}
+  G: {r: 0, g: 1, b: 0, a: 0.003921569}
+  B: {r: 0, g: 0, b: 1, a: 0.003921569}
+  Y: {r: 1, g: 1, b: 0, a: 0.003921569}
+  D: {r: 0, g: 0, b: 0, a: 0.003921569}
   keywordDescription: 
   extraDamage: 3
 --- !u!114 &3211215611729177215

@@ -12,7 +12,9 @@ public class BlindSword : KeywordMain
     {
         keywordName = "맹목의 검";
         SetKeywordColor(R);
+        Init();
     }
+    
 
 
     public override void Execute(Actor caster, Actor target)

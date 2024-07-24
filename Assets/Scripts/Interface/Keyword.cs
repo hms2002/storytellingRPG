@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
+    public TextMeshProUGUI nameText;
 
     #region 키워드 제원 변수
     [Header("키워드 제원")]
@@ -19,14 +21,14 @@ public class Keyword : MonoBehaviour
     protected Color keywordColor;
 
     [Header("키워드 특성별 색")]
-    [SerializeField] protected Color R = new Color32(255, 0, 0, 1);
-    [SerializeField] protected Color G = new Color32(0, 255, 0, 1);
-    [SerializeField] protected Color B = new Color32(0, 0, 255, 1);
-    [SerializeField] protected Color Y = new Color32(255, 255, 0, 1);
+    protected Color R = new Color32(255, 0, 0, 255);
+    protected Color G = new Color32(0, 255, 0, 255);
+    protected Color B = new Color32(0, 0, 255, 255);
+    protected Color Y = new Color32(255, 255, 0, 255);
     /// <summary>
     /// 검은색임
     /// </summary>
-    [SerializeField] protected Color D = new Color32(0, 0, 0, 1);
+    protected Color D = new Color32(0, 0, 0, 255);
 
 
 
@@ -86,9 +88,17 @@ public class Keyword : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    protected void Init()
     {
         fightManager = FightManager.fightManager;
+        nameText.text = keywordName;
+        nameText.color = keywordColor;
+    }
+
+    private void Awake()
+    {
+        /*nameText = transform.FindChild("Text (TMP)")*/
+        Init();
     }
 
     public void PlayClickSound()
