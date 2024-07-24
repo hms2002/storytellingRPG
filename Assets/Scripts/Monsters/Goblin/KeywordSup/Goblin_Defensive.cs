@@ -10,6 +10,7 @@ public class Goblin_Defensive : KeywordSup
         SetKeywordColor(B);
         keywordProtect = 4;
         keywordTension = -4;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

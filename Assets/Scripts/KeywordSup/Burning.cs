@@ -10,6 +10,7 @@ public class Burning : KeywordSup
         SetKeywordColor(R);
         debuffType = "Burn";
         debuffStack = 2;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

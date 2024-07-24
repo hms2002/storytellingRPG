@@ -95,12 +95,6 @@ public class Keyword : MonoBehaviour
         nameText.color = keywordColor;
     }
 
-    private void Awake()
-    {
-        /*nameText = transform.FindChild("Text (TMP)")*/
-        Init();
-    }
-
     public void PlayClickSound()
     {
         AudioManager.instance.PlaySound("Keyword","키워드_잡기");

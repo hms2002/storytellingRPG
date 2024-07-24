@@ -9,6 +9,7 @@ public class Potion : KeywordMain
         keywordName = "포션";
         SetKeywordColor(D);
         keywordHeal = 12;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

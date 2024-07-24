@@ -9,6 +9,7 @@ public class Sharp : KeywordSup
         keywordName = "날카로운";
         SetKeywordColor(R);
         keywordDamage = 2;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

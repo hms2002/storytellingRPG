@@ -13,6 +13,7 @@ public class Goblin_TinselHelmet : KeywordMain
         keywordName = "양철 투구";
         SetKeywordColor(B);
         keywordTension = -12;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

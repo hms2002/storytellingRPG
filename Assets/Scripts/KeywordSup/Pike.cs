@@ -9,6 +9,7 @@ public class Pike : KeywordSup
         keywordName = "가시 돋은";
         SetKeywordColor(B);
         keywordDamage = 3;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

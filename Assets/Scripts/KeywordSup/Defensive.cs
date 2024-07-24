@@ -6,9 +6,10 @@ public class Defensive : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "¹æ¾îÀûÀÎ";
+        keywordName = "ë°©ì–´ì ì¸";
         SetKeywordColor(B);
         keywordProtect = 4;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -9,6 +9,7 @@ public class WoodSword : KeywordMain
         keywordName = "나무검";
         SetKeywordColor(D);
         keywordDamage = 7;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

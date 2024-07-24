@@ -33,7 +33,7 @@ public class Hand : MonoBehaviour
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
-            supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform));
+            supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform));     
         }
         KeywordUIMovement.instance.StretchKeywords(supportHand);
     }

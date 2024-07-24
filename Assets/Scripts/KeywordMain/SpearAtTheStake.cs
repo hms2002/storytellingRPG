@@ -8,6 +8,7 @@ public class SpearAtTheStake : KeywordMain
     {
         keywordName = "화형의 창 날";
         SetKeywordColor(R);
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

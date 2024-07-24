@@ -15,6 +15,7 @@ public class Goblin_WoodClub : KeywordMain
         SetKeywordColor(R);
         keywordDamage = Random.Range(minDamage, maxDamage);
         keywordTension = 12;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)
