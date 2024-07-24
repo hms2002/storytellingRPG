@@ -29,7 +29,6 @@ public class MonsterTargetter : MonoBehaviour
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            Debug.Log(mousePos);
             RaycastHit2D hit = Physics2D.Raycast(mousePos, transform.forward, 15);
             Debug.DrawRay(mousePos, transform.forward * 10, Color.red, 0.3f);
             if(hit)

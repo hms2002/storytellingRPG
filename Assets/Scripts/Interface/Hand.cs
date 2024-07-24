@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 /*
 #.스크립트 설명
 
@@ -74,7 +74,24 @@ public class Hand : MonoBehaviour
         return mainKeywordPrefab_temp;
     }
 
+    public void DisableSupHand()
+    {
+        foreach(GameObject i in supportHand)
+        {
+            i.GetComponent<KeywordInfoControler>().DisableShowInfo();
+            i.GetComponent<Button>().enabled = false;
+        }
+    }
+    internal void DisableMainHand()
+    {
+        foreach (GameObject i in mainHand)
+        {
+            i.GetComponent<KeywordInfoControler>().DisableShowInfo();
+            i.GetComponent<Button>().enabled = false;
+        }
+    }
 
     public void SetSupPrefabInfo(GameObject gameObject) { supKeywordPrefab.Add(gameObject); }
     public void SetMainPrefabInfo(GameObject gameObject) { mainKeywordPrefab.Add(gameObject); }
+
 }
