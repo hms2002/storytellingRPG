@@ -80,6 +80,13 @@ public class FightManager : MonoBehaviour
                 monster.BeforeAction();
         }
 
+        if (!CheckMonsterSurvive())
+        {
+            // 전투 승리 문구 출력
+            TextManager.instance.PrintVictory();
+            return;
+        }
+
         // 
         if (preparedActorCount < monsterList.Count)
         {

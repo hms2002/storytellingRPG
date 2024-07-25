@@ -73,7 +73,7 @@ public class TextManager : MonoBehaviour
 
     public void PrintPlayerDie()
     {
-        Text.text = "기사는 사망하였다.";
+        Text.text = "기사의 이야기는 여기에서 끝났다.";
         Text.alignment = TextAlignmentOptions.Midline;
 
         theEndIcon.SetActive(true);

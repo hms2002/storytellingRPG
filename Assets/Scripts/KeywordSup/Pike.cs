@@ -14,8 +14,7 @@ public class Pike : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateDatabase.stateDatabase.
-            pike, keywordDamage);
+        caster.charactorState.AddState(StateDatabase.stateDatabase.pike, keywordDamage);
     }
 
     public override void Check(KeywordMain _keywordMain)
