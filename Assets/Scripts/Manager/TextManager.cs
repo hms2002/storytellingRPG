@@ -77,6 +77,5 @@ public class TextManager : MonoBehaviour
         Text.alignment = TextAlignmentOptions.Midline;
 
         theEndIcon.SetActive(true);
-
     }
 }

@@ -292,8 +292,8 @@ MonoBehaviour:
   _debuffStack: 0
   _keywordTension: 0
   keywordDescription: 
-  minDamage: 1
-  maxDamage: 3
+  minDamage: 100
+  maxDamage: 100
 --- !u!114 &3748905926807949624
 MonoBehaviour:
   m_ObjectHideFlags: 0
