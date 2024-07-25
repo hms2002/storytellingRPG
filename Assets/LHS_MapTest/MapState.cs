@@ -1,11 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Map
 {
     public class MapState : MapGenerator
     {
+        public GameObject mapObj;
+
         private static MapState instance;
         public static MapState InstanceMap
         {
@@ -28,9 +30,9 @@ namespace Map
         {
             base.SpawnMap();
             MapStateSetting();
+            SaveMapData(Application.persistentDataPath + "/mapData.json"); // 맵 생성 후 저장
         }
 
-        //맵 시작 세팅
         private void MapStateSetting()
         {
             for (int i = 0; i <= nodesEndLineCheck[0]; i++)
@@ -38,81 +40,124 @@ namespace Map
                 nodes[i].nodeStates = NodeStates.Attainable;
             }
 
-            for (int i = nodesEndLineCheck[0]+1; i <= nodesEndLineCheck[nodesEndLineCheck.Count - 1]; i++)
+            for (int i = nodesEndLineCheck[0] + 1; i <= nodesEndLineCheck[nodesEndLineCheck.Count - 1]; i++)
             {
                 nodes[i].nodeStates = NodeStates.Locked;
             }
         }
 
-        //맵 클릭시 갱신
-        public void MapRenewal()
+        public void SaveMapData(string filePath)
         {
-            // nodesEndLineCheck 리스트가 비어 있는지 확인
-            if (nodesEndLineCheck == null || nodesEndLineCheck.Count == 0)
+            MapData mapData = new MapData
             {
-                Debug.Log(nodesEndLineCheck[0]);
-                Debug.LogError("nodesEndLineCheck 리스트가 비어 있습니다.");
-                return;
-            }
+                nodes = new List<NodeData>(),
+                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck 리스트 저장
+            };
 
-            // nodes 리스트가 비어 있는지 확인
-            if (nodes == null || nodes.Count == 0)
+            for (int i = 0; i < nodes.Count; i++)
             {
-                Debug.LogError("nodes 리스트가 비어 있습니다.");
-                return;
-            }
-
-            for (int i = 0; i <= nodesEndLineCheck[nodesEndLineCheck.Count - 1]; i++)
-            {
-                // i가 nodes 리스트의 범위를 벗어나지 않도록 체크
-                if (i >= nodes.Count)
+                MapNode mapNode = nodes[i];
+                NodeData nodeData = new NodeData
                 {
-                    Debug.LogError($"i({i})가 nodes 리스트의 범위를 벗어났습니다.");
-                    break;
+                    position = mapNode.GetComponent<RectTransform>().anchoredPosition,
+                    nodeType = mapNode.nodeBlueprint.nodeType,
+                    nodeState = mapNode.nodeStates,
+                    connectedNodeIndices = new List<int>()
+                };
+
+                foreach (var connectedNode in mapNode.connectedNodes)
+                {
+                    nodeData.connectedNodeIndices.Add(nodes.IndexOf(connectedNode));
                 }
 
-                if (nodes[i].nodeStates == NodeStates.Attainable)
-                {
-                    for (int j = 0; j < nodesEndLineCheck.Count; j++)
-                    {
-                        if (i <= nodesEndLineCheck[j])
-                        {
-                            // 같은 열에 존재하는 노드
-                            for (int k = (j == 0 ? 0 : nodesEndLineCheck[j - 1] + 1); k <= nodesEndLineCheck[j]; k++)
-                            {
-                                // k가 nodes 리스트의 범위를 벗어나지 않도록 체크
-                                if (k >= nodes.Count)
-                                {
-                                    Debug.LogError($"k({k})가 nodes 리스트의 범위를 벗어났습니다.");
-                                    break;
-                                }
-                                nodes[k].nodeStates = NodeStates.Locked;
-                            }
+                mapData.nodes.Add(nodeData);
+            }
 
-                            // 다음 열에 존재하는 노드
-                            if (j + 1 < nodesEndLineCheck.Count)
-                            {
-                                for (int k = nodesEndLineCheck[j] + 1; k <= nodesEndLineCheck[j + 1]; k++)
-                                {
-                                    // k가 nodes 리스트의 범위를 벗어나지 않도록 체크
-                                    if (k >= nodes.Count)
-                                    {
-                                        Debug.LogError($"k({k})가 nodes 리스트의 범위를 벗어났습니다.");
-                                        break;
-                                    }
-                                    nodes[k].nodeStates = NodeStates.Attainable;
-                                }
-                            }
-                            break;
+            string json = JsonUtility.ToJson(mapData, true);
+            File.WriteAllText(filePath, json);
+            Debug.Log("Map data saved to " + filePath);
+        }
+
+        public void LoadMapData(string filePath)
+        {
+            startNode.SetActive(true);
+            endNode.SetActive(true);
+
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                MapData mapData = JsonUtility.FromJson<MapData>(json);
+
+                ClearExistingNodes();
+                nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck 리스트 로드
+
+                for (int i = 0; i < mapData.nodes.Count; i++)
+                {
+                    var nodeData = mapData.nodes[i];
+
+                    GameObject nodeObject = Instantiate(nodePrefab[(int)nodeData.nodeType], mapParent);
+                    RectTransform rectTransform = nodeObject.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = nodeData.position;
+
+                    MapNode mapNode = nodeObject.GetComponent<MapNode>();
+                    mapNode.nodeBlueprint = new NodeBlueprint { nodeType = nodeData.nodeType };
+                    mapNode.nodeBlueprint.sprite = nodePrefab[(int)nodeData.nodeType].GetComponent<MapNode>().nodeBlueprint.sprite;
+                    mapNode.SetUp();
+                    mapNode.nodeStates = nodeData.nodeState;
+                    mapNode.SetStage();
+
+                    nodes.Add(mapNode);
+                }
+
+                Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // 디버그 메시지
+
+                for (int i = 0; i < mapData.nodes.Count; i++)
+                {
+                    foreach (var connectedNodeIndex in mapData.nodes[i].connectedNodeIndices)
+                    {
+                        if (connectedNodeIndex >= 0 && connectedNodeIndex < nodes.Count)
+                        {
+                            nodes[i].connectedNodes.Add(nodes[connectedNodeIndex]);
+                            ConnectRoadLine(nodes[i].GetComponent<RectTransform>(), nodes[connectedNodeIndex].GetComponent<RectTransform>());
+                        }
+                        else
+                        {
+                            Debug.LogWarning("노드 연결 오류: " + connectedNodeIndex);
                         }
                     }
                 }
+
+                // 시작 노드와 끝 노드를 연결
+                StartEndConnection();
+
+                Debug.Log("맵 불러오기 : " + filePath);
+            }
+            else
+            {
+                Debug.LogError("저장 파일 없음 : " + filePath);
             }
         }
 
-        private void SaveAllNodeState()
+        public void OnOffMap()
         {
+            if(mapObj.activeSelf)
+            {
+                CloseMap();
+            }
+            else
+            {
+                OpenMap();
+            }
+        }
 
+        public void OpenMap()
+        {
+            mapObj.SetActive(true);
+        }
+
+        public void CloseMap()
+        {
+            mapObj.SetActive(false);
         }
     }
 }

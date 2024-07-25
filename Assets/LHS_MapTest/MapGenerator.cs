@@ -57,6 +57,9 @@ namespace Map
 
         public void GeneratorMap()
         {
+            startNode.SetActive(true);
+            endNode.SetActive(true);
+
             int makeCount = -1; // -1부터 시작
 
             if (nodes != null && nodes.Count != 0)
@@ -125,7 +128,7 @@ namespace Map
             return new Vector2(x, y);
         }
 
-        private void ClearExistingNodes()
+        protected void ClearExistingNodes()
         {
             for (int i = nodes.Count - 1; i >= 0; i--)
             {
@@ -316,7 +319,7 @@ namespace Map
             }
         }
 
-        private void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
+        protected void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
         {
             // 선 이미지 생성
             Image line = Instantiate(roadPrefab, roadParent);
@@ -344,19 +347,29 @@ namespace Map
             roadRectTransform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
-        private void StartEndConnection()
+        protected void StartEndConnection()
         {
-            //시작 지점 연결
-            for (int i = 0; i <= nodesEndLineCheck[0]; i++)
+            if (nodesEndLineCheck.Count > 0)
             {
-                startNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
-                ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
-            }
-            //끝 지점 연결
-            for (int i = nodesEndLineCheck[nodesEndLineCheck.Count - 2]+1; i <= nodesEndLineCheck[nodesEndLineCheck.Count-1]; i++)
-            {
-                endNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
-                ConnectRoadLine(endNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+                // 시작 지점 연결
+                int firstLineEndIndex = nodesEndLineCheck[0];
+                for (int i = 0; i <= firstLineEndIndex; i++)
+                {
+                    startNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
+                    ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+                }
+
+                // 끝 지점 연결
+                if (nodesEndLineCheck.Count > 1)
+                {
+                    int lastLineStartIndex = nodesEndLineCheck[nodesEndLineCheck.Count - 2] + 1;
+                    int lastLineEndIndex = nodesEndLineCheck[nodesEndLineCheck.Count - 1];
+                    for (int i = lastLineStartIndex; i <= lastLineEndIndex; i++)
+                    {
+                        endNode.GetComponent<MapNode>().connectedNodes.Add(nodes[i]);
+                        ConnectRoadLine(endNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+                    }
+                }
             }
         }
     }

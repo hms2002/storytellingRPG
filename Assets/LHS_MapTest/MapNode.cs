@@ -1,11 +1,8 @@
 using DG.Tweening;
-using Map;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.VersionControl.Asset;
 
 namespace Map
 {
@@ -15,10 +12,7 @@ namespace Map
         Visited,
         Attainable
     }
-}
 
-namespace Map
-{
     public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [SerializeField]
@@ -26,7 +20,7 @@ namespace Map
         [SerializeField]
         public NodeStates nodeStates;
         [SerializeField]
-        private NodeBlueprint nodeBlueprint;
+        public NodeBlueprint nodeBlueprint;
         [SerializeField]
         private bool isEndNode = false;  // endNode 플래그 추가
 
@@ -39,19 +33,20 @@ namespace Map
         public List<MapNode> connectedNodes = new List<MapNode>();
 
         //임시 start
-        void Start()
+        private void Start()
         {
             SetUp();
             SetStage();
         }
 
-        //이거 일단 보류 하고 있어 어떻게 할지
         public void SetUp()
         {
-            image.sprite = nodeBlueprint.sprite;
+            if (nodeBlueprint != null)
+            {
+                image.sprite = nodeBlueprint.sprite;
+            }
         }
 
-        //상태에 따라 노드 색깔 변화
         public void SetStage()
         {
             switch (nodeStates)
@@ -110,6 +105,9 @@ namespace Map
                 {
                     UpdateAllNodes();
                 }
+
+                // 노드 상태 변경 후 맵 저장
+                MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
             }
         }
 
@@ -151,7 +149,6 @@ namespace Map
         {
             // EndNode 클릭 시 실행할 로직
             Debug.Log("EndNode 클릭됨 - 특정 로직 실행");
-            // 여기에 실제 로직을 추가하세요
         }
     }
 }

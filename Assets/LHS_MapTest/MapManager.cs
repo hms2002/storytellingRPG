@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+namespace Map
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MapManager : MonoBehaviour
     {
-        
-    }
+        private string filePath;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void Start()
+        {
+            filePath = Application.persistentDataPath + "/mapData.json";
+
+            // 맵 데이터 불러오기
+            MapState.InstanceMap.LoadMapData(filePath);
+        }
     }
 }
