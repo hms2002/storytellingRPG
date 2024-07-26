@@ -682,7 +682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1854174875}
-  theEndIcon: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1084,7 @@ MonoBehaviour:
   effects:
   - type: 0
     prefab: {fileID: 8233226844660433020, guid: 79516890a2e50c447b761ea40c0b1a75, type: 3}
-    isTemporary: 0
+    isTemporary: 1
   - type: 1
     prefab: {fileID: 3177010102358360083, guid: 72b6add7afae58c44a83572617163f7d, type: 3}
     isTemporary: 1
@@ -3247,4 +3246,3 @@ SceneRoots:
   - {fileID: 1206082032}
   - {fileID: 1964708981}
   - {fileID: 1105729185}
-
