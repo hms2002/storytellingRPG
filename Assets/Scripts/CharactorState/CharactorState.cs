@@ -181,11 +181,13 @@ public class CharactorState : MonoBehaviour
     public void Init(ActorStateUIControler _stateUIController)
     {
         stateUIController = _stateUIController;
+        foreach (StateType type in Enum.GetValues(typeof(StateType)))
+            ResetState(type);
     }
 
     public void AddState(StateData data, int val)
     {
-        if(allStateList[(int)data.type] == null)
+        if (allStateList[(int)data.type] == null)
         {
             allStateList[(int)data.type] = new State(data, val);
             stateUIController.UpdateUI(allStateList[(int)data.type]);
@@ -197,7 +199,7 @@ public class CharactorState : MonoBehaviour
     public void AddState(StateType type, int val)
     {
         StateDatabase stateDB = StateDatabase.stateDatabase;
-        switch(type)
+        switch (type)
         {
             case StateType.glassPragment:
                 AddState(stateDB.glassPragment, val);
@@ -274,7 +276,7 @@ public class CharactorState : MonoBehaviour
         int deletedDebuff = 0;
         foreach (State i in allStateList)
         {
-            if (i == null || i.stack <= 0 
+            if (i == null || i.stack <= 0
                 || i.stateData.stateProperty != StateProperty.Debuff)
                 continue;
             i.ResetStack();
@@ -300,12 +302,12 @@ public class CharactorState : MonoBehaviour
     /// <param name="actor"></param>
     public void StartTurnDamage(Actor actor)
     {
-        foreach(State i in allStateList)
+        foreach (State i in allStateList)
         {
             if (i == null || i.stateData.effectByTurn == false
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
-            AudioManager.instance.PlaySound("Debuff",i.stateData.soundName);
+            AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
             actor.Damaged(actor, i.stack * i.stateData.damagePerStack);
             stateUIController.UpdateUI(i);
         }
@@ -387,7 +389,7 @@ public class CharactorState : MonoBehaviour
 
     public void ResetState(StateType type)
     {
-        if (allStateList[(int)type] == null) return;
+        if (type == StateType.Size ||  allStateList[(int)type] == null) return;
         allStateList[(int)type].ResetStack();
         stateUIController.UpdateUI(allStateList[(int)type]);
     }

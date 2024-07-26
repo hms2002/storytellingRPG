@@ -57,7 +57,7 @@ public class Actor : MonoBehaviour
 
     [Header("최대 체력")]
     [SerializeField] protected int _MAX_HP = 100;
-    private int _hp = 100;
+    private int _hp;
     private int _protect = 0;
     private int _heal = 0;
     private int _damage = 0;
@@ -175,14 +175,19 @@ public class Actor : MonoBehaviour
             Debug.Log(OriginalDeck.gameObject.name);
             deck.InitDeck(OriginalDeck);
         }
-        buffList = new int[(int)BuffType.Size] ;
 
-        debuffList = new int[(int)DebuffType.Size];
-
-        allStateList = new int[(int)StateType.Size]; 
         garbageField.InitDeck();
 
         charactorState.Init(stateUIController);
+
+        _hp = _MAX_HP;
+        _protect = 0;
+        _heal = 0;
+        _damage = 0;
+        _repeatStack = 1;
+        _additionalDamage = 0;
+        _additionalStack = 0;
+        _attackCount = false;
     }
 
     private void StackInit()

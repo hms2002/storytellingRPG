@@ -38,7 +38,6 @@ public class FightManager : MonoBehaviour
     {
         fightManagerUI = FightManagerUI.fightManagerUI;
         FightStart();
-        Invoke("Flow", 2);
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)
@@ -57,8 +56,14 @@ public class FightManager : MonoBehaviour
         Invoke("Flow",2);
     }
 
-    private void FightStart()
+    public  void FightStart()
     {
+        // 플레이어 정보 초기화
+        player.gameObject.SetActive(false);
+        player.gameObject.SetActive(true);
+
+
+        // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
         float pos = 4.45f;
@@ -68,6 +73,8 @@ public class FightManager : MonoBehaviour
             pos -= 2;
         }
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
+
+        Invoke("Flow", 2);
     }
 
     public void Flow()
@@ -155,6 +162,7 @@ public class FightManager : MonoBehaviour
         {
             // 전투 승리 문구 출력
             TextManager.instance.PrintVictory();
+            GameManager.instance.WinFight();
             yield break;
         }
 
