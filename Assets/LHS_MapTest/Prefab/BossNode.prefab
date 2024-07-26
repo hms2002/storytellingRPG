@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -185, y: 177}
-  m_SizeDelta: {x: 161.6636, y: 161.6636}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &347289201296925713
 MonoBehaviour:
@@ -53,9 +53,9 @@ MonoBehaviour:
   image: {fileID: 5789402150827648778}
   nodeStates: 0
   nodeBlueprint: {fileID: 11400000, guid: 282534f6fbe26444fb023628041bf40e, type: 2}
+  isEndNode: 0
   initialScale: 1
   HoveScaleFactor: 1.2
-  test: "\uD14C\uC2A4\uD2B8\uC791\uB3D9"
   connectedNodes: []
 --- !u!1 &2880016913523252572
 GameObject:

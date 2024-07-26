@@ -19,16 +19,16 @@ namespace Map
         public GameObject startNode;
         public GameObject endNode;
 
+        [Header("배치 거리 조절(양옆)")]
+        [Range(0f, 300f)]
+        public float distanceBetweenNodes_Width_MIN = 150.0f; //양옆 배치 최소 거리
+        [Range(0f, 300f)]
+        public float distanceBetweenNodes_Width_MAX = 300.0f; //양옆 배치 최대 거리
         [Header("배치 거리 조절(높이)")]
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_height_MIN = 150.0f; //높이 배치 최소 거리
+        public float distanceBetweenNodes_Height_MIN = 170.0f; //높이 배치 최소 거리
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_height_MAX = 300.0f; //높이 배치 최대 거리
-        [Header("배치 거리 조절(세로)")]
-        [Range(0f, 300f)]
-        public float distanceBetweenNodes_width_MIN = 170.0f; //좌우 배치 최소 거리
-        [Range(0f, 300f)]
-        public float distanceBetweenNodes_width_MAX = 220.0f; //좌우 배치 최대 거리
+        public float distanceBetweenNodes_Height_MAX = 220.0f; //높이 배치 최대 거리
 
         [Header("가로 세로, 노드 최대 개수 설정")]
         public int maxHeightNodesCount = 3; //높이에서 노드 최대 개수
@@ -48,6 +48,9 @@ namespace Map
 
         //노드 길 저장
         public List<GameObject> roadeLine = new List<GameObject>();
+
+        //노드 시작 위치
+        public Vector2 startVector;
 
         virtual public void SpawnMap()
         {
@@ -115,15 +118,15 @@ namespace Map
             GameObject nodeObject = Instantiate(nodePrefab[typeCount], mapParent);
             //위치 설정
             RectTransform rectTransform = nodeObject.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = GetRandomPosition(_isWidth, _heiNum, _widNum) - new Vector2(800, 400);
+            rectTransform.anchoredPosition = GetRandomPosition(_isWidth, _heiNum, _widNum) - startVector;
             //노드 모음에 추가
             nodes.Add(nodeObject.GetComponent<MapNode>());
         }
 
         Vector2 GetRandomPosition(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height
         {
-            float x = Random.Range(distanceBetweenNodes_height_MIN, distanceBetweenNodes_height_MAX) + (distanceBetweenNodes_height_MAX * _heiNum);
-            float y = Random.Range(distanceBetweenNodes_width_MIN, distanceBetweenNodes_width_MAX) + (distanceBetweenNodes_width_MAX * _widNum);
+            float x = Random.Range(distanceBetweenNodes_Width_MIN, distanceBetweenNodes_Width_MAX) + (distanceBetweenNodes_Width_MAX * _heiNum);
+            float y = Random.Range(distanceBetweenNodes_Height_MIN, distanceBetweenNodes_Height_MAX) + (distanceBetweenNodes_Height_MAX * _widNum);
 
             return new Vector2(x, y);
         }
@@ -160,35 +163,47 @@ namespace Map
 
                 // 각 노드가 적어도 하나의 연결을 가짐을 보장하기 위해 사용
                 bool[] isConnected = new bool[nextColumnEnd - nextColumnStart + 1];
-                List<int> availableNodes = Enumerable.Range(nextColumnStart, nextColumnEnd - nextColumnStart + 1).ToList();
 
                 // 추가 랜덤 연결
                 for (int j = currentColumnStart; j <= currentColumnEnd; j++)
                 {
                     int connections = GetRandomConnections(); // 확률 기반 연결 개수 결정
 
+                    List<int> potentialNodes = new List<int>();
+                    for (int k = -1; k <= 1; k++)
+                    {
+                        int potentialIndex = j - currentColumnStart + k;
+                        if (potentialIndex >= 0 && potentialIndex < (nextColumnEnd - nextColumnStart + 1))
+                        {
+                            potentialNodes.Add(nextColumnStart + potentialIndex);
+                        }
+                    }
+
                     for (int k = 0; k < connections; k++)
                     {
-                        int nextNode = Random.Range(nextColumnStart, nextColumnEnd + 1);
-                        if (!nodes[j].connectedNodes.Contains(nodes[nextNode]) &&
-                            !HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
+                        if (potentialNodes.Count == 0) break;
+
+                        int nextNode = potentialNodes[0];
+                        potentialNodes.RemoveAt(0);
+
+                        if (!nodes[j].connectedNodes.Contains(nodes[nextNode]))
                         {
-                            nodes[j].connectedNodes.Add(nodes[nextNode]);
-                            ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
-                            isConnected[nextNode - nextColumnStart] = true;
-                        }
-                        else
-                        {
-                            // 만약 겹친다면 같은 열의 다른 노드와 연결 시도
-                            for (int l = j - 1; l >= currentColumnStart; l--)
+                            bool hasIntersection = HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition);
+
+                            // 교차가 발생하면 위쪽 노드로 시도
+                            while (hasIntersection && potentialNodes.Count > 0)
                             {
-                                if (!HasIntersectingLines(nodes[l].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
-                                {
-                                    nodes[l].connectedNodes.Add(nodes[nextNode]);
-                                    ConnectRoadLine(nodes[l].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
-                                    isConnected[nextNode - nextColumnStart] = true;
-                                    break;
-                                }
+                                nextNode = potentialNodes[0];
+                                potentialNodes.RemoveAt(0);
+                                hasIntersection = HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition);
+                            }
+
+                            // 최종 선택된 노드와 연결
+                            if (!hasIntersection)
+                            {
+                                nodes[j].connectedNodes.Add(nodes[nextNode]);
+                                ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                isConnected[nextNode - nextColumnStart] = true;
                             }
                         }
                     }
@@ -200,24 +215,28 @@ namespace Map
                     if (nodes[j].connectedNodes.Count == 0)
                     {
                         bool connectionMade = false;
-                        foreach (int nextNode in availableNodes)
+                        for (int nextNode = nextColumnStart; nextNode <= nextColumnEnd; nextNode++)
                         {
                             if (!HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
                             {
                                 nodes[j].connectedNodes.Add(nodes[nextNode]);
                                 ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
-                                isConnected[nextNode - nextColumnStart] = true;
                                 connectionMade = true;
                                 break;
                             }
                         }
-                        // 만약 연결을 만들지 못한 경우, 연결을 강제로 생성
+                        // 만약 연결을 만들지 못한 경우, 위쪽 노드와 강제로 연결
                         if (!connectionMade)
                         {
-                            int nextNode = availableNodes[0];
-                            nodes[j].connectedNodes.Add(nodes[nextNode]);
-                            ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
-                            isConnected[nextNode - nextColumnStart] = true;
+                            for (int nextNode = nextColumnEnd; nextNode >= nextColumnStart; nextNode--)
+                            {
+                                if (!nodes[j].connectedNodes.Contains(nodes[nextNode]))
+                                {
+                                    nodes[j].connectedNodes.Add(nodes[nextNode]);
+                                    ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
@@ -229,7 +248,7 @@ namespace Map
                     {
                         int nextNode = nextColumnStart + k;
                         bool connectionMade = false;
-                        foreach (int j in Enumerable.Range(currentColumnStart, currentColumnEnd - currentColumnStart + 1))
+                        for (int j = currentColumnStart; j <= currentColumnEnd; j++)
                         {
                             if (!HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition))
                             {
@@ -239,12 +258,18 @@ namespace Map
                                 break;
                             }
                         }
-                        // 만약 연결을 만들지 못한 경우, 연결을 강제로 생성
+                        // 만약 연결을 만들지 못한 경우, 위쪽 노드와 강제로 연결
                         if (!connectionMade)
                         {
-                            int randomNode = Random.Range(currentColumnStart, currentColumnEnd + 1);
-                            nodes[randomNode].connectedNodes.Add(nodes[nextNode]);
-                            ConnectRoadLine(nodes[randomNode].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                            for (int j = currentColumnEnd; j >= currentColumnStart; j--)
+                            {
+                                if (!nodes[j].connectedNodes.Contains(nodes[nextNode]))
+                                {
+                                    nodes[j].connectedNodes.Add(nodes[nextNode]);
+                                    ConnectRoadLine(nodes[j].GetComponent<RectTransform>(), nodes[nextNode].GetComponent<RectTransform>());
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
@@ -301,14 +326,15 @@ namespace Map
         {
             int randomValue = Random.Range(1, 101); // 1부터 100까지의 랜덤 값
 
-            if (randomValue <= 40)
+            if (randomValue <= 60)
             {
                 return 1; // 40% 확률로 1개
             }
-            else if (randomValue <= 70)
+            else // (randomValue <= 70)
             {
                 return 2; // 30% 확률로 2개
             }
+            /*
             else if (randomValue <= 90)
             {
                 return 3; // 20% 확률로 3개
@@ -317,6 +343,7 @@ namespace Map
             {
                 return maxHeightNodesCount; // 10% 확률로 maxHeightNodesCount
             }
+            */
         }
 
         protected void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
