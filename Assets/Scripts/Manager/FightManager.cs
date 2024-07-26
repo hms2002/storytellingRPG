@@ -78,7 +78,7 @@ public class FightManager : MonoBehaviour
         }
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
-        Invoke("Flow", 2);
+        Invoke("Flow", 5);
     }
 
     public void Flow()
@@ -145,7 +145,7 @@ public class FightManager : MonoBehaviour
             yield return null;
         }
 
-        TextManager.instance.MainKeywordTextPlay(player);
+        TextManager.instance.MainKeywordTextPlay(player,2f);
         AudioManager.instance.PlaySound("Character", player.attackSound);
 
         curTime = 0;
@@ -188,7 +188,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
-            TextManager.instance.MainKeywordTextPlay(monster);
+            TextManager.instance.MainKeywordTextPlay(monster, 0.5f);
             AudioManager.instance.PlaySound("Character", monster.attackSound);
 
 

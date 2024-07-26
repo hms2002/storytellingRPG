@@ -295,7 +295,7 @@ public class Actor : MonoBehaviour
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
         AddToMainGarbageField();
-        TextManager.instance.MainKeywordTextPlay(this);
+        TextManager.instance.MainKeywordTextPlay(this, 2f);
 
         // Actor의 Hand가 비었으니 false로 설정
         hasActorDrawnKeywords = false;
