@@ -91,6 +91,7 @@ public class FightManager : MonoBehaviour
         {
             // 전투 승리 문구 출력
             TextManager.instance.PrintVictory();
+            UIManager.uIManager.GetOutOfBattleField();
             return;
         }
 
@@ -163,6 +164,10 @@ public class FightManager : MonoBehaviour
             // 전투 승리 문구 출력
             TextManager.instance.PrintVictory();
             GameManager.instance.WinFight();
+
+            yield return new WaitForSeconds(2);
+
+            UIManager.uIManager.GetOutOfBattleField();
             yield break;
         }
 
@@ -228,6 +233,9 @@ public class FightManager : MonoBehaviour
 
             // 플레이어 사망 문구 출력
             TextManager.instance.PrintPlayerDie();
+
+            // The End 아이콘 활성화
+            UIManager.uIManager.ActiveTheEndIcon(true);
 
             // 게임 종료 (씬 전환?)
         }
