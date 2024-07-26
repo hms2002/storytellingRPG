@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-#.스크립트 설명
-
-- 키워드들을 담고 있는 기본덱의 역할을 수행
-- 버려진 키워드들이 담겨질 무덤덱의 역할을 수행
-*/
-
+/// <summary>
+/// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
+/// </summary>
 public class Deck : MonoBehaviour
 {
     [Header("키워드 덱 리스트")]
@@ -19,19 +15,25 @@ public class Deck : MonoBehaviour
     /*==================================================================================================================================*/
 
 
-    // 무덤덱 리스트 초기화
+    /// <summary>
+    /// 무덤덱 리스트 초기화 메소드
+    /// </summary>
     public void InitDeck()
     {
         supportDeck = new List<GameObject>();
         mainDeck = new List<GameObject>();
     }
+
     public void InitDeck(Deck _deck)
     {
         supportDeck = new List<GameObject>(_deck.supportDeck);
         mainDeck = new List<GameObject>(_deck.mainDeck);
     }
 
-    // Support 키워드 1개 랜덤 드로우
+    /// <summary>
+    /// Support 키워드 1개를 랜덤으로 뽑아 드로우하는 메소드
+    /// </summary>
+    /// <returns>랜덤으로 드로우된 Support 키워드</returns>
     public GameObject DrawSupKeyword()
     {
         // 랜덤으로 뽑은 서포트 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간 
@@ -46,7 +48,10 @@ public class Deck : MonoBehaviour
         return supportDeckTemp;
     }
 
-    // Main 키워드 1개 랜덤 드로우
+    /// <summary>
+    /// Main 키워드 1개를 랜덤으로 뽑아 드로우하는 메소드
+    /// </summary>
+    /// <returns>랜덤으로 드로우된 Main 키워드</returns>
     public GameObject DrawMainKeyword()
     {
         // 랜덤으로 뽑은 메인 키워드를 덱에서 지우기 위해 잠시 담아놓을 공간
@@ -61,6 +66,9 @@ public class Deck : MonoBehaviour
         return mainDeckTemp;
     }
 
+    /// <summary>
+    /// Support, Main덱 리스트 셔플 메소드
+    /// </summary>
     public void ShuffleDeck()
     {
         GameObject temp;
@@ -90,7 +98,10 @@ public class Deck : MonoBehaviour
         }
     }
 
-    // 기본 Support 덱이 비어있는지 확인
+    /// <summary>
+    /// Support 기본덱이 비어있는지 확인하는 메소드
+    /// </summary>
+    /// <returns>비어있으면 true, 하나라도 채워져 있으면 false</returns>
     public bool IsSupDeckEmpty()
     {
         // Support 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false
@@ -104,7 +115,10 @@ public class Deck : MonoBehaviour
         }
     }
 
-    // 기본 Main 덱이 비어있는지 확인
+    /// <summary>
+    /// Main 기본덱이 비어있는지 확인하는 메소드
+    /// </summary>
+    /// <returns>비어있으면 true, 하나라도 채워져 있으면 false</returns>
     public bool IsMainDeckEmpty()
     {
         // Main 덱 리스트가 비어있다면 return true, 하나 이상 채워져 있다면 return false

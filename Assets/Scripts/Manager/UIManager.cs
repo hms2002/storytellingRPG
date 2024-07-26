@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 게임 운영에 필요한 UI 관리를 담당
+/// <para> 전투 UI, 책 애니메이션 제어 </para>
+/// </summary>
 public class UIManager : MonoBehaviour
 {
     public static UIManager uIManager;
@@ -34,14 +38,15 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void EnterBattleField()
+    /// <summary>
+    /// 전장에 돌입하면 BookPassR 애니메이션 재생, 전투 UI 활성화하는 메소드
+    /// </summary>
+    public IEnumerator EnterBattleField()
     {
         bookAnimator.SetTrigger("shouldTurnPageToRight");
-        Invoke("ActiveCombatFunctionAndUITrue", 1);
-    }
 
-    private void ActiveCombatFunctionAndUITrue()
-    {
+        yield return new WaitForSeconds(1);
+
         ActiveCombatFunctionAndUI(true);
     }
 
