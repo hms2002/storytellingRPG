@@ -9,6 +9,7 @@ public class FightManager : MonoBehaviour
     public FightManagerUI fightManagerUI;
 
     [Header("Actor 오브젝트")]
+    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Actor player;
     [SerializeField] private List<Monster> monsterList;
 
@@ -58,10 +59,8 @@ public class FightManager : MonoBehaviour
 
     public  void FightStart()
     {
-        // 플레이어 정보 초기화
-        player.gameObject.SetActive(false);
-        player.gameObject.SetActive(true);
-
+        // 플레이어 프리팹 생성 및 Actor 할당
+        player = Instantiate(playerPrefab).GetComponent<Actor>();
 
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
