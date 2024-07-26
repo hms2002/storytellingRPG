@@ -6,17 +6,17 @@ using TMPro;
 public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
-    public TextMeshProUGUI nameText;
+    public  TextMeshProUGUI nameText;
 
     #region 키워드 제원 변수
     [Header("키워드 제원")]
     [SerializeField] private string _keywordName;
-    [SerializeField] private int _keywordDamage = 0;
-    [SerializeField] private int _keywordProtect = 0;
-    [SerializeField] private int _keywordHeal = 0;
+    [SerializeField] private int    _keywordDamage = 0;
+    [SerializeField] private int    _keywordProtect = 0;
+    [SerializeField] private int    _keywordHeal = 0;
     [SerializeField] private string _debuffType = "";
-    [SerializeField] private int _debuffStack = 0;
-    [SerializeField] private int _keywordTension = 0;
+    [SerializeField] private int    _debuffStack = 0;
+    [SerializeField] private int    _keywordTension = 0;
 
     protected Color keywordColor;
 
