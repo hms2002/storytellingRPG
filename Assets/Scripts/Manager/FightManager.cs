@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 전투 기능 및 흐름을 담당
+/// <para> player 데이터, monster 리스트 데이터, 키워드 제어 </para>
+/// </summary>
 public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
@@ -118,13 +122,6 @@ public class FightManager : MonoBehaviour
             preparedActorCount = 0;
 
         StartCoroutine(ActorAction());
-
-        //player.Action(MonsterTargetter.monsterTargetter.target);
-
-        //foreach (Actor monster in monsterList)
-        //    monster.Action(player);
-
-        //Flow();
     }
 
     private IEnumerator ActorAction()

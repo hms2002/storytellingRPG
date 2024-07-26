@@ -5,17 +5,6 @@ using UnityEngine;
 public class RewardManager : MonoBehaviour
 {
     public  Actor player;
-    //public Actor player
-    //{
-    //    get
-    //    {
-    //        if (_player == null)
-    //        {
-    //            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Actor>();
-    //        }
-    //        return _player;
-    //    }
-    //}
 
     public static RewardManager instance;
     public GameObject rewardCanvas;

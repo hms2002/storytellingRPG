@@ -158,6 +158,7 @@ public class Actor : MonoBehaviour
 
     #endregion
 
+
     /*==================================================================================================================================*/
 
     private void OnEnable()
@@ -495,11 +496,6 @@ public class Actor : MonoBehaviour
 
 
     public void SelectKeyword()
-    {
-        ShowKeywordSup();
-    }
-
-    private void ShowKeywordSup()
     {
         hand.SubstantiateSupKeywordData();
     }

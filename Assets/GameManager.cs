@@ -3,25 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 게임의 전체 흐름을 담당
+/// <para> 현재의 게임 상태를 다른 하위 매니저들에게 전달 </para>
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    [Header("매니저")]
+    [SerializeField] private FightManager fightManager;
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private TextManager textManager;
+    [SerializeField] private EffectManager effectManager;
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private TensionManager tensionManager;
+    [SerializeField] private RewardManager rewardManager;
+
+
+    /*==================================================================================================================================*/
 
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
-    }
-
-    private RewardManager rewardManager;
-    private FightManager fightManager;
-
-
-
-    void Start()
-    {
-        rewardManager = FindAnyObjectByType<RewardManager>();
-        fightManager = FindAnyObjectByType<FightManager>();
     }
 
     public void EnterFightZone()

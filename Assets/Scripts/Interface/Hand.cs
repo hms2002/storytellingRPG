@@ -28,7 +28,9 @@ public class Hand : MonoBehaviour
     /*==================================================================================================================================*/
 
 
-    // keywordData 속 Support 키워드들을 실체화 시켜 supportHand 리스트에 집어 넣는 기능
+    /// <summary>
+    /// keywordData 속 Support 키워드들을 실체화시켜 supportHand 리스트에 집어 넣는 메소드
+    /// </summary>
     public void SubstantiateSupKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
@@ -38,7 +40,9 @@ public class Hand : MonoBehaviour
         KeywordUIMovement.instance.StretchKeywords(supportHand);
     }
 
-    // keywordData 속 Main 키워드들을 실체화 시켜 MainHand 리스트에 집어 넣는 기능
+    /// <summary>
+    /// keywordData 속 Main 키워드들을 실체화시켜 MainHand 리스트에 집어 넣는 메소드
+    /// </summary>
     public void SubstantiateMainKeywordData()
     {
         for (int i = 0; i < HANDSIZE; i++)
@@ -50,7 +54,9 @@ public class Hand : MonoBehaviour
         KeywordUIMovement.instance.StretchKeywords(mainHand);
     }
 
-    // Hand에 있는 Support 키워드들을 무덤덱으로 버리는 기능
+    /// <summary>
+    /// Hand에 있는 Support 키워드들을 무덤덱으로 버리는 메소드
+    /// </summary>
     public GameObject ThrowSupKeyword(int index)
     {
         GameObject supKeywordPrefab_temp = supKeywordPrefab[index];
@@ -62,7 +68,9 @@ public class Hand : MonoBehaviour
         return supKeywordPrefab_temp;
     }
 
-    // Hand에 있는 Main 키워드들을 무덤덱으로 버리는 기능
+    /// <summary>
+    /// Hand에 있는 Main 키워드들을 무덤덱으로 버리는 메소드
+    /// </summary>
     public GameObject ThrowMainKeyword(int index)
     {
         GameObject mainKeywordPrefab_temp = mainKeywordPrefab[index];
@@ -82,7 +90,8 @@ public class Hand : MonoBehaviour
             i.GetComponent<Button>().enabled = false;
         }
     }
-    internal void DisableMainHand()
+
+    public void DisableMainHand()
     {
         foreach (GameObject i in mainHand)
         {
