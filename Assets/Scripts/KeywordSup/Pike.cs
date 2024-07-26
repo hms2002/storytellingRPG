@@ -7,8 +7,10 @@ public class Pike : KeywordSup
     private void Awake()
     {
         keywordName = "가시 돋은";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordDamage = 3;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
         Init();
     }
 

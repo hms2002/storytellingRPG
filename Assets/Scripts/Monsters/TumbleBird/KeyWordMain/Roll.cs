@@ -19,6 +19,7 @@ public class Roll : KeywordMain
         keywordDamage = UnityEngine.Random.Range(minDamage, maxDamage);
         debuffStack = 5;
         keywordTension = -6;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

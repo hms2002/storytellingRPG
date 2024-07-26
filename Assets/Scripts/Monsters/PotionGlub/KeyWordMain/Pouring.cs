@@ -7,8 +7,11 @@ public class Pouring : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = 10;
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

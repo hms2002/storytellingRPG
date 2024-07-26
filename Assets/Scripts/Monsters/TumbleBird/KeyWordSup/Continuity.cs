@@ -10,8 +10,11 @@ public class Continuity : KeywordSup
     private void Awake()
     {
         keywordName = "연속";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = 10;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

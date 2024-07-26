@@ -13,6 +13,9 @@ public class AdOre_ShardRecovery : KeywordMain
         keywordName = "파편 복구";
         SetKeywordColor(Y);
         keywordTension = 52;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

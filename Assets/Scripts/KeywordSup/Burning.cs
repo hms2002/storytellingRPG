@@ -7,9 +7,11 @@ public class Burning : KeywordSup
     private void Awake()
     {
         keywordName = "불타는";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         debuffType = "Burn";
         debuffStack = 2;
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.Flame;
         Init();
     }
 

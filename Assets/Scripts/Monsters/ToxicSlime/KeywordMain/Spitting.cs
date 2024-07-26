@@ -17,6 +17,7 @@ public class Spitting : KeywordMain
         SetKeywordColor(R);
         keywordDamage = 4;
         keywordTension = 10;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

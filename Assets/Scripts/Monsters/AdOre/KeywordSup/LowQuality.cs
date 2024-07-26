@@ -11,8 +11,11 @@ public class LowQuality : KeywordSup
     private void Awake()
     {
         keywordName = "저품질";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = -28;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

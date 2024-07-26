@@ -13,8 +13,11 @@ public class YellowHerb : KeywordSup
     private void Awake()
     {
         keywordName = "노란 약초";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -10;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

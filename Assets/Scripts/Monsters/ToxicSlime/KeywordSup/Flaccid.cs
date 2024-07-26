@@ -16,6 +16,7 @@ public class Flaccid : KeywordSup
         keywordName = "흐물거리는";
         SetKeywordColor(B);
         keywordTension = -5;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

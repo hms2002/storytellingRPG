@@ -11,6 +11,7 @@ public class EarthQuake : KeywordMain
         SetKeywordColor(R);
         keywordTension = -16;
         keywordDamage = 7;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

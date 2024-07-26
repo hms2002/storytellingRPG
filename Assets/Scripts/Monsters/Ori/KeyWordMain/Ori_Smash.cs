@@ -11,8 +11,9 @@ public class Ori_Smash : KeywordMain
         SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 6;
+        Init();
     }
-    
+
     public override void Execute(Actor caster, Actor target)
     {
         target.damage += (int)Random.Range(keywordDamage, 9);

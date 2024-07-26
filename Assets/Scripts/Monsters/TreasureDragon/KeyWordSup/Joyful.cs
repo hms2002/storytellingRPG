@@ -10,6 +10,7 @@ public class Joyful : KeywordSup
         SetKeywordColor(R);
         keywordDamage = 5;
         keywordTension = 8;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

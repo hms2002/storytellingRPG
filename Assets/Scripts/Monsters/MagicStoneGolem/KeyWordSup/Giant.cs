@@ -8,8 +8,11 @@ public class Giant : KeywordSup
     private void Awake()
     {
         keywordName = "거대한";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -8;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

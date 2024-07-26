@@ -13,6 +13,7 @@ public class Split : KeywordSup
         keywordName = "쪼개진";
         SetKeywordColor(R);
         keywordTension = -8;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

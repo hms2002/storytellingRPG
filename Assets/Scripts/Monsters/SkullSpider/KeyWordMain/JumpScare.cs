@@ -11,8 +11,9 @@ public class JumpScare : KeywordMain
         SetKeywordColor(R);
         keywordTension = 3;
         keywordDamage = 7;
+        Init();
     }
-    
+
     public override void Execute(Actor caster, Actor target)
     {
         int targetFearStack = target.charactorState.GetStateStack(StateType.fear);

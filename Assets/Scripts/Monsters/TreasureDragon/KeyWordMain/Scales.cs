@@ -7,10 +7,11 @@ public class Scales : KeywordMain
 
     private void Awake()
     {
-        keywordName = "ºñ´Ã";
+        keywordName = "ë¹„ëŠ˜";
         SetKeywordColor(B);
         keywordProtect = 30;
         keywordTension = -24;
+        Init();
     }
     public override void Execute(Actor caster, Actor target)
     {

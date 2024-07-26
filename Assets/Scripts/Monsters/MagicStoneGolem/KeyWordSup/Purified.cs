@@ -10,6 +10,7 @@ public class Purified : KeywordSup
         SetKeywordColor(B);
         keywordDamage = 3;
         keywordTension = -4;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

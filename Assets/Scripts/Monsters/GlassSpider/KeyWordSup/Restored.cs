@@ -13,8 +13,11 @@ public class Restored : KeywordSup
     private void Awake()
     {
         keywordName = "수복된";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -20;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

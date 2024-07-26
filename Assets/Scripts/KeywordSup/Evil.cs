@@ -7,9 +7,11 @@ public class Evil : KeywordSup
     private void Awake()
     {
         keywordName = "악랄한";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         debuffType = "Weaken";
         debuffStack = 2;
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.ItemUse;
         Init();
     }
 

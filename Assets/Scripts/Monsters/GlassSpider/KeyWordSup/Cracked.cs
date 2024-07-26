@@ -13,8 +13,11 @@ public class Cracked : KeywordSup
     private void Awake()
     {
         keywordName = "깨어진";
-        SetKeywordColor(B);
-        keywordTension = 20; 
+        SetKeywordColor(Y);
+        keywordTension = 20;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -6,10 +6,11 @@ public class Twingkle : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "¹İÂ¦ÀÌ´Â";
+        keywordName = "ë°˜ì§ì´ëŠ”";
         SetKeywordColor(B);
         keywordProtect = 5;
         keywordTension = -6;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)
