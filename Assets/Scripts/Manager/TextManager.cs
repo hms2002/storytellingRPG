@@ -7,7 +7,6 @@ public class TextManager : MonoBehaviour
 {
     public static TextManager instance;
     public TextMeshProUGUI Text;
-    [SerializeField] private GameObject theEndIcon;
 
     
     private void Awake()
@@ -75,7 +74,5 @@ public class TextManager : MonoBehaviour
     {
         Text.text = "기사의 이야기는 여기에서 끝났다.";
         Text.alignment = TextAlignmentOptions.Midline;
-
-        theEndIcon.SetActive(true);
     }
 }

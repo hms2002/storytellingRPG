@@ -265,7 +265,7 @@ Animator:
   m_GameObject: {fileID: 172613215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: df7c374ceafce6f4e8cb6933887b5633, type: 2}
+  m_Controller: {fileID: 9100000, guid: 32099e454984cbf489b2c7622fda11f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -637,7 +637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1854174875}
-  theEndIcon: {fileID: 1466562251}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,9 +1267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keywordCanvas: {fileID: 1812116319}
-  textBoxCanvas: {fileID: 1139018970}
+  combatFunctionAndUI:
+  - {fileID: 764655247}
+  - {fileID: 1470392318}
+  - {fileID: 1139018970}
+  - {fileID: 1286340159}
+  - {fileID: 1942563237}
   bookAnimator: {fileID: 172613218}
+  theEndIcon: {fileID: 1466562251}
 --- !u!1 &1247531969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,16 +1973,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466562251}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1470392322}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 640, y: 360}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1470392318
@@ -2078,7 +2082,6 @@ RectTransform:
   - {fileID: 555787942}
   - {fileID: 849354938}
   - {fileID: 1472725561}
-  - {fileID: 1466562254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3026,6 +3029,7 @@ SceneRoots:
   - {fileID: 764655249}
   - {fileID: 1470392322}
   - {fileID: 1139018974}
+  - {fileID: 1466562254}
   - {fileID: 1384115540}
   - {fileID: 1286340161}
   - {fileID: 1942563239}
