@@ -227,6 +227,9 @@ public class FightManager : MonoBehaviour
             // 플레이어 사망 문구 출력
             TextManager.instance.PrintPlayerDie();
 
+            // The End 아이콘 활성화
+            UIManager.uIManager.ActiveTheEndIcon(true);
+
             // 게임 종료 (씬 전환?)
         }
         else
