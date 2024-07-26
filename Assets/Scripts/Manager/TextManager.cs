@@ -75,8 +75,6 @@ public class TextManager : MonoBehaviour
     {
         Text.text = "기사는 사망하였다.";
         Text.alignment = TextAlignmentOptions.Midline;
-
         theEndIcon.SetActive(true);
-
     }
 }

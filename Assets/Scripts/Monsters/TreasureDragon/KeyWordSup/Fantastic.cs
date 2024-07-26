@@ -13,8 +13,11 @@ public class Fantastic : KeywordSup
     private void Awake()
     {
         keywordName = "환상적인";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -11;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

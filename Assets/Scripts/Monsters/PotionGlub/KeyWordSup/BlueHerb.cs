@@ -13,8 +13,11 @@ public class BHerb : KeywordSup
     private void Awake()
     {
         keywordName = "푸른 약초";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -5;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

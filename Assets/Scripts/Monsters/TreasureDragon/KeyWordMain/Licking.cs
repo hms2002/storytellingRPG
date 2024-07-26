@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Liking : KeywordMain
 {
-    [Header("·£´ı µ¥¹ÌÁö Á¦¾î")]
+    [Header("ëœë¤ ë°ë¯¸ì§€ ì œì–´")]
     [SerializeField] private int maxRange = 10;
     [SerializeField] private int minRange = 6;
 
     private void Awake()
     {
-        keywordName = "ÇÓ±â";
+        keywordName = "í•¥ê¸°";
         SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = -9;
+        Init();
     }
     public override void Execute(Actor caster, Actor target)
     {

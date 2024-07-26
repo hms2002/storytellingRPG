@@ -327,6 +327,68 @@ public class Actor : MonoBehaviour
     {
         for (int i = 1; i <= repeatStack; i++)
         {
+            Color mainColor = keywordMain.GetKeywordColor();
+            Color supColor = keywordSup.GetKeywordColor();
+
+            if (keywordMain.effectTarget == Keyword.EffectTarget.target)
+            {
+                if (mainColor == Color.red)
+                {
+                    if (damage != 0)
+                    {
+                        EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                    }
+                }
+                else
+                {
+                    EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                }
+            }
+            if (keywordMain.effectTarget == Keyword.EffectTarget.caster)
+            {
+                EffectManager.instance.PlayEffect(keywordMain.effectType, this);
+            }
+
+            if (keywordSup.effectTarget == Keyword.EffectTarget.target)
+            {
+                if (supColor == Color.red)
+                {
+                    if (damage != 0)
+                    {
+                        EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+                    }
+                }
+                else
+                {
+                    EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+                }
+            }
+            if (keywordSup.effectTarget == Keyword.EffectTarget.caster)
+            {
+                EffectManager.instance.PlayEffect(keywordSup.effectType, this);
+            }
+            /*   else
+               {
+                   // 각각의 키워드에 따라 이펙트 출력
+                   if (mainColor == Color.red && damage != 0)
+                   {
+                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack, target);
+                   }
+                   else if (mainColor == Color.blue)
+                   {
+                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Shield, this);
+                   }
+
+                   if (supColor == Color.red && damage != 0)
+                   {
+                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack, target);
+                   }
+                   else if (supColor == Color.blue)
+                   {
+                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Shield, this);
+                   }
+               }*/
+
             TensionManager tensionManager = TensionManager.tensionManagerUI;
 
             // 강화 버프가 부여된 상태로 공격 키워드 사용 시 강화 수치만큼 데미지 추가
@@ -425,7 +487,6 @@ public class Actor : MonoBehaviour
             charactorState.ReductionOnDamaged();
         }
     }
-
 
 
     public void SelectKeyword()

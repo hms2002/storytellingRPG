@@ -11,6 +11,7 @@ public class Ori_Fregments : KeywordMain
         SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 3;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

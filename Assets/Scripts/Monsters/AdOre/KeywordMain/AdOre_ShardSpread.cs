@@ -11,8 +11,9 @@ public class AdOre_ShardSpread : KeywordMain
     {
         keywordName = "파편 확산";
         SetKeywordColor(R);
-        keywordDamage = 32;
+        keywordDamage = 32; 
         keywordTension = 32;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

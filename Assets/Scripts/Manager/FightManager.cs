@@ -127,7 +127,10 @@ public class FightManager : MonoBehaviour
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
-            player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+            if (player.damage != 0)
+            {
+                player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+            }
             yield return null;
         }
 
@@ -138,7 +141,10 @@ public class FightManager : MonoBehaviour
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
-            player.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+            if (player.damage != 0)
+            {
+                player.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+            }
             yield return null;
         }
         yield return new WaitForSeconds(2);
@@ -163,8 +169,10 @@ public class FightManager : MonoBehaviour
             while (curTime < ACTION_TIME)
             {
                 curTime += Time.deltaTime;
-                monster.transform.position = new Vector3(10, 10, 0);
-                monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+                if (monster.damage != 0)
+                {
+                    monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
+                }
                 yield return null;
             }
 
@@ -176,7 +184,10 @@ public class FightManager : MonoBehaviour
             while (curTime < ACTION_TIME)
             {
                 curTime += Time.deltaTime;
-                monster.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+                if (monster.damage != 0)
+                {
+                    monster.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
+                }
                 yield return null;
             }
             yield return new WaitForSeconds(2);

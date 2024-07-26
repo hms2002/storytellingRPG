@@ -17,6 +17,7 @@ public class Bubbling : KeywordMain
         SetKeywordColor(B);
         keywordDamage = 2;
         keywordTension = 5;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

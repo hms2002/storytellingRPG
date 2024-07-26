@@ -10,6 +10,7 @@ public class Shrink : KeywordMain
         SetKeywordColor(B);
         keywordProtect = 10;
         keywordTension = -21;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

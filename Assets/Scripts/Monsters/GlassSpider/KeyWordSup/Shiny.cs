@@ -9,10 +9,11 @@ public class Shiny : KeywordSup
 
     private void Awake()
     {
-        keywordName = "¹İÂ¦ÀÌ´Â";
+        keywordName = "ë°˜ì§ì´ëŠ”";
         SetKeywordColor(R);
         keywordDamage = 3;
         keywordTension = 8;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

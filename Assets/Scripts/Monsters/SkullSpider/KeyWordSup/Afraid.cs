@@ -12,6 +12,9 @@ public class Afreid : KeywordSup
         keywordTension = 3;
         debuffStack = 1;
         debuffType = "Fear";
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

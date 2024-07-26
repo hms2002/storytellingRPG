@@ -17,6 +17,7 @@ public class Sweep : KeywordMain
         SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
         keywordTension = 18;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -14,6 +14,8 @@ public class AdOre_ShardClaw : KeywordMain
         SetKeywordColor(R);
         keywordDamage = Random.Range(amountOfMinDamage, amountOfMaxDamage);
         keywordTension = -12;
+        Init();
+
     }
 
     public override void Execute(Actor caster, Actor target)

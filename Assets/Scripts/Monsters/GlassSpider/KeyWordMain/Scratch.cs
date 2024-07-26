@@ -6,10 +6,11 @@ public class Scratch : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "ÇÒÄû±â";
+        keywordName = "í• í€´ê¸°";
         SetKeywordColor(R);
         keywordDamage = 3;
         keywordTension = -20;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -8,10 +8,13 @@ public class Ori_Ore : KeywordSup
     {
         keywordName = "불안한";
 
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = 6;
         debuffStack = 2;
         debuffType = "Fear";
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

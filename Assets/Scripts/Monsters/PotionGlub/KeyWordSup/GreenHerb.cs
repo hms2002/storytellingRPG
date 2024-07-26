@@ -5,14 +5,17 @@ using UnityEngine;
 public class GreenHerb : KeywordSup
 {
     PotionGlub potionGlub;
-    [Header("·£´ı Æ÷¼Ç¼öÄ¡ Á¦¾î")]
+    [Header("ëœë¤ í¬ì…˜ìˆ˜ì¹˜ ì œì–´")]
     [SerializeField] private int maxRange = 3;
     [SerializeField] private int minRange = 2;
     private void Awake()
     {
-        keywordName = "ÃÊ·Ï ¾àÃÊ";
-        SetKeywordColor(B);
+        keywordName = "ì´ˆë¡ ì•½ì´ˆ";
+        SetKeywordColor(Y);
         keywordTension = -7;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

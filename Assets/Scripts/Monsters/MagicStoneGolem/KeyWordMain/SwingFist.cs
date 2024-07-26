@@ -15,6 +15,7 @@ public class SwingFist : KeywordMain
         keywordDamage = 5;
         keywordTension = 10;
 
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

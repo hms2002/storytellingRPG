@@ -10,8 +10,11 @@ public class Playful : KeywordSup
     private void Awake()
     {
         keywordName = "장난스러운";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -4;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

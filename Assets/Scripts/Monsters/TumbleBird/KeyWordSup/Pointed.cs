@@ -6,12 +6,14 @@ public class Pointed : KeywordSup
 {
     TumbleBird tumbleBird;
 
-    
     private void Awake()
     {
         keywordName = "뾰족한";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = -8;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

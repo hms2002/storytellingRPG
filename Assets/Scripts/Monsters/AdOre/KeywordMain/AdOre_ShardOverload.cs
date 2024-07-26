@@ -17,6 +17,9 @@ public class AdOre_ShardOverload : KeywordMain
         keywordName = "파편 폭주";
         SetKeywordColor(Y);
         keywordTension = 26;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

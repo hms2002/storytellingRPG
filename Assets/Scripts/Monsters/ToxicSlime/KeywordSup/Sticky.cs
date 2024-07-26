@@ -12,8 +12,11 @@ public class Sticky : KeywordSup
     private void Awake()
     {
         keywordName = "끈적이는";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = 5;
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

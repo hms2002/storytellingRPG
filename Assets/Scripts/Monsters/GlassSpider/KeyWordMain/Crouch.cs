@@ -10,6 +10,7 @@ public class Crouch : KeywordMain
         SetKeywordColor(B);
         keywordProtect = 10;
         keywordTension = 6;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)
