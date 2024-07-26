@@ -60,7 +60,8 @@ public class FightManager : MonoBehaviour
     public  void FightStart()
     {
         // 플레이어 프리팹 생성 및 Actor 할당
-        player = Instantiate(playerPrefab).GetComponent<Actor>();
+        //player = Instantiate(playerPrefab).GetComponent<Actor>();
+        player.gameObject.SetActive(true);
 
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
