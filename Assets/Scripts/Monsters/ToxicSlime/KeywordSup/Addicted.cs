@@ -12,8 +12,11 @@ public class Addicted : KeywordSup
     private void Awake()
     {
         keywordName = "중독된";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = 15;
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

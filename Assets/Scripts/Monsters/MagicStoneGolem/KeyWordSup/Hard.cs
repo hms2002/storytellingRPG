@@ -12,6 +12,7 @@ public class Hard : KeywordSup
         SetKeywordColor(R);
         keywordTension = 8;
         keywordDamage = 5;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -11,8 +11,11 @@ public class Hardy : KeywordSup
     {
         keywordName = "튼튼한";
 
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -8;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -8,6 +8,15 @@ public class Keyword : MonoBehaviour
     protected FightManager fightManager;
     public  TextMeshProUGUI nameText;
 
+    public enum EffectTarget
+    {
+        caster,
+        target
+    }
+
+    public EffectTarget effectTarget;
+    public EffectManager.EffectType effectType;
+
     #region 키워드 제원 변수
     [Header("키워드 제원")]
     [SerializeField] private string _keywordName;
@@ -21,16 +30,14 @@ public class Keyword : MonoBehaviour
     protected Color keywordColor;
 
     [Header("키워드 특성별 색")]
-    protected Color R = new Color32(255, 0, 0, 255);
-    protected Color G = new Color32(0, 255, 0, 255);
-    protected Color B = new Color32(0, 0, 255, 255);
-    protected Color Y = new Color32(255, 255, 0, 255);
+    protected Color R = Color.red;
+    protected Color G = Color.green;
+    protected Color B = Color.blue;
+    protected Color Y = Color.yellow;
     /// <summary>
     /// 검은색임
     /// </summary>
-    protected Color D = new Color32(0, 0, 0, 255);
-
-
+    protected Color D = Color.black;
 
     [Multiline(3)]
     [SerializeField] private string keywordDescription = "";
@@ -93,6 +100,16 @@ public class Keyword : MonoBehaviour
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;
         nameText.color = keywordColor;
+        if(keywordColor == R)
+        {
+            effectTarget = EffectTarget.target;
+            effectType = EffectManager.EffectType.Attack;
+        }
+        if(keywordColor == B)
+        {
+            effectTarget = EffectTarget.caster;
+            effectType = EffectManager.EffectType.Shield;
+        }
     }
 
     public void PlayClickSound()

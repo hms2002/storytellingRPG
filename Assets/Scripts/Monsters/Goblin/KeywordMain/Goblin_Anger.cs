@@ -11,8 +11,10 @@ public class Goblin_Anger : KeywordMain
     private void Awake()
     {
         keywordName = "분노";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -20;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
         Init();
     }
 

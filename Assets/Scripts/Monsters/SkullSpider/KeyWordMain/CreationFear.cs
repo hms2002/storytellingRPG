@@ -13,6 +13,7 @@ public class CreationFear : KeywordMain
         keywordDamage = 3;
         debuffStack = 1;
         debuffType = "Fear";    
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

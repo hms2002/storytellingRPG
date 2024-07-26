@@ -7,8 +7,11 @@ public class JellyShot : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = 20;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

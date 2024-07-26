@@ -11,8 +11,10 @@ public class Goblin_Sloppy : KeywordSup
     private void Awake()
     {
         keywordName = "엉성한";
-        SetKeywordColor(R);
+        SetKeywordColor(Y);
         keywordTension = -18;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
         Init();
     }
 

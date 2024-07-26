@@ -13,8 +13,11 @@ public class Stirring : KeywordMain
     private void Awake()
     {
         keywordName = "스터링";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -8;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

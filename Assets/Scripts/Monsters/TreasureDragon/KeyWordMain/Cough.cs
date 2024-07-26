@@ -16,6 +16,7 @@ public class Cough : KeywordMain
         debuffStack = 5;
         debuffType = "Burn";
         keywordTension = 41;
+        Init();
     }
     public override void Execute(Actor caster, Actor target)
     {

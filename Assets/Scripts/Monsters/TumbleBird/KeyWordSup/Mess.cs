@@ -12,8 +12,9 @@ public class Mess : KeywordSup
         keywordName = "엉망진창";
         SetKeywordColor(B);
         keywordTension = 12;
+        Init();
     }
-    
+
     public override void Execute(Actor caster, Actor target)
     {
         tumbleBird = caster as TumbleBird;

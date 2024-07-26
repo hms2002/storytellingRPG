@@ -13,8 +13,11 @@ public class Shaking : KeywordMain
     private void Awake()
     {
         keywordName = "셰이킹";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -5;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

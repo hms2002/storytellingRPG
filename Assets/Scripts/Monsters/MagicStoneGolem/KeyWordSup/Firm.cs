@@ -10,6 +10,7 @@ public class Firm : KeywordSup
         SetKeywordColor(B);
         keywordProtect = 10;
         keywordTension = -16;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

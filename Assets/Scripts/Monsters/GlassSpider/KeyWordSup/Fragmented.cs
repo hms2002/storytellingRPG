@@ -12,6 +12,7 @@ public class Fragmented : KeywordSup
         keywordName = "파편화된";
         SetKeywordColor(R);
         keywordTension = 5;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

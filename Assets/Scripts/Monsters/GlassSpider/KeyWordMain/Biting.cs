@@ -10,6 +10,7 @@ public class Biting : KeywordMain
         SetKeywordColor(R);
         keywordDamage = 10;
         keywordTension = 10;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

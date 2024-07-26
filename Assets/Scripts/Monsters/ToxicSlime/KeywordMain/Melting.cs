@@ -15,6 +15,7 @@ public class Melting : KeywordMain
         keywordName = "녹이기";
         SetKeywordColor(B);
         keywordTension = -10;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

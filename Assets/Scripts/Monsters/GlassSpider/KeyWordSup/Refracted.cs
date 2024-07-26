@@ -9,10 +9,11 @@ public class Refracted : KeywordSup
 
     private void Awake()
     {
-        keywordName = "±º¿˝µ»";
+        keywordName = "Íµ¥Ï†àÎêú";
         SetKeywordColor(B);
         keywordProtect = 5;
         keywordTension = -10;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)

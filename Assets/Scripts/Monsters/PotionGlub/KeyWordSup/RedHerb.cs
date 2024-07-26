@@ -13,8 +13,11 @@ public class RHerb : KeywordSup
     private void Awake()
     {
         keywordName = "붉은 약초";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = -3;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init();
     }
 
     public override void Execute(Actor caster, Actor target)
