@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reward:name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,10 +92,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 24.3
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2694810379316499130}
   - component: {fileID: 7079239746352613114}
   m_Layer: 0
-  m_Name: BlindSwordReward
+  m_Name: RewardOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,19 +255,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7707233366580033655}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7079239746352613114}
-        m_TargetAssemblyTypeName: Reward, Assembly-CSharp
-        m_MethodName: AddThisToMainDeck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7079239746352613114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,4 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f9196baec71ee94db6205499695beac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keywardPrefab: {fileID: 2310729120196642132, guid: 517236f0ca063184bbd3174ef6efce9e, type: 3}
+  keywordPrefab: {fileID: 0}
+  rewardNameText: {fileID: 484656264652603966}
+  button: {fileID: 2694810379316499130}
