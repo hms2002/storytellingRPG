@@ -34,17 +34,22 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void EnterBattleField()
+    {
+        bookAnimator.SetTrigger("shouldTurnPageToRight");
+        Invoke("ActiveCombatFunctionAndUITrue", 1);
+    }
+
+    private void ActiveCombatFunctionAndUITrue()
+    {
+        ActiveCombatFunctionAndUI(true);
+    }
+
     /// <summary>
     /// 전장에서 벗어나면 Player 제거, 전투 UI 비활성화, BookPassR 애니메이션 재생하는 메소드
     /// </summary>
     public void GetOutOfBattleField()
     {
-        // 플레이어 프리팹 할당
-        GameObject playerPrefab = GameObject.FindGameObjectWithTag("Player");
-
-        // 플레이어 프리팹 삭제
-        Destroy(playerPrefab);
-
         // 전투 관련 캔버스 끄기
         ActiveCombatFunctionAndUI(false);
 

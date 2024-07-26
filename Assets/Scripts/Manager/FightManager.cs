@@ -90,8 +90,7 @@ public class FightManager : MonoBehaviour
         if (!CheckMonsterSurvive())
         {
             // 전투 승리 문구 출력
-            TextManager.instance.PrintVictory();
-            UIManager.uIManager.GetOutOfBattleField();
+            PlayerWin();
             return;
         }
 
@@ -162,12 +161,8 @@ public class FightManager : MonoBehaviour
         if(!CheckMonsterSurvive())
         {
             // 전투 승리 문구 출력
-            TextManager.instance.PrintVictory();
-            GameManager.instance.WinFight();
+            PlayerWin();
 
-            yield return new WaitForSeconds(2);
-
-            UIManager.uIManager.GetOutOfBattleField();
             yield break;
         }
 
@@ -241,6 +236,13 @@ public class FightManager : MonoBehaviour
         }
         else
             Flow();
+    }
+
+    private void PlayerWin()
+    {
+        player.gameObject.SetActive(false);
+        TextManager.instance.PrintVictory();
+        GameManager.instance.WinFight();
     }
 }
 

@@ -418,7 +418,7 @@ MonoBehaviour:
   _debuffStack: 0
   _keywordTension: 0
   keywordDescription: 
-  fistDamage: 1
+  fistDamage: 100
 --- !u!114 &4475254289156577749
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,15 @@ public class GameManager : MonoBehaviour
 
     public void EnterFightZone()
     {
+        CallFightUIOn();
+        Invoke("CallFightStart", 1);
+    }
+    private void CallFightUIOn()
+    {
+        UIManager.uIManager.EnterBattleField();
+    }
+    private void CallFightStart()
+    {
         fightManager.FightStart();
     }
 
@@ -47,6 +56,7 @@ public class GameManager : MonoBehaviour
     internal void EndSelectReward()
     {
         // 지금은 다음 몬스터 데려오는 코드로 짜야 함. - 프로토타입 전용 코드
-        EnterFightZone();
+        UIManager.uIManager.GetOutOfBattleField();
+        Invoke("EnterFightZone", 2);
     }
 }
