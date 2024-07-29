@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +10,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager uIManager;
+
+    [Header("맵")]
+    [SerializeField] private GameObject mapCanvas;
 
     [Header("전투 기능 및 UI")]
     [SerializeField] private List<GameObject> combatFunctionAndUI;
@@ -39,10 +43,23 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 메인 화면에서 키워드 세팅으로 UI 전환하는 메소드
+    /// </summary>
+    private void EnterKeywordSetting()
+    {
+        // BookPassR 애니메이션 재생
+        bookAnimator.SetTrigger("shouldTurnPageToLeft");
+
+        ActiveKeywordSettingUI(true);
+    }
+
+
+    /// <summary>
     /// 전장에 돌입하면 BookPassR 애니메이션 재생, 전투 UI 활성화하는 메소드
     /// </summary>
     public IEnumerator EnterBattleField()
     {
+        // BookPassR 애니메이션 재생
         bookAnimator.SetTrigger("shouldTurnPageToRight");
 
         yield return new WaitForSeconds(1);
@@ -66,8 +83,20 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 전투 관련 기능 및 UI 활성화 여부를 일괄 관리하는 메소드
     /// </summary>
-    /// <param name="enableOrNot">아이콘 SetActive() 여부</param>
-    public void ActiveCombatFunctionAndUI(bool enableOrNot)
+    /// <param name="enableOrNot">UI 캔버스 SetActive() 여부</param>
+    private void ActiveCombatFunctionAndUI(bool enableOrNot)
+    {
+        for (int i = 0; i < combatFunctionAndUI.Count; i++)
+        {
+            combatFunctionAndUI[i].SetActive(enableOrNot);
+        }
+    }
+
+    /// <summary>
+    /// 키워드 세팅 창 UI 활성화 여부를 일괄 관리하는 메소드
+    /// </summary>
+    /// <param name="enableOrNot">UI 캔버스 SetActive() 여부</param>
+    public void ActiveKeywordSettingUI(bool enableOrNot)
     {
         for (int i = 0; i < combatFunctionAndUI.Count; i++)
         {
