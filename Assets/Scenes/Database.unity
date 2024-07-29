@@ -167,22 +167,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
+  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet2:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet3:
   - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
+  monsterSet3:
   - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet4:
-  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
+  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet5:
   - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet6:
-  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
+  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet7:
-  - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
+  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet8:
-  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
+  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
 --- !u!1 &29915431
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.93, y: -4.18}
+  m_AnchoredPosition: {x: 7.93, y: -3.71}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &178405246
@@ -2248,7 +2247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.93, y: -4.18}
+  m_AnchoredPosition: {x: -7.93, y: -3.71}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1185313421
@@ -2393,14 +2392,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 291268464}
     m_Modifications:
-    - target: {fileID: 1087622267738155732, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 58396621}
+    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
+      propertyPath: rewardKeywords.Array.data[2]
+      value: 
+      objectReference: {fileID: 7579075665694996604, guid: 9edc07f5ee611c24d8974a6c079683b5, type: 3}
     - target: {fileID: 6658285197191529993, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1042.8713
@@ -2444,10 +2443,6 @@ PrefabInstance:
     - target: {fileID: 8732306823750960814, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
       propertyPath: m_Name
       value: RewardManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732306823750960814, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3388,7 +3383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.33}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1591836696
@@ -3574,10 +3569,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUI: []
+  keywordSettingBookmark: {fileID: 0}
+  keywordSettingUI: []
   combatFunctionAndUI:
   - {fileID: 1394731583}
   - {fileID: 1046396412}
   - {fileID: 2012705079}
+  originalDeck: {fileID: 0}
   bookAnimator: {fileID: 1860857544}
   theEndIcon: {fileID: 0}
 --- !u!1 &1623211974
@@ -3616,7 +3615,7 @@ MonoBehaviour:
   usedDeckPivot: {fileID: 148895401}
   selectedPivot: {fileID: 1575086430}
   selectedPivotOriginPos: {x: 0, y: 0}
-  centerPos: {x: 0, y: -4.18}
+  centerPos: {x: 0, y: -3.3}
   padding: 2
 --- !u!114 &1623211976
 MonoBehaviour:

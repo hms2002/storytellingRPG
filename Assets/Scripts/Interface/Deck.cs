@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
@@ -149,5 +150,25 @@ public class Deck : MonoBehaviour
 
     public int GetSupDeckSize() { return supportDeck.Count; }
     public int GetMainDeckSize() { return mainDeck.Count; }
+
+    public void DisCardByTextSource(TextMeshProUGUI source)
+    {
+        foreach(GameObject i in mainDeck)
+        {
+            if (i.GetComponent<Keyword>().nameText.text == source.text)
+            {
+                mainDeck.Remove(i);
+                break;
+            } 
+        }
+        foreach (GameObject i in supportDeck)
+        {
+            if (i.GetComponent<Keyword>().nameText.text == source.text)
+            {
+                supportDeck.Remove(i);
+                break;
+            }
+        }
+    }
     #endregion
 }

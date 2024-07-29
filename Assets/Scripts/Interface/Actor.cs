@@ -294,6 +294,12 @@ public class Actor : MonoBehaviour
 
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
+        if (_keywordMain.isOneTimeUse)
+        {
+            deck.DisCardByTextSource(_keywordMain.nameText);
+            if(OriginalDeck != null)
+                OriginalDeck.DisCardByTextSource(_keywordMain.nameText);
+        }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 2f);
 

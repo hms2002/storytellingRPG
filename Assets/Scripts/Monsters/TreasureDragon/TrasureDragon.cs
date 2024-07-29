@@ -12,10 +12,14 @@ public class TrasureDragon : Monster
         get { return _trasureDamage; }
         set { _trasureDamage = value; }
     }
-
+    private void Awake()
+    {
+        encounterText = "\"크아아아\" 보물을 지키는 레드 드래곤이 울부짖었다.";
+    }
     private void Start()
     {
         charactorState.AddState(StateDatabase.stateDatabase.treasureOfDragon, 200);
+
     }
 
     public override void Action(Actor target)

@@ -10,6 +10,7 @@ public class Potion : KeywordMain
         SetKeywordColor(D);
         keywordHeal = 12;
         Init();
+        isOneTimeUse = true;
     }
 
     public override void Execute(Actor caster, Actor target)

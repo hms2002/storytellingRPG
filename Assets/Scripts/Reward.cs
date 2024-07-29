@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class Reward : MonoBehaviour
+public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject keywordPrefab;
+    public GameObject info;
     public TextMeshProUGUI rewardNameText;
+    public TextMeshProUGUI rewardInfoText;
     public Button button;
     public void SettingReward(GameObject _keywordPrefab)
     {
@@ -19,6 +22,7 @@ public class Reward : MonoBehaviour
 
         // 텍스트 정보, 키워드 프리펩 정보 가져오기
         rewardNameText.text = temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
+        rewardInfoText.text = temp.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text;
         
             // 메인 키워드면 AddThisToMainDeck()를 본인 버튼 이벤트에 추가
         if (temp.GetComponent<KeywordMain>() != null)
@@ -30,6 +34,10 @@ public class Reward : MonoBehaviour
         // 정보 취하고 삭제
         Destroy(temp);
     }
+    private void OnEnable()
+    {
+        info.SetActive(false);
+    }
     public void AddThisToMainDeck()
     {
         RewardManager.instance.AddMainKeywordToDeck(keywordPrefab);
@@ -37,5 +45,15 @@ public class Reward : MonoBehaviour
     public void AddThisToSupDeck()
     {
         RewardManager.instance.AddSupKeywordToDeck(keywordPrefab);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        info.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        info.SetActive(false);
     }
 }

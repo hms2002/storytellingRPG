@@ -26,7 +26,7 @@ public class Keyword : MonoBehaviour
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int    _debuffStack = 0;
     [SerializeField] private int    _keywordTension = 0;
-
+    [SerializeField] private bool   _isOneTimeUse = false;
     protected Color keywordColor;
 
     [Header("키워드 특성별 색")]
@@ -91,6 +91,11 @@ public class Keyword : MonoBehaviour
     {
         get { return _isCanUse; }
         set { _isCanUse = value; }
+    }
+    public bool isOneTimeUse
+    {
+        get { return _isOneTimeUse; }
+        set { _isOneTimeUse = value; }
     }
 
     #endregion

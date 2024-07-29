@@ -364,6 +364,7 @@ public class CharactorState : MonoBehaviour
     {
         if (allStateList[(int)type] == null) return;
         allStateList[(int)type].ReductionByValue(val);
+        stateUIController.UpdateUI(allStateList[(int)type]);
     }
 
     public int BuffCount()
