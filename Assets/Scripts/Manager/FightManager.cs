@@ -68,7 +68,8 @@ public class FightManager : MonoBehaviour
         player.gameObject.SetActive(true);
 
         // 몬스터 가져오기
-        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSet4();
+        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
+        if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
         MonsterTargetter.monsterTargetter.target = monsterList[0];
         float pos = 4.45f;
         foreach(Actor monster in monsterList)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Map
 {
@@ -12,7 +13,7 @@ namespace Map
         {
             filePath = Application.persistentDataPath + "/mapData.json";
 
-            // ∏  µ•¿Ã≈Õ ∫“∑Øø¿±‚
+            // Îßµ Îç∞Ïù¥ÌÑ∞ Î∂àÎü¨Ïò§Í∏∞
             MapState.InstanceMap.LoadMapData(filePath);
         }
     }
