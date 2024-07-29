@@ -112,8 +112,14 @@ namespace Map
             switch(nodeBlueprint.nodeType)
             {
                 case NodeType.NomalEnemy:
+                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalEnemy);
+                    GameManager.instance.EnterFightZone();
+                    MapState.InstanceMap.OnOffMap();
                     break;
                 case NodeType.BossEnemy:
+                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossEnemy);
+                    GameManager.instance.EnterFightZone();
+                    MapState.InstanceMap.OnOffMap();
                     break;
                 case NodeType.RestSite:
                     break;

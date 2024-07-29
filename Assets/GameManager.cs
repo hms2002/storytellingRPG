@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
     public void EnterFightZone()
     {
         CallFightUIOn();
-        Invoke("CallFightStart", 1);
+        Invoke("CallFightStart", 2);
     }
     private void CallFightUIOn()
     {
-        UIManager.uIManager.EnterBattleField();
+        StartCoroutine( UIManager.uIManager.EnterBattleField());
     }
     private void CallFightStart()
     {
@@ -55,13 +55,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ReturnMap()
     {
-
+        Map.MapState.InstanceMap.OnOffMap();
     }
 
     internal void EndSelectReward()
     {
-        // 지금은 다음 몬스터 데려오는 코드로 짜야 함. - 프로토타입 전용 코드
         UIManager.uIManager.GetOutOfBattleField();
-        Invoke("EnterFightZone", 2);
+        Invoke("ReturnMap", 2);
     }
 }

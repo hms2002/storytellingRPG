@@ -42,7 +42,6 @@ public class FightManager : MonoBehaviour
     private void Start()
     {
         fightManagerUI = FightManagerUI.fightManagerUI;
-        FightStart();
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)

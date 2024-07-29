@@ -40,7 +40,7 @@ public class Keyword : MonoBehaviour
     protected Color D = Color.black;
 
     [Multiline(3)]
-    [SerializeField] private string keywordDescription = "";
+    [SerializeField] private string keywordDescription;
 
     private bool _isCanUse = true;
 

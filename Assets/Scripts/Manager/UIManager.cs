@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     {
         bookAnimator.SetTrigger("shouldTurnPageToRight");
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         ActiveCombatFunctionAndUI(true);
     }
