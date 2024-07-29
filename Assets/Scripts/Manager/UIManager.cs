@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Map;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -62,7 +63,7 @@ public class UIManager : MonoBehaviour
     public void EnterKeywordSetting()
     {
         // 기존 UI 비활성화
-        ActiveMapUI(false);
+        MapState.InstanceMap.CloseMap();
 
         // BookPassR 애니메이션 재생
         bookAnimator.SetTrigger("shouldTurnPageToLeft");
@@ -127,18 +128,6 @@ public class UIManager : MonoBehaviour
 
 
     // UI Active 함수들 ================================
-
-    /// <summary>
-    /// 맵 UI 활성화 여부를 일괄 관리하는 메소드
-    /// </summary>
-    /// <param name="enableOrNot">UI 캔버스 SetActive() 여부</param>
-    private void ActiveMapUI(bool enableOrNot)
-    {
-        for (int i = 0; i < mapUI.Count; i++)
-        {
-            mapUI[i].SetActive(enableOrNot);
-        }
-    }
 
     /// <summary>
     /// 전투 관련 기능 및 UI 활성화 여부를 일괄 관리하는 메소드
