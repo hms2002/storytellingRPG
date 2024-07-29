@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,12 +16,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> mapUI;        // 맵 관련 모든 UI를 담는 리스트
 
     [Header("책갈피")]
-    [SerializeField] private GameObject keywordSettingBookmark;         // 키워드 세팅 북마크 버튼
-    [SerializeField] private List<GameObject> keywordSettingUI;         // 키워드 세팅의 모든 UI를 담는 리스트
+    [SerializeField] private List<GameObject> bookmarks;    // 북마크 버튼들
+    [SerializeField] private GameObject keywordSettingUI;   // 키워드 세팅 UI
 
     [Header("전투 기능 및 UI")]
     [SerializeField] private List<GameObject> combatFunctionAndUI;      // 전투 관련 모든 UI를 담는 리스트
-    [SerializeField] private Deck originalDeck;
+    [SerializeField] private Deck originalDeck;             // 플레이어가 갖고 있는 오리지널 덱
 
     [Header("책")]
     [SerializeField] private Animator bookAnimator;         // 책 애니메이터
@@ -48,6 +49,14 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 맵으로 UI 전환하는 메소드
+    /// </summary>
+    public void EnterMap()
+    {
+
+    }
+
+    /// <summary>
     /// 메인 화면에서 키워드 세팅으로 UI 전환하는 메소드
     /// </summary>
     public void EnterKeywordSetting()
@@ -60,6 +69,11 @@ public class UIManager : MonoBehaviour
 
         // 키워드 세팅 UI 활성화
         ActiveKeywordSettingUI(true);
+
+        // yield return new WaitForSeconds(1.5f);
+
+        // 오리지널 덱 키워드 프리팹 인스턴스화
+        ShowOriginalDeckInfo();
     }
 
 
@@ -88,7 +102,31 @@ public class UIManager : MonoBehaviour
         bookAnimator.SetTrigger("shouldTurnPageToRight");
     }
 
+    /// <summary>
+    /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화하는 메소드
+    /// </summary>
+    private void ShowOriginalDeckInfo()
+    {
+        GameObject keywordTemp;
+        Vector3 scaleTemp = new Vector3(1, 1, 1);
 
+        // Support 키워드 인스턴스화
+        for (int i = 0; i < originalDeck.GetSupDeckSize(); i++)
+        {
+            keywordTemp = Instantiate(originalDeck.SupportDeck[i], keywordSettingUI.transform.GetChild(0).Find("OriginalSupportDeck"));
+            keywordTemp.transform.DOScale(scaleTemp, 0.0f);
+        }
+
+        // Main 키워드 인스턴스화
+        for (int i = 0; i < originalDeck.GetMainDeckSize(); i++)
+        {
+            keywordTemp = Instantiate(originalDeck.MainDeck[i], keywordSettingUI.transform.GetChild(0).Find("OriginalMainDeck"));
+            keywordTemp.transform.DOScale(scaleTemp, 0.0f);
+        }
+    }
+
+
+    // UI Active 함수들 ================================
 
     /// <summary>
     /// 맵 UI 활성화 여부를 일괄 관리하는 메소드
@@ -120,7 +158,7 @@ public class UIManager : MonoBehaviour
     /// <param name="enableOrNot">UI 캔버스 SetActive() 여부</param>
     public void ActiveKeywordSettingUI(bool enableOrNot)
     {
-        
+        keywordSettingUI.SetActive(enableOrNot);
     }
 
     /// <summary>

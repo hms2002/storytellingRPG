@@ -11,6 +11,9 @@ public class Deck : MonoBehaviour
     [SerializeField] private List<GameObject> supportDeck;  // Support 키워드를 담는 덱 리스트
     [SerializeField] private List<GameObject> mainDeck;     // Main 키워드를 담는 덱 리스트
 
+    public IReadOnlyList<GameObject> SupportDeck => supportDeck;
+    public IReadOnlyList<GameObject> MainDeck => mainDeck;
+
 
     /*==================================================================================================================================*/
 
