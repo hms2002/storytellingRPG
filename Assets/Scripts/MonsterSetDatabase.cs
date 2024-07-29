@@ -45,6 +45,7 @@ public class MonsterSetDatabase : MonoBehaviour
         return returnList;
     }
 
+    static int monsterWaveIdx = 0;
     /// <summary>
     /// 첫번째 스테이지 인덱스는 1, 두번째는 2......
     /// </summary>
@@ -59,8 +60,9 @@ public class MonsterSetDatabase : MonoBehaviour
                 switch(nodeType)
                 {
                     case Map.NodeType.NomalEnemy:
-                        int randomIdx = Random.Range(0, stage1MonsterLists.Length);
-                        selectedMonsterSet = stage1MonsterLists[randomIdx];
+                        //int randomIdx = Random.Range(0, stage1MonsterLists.Length);
+                        //selectedMonsterSet = stage1MonsterLists[randomIdx];
+                        selectedMonsterSet = stage1MonsterLists[monsterWaveIdx++];
                         break;
                     case Map.NodeType.BossEnemy:
                         break;

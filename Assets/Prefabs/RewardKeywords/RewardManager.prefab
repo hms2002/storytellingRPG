@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6174854565094762689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6658285197191529993
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +338,6 @@ MonoBehaviour:
   - {fileID: 9149323348530927342}
   rewardOffset: {fileID: 6648241631914347089, guid: 27855472b17417646ac6c32ea195d3fd, type: 3}
   rewardKeywords:
-  - {fileID: 7960349361044000462, guid: 4e68c3f9975aa104b9817bced2921359, type: 3}
-  - {fileID: 7786863483050454387, guid: 31ecf7fe6152efd49b7f4f3c83d9c82d, type: 3}
+  - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
+  - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   - {fileID: 3884476970040358799, guid: 2f9b2b46b6b423a45992a89e401ede26, type: 3}
