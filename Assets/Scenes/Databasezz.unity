@@ -4190,10 +4190,12 @@ MonoBehaviour:
   - {fileID: 1985397335}
   mapBackground: []
   bookmarks: []
-  keywordSettingUI: {fileID: 1854461914}
+  keywordSettingWindow: {fileID: 0}
+  originalSupMainDeckUI: []
   combatFunctionAndUI:
   - {fileID: 1394731583}
   - {fileID: 1046396412}
+  - {fileID: 632453401}
   combatKeywordUI: {fileID: 2012705079}
   originalDeck: {fileID: 1825795064}
   combatBackground: {fileID: 0}
