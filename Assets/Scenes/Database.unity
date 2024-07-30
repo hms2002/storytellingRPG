@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 8126271300393146662, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
+  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
   monsterSet2:
   - {fileID: 8126271300393146662, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
   monsterSet3:
@@ -355,34 +355,6 @@ PrefabInstance:
     - target: {fileID: 2737142977044809685, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2737142977044809685, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373297075204673890, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 5.1996
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373297075204673890, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1.1931
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373297075204673890, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373297075204673890, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 8492739662914199318, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8492739662914199318, guid: 53de9dcbb02f1c142afa3573265438f7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.01999998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -901,6 +873,7 @@ MonoBehaviour:
   audioManager: {fileID: 2089065587}
   tensionManager: {fileID: 239664178}
   rewardManager: {fileID: 1256012564}
+  cursorImg: {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
 --- !u!1 &408624129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,63 +5382,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 291268464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7580399400516371903
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715361693779960871, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8126271300393146662, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-      propertyPath: m_Name
-      value: GlassSpider
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5474,7 +5390,6 @@ SceneRoots:
   - {fileID: 1442945481}
   - {fileID: 291268464}
   - {fileID: 2009847796}
-  - {fileID: 7580399400516371903}
   - {fileID: 58396620}
   - {fileID: 632453403}
   - {fileID: 1316923059}
