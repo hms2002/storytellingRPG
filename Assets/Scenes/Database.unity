@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1618870758}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: EnterMap
         m_Mode: 1
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keyword Setting
+  m_text: Deck
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4040,14 +4040,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUI:
-  - {fileID: 1985397335}
-  bookmarks: []
-  keywordSettingUI: {fileID: 1854461914}
+  bookmarks:
+  - {fileID: 778526102}
+  - {fileID: 1931578670}
+  keywordSettingWindow: {fileID: 1854461914}
+  originalSupMainDeckUI:
+  - {fileID: 47199195}
+  - {fileID: 1075025685}
   combatFunctionAndUI:
   - {fileID: 1394731583}
   - {fileID: 1046396412}
   - {fileID: 2012705079}
+  - {fileID: 632453401}
   originalDeck: {fileID: 494018703}
   bookAnimator: {fileID: 1667473491}
   theEndIcon: {fileID: 0}
@@ -4544,7 +4548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1854461915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4909,7 +4913,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1618870758}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: EnterKeywordSetting
         m_Mode: 1
