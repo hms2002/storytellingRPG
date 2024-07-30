@@ -70,10 +70,10 @@ public class FightManager : MonoBehaviour
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
         if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
         MonsterTargetter.monsterTargetter.target = monsterList[0];
-        float pos = 4.45f;
+        float pos = 3.87f;
         foreach(Actor monster in monsterList)
         {
-            monster.transform.position = new Vector3(pos, 0.42f, 0);
+            monster.transform.position = new Vector3(pos, -1.17f, 0);
             pos -= 2;
         }
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
@@ -134,7 +134,7 @@ public class FightManager : MonoBehaviour
         Vector3 objectPos = player.transform.position + new Vector3(dir, 0, 0);
         const float ACTION_TIME = 0.2f;
         float curTime = 0;
-
+        
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
@@ -145,7 +145,7 @@ public class FightManager : MonoBehaviour
             yield return null;
         }
 
-        TextManager.instance.MainKeywordTextPlay(player,2f);
+        TextManager.instance.MainKeywordTextPlay(player,0.5f);
         AudioManager.instance.PlaySound("Character", player.attackSound);
 
         curTime = 0;

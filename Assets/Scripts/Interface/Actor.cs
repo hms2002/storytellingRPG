@@ -301,7 +301,7 @@ public class Actor : MonoBehaviour
                 OriginalDeck.DisCardByTextSource(_keywordMain.nameText);
         }
         AddToMainGarbageField();
-        TextManager.instance.MainKeywordTextPlay(this, 2f);
+        TextManager.instance.MainKeywordTextPlay(this, 1f);
 
         // Actor의 Hand가 비었으니 false로 설정
         hasActorDrawnKeywords = false;
@@ -379,27 +379,6 @@ public class Actor : MonoBehaviour
             {
                 EffectManager.instance.PlayEffect(keywordSup.effectType, this);
             }
-            /*   else
-               {
-                   // 각각의 키워드에 따라 이펙트 출력
-                   if (mainColor == Color.red && damage != 0)
-                   {
-                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack, target);
-                   }
-                   else if (mainColor == Color.blue)
-                   {
-                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Shield, this);
-                   }
-
-                   if (supColor == Color.red && damage != 0)
-                   {
-                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Attack, target);
-                   }
-                   else if (supColor == Color.blue)
-                   {
-                       EffectManager.instance.PlayEffect(EffectManager.EffectType.Shield, this);
-                   }
-               }*/
 
             TensionManager tensionManager = TensionManager.tensionManagerUI;
 
@@ -463,7 +442,10 @@ public class Actor : MonoBehaviour
             {
                 totalDamage = 0;
             }
-
+            if (totalDamage > 0 && attacker != this)
+            {
+                attackCount = true;
+            }
             int oneTimeProtect = attacker.charactorState.GetStateStack(StateType.oneTimeProtect);
             if (oneTimeProtect > 0)
             {
