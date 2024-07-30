@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 /// <summary>
 /// 전투 기능 및 흐름을 담당
@@ -61,7 +60,7 @@ public class FightManager : MonoBehaviour
         Invoke("Flow",2);
     }
 
-    public void FightStart()
+    public  void FightStart()
     {
         // 플레이어 프리팹 생성 및 Actor 할당
         //player = Instantiate(playerPrefab).GetComponent<Actor>();
@@ -79,8 +78,7 @@ public class FightManager : MonoBehaviour
         }
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
-        DOVirtual.DelayedCall(5f, () => UIManager.uIManager.ActiveCombatKeywordUI(true));
-        DOVirtual.DelayedCall(5f, Flow);
+        Invoke("Flow", 5);
     }
 
     public void Flow()
@@ -144,14 +142,11 @@ public class FightManager : MonoBehaviour
             {
                 player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
             }
-            TextManager.instance.MainKeywordTextPlay(player, 0.5f);
-
             yield return null;
         }
-        if (player.damage != 0)
-        {
-            AudioManager.instance.PlaySound("Character", player.attackSound);
-        }
+
+        TextManager.instance.MainKeywordTextPlay(player,0.5f);
+        AudioManager.instance.PlaySound("Character", player.attackSound);
 
         curTime = 0;
         while (curTime < ACTION_TIME)
@@ -190,15 +185,12 @@ public class FightManager : MonoBehaviour
                 {
                     monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
                 }
-                TextManager.instance.MainKeywordTextPlay(monster, 0.5f);
-
                 yield return null;
             }
 
-            if (monster.damage != 0)
-            {
-                AudioManager.instance.PlaySound("Character", monster.attackSound);
-            }
+            TextManager.instance.MainKeywordTextPlay(monster, 0.5f);
+            AudioManager.instance.PlaySound("Character", monster.attackSound);
+
 
             curTime = 0;
             while (curTime < ACTION_TIME)

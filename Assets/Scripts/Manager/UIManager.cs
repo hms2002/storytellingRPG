@@ -15,28 +15,20 @@ public class UIManager : MonoBehaviour
 
     [Header("맵")]
     [SerializeField] private List<GameObject> mapUI;        // 맵 관련 모든 UI를 담는 리스트
-    [SerializeField] private List<GameObject> mapBackground;
- 
+
     [Header("책갈피")]
     [SerializeField] private List<GameObject> bookmarks;    // 북마크 버튼들
     [SerializeField] private GameObject keywordSettingUI;   // 키워드 세팅 UI
 
     [Header("전투 기능 및 UI")]
     [SerializeField] private List<GameObject> combatFunctionAndUI;      // 전투 관련 모든 UI를 담는 리스트
-    [SerializeField] private GameObject combatKeywordUI;
     [SerializeField] private Deck originalDeck;             // 플레이어가 갖고 있는 오리지널 덱
-
-    [Header("전투 백그라운드")]
-    [SerializeField] private GameObject combatBackground;
-
 
     [Header("책")]
     [SerializeField] private Animator bookAnimator;         // 책 애니메이터
 
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;         //게임 오버 아이콘
-
-    
 
     private bool _isBattleOver = false;
     public bool isBattleOver { get => isBattleOver; set => isBattleOver = value; }
@@ -106,7 +98,6 @@ public class UIManager : MonoBehaviour
     {
         // 전투 관련 캔버스 끄기
         ActiveCombatFunctionAndUI(false);
-        ActiveCombatKeywordUI(false);
 
         // 책 페이지 오른쪽으로 넘기도록 트리거 발동
         bookAnimator.SetTrigger("shouldTurnPageToRight");
@@ -148,16 +139,6 @@ public class UIManager : MonoBehaviour
         {
             combatFunctionAndUI[i].SetActive(enableOrNot);
         }
-        combatBackground.SetActive(enableOrNot);
-    }
-
-    /// <summary>
-    /// 전투중 키워드 UI 생성
-    /// </summary>
-    /// <param name="enableOrNot">전투 키워드UI SetActive() 여부</param>
-    public void ActiveCombatKeywordUI(bool enableOrNot)
-    {
-        combatKeywordUI.SetActive(enableOrNot);
     }
 
     /// <summary>

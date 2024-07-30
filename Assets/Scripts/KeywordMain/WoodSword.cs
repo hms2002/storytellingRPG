@@ -7,7 +7,7 @@ public class WoodSword : KeywordMain
     private void Awake()
     {
         keywordName = "나무검";
-        SetKeywordColor(R);
+        SetKeywordColor(D);
         keywordDamage = 7;
         Init();
     }
