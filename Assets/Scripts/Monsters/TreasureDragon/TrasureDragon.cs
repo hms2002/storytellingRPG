@@ -19,6 +19,7 @@ public class TrasureDragon : Monster
     private void Start()
     {
         charactorState.AddState(StateDatabase.stateDatabase.treasureOfDragon, 200);
+        charactorState.AddState(StateDatabase.stateDatabase.callingOfMommyDragon, 5);
 
     }
 
