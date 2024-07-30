@@ -25,7 +25,7 @@ public class TextManager : MonoBehaviour
 
     public void KeywordTextPlay(Actor actor)
     {
-        Text.DOText($"{actor.name}은 _____ _____을 사용했다.", 2f);
+        Text.DOText($"{actor.name}은 _____ _____을 사용했다.", 1f);
         Text.alignment = TextAlignmentOptions.Top;
     }
 
@@ -34,7 +34,7 @@ public class TextManager : MonoBehaviour
         string sup = actor.keywordSup.keywordName;
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
-        Text.DOText($"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 2f);
+        Text.DOText($"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
         /*Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";*/
         Text.alignment = TextAlignmentOptions.Top;
     }
@@ -50,6 +50,10 @@ public class TextManager : MonoBehaviour
         Text.DOText($"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
 /*        Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";*/
         Text.alignment = TextAlignmentOptions.Top;
+        if(textTime < 1f)
+        {
+            Text.alignment = TextAlignmentOptions.Midline;
+        }
     }
 
     public void EncounterTextPlay(Monster monster)
