@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameState
+{
+    Map,
+    Battle,
+    KeywordSetting,
+    Shop,
+    Treasure
+}
+
 /// <summary>
 /// 게임의 전체 흐름을 담당
 /// <para> 현재의 게임 상태를 다른 하위 매니저들에게 전달 </para>
@@ -12,16 +21,20 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("매니저")]
-    [SerializeField] private FightManager fightManager;
-    [SerializeField] private UIManager uiManager;
-    [SerializeField] private TextManager textManager;
-    [SerializeField] private EffectManager effectManager;
-    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private FightManager   fightManager;
+    [SerializeField] private UIManager      uiManager;
+    [SerializeField] private TextManager    textManager;
+    [SerializeField] private EffectManager  effectManager;
+    [SerializeField] private AudioManager   audioManager;
     [SerializeField] private TensionManager tensionManager;
-    [SerializeField] private RewardManager rewardManager;
+    [SerializeField] private RewardManager  rewardManager;
+
+    private GameState _gameState = GameState.Map;           // 게임의 상태를 저장
+    public GameState gameState {  get => _gameState; set => _gameState = value; }
 
 
     /*==================================================================================================================================*/
+
 
     private void Awake()
     {
@@ -36,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     private void CallFightUIOn()
     {
-        StartCoroutine( UIManager.uIManager.EnterBattleField());
+        UIManager.uIManager.EnterBattleField();
     }
     private void CallFightStart()
     {

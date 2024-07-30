@@ -1756,7 +1756,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1618870758}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: EnterMap
         m_Mode: 1
@@ -4043,14 +4043,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUI:
-  - {fileID: 1985397335}
-  bookmarks: []
+  bookmarks:
+  - {fileID: 778526102}
+  - {fileID: 1931578670}
   keywordSettingUI: {fileID: 1854461914}
   combatFunctionAndUI:
   - {fileID: 1394731583}
   - {fileID: 1046396412}
   - {fileID: 2012705079}
+  - {fileID: 632453401}
   originalDeck: {fileID: 494018703}
   bookAnimator: {fileID: 1667473491}
   theEndIcon: {fileID: 0}
@@ -4828,7 +4829,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1618870758}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: EnterKeywordSetting
         m_Mode: 1

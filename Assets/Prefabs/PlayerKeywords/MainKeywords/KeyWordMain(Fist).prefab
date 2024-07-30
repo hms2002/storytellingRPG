@@ -419,6 +419,7 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _keywordTension: 0
+  _isOneTimeUse: 0
   keywordDescription: 
   fistDamage: 100
 --- !u!114 &4475254289156577749
