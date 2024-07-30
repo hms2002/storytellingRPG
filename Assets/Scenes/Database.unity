@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keyword Setting
+  m_text: Deck
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4046,7 +4046,10 @@ MonoBehaviour:
   bookmarks:
   - {fileID: 778526102}
   - {fileID: 1931578670}
-  keywordSettingUI: {fileID: 1854461914}
+  keywordSettingWindow: {fileID: 1854461914}
+  originalSupMainDeckUI:
+  - {fileID: 47199195}
+  - {fileID: 1075025685}
   combatFunctionAndUI:
   - {fileID: 1394731583}
   - {fileID: 1046396412}
@@ -4464,7 +4467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1854461915
 RectTransform:
   m_ObjectHideFlags: 0
