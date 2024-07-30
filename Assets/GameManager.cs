@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 /// <summary>
 /// 게임의 전체 흐름을 담당
 /// <para> 현재의 게임 상태를 다른 하위 매니저들에게 전달 </para>
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private TensionManager tensionManager;
     [SerializeField] private RewardManager rewardManager;
+    [SerializeField] private Texture2D cursorImg;
 
 
     /*==================================================================================================================================*/
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+
+        Cursor.SetCursor(cursorImg, new Vector2(50,50), CursorMode.ForceSoftware);
     }
 
     public void EnterFightZone()

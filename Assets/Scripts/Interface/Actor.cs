@@ -415,7 +415,8 @@ public class Actor : MonoBehaviour
 
             if (target.attackCount == true)
             {
-                Damaged(target, target.charactorState.GetStateStack(StateType.pike));
+                Damaged(target, target.charactorState.GetStateStack(StateType.glassPragment)
+                    + target.charactorState.GetStateStack(StateType.pike));
             }
 
             target.attackCount = false;

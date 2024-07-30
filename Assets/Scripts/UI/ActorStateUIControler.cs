@@ -36,7 +36,7 @@ public class ActorStateUIControler : MonoBehaviour
         else
             stateUIObjects[typeNum].SetActive(true);
 
-        Text text = stateUIObjects[typeNum].GetComponentInChildren<Text>();
+        TextMeshProUGUI text = stateUIObjects[typeNum].GetComponentInChildren<TextMeshProUGUI>();
         text.text = state.stack + "";
     }
 
@@ -61,7 +61,7 @@ public class ActorStateUIControler : MonoBehaviour
 
         hpUI.SetActive(false);
         protectUIObject.SetActive(true);
-        Text text = protectUIObject.GetComponentInChildren<Text>();
+        TextMeshProUGUI text = protectUIObject.GetComponentInChildren<TextMeshProUGUI>();
         text.text = rate + "";
     }
 

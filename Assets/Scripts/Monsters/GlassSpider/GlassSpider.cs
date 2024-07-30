@@ -48,8 +48,6 @@ public class GlassSpider : Monster
             }
         }
 
-        charactorState.AddState(StateDatabase.stateDatabase.pike
-            , charactorState.GetStateStack(StateType.glassPragment));
         hp -= totalDamage;
     }
 }
