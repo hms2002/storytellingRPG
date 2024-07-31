@@ -4589,8 +4589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUI:
-  - {fileID: 1985397335}
   mapBackground: []
   bookmarks: []
   keywordSettingWindow: {fileID: 0}
@@ -4703,7 +4701,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!224 &1623211979
 RectTransform:
