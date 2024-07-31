@@ -35,7 +35,7 @@ public class Hand : MonoBehaviour
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
-            supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform));     
+            supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform.Find("SelectedKeywordPivot")));     
         }
         KeywordUIMovement.instance.StretchKeywords(supportHand);
     }
@@ -47,9 +47,9 @@ public class Hand : MonoBehaviour
     {
         for (int i = 0; i < HANDSIZE; i++)
         {
-            GameObject keywordCard = Instantiate(mainKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform);
+            GameObject keywordCard = Instantiate(mainKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform.Find("SelectedKeywordPivot"));
 
-            mainHand.Add(keywordCard);
+        mainHand.Add(keywordCard);
         }
         KeywordUIMovement.instance.StretchKeywords(mainHand);
     }

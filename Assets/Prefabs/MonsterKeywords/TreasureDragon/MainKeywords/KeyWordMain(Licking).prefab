@@ -351,7 +351,7 @@ RectTransform:
   m_GameObject: {fileID: 5054975764192728079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8175424018047032718}
@@ -470,6 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 662064882765841369}
+  effectTarget: 0
+  effectType: 0
   _keywordName: 
   _keywordDamage: 0
   _keywordProtect: 0
@@ -477,6 +479,7 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _keywordTension: 0
+  _isOneTimeUse: 0
   keywordDescription: 
   maxRange: 10
   minRange: 6

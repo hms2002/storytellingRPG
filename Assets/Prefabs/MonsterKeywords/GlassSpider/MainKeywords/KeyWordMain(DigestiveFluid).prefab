@@ -254,7 +254,7 @@ RectTransform:
   m_GameObject: {fileID: 4313671139727451894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7125223617493147042}
@@ -382,6 +382,7 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _keywordTension: 0
+  _isOneTimeUse: 0
   keywordDescription: 
 --- !u!114 &7566304978991025474
 MonoBehaviour:
