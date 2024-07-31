@@ -79,7 +79,7 @@ public class FightManager : MonoBehaviour
         }
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
-        DOVirtual.DelayedCall(5f, () => UIManager.uIManager.ActiveCombatKeywordUI(true));
+        DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
     }
 
@@ -243,7 +243,7 @@ public class FightManager : MonoBehaviour
             TextManager.instance.PrintPlayerDie();
 
             // The End 아이콘 활성화
-            UIManager.uIManager.ActiveTheEndIcon(true);
+            UIManager.instance.ActiveTheEndIcon(true);
 
             // 게임 종료 (씬 전환?)
         }

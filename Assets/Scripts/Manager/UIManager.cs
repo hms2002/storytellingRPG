@@ -6,17 +6,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 /// <summary>
 /// 게임 운영에 필요한 UI 관리를 담당 | 
 /// <para> 맵 UI, 덱 세팅 UI, 전투 UI, 책 애니메이션 제어 </para>
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    public static UIManager uIManager;
+    public static UIManager instance;
 
     [Header("맵")]
-    [SerializeField] private List<GameObject> mapUI;        // 맵 관련 모든 UI를 담는 리스트
-    [SerializeField] private List<GameObject> mapBackground;
+    [SerializeField] private List<GameObject> mapBackground;            // 전투맵 배경
  
     [Header("책갈피")]
     [SerializeField] private List<GameObject> bookmarks;                // 북마크 버튼들
@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> combatFunctionAndUI;      // 전투 관련 모든 UI를 담는 리스트
     [SerializeField] private GameObject combatKeywordUI;
     [SerializeField] private Deck originalDeck;             // 플레이어가 갖고 있는 오리지널 덱
+    [SerializeField] private GameObject mainDeckPivot;      //
+    [SerializeField] private GameObject garbageFieldPivot;  //
+    
 
     [Header("전투 백그라운드")]
     [SerializeField] private GameObject combatBackground;
@@ -51,12 +54,12 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         // 싱글톤 구조 보강
-        if (uIManager != null && uIManager != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
             return;
         }
-        uIManager = this;
+        instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -140,6 +143,23 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    private void ClickDeckInfo()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ClickAgainDeckInfo()
+    {
+
+    }
+
+
+    /// <summary>
     /// 전장에서 벗어나면 Player 제거, 전투 UI 비활성화, BookPassR 애니메이션 재생하는 메소드ㅋㅋ
     /// </summary>
     public void GetOutOfBattleField()
@@ -204,6 +224,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void DestroyOriginalDeckInfo()
     {
+        if (!wasOriginalDeckInstanciate) return;
+
         GameObject keywordTemp;     // 제거할 키워드를 잠시 담아놓을 변수
 
         // OriginalSupportDeck 그리드 레이아웃 그룹 

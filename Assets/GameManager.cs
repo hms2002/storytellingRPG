@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
     private void CallFightUIOn()
     {
-        UIManager.uIManager.EnterBattleField();
+        UIManager.instance.EnterBattleField();
     }
     private void CallFightStart()
     {
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     internal void EndSelectReward()
     {
-        UIManager.uIManager.GetOutOfBattleField();
+        UIManager.instance.GetOutOfBattleField();
         Invoke("ReturnMap", 2);
     }
 }

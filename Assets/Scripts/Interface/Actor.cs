@@ -30,9 +30,13 @@ public class Actor : MonoBehaviour
 
     #region Actor의 키워드 관련 변수
     private Deck OriginalDeck;
-    private Deck deck;                          // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    private Deck deck;                             // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     private Hand hand;
-    private Deck garbageField = new Deck();     // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+    private Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+
+    [Header("덱 정보 피봇")]
+    private DeckInfoPivot deckInfoPivot;           //
+    private DeckInfoPivot garbageFieldInfoPivot;   //
 
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
@@ -48,8 +52,6 @@ public class Actor : MonoBehaviour
         get { return _keywordMain; }
         set { _keywordMain = value; }
     }
-
-    private bool hasActorDrawnKeywords = false;         // Actor의 키워드 드로우 여부 확인용
     #endregion
 
     #region Actor의 능력치 관련 변수, 함수
@@ -161,6 +163,7 @@ public class Actor : MonoBehaviour
 
     /*==================================================================================================================================*/
 
+
     private void OnEnable()
     {
         // 원본 덱 가져오기 전에 있는지 확인
@@ -202,18 +205,16 @@ public class Actor : MonoBehaviour
 
     public virtual void BeforeAction()
     {
-        // Actor가 Keyword를 안 뽑았다면
-        if (hasActorDrawnKeywords == false)
-        {
-            deck.ShuffleDeck();
-            FillSupHandInfo();
-            FillMainHandInfo();
+        // 씬에 존재하는 DeckPivot 태그의 오브젝트 찾기
+        GameObject[] pivotTemp = GameObject.FindGameObjectsWithTag("DeckPivot");
 
-            // Actor의 Hand가 다 채워졌으니 True로 설정
-            hasActorDrawnKeywords = true;
-        }
+        // 찾은 DeckPivot 오브젝트 각각 할당
+        deckInfoPivot = pivotTemp[0].GetComponent<DeckInfoPivot>();
+        garbageFieldInfoPivot = pivotTemp[1].GetComponent<DeckInfoPivot>();
+
         TextManager.instance.KeywordTextPlay(this);
 
+        deck.ShuffleDeck();
         StackInit();
     }
 
@@ -225,6 +226,9 @@ public class Actor : MonoBehaviour
         #endregion
     }
 
+    /// <summary>
+    /// hand의 SupHand 리스트에 무작위 랜덤 드로우된 키워드 프리팹을 할당한다.
+    /// </summary>
     private void FillSupHandInfo()
     {
         // Keyword 드로우 3번 반복
@@ -243,8 +247,14 @@ public class Actor : MonoBehaviour
             // Support덱에서 1장 랜덤 드로우
             hand.SetSupPrefabInfo(deck.DrawSupKeyword());
         }
+
+        // Support덱에 남아있는 키워드 프리팹 데이터를 DeckInfoPivot에게 전송
+        deckInfoPivot.RecieveDeckInfo(deck.SupportDeck);
     }
 
+    /// <summary>
+    /// hand의 mainHand 리스트에 무작위 랜덤 드로우된 키워드 프리팹을 할당한다.
+    /// </summary>
     private void FillMainHandInfo()
     {
         // Keyword 드로우 3번 반복
@@ -263,6 +273,9 @@ public class Actor : MonoBehaviour
             // Main덱에서 각각 1장 랜덤 드로우                
             hand.SetMainPrefabInfo(deck.DrawMainKeyword());
         }
+
+        // Main덱에 남아있는 키워드 프리팹 데이터를 DeckInfoPivot에게 전송
+        deckInfoPivot.RecieveDeckInfo(deck.MainDeck);
     }
 
     public void GetKeywordSup(KeywordSup _keywordSup)
@@ -300,9 +313,6 @@ public class Actor : MonoBehaviour
         }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 1f);
-
-        // Actor의 Hand가 비었으니 false로 설정
-        hasActorDrawnKeywords = false;
     }
 
     private void AddToSupGarbageField()
@@ -312,6 +322,9 @@ public class Actor : MonoBehaviour
         {
             garbageField.AddSupKeywordOnDeck(hand.ThrowSupKeyword(0));
         }
+
+        // 
+        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.SupportDeck);
     }
 
     private void AddToMainGarbageField()
@@ -321,6 +334,9 @@ public class Actor : MonoBehaviour
         {
             garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
         }
+
+        // 
+        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
 
     public virtual void Action(Actor target)
@@ -595,11 +611,13 @@ public class Actor : MonoBehaviour
 
     public void SelectKeyword()
     {
+        FillSupHandInfo();
         hand.SubstantiateSupKeywordData();
     }
 
     private void ShowKeywordMain()
     {
+        FillMainHandInfo();
         hand.SubstantiateMainKeywordData();
     }
   }

@@ -684,7 +684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6339924582874757890
 Transform:
   m_ObjectHideFlags: 0
@@ -768,6 +768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 5939631162291839986}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
+  deckInfoPivot: {fileID: 0}
+  garbageFieldInfoPivot: {fileID: 0}
   _MAX_HP: 100
 --- !u!114 &1603435647839028368
 MonoBehaviour:
