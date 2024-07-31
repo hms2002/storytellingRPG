@@ -203,6 +203,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void DestroyOriginalDeckInfo()
     {
+        if (!wasOriginalDeckInstanciate) return;
+
         GameObject keywordTemp;     // 제거할 키워드를 잠시 담아놓을 변수
 
         // OriginalSupportDeck 그리드 레이아웃 그룹 
