@@ -15,8 +15,7 @@ public class UIManager : MonoBehaviour
     public static UIManager uIManager;
 
     [Header("맵")]
-    [SerializeField] private List<GameObject> mapUI;        // 맵 관련 모든 UI를 담는 리스트
-    [SerializeField] private List<GameObject> mapBackground;
+    [SerializeField] private List<GameObject> mapBackground;            // 전투맵 배경
  
     [Header("책갈피")]
     [SerializeField] private List<GameObject> bookmarks;                // 북마크 버튼들
