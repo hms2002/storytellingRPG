@@ -198,8 +198,6 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
-        additionalDamage = charactorState.GetStateStack(StateType.nextTurnDamage);
-        charactorState.ResetState(StateType.nextTurnDamage);
     }
 
     public virtual void BeforeAction()
@@ -339,102 +337,135 @@ public class Actor : MonoBehaviour
     {
         for (int i = 1; i <= repeatStack; i++)
         {
-            Color mainColor = keywordMain.GetKeywordColor();
-            Color supColor = keywordSup.GetKeywordColor();
+            PlayActionEffect(target);
 
-            if (keywordMain.effectTarget == Keyword.EffectTarget.target)
-            {
-                if (mainColor == Color.red)
-                {
-                    if (damage != 0)
-                    {
-                        EffectManager.instance.PlayEffect(keywordMain.effectType, target);
-                    }
-                }
-                else
-                {
-                    EffectManager.instance.PlayEffect(keywordMain.effectType, target);
-                }
-            }
-            if (keywordMain.effectTarget == Keyword.EffectTarget.caster)
-            {
-                EffectManager.instance.PlayEffect(keywordMain.effectType, this);
-            }
-
-            if (keywordSup.effectTarget == Keyword.EffectTarget.target)
-            {
-                if (supColor == Color.red)
-                {
-                    if (damage != 0)
-                    {
-                        EffectManager.instance.PlayEffect(keywordSup.effectType, target);
-                    }
-                }
-                else
-                {
-                    EffectManager.instance.PlayEffect(keywordSup.effectType, target);
-                }
-            }
-            if (keywordSup.effectTarget == Keyword.EffectTarget.caster)
-            {
-                EffectManager.instance.PlayEffect(keywordSup.effectType, this);
-            }
-
-            TensionManager tensionManager = TensionManager.tensionManagerUI;
-
-            // 강화 버프가 부여된 상태로 공격 키워드 사용 시 강화 수치만큼 데미지 추가
-            if (this.charactorState.GetStateStack(StateType.reinforce) > 0 && damage > 0)
-            {
-                damage += this.charactorState.GetStateStack(StateType.reinforce);
-            }
 
             target.Damaged(this, damage);
 
+            TensionManager tensionManager = TensionManager.tensionManagerUI;
             tensionManager.tension += tension;
 
+            // 반격 관련 코드
             if (target.attackCount == true)
             {
-                Damaged(target, target.charactorState.GetStateStack(StateType.glassPragment)
-                    + target.charactorState.GetStateStack(StateType.pike));
+                int counterDamage = target.CalculateCounterAttackDamage(target);
+                Damaged(this, counterDamage);
             }
 
             target.attackCount = false;
         }
     }
 
-    public virtual void Damaged(Actor attacker, int _damage)
+    /// <summary>
+    /// 이펙트 실행하는 함수 ㅋㅋ
+    /// </summary>
+    protected void PlayActionEffect(Actor target)
     {
-        if (_damage <= 0) return;
+        Color mainColor = keywordMain.GetKeywordColor();
+        Color supColor = keywordSup.GetKeywordColor();
 
-        int totalDamage = _damage;
-
-        if(attacker == this)
+        if (keywordMain.effectTarget == Keyword.EffectTarget.target)
         {
-            if (protect > 0)
+            if (mainColor == Color.red)
             {
-                if (protect < totalDamage)
+                if (damage != 0)
                 {
-                    totalDamage -= protect;
-                    protect = 0;
-                }
-                else
-                {
-                    protect -= totalDamage;
-                    totalDamage = 0;
+                    EffectManager.instance.PlayEffect(keywordMain.effectType, target);
                 }
             }
-
-            hp -= totalDamage;
-            return;
+            else
+            {
+                EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+            }
         }
-        else
+        if (keywordMain.effectTarget == Keyword.EffectTarget.caster)
         {
-            totalDamage += attacker.additionalDamage
-                + attacker.charactorState.GetStateStack(StateType.oneTimeReinforce)
-                + charactorState.GetStateStack(StateType.weaken)
-                - charactorState.GetStateStack(StateType.reduction);
-        
+            EffectManager.instance.PlayEffect(keywordMain.effectType, this);
+        }
+
+        if (keywordSup.effectTarget == Keyword.EffectTarget.target)
+        {
+            if (supColor == Color.red)
+            {
+                if (damage != 0)
+                {
+                    EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+                }
+            }
+            else
+            {
+                EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+            }
+        }
+        if (keywordSup.effectTarget == Keyword.EffectTarget.caster)
+        {
+            EffectManager.instance.PlayEffect(keywordSup.effectType, this);
+        }
+    }
+
+    #region 공격 전 total데미지 연산
+    protected int CalculateTotalDamageBeforeDamaged(int totalDamage, Actor attacker)
+    {
+        totalDamage = AddSubCalculationTotalDamage(totalDamage, attacker);
+
+        totalDamage = RatioCalculateTotalDamage(totalDamage, attacker);
+        return totalDamage;
+    }
+        #region 덧셈, 뺄셈 연산
+        /// <summary>
+    /// 총 데미지에 더하고 빼는 연산 실행
+    /// </summary>
+        protected int AddSubCalculationTotalDamage(int totalDamage, Actor attacker)
+        {
+            totalDamage = CalculateReinforce(totalDamage, attacker);
+            totalDamage = CalculateOneTimeReinforce(totalDamage, attacker);
+            totalDamage = CalculateReduction(totalDamage, attacker);
+            totalDamage = CalculateWeaken(totalDamage);
+            return totalDamage;
+        }
+        protected int CalculateReinforce(int totalDamage, Actor attacker)
+        {
+            totalDamage += charactorState.GetStateStack(StateType.reinforce);
+            return totalDamage;
+        }
+        /// <summary>
+        /// return totalDamage
+        /// </summary>
+        protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
+        {
+            totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
+            return totalDamage;
+        }
+        /// <summary>
+        /// return totalDamage
+        /// </summary>
+        protected int CalculateWeaken(int totalDamage)
+        {
+            totalDamage += charactorState.GetStateStack(StateType.weaken);
+            return totalDamage;
+        }
+        /// <summary>
+        /// return totalDamage
+        /// </summary>
+        protected int CalculateReduction(int totalDamage, Actor attacker)
+    {
+        totalDamage -= attacker.charactorState.GetStateStack(StateType.reduction);
+        return totalDamage;
+    }
+        #endregion
+        #region 비율 연산
+        protected int RatioCalculateTotalDamage(int totalDamage, Actor attacker)
+        {
+            totalDamage = CalculateFear(totalDamage, attacker);
+            return totalDamage;
+        }
+        /// <summary>
+        /// return totalDamage
+        /// </summary>
+        protected int CalculateFear(int totalDamage, Actor attacker)
+        {
             int fearStack = attacker.charactorState.GetStateStack(StateType.fear);
+            // 공격자 공포스택 1 당 피해량 10% 감소
             if (fearStack <= 10)
             {
                 totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
@@ -443,44 +474,122 @@ public class Actor : MonoBehaviour
             {
                 totalDamage = 0;
             }
-            if (totalDamage > 0 && attacker != this)
-            {
-                attackCount = true;
-            }
-            int oneTimeProtect = attacker.charactorState.GetStateStack(StateType.oneTimeProtect);
-            if (oneTimeProtect > 0)
-            {
-                if (oneTimeProtect < totalDamage)
-                {
-                    totalDamage -= oneTimeProtect;
-                    oneTimeProtect = 0;
-                }
-                else
-                {
-                    oneTimeProtect -= totalDamage;
-                    totalDamage = 0;
-                    oneTimeProtect = 0;
-                }
-            }
-
-            if (protect > 0)
-            {
-                if (protect < totalDamage)
-                {
-                    totalDamage -= protect;
-                    protect = 0;
-                }
-                else
-                {
-                    protect -= totalDamage;
-                    totalDamage = 0;
-                }
-            }
-
-            hp -= totalDamage;
-            attacker.charactorState.ReductionOnAttack();
-            charactorState.ReductionOnDamaged();
+            return totalDamage;
         }
+        #endregion
+    #endregion
+    #region 피해 연산(보호막 등)
+    protected virtual int CalculateAllProtection(int totalDamage)
+    {
+        totalDamage = CalculateOneTimeProtect(totalDamage);
+        totalDamage = CalculateProtect(totalDamage);
+        return totalDamage;
+    }
+
+    /// <summary>
+    /// return totalDamage
+    /// </summary>
+    protected int CalculateProtect(int totalDamage)
+    {
+        if (protect > 0)
+        {
+            if (protect < totalDamage)
+            {
+                totalDamage -= protect;
+                protect = 0;
+            }
+            else
+            {
+                protect -= totalDamage;
+                totalDamage = 0;
+            }
+        }
+        return totalDamage;
+    }
+    /// <summary>
+    /// return totalDamage
+    /// </summary>
+    protected int CalculateOneTimeProtect(int totalDamage)
+    {
+        int oneTimeProtect = charactorState.GetStateStack(StateType.oneTimeProtect);
+
+        if (oneTimeProtect > 0)
+        {
+            if (oneTimeProtect < totalDamage)
+            {
+                totalDamage -= oneTimeProtect;
+                charactorState.ResetState(StateType.oneTimeProtect);
+            }
+            else
+            {
+                oneTimeProtect -= totalDamage;
+                totalDamage = 0;
+                charactorState.ResetState(StateType.oneTimeProtect);
+            }
+        }
+        return totalDamage;
+    }
+    #endregion
+    #region 반격 검사 및 반격 데미지 연산
+    /// <summary>
+    /// 반격 할건지 검사
+    /// </summary>
+    protected void CheckAttackCountFlag(int totalDamage, Actor attacker)
+    {
+        if (totalDamage > 0)
+        {
+            attackCount = true;
+        }
+    }
+    protected virtual int CalculateCounterAttackDamage(Actor FightBacker)
+    {
+        if(!attackCount) return 0;
+
+        int glassPragmentStack = FightBacker.charactorState.GetStateStack(StateType.glassPragment);
+
+        int counterDamage = glassPragmentStack;
+        counterDamage +=FightBacker.charactorState.GetStateStack(StateType.pike);
+        
+        
+        return counterDamage;
+    }
+    #endregion
+
+    protected void DamagedSelf(int totalDamage)
+    {
+        totalDamage = CalculateAllProtection(totalDamage);
+
+        hp -= totalDamage;
+    }
+    protected virtual void DamagedOther(int totalDamage, Actor attacker)
+    {
+        // 공격 전 피해량 계산
+        totalDamage = CalculateTotalDamageBeforeDamaged(totalDamage, attacker);
+
+        // 피해량 있으면, 반격 플래그 TRUE
+        CheckAttackCountFlag(totalDamage, attacker);
+
+        // 보호막 관련 모든 연산을 실행
+        totalDamage = CalculateAllProtection(totalDamage);
+
+        hp -= totalDamage;
+
+
+        // 공격자, 공격 시 스택 감소할 것들 감소
+        attacker.charactorState.ReductionOnAttack();
+        // 피해자, 피해 시 스택 감소할 것들 감소
+        charactorState.ReductionOnDamaged();
+    }
+    public virtual void Damaged(Actor attacker, int _damage)
+    {
+        if (_damage <= 0) return;
+
+        int totalDamage = _damage;
+
+        if(attacker == this)
+            DamagedSelf(totalDamage);
+        else
+            DamagedOther(totalDamage, attacker);
     }
 
 
@@ -493,4 +602,29 @@ public class Actor : MonoBehaviour
     {
         hand.SubstantiateMainKeywordData();
     }
-}
+  }
+//namespace DamagedCalculate
+//{
+//    class DamageCalculator
+//    {
+//        public static void CalculateProtect(int totalDamage, int protect)
+//        {
+//            if (protect > 0)
+//            {
+//                if (protect < totalDamage)
+//                {
+//                    totalDamage -= protect;
+//                    protect = 0;
+//                }
+//                else
+//                {
+//                    protect -= totalDamage;
+//                    totalDamage = 0;
+//                }
+//            }
+
+//            hp -= totalDamage;
+//            return;
+//        }
+//    }
+//}

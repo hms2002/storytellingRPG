@@ -107,7 +107,6 @@ public class FightManager : MonoBehaviour
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
             monsterList[preparedActorCount].SelectKeyword();
-            fightManagerUI.ChangeTurnText("몬스터 : " + monsterList[preparedActorCount].gameObject.name);
             return;
         }
         else if (preparedActorCount == monsterList.Count)
@@ -118,7 +117,6 @@ public class FightManager : MonoBehaviour
 
             TextManager.instance.KeywordTextPlay(player);
             
-            fightManagerUI.ChangeTurnText("플레이어");
             return;
         }
         else
@@ -130,7 +128,6 @@ public class FightManager : MonoBehaviour
     private IEnumerator ActorAction()
     {
         player.Action(MonsterTargetter.monsterTargetter.target);
-        fightManagerUI.ChangeActionText("플레이어 ");
 
         int dir = 3;
         Vector3 originPos = player.transform.position;
@@ -178,7 +175,6 @@ public class FightManager : MonoBehaviour
         foreach (Actor monster in monsterList)
         {
             monster.Action(player);
-            fightManagerUI.ChangeActionText("몬스터 : " + monsterList[preparedActorCount].gameObject.name);
             dir = -3;
             originPos = monster.transform.position;
             objectPos = monster.transform.position + new Vector3(dir, 0, 0);

@@ -209,21 +209,21 @@ public class UIManager : MonoBehaviour
         // OriginalSupportDeck 그리드 레이아웃 그룹 
         for (int i = 0; i < originalDeck.GetSupDeckSize(); i++)
         {
-            // OriginalSupportDeck 하위 객체 참조
-            keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
+            //// OriginalSupportDeck 하위 객체 참조
+            //keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
 
-            // 참조한 하위 객체 제거
-            Destroy(keywordTemp);
+            //// 참조한 하위 객체 제거
+            //Destroy(keywordTemp);
         }
 
         // OriginalMainDeck 그리드 레이아웃 그룹 
         for (int i = 0; i < originalDeck.GetMainDeckSize(); i++)
         {
-            // OriginalMainDeck 하위 객체 참조
-            keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;
+            //// OriginalMainDeck 하위 객체 참조
+            //keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;
 
-            // 참조한 하위 객체 제거
-            Destroy(keywordTemp);
+            //// 참조한 하위 객체 제거
+            //Destroy(keywordTemp);
         }
 
         // 오리지널 덱 UI Destroy되었으니 false

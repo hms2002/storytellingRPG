@@ -12,8 +12,8 @@ public class PotionGlub : Monster
         Red
     }
 
-    private int _potionNum = 0;
-    private PotionColor _potionColor = 0;
+    private int _potionNum = 1;
+    private PotionColor _potionColor = PotionColor.Purple;
     private bool _isJellyShot = false;
     private Animator animator;
 
@@ -25,6 +25,7 @@ public class PotionGlub : Monster
             if(!isJellyShot)
             {
                 _potionNum = value;
+                if (_potionNum < 1) _potionNum = 1;
             }
         }
     }
@@ -44,60 +45,33 @@ public class PotionGlub : Monster
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        MAX_HP = 40; 
+        encounterText = "포션은 마셔도 죽는다. 마시지 않아도 죽는다.";
     }
 
-    public override void Damaged(Actor attacker, int _damage)
+
+    protected override void DamagedOther(int totalDamage, Actor attacker)
     {
-        if (_damage <= 0)
-            return;
-        int totalDamage = _damage;
+        // 공격 전 피해량 계산
+        totalDamage = CalculateTotalDamageBeforeDamaged(totalDamage, attacker);
 
-
-        if(attacker != this)
+        // 피해량 있으면, 반격 플래그 TRUE
+        CheckAttackCountFlag(totalDamage, attacker);
+    
+        // 피해량 있으면 포션글럽 패시브 발동
+        if(totalDamage > 0)
             PotionHitted(attacker);
 
-        if (totalDamage > 0)
-        {
-            attackCount = true;
-        }
-        if (additionalDamage > 0)
-        {
-            totalDamage += additionalDamage;
-            additionalDamage = 0;
-        }
-        if (charactorState.GetStateStack(StateType.weaken) > 0)
-        {
-            totalDamage += charactorState.GetStateStack(StateType.weaken);
-            charactorState.ReductionByValue(StateType.weaken, 1);
-        }
-        if (attacker.charactorState.GetStateStack(StateType.reduction) > 0)
-        {
-            if (totalDamage < attacker.charactorState.GetStateStack(StateType.reduction))
-            {
-                totalDamage = 0;
-                attacker.charactorState.ReductionByValue(StateType.reduction, 1);
-            }
-            else
-            {
-                totalDamage -= attacker.charactorState.GetStateStack(StateType.reduction);
-                attacker.charactorState.ReductionByValue(StateType.reduction, 1);
-            }
-        }
+        // 보호막 관련 모든 연산을 실행
+        totalDamage = CalculateAllProtection(totalDamage);
 
-        if (protect > 0)
-        {
-            if (protect < totalDamage)
-            {
-                totalDamage -= protect;
-                protect = 0;
-            }
-            else
-            {
-                protect -= totalDamage;
-                totalDamage = 0;
-            }
-        }
         hp -= totalDamage;
+
+
+        // 공격자, 공격 시 스택 감소할 것들 감소
+        attacker.charactorState.ReductionOnAttack();
+        // 피해자, 피해 시 스택 감소할 것들 감소
+        charactorState.ReductionOnDamaged();
     }
 
     public void ColorChecking()
@@ -148,7 +122,7 @@ public class PotionGlub : Monster
         }
         if (potionColor == PotionColor.Black)
         {
-            charactorState.AddAllActiveState(5);
+            attacker.charactorState.AddAllActiveState(5);
         }
         if (potionColor == PotionColor.Green)
         {

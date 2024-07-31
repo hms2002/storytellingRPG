@@ -11,7 +11,7 @@ public class FightManagerUI : MonoBehaviour
         get { return _fightManagerUI; }
     }
 
-    public TextMeshProUGUI turnText;
+    
 
     private void Awake()
     {
@@ -20,12 +20,4 @@ public class FightManagerUI : MonoBehaviour
         _fightManagerUI = this;
     }
 
-    public void ChangeTurnText(string name)
-    {
-        turnText.text = name + "의 키워드";
-    }
-    public void ChangeActionText(string name)
-    {
-        turnText.text = name + "의 행동";
-    }
 }

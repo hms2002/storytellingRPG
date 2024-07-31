@@ -7,6 +7,7 @@ public class JellyShot : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
+        keywordName = "젤리샷";
         SetKeywordColor(Y);
         keywordTension = 20;
         effectTarget = EffectTarget.caster;

@@ -7,6 +7,7 @@ public class Pouring : KeywordMain
     PotionGlub potionGlub;
     private void Awake()
     {
+        keywordName = "포어링";
         SetKeywordColor(Y);
         keywordTension = 10;
         effectTarget = EffectTarget.target;

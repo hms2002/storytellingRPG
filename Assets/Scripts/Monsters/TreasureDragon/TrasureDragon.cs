@@ -33,53 +33,40 @@ public class TrasureDragon : Monster
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
-        additionalDamage += charactorState.GetStateStack(StateType.nextTurnDamage);
     }
+    protected int CalculateDragonTreasure(int totalDamage)
+    {
+        int dragonTreasure = charactorState.GetStateStack(StateType.treasureOfDragon);
+        if(totalDamage >= dragonTreasure)
+        {
+            totalDamage -= dragonTreasure;
+            charactorState.ResetState(StateType.treasureOfDragon);
+        }
+        else
+        {
+            charactorState.ReductionByValue(StateType.treasureOfDragon, totalDamage);
+            // 플레이어 돈 주는 코드 넣어야 함.
+            totalDamage = 0;
+        }    
 
+        return totalDamage;
+    }
+    protected override int CalculateAllProtection(int totalDamage)
+    {
+        totalDamage = base.CalculateAllProtection(totalDamage);
+        totalDamage = CalculateDragonTreasure(totalDamage);
+        
+        return totalDamage;
+    }
     public override void Damaged(Actor attacker, int _damage)
     {
-        if (_damage <= 0)
-            return;
+        if (_damage <= 0) return;
+
         int totalDamage = _damage;
 
-        totalDamage += attacker.additionalDamage
-                + attacker.charactorState.GetStateStack(StateType.oneTimeReinforce)
-                + charactorState.GetStateStack(StateType.weaken)
-                - charactorState.GetStateStack(StateType.reduction);
-
-
-        int dragonTreasureStack = charactorState.GetStateStack(StateType.treasureOfDragon);
-        if (dragonTreasureStack > 0)
-        {
-            if (protect > 0)
-            {
-                if (protect < totalDamage)
-                {
-                    totalDamage -= protect;
-                    protect = 0;
-                }
-                else
-                {
-                    protect -= totalDamage;
-                    totalDamage = 0;
-                }
-            }
-
-            if (dragonTreasureStack < totalDamage)
-            {
-                totalDamage -= dragonTreasureStack;
-                trasureDamage = totalDamage;
-                charactorState.ResetState(StateType.treasureOfDragon);
-            }
-            else
-            {
-                charactorState.ReductionByValue(StateType.treasureOfDragon, totalDamage);
-                trasureDamage = totalDamage;
-                totalDamage = 0;
-            }
-        }
-        hp -= totalDamage;
-        attacker.charactorState.ReductionOnAttack();
-        charactorState.ReductionOnDamaged();
+        if (attacker == this)
+            DamagedSelf(totalDamage);
+        else
+            DamagedOther(totalDamage, attacker);
     }
 }

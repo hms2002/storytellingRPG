@@ -29,7 +29,9 @@ public class TumbleBird : Monster
 
     private void Awake()
     {
-        hp = MAX_HP;
+        hp = MAX_HP; 
+        encounterText = "날지 못하는 새는 구르는 방법을 배웠다. 그리고 더욱 위험해졌다. ";
+
     }
 
     public override void Action(Actor target)
@@ -46,7 +48,6 @@ public class TumbleBird : Monster
         Execute(target);
         isContinuity = false;
 
-        additionalDamage += charactorState.GetStateStack(StateType.nextTurnDamage);
     }
 
 }

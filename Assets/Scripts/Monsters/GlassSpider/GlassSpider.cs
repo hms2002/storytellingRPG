@@ -16,38 +16,10 @@ public class GlassSpider : Monster
         hp = MAX_HP;
     }
 
-    public override void Damaged(Actor attacker, int _damage)
+    protected override int CalculateCounterAttackDamage(Actor FightBacker)
     {
-        if (_damage <= 0)
-            return;
-        int totalDamage = _damage;
-        
-        if (totalDamage > 0 && attacker != this)
-        {
-            charactorState.AddState(StateDatabase.stateDatabase.glassPragment, 1);
-            attackCount = true;
-        }
-        int weakenStack = charactorState.GetStateStack(StateType.weaken);
-        if (weakenStack > 0)
-        {
-            totalDamage += weakenStack;
-            weakenStack -= 1;
-        }
-
-        if (protect > 0)
-        {
-            if (protect < totalDamage)
-            {
-                totalDamage -= protect;
-                protect = 0;
-            }
-            else
-            {
-                protect -= totalDamage;
-                totalDamage = 0;
-            }
-        }
-
-        hp -= totalDamage;
+        int counterDamage = base.CalculateCounterAttackDamage(FightBacker);
+        FightBacker.charactorState.AddState(StateType.glassPragment, 1);
+        return counterDamage;
     }
 }
