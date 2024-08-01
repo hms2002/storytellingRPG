@@ -39,12 +39,12 @@ public class KeywordUIMovement : MonoBehaviour
         {
             for (int i = length / 2; i >= 0; i--)
             {
-                objPos[i] = centerPos - new Vector2(2 * cnt++, 0);
+                objPos[i] = centerPos - new Vector2(padding * cnt++, 0);
             }
             cnt = 1;
             for (int i = length / 2 + 1; i < length; i++)
             {
-                objPos[i] = centerPos + new Vector2(2 * cnt++, 0);
+                objPos[i] = centerPos + new Vector2(padding * cnt++, 0);
             }
         }
         if (length % 2 == 0)

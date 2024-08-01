@@ -218,7 +218,7 @@ public class Actor : MonoBehaviour
         StackInit();
     }
 
-    public void StartTurn()
+    public virtual void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
