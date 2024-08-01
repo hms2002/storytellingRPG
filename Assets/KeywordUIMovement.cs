@@ -11,7 +11,7 @@ public class KeywordUIMovement : MonoBehaviour
     public Vector2 selectedPivotOriginPos;
 
     public Vector2 centerPos;
-    public int padding = 2;
+    public int padding = 100;
 
     List<GameObject> keywords;
     GameObject selectedKeyword;
@@ -71,7 +71,7 @@ public class KeywordUIMovement : MonoBehaviour
     public const float MOVE_TIME = 0.5f;
 
     Vector2 startSize = new Vector2(0, 0);
-    Vector2 endSize = new Vector2(0.01f, 0.01f);
+    Vector2 endSize = new Vector2(1f, 1f);
     private void Update()
     {
         if(stretchKeywordsFlag)
@@ -120,7 +120,7 @@ public class KeywordUIMovement : MonoBehaviour
             }
         }
     }
-
+        
     public  void MoveSelectedKeyword(Keyword keywordSup)
     {
         for(int i = 0; i < keywords.Count; i++)
