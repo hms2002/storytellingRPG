@@ -4,12 +4,5 @@ using UnityEngine;
 
 public class MagicStoneGolem : Monster
 {
-    private int _stonePiece = 0;
-
-    public int stonePiece
-    {
-        get { return _stonePiece; }
-        set { _stonePiece = value; }
-    }
 
 }

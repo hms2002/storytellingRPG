@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
     public  TextMeshProUGUI nameText;
+    private Vector3 originPosition;
 
     public enum EffectTarget
     {
@@ -100,6 +102,11 @@ public class Keyword : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        originPosition = transform.position;
+    }
+
     protected void Init()
     {
         fightManager = FightManager.fightManager;
@@ -115,6 +122,12 @@ public class Keyword : MonoBehaviour
             effectTarget = EffectTarget.caster;
             effectType = EffectManager.EffectType.Shield;
         }
+    }
+
+    public void CantUseEffect()
+    {
+/*        transform.position = originPosition;*/
+        transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
     }
 
     public void PlayClickSound()

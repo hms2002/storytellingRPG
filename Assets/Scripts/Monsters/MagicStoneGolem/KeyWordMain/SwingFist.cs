@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SwingFist : KeywordMain
 {
-    MagicStoneGolem magicStoneGolem;
     [Header("돌 조각 당 긴장도 제어")]
     [SerializeField] private int stackTension = 5;
     private void Awake()
@@ -20,9 +19,9 @@ public class SwingFist : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        magicStoneGolem = caster as MagicStoneGolem;
-        caster.damage += keywordDamage * magicStoneGolem.stonePiece;
-        caster.tension += keywordTension + magicStoneGolem.stonePiece * stackTension;
+        caster.damage += keywordDamage * caster.charactorState.GetStateStack(StateType.stonePiece);
+        caster.tension += keywordTension + caster.charactorState.GetStateStack(StateType.stonePiece) * stackTension;
+        caster.charactorState.ResetState(StateType.stonePiece);
     }
 
     public override void Check(KeywordSup _keywordSup)

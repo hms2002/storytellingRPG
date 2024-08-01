@@ -49,14 +49,36 @@ public class FightManager : MonoBehaviour
     {
         if (_keywordSup == null) return;
         //if (!_keywordSup.ActivationConditionCheck())
+        if (whoPlaying == player)
+            _keywordSup.CanUseCheck(player, MonsterTargetter.monsterTargetter.target);
+        else if (whoPlaying != player)
+            _keywordSup.CanUseCheck(whoPlaying, player);
+        if (!_keywordSup.isCanUse)
+        {
+            _keywordSup.CantUseEffect();
+            return;
+        }
 
         whoPlaying.GetKeywordSup(_keywordSup);
+        _keywordSup.PlayClickSound();
     }
 
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
         if (_keywordMain == null) return;
         whoPlaying.GetKeywordMain(_keywordMain);
+        if (whoPlaying == player)
+            _keywordMain.CanUseCheck(player, MonsterTargetter.monsterTargetter.target);
+        else if (whoPlaying != player)
+            _keywordMain.CanUseCheck(whoPlaying, player);
+
+        if (!_keywordMain.isCanUse)
+        {
+            _keywordMain.CantUseEffect();
+            return;
+        }
+
+        _keywordMain.PlayClickSound();
         preparedActorCount++;
         Invoke("Flow",2);
     }

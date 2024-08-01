@@ -3224,10 +3224,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1875399256}
-    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: rewardKeywords.Array.data[2]
-      value: 
-      objectReference: {fileID: 7579075665694996604, guid: 9edc07f5ee611c24d8974a6c079683b5, type: 3}
     - target: {fileID: 6658285197191529993, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1042.8713
@@ -3745,7 +3741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1394731584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3785,7 +3781,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1394731586
 Canvas:
   m_ObjectHideFlags: 0

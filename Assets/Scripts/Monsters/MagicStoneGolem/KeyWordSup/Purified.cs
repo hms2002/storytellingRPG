@@ -7,9 +7,9 @@ public class Purified : KeywordSup
     private void Awake()
     {
         keywordName = "정화된";
-        SetKeywordColor(B);
+        SetKeywordColor(R);
         keywordDamage = 3;
-        keywordTension = -4;
+        keywordTension = -8;
         Init();
     }
 
@@ -22,5 +22,13 @@ public class Purified : KeywordSup
     public override void Check(KeywordMain _keywordMain)
     {
 
+    }
+
+    public override void CanUseCheck(Actor caster, Actor target)
+    {
+        if(caster.charactorState.AllDebuffCount() == 0)
+        {
+            isCanUse = false;
+        }
     }
 }
