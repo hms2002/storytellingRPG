@@ -743,7 +743,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 35e77d9acd793e34ab77d06f456cdd16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 465d284244646fe43bc1473dc92de35a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -768,8 +768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 5939631162291839986}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
-  deckInfoPivot: {fileID: 0}
-  garbageFieldInfoPivot: {fileID: 0}
   _MAX_HP: 100
 --- !u!114 &1603435647839028368
 MonoBehaviour:

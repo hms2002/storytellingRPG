@@ -285,6 +285,19 @@ public class CharactorState : MonoBehaviour
         }
         return deletedDebuff;
     }
+    public int AllDebuffCount()
+    {
+        int debuffCnt = 0;
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stack <= 0
+                || i.stateData.stateProperty != StateProperty.Debuff)
+                continue;
+            debuffCnt++;
+        }
+        return debuffCnt;
+    }
+
     public void DeleteAllBuff()
     {
         foreach (State i in allStateList)

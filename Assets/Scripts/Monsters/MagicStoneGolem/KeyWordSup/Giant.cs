@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Giant : KeywordSup
 {
-    MagicStoneGolem magicStoneGolem;
     private void Awake()
     {
         keywordName = "거대한";
@@ -17,8 +16,7 @@ public class Giant : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        magicStoneGolem = caster as MagicStoneGolem;
-        magicStoneGolem.stonePiece += 2;
+        caster.charactorState.AddState(StateDatabase.stateDatabase.stonePiece, 2);
         caster.tension += keywordTension;
     }
 

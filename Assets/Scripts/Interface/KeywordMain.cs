@@ -8,13 +8,14 @@ public abstract class KeywordMain : Keyword
     public void OnClickButton()
     {
         fightManager.GetKeywordMain(this);
-        PlayClickSound();
     }
 
     private void Start()
     {
         fightManager = FightManager.fightManager;
     }
+
+    public virtual void CanUseCheck(Actor caster, Actor target) { isCanUse = true; }
 
     public abstract void Execute(Actor caster, Actor target);
 

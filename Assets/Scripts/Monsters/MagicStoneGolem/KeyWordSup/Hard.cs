@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hard : KeywordSup
 {
-    MagicStoneGolem magicStoneGolem;
     private bool isHardKeyword = false;
     private void Awake()
     {
@@ -17,11 +16,10 @@ public class Hard : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        magicStoneGolem = caster as MagicStoneGolem;
         caster.damage += keywordDamage;
         if(isHardKeyword)
         {
-            magicStoneGolem.stonePiece += 1;
+            caster.charactorState.AddState(StateDatabase.stateDatabase.stonePiece, 1);
         }
         caster.tension += keywordTension;
     }
