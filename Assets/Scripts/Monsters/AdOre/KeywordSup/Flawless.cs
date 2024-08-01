@@ -10,7 +10,7 @@ public class Flawless : KeywordSup
 
     private void Awake()
     {
-        keywordName = "쪼개진";
+        keywordName = "결함없는";
         SetKeywordColor(Y);
         keywordTension = 8;
         effectTarget = EffectTarget.caster;
