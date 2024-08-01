@@ -12,7 +12,7 @@ public class LowQuality : KeywordSup
     {
         keywordName = "저품질";
         SetKeywordColor(Y);
-        keywordTension = -28;
+        keywordTension = -8;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();

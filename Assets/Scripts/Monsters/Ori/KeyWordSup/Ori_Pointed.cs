@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Ori_Pointed : KeywordSup
 {
+    [Header("랜덤 데미지 제어")]
+    [SerializeField] private int maxRange = 3;
+    [SerializeField] private int minRange = 1;
     private void Awake()
     {
-        keywordName = "달그락거리는";
+        keywordName = "뾰족한";
 
         SetKeywordColor(R);
-        keywordTension = -10;
-        keywordDamage = 3;
+        keywordTension = -8;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
+        keywordDamage = Random.Range(minRange, maxRange + 1);
         caster.damage += keywordDamage;
         caster.tension += keywordTension;
     }

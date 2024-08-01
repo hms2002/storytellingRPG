@@ -6,12 +6,10 @@ public class Ori_Ore : KeywordSup
 { 
     private void Awake()
     {
-        keywordName = "불안한";
+        keywordName = "광석";
 
         SetKeywordColor(Y);
-        keywordTension = 6;
-        debuffStack = 2;
-        debuffType = "Fear";
+        keywordTension = 12;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -19,7 +17,8 @@ public class Ori_Ore : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
+        caster.charactorState.ReductionByValue(StateType.ore, 1);
+        caster.charactorState.AddState(StateType.oneTimeReinforce, 3);
         caster.tension += keywordTension;
     }
 

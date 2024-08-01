@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Ori_Smash : KeywordMain
 {
+    [Header("랜덤 데미지 제어")]
+    [SerializeField] private int maxRange = 9;
+    [SerializeField] private int minRange = 6;
     private void Awake()
     {
         keywordName = "분쇄";
 
         SetKeywordColor(R);
         keywordTension = -10;
-        keywordDamage = 6;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.damage += (int)Random.Range(keywordDamage, 9);
+        keywordDamage = (int)Random.Range(minRange, maxRange + 1);
+        caster.damage += keywordDamage;
         caster.tension += keywordTension;
     }
 

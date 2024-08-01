@@ -12,7 +12,7 @@ public class Cough : KeywordMain
     {
         keywordName = "기침(브레스)";
         SetKeywordColor(R);
-        keywordDamage = Random.Range(minRange, maxRange);
+        
         debuffStack = 5;
         debuffType = "Burn";
         keywordTension = 41;
@@ -20,6 +20,7 @@ public class Cough : KeywordMain
     }
     public override void Execute(Actor caster, Actor target)
     {
+        keywordDamage = Random.Range(minRange, maxRange);
         caster.damage += keywordDamage;
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack);
         caster.tension += keywordTension;

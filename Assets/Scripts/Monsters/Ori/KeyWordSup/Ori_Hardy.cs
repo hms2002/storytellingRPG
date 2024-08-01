@@ -6,18 +6,17 @@ public class Ori_Hardy : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "두려운";
+        keywordName = "튼튼한";
 
         SetKeywordColor(B);
-        keywordTension = 3;
-        debuffStack = 1;
-        debuffType = "Fear";
+        keywordProtect = 5;
+        keywordTension = -4;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
+        caster.protect += keywordProtect;
 
         caster.tension += keywordTension;
     }

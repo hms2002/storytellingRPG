@@ -94,6 +94,9 @@ public class Actor : MonoBehaviour
     {
         get { return _hp; }
         set {
+            if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
+                charactorState.ReductionByValue(StateType.ore, _hp - value);
+
             _hp = value;
             if (_hp > _MAX_HP)
             {
@@ -223,6 +226,7 @@ public class Actor : MonoBehaviour
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
+        charactorState.StartTurnEffect(this);
         #endregion
     }
 

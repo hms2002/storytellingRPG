@@ -6,20 +6,18 @@ public class Ori_Solidify : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "공포감조성";
+        keywordName = "굳히기";
 
-        SetKeywordColor(R);
-        keywordTension = -10;
-        keywordDamage = 3;
-        debuffStack = 1;
-        debuffType = "Fear";    
+        SetKeywordColor(B);
+        keywordProtect = 8;
+        keywordTension = -12;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
-        target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
+        caster.protect += keywordProtect;
+
         caster.tension += keywordTension;
     }
 

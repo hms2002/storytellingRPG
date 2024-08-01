@@ -6,16 +6,24 @@ public class Ori_Fregments : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "몸통 박치기";
+        keywordName = "파편";
 
-        SetKeywordColor(R);
-        keywordTension = -10;
-        keywordDamage = 3;
+        SetKeywordColor(B);
+        keywordTension = 28;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
+        int minimumDamage = 10;
+        int maximumDamage = 15;
+        if(caster.charactorState.GetStateStack(StateType.ore) >= 3)
+        {
+            caster.charactorState.ReductionByValue(StateType.ore, 3);
+            minimumDamage = 13;
+            maximumDamage = 18;
+        }
+        keywordDamage = (int)Random.Range(minimumDamage, maximumDamage + 1);
         caster.damage += keywordDamage;
         caster.tension += keywordTension;
     }

@@ -26,10 +26,28 @@ public class Roll : KeywordMain
     {
         tumbleBird = caster as TumbleBird;
         caster.damage += keywordDamage;
-        
+
+        // Enum 0부터 항목 갯수 - 1 중에 Random값 뽑기
         int randomIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)).Length);
-        TumbleBird.TumbleBirdBuffList buffEnum = (TumbleBird.TumbleBirdBuffList)Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)).GetValue(randomIndex);
-        caster.charactorState.AddState((StateType)buffEnum, 5);
+
+        // 값 받아올 변수 선언
+        TumbleBird.TumbleBirdBuffList buffEnum = TumbleBird.TumbleBirdBuffList.protect;
+        foreach (TumbleBird.TumbleBirdBuffList i in Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)))
+        {
+            // 반복마다 1씩 줄다가 0 되면 값 대입 후 break
+            if (randomIndex == 0)
+            {
+                buffEnum = i;
+                break;
+            }
+            randomIndex--;
+        }
+
+        // 보호는 charactorState에서 다루지 않기에 따로 올려준다.
+        if ((StateType)buffEnum == StateType.protect)
+            caster.protect += 5;
+        else            
+            caster.charactorState.AddState((StateType)buffEnum, 5);
 
         caster.tension += keywordTension;
     }

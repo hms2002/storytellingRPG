@@ -312,6 +312,19 @@ public class CharactorState : MonoBehaviour
             stateUIController.UpdateUI(i);
         }
     }
+
+    public void StartTurnEffect(Actor actor)
+    {
+        OreEffect(actor);
+    }
+    private void OreEffect(Actor actor)
+    {
+        if (allStateList[(int)StateType.ore] == null || allStateList[(int)StateType.ore].stack == 0) return;
+        // 광석 스택 특수효과
+        int oreStack = allStateList[(int)StateType.ore].stack;
+        if (oreStack > actor.protect)
+            actor.protect = oreStack;
+    }
     public void ReductionOnStartTurn()
     {
         foreach (State i in allStateList)
