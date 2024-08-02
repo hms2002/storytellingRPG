@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 namespace Map
 {
-    public enum NodeStates
-    {
-        Locked,
-        Visited,
-        Attainable
-    }
-
     public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [SerializeField]
@@ -22,17 +15,17 @@ namespace Map
         [SerializeField]
         public NodeBlueprint nodeBlueprint;
         [SerializeField]
-        private bool isEndNode = false;  // endNode ÇÃ·¡±× Ãß°¡
+        private bool isEndNode = false;  // endNode í”Œë˜ê·¸ ì¶”ê°€
 
         [SerializeField]
-        private float initialScale; // ¾ÆÀÌÄÜ ±âº» Å©±â
+        private float initialScale; // ì•„ì´ì½˜ ê¸°ë³¸ í¬ê¸°
         [SerializeField]
-        private float HoveScaleFactor = 1.2f; // (¸¶¿ì½º °¡Á®´Ù µÆÀ» ½Ã ¾ÆÀÌÄÜ È®´ë ¹èÀ² 
+        private float HoveScaleFactor = 1.2f; // (ë§ˆìš°ìŠ¤ ê°€ì ¸ë‹¤ ëì„ ì‹œ ì•„ì´ì½˜ í™•ëŒ€ ë°°ìœ¨ 
 
-        //¿¬°áµÇ´Â ³ëµå
+        //ì—°ê²°ë˜ëŠ” ë…¸ë“œ
         public List<MapNode> connectedNodes = new List<MapNode>();
 
-        //ÀÓ½Ã start
+        //ì„ì‹œ start
         private void Start()
         {
             SetUp();
@@ -51,46 +44,51 @@ namespace Map
         {
             switch (nodeStates)
             {
-                case NodeStates.Locked: //Àá±è
+                case NodeStates.Locked: //ì ê¹€
                     image.DOKill();
                     image.color = Color.gray;
                     break;
 
-                case NodeStates.Attainable: // ¼±ÅÃ°¡´É
+                case NodeStates.Attainable: // ì„ íƒê°€ëŠ¥
                     image.DOKill();
                     image.DOColor(Color.white, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
                     break;
 
-                case NodeStates.Visited: // ¹æ¹®ÇÔ
+                case NodeStates.Visited: // ë°©ë¬¸í•¨
                     image.DOKill();
                     image.color = Color.white;
                     break;
             }
         }
 
-        //¸¶¿ì½º °ü·Ã ÄÚµå
+        //ë§ˆìš°ìŠ¤ ê´€ë ¨ ì½”ë“œ
+        //ë§ˆìš°ìŠ¤ê°€ ì˜¤ë¸Œì íŠ¸ì— ë“¤ì–´ì™”ì„ ë•Œ
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //¸¶¿ì½º°¡ ¿ÀºêÁ§Æ®¿¡ µé¾î¿ÔÀ» ¶§ ÄÚµå
             image.transform.DOKill();
             image.transform.DOScale(initialScale * HoveScaleFactor, 0.3f);
         }
 
+        //ë§ˆìš°ìŠ¤ê°€ ì˜¤ë¸Œì íŠ¸ì— ë²—ì–´ë‚¬ì„ ë•Œ
         public void OnPointerExit(PointerEventData eventData)
         {
-            //¸¶¿ì½º°¡ ¿ÀºêÁ§Æ®¿¡ ¹ş¾î³µÀ» ¶§ ÄÚµå
             image.transform.DOKill();
             image.transform.DOScale(initialScale, 0.3f);
         }
 
+        //ë§ˆìš°ìŠ¤ ë²„íŠ¼ì´ ì˜¤ë¸Œì íŠ¸ë¥¼ ëˆŒë €ì„ ë•Œ
         public void OnPointerDown(PointerEventData eventData)
         {
-            //¸¶¿ì½º ¹öÆ°ÀÌ ¿ÀºêÁ§Æ®¸¦ ´­·¶À» ¶§ ÄÚµå
         }
 
+        //ë§ˆìš°ìŠ¤ë¥¼ í´ë¦­í•˜ê³  ë—ì„ ë•Œ.
         public void OnPointerUp(PointerEventData eventData)
         {
-            //¸¶¿ì½º ¹öÆ°ÀÌ ¿ÀºêÁ§Æ®¿¡ ´©¸£°í ¶®À» ¶§ ÄÚµå
+            if (MapState.InstanceMap.noMoveNode == true)
+            {
+                return;
+            }
+
             if (nodeStates == NodeStates.Attainable)
             {
                 nodeStates = NodeStates.Visited;
@@ -98,7 +96,7 @@ namespace Map
 
                 if (isEndNode)
                 {
-                    // Æ¯Á¤ ·ÎÁ÷ ½ÇÇà
+                    // íŠ¹ì • ë¡œì§ ì‹¤í–‰
                     ExecuteEndNodeLogic();
                 }
                 else
@@ -106,18 +104,25 @@ namespace Map
                     UpdateAllNodes();
                 }
 
-                // ³ëµå »óÅÂ º¯°æ ÈÄ ¸Ê ÀúÀå
-                MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
+                // ë…¸ë“œ ìƒíƒœ ë³€ê²½ í›„ í”Œë ˆì´ì–´ ì´ë™ ë° ìœ„ì¹˜ ì €ì¥
+                MovePlayerToNode();
             }
+            else
+            {
+                Debug.Log("ë…¸ë“œê°€ ì´ë™ ê°€ëŠ¥í•˜ì§€ ì•ŠìŒ: " + nodeStates);
+            }
+
+            //ë§µ ì €ì¥ ë° ë…¸ë“œ í‘œì‹œ ì €ì¥
+            MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
         }
 
         private void UpdateAllNodes()
         {
-            // MapStateÀÇ ÀÎ½ºÅÏ½º¿¡¼­ ¸ğµç ³ëµåµéÀ» °¡Á®¿È
+            // MapStateì˜ ì¸ìŠ¤í„´ìŠ¤ì—ì„œ ëª¨ë“  ë…¸ë“œë“¤ì„ ê°€ì ¸ì˜´
             var allNodes = MapState.InstanceMap.nodes;
-            var endNode = MapState.InstanceMap.endNode;  // ³¡ ³ëµå¸¦ °¡Á®¿È
+            var endNode = MapState.InstanceMap.endNode;  // ë ë…¸ë“œë¥¼ ê°€ì ¸ì˜´
 
-            // Å¬¸¯µÈ ³ëµå¸¦ Á¦¿ÜÇÑ ¸ğµç ³ëµå¸¦ Locked »óÅÂ·Î º¯°æ
+            // í´ë¦­ëœ ë…¸ë“œë¥¼ ì œì™¸í•œ ëª¨ë“  ë…¸ë“œë¥¼ Locked ìƒíƒœë¡œ ë³€ê²½
             foreach (var node in allNodes)
             {
                 if (node.nodeStates == NodeStates.Attainable)
@@ -127,7 +132,7 @@ namespace Map
                 }
             }
 
-            // ¿¬°áµÈ ³ëµå¸¦ Attainable »óÅÂ·Î º¯°æ
+            // ì—°ê²°ëœ ë…¸ë“œë¥¼ Attainable ìƒíƒœë¡œ ë³€ê²½
             foreach (var connectedNode in connectedNodes)
             {
                 if (connectedNode.nodeStates == NodeStates.Locked)
@@ -137,7 +142,7 @@ namespace Map
                 }
             }
 
-            // ÇöÀç ³ëµå°¡ ¸¶Áö¸· ¿­¿¡ ¼ÓÇÏ´ÂÁö È®ÀÎÇÏ¿© ³¡ ³ëµå¸¦ Attainable »óÅÂ·Î º¯°æ
+            // í˜„ì¬ ë…¸ë“œê°€ ë§ˆì§€ë§‰ ì—´ì— ì†í•˜ëŠ”ì§€ í™•ì¸í•˜ì—¬ ë ë…¸ë“œë¥¼ Attainable ìƒíƒœë¡œ ë³€ê²½
             if (connectedNodes.Count == 0)
             {
                 endNode.GetComponent<MapNode>().nodeStates = NodeStates.Attainable;
@@ -145,10 +150,26 @@ namespace Map
             }
         }
 
+        //ë§ˆì§€ë§‰ ë³´ìŠ¤ ë²„íŠ¼ ì½”ë“œ
         private void ExecuteEndNodeLogic()
         {
-            // EndNode Å¬¸¯ ½Ã ½ÇÇàÇÒ ·ÎÁ÷
-            Debug.Log("EndNode Å¬¸¯µÊ - Æ¯Á¤ ·ÎÁ÷ ½ÇÇà");
+            // EndNode í´ë¦­ ì‹œ ì‹¤í–‰í•  ë¡œì§
+            Debug.Log("EndNode í´ë¦­ë¨ - íŠ¹ì • ë¡œì§ ì‹¤í–‰");
+        }
+
+        private void MovePlayerToNode()
+        {
+            MapPlayerMove playerMove = FindObjectOfType<MapPlayerMove>();
+            if (playerMove != null)
+            {
+                // í”Œë ˆì´ì–´ ì´ë™ ì‹œì‘ ì „ì— ìœ„ì¹˜ ì €ì¥
+                Debug.Log("ë…¸ë“œë¡œ í”Œë ˆì´ì–´ ì´ë™ ì‹œì‘: " + this.GetComponent<RectTransform>().anchoredPosition);
+                playerMove.MovePlayerMark(this.GetComponent<RectTransform>().anchoredPosition);
+            }
+            else
+            {
+                Debug.LogWarning("MapPlayerMoveë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ");
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Map
         {
             filePath = Application.persistentDataPath + "/mapData.json";
 
-            // ¸Ê µ¥ÀÌÅÍ ºÒ·¯¿À±â
+            // ë§µ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
             MapState.InstanceMap.LoadMapData(filePath);
         }
     }
