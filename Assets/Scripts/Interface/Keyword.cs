@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
-    public  TextMeshProUGUI nameText;
-    private Vector3 originPosition;
-
+    [SerializeField] public TextMeshProUGUI nameText;
+    [SerializeField] public TextMeshProUGUI descriptionText;
     public enum EffectTarget
     {
         caster,
@@ -42,7 +42,7 @@ public class Keyword : MonoBehaviour
     protected Color D = Color.black;
 
     [Multiline(3)]
-    [SerializeField] private string keywordDescription;
+    [SerializeField] protected string keywordDescription = "";
 
     private bool _isCanUse = true;
 
@@ -102,11 +102,6 @@ public class Keyword : MonoBehaviour
 
     #endregion
 
-    private void Start()
-    {
-        originPosition = transform.position;
-    }
-
     protected void Init()
     {
         fightManager = FightManager.fightManager;
@@ -122,11 +117,13 @@ public class Keyword : MonoBehaviour
             effectTarget = EffectTarget.caster;
             effectType = EffectManager.EffectType.Shield;
         }
+        descriptionText.text = keywordDescription;
     }
 
     public void CantUseEffect()
     {
-/*        transform.position = originPosition;*/
+        GetComponent<Button>().enabled = false;
+        DOVirtual.DelayedCall(0.3f, () => GetComponent<Button>().enabled = true);
         transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
     }
 
@@ -136,4 +133,12 @@ public class Keyword : MonoBehaviour
     }
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
+    private string FormatDescription(string template)
+    {
+        return template.Replace("버프스택", debuffStack.ToString())
+                       .Replace("긴장도", keywordTension.ToString())
+                       .Replace("데미지", keywordTension.ToString())
+                       .Replace("보호", keywordTension.ToString())
+                       .Replace("힐량", keywordTension.ToString());
+    }
 }

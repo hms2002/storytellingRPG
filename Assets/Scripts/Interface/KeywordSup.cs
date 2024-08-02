@@ -14,7 +14,7 @@ public abstract class KeywordSup : Keyword
         fightManager = FightManager.fightManager;
     }
 
-    public virtual void CanUseCheck(Actor caster, Actor target) { isCanUse = false; }
+    public virtual void CanUseCheck(Actor caster, Actor target) { isCanUse = true ; }
     public abstract void Execute(Actor caster, Actor target);
     public abstract void Check(KeywordMain _keywordMain);
 }

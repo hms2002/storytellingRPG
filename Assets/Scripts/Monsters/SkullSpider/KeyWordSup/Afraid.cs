@@ -8,12 +8,13 @@ public class Afreid : KeywordSup
     {
         keywordName = "두려운";
 
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         keywordTension = 3;
         debuffStack = 1;
         debuffType = "Fear";
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
+        keywordDescription = "상대방에게 공포 {debuffStack}을 부여합니다.\n긴장도 +{keywordTension}";
         Init();
     }
 
