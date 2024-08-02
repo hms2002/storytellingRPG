@@ -12,7 +12,7 @@ public enum ReductionType
 }
 public enum ReductionTiming
 {
-    OnSelectKeyword,
+    OnShowSupKeywords,
     OnDamaged,
     OnAttack,
     OnMyTurn,

@@ -21,19 +21,15 @@ public class UIManager : MonoBehaviour
     [Header("책갈피")]
     [SerializeField] private List<GameObject> bookmarks;                // 북마크 버튼들
     [SerializeField] private GameObject keywordSettingWindow;           // 키워드 세팅 윈도우 객체
-    [SerializeField] private List<GameObject> originalSupMainDeckUI;    // 
+    [SerializeField] private List<GameObject> originalSupMainDeckUI;    // 키워드 세팅의 오리지널 서포트, 메인 덱 UI를 담을 리스트
 
     [Header("전투 기능 및 UI")]
     [SerializeField] private List<GameObject> combatFunctionAndUI;      // 전투 관련 모든 UI를 담는 리스트
     [SerializeField] private GameObject combatKeywordUI;
     [SerializeField] private Deck originalDeck;             // 플레이어가 갖고 있는 오리지널 덱
-    [SerializeField] private GameObject mainDeckPivot;      //
-    [SerializeField] private GameObject garbageFieldPivot;  //
-    
 
     [Header("전투 백그라운드")]
     [SerializeField] private GameObject combatBackground;
-
 
     [Header("책")]
     [SerializeField] private Animator bookAnimator;         // 책 애니메이터
@@ -142,22 +138,6 @@ public class UIManager : MonoBehaviour
         DOVirtual.DelayedCall(0.9f, () => ActiveCombatFunctionAndUI(true));
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    private void ClickDeckInfo()
-    {
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private void ClickAgainDeckInfo()
-    {
-
-    }
-
 
     /// <summary>
     /// 전장에서 벗어나면 Player 제거, 전투 UI 비활성화, BookPassR 애니메이션 재생하는 메소드ㅋㅋ
@@ -180,10 +160,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void MakeOriginalDeckInfo()
     {
-        GameObject keywordTemp;                         // 인스턴스화된 키워드를 잠시 담아놓을 변수
-        Vector3 scaleTemp = new Vector3(1, 1, 1);       // Canvas상의 키워드 임시 스케일 값
+        GameObject keywordTemp;     // 인스턴스화된 키워드를 잠시 담아놓을 변수
 
-        // Support 키워드 인스턴스화
+        // Support 키워드 인스턴스화 및 설정
         for (int i = 0; i < originalDeck.GetSupDeckSize(); i++)
         {
             // i번째 키워드 인스턴스화
@@ -193,13 +172,10 @@ public class UIManager : MonoBehaviour
             //keywordTemp.transform.Find("Textbox").gameObject.SetActive(true);             * Textbox 오브젝트 추후 적용 예정
 
             // 키워드 버튼 컴포넌트 비활성화
-            keywordTemp.GetComponent<Button>().enabled = false;
-
-            // 키워드 오브젝트 스케일 조정
-            keywordTemp.transform.DOScale(scaleTemp, 0.0f);
+            keywordTemp.GetComponent<Button>().interactable = false;
         }
 
-        // Main 키워드 인스턴스화
+        // Main 키워드 인스턴스화 및 설정
         for (int i = 0; i < originalDeck.GetMainDeckSize(); i++)
         {
             // i번째 키워드 인스턴스화
@@ -209,10 +185,7 @@ public class UIManager : MonoBehaviour
             //keywordTemp.transform.Find("Textbox").gameObject.SetActive(true);             * Textbox 오브젝트 추후 적용 예정
 
             // 키워드 버튼 컴포넌트 비활성화
-            keywordTemp.GetComponent<Button>().enabled = false;
-
-            // 키워드 오브젝트 스케일 조정
-            keywordTemp.transform.DOScale(scaleTemp, 0.0f);
+            keywordTemp.GetComponent<Button>().interactable = false;
         }
 
         // 오리지널 덱 UI 인스턴스화되었으니 true
@@ -224,6 +197,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void DestroyOriginalDeckInfo()
     {
+        // 오리지널 덱 키워드를 인스턴스화하지 않았다면 반환
         if (!wasOriginalDeckInstanciate) return;
 
         GameObject keywordTemp;     // 제거할 키워드를 잠시 담아놓을 변수
@@ -231,21 +205,21 @@ public class UIManager : MonoBehaviour
         // OriginalSupportDeck 그리드 레이아웃 그룹 
         for (int i = 0; i < originalDeck.GetSupDeckSize(); i++)
         {
-            //// OriginalSupportDeck 하위 객체 참조
-            //keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
+            // OriginalSupportDeck 하위 객체 참조
+            keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
 
-            //// 참조한 하위 객체 제거
-            //Destroy(keywordTemp);
+            // 참조한 하위 객체 제거
+            Destroy(keywordTemp);
         }
 
         // OriginalMainDeck 그리드 레이아웃 그룹 
         for (int i = 0; i < originalDeck.GetMainDeckSize(); i++)
         {
-            //// OriginalMainDeck 하위 객체 참조
-            //keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;
+            // OriginalMainDeck 하위 객체 참조
+            keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;
 
-            //// 참조한 하위 객체 제거
-            //Destroy(keywordTemp);
+            // 참조한 하위 객체 제거
+            Destroy(keywordTemp);
         }
 
         // 오리지널 덱 UI Destroy되었으니 false

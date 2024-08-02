@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,23 +36,14 @@ public class Actor : MonoBehaviour
     private Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
 
     [Header("덱 정보 피봇")]
-    private DeckInfoPivot deckInfoPivot;           //
-    private DeckInfoPivot garbageFieldInfoPivot;   //
+    private DeckInfoPivot deckInfoPivot;           // 
+    private DeckInfoPivot garbageFieldInfoPivot;   // 
 
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
 
-    public KeywordSup keywordSup
-    {
-        get { return _keywordSup; }
-        set { _keywordSup = value; }
-    }
-
-    public KeywordMain keywordMain
-    {
-        get { return _keywordMain; }
-        set { _keywordMain = value; }
-    }
+    public KeywordSup keywordSup { get => _keywordSup; set => _keywordSup = value; }
+    public KeywordMain keywordMain { get => _keywordMain; set => _keywordMain = value; }
     #endregion
 
     #region Actor의 능력치 관련 변수, 함수
@@ -221,6 +213,9 @@ public class Actor : MonoBehaviour
         StackInit();
     }
 
+    /// <summary>
+    /// 턴을 시작하기 전에 버프, 디버프 관리를 총괄한다.
+    /// </summary>
     public virtual void StartTurn()
     {
         #region 턴중 버프, 디버프 관리
@@ -295,9 +290,11 @@ public class Actor : MonoBehaviour
 
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
 
+
         AddToSupGarbageField();
 
-        Invoke("ShowKeywordMain",2);
+        // 2초 뒤 Main 키워드
+        DOVirtual.DelayedCall(2.0f, ShowMainKeywords);
     }
 
     public void GetKeywordMain(KeywordMain _keywordMain)
@@ -327,7 +324,7 @@ public class Actor : MonoBehaviour
             garbageField.AddSupKeywordOnDeck(hand.ThrowSupKeyword(0));
         }
 
-        // 
+        // 무덤덱 정보 리스트에 버려진 Support 키워드 프리팹 정보 전달
         garbageFieldInfoPivot.RecieveDeckInfo(garbageField.SupportDeck);
     }
 
@@ -339,7 +336,7 @@ public class Actor : MonoBehaviour
             garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
         }
 
-        // 
+        // 무덤덱 정보 리스트에 버려진 Main 키워드 프리팹 정보 전달
         garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
 
@@ -613,18 +610,24 @@ public class Actor : MonoBehaviour
     }
 
 
-    public void SelectKeyword()
+    public void ShowSupKeywords()
     {
+        deckInfoPivot.ClearDeckInfo();
+        garbageFieldInfoPivot.ClearDeckInfo();
+
         FillSupHandInfo();
         hand.SubstantiateSupKeywordData();
     }
 
-    private void ShowKeywordMain()
+    private void ShowMainKeywords()
     {
+        deckInfoPivot.ClearDeckInfo();
+        garbageFieldInfoPivot.ClearDeckInfo();
+
         FillMainHandInfo();
         hand.SubstantiateMainKeywordData();
     }
-  }
+};
 //namespace DamagedCalculate
 //{
 //    class DamageCalculator
