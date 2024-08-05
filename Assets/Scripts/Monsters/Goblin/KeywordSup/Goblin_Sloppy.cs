@@ -5,7 +5,7 @@ using UnityEngine;
 public class Goblin_Sloppy : KeywordSup
 {
     [Header("부여되는 일회성 약화 수치")]
-    [SerializeField] private int oneTimeReductionControl = 1;
+    [SerializeField] private int oneTimeReductionControl = 2;
 
 
     private void Awake()

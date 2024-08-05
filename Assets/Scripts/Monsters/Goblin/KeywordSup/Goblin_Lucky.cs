@@ -8,7 +8,6 @@ public class Goblin_Lucky : KeywordSup
     [SerializeField] private int minDamage = 1;
     [SerializeField] private int maxDamage = 3;
 
-
     private void Awake()
     {
         keywordName = "운 좋은";
