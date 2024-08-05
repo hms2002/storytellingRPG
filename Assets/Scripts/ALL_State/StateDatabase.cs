@@ -22,6 +22,8 @@ public class StateDatabase : MonoBehaviour
     public StateData oneTimeReinforce;
     public StateData oneTimeReduction;
     public StateData nextTurnDamage;
+    public StateData tentacleAttack;
+    public StateData tentacleCondolidation;
 
     public static StateDatabase stateDatabase;
 

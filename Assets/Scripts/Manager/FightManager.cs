@@ -66,18 +66,18 @@ public class FightManager : MonoBehaviour
     public void GetKeywordMain(KeywordMain _keywordMain)
     {
         if (_keywordMain == null) return;
-        whoPlaying.GetKeywordMain(_keywordMain);
         if (whoPlaying == player)
             _keywordMain.CanUseCheck(player, MonsterTargetter.monsterTargetter.target);
         else if (whoPlaying != player)
             _keywordMain.CanUseCheck(whoPlaying, player);
 
-        //if (!_keywordMain.isCanUse)
-        //{
-        //    _keywordMain.CantUseEffect();
-        //    return;
-        //}
+        if (!_keywordMain.isCanUse)
+        {
+            _keywordMain.CantUseEffect();
+            return;
+        }
 
+        whoPlaying.GetKeywordMain(_keywordMain);
         _keywordMain.PlayClickSound();
         preparedActorCount++;
         Invoke("Flow",2);
@@ -201,7 +201,12 @@ public class FightManager : MonoBehaviour
             yield break;
         }
 
-        foreach (Actor monster in monsterList)
+        
+        Monster[] tempList = new Monster[monsterList.Count];
+
+        for (int i = 0; i < tempList.Length; i++)
+            tempList[i] = monsterList[i];
+        foreach (Actor monster in tempList)
         {
             monster.Action(player);
             dir = -3;

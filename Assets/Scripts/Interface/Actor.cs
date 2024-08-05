@@ -340,6 +340,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
+        
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 

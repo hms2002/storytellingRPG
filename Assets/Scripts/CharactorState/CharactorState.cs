@@ -90,6 +90,18 @@ public enum StateType
     /// </summary>
     tentacleCondolidation,
     /// <summary>
+    /// 도둑이야!
+    /// </summary>
+    thief,
+    /// <summary>
+    /// 이탈(날치기)
+    /// </summary>
+    secession,
+    /// <summary>
+    /// 회피(공격 50퍼로 회피)
+    /// </summary>
+    Evasion,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -265,6 +277,12 @@ public class CharactorState
             case StateType.nextTurnDamage:
                 AddState(stateDB.nextTurnDamage, val);
                 break;
+            case StateType.tentacleAttack:
+                AddState(stateDB.tentacleAttack, val);
+                break;
+            case StateType.tentacleCondolidation:
+                AddState(stateDB.tentacleCondolidation, val);
+                break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
                 break;
@@ -330,7 +348,23 @@ public class CharactorState
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
-            actor.Damaged(actor, i.stack * i.stateData.damagePerStack);
+            int stackDamage = i.stateData.damagePerStack;
+            if(i.oneTimeMultiplication)
+            {
+                stackDamage *= 2;
+            }
+            if(i.oneTimeRepeat)
+            {
+                actor.Damaged(actor, i.stack * stackDamage);
+                if (i.stateData.reductionTiming == ReductionTiming.OnAttack)
+                {
+                    i.Reduction();
+                }
+            }
+            if(i.stack != 0)
+            {
+                actor.Damaged(actor, i.stack * stackDamage);
+            }
             stateUIController.UpdateUI(i);
         }
     }
@@ -339,6 +373,7 @@ public class CharactorState
     {
         OreEffect(actor);
     }
+
     private void OreEffect(Actor actor)
     {
         if (allStateList[(int)StateType.ore] == null || allStateList[(int)StateType.ore].stack == 0) return;
@@ -347,6 +382,7 @@ public class CharactorState
         if (oreStack > actor.protect)
             actor.protect = oreStack;
     }
+
     public void ReductionOnStartTurn()
     {
         foreach (State i in allStateList)

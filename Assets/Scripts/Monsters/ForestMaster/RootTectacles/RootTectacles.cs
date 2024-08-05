@@ -26,6 +26,7 @@ public class RootTectacles : Monster
     public void Init(ForestMaster _forestMaster)
     {
         forestMaster = _forestMaster;
+        charactorState.AddState(StateType.tentacleAttack,1);
     }
     public override void Action(Actor target)
     {
@@ -48,5 +49,6 @@ public class RootTectacles : Monster
         }
         repeatCnt = 0;
         tentacleAttackDamage = 2;
+        charactorState.ResetState(StateType.tentacleCondolidation);
     }
 }

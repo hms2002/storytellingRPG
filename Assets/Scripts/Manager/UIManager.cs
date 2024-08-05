@@ -226,7 +226,7 @@ public class UIManager : MonoBehaviour
         wasOriginalDeckInstanciate = false;
     }
 
-
+    
 
     // UI Active 함수들 ================================
 

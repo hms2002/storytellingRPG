@@ -8,7 +8,6 @@ public class Addicted : KeywordSup
     [SerializeField] private const float _addictionDamageMultiplexes = 2.0f;
     public float addictionDamageMultiplexes { get { return _addictionDamageMultiplexes; } }
 
-
     private void Awake()
     {
         keywordName = "중독된";
@@ -21,9 +20,6 @@ public class Addicted : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (caster.charactorState.GetStateStack(StateType.addiction) == 0) return;
-
-
         caster.tension += keywordTension;
     }
 

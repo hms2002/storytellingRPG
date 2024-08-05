@@ -6,6 +6,8 @@ public class State : StateInterface
 {
     public StateData stateData;
     public int stack;
+    public bool oneTimeMultiplication = false;
+    public bool oneTimeRepeat = false;
 
     public State(StateData _stateData, int _stack)
     {
