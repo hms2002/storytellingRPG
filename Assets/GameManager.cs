@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EffectManager  effectManager;
     [SerializeField] private AudioManager   audioManager;
     [SerializeField] private TensionManager tensionManager;
-    [SerializeField] private RewardManager rewardManager;
-    [SerializeField] private Texture2D cursorImg;
+    [SerializeField] private RewardManager  rewardManager;
+    [SerializeField] private Texture2D      cursorImg;
 
     private GameState _gameState = GameState.Map;           // 게임의 상태를 저장
     public GameState gameState {  get => _gameState; set => _gameState = value; }
@@ -51,10 +51,12 @@ public class GameManager : MonoBehaviour
         CallFightUIOn();
         Invoke("CallFightStart", 2);
     }
+
     private void CallFightUIOn()
     {
         UIManager.instance.EnterBattleField();
     }
+
     private void CallFightStart()
     {
         fightManager.FightStart();

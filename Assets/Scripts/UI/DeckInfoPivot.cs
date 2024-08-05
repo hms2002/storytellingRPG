@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
@@ -10,13 +11,15 @@ public class DeckInfoPivot : MonoBehaviour
     [SerializeField] private GameObject deckInfoPivot;              // DeckInfoPivot 자신
     [SerializeField] private GameObject info;                       // Info 오브젝트
 
-    private List<GameObject> _deckInfo = new List<GameObject>();    // Actor로부터 덱 정보를 받아와 담는 리스트
+    [SerializeField] private List<GameObject> _deckInfo = new List<GameObject>();    // Actor로부터 덱 정보를 받아와 담는 리스트
     public IReadOnlyList<GameObject> deckInfo => _deckInfo;
 
-    private Image infoBackground;                   // 덱 정보 피벗 UI의 뒷배경
+    private Image infoBackground;                    // 덱 정보 피벗 UI의 뒷배경
 
-    private bool arePlayerChoosingKeyword = false;  // 플레이어가 키워드를 선택중인지에 대한 여부      *변수 활용해서 덱 정보 피벗 클릭 버그 고치기
-    private bool areKeywordsInstanciate   = false;  // 키워드 정보 인스턴트화 여부
+    private bool _arePlayerChoosingKeyword = false;  // 플레이어가 키워드를 선택중인지에 대한 여부
+    public  bool arePlayerChoosingKeyword { get => _arePlayerChoosingKeyword; set => _arePlayerChoosingKeyword = value; }
+
+    private bool areKeywordsInstanciate = false;     // 키워드 정보 인스턴트화 여부
 
     //=============================================================================================================
 
@@ -43,8 +46,20 @@ public class DeckInfoPivot : MonoBehaviour
     /// </summary>
     public void ClickDeckInfo()
     {
-        // 키워드 고르는 중이 아니라면 return
-        if (!arePlayerChoosingKeyword) return;
+        // 키워드 고르는 중이 아니라면
+        if (!arePlayerChoosingKeyword)
+        {
+            // 버튼 컴포넌트 비활성화
+            GetComponent<Button>().enabled = false;
+            
+            // 0.3초 뒤 버튼 컴포넌트 활성화
+            DOVirtual.DelayedCall(0.3f, () => GetComponent<Button>().enabled = true);
+
+            // 
+            transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+
+            return;
+        }
 
         // DeckInfoPivotUI가 Hierarchy상에서 활성화되어 있다면
         if (info.activeInHierarchy)

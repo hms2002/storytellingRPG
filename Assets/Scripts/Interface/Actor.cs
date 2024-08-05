@@ -20,7 +20,7 @@ public class Actor : MonoBehaviour
 
     public string _attackSound = "타격음_주먹2";
 
-    internal void AddSupKeywordToOriginalDeck(GameObject keywordSup)
+    public void AddSupKeywordToOriginalDeck(GameObject keywordSup)
     {
         OriginalDeck.AddSupKeywordOnDeck(keywordSup);
     }
@@ -30,14 +30,14 @@ public class Actor : MonoBehaviour
     }
 
     #region Actor의 키워드 관련 변수
-    private Deck OriginalDeck;
-    private Deck deck;                             // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
-    private Hand hand;
-    private Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+    private   Deck OriginalDeck;
+    protected Deck deck;                             // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    protected Hand hand;                             // Actor의 손패 (Support, Main 키워드)
+    protected Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
 
     [Header("덱 정보 피봇")]
-    private DeckInfoPivot deckInfoPivot;           // 
-    private DeckInfoPivot garbageFieldInfoPivot;   // 
+    protected DeckInfoPivot deckInfoPivot;           // 
+    protected DeckInfoPivot garbageFieldInfoPivot;   // 
 
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
@@ -228,7 +228,7 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// hand의 SupHand 리스트에 무작위 랜덤 드로우된 키워드 프리팹을 할당한다.
     /// </summary>
-    private void FillSupHandInfo()
+    protected virtual void FillSupHandInfo()
     {
         // Keyword 드로우 3번 반복
         for (int i = 0; i < hand.HANDSIZE; i++)
@@ -254,7 +254,7 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// hand의 mainHand 리스트에 무작위 랜덤 드로우된 키워드 프리팹을 할당한다.
     /// </summary>
-    private void FillMainHandInfo()
+    protected virtual void FillMainHandInfo()
     {
         // Keyword 드로우 3번 반복
         for (int i = 0; i < hand.HANDSIZE; i++)
@@ -279,17 +279,16 @@ public class Actor : MonoBehaviour
 
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
-        /*if (Resources.Load<GameObject>("Asset/Prefabs/MonsterKeywords/ToxicSlime/SupKeyword/Addicted") == _keywordSup
-            && addictionStack == 0) return;*/
-
         // Support 키워드를 사용
         keywordSup = _keywordSup;
         TextManager.instance.SupKeywordTextPlay(this);
 
         hand.DisableSupHand();
 
-        KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
+        deckInfoPivot.arePlayerChoosingKeyword          = false;
+        garbageFieldInfoPivot.arePlayerChoosingKeyword  = false;
 
+        KeywordUIMovement.instance.MoveSelectedKeyword(_keywordSup);
 
         AddToSupGarbageField();
 
@@ -303,6 +302,9 @@ public class Actor : MonoBehaviour
         keywordMain = _keywordMain;
 
         hand.DisableMainHand();
+
+        deckInfoPivot.arePlayerChoosingKeyword          = false;
+        garbageFieldInfoPivot.arePlayerChoosingKeyword  = false;
 
         KeywordUIMovement.instance.MoveSelectedKeyword(_keywordMain);
 
@@ -323,9 +325,6 @@ public class Actor : MonoBehaviour
         {
             garbageField.AddSupKeywordOnDeck(hand.ThrowSupKeyword(0));
         }
-
-        // 무덤덱 정보 리스트에 버려진 Support 키워드 프리팹 정보 전달
-        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.SupportDeck);
     }
 
     private void AddToMainGarbageField()
@@ -335,9 +334,6 @@ public class Actor : MonoBehaviour
         {
             garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
         }
-
-        // 무덤덱 정보 리스트에 버려진 Main 키워드 프리팹 정보 전달
-        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
 
     public virtual void Action(Actor target)
@@ -610,22 +606,36 @@ public class Actor : MonoBehaviour
     }
 
 
-    public void ShowSupKeywords()
+    public virtual void ShowSupKeywords()
     {
+        // 덱과 무덤덱 정보 리스트 초기화
         deckInfoPivot.ClearDeckInfo();
         garbageFieldInfoPivot.ClearDeckInfo();
 
         FillSupHandInfo();
         hand.SubstantiateSupKeywordData();
+
+        // 플레이어가 키워드 선택중이라는 데이터를 정보 피봇들에게 전달
+        deckInfoPivot.arePlayerChoosingKeyword = true;
+        garbageFieldInfoPivot.arePlayerChoosingKeyword = true;
+
+        // 무덤덱 정보 리스트에 버려진 Support 키워드 프리팹 정보 전달
+        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.SupportDeck);
     }
 
-    private void ShowMainKeywords()
+    protected virtual void ShowMainKeywords()
     {
         deckInfoPivot.ClearDeckInfo();
         garbageFieldInfoPivot.ClearDeckInfo();
 
         FillMainHandInfo();
         hand.SubstantiateMainKeywordData();
+
+        deckInfoPivot.arePlayerChoosingKeyword = true;
+        garbageFieldInfoPivot.arePlayerChoosingKeyword = true;
+
+        // 무덤덱 정보 리스트에 버려진 Main 키워드 프리팹 정보 전달
+        garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
 };
 //namespace DamagedCalculate
