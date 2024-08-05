@@ -352,7 +352,7 @@ public class CharactorState
         foreach (State i in allStateList)
         {
             if (i == null || i.stack <= 0
-                || i.stateData.reductionTiming != ReductionTiming.OnSelectKeyword)
+                || i.stateData.reductionTiming != ReductionTiming.OnShowSupKeywords)
                 continue;
             i.Reduction();
             stateUIController.UpdateUI(i);
