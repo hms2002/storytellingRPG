@@ -9,7 +9,7 @@ public class ActorStateUIControler : MonoBehaviour
 {
     public Transform pivot;
     public Image hpSlider;
-    public GameObject[] stateUIObjects = new GameObject[(int)StateType.Size];
+    GameObject[] stateUIObjects = new GameObject[(int)StateType.Size];
     public GameObject protectUIObject;
     public GameObject hpUI;
     public Text hpText;

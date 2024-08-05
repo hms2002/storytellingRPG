@@ -90,6 +90,18 @@ public enum StateType
     /// </summary>
     tentacleCondolidation,
     /// <summary>
+    /// 도둑이야!
+    /// </summary>
+    thief,
+    /// <summary>
+    /// 이탈(날치기)
+    /// </summary>
+    secession,
+    /// <summary>
+    /// 회피(공격 50퍼로 회피)
+    /// </summary>
+    Evasion,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -264,6 +276,12 @@ public class CharactorState
                 break;
             case StateType.nextTurnDamage:
                 AddState(stateDB.nextTurnDamage, val);
+                break;
+            case StateType.tentacleAttack:
+                AddState(stateDB.tentacleAttack, val);
+                break;
+            case StateType.tentacleCondolidation:
+                AddState(stateDB.tentacleCondolidation, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
