@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
 
         // 각 그룹에 사운드 클립을 로드하는 로직
         soundGroups["Keyword"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Keyword"));
+        soundGroups["Book"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Book"));
         soundGroups["Debuff"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Debuff"));
         soundGroups["Character"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Character"));
     }

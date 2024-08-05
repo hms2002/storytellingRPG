@@ -135,14 +135,14 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
-            monsterList[preparedActorCount].SelectKeyword();
+            monsterList[preparedActorCount].ShowSupKeywords();
             return;
         }
         else if (preparedActorCount == monsterList.Count)
         {
             whoPlaying = player;
             player.StartTurn();
-            player.SelectKeyword();
+            player.ShowSupKeywords();
 
             TextManager.instance.KeywordTextPlay(player);
             

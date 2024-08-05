@@ -9,15 +9,15 @@ public class JumpScare : KeywordMain
         keywordName = "점프스케어";
 
         SetKeywordColor(R);
-        keywordTension = 3;
-        keywordDamage = 7;
+        keywordTension = 5;
+        keywordDamage = 7;  
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         int targetFearStack = target.charactorState.GetStateStack(StateType.fear);
-        target.damage += keywordDamage * targetFearStack;
+        target.damage -= keywordDamage * targetFearStack;
         caster.tension += keywordTension * targetFearStack;
         target.charactorState.ResetState(StateType.fear);
     }
