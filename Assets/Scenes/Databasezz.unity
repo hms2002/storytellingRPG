@@ -244,6 +244,8 @@ MonoBehaviour:
   oneTimeReinforce: {fileID: 11400000, guid: 6ac2c4c6300a61842b947171b2b25ec3, type: 2}
   oneTimeReduction: {fileID: 11400000, guid: 5d4ec62e73955b04da274777fa9c86d7, type: 2}
   nextTurnDamage: {fileID: 11400000, guid: 7f2a619ac01b0b84d99f3183a1cad9fd, type: 2}
+  tentacleAttack: {fileID: 0}
+  tentacleCondolidation: {fileID: 0}
 --- !u!1 &47199195
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +402,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 300, y: 140}
   m_Spacing: {x: 100, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -4170,7 +4172,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 300, y: 140}
   m_Spacing: {x: 100, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
