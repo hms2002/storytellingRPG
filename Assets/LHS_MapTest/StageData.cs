@@ -11,7 +11,8 @@ public enum StageState
 
 public class StageData : ScriptableObject
 {
-    int nowStage = 0;
+    public int nowStage = 0;
+    public StageState stageState;
 }
 
 public class MapBackGround
