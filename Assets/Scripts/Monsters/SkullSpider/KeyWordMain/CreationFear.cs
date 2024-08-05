@@ -7,7 +7,7 @@ public class CreationFear : KeywordMain
     private void Awake()
     {
         keywordName = "공포감조성";
-
+        
         SetKeywordColor(R);
         keywordTension = 5;
         keywordDamage = 3;

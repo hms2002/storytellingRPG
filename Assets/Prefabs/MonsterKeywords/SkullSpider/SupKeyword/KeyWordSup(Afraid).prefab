@@ -160,7 +160,8 @@ MonoBehaviour:
   _debuffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
-  keywordDescription: 
+  keywordDescription: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uACF5\uD3EC stack\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4
+    +tension"
 --- !u!114 &8950921027244622347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,8 +501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uACF5\uD3EC \uC2A4\uD0DD\uC744 1 \uBD80\uC5EC\uD55C\uB2E4.\n\uAE34\uC7A5\uB3C4
-    +3"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}

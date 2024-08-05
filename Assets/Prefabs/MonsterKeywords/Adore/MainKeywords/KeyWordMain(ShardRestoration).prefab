@@ -408,8 +408,8 @@ GameObject:
   - component: {fileID: 8291316125450679798}
   - component: {fileID: 2951599189545655317}
   - component: {fileID: 7689179041759375420}
-  - component: {fileID: 5367852744723019193}
   - component: {fileID: 4691320604865084391}
+  - component: {fileID: 5367852744723019193}
   m_Layer: 5
   m_Name: KeyWordMain(ShardRestoration)
   m_TagString: Untagged
@@ -532,19 +532,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5367852744723019193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8831157699760054587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 2976356376015862897}
 --- !u!114 &4691320604865084391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -566,7 +554,21 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
   amountOfRecovery: 25
+--- !u!114 &5367852744723019193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831157699760054587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 2976356376015862897}

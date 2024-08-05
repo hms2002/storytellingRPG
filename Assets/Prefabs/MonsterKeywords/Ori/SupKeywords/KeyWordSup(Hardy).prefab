@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5062948125216119462}
   - component: {fileID: 3674592869913665364}
   - component: {fileID: 5682480337059771157}
-  - component: {fileID: 1650620496877775907}
   - component: {fileID: 5070332568334614133}
+  - component: {fileID: 1650620496877775907}
   m_Layer: 5
   m_Name: KeyWordSup(Hardy)
   m_TagString: Untagged
@@ -136,19 +136,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1650620496877775907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304267424427448520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 401838453675980795}
 --- !u!114 &5070332568334614133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 6753655775033286564}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -170,9 +158,23 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
+--- !u!114 &1650620496877775907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304267424427448520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 401838453675980795}
 --- !u!1 &401838453675980795
 GameObject:
   m_ObjectHideFlags: 0

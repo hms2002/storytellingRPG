@@ -236,8 +236,8 @@ GameObject:
   - component: {fileID: 8507345806719240525}
   - component: {fileID: 4029110970695212003}
   - component: {fileID: 6864260167191545924}
-  - component: {fileID: 7566304978991025474}
   - component: {fileID: 5028206837908738033}
+  - component: {fileID: 7566304978991025474}
   m_Layer: 5
   m_Name: KeyWordMain(Shard Overload)
   m_TagString: Untagged
@@ -360,19 +360,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7566304978991025474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4313671139727451894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 8523745763889322074}
 --- !u!114 &5028206837908738033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -394,11 +382,25 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
   amountOfOneTimeReinforce: 10
   amountOfDecrease: 5
+--- !u!114 &7566304978991025474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313671139727451894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 8523745763889322074}
 --- !u!1 &6704794907246415014
 GameObject:
   m_ObjectHideFlags: 0

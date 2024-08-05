@@ -8,7 +8,6 @@ public class Addicted : KeywordSup
     [SerializeField] private const float _addictionDamageMultiplexes = 2.0f;
     public float addictionDamageMultiplexes { get { return _addictionDamageMultiplexes; } }
 
-
     private void Awake()
     {
         keywordName = "중독된";

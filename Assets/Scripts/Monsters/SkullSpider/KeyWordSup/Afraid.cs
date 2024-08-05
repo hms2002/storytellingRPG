@@ -14,7 +14,6 @@ public class Afreid : KeywordSup
         debuffType = "Fear";
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
-        keywordDescription = "상대방에게 공포 {debuffStack}을 부여합니다.\n긴장도 +{keywordTension}";
         Init();
     }
 

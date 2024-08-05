@@ -321,7 +321,23 @@ public class CharactorState : MonoBehaviour
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
-            actor.Damaged(actor, i.stack * i.stateData.damagePerStack);
+            int stackDamage = i.stateData.damagePerStack;
+            if(i.oneTimeMultiplication)
+            {
+                stackDamage *= 2;
+            }
+            if(i.oneTimeRepeat)
+            {
+                actor.Damaged(actor, i.stack * stackDamage);
+                if (i.stateData.reductionTiming == ReductionTiming.OnAttack)
+                {
+                    i.Reduction();
+                }
+            }
+            if(i.stack != 0)
+            {
+                actor.Damaged(actor, i.stack * stackDamage);
+            }
             stateUIController.UpdateUI(i);
         }
     }
@@ -330,6 +346,7 @@ public class CharactorState : MonoBehaviour
     {
         OreEffect(actor);
     }
+
     private void OreEffect(Actor actor)
     {
         if (allStateList[(int)StateType.ore] == null || allStateList[(int)StateType.ore].stack == 0) return;
@@ -338,6 +355,7 @@ public class CharactorState : MonoBehaviour
         if (oreStack > actor.protect)
             actor.protect = oreStack;
     }
+
     public void ReductionOnStartTurn()
     {
         foreach (State i in allStateList)

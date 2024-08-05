@@ -10,6 +10,7 @@ public class Keyword : MonoBehaviour
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
     [SerializeField] public TextMeshProUGUI descriptionText;
+
     public enum EffectTarget
     {
         caster,
@@ -27,6 +28,7 @@ public class Keyword : MonoBehaviour
     [SerializeField] private int    _keywordHeal = 0;
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int    _debuffStack = 0;
+    [SerializeField] private int    _buffStack = 0;
     [SerializeField] private int    _keywordTension = 0;
     [SerializeField] private bool   _isOneTimeUse = false;
     protected Color keywordColor;
@@ -83,6 +85,12 @@ public class Keyword : MonoBehaviour
         set { _debuffStack = value; }
     }
 
+    public int buffStack
+    {
+        get { return _buffStack; }
+        set { _buffStack = value; }
+    }
+
     public int keywordTension
     {
         get { return _keywordTension; }
@@ -104,6 +112,8 @@ public class Keyword : MonoBehaviour
 
     protected void Init()
     {
+        descriptionText = FindInfoText("InfoText");
+        nameText = FindInfoText("Text (TMP)");
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;
         nameText.color = keywordColor;
@@ -117,7 +127,10 @@ public class Keyword : MonoBehaviour
             effectTarget = EffectTarget.caster;
             effectType = EffectManager.EffectType.Shield;
         }
-        descriptionText.text = keywordDescription;
+        if(descriptionText)
+        {
+            descriptionText.text = FormatDescription(keywordDescription);
+        }
     }
 
     public void CantUseEffect()
@@ -135,10 +148,23 @@ public class Keyword : MonoBehaviour
     public void SetKeywordColor(Color color) { keywordColor = color; }
     private string FormatDescription(string template)
     {
-        return template.Replace("버프스택", debuffStack.ToString())
-                       .Replace("긴장도", keywordTension.ToString())
-                       .Replace("데미지", keywordTension.ToString())
-                       .Replace("보호", keywordTension.ToString())
-                       .Replace("힐량", keywordTension.ToString());
+        return template.Replace("debuffstack", debuffStack.ToString())
+                       .Replace("buffstack", buffStack.ToString())
+                       .Replace("tension", keywordTension.ToString())
+                       .Replace("damage", keywordDamage.ToString())
+                       .Replace("protect", keywordProtect.ToString())
+                       .Replace("heal", keywordHeal.ToString());
+    }
+    private TextMeshProUGUI FindInfoText(string name)
+    {
+        TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (TextMeshProUGUI text in texts)
+        {
+            if (text.gameObject.name == name)
+            {
+                return text;
+            }
+        }
+        return null;
     }
 }
