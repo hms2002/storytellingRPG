@@ -44,7 +44,7 @@ public class Deck : MonoBehaviour
         GameObject supportDeckTemp;
 
         // 무작위 키워드 추출을 위한 번호 추첨
-        int deckIndex = Random.Range(0, supportDeck.Count - 1);
+        int deckIndex = Random.Range(0, supportDeck.Count);
 
         supportDeckTemp = supportDeck[deckIndex];
         supportDeck.RemoveAt(deckIndex);
@@ -62,7 +62,7 @@ public class Deck : MonoBehaviour
         GameObject mainDeckTemp;
 
         // 무작위 키워드 추출을 위한 번호 추첨
-        int deckIndex = Random.Range(0, mainDeck.Count - 1);
+        int deckIndex = Random.Range(0, mainDeck.Count);
 
         mainDeckTemp = mainDeck[deckIndex];
         mainDeck.RemoveAt(deckIndex);

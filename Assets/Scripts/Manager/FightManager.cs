@@ -72,11 +72,11 @@ public class FightManager : MonoBehaviour
         else if (whoPlaying != player)
             _keywordMain.CanUseCheck(whoPlaying, player);
 
-        if (!_keywordMain.isCanUse)
-        {
-            _keywordMain.CantUseEffect();
-            return;
-        }
+        //if (!_keywordMain.isCanUse)
+        //{
+        //    _keywordMain.CantUseEffect();
+        //    return;
+        //}
 
         _keywordMain.PlayClickSound();
         preparedActorCount++;
@@ -93,16 +93,23 @@ public class FightManager : MonoBehaviour
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
         if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
         MonsterTargetter.monsterTargetter.target = monsterList[0];
-        float pos = 3.87f;
-        foreach(Actor monster in monsterList)
-        {
-            monster.transform.position = new Vector3(pos, -1.17f, 0);
-            pos -= 2;
-        }
+        RePositionMonsters();
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
+    }
+    /// <summary>
+    /// 몬스터 월드 포지션 위치 재정렬
+    /// </summary>
+    private void RePositionMonsters()
+    {
+        float pos = 3.87f;
+        foreach (Actor monster in monsterList)
+        {
+            monster.transform.position = new Vector3(pos, -1.17f, 0);
+            pos -= 2;
+        }
     }
 
     public void Flow()
@@ -278,6 +285,12 @@ public class FightManager : MonoBehaviour
         player.gameObject.SetActive(false);
         TextManager.instance.PrintVictory();
         GameManager.instance.WinFight();
+    }
+
+    public void AddMonster(Monster monster)
+    {
+        monsterList.Add(monster);
+        RePositionMonsters();
     }
 }
 

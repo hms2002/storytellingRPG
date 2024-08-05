@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe9d8f3c0a9b445a59b2b9c1e14b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
+  nameText: {fileID: 6065856587981580275}
   effectTarget: 0
   effectType: 0
   _keywordName: 

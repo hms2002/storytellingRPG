@@ -82,6 +82,14 @@ public enum StateType
     /// </summary>
     nextTurnDamage,
     /// <summary>
+    /// 뿌리 공격
+    /// </summary>
+    tentacleAttack,
+    /// <summary>
+    /// 뿌리 강화
+    /// </summary>
+    tentacleCondolidation,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -172,7 +180,7 @@ public enum DebuffType
     oneTimeReduction,
     Size
 }
-public class CharactorState : MonoBehaviour
+public class CharactorState
 {
     ActorStateUIControler stateUIController;
 
@@ -190,7 +198,8 @@ public class CharactorState : MonoBehaviour
         if (allStateList[(int)data.type] == null)
         {
             allStateList[(int)data.type] = new State(data, val);
-            stateUIController.UpdateUI(allStateList[(int)data.type]);
+            Debug.Log(stateUIController);
+            stateUIController.UpdateUI(allStateList[(int)data.type]); 
             return;
         }
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임

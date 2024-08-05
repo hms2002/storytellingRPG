@@ -94,8 +94,9 @@ public class Actor : MonoBehaviour
     {
         get { return _hp; }
         set {
-            if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
-                charactorState.ReductionByValue(StateType.ore, _hp - value);
+            if(charactorState != null)
+                if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
+                    charactorState.ReductionByValue(StateType.ore, _hp - value);
 
             _hp = value;
             if (_hp > _MAX_HP)
@@ -106,7 +107,8 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-            stateUIController.UpdateHpUI(_hp, MAX_HP);
+            if(stateUIController != null)
+                stateUIController.UpdateHpUI(_hp, MAX_HP);
         }
     }
 
