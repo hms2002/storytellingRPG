@@ -7,7 +7,7 @@ public class ForestMaster_Birth : KeywordMain
     ForestMaster forestMaster;
     private void Awake()
     {
-        keywordName = "숲의 가호";
+        keywordName = "탄생";
 
         SetKeywordColor(Y);
         keywordTension = 32;
