@@ -7,7 +7,6 @@ public class Rattling : KeywordSup
     private void Awake()
     {
         keywordName = "달그락거리는";
-
         SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 3;

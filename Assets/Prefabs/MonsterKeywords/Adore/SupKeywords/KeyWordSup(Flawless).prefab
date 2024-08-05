@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 7533167655303208137}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -566,6 +567,7 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 

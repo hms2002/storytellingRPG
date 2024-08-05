@@ -7,9 +7,9 @@ public class CreationFear : KeywordMain
     private void Awake()
     {
         keywordName = "공포감조성";
-
+        
         SetKeywordColor(R);
-        keywordTension = -10;
+        keywordTension = 5;
         keywordDamage = 3;
         debuffStack = 1;
         debuffType = "Fear";    

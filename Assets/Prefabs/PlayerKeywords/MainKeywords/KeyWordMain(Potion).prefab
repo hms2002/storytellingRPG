@@ -273,8 +273,8 @@ GameObject:
   - component: {fileID: 2307486014034593641}
   - component: {fileID: 2725389129916691502}
   - component: {fileID: 6763341974645325548}
-  - component: {fileID: 4475254289156577749}
   - component: {fileID: 7762928522987281282}
+  - component: {fileID: 4475254289156577749}
   m_Layer: 5
   m_Name: KeyWordMain(Potion)
   m_TagString: Untagged
@@ -397,19 +397,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4475254289156577749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579075665694996604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 315813341917496985}
 --- !u!114 &7762928522987281282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 2805492369151632534}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: "\uD3EC\uC158"
@@ -431,9 +419,23 @@ MonoBehaviour:
   _keywordHeal: 12
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
+--- !u!114 &4475254289156577749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579075665694996604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 315813341917496985}
 --- !u!1 &8887301706594238736
 GameObject:
   m_ObjectHideFlags: 0

@@ -333,8 +333,8 @@ GameObject:
   - component: {fileID: 1741292203806941920}
   - component: {fileID: 6684207832661643071}
   - component: {fileID: 3769208265965901945}
-  - component: {fileID: 7297687382321390626}
   - component: {fileID: 3082584794783076728}
+  - component: {fileID: 7297687382321390626}
   m_Layer: 5
   m_Name: KeyWordMain(Blue Herb)
   m_TagString: Untagged
@@ -457,19 +457,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7297687382321390626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5405614178188533989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 3623079451522043150}
 --- !u!114 &3082584794783076728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 6096794312337546498}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -491,11 +479,25 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
   maxRange: 3
   minRange: 1
+--- !u!114 &7297687382321390626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405614178188533989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 3623079451522043150}
 --- !u!1 &5427353080596805062
 GameObject:
   m_ObjectHideFlags: 0

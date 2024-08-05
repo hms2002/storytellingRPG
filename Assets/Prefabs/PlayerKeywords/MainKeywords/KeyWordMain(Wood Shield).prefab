@@ -407,8 +407,8 @@ GameObject:
   - component: {fileID: 5252618660405649325}
   - component: {fileID: 1978807451892931084}
   - component: {fileID: 5772061596799793833}
-  - component: {fileID: 1451065599807496153}
   - component: {fileID: 1719347000706858458}
+  - component: {fileID: 1451065599807496153}
   m_Layer: 5
   m_Name: KeyWordMain(Wood Shield)
   m_TagString: Untagged
@@ -531,19 +531,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1451065599807496153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8784785789567149138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 7877589812499143589}
 --- !u!114 &1719347000706858458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 3720040905745087070}
+  descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: 
@@ -565,6 +553,20 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
+  _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
+--- !u!114 &1451065599807496153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784785789567149138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: {fileID: 7877589812499143589}
