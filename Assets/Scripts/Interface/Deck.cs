@@ -136,7 +136,6 @@ public class Deck : MonoBehaviour
         }
     }
 
-    #region Deck 클래스의 Getter, Setter 함수들
     public void AddSupKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordSup>() == null) return;
@@ -151,8 +150,7 @@ public class Deck : MonoBehaviour
         mainDeck.Add(keyword);
     }
 
-    public int GetSupDeckSize() { return supportDeck.Count; }
-    public int GetMainDeckSize() { return mainDeck.Count; }
+    #region Deck 클래스의 Getter, Setter 함수들
 
     public void DisCardByTextSource(TextMeshProUGUI source)
     {

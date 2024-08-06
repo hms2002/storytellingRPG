@@ -1,9 +1,13 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 게임의 상태를 표기
+/// </summary>
 public enum GameState
 {
     Map,
@@ -15,7 +19,6 @@ public enum GameState
 
 /// <summary>
 /// 게임의 전체 흐름을 담당
-/// <para> 현재의 게임 상태를 다른 하위 매니저들에게 전달 </para>
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -29,9 +32,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioManager   audioManager;
     [SerializeField] private TensionManager tensionManager;
     [SerializeField] private RewardManager  rewardManager;
+    [SerializeField] private ShopManager    shopManager;
     [SerializeField] private Texture2D      cursorImg;
 
-    private GameState _gameState = GameState.Map;           // 게임의 상태를 저장
+    [Header("플레이어의 모든 키워드 프리랩")]
+    [SerializeField] private List<GameObject> _allKeywordsForPlayer;    // 플레이어가 가질 수 있는 모든 키워드
+    public IReadOnlyList<GameObject> allKeywordsForPlayer => _allKeywordsForPlayer;
+
+    private GameState _gameState = GameState.Map;                       // 게임의 상태를 저장
     public GameState gameState {  get => _gameState; set => _gameState = value; }
 
 
@@ -40,26 +48,22 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) Destroy(gameObject);
+        // 싱글톤 인스턴스 설정
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
         Cursor.SetCursor(cursorImg, new Vector2(50,50), CursorMode.ForceSoftware);
     }
 
     public void EnterFightZone()
     {
-        CallFightUIOn();
-        Invoke("CallFightStart", 2);
-    }
-
-    private void CallFightUIOn()
-    {
-        UIManager.instance.EnterBattleField();
-    }
-
-    private void CallFightStart()
-    {
-        fightManager.FightStart();
+        Book.instance.EnterBattleField();
+        DOVirtual.DelayedCall(2.0f, fightManager.FightStart);
     }
 
     public void WinFight()
@@ -74,12 +78,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ReturnMap()
     {
-        Map.MapState.InstanceMap.OnOffMap();
+        Book.instance.GetOutOfBattleField();
     }
 
-    internal void EndSelectReward()
+    /// <summary>
+    /// 상점으로 입장한다.
+    /// </summary>
+    public void EnterShop()
     {
-        UIManager.instance.GetOutOfBattleField();
-        Invoke("ReturnMap", 2);
+        shopManager.EnterShop();
     }
 }

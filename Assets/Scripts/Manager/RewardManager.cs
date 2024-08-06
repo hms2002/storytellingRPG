@@ -44,13 +44,13 @@ public class RewardManager : MonoBehaviour
     {
         player.AddMainKeywordToOriginalDeck(_keywordmain);
         rewardCanvas.SetActive(false);
-        GameManager.instance.EndSelectReward();
+        GameManager.instance.ReturnMap();
     }
 
     public void AddSupKeywordToDeck(GameObject _keywordSup)
     {
         player.AddSupKeywordToOriginalDeck(_keywordSup);
         rewardCanvas.SetActive(false);
-        GameManager.instance.EndSelectReward();
+        GameManager.instance.ReturnMap();
     }
 }

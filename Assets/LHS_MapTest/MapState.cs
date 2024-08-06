@@ -30,7 +30,7 @@ namespace Map
         {
             base.SpawnMap();
             MapStateSetting();
-            SaveMapData(Application.persistentDataPath + "/mapData.json"); // ¸Ê »ı¼º ÈÄ ÀúÀå
+            SaveMapData(Application.persistentDataPath + "/mapData.json"); // ë§µ ìƒì„± í›„ ì €ì¥
         }
 
         private void MapStateSetting()
@@ -51,7 +51,7 @@ namespace Map
             MapData mapData = new MapData
             {
                 nodes = new List<NodeData>(),
-                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck ¸®½ºÆ® ÀúÀå
+                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck ë¦¬ìŠ¤íŠ¸ ì €ì¥
             };
 
             for (int i = 0; i < nodes.Count; i++)
@@ -89,7 +89,7 @@ namespace Map
                 MapData mapData = JsonUtility.FromJson<MapData>(json);
 
                 ClearExistingNodes();
-                nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck ¸®½ºÆ® ·Îµå
+                nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck ë¦¬ìŠ¤íŠ¸ ë¡œë“œ
 
                 for (int i = 0; i < mapData.nodes.Count; i++)
                 {
@@ -109,7 +109,7 @@ namespace Map
                     nodes.Add(mapNode);
                 }
 
-                Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // µğ¹ö±× ¸Ş½ÃÁö
+                Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // ë””ë²„ê·¸ ë©”ì‹œì§€
 
                 for (int i = 0; i < mapData.nodes.Count; i++)
                 {
@@ -122,42 +122,20 @@ namespace Map
                         }
                         else
                         {
-                            Debug.LogWarning("³ëµå ¿¬°á ¿À·ù: " + connectedNodeIndex);
+                            Debug.LogWarning("ë…¸ë“œ ì—°ê²° ì˜¤ë¥˜: " + connectedNodeIndex);
                         }
                     }
                 }
 
-                // ½ÃÀÛ ³ëµå¿Í ³¡ ³ëµå¸¦ ¿¬°á
+                // ì‹œì‘ ë…¸ë“œì™€ ë ë…¸ë“œë¥¼ ì—°ê²°
                 StartEndConnection();
 
-                Debug.Log("¸Ê ºÒ·¯¿À±â : " + filePath);
+                Debug.Log("ë§µ ë¶ˆëŸ¬ì˜¤ê¸° : " + filePath);
             }
             else
             {
-                Debug.LogError("ÀúÀå ÆÄÀÏ ¾øÀ½ : " + filePath);
+                Debug.LogError("ì €ì¥ íŒŒì¼ ì—†ìŒ : " + filePath);
             }
-        }
-
-        public void OnOffMap()
-        {
-            if(mapObj.activeSelf)
-            {
-                CloseMap();
-            }
-            else
-            {
-                OpenMap();
-            }
-        }
-
-        public void OpenMap()
-        {
-            mapObj.SetActive(true);
-        }
-
-        public void CloseMap()
-        {
-            mapObj.SetActive(false);
         }
     }
 }
