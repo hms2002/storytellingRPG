@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace Map
     public class MapState : MapGenerator
     {
         public GameObject mapObj;
+        public GameObject playerMark;  // í”Œë ˆì´ì–´ ë§ˆí¬ ì¶”ê°€
+        public bool noMoveNode = false;
 
         private static MapState instance;
         public static MapState InstanceMap
@@ -26,13 +29,21 @@ namespace Map
             }
         }
 
+        //ë§µ ìƒì„±
         override public void SpawnMap()
         {
             base.SpawnMap();
             MapStateSetting();
-            SaveMapData(Application.persistentDataPath + "/mapData.json"); // ¸Ê »ı¼º ÈÄ ÀúÀå
+            SaveMapData(Application.persistentDataPath + "/mapData.json"); // ë§µ ìƒì„± í›„ ì €ì¥
+            //ë§µì—ì„œ í”Œë ˆì´ì–´ ìœ„ì¹˜ ì €ì¥íŒŒì¼ ì‚­ì œ 
+            if (File.Exists(Application.persistentDataPath + "/playerData.json"))
+            {
+                File.Delete(Application.persistentDataPath + "/playerData.json");
+                playerMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+            }
         }
 
+        //ë§µ ìƒíƒœ ì„¸íŒ…
         private void MapStateSetting()
         {
             for (int i = 0; i <= nodesEndLineCheck[0]; i++)
@@ -46,13 +57,10 @@ namespace Map
             }
         }
 
+        //ë§µ ì €ì¥
         public void SaveMapData(string filePath)
         {
-            MapData mapData = new MapData
-            {
-                nodes = new List<NodeData>(),
-                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck ¸®½ºÆ® ÀúÀå
-            };
+            List<NodeData> nodeDataList = new List<NodeData>();
 
             for (int i = 0; i < nodes.Count; i++)
             {
@@ -70,14 +78,16 @@ namespace Map
                     nodeData.connectedNodeIndices.Add(nodes.IndexOf(connectedNode));
                 }
 
-                mapData.nodes.Add(nodeData);
+                nodeDataList.Add(nodeData);
             }
 
+            MapData mapData = new MapData(nodeDataList, new List<int>(nodesEndLineCheck), playerMark.GetComponent<RectTransform>().anchoredPosition);
             string json = JsonUtility.ToJson(mapData, true);
             File.WriteAllText(filePath, json);
             Debug.Log("Map data saved to " + filePath);
         }
 
+        //ì €ì¥ëœ ë§µ ë¡œë“œ
         public void LoadMapData(string filePath)
         {
             startNode.SetActive(true);
@@ -89,7 +99,7 @@ namespace Map
                 MapData mapData = JsonUtility.FromJson<MapData>(json);
 
                 ClearExistingNodes();
-                nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck ¸®½ºÆ® ·Îµå
+                nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck ë¦¬ìŠ¤íŠ¸ ë¡œë“œ
 
                 for (int i = 0; i < mapData.nodes.Count; i++)
                 {
@@ -100,7 +110,8 @@ namespace Map
                     rectTransform.anchoredPosition = nodeData.position;
 
                     MapNode mapNode = nodeObject.GetComponent<MapNode>();
-                    mapNode.nodeBlueprint = new NodeBlueprint { nodeType = nodeData.nodeType };
+                    mapNode.nodeBlueprint = ScriptableObject.CreateInstance<NodeBlueprint>();
+                    mapNode.nodeBlueprint.nodeType = nodeData.nodeType;
                     mapNode.nodeBlueprint.sprite = nodePrefab[(int)nodeData.nodeType].GetComponent<MapNode>().nodeBlueprint.sprite;
                     mapNode.SetUp();
                     mapNode.nodeStates = nodeData.nodeState;
@@ -109,7 +120,7 @@ namespace Map
                     nodes.Add(mapNode);
                 }
 
-                Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // µğ¹ö±× ¸Ş½ÃÁö
+                Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // ë””ë²„ê·¸ ë©”ì‹œì§€
 
                 for (int i = 0; i < mapData.nodes.Count; i++)
                 {
@@ -122,25 +133,37 @@ namespace Map
                         }
                         else
                         {
-                            Debug.LogWarning("³ëµå ¿¬°á ¿À·ù: " + connectedNodeIndex);
+                            Debug.LogWarning("ë…¸ë“œ ì—°ê²° ì˜¤ë¥˜: " + connectedNodeIndex);
                         }
                     }
                 }
 
-                // ½ÃÀÛ ³ëµå¿Í ³¡ ³ëµå¸¦ ¿¬°á
+                // í”Œë ˆì´ì–´ ë§ˆí¬ ìœ„ì¹˜ ë³µì›
+                playerMark.GetComponent<RectTransform>().anchoredPosition = mapData.lastPlayerPosition;
+
+                // ì‹œì‘ ë…¸ë“œì™€ ë ë…¸ë“œë¥¼ ì—°ê²°
                 StartEndConnection();
 
-                Debug.Log("¸Ê ºÒ·¯¿À±â : " + filePath);
+                Debug.Log("ë§µ ë¶ˆëŸ¬ì˜¤ê¸° : " + filePath);
             }
             else
             {
-                Debug.LogError("ÀúÀå ÆÄÀÏ ¾øÀ½ : " + filePath);
+                Debug.LogError("ì €ì¥ íŒŒì¼ ì—†ìŒ : " + filePath);
             }
         }
 
+        //ë§µ ì† í”Œë ˆì´ì–´ ìœ„ì¹˜ ì €ì¥
+        public void SavePlayerMarkPosition(string filePath)
+        {
+            PlayerData playerData = new PlayerData(playerMark.GetComponent<RectTransform>().anchoredPosition);
+            string json = JsonUtility.ToJson(playerData);
+            File.WriteAllText(filePath, json);
+        }
+
+        //ë§µ ì¼œê¸°/ë„ê¸°
         public void OnOffMap()
         {
-            if(mapObj.activeSelf)
+            if (mapObj.activeSelf)
             {
                 CloseMap();
             }
@@ -150,11 +173,13 @@ namespace Map
             }
         }
 
+        //ë§µ ì¼œê¸°
         public void OpenMap()
         {
             mapObj.SetActive(true);
         }
 
+        //ë§µ ë„ê¸°
         public void CloseMap()
         {
             mapObj.SetActive(false);

@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin_Sloppy : KeywordSup
+public class Lost : KeywordSup
 {
-    [Header("부여되는 일회성 약화 수치")]
+    [Header("길을 잃은 키워드 일회성 약화 수치")]
     [SerializeField] private int oneTimeReductionControl = 2;
 
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Awake()
     {
-        keywordName = "엉성한";
+        keywordName = "길을 잃은";
         SetKeywordColor(Y);
-        keywordTension = -18;
-        effectTarget = EffectTarget.caster;
+        keywordTension = 8;
+        effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
     }

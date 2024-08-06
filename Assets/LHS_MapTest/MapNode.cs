@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 namespace Map
 {
-    public enum NodeStates
-    {
-        Locked,
-        Visited,
-        Attainable
-    }
-
     public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         [SerializeField]
@@ -69,13 +62,14 @@ namespace Map
         }
 
         //마우스 관련 코드
+        //마우스가 오브젝트에 들어왔을 때
         public void OnPointerEnter(PointerEventData eventData)
         {
-            //마우스가 오브젝트에 들어왔을 때 코드
             image.transform.DOKill();
             image.transform.DOScale(initialScale * HoveScaleFactor, 0.3f);
         }
 
+        //마우스가 오브젝트에 벗어났을 때
         public void OnPointerExit(PointerEventData eventData)
         {
             //마우스가 오브젝트에 벗어났을 때 코드
@@ -83,14 +77,21 @@ namespace Map
             image.transform.DOScale(initialScale, 0.3f);
         }
 
+        //마우스 버튼이 오브젝트를 눌렀을 때
         public void OnPointerDown(PointerEventData eventData)
         {
             //마우스 버튼이 오브젝트를 눌렀을 때 코드
         }
 
+        //마우스를 클릭하고 뗐을 때.
         public void OnPointerUp(PointerEventData eventData)
         {
             //마우스 버튼이 오브젝트에 누르고 땠을 때 코드
+            if (MapState.InstanceMap.noMoveNode == true)
+            {
+                return;
+            }
+
             if (nodeStates == NodeStates.Attainable)
             {
                 nodeStates = NodeStates.Visited;
@@ -105,10 +106,10 @@ namespace Map
                 {
                     UpdateAllNodes();
                 }
-
                 // 노드 상태 변경 후 맵 저장
                 MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
             }
+
             switch(nodeBlueprint.nodeType)
             {
                 case NodeType.NomalEnemy:
@@ -128,6 +129,17 @@ namespace Map
                 case NodeType.Mystery:
                     break;
             }
+
+                // 노드 상태 변경 후 플레이어 이동 및 위치 저장
+                MovePlayerToNode();
+            }
+            else
+            {
+                Debug.Log("노드가 이동 가능하지 않음: " + nodeStates);
+            }
+
+            //맵 저장 및 노드 표시 저장
+            MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
         }
 
         private void UpdateAllNodes()
@@ -164,10 +176,26 @@ namespace Map
             }
         }
 
+        //마지막 보스 버튼 코드
         private void ExecuteEndNodeLogic()
         {
             // EndNode 클릭 시 실행할 로직
             Debug.Log("EndNode 클릭됨 - 특정 로직 실행");
+        }
+
+        private void MovePlayerToNode()
+        {
+            MapPlayerMove playerMove = FindObjectOfType<MapPlayerMove>();
+            if (playerMove != null)
+            {
+                // 플레이어 이동 시작 전에 위치 저장
+                Debug.Log("노드로 플레이어 이동 시작: " + this.GetComponent<RectTransform>().anchoredPosition);
+                playerMove.MovePlayerMark(this.GetComponent<RectTransform>().anchoredPosition);
+            }
+            else
+            {
+                Debug.LogWarning("MapPlayerMove를 찾을 수 없음");
+            }
         }
     }
 }

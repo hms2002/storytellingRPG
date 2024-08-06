@@ -5,51 +5,51 @@ using UnityEngine.UI;
 
 namespace Map
 {
-    // ¸ÊÀ» »ı¼ºÇÏ´Â static Å¬·¡½º
+    // ë§µì„ ìƒì„±í•˜ëŠ” static í´ë˜ìŠ¤
     public class MapGenerator : MonoBehaviour
     {
-        [Header("³ëµå Á¾·ù ¼¼ÆÃ(ÇÁ¸®ÆÕ)")]
+        [Header("ë…¸ë“œ ì¢…ë¥˜ ì„¸íŒ…(í”„ë¦¬íŒ¹)")]
         public GameObject[] nodePrefab = new GameObject[5];
-        [Header("¸Ê º£ÀÌ½º ÆÇ")]
-        public RectTransform mapParent; //¸Ê ÆÇ
-        [Header("±æ ¶óÀÎ º¸°ü À§Ä¡")]
+        [Header("ë§µ ë² ì´ìŠ¤ íŒ")]
+        public RectTransform mapParent; //ë§µ íŒ
+        [Header("ê¸¸ ë¼ì¸ ë³´ê´€ ìœ„ì¹˜")]
         public RectTransform roadParent;
 
-        [Header("½ÃÀÛ ³ëµå°ú ³¡ ³ëµå")]
+        [Header("ì‹œì‘ ë…¸ë“œê³¼ ë ë…¸ë“œ")]
         public GameObject startNode;
         public GameObject endNode;
 
-        [Header("¹èÄ¡ °Å¸® Á¶Àı(¾ç¿·)")]
+        [Header("ë°°ì¹˜ ê±°ë¦¬ ì¡°ì ˆ(ì–‘ì˜†)")]
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_Width_MIN = 150.0f; //¾ç¿· ¹èÄ¡ ÃÖ¼Ò °Å¸®
+        public float distanceBetweenNodes_Width_MIN = 150.0f; //ì–‘ì˜† ë°°ì¹˜ ìµœì†Œ ê±°ë¦¬
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_Width_MAX = 300.0f; //¾ç¿· ¹èÄ¡ ÃÖ´ë °Å¸®
-        [Header("¹èÄ¡ °Å¸® Á¶Àı(³ôÀÌ)")]
+        public float distanceBetweenNodes_Width_MAX = 300.0f; //ì–‘ì˜† ë°°ì¹˜ ìµœëŒ€ ê±°ë¦¬
+        [Header("ë°°ì¹˜ ê±°ë¦¬ ì¡°ì ˆ(ë†’ì´)")]
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_Height_MIN = 170.0f; //³ôÀÌ ¹èÄ¡ ÃÖ¼Ò °Å¸®
+        public float distanceBetweenNodes_Height_MIN = 170.0f; //ë†’ì´ ë°°ì¹˜ ìµœì†Œ ê±°ë¦¬
         [Range(0f, 300f)]
-        public float distanceBetweenNodes_Height_MAX = 220.0f; //³ôÀÌ ¹èÄ¡ ÃÖ´ë °Å¸®
+        public float distanceBetweenNodes_Height_MAX = 220.0f; //ë†’ì´ ë°°ì¹˜ ìµœëŒ€ ê±°ë¦¬
 
-        [Header("°¡·Î ¼¼·Î, ³ëµå ÃÖ´ë °³¼ö ¼³Á¤")]
-        public int maxHeightNodesCount = 3; //³ôÀÌ¿¡¼­ ³ëµå ÃÖ´ë °³¼ö
-        public int maxWidthtNodesCount = 5; //°¡·Î¿¡¼­ ³ëµå ÃÖ´ë °³¼ö
+        [Header("ê°€ë¡œ ì„¸ë¡œ, ë…¸ë“œ ìµœëŒ€ ê°œìˆ˜ ì„¤ì •")]
+        public int maxHeightNodesCount = 3; //ë†’ì´ì—ì„œ ë…¸ë“œ ìµœëŒ€ ê°œìˆ˜
+        public int maxWidthtNodesCount = 5; //ê°€ë¡œì—ì„œ ë…¸ë“œ ìµœëŒ€ ê°œìˆ˜
 
-        [Header("¶óÀÎ(±æ) ÇÁ¸®ÆÕ")]
+        [Header("ë¼ì¸(ê¸¸) í”„ë¦¬íŒ¹")]
         public Image roadPrefab;
 
-        [Header("³ëµå °£ (¶óÀÎ ±æ) °£±Ø ¼³Á¤")] 
-        public float nodeGap = 40f; // ³ëµå¿Í ³ëµå »çÀÌ °£±Ø
+        [Header("ë…¸ë“œ ê°„ (ë¼ì¸ ê¸¸) ê°„ê·¹ ì„¤ì •")] 
+        public float nodeGap = 40f; // ë…¸ë“œì™€ ë…¸ë“œ ì‚¬ì´ ê°„ê·¹
 
-        //³ëµå ÀúÀå
+        //ë…¸ë“œ ì €ì¥
         public List<MapNode> nodes = new List<MapNode>();
 
-        //³ëµå ÇÑ ¶óÀÎ¸¶´Ù ³¡ À§Ä¡ È®ÀÎ
+        //ë…¸ë“œ í•œ ë¼ì¸ë§ˆë‹¤ ë ìœ„ì¹˜ í™•ì¸
         public List<int> nodesEndLineCheck = new List<int>();
 
-        //³ëµå ±æ ÀúÀå
+        //ë…¸ë“œ ê¸¸ ì €ì¥
         public List<GameObject> roadeLine = new List<GameObject>();
 
-        //³ëµå ½ÃÀÛ À§Ä¡
+        //ë…¸ë“œ ì‹œì‘ ìœ„ì¹˜
         public Vector2 startVector;
 
         virtual public void SpawnMap()
@@ -63,7 +63,7 @@ namespace Map
             startNode.SetActive(true);
             endNode.SetActive(true);
 
-            int makeCount = -1; // -1ºÎÅÍ ½ÃÀÛ
+            int makeCount = -1; // -1ë¶€í„° ì‹œì‘
 
             if (nodes != null && nodes.Count != 0)
             {
@@ -86,15 +86,15 @@ namespace Map
             }
 
             int nodeCount = nodes.Count;
-            Debug.Log("ÇöÀç »ı¼ºµÈ ³ëµå °³¼ö: " + nodeCount);
+            Debug.Log("í˜„ì¬ ìƒì„±ëœ ë…¸ë“œ ê°œìˆ˜: " + nodeCount);
 
-            CreateNodeLine();//ÀÓ½Ã ³ªÁß¿¡ ¾ø¾Ö
+            CreateNodeLine();//ì„ì‹œ ë‚˜ì¤‘ì— ì—†ì• 
         }
 
         private void CreateNode(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height 
         {
             int probabilty = Random.Range(1, 100);
-            int typeCount = 999; //null °ª
+            int typeCount = 999; //null ê°’
 
             switch (probabilty)
             {
@@ -102,11 +102,11 @@ namespace Map
                     typeCount = 0;
                     break;
 
-                case > 30: //10% Rest Site (1¹øÀº º¸½ºÀÓ)
+                case > 30: //10% Rest Site (1ë²ˆì€ ë³´ìŠ¤ì„)
                     typeCount = 2;
                     break;
 
-                case > 10: //20% ¹Ì½ºÅÍ¸®(»ç°Ç)
+                case > 10: //20% ë¯¸ìŠ¤í„°ë¦¬(ì‚¬ê±´)
                     typeCount = 3;
                     break;
 
@@ -114,12 +114,12 @@ namespace Map
                     typeCount = 4;
                     break;
             }
-            //»ı¼º
+            //ìƒì„±
             GameObject nodeObject = Instantiate(nodePrefab[typeCount], mapParent);
-            //À§Ä¡ ¼³Á¤
+            //ìœ„ì¹˜ ì„¤ì •
             RectTransform rectTransform = nodeObject.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = GetRandomPosition(_isWidth, _heiNum, _widNum) - startVector;
-            //³ëµå ¸ğÀ½¿¡ Ãß°¡
+            //ë…¸ë“œ ëª¨ìŒì— ì¶”ê°€
             nodes.Add(nodeObject.GetComponent<MapNode>());
         }
 
@@ -152,7 +152,7 @@ namespace Map
                 roadeLine.Clear();
             }
 
-            Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // nodesEndLineCheck ¸®½ºÆ® °ª Ãâ·Â
+            Debug.Log("nodesEndLineCheck: " + string.Join(", ", nodesEndLineCheck)); // nodesEndLineCheck ë¦¬ìŠ¤íŠ¸ ê°’ ì¶œë ¥
 
             for (int i = 0; i < nodesEndLineCheck.Count - 1; i++)
             {
@@ -161,13 +161,13 @@ namespace Map
                 int nextColumnStart = nodesEndLineCheck[i] + 1;
                 int nextColumnEnd = nodesEndLineCheck[i + 1];
 
-                // °¢ ³ëµå°¡ Àû¾îµµ ÇÏ³ªÀÇ ¿¬°áÀ» °¡ÁüÀ» º¸ÀåÇÏ±â À§ÇØ »ç¿ë
+                // ê° ë…¸ë“œê°€ ì ì–´ë„ í•˜ë‚˜ì˜ ì—°ê²°ì„ ê°€ì§ì„ ë³´ì¥í•˜ê¸° ìœ„í•´ ì‚¬ìš©
                 bool[] isConnected = new bool[nextColumnEnd - nextColumnStart + 1];
 
-                // Ãß°¡ ·£´ı ¿¬°á
+                // ì¶”ê°€ ëœë¤ ì—°ê²°
                 for (int j = currentColumnStart; j <= currentColumnEnd; j++)
                 {
-                    int connections = GetRandomConnections(); // È®·ü ±â¹İ ¿¬°á °³¼ö °áÁ¤
+                    int connections = GetRandomConnections(); // í™•ë¥  ê¸°ë°˜ ì—°ê²° ê°œìˆ˜ ê²°ì •
 
                     List<int> potentialNodes = new List<int>();
                     for (int k = -1; k <= 1; k++)
@@ -190,7 +190,7 @@ namespace Map
                         {
                             bool hasIntersection = HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition);
 
-                            // ±³Â÷°¡ ¹ß»ıÇÏ¸é À§ÂÊ ³ëµå·Î ½Ãµµ
+                            // êµì°¨ê°€ ë°œìƒí•˜ë©´ ìœ„ìª½ ë…¸ë“œë¡œ ì‹œë„
                             while (hasIntersection && potentialNodes.Count > 0)
                             {
                                 nextNode = potentialNodes[0];
@@ -198,7 +198,7 @@ namespace Map
                                 hasIntersection = HasIntersectingLines(nodes[j].GetComponent<RectTransform>().anchoredPosition, nodes[nextNode].GetComponent<RectTransform>().anchoredPosition);
                             }
 
-                            // ÃÖÁ¾ ¼±ÅÃµÈ ³ëµå¿Í ¿¬°á
+                            // ìµœì¢… ì„ íƒëœ ë…¸ë“œì™€ ì—°ê²°
                             if (!hasIntersection)
                             {
                                 nodes[j].connectedNodes.Add(nodes[nextNode]);
@@ -209,7 +209,7 @@ namespace Map
                     }
                 }
 
-                // ¿¬°áµÇÁö ¾ÊÀº ³ëµå Ã³¸®
+                // ì—°ê²°ë˜ì§€ ì•Šì€ ë…¸ë“œ ì²˜ë¦¬
                 for (int j = currentColumnStart; j <= currentColumnEnd; j++)
                 {
                     if (nodes[j].connectedNodes.Count == 0)
@@ -225,7 +225,7 @@ namespace Map
                                 break;
                             }
                         }
-                        // ¸¸¾à ¿¬°áÀ» ¸¸µéÁö ¸øÇÑ °æ¿ì, À§ÂÊ ³ëµå¿Í °­Á¦·Î ¿¬°á
+                        // ë§Œì•½ ì—°ê²°ì„ ë§Œë“¤ì§€ ëª»í•œ ê²½ìš°, ìœ„ìª½ ë…¸ë“œì™€ ê°•ì œë¡œ ì—°ê²°
                         if (!connectionMade)
                         {
                             for (int nextNode = nextColumnEnd; nextNode >= nextColumnStart; nextNode--)
@@ -241,7 +241,7 @@ namespace Map
                     }
                 }
 
-                // ´ÙÀ½ ¿­ÀÇ ¿¬°áµÇÁö ¾ÊÀº ³ëµå Ã³¸®
+                // ë‹¤ìŒ ì—´ì˜ ì—°ê²°ë˜ì§€ ì•Šì€ ë…¸ë“œ ì²˜ë¦¬
                 for (int k = 0; k < isConnected.Length; k++)
                 {
                     if (!isConnected[k])
@@ -258,7 +258,7 @@ namespace Map
                                 break;
                             }
                         }
-                        // ¸¸¾à ¿¬°áÀ» ¸¸µéÁö ¸øÇÑ °æ¿ì, À§ÂÊ ³ëµå¿Í °­Á¦·Î ¿¬°á
+                        // ë§Œì•½ ì—°ê²°ì„ ë§Œë“¤ì§€ ëª»í•œ ê²½ìš°, ìœ„ìª½ ë…¸ë“œì™€ ê°•ì œë¡œ ì—°ê²°
                         if (!connectionMade)
                         {
                             for (int j = currentColumnEnd; j >= currentColumnStart; j--)
@@ -324,52 +324,52 @@ namespace Map
 
         private int GetRandomConnections()
         {
-            int randomValue = Random.Range(1, 101); // 1ºÎÅÍ 100±îÁöÀÇ ·£´ı °ª
+            int randomValue = Random.Range(1, 101); // 1ë¶€í„° 100ê¹Œì§€ì˜ ëœë¤ ê°’
 
             if (randomValue <= 60)
             {
-                return 1; // 40% È®·ü·Î 1°³
+                return 1; // 40% í™•ë¥ ë¡œ 1ê°œ
             }
             else // (randomValue <= 70)
             {
-                return 2; // 30% È®·ü·Î 2°³
+                return 2; // 30% í™•ë¥ ë¡œ 2ê°œ
             }
             /*
             else if (randomValue <= 90)
             {
-                return 3; // 20% È®·ü·Î 3°³
+                return 3; // 20% í™•ë¥ ë¡œ 3ê°œ
             }
             else
             {
-                return maxHeightNodesCount; // 10% È®·ü·Î maxHeightNodesCount
+                return maxHeightNodesCount; // 10% í™•ë¥ ë¡œ maxHeightNodesCount
             }
             */
         }
 
         protected void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
         {
-            // ¼± ÀÌ¹ÌÁö »ı¼º
+            // ì„  ì´ë¯¸ì§€ ìƒì„±
             Image line = Instantiate(roadPrefab, roadParent);
             roadeLine.Add(line.gameObject);
 
-            // µÎ Á¡ »çÀÌÀÇ °Å¸® °è»ê
+            // ë‘ ì  ì‚¬ì´ì˜ ê±°ë¦¬ ê³„ì‚°
             Vector2 startPos = startTrans.anchoredPosition;
             Vector2 endPos = endTrans.anchoredPosition;
             float distance = Vector2.Distance(startPos, endPos);
 
-            // °£±Ø Á¶Àı
+            // ê°„ê·¹ ì¡°ì ˆ
             Vector2 direction = (endPos - startPos).normalized;
             startPos += direction * nodeGap;
             endPos -= direction * nodeGap;
 
-            // ¼± ÀÌ¹ÌÁöÀÇ ±æÀÌ ¼³Á¤
+            // ì„  ì´ë¯¸ì§€ì˜ ê¸¸ì´ ì„¤ì •
             RectTransform roadRectTransform = line.rectTransform;
             roadRectTransform.sizeDelta = new Vector2(distance - (2 * nodeGap), roadRectTransform.sizeDelta.y);
 
-            // ¼± ÀÌ¹ÌÁöÀÇ À§Ä¡ ¼³Á¤ (µÎ Á¡ÀÇ Áß°£Á¡)
+            // ì„  ì´ë¯¸ì§€ì˜ ìœ„ì¹˜ ì„¤ì • (ë‘ ì ì˜ ì¤‘ê°„ì )
             roadRectTransform.anchoredPosition = (startPos + endPos) / 2;
 
-            // ¼± ÀÌ¹ÌÁöÀÇ È¸Àü ¼³Á¤
+            // ì„  ì´ë¯¸ì§€ì˜ íšŒì „ ì„¤ì •
             float angle = Mathf.Atan2(endPos.y - startPos.y, endPos.x - startPos.x) * Mathf.Rad2Deg;
             roadRectTransform.rotation = Quaternion.Euler(0, 0, angle);
         }
@@ -378,7 +378,7 @@ namespace Map
         {
             if (nodesEndLineCheck.Count > 0)
             {
-                // ½ÃÀÛ ÁöÁ¡ ¿¬°á
+                // ì‹œì‘ ì§€ì  ì—°ê²°
                 int firstLineEndIndex = nodesEndLineCheck[0];
                 for (int i = 0; i <= firstLineEndIndex; i++)
                 {
@@ -386,7 +386,7 @@ namespace Map
                     ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
                 }
 
-                // ³¡ ÁöÁ¡ ¿¬°á
+                // ë ì§€ì  ì—°ê²°
                 if (nodesEndLineCheck.Count > 1)
                 {
                     int lastLineStartIndex = nodesEndLineCheck[nodesEndLineCheck.Count - 2] + 1;

@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EffectManager;
+using static Keyword;
 
-public class Goblin_Sloppy : KeywordSup
+public class Frightened : KeywordSup
 {
     [Header("부여되는 일회성 약화 수치")]
-    [SerializeField] private int oneTimeReductionControl = 2;
-
+    [SerializeField] private int oneTimeReductionControl = 4;
 
     private void Awake()
     {
-        keywordName = "엉성한";
+        keywordName = "겁에 질린";
         SetKeywordColor(Y);
-        keywordTension = -18;
+        keywordTension = -20;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -20,12 +21,13 @@ public class Goblin_Sloppy : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, oneTimeReductionControl);
+        target.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, oneTimeReductionControl);
 
         caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
+
     }
 }
