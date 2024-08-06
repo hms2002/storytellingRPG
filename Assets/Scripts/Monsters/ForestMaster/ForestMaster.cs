@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForestMaster : Monster
 {
-    public readonly GameObject rootTectaclesPrefab;
+    public GameObject rootTectaclesPrefab;
     private RootTectacles _rootTectacle;
     public RootTectacles rootTectacle
     { get
@@ -27,8 +27,8 @@ public class ForestMaster : Monster
 
     public void SpawnRootTectacle()
     {
-        if (_rootTectacle == null) return;
-        _rootTectacle = Instantiate(_rootTectacle).GetComponent<RootTectacles>();
+        if (_rootTectacle != null) return;
+        _rootTectacle = Instantiate(rootTectaclesPrefab).GetComponent<RootTectacles>();
         _rootTectacle.Init(this);
         FightManager.fightManager.AddMonster(_rootTectacle);
     }

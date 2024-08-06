@@ -429,26 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 5444606467217702216}
   hpSlider: {fileID: 1024062161441681587}
-  stateUIObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   protectUIObject: {fileID: 3713494266947328709}
   hpUI: {fileID: 7344430793935493577}
   hpText: {fileID: 1299730546119393983}
@@ -684,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6339924582874757890
 Transform:
   m_ObjectHideFlags: 0
@@ -752,7 +732,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!114 &4595920635642977702
 MonoBehaviour:

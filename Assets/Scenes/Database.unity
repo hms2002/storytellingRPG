@@ -649,6 +649,8 @@ MonoBehaviour:
   oneTimeReinforce: {fileID: 11400000, guid: 6ac2c4c6300a61842b947171b2b25ec3, type: 2}
   oneTimeReduction: {fileID: 11400000, guid: 5d4ec62e73955b04da274777fa9c86d7, type: 2}
   nextTurnDamage: {fileID: 11400000, guid: 7f2a619ac01b0b84d99f3183a1cad9fd, type: 2}
+  tentacleAttack: {fileID: 11400000, guid: da3d0a74a42dd504f89eae7eb2a9d061, type: 2}
+  tentacleCondolidation: {fileID: 11400000, guid: f03ddbf8b736d804fabd0d697df45c4b, type: 2}
 --- !u!1001 &208111528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1253,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
+  - {fileID: 682207150685018480, guid: fa2dfea5ba39f334e9199c3a9d2b44aa, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:

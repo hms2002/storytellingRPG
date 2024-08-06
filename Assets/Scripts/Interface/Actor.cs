@@ -157,7 +157,8 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-
+    int _money = 0;
+    int money { get { return _money; } set { _money = value; } }
     /*==================================================================================================================================*/
 
 
@@ -340,6 +341,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
+        
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
