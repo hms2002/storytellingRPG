@@ -157,7 +157,8 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-
+    int _money = 0;
+    int money { get { return _money; } set { _money = value; } }
     /*==================================================================================================================================*/
 
 
