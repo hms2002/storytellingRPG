@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Addicted : KeywordSup
 {
-    [Header("중독 스택 데미지 배수")]
-    [SerializeField] private const float _addictionDamageMultiplexes = 2.0f;
-    public float addictionDamageMultiplexes { get { return _addictionDamageMultiplexes; } }
-
     private void Awake()
     {
         keywordName = "중독된";
@@ -20,10 +16,23 @@ public class Addicted : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
+        target.charactorState.StackDamageMultiplication(StateType.addiction);
         caster.tension += keywordTension;
     }
 
     public override void Check(KeywordMain _keywordMain)
     {
+    }
+
+    public override void CanUseCheck(Actor caster, Actor target)
+    {
+        if (target.charactorState.GetStateStack(StateType.addiction) <= 0)
+        {
+            isCanUse = false;
+        }
+        else
+        {
+            isCanUse = true;
+        }
     }
 }

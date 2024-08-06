@@ -172,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005729437, y: 0.9555066}
+  m_Offset: {x: -0.060167193, y: 1.2652184}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -183,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3172555, y: 1.9216019}
+  m_Size: {x: 2.793329, y: 2.5410254}
   m_EdgeRadius: 0
 --- !u!1 &853710342350041675
 GameObject:
@@ -957,26 +957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 8605514921327883061}
   hpSlider: {fileID: 2598670032157672780}
-  stateUIObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   protectUIObject: {fileID: 853710342350041675}
   hpUI: {fileID: 6284089335188282408}
   hpText: {fileID: 8194260412042938867}

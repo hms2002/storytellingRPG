@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class Melting : KeywordMain
 {
-    [Header("녹이기 키워드 수치 제어")]
-    [SerializeField] private const int _damagePerAddictionStack = 4;
-
-    public int damagePerAddictionStack { get { return _damagePerAddictionStack; } }
-
-
     private void Awake()
     {
         keywordName = "녹이기";
         SetKeywordColor(B);
         keywordTension = -10;
+        keywordDamage = 4;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         int addictionStack = target.charactorState.GetStateStack(StateType.addiction);
-        caster.damage += addictionStack * damagePerAddictionStack;
+        caster.damage += addictionStack * keywordDamage;
 
         caster.tension += addictionStack * keywordTension;
 

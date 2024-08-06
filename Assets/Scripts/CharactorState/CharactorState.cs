@@ -352,6 +352,7 @@ public class CharactorState
             if(i.oneTimeMultiplication)
             {
                 stackDamage *= 2;
+                i.oneTimeMultiplication = false;
             }
             if(i.oneTimeRepeat)
             {
@@ -360,6 +361,7 @@ public class CharactorState
                 {
                     i.Reduction();
                 }
+                i.oneTimeRepeat = false;
             }
             if(i.stack != 0)
             {
@@ -367,6 +369,15 @@ public class CharactorState
             }
             stateUIController.UpdateUI(i);
         }
+    }
+
+    public void StackDamageMultiplication(StateType type)
+    {
+        allStateList[(int)type].oneTimeMultiplication = true;
+    }
+    public void StackDamageRepeat(StateType type)
+    {
+        allStateList[(int)type].oneTimeRepeat = true;
     }
 
     public void StartTurnEffect(Actor actor)
