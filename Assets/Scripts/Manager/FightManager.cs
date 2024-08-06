@@ -297,6 +297,14 @@ public class FightManager : MonoBehaviour
         monsterList.Add(monster);
         RePositionMonsters();
     }
+
+    // 데이터 값 획득 변수
+    #region
+    public int getPlayerDamaged()
+    {
+        return player.damage;
+    }
+    #endregion
 }
 
 

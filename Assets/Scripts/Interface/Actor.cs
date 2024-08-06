@@ -157,6 +157,9 @@ public class Actor : MonoBehaviour
 
     #endregion
 
+    //플레이어의 최근 준 데미지 계산
+    public int beforePlayerDamage = 0;
+
     int _money = 0;
     int money { get { return _money; } set { _money = value; } }
     /*==================================================================================================================================*/
@@ -356,7 +359,6 @@ public class Actor : MonoBehaviour
         {
             PlayActionEffect(target);
 
-
             target.Damaged(this, damage);
 
             TensionManager tensionManager = TensionManager.tensionManagerUI;
@@ -371,6 +373,8 @@ public class Actor : MonoBehaviour
 
             target.attackCount = false;
         }
+        //이전 공격값 저장
+        beforePlayerDamage = damage;
     }
 
     /// <summary>
