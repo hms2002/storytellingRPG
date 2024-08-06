@@ -6,6 +6,12 @@ using TMPro;
 /// <summary>
 /// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
 /// </summary>
+public enum WhatDeck
+{
+    SupportDeck,
+    MainDeck
+}
+
 public class Deck : MonoBehaviour
 {
     [Header("키워드 덱 리스트")]
@@ -133,6 +139,22 @@ public class Deck : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public void ClearDeckList(WhatDeck thisDeck)
+    {
+        switch (thisDeck)
+        {
+            case WhatDeck.SupportDeck:
+
+                supportDeck.Clear();
+                break;
+
+            case WhatDeck.MainDeck:
+
+                mainDeck.Clear();
+                break;
         }
     }
 

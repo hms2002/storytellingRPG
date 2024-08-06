@@ -102,6 +102,14 @@ public enum StateType
     /// </summary>
     Evasion,
     /// <summary>
+    /// 자가수복(보석정령)
+    /// </summary>
+    selfRepair,
+    /// <summary>
+    /// 코어과부하(보석정령)
+    /// </summary>
+    coreOverload,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
