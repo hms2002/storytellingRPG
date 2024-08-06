@@ -1842,6 +1842,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1977492269481120988, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
   m_PrefabInstance: {fileID: 592583828}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &592583831 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8186246336372768624, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+  m_PrefabInstance: {fileID: 592583828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &599416887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5589,7 +5594,7 @@ MonoBehaviour:
   combatKeywordUI: {fileID: 2012705079}
   originalDeck: {fileID: 1825795064}
   combatBackground: {fileID: 131565276}
-  bookAnimator: {fileID: 0}
+  bookAnimator: {fileID: 592583831}
   theEndIcon: {fileID: 0}
 --- !u!1 &1623211974
 GameObject:
