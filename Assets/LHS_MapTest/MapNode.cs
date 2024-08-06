@@ -108,7 +108,7 @@ namespace Map
                 }
                 // 노드 상태 변경 후 맵 저장
                 MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
-            }
+            
 
             switch(nodeBlueprint.nodeType)
             {
@@ -129,10 +129,10 @@ namespace Map
                 case NodeType.Mystery:
                     break;
             }
-
                 // 노드 상태 변경 후 플레이어 이동 및 위치 저장
                 MovePlayerToNode();
             }
+
             else
             {
                 Debug.Log("노드가 이동 가능하지 않음: " + nodeStates);
