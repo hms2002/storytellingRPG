@@ -13,6 +13,9 @@ public class ShopManager : MonoBehaviour
     /*==================================================================================================================================*/
 
 
+    /// <summary>
+    /// 상점 입장 메소드의 플로우
+    /// </summary>
     public void EnterShop()
     {
         // gameState가 Map이거나 Battle이면 return
@@ -28,5 +31,6 @@ public class ShopManager : MonoBehaviour
         DOVirtual.DelayedCall(Book.instance.UIActiveDelay, () => UIManager.instance.ActiveShopUI(true));
 
         // 
+
     }
 }

@@ -36,10 +36,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Texture2D      cursorImg;
 
     [Header("플레이어의 모든 키워드 프리랩")]
-    [SerializeField] private List<GameObject> _allKeywordsForPlayer;    // 플레이어가 가질 수 있는 모든 키워드
-    public IReadOnlyList<GameObject> allKeywordsForPlayer => _allKeywordsForPlayer;
+    [SerializeField] private List<GameObject> _allSupKeywordsForPlayer;     // 플레이어가 가질 수 있는 모든 Support 키워드
+    [SerializeField] private List<GameObject> _allMainKeywordsForPlayer;    // 플레이어가 가질 수 있는 모든 Main 키워드
+    public IReadOnlyList<GameObject> allSupKeywordsForPlayer => _allSupKeywordsForPlayer;
+    public IReadOnlyList<GameObject> allMainKeywordsForPlayer => _allMainKeywordsForPlayer;
 
-    private GameState _gameState = GameState.Map;                       // 게임의 상태를 저장
+    private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     public GameState gameState {  get => _gameState; set => _gameState = value; }
 
 
