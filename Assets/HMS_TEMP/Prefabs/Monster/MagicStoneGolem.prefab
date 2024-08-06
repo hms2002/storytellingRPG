@@ -367,26 +367,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 1489796504278176469}
   hpSlider: {fileID: 3572348730703650098}
-  stateUIObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   protectUIObject: {fileID: 7890126203620033746}
   hpUI: {fileID: 1879609165322340952}
   hpText: {fileID: 1037032703659009330}
@@ -548,7 +528,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0057291985, y: 3.362632}
+  m_Offset: {x: 0.04951358, y: 2.4431596}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -559,7 +539,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.0299425, y: 5.6750855}
+  m_Size: {x: 3.8565211, y: 3.8361406}
   m_EdgeRadius: 0
 --- !u!114 &122740195863993500
 MonoBehaviour:

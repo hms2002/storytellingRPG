@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6617692573334209030}
   - component: {fileID: 389972901652637413}
   - component: {fileID: 6814272503806214875}
-  - component: {fileID: 5880052960286449096}
+  - component: {fileID: 5253033126577141773}
   - component: {fileID: 8596139556115810633}
   m_Layer: 6
-  m_Name: SkullSpider
+  m_Name: ToxicSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d3e18739c58b1bd44a0061c90831f8e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1f70d3f89805b042984b21184cb15df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,17 +102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   supportDeck:
-  - {fileID: 2297432594829078056, guid: d903cce23e04f2248bbe032a0103a165, type: 3}
-  - {fileID: 2297432594829078056, guid: d903cce23e04f2248bbe032a0103a165, type: 3}
-  - {fileID: 6242434244011439031, guid: 7b1c7d783ee6d304da69cd80063e1f95, type: 3}
-  - {fileID: 3768150110191125039, guid: bda19532b281a4f43b5c63681f5cda13, type: 3}
-  - {fileID: 3768150110191125039, guid: bda19532b281a4f43b5c63681f5cda13, type: 3}
+  - {fileID: 6242434244011439031, guid: 2c3fe3c896fe4d44a96bd19731496b47, type: 3}
+  - {fileID: 3768150110191125039, guid: 52825ef4879118249bc6f642dc3d056b, type: 3}
+  - {fileID: 3768150110191125039, guid: 52825ef4879118249bc6f642dc3d056b, type: 3}
+  - {fileID: 2297432594829078056, guid: 1760120ede62bae4d9c99d0435534b7d, type: 3}
+  - {fileID: 2297432594829078056, guid: 1760120ede62bae4d9c99d0435534b7d, type: 3}
   mainDeck:
-  - {fileID: 457007217195659603, guid: 16dca30ca2b6c7741a24f73c0d073851, type: 3}
-  - {fileID: 457007217195659603, guid: 16dca30ca2b6c7741a24f73c0d073851, type: 3}
-  - {fileID: 8899130121646502814, guid: 0b34e385c0d5aeb4aa4a1e8b6e4f6bb1, type: 3}
-  - {fileID: 8899130121646502814, guid: 0b34e385c0d5aeb4aa4a1e8b6e4f6bb1, type: 3}
-  - {fileID: 9221295141542498450, guid: 00d2666516de3a3428c8ffb7d8073658, type: 3}
+  - {fileID: 9221295141542498450, guid: 7fd12ca6ed354484e92d77385e57de5b, type: 3}
+  - {fileID: 8899130121646502814, guid: 1743992938586054788784683dc517cd, type: 3}
+  - {fileID: 8899130121646502814, guid: 1743992938586054788784683dc517cd, type: 3}
+  - {fileID: 457007217195659603, guid: 9cd6ffb4783f8e9448d464b875b5951c, type: 3}
+  - {fileID: 457007217195659603, guid: 9cd6ffb4783f8e9448d464b875b5951c, type: 3}
 --- !u!114 &6814272503806214875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5b9dc07fab3394abb1bae882ece6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5880052960286449096
+--- !u!114 &5253033126577141773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 682207150685018480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ea9ea6acfdc024cb9690e2ebe96241, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a20bf05ecc1bc42ad0b92a00e740e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 2833284775063695184}
@@ -172,18 +172,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.060167193, y: 1.2652184}
+  m_Offset: {x: 0.041670084, y: 1.7677648}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.9411764, y: 3.164706}
+    oldSize: {x: 3.3333333, y: 3.76}
     newSize: {x: 5, y: 5.38}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.793329, y: 2.5410254}
+  m_Size: {x: 2.8267617, y: 3.5461183}
   m_EdgeRadius: 0
 --- !u!1 &853710342350041675
 GameObject:
