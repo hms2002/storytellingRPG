@@ -214,6 +214,7 @@ public class CharactorState
                 break;
             case StateType.thief:
                 AddState(stateDB.thief, val);
+                break;
             case StateType.selfRepair:
                 AddState(stateDB.selfRepair, val);
                 break;
