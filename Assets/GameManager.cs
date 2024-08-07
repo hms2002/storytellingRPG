@@ -93,4 +93,9 @@ public class GameManager : MonoBehaviour
 
         shopManager.EnterShop();
     }
+
+    internal void EndSelectReward()
+    {
+        ReturnMap();
+    }
 }
