@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Lumpy : KeywordSup
 {
-    TumbleBird tumbleBird;
-
-
     private void Awake()
     {
-        keywordName = "엉망진창";
+        keywordName = "덩어리 진";
+
         SetKeywordColor(B);
-        keywordTension = 12;
+        keywordTension = 7;
+        keywordProtect = 4;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        caster.protect += tumbleBird.charactorState.BuffCount();
+        caster.protect += keywordProtect;
         caster.tension += keywordTension;
     }
 

@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class JewelRecovery : KeywordMain
 {
-    [Header("랜덤 데미지 수치 제어")]
-    [SerializeField] private int maxRange = 12;
-    [SerializeField] private int minRange = 8;
-
     private void Awake()
     {
-        keywordName = "부리 공격";
-        SetKeywordColor(R);
-        keywordDamage = Random.Range(minRange, maxRange);
+        keywordName = "보석 복구";
+        SetKeywordColor(B);
+        keywordProtect = 4;
         keywordTension = 18;
         Init();
     }
@@ -20,7 +16,15 @@ public class JewelRecovery : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        caster.damage = keywordDamage;
+        if(caster.beforePlayerDamage > 0)
+        {
+            keywordProtect = caster.beforePlayerDamage;
+            if(caster.beforePlayerDamage > 7)
+            {
+                keywordProtect = 7;
+            }
+        }
+        caster.protect += keywordProtect;
     }
 
     public override void Check(KeywordSup _keywordSup)

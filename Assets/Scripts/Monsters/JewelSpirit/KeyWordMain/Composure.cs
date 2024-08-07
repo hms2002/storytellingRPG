@@ -6,11 +6,12 @@ public class Composure : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "웅크리기";
-        SetKeywordColor(B);
-        keywordProtect = 10;
-        keywordTension = -21;
-        Init();
+        keywordName = "평정심";
+        SetKeywordColor(Y);
+        keywordTension = -40;
+        effectTarget = EffectTarget.caster;
+        effectType = EffectManager.EffectType.ItemUse;
+        Init(); 
     }
 
     public override void Execute(Actor caster, Actor target)

@@ -21,8 +21,5 @@ MonoBehaviour:
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
-  stateExplanation: "\uC790\uAC00 \uC218\uBCF5\n\uD134\uC774 \uB05D\uB0A0 \uB54C
-    \uB9C8\uB2E4 \uBCF4\uD638\uB97C 15 \uC5BB\uB294\uB2E4.\n\uBCF4\uD638 \uC218\uCE58\uAC00
-    90\uC774\uC0C1\uC774 \uB418\uBA74 \uCF54\uC5B4 \uACFC\uBD80\uD558 \uC0C1\uD0DC\uAC00
-    \uB41C\uB2E4."
+  stateExplanation: "\uAC15\uB825\uD574\uC9D0"
   effectByTurn: 0

@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class JewelSpirit_Shiny : KeywordSup
 {
-    TumbleBird tumbleBird;
 
-    
     private void Awake()
     {
-        keywordName = "연속";
-        SetKeywordColor(Y);
-        keywordTension = 10;
-        effectTarget = EffectTarget.caster;
-        effectType = EffectManager.EffectType.ItemUse;
+        keywordName = "반짝이는";
+        SetKeywordColor(R);
+        keywordTension = -10;
+        keywordDamage = 5;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        tumbleBird.isContinuity = true;
+        caster.damage = keywordDamage;
         caster.tension += keywordTension;
     }
 

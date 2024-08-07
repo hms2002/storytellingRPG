@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
   m_Name: SelfRepair
   m_EditorClassIdentifier: 
-  type: 6
+  type: 24
   reductionType: 3
   reductionTiming: 4
   stateProperty: 0

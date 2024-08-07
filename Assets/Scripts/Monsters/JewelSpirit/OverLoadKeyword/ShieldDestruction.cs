@@ -5,50 +5,30 @@ using System;
 
 public class ShieldDestruction : KeywordMain
 {
-    TumbleBird tumbleBird;
-
-    [Header("구르기 랜덤 데미지 범위 제어")]
-    [SerializeField] private int minDamage = 5;
-    [SerializeField] private int maxDamage = 8;
-
-
+    [Header("없앤 보호 당 데미지 제어")]
+    [SerializeField] private int DamagePerProtect = 5;
     private void Awake()
     {
-        keywordName = "구르기";
+        keywordName = "보호막 강타";
         SetKeywordColor(R);
-        keywordDamage = UnityEngine.Random.Range(minDamage, maxDamage);
-        debuffStack = 5;
-        keywordTension = -6;
+        keywordDamage = 20;
+        keywordProtect = 15;
+        keywordTension = 35;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        caster.damage += keywordDamage;
-
-        // Enum 0부터 항목 갯수 - 1 중에 Random값 뽑기
-        int randomIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)).Length);
-
-        // 값 받아올 변수 선언
-        TumbleBird.TumbleBirdBuffList buffEnum = TumbleBird.TumbleBirdBuffList.protect;
-        foreach (TumbleBird.TumbleBirdBuffList i in Enum.GetValues(typeof(TumbleBird.TumbleBirdBuffList)))
+        if(target.protect > 0)
         {
-            // 반복마다 1씩 줄다가 0 되면 값 대입 후 break
-            if (randomIndex == 0)
-            {
-                buffEnum = i;
-                break;
-            }
-            randomIndex--;
+            caster.protect -= keywordProtect;
+            caster.damage += DamagePerProtect * target.protect;
+            target.protect = 0;
         }
-
-        // 보호는 charactorState에서 다루지 않기에 따로 올려준다.
-        if ((StateType)buffEnum == StateType.protect)
-            caster.protect += 5;
-        else            
-            caster.charactorState.AddState((StateType)buffEnum, 5);
-
+        else
+        {
+            caster.damage = keywordDamage;
+        }
         caster.tension += keywordTension;
     }
 

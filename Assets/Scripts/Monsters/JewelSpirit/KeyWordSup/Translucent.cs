@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class Translucent : KeywordSup
 {
-    TumbleBird tumbleBird;
 
-    
     private void Awake()
     {
-        keywordName = "튼튼한";
+        keywordName = "반투명한";
 
-        SetKeywordColor(Y);
-        keywordTension = -8;
-        effectTarget = EffectTarget.caster;
-        effectType = EffectManager.EffectType.ItemUse;
+        SetKeywordColor(B);
+        keywordTension = 5;
+        keywordProtect = 3;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        tumbleBird = caster as TumbleBird;
-        caster.charactorState.AddState(StateDatabase.stateDatabase.oneTimeProtect, tumbleBird.charactorState.BuffCount());
+        caster.protect += keywordProtect;
         caster.tension += keywordTension;
     }
 

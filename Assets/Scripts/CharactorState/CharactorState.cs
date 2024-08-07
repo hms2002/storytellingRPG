@@ -219,7 +219,7 @@ public class CharactorState
         {
             allStateList[(int)data.type] = new State(data, val);
             Debug.Log(stateUIController);
-            stateUIController.UpdateUI(allStateList[(int)data.type]); 
+            stateUIController.UpdateUI(allStateList[(int)data.type]);
             return;
         }
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
@@ -290,6 +290,12 @@ public class CharactorState
                 break;
             case StateType.tentacleCondolidation:
                 AddState(stateDB.tentacleCondolidation, val);
+                break;
+            case StateType.selfRepair:
+                AddState(stateDB.selfRepair, val);
+                break;
+            case StateType.coreOverload:
+                AddState(stateDB.coreOverload, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
