@@ -642,26 +642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 4555273303781081296}
   hpSlider: {fileID: 5619789397250583259}
-  stateUIObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   protectUIObject: {fileID: 8133171275313927052}
   hpUI: {fileID: 1829821500705944257}
   hpText: {fileID: 6416852394449720485}
@@ -842,18 +822,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   supportDeck:
-  - {fileID: 1926668031664932444, guid: 2b5148d5bdf09024a9f8ecaf53093b34, type: 3}
-  - {fileID: 3876902543088914900, guid: 848dc26fdca30fb4ca71791fc72110eb, type: 3}
-  - {fileID: 4725747882606939251, guid: c0e12d0f2abce7b489e67bb6b8291f55, type: 3}
-  - {fileID: 4725747882606939251, guid: c0e12d0f2abce7b489e67bb6b8291f55, type: 3}
-  - {fileID: 3876902543088914900, guid: 848dc26fdca30fb4ca71791fc72110eb, type: 3}
+  - {fileID: 1926668031664932444, guid: 4d45c0794c5af5b4c959b17636c80343, type: 3}
+  - {fileID: 1926668031664932444, guid: 4d45c0794c5af5b4c959b17636c80343, type: 3}
+  - {fileID: 4725747882606939251, guid: 2d468960d35806c4fa5f94b596f72afc, type: 3}
+  - {fileID: 3876902543088914900, guid: 11dc10956b10cbd44953d63e62d04c57, type: 3}
+  - {fileID: 3876902543088914900, guid: 11dc10956b10cbd44953d63e62d04c57, type: 3}
   mainDeck:
-  - {fileID: 7680248766246702695, guid: 93bc757f75896a44eb80523f70f78626, type: 3}
-  - {fileID: 320921832704255000, guid: 8c1b1c98a415d3f4cab7e348d808ca3d, type: 3}
-  - {fileID: 6349818730923237091, guid: 439c2b852f26e764b82df6c9f3132965, type: 3}
-  - {fileID: 7680248766246702695, guid: 93bc757f75896a44eb80523f70f78626, type: 3}
-  - {fileID: 320921832704255000, guid: 8c1b1c98a415d3f4cab7e348d808ca3d, type: 3}
-  - {fileID: 320921832704255000, guid: 8c1b1c98a415d3f4cab7e348d808ca3d, type: 3}
+  - {fileID: 7680248766246702695, guid: 31e89ed87f9c9ff42a219949a37d05e0, type: 3}
+  - {fileID: 7680248766246702695, guid: 31e89ed87f9c9ff42a219949a37d05e0, type: 3}
+  - {fileID: 6349818730923237091, guid: e7feaed6a88dc9346a6342ada0f52f5a, type: 3}
+  - {fileID: 6349818730923237091, guid: e7feaed6a88dc9346a6342ada0f52f5a, type: 3}
+  - {fileID: 320921832704255000, guid: 5a58823fee984e1449eaacc10707e649, type: 3}
+  - {fileID: 7680248766246702695, guid: c2708a54c5280fc4198d117787bdbc48, type: 3}
 --- !u!114 &3632693357149835203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,3 +906,4 @@ MonoBehaviour:
   stateUIController: {fileID: 4449570589954359238}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  beforePlayerDamage: 0

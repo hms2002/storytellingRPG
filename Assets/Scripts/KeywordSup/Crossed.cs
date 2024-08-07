@@ -13,7 +13,6 @@ public class Crossed : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        Debug.Log("shiba");
         caster.damage += caster.protect;
     }
 

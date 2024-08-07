@@ -107,7 +107,7 @@ public class Keyword : MonoBehaviour
         get { return _isOneTimeUse; }
         set { _isOneTimeUse = value; }
     }
-
+    
     #endregion
 
     protected void Init()

@@ -102,96 +102,19 @@ public enum StateType
     /// </summary>
     evasion,
     /// <summary>
+    /// 자가수복(보석정령)
+    /// </summary>
+    selfRepair,
+    /// <summary>
+    /// 코어과부하(보석정령)
+    /// </summary>
+    coreOverload,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
 }
 
-public enum BuffType
-{
-    /// <summary>
-    /// 보호
-    /// </summary>
-    protect,
-    /// <summary>
-    /// 유리파편
-    /// </summary>
-    glassPragment,
-    /// <summary>
-    /// 용의 보물
-    /// </summary>
-    treasureOfDragon,
-    /// <summary>
-    /// 어미 용의 부름
-    /// </summary>
-    callingOfMommyDragon,
-    /// <summary>
-    /// 돌 조각
-    /// </summary>
-    stonePiece,
-    /// <summary>
-    /// 증식
-    /// </summary> 
-    multiplication,
-    /// <summary>
-    /// 광석
-    /// </summary>
-    ore,
-    /// <summary>
-    /// 강화
-    /// </summary>
-    reinforce,
-    /// <summary>
-    /// 가시돋은
-    /// </summary>
-    pike,
-    /// <summary>
-    /// 일회성 보호
-    /// </summary>
-    oneTimeProtect,
-    /// <summary>
-    /// 일회성 강화
-    /// </summary>
-    oneTimeReinforce,
-    /// <summary>
-    /// 다음 턴 데미지 증가
-    /// </summary>
-    nextTurnDamage,
-    Size
-}
-
-public enum DebuffType
-{
-    /// <summary>
-    /// 화상
-    /// </summary>
-    burn,
-    /// <summary>
-    /// 맹독, 스택 당 2피해
-    /// </summary>
-    venom,
-    /// <summary>
-    /// 약화, 공격 데미지 감소
-    /// </summary>
-    reduction,
-    /// <summary>
-    /// 취약
-    /// </summary>
-    weaken,
-    /// <summary>
-    /// 공포, 스택 * 10% 입히는 데미지 감소
-    /// </summary>
-    fear,
-    /// <summary>
-    /// 중독, 스택 당 5 피해와 5 긴장도, 최대 8스택
-    /// </summary>
-    addiction,
-    /// <summary>
-    /// 일회성 약화, 공격 데미지 감소
-    /// </summary>
-    oneTimeReduction,
-    Size
-}
 public class CharactorState
 {
     ActorStateUIControler stateUIController;
@@ -211,7 +134,7 @@ public class CharactorState
         {
             allStateList[(int)data.type] = new State(data, val);
             Debug.Log(stateUIController);
-            stateUIController.UpdateUI(allStateList[(int)data.type]); 
+            stateUIController.UpdateUI(allStateList[(int)data.type]);
             return;
         }
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
@@ -291,6 +214,11 @@ public class CharactorState
                 break;
             case StateType.thief:
                 AddState(stateDB.thief, val);
+            case StateType.selfRepair:
+                AddState(stateDB.selfRepair, val);
+                break;
+            case StateType.coreOverload:
+                AddState(stateDB.coreOverload, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
@@ -361,6 +289,7 @@ public class CharactorState
             if(i.oneTimeMultiplication)
             {
                 stackDamage *= 2;
+                i.oneTimeMultiplication = false;
             }
             if(i.oneTimeRepeat)
             {
@@ -369,6 +298,7 @@ public class CharactorState
                 {
                     i.Reduction();
                 }
+                i.oneTimeRepeat = false;
             }
             if(i.stack != 0)
             {
@@ -376,6 +306,15 @@ public class CharactorState
             }
             stateUIController.UpdateUI(i);
         }
+    }
+
+    public void StackDamageMultiplication(StateType type)
+    {
+        allStateList[(int)type].oneTimeMultiplication = true;
+    }
+    public void StackDamageRepeat(StateType type)
+    {
+        allStateList[(int)type].oneTimeRepeat = true;
     }
 
     public void StartTurnEffect(Actor actor)

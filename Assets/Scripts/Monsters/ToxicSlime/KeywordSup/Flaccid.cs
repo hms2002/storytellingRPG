@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class Flaccid : KeywordSup
 {
-    ToxicSlime toxicSlime;
-
-    [Header("부여되는 보호 스택의 양")]
-    [SerializeField] private const int _amountOfProtectStack = 5;
-    public int amountOfProtectStack { get { return _amountOfProtectStack; } }
-
-
     private void Awake()
     {
         keywordName = "흐물거리는";
         SetKeywordColor(B);
+        keywordProtect = 5;
         keywordTension = -5;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        toxicSlime = caster as ToxicSlime;
-
-        toxicSlime.protect += amountOfProtectStack;
-
+        caster.protect += keywordProtect;
         caster.tension += keywordTension;
     }
 

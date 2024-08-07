@@ -30,7 +30,7 @@ public class FightManager : MonoBehaviour
 
     void Awake()
     {
-        // 싱글톤 구조 보강
+        // 싱글톤 인스턴스 설정
         if (fightManager != null && fightManager != this)
         {
             Destroy(this.gameObject);
@@ -330,6 +330,14 @@ public class FightManager : MonoBehaviour
         monsterList.Add(monster);
         RePositionMonsters();
     }
+
+    // 데이터 값 획득 변수
+    #region
+    public int getPlayerDamaged()
+    {
+        return player.damage;
+    }
+    #endregion
 }
 
 

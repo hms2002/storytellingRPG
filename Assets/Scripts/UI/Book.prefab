@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1977492269481120988}
   - component: {fileID: 2473739514444461473}
   - component: {fileID: 8186246336372768624}
-  - component: {fileID: 8368427962897728260}
+  - component: {fileID: 7581883951533863366}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8368427962897728260
+--- !u!114 &7581883951533863366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,6 +116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8783971561002773909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb998c5f18a1014ab6cd885c20217f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a300c88175796348a7b25e8cce1dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookmarks:
+  - {fileID: 0}
+  - {fileID: 0}
+  originalSupMainDeckUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  originalDeck: {fileID: 0}

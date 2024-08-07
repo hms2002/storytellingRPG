@@ -178,5 +178,6 @@ public class RewardManager : MonoBehaviour
         foreach (GameObject g in btnList)
             Destroy(g);
         btnList.Clear();
+        GameManager.instance.ReturnMap();
     }
 }

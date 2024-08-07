@@ -38,6 +38,7 @@ public class Hand : MonoBehaviour
             supportHand.Add(Instantiate(supKeywordPrefab[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform.Find("SelectedKeywordPivot")));     
         }
         KeywordUIMovement.instance.StretchKeywords(supportHand);
+        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
     }
 
     /// <summary>
@@ -52,6 +53,7 @@ public class Hand : MonoBehaviour
         mainHand.Add(keywordCard);
         }
         KeywordUIMovement.instance.StretchKeywords(mainHand);
+        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
     }
 
     /// <summary>

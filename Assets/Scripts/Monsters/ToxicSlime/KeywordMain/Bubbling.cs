@@ -4,30 +4,22 @@ using UnityEngine;
 
 public class Bubbling : KeywordMain
 {
-    ToxicSlime toxicSlime;
-
-    [Header("부여되는 중독 스택의 양")]
-    [SerializeField] private const int _amountOfAddictionStack = 1;
-    public int amountOfAddictionStack { get { return _amountOfAddictionStack; } }
-
-
     private void Awake()
     {
         keywordName = "보글거리기";
         SetKeywordColor(B);
         keywordDamage = 2;
         keywordTension = 5;
+        debuffStack = 1;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        toxicSlime = caster as ToxicSlime;
-
-        toxicSlime.damage = keywordDamage;
+        caster.damage = keywordDamage;
         
         target.charactorState.AddState
-            (StateDatabase.stateDatabase.addiction, amountOfAddictionStack);
+            (StateDatabase.stateDatabase.addiction, debuffStack);
         
         caster.tension += keywordTension;
     }

@@ -165,7 +165,9 @@ public class Actor : MonoBehaviour
             _gold = value; 
         } 
     }
-    /*==================================================================================================================================*/
+    //플레이어의 최근 준 데미지 계산
+    public int beforePlayerDamage = 0;
+
 
 
     private void OnEnable()
@@ -261,7 +263,7 @@ public class Actor : MonoBehaviour
             if (deck.IsSupDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Support덱을 초기화
-                for (int j = 0; j < garbageField.GetSupDeckSize(); j++)
+                for (int j = 0; j < garbageField.SupportDeck.Count; j++)
                 {
                     deck.AddSupKeywordOnDeck(garbageField.DrawSupKeyword());
                 }
@@ -287,7 +289,7 @@ public class Actor : MonoBehaviour
             if (deck.IsMainDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Main덱을 초기화
-                for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
+                for (int j = 0; j < garbageField.MainDeck.Count; j++)
                 {
                     deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
                 }
@@ -377,7 +379,6 @@ public class Actor : MonoBehaviour
         {
             PlayActionEffect(target);
 
-
             target.Damaged(this, damage);
 
             TensionManager tensionManager = TensionManager.tensionManagerUI;
@@ -392,6 +393,8 @@ public class Actor : MonoBehaviour
 
             target.attackCount = false;
         }
+        //이전 공격값 저장
+        beforePlayerDamage = damage;
     }
 
     /// <summary>
@@ -527,7 +530,7 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// return totalDamage
     /// </summary>
-    protected int CalculateProtect(int totalDamage)
+    protected virtual int CalculateProtect(int totalDamage)
     {
         if (protect > 0)
         {
@@ -618,6 +621,7 @@ public class Actor : MonoBehaviour
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
+
     public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
