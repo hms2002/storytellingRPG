@@ -56,8 +56,10 @@ public class Book : MonoBehaviour
     /// </summary>
     public void EnterMap()
     {
-        // gameState가 Map이거나 Battle이면 return
-        if (GameManager.instance.gameState == GameState.Map || GameManager.instance.gameState == GameState.Battle) return;
+        // gameState가 Map, Battle, Shop이면 return
+        if (GameManager.instance.gameState == GameState.Map     ||
+            GameManager.instance.gameState == GameState.Battle  ||
+            GameManager.instance.gameState == GameState.Shop)   return;
 
         // Map 버튼 클릭 시 1초동안 비활성화
         bookmarks[1].GetComponent<Button>().enabled = false;
@@ -82,8 +84,10 @@ public class Book : MonoBehaviour
     /// </summary>
     public void EnterKeywordSetting()
     {
-        // gameState가 KeywordSetting이거나 Battle이면 return
-        if (GameManager.instance.gameState == GameState.KeywordSetting || GameManager.instance.gameState == GameState.Battle) return;
+        // gameState가 KeywordSetting, Battle, Shop이면 return
+        if (GameManager.instance.gameState == GameState.KeywordSetting ||
+            GameManager.instance.gameState == GameState.Battle         ||
+            GameManager.instance.gameState == GameState.Shop)          return;
 
         // KeywordSetting 버튼 클릭 시 1초동안 비활성화
         bookmarks[0].GetComponent<Button>().enabled = false;
@@ -165,6 +169,11 @@ public class Book : MonoBehaviour
 
             // 키워드 버튼 컴포넌트 비활성화
             keywordTemp.GetComponent<Button>().interactable = false;
+
+            // 키워드 각조 조절
+            float randomAngle = Random.Range(-3.0f, 3.0f);
+            keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, randomAngle);
+            keywordTemp.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
 
         // Main 키워드 인스턴스화 및 설정
@@ -178,6 +187,10 @@ public class Book : MonoBehaviour
 
             // 키워드 버튼 컴포넌트 비활성화
             keywordTemp.GetComponent<Button>().interactable = false;
+
+            // 키워드 각조 조절
+            keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            keywordTemp.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
 
         // 오리지널 덱 UI 인스턴스화되었으니 true

@@ -1,7 +1,9 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 상점 시스템 흐름 제어
@@ -11,8 +13,20 @@ public class ShopManager : MonoBehaviour
     [Header("ShopUI 오브젝트")]
     [SerializeField] private Shop shop;
 
+    [Header("플레이어")]
+    [SerializeField] private Actor player;
+
+    [Header("골드 UI")]
+    [SerializeField] private TextMeshProUGUI goldHUD;
+
 
     /*==================================================================================================================================*/
+
+
+    private void Update()
+    {
+        goldHUD.DOText(player.gold + "G", 1.5f);
+    }
 
 
     /// <summary>

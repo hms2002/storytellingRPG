@@ -7,6 +7,15 @@ using UnityEngine.UI;
 
 public class Keyword : MonoBehaviour
 {
+    public enum ButtonType
+    {
+        Use,
+        Purchase
+    }
+
+    protected ButtonType _buttonType = ButtonType.Use;          // 키워드 버튼의 클릭 타입
+    public ButtonType buttonType { get => _buttonType; set => _buttonType = value; }
+
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
     [SerializeField] public TextMeshProUGUI descriptionText;

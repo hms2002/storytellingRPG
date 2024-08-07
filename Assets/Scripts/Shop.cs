@@ -32,11 +32,15 @@ public class Shop : MonoBehaviour
             // 랜덤 발주한 키워드 인스턴스화 및 진열
             TempForSettingKeyword = GameObject.Instantiate(KeywordProductSelection(WhatDeck.SupportDeck), KeywordShelves[0]);
 
-            // 키워드 버튼 비활성화
-            TempForSettingKeyword.GetComponent<Button>().enabled = false;
+            // 키워드 버튼 클릭타입 전환
+            TempForSettingKeyword.GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
 
             // 키워드 스케일 축소
             TempForSettingKeyword.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+
+            //
+            TempForSettingKeyword.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            TempForSettingKeyword.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             // Support 키워드 박스 활성화
             TempForSettingKeyword.transform.Find("SupKeywordBox").gameObject.SetActive(true);
@@ -48,11 +52,15 @@ public class Shop : MonoBehaviour
             // 랜덤 발주한 키워드 인스턴스화 및 진열
             TempForSettingKeyword = GameObject.Instantiate(KeywordProductSelection(WhatDeck.MainDeck), KeywordShelves[1]);
 
-            // 키워드 버튼 비활성화
-            TempForSettingKeyword.GetComponent<Button>().enabled = false;
+            // 키워드 버튼 클릭타입 전환
+            TempForSettingKeyword.GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
 
             // 키워드 스케일 축소
             TempForSettingKeyword.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+
+            //
+            TempForSettingKeyword.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            TempForSettingKeyword.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             // Main 키워드 박스 활성화
             TempForSettingKeyword.transform.Find("MainKeywordBox").gameObject.SetActive(true);

@@ -160,8 +160,10 @@ public class Actor : MonoBehaviour
     //플레이어의 최근 준 데미지 계산
     public int beforePlayerDamage = 0;
 
-    int _money = 0;
-    int money { get { return _money; } set { _money = value; } }
+    private int _gold = 0;
+    public int gold { get { return _gold; } set { _gold = value; } }
+
+
     /*==================================================================================================================================*/
 
 

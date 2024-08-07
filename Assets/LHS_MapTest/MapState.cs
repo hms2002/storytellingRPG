@@ -64,11 +64,6 @@ namespace Map
         public void SaveMapData(string filePath)
         {
             List<NodeData> nodeDataList = new List<NodeData>();
-            MapData mapData = new MapData
-            {
-                nodes = new List<NodeData>(),
-                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck 리스트 저장
-            };
 
             for (int i = 0; i < nodes.Count; i++)
             {
