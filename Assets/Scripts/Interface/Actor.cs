@@ -510,7 +510,7 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// return totalDamage
     /// </summary>
-    protected int CalculateProtect(int totalDamage)
+    protected virtual int CalculateProtect(int totalDamage)
     {
         if (protect > 0)
         {
@@ -601,6 +601,7 @@ public class Actor : MonoBehaviour
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
+
     public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
