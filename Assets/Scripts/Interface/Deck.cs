@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum WhatDeck
+{
+    SupportDeck,
+    MainDeck
+}
+
 /// <summary>
 /// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
 /// </summary>
@@ -136,7 +142,6 @@ public class Deck : MonoBehaviour
         }
     }
 
-    #region Deck 클래스의 Getter, Setter 함수들
     public void AddSupKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordSup>() == null) return;
@@ -151,8 +156,7 @@ public class Deck : MonoBehaviour
         mainDeck.Add(keyword);
     }
 
-    public int GetSupDeckSize() { return supportDeck.Count; }
-    public int GetMainDeckSize() { return mainDeck.Count; }
+    #region Deck 클래스의 Getter, Setter 함수들
 
     public void DisCardByTextSource(TextMeshProUGUI source)
     {

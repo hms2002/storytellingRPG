@@ -5,21 +5,24 @@ using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 전투 시 활성화되는 기본덱, 무덤덱의 정보를 제어
+/// </summary>
 public class DeckInfoPivot : MonoBehaviour
 {
     [Header("덱 정보 피벗")]
-    [SerializeField] private GameObject deckInfoPivot;              // DeckInfoPivot 자신
-    [SerializeField] private GameObject info;                       // Info 오브젝트
+    [SerializeField] private GameObject deckInfoPivot;  // DeckInfoPivot 자신
+    [SerializeField] private GameObject info;           // Info 오브젝트
 
     [SerializeField] private List<GameObject> _deckInfo = new List<GameObject>();    // Actor로부터 덱 정보를 받아와 담는 리스트
     public IReadOnlyList<GameObject> deckInfo => _deckInfo;
 
-    private Image infoBackground;                    // 덱 정보 피벗 UI의 뒷배경
+    private Image infoBackground;                       // 덱 정보 피벗 UI의 뒷배경
 
-    private bool _arePlayerChoosingKeyword = false;  // 플레이어가 키워드를 선택중인지에 대한 여부
+    private bool _arePlayerChoosingKeyword = false;     // 플레이어가 키워드를 선택중인지에 대한 여부
     public  bool arePlayerChoosingKeyword { get => _arePlayerChoosingKeyword; set => _arePlayerChoosingKeyword = value; }
 
-    private bool areKeywordsInstanciate = false;     // 키워드 정보 인스턴트화 여부
+    private bool areKeywordsInstanciate = false;        // 키워드 정보 인스턴트화 여부
 
     //=============================================================================================================
 
@@ -35,8 +38,10 @@ public class DeckInfoPivot : MonoBehaviour
     /// <param name="deckPrefabList">덱 프리팹 리스트</param>
     public void RecieveDeckInfo(IReadOnlyList<GameObject> deckPrefabList)
     {
+        // 받아온 덱 프리팹 리스트의 길이만큼 반복
         for (int i = 0; i < deckPrefabList.Count; i++)
         {
+            // deckInfo 리스트에 프리팹 추가
             _deckInfo.Add(deckPrefabList[i]);
         }
     }
@@ -49,14 +54,8 @@ public class DeckInfoPivot : MonoBehaviour
         // 키워드 고르는 중이 아니라면
         if (!arePlayerChoosingKeyword)
         {
-            // 버튼 컴포넌트 비활성화
-            GetComponent<Button>().enabled = false;
-            
-            // 0.3초 뒤 버튼 컴포넌트 활성화
-            DOVirtual.DelayedCall(0.3f, () => GetComponent<Button>().enabled = true);
-
-            // 
-            transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+            // 버튼 클릭불가 연출 실행
+            ButtonClicklessFeedback();
 
             return;
         }
@@ -105,15 +104,27 @@ public class DeckInfoPivot : MonoBehaviour
             // i번째 키워드 인스턴스화
             keywordTemp = Instantiate(_deckInfo[i], info.transform);
 
-            // 키워드 Textbox 오브젝트 활성화
-            //keywordTemp.transform.Find("Textbox").gameObject.SetActive(true);             * Textbox 오브젝트 추후 적용 예정
-
             // 키워드 버튼 컴포넌트의 상호작용 비활성화
             keywordTemp.GetComponent<Button>().interactable = false;
         }
 
         // 키워드 인스턴스화 여부 true 설정
         areKeywordsInstanciate = true;
+    }
+
+    /// <summary>
+    /// 버튼이 비활성화 상태일 때 횡반복이동 연출을 보여준다.
+    /// </summary>
+    private void ButtonClicklessFeedback()
+    {
+        // 버튼 컴포넌트 비활성화
+        GetComponent<Button>().enabled = false;
+
+        // 0.3초 뒤 버튼 컴포넌트 활성화
+        DOVirtual.DelayedCall(0.3f, () => GetComponent<Button>().enabled = true);
+
+        // 좌우 횡이동 반복 연출 표현
+        transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
     }
 
     /// <summary>

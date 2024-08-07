@@ -34,7 +34,10 @@ namespace Map
         {
             base.SpawnMap();
             MapStateSetting();
-            SaveMapData(Application.persistentDataPath + "/mapData.json"); // 맵 생성 후 저장
+            
+            // 맵 생성 후 저장
+            SaveMapData(Application.persistentDataPath + "/mapData.json");
+
             //맵에서 플레이어 위치 저장파일 삭제 
             if (File.Exists(Application.persistentDataPath + "/playerData.json"))
             {
@@ -61,6 +64,11 @@ namespace Map
         public void SaveMapData(string filePath)
         {
             List<NodeData> nodeDataList = new List<NodeData>();
+            MapData mapData = new MapData
+            {
+                nodes = new List<NodeData>(),
+                nodesEndLineCheck = new List<int>(nodesEndLineCheck) // nodesEndLineCheck 리스트 저장
+            };
 
             for (int i = 0; i < nodes.Count; i++)
             {
@@ -158,31 +166,6 @@ namespace Map
             PlayerData playerData = new PlayerData(playerMark.GetComponent<RectTransform>().anchoredPosition);
             string json = JsonUtility.ToJson(playerData);
             File.WriteAllText(filePath, json);
-        }
-
-        //맵 켜기/끄기
-        public void OnOffMap()
-        {
-            if (mapObj.activeSelf)
-            {
-                CloseMap();
-            }
-            else
-            {
-                OpenMap();
-            }
-        }
-
-        //맵 켜기
-        public void OpenMap()
-        {
-            mapObj.SetActive(true);
-        }
-
-        //맵 끄기
-        public void CloseMap()
-        {
-            mapObj.SetActive(false);
         }
     }
 }

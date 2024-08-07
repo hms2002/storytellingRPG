@@ -243,7 +243,7 @@ public class Actor : MonoBehaviour
             if (deck.IsSupDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Support덱을 초기화
-                for (int j = 0; j < garbageField.GetSupDeckSize(); j++)
+                for (int j = 0; j < garbageField.SupportDeck.Count; j++)
                 {
                     deck.AddSupKeywordOnDeck(garbageField.DrawSupKeyword());
                 }
@@ -269,7 +269,7 @@ public class Actor : MonoBehaviour
             if (deck.IsMainDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Main덱을 초기화
-                for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
+                for (int j = 0; j < garbageField.MainDeck.Count; j++)
                 {
                     deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
                 }

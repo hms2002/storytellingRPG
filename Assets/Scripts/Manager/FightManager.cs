@@ -30,7 +30,7 @@ public class FightManager : MonoBehaviour
 
     void Awake()
     {
-        // 싱글톤 구조 보강
+        // 싱글톤 인스턴스 설정
         if (fightManager != null && fightManager != this)
         {
             Destroy(this.gameObject);
