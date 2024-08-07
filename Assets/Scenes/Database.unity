@@ -1304,7 +1304,10 @@ MonoBehaviour:
   audioManager: {fileID: 1484597315}
   tensionManager: {fileID: 1819022959}
   rewardManager: {fileID: 1281994447}
+  shopManager: {fileID: 0}
   cursorImg: {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
+  _allSupKeywordsForPlayer: []
+  _allMainKeywordsForPlayer: []
 --- !u!4 &459085383
 Transform:
   m_ObjectHideFlags: 0
@@ -2012,11 +2015,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
---- !u!95 &633634801 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8186246336372768624, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
-  m_PrefabInstance: {fileID: 633634800}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &633634802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1977492269481120988, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
@@ -2723,21 +2721,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapBackground: []
-  bookmarks:
-  - {fileID: 518871197}
-  - {fileID: 1525738076}
   keywordSettingWindow: {fileID: 1293148404}
-  originalSupMainDeckUI:
-  - {fileID: 144576647}
-  - {fileID: 1326129149}
   combatFunctionAndUI:
   - {fileID: 1917247945}
   - {fileID: 791535012}
   - {fileID: 1991132846}
   combatKeywordUI: {fileID: 1646954387}
-  originalDeck: {fileID: 1747265017}
   combatBackground: {fileID: 1412359712}
-  bookAnimator: {fileID: 633634801}
+  ShopUI: {fileID: 0}
   theEndIcon: {fileID: 0}
 --- !u!1 &823528666
 GameObject:
@@ -5289,17 +5280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c170706a4245a134086ec5108c15c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1747265017 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-  m_PrefabInstance: {fileID: 1747265015}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5267e1f5782226a4fa55529823013ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1785841550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5908,7 +5888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
+  - {fileID: 682207150685018480, guid: 6dd75d04ea63de541a37cab53257b810, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:
@@ -6111,6 +6091,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688349539}
     m_Modifications:
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: thief
+      value: 
+      objectReference: {fileID: 11400000, guid: e6adee4eb1e0a7e4999f6d73dab86db6, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: evasion
+      value: 
+      objectReference: {fileID: 11400000, guid: ccafa3453750de14f9a381bb30454ec0, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: secession
+      value: 
+      objectReference: {fileID: 11400000, guid: 11125423ffdc2cc46bfcdb21229b88c4, type: 2}
     - target: {fileID: 6266717122396702505, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
       propertyPath: m_Name
       value: StateDatabase
