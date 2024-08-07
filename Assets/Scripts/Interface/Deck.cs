@@ -12,11 +12,6 @@ public enum WhatDeck
 /// <summary>
 /// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
 /// </summary>
-public enum WhatDeck
-{
-    SupportDeck,
-    MainDeck
-}
 
 public class Deck : MonoBehaviour
 {
@@ -178,18 +173,19 @@ public class Deck : MonoBehaviour
 
         mainDeck.Add(keyword);
     }
+    #endregion
 
     #region Deck 클래스의 Getter, Setter 함수들
 
     public void DisCardByTextSource(TextMeshProUGUI source)
     {
-        foreach(GameObject i in mainDeck)
+        foreach (GameObject i in mainDeck)
         {
             if (i.GetComponent<Keyword>().nameText.text == source.text)
             {
                 mainDeck.Remove(i);
                 break;
-            } 
+            }
         }
         foreach (GameObject i in supportDeck)
         {
@@ -201,4 +197,4 @@ public class Deck : MonoBehaviour
         }
     }
     #endregion
-}
+} 
