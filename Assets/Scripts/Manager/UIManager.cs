@@ -110,6 +110,6 @@ public class UIManager : MonoBehaviour
     /// <param name="enableOrDisable">상점UI SetActive() 여부</param>
     public void ActiveShopUI(bool enableOrDisable)
     {
-
+        ShopUI.SetActive(enableOrDisable);
     }
 };

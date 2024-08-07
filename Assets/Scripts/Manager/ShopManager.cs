@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class ShopManager : MonoBehaviour
 {
+    [Header("ShopUI 오브젝트")]
+    [SerializeField] private Shop shop;
 
 
     /*==================================================================================================================================*/
@@ -25,12 +27,15 @@ public class ShopManager : MonoBehaviour
         UIManager.instance.ActiveMapUI(false);
 
         // 페이지 넘기기 애니메이션
-        Book.instance.bookAnimator.SetTrigger("turnPageRight");
+        Book.instance.bookAnimator.SetTrigger("turnPageToRight");
 
         // 상점 UI 활성화
         DOVirtual.DelayedCall(Book.instance.UIActiveDelay, () => UIManager.instance.ActiveShopUI(true));
 
-        // 
+        // 키워드 발주 및 진열
+        shop.KeywordProductsDisplay();
+
+        // 유물 발주 및 진열
 
     }
 }

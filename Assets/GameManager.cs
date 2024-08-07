@@ -88,6 +88,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void EnterShop()
     {
+        // 게임 상태를 Shop으로 전환
+        gameState = GameState.Shop;
+
         shopManager.EnterShop();
     }
 }

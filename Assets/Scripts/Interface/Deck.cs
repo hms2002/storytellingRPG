@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum WhatDeck
+{
+    SupportDeck,
+    MainDeck
+}
+
 /// <summary>
 /// 키워드들을 담는 기본덱, 버려진 키워드들을 담는 무덤덱 역할 수행
 /// </summary>
