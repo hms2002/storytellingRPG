@@ -84,6 +84,7 @@ public class Monster : Actor
     {
         stateUIController.DestroySelf();
         charactorState.DestroySelf();
+        RewardManager.instance.rewardGold += gold;
         Destroy(gameObject);
     }
 }

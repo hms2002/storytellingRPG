@@ -100,7 +100,7 @@ public enum StateType
     /// <summary>
     /// 회피(공격 50퍼로 회피)
     /// </summary>
-    Evasion,
+    evasion,
     /// <summary>
     /// 상태 목록 갯수
     /// </summary>
@@ -283,6 +283,15 @@ public class CharactorState
             case StateType.tentacleCondolidation:
                 AddState(stateDB.tentacleCondolidation, val);
                 break;
+            case StateType.secession:
+                AddState(stateDB.secession, val);
+                break;
+            case StateType.evasion:
+                AddState(stateDB.evasion, val);
+                break;
+            case StateType.thief:
+                AddState(stateDB.thief, val);
+                break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
                 break;
@@ -381,6 +390,18 @@ public class CharactorState
         int oreStack = allStateList[(int)StateType.ore].stack;
         if (oreStack > actor.protect)
             actor.protect = oreStack;
+    }
+
+    internal void ReductionOnBeforeAttack()
+    {
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stack <= 0
+                || i.stateData.reductionTiming != ReductionTiming.OnBeforeAttack)
+                continue;
+            i.Reduction();
+            stateUIController.UpdateUI(i);
+        }
     }
 
     public void ReductionOnStartTurn()

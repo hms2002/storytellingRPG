@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
   m_Name: TentacleCondolidation
   m_EditorClassIdentifier: 
-  type: 19
+  type: 20
   reductionType: 2
   reductionTiming: 3
   stateProperty: 0

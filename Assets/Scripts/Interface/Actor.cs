@@ -157,8 +157,14 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-    int _money = 0;
-    int money { get { return _money; } set { _money = value; } }
+    int _gold = 0;
+    public int gold {
+        get { return _gold; } 
+        set {
+            if (value < 0) value = 0;
+            _gold = value; 
+        } 
+    }
     /*==================================================================================================================================*/
 
 
@@ -201,6 +207,11 @@ public class Actor : MonoBehaviour
         repeatStack = 1;
     }
 
+    public virtual void BeforeFightStart(Actor target)
+    {
+
+    }
+
     public virtual void BeforeAction()
     {
         // 씬에 존재하는 DeckPivot 태그의 오브젝트 찾기
@@ -225,6 +236,16 @@ public class Actor : MonoBehaviour
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
         charactorState.StartTurnEffect(this);
+        if(charactorState.allStateList[(int)StateType.callingOfMommyDragon] != null
+            && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
+        if (charactorState.allStateList[(int)StateType.secession] != null
+    && charactorState.GetStateStack(StateType.secession) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
         #endregion
     }
 
@@ -341,7 +362,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
-        
+        charactorState.ReductionOnBeforeAttack();
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
@@ -601,6 +622,15 @@ public class Actor : MonoBehaviour
     {
         if (_damage <= 0) return;
 
+        if (charactorState.GetStateStack(StateType.evasion) > 0)
+        {
+            int success = UnityEngine.Random.Range(0, 2);
+            if (success == 0)
+            {
+                Debug.Log("회피 성공~!!");
+                return;
+            }
+        }
         int totalDamage = _damage;
 
         if(attacker == this)

@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         // 승리 UI
         // 이후 보상 UI
-        rewardManager.ShowRewards();
+        rewardManager.ShowRewards_Keyword();
     }
 
     /// <summary>

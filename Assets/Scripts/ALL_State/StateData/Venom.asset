@@ -17,7 +17,7 @@ MonoBehaviour:
   reductionTiming: 0
   stateProperty: 1
   stateImage: {fileID: 21300000, guid: 4c66f1c01c905e849a1bd89faa49320e, type: 3}
-  soundName: "\uBD88"
+  soundName: "\uB9F9\uB3C5"
   MAX_STACK: 0
   damagePerStack: 2
   tentionPerStack: 0

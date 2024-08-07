@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6266717122396702505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8914808009900731035}
+  - component: {fileID: 1603106312686666835}
+  m_Layer: 0
+  m_Name: StateDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8914808009900731035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266717122396702505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603106312686666835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266717122396702505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b4cc6ca22b76b42b81500c83466b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassPragment: {fileID: 11400000, guid: 1ad234d72a90ba549b0ff18ce899741a, type: 2}
+  treasureOfDragon: {fileID: 11400000, guid: c179c69345b55b141800faaa844805d9, type: 2}
+  callingOfMommyDragon: {fileID: 11400000, guid: 77843e25dc2d7874a8c3447635aa8025, type: 2}
+  stonePiece: {fileID: 11400000, guid: c2681db2aadc80640a21147d061ba076, type: 2}
+  multiplication: {fileID: 11400000, guid: edd2275c52b5ee6438a8f1e08ff0d1ba, type: 2}
+  ore: {fileID: 11400000, guid: deea6ba8c584d8c43970ae796b120086, type: 2}
+  reinforce: {fileID: 11400000, guid: 8e7f772d6c2779c4db5367e85012ebce, type: 2}
+  burn: {fileID: 11400000, guid: 2a7a51b147b6a144a9613f863b40a552, type: 2}
+  venom: {fileID: 11400000, guid: 5754c9a49b0b313439a1b31131d77b57, type: 2}
+  reduction: {fileID: 11400000, guid: 3bd9f3d5d89b10d4fbe6cb20cdd58282, type: 2}
+  weaken: {fileID: 11400000, guid: feaf2d83129652f4496a9121e27e7f33, type: 2}
+  fear: {fileID: 11400000, guid: ba71720fc9e35c54e9650eeb5f1afd9b, type: 2}
+  addiction: {fileID: 11400000, guid: f8f043a07283682479bb60088e6f470c, type: 2}
+  pike: {fileID: 11400000, guid: 78687da5ec547324e9ff189a9d5a1985, type: 2}
+  oneTimeProtect: {fileID: 11400000, guid: 5067df9426906a64da2535c8d099779f, type: 2}
+  oneTimeReinforce: {fileID: 11400000, guid: 6ac2c4c6300a61842b947171b2b25ec3, type: 2}
+  oneTimeReduction: {fileID: 11400000, guid: 5d4ec62e73955b04da274777fa9c86d7, type: 2}
+  nextTurnDamage: {fileID: 11400000, guid: 7f2a619ac01b0b84d99f3183a1cad9fd, type: 2}
+  tentacleAttack: {fileID: 11400000, guid: da3d0a74a42dd504f89eae7eb2a9d061, type: 2}
+  tentacleCondolidation: {fileID: 11400000, guid: f03ddbf8b736d804fabd0d697df45c4b, type: 2}

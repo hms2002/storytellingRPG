@@ -16,6 +16,7 @@ public enum ReductionTiming
     OnDamaged,
     OnAttack,
     OnMyTurn,
+    OnBeforeAttack,
     None
 }
 public enum StateProperty

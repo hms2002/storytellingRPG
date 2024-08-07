@@ -112,7 +112,7 @@ public class Keyword : MonoBehaviour
 
     protected void Init()
     {
-        descriptionText = FindInfoText("InfoText");
+        descriptionText = transform.Find("Info").GetComponentInChildren<TextMeshProUGUI>();
         nameText = FindInfoText("Text (TMP)");
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;
