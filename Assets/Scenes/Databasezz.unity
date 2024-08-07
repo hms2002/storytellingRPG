@@ -5635,7 +5635,7 @@ MonoBehaviour:
   selectedPivot: {fileID: 1575086430}
   selectedPivotOriginPos: {x: 0, y: 0}
   centerPos: {x: 975, y: 195}
-  padding: 400
+  padding: 420
 --- !u!114 &1623211976
 MonoBehaviour:
   m_ObjectHideFlags: 0
