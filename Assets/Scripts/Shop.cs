@@ -13,7 +13,8 @@ public class Shop : MonoBehaviour
     [Header("키워드 상품 진열대")]
     [SerializeField] private List<Transform> KeywordShelves;   // Support, Main 키워드 상품 진열대
 
-    [SerializeField] private int orderVolume = 6;               // 키워드 상품 발주량
+    private List<GameObject> SupKeywordProducts;               // Support 키워드 상품 리스트
+    private List<GameObject> MainKeywordProducts;             // Main 키워드 상품 리스트
 
 
     /*==================================================================================================================================*/
@@ -24,46 +25,44 @@ public class Shop : MonoBehaviour
     /// </summary>
     public void KeywordProductsDisplay()
     {
-        GameObject TempForSettingKeyword = new GameObject();  // 키워드 세팅용 임시 변수
-
         // Support 키워드 상품 발주량만큼 반복
-        for (int i = 0; i < orderVolume; i++)
+        for (int i = 0; i < ShopManager.instance.orderVolume; i++)
         {
             // 랜덤 발주한 키워드 인스턴스화 및 진열
-            TempForSettingKeyword = GameObject.Instantiate(KeywordProductSelection(WhatDeck.SupportDeck), KeywordShelves[0]);
+            SupKeywordProducts[i] = GameObject.Instantiate(KeywordProductSelection(WhatDeck.SupportDeck), KeywordShelves[0]);
 
             // 키워드 버튼 클릭타입 전환
-            TempForSettingKeyword.GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
+            SupKeywordProducts[i].GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
 
             // 키워드 스케일 축소
-            TempForSettingKeyword.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            SupKeywordProducts[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-            //
-            TempForSettingKeyword.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
-            TempForSettingKeyword.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            // 키워드 각조 조절
+            SupKeywordProducts[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            SupKeywordProducts[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             // Support 키워드 박스 활성화
-            TempForSettingKeyword.transform.Find("SupKeywordBox").gameObject.SetActive(true);
+            SupKeywordProducts[i].transform.Find("SupKeywordBox").gameObject.SetActive(true);
         }
 
         // Main 키워드 상품 발주량만큼 반복
-        for (int i = 0; i < orderVolume; i++)
+        for (int i = 0; i < ShopManager.instance.orderVolume; i++)
         {
             // 랜덤 발주한 키워드 인스턴스화 및 진열
-            TempForSettingKeyword = GameObject.Instantiate(KeywordProductSelection(WhatDeck.MainDeck), KeywordShelves[1]);
+            MainKeywordProducts[i] = GameObject.Instantiate(KeywordProductSelection(WhatDeck.MainDeck), KeywordShelves[1]);
 
             // 키워드 버튼 클릭타입 전환
-            TempForSettingKeyword.GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
+            MainKeywordProducts[i].GetComponent<Keyword>().buttonType = Keyword.ButtonType.Purchase;
 
             // 키워드 스케일 축소
-            TempForSettingKeyword.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            MainKeywordProducts[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-            //
-            TempForSettingKeyword.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
-            TempForSettingKeyword.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            // 키워드 각조 조절
+            MainKeywordProducts[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            MainKeywordProducts[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
 
             // Main 키워드 박스 활성화
-            TempForSettingKeyword.transform.Find("MainKeywordBox").gameObject.SetActive(true);
+            MainKeywordProducts[i].transform.Find("MainKeywordBox").gameObject.SetActive(true);
         }
     }
 
@@ -101,5 +100,31 @@ public class Shop : MonoBehaviour
         }
 
         return keywordToReturn;
+    }
+
+    /// <summary>
+    /// 진열되어 있던 키워드 상품들을 폐기처분합니다.
+    /// </summary>
+    public void DisposalKeywordProducts()
+    {
+        //
+        foreach (GameObject keywordProduct in SupKeywordProducts)
+        {
+            //
+            Destroy(keywordProduct);
+        }
+
+        //
+        SupKeywordProducts.Clear();
+
+        //
+        foreach (GameObject keywordProduct in MainKeywordProducts)
+        {
+            //
+            Destroy(keywordProduct);
+        }
+
+        //
+        MainKeywordProducts.Clear();
     }
 }

@@ -55,7 +55,7 @@ public class DeckInfoPivot : MonoBehaviour
         if (!arePlayerChoosingKeyword)
         {
             // 버튼 클릭불가 연출 실행
-            ButtonClicklessFeedback();
+            UIManager.instance.ButtonClicklessFeedback(this.gameObject);
 
             return;
         }
@@ -111,21 +111,7 @@ public class DeckInfoPivot : MonoBehaviour
         // 키워드 인스턴스화 여부 true 설정
         areKeywordsInstanciate = true;
     }
-
-    /// <summary>
-    /// 버튼이 비활성화 상태일 때 횡반복이동 연출을 보여준다.
-    /// </summary>
-    private void ButtonClicklessFeedback()
-    {
-        // 버튼 컴포넌트 비활성화
-        GetComponent<Button>().enabled = false;
-
-        // 0.3초 뒤 버튼 컴포넌트 활성화
-        DOVirtual.DelayedCall(0.3f, () => GetComponent<Button>().enabled = true);
-
-        // 좌우 횡이동 반복 연출 표현
-        transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
-    }
+    
 
     /// <summary>
     /// 턴이 종료되면 deckInfo 리스트를 초기화한다.

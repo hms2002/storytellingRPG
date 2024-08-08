@@ -30,7 +30,7 @@ public class Actor : MonoBehaviour
     }
 
     #region Actor의 키워드 관련 변수
-    private   Deck OriginalDeck;
+    private Deck OriginalDeck;
     protected Deck deck;                             // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     protected Hand hand;                             // Actor의 손패 (Support, Main 키워드)
     protected Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
@@ -86,7 +86,7 @@ public class Actor : MonoBehaviour
     {
         get { return _hp; }
         set {
-            if(charactorState != null)
+            if (charactorState != null)
                 if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
                     charactorState.ReductionByValue(StateType.ore, _hp - value);
 
@@ -99,7 +99,7 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-            if(stateUIController != null)
+            if (stateUIController != null)
                 stateUIController.UpdateHpUI(_hp, MAX_HP);
         }
     }
@@ -123,7 +123,7 @@ public class Actor : MonoBehaviour
     public int damage
     {
         get { return _damage; }
-        set 
+        set
         { _damage = value;
             if (_damage < 0)
             {
@@ -142,7 +142,7 @@ public class Actor : MonoBehaviour
     {
         get { return _additionalDamage; }
         set { _additionalDamage = value;
-            charactorState.AddState(StateDatabase.stateDatabase.reinforce, 
+            charactorState.AddState(StateDatabase.stateDatabase.reinforce,
                 _additionalDamage);
         }
     }
@@ -160,7 +160,7 @@ public class Actor : MonoBehaviour
     //플레이어의 최근 준 데미지 계산
     public int beforePlayerDamage = 0;
 
-    private int _gold = 0;
+    [SerializeField] private int _gold = 0;
     public int gold { get { return _gold; } set { _gold = value; } }
 
 

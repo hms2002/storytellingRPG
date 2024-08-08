@@ -3,6 +3,7 @@ using Map;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,6 +53,45 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    /// <summary>
+    /// 버튼 클릭 불가 연출을 재생한다.
+    /// </summary>
+    /// <param name="gameObject">적용시킬 오브젝트를 넘겨준다.</param>
+    public void ButtonClicklessFeedback(GameObject gameObject)
+    {
+        // 버튼 컴포넌트 비활성화
+        gameObject.GetComponent<Button>().enabled = false;
+
+        // 0.3초 뒤 버튼 컴포넌트 활성화
+        DOVirtual.DelayedCall(0.3f, () => gameObject.GetComponent<Button>().enabled = true);
+
+        // 좌우 횡이동 반복 연출 표현
+        gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+    }
+
+    /// <summary>
+    /// 키워드를 보이지 않게 만든다.
+    /// </summary>
+    /// <param name="keyword">안보이게 만들 키워드를 넘겨준다.</param>
+    public void MakeKeywordInvisible(GameObject keyword)
+    {
+        // 키워드의 버튼 컴포넌트 비활성화
+        keyword.GetComponent<Button>().enabled = false;
+
+        // 키워드의 이미지 컴포넌트 비활성화
+        keyword.GetComponent<Image>().enabled = false;
+
+        // 키워드 하위 오브젝트 전체 비활성화
+        for (int i = 0; i < keyword.transform.childCount; i++)
+        {
+            keyword.transform.GetChild(i).gameObject.SetActive(false);
+        }
+/*
+        foreach (GameObject childObject in keyword.transform)
+        {
+            childObject.SetActive(false);
+        }*/
+    }
 
     // UI Active 함수들 ================================
 
