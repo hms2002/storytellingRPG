@@ -36,6 +36,15 @@ public class UIManager : MonoBehaviour
     private bool _isBattleOver = false;                             // 전투 종료 여부
     public bool isBattleOver { get => _isBattleOver; set => _isBattleOver = value; }
 
+    #region 데미지 텍스트 띄우기
+    [Header("데미지 텍스트")]
+    public GameObject damageTextPrefab;
+    public GameObject parentCanvas;
+    FloatingDamageInfo[] damageTextArr = new FloatingDamageInfo[20];
+    int idxCnt = 0;
+    float delay = 0.1f;
+    float textShowTime = 0;
+    #endregion
 
     /*==================================================================================================================================*/
 
@@ -49,6 +58,16 @@ public class UIManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        if(damageTextPrefab != null && parentCanvas != null)
+        {
+            for(int i = 0; i < damageTextArr.Length; i++)
+            {
+                damageTextArr[i] = Instantiate(damageTextPrefab, parentCanvas.transform).GetComponent<FloatingDamageInfo>();
+                damageTextArr[i].gameObject.SetActive(false);
+            }
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -111,5 +130,51 @@ public class UIManager : MonoBehaviour
     public void ActiveShopUI(bool enableOrDisable)
     {
         ShopUI.SetActive(enableOrDisable);
+    }
+
+    public void ActiveDamageText(Vector3 pos, int damage, Color color)
+    {
+        if (damageTextPrefab == null && parentCanvas == null)
+        {
+            Debug.LogError("피해 텍스트 프리펩 안 넣음");
+            return;
+        }
+        //damageTextArr[idxCnt].gameObject.SetActive(true);
+        damageTextArr[idxCnt].transform.position = pos;
+        damageTextArr[idxCnt].Init(damage, color);
+        //damageTextArr[idxCnt].gameObject.SetActive(false);
+        ++idxCnt;
+        idxCnt = idxCnt % damageTextArr.Length;
+        if(!isRunDlayShowDamage)
+            StartCoroutine("DlayShowDamage");
+    }
+    bool isRunDlayShowDamage = false;
+    IEnumerator DlayShowDamage()
+    {
+        isRunDlayShowDamage = true;
+        bool find = true;
+        while(find)
+        {
+            while (textShowTime + delay > Time.time)
+                yield return null;
+
+            find = false;
+
+            for (int i = 0; i < damageTextArr.Length; i++)
+            {
+                if (damageTextArr[i].isUsing == false) continue;
+                if (damageTextArr[i].gameObject.activeSelf == true) continue;
+                damageTextArr[i].gameObject.SetActive(true);
+                Debug.Log(Time.time);
+                textShowTime = Time.time;
+
+                find = true;
+                break;
+            }
+
+            
+        }
+        isRunDlayShowDamage = false;
+
     }
 };

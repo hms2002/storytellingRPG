@@ -599,7 +599,7 @@ public class Actor : MonoBehaviour
     protected void DamagedSelf(int totalDamage)
     {
         totalDamage = CalculateAllProtection(totalDamage);
-
+        UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.black);
         hp -= totalDamage;
     }
     protected virtual void DamagedOther(int totalDamage, Actor attacker)
@@ -612,6 +612,8 @@ public class Actor : MonoBehaviour
 
         // 보호막 관련 모든 연산을 실행
         totalDamage = CalculateAllProtection(totalDamage);
+        
+        UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
         hp -= totalDamage;
 
