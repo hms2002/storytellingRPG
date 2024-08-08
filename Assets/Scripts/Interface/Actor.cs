@@ -157,12 +157,17 @@ public class Actor : MonoBehaviour
 
     #endregion
 
+    int _gold = 0;
+    public int gold {
+        get { return _gold; } 
+        set {
+            if (value < 0) value = 0;
+            _gold = value; 
+        } 
+    }
     //플레이어의 최근 준 데미지 계산
     public int beforePlayerDamage = 0;
 
-    int _money = 0;
-    int money { get { return _money; } set { _money = value; } }
-    /*==================================================================================================================================*/
 
 
     private void OnEnable()
@@ -204,6 +209,11 @@ public class Actor : MonoBehaviour
         repeatStack = 1;
     }
 
+    public virtual void BeforeFightStart(Actor target)
+    {
+
+    }
+
     public virtual void BeforeAction()
     {
         // 씬에 존재하는 DeckPivot 태그의 오브젝트 찾기
@@ -228,6 +238,16 @@ public class Actor : MonoBehaviour
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
         charactorState.StartTurnEffect(this);
+        if(charactorState.allStateList[(int)StateType.callingOfMommyDragon] != null
+            && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
+        if (charactorState.allStateList[(int)StateType.secession] != null
+    && charactorState.GetStateStack(StateType.secession) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
         #endregion
     }
 
@@ -243,7 +263,7 @@ public class Actor : MonoBehaviour
             if (deck.IsSupDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Support덱을 초기화
-                for (int j = 0; j < garbageField.GetSupDeckSize(); j++)
+                for (int j = 0; j < garbageField.SupportDeck.Count; j++)
                 {
                     deck.AddSupKeywordOnDeck(garbageField.DrawSupKeyword());
                 }
@@ -269,7 +289,7 @@ public class Actor : MonoBehaviour
             if (deck.IsMainDeckEmpty())
             {
                 // 무덤덱에서 카드를 꺼내와 Main덱을 초기화
-                for (int j = 0; j < garbageField.GetMainDeckSize(); j++)
+                for (int j = 0; j < garbageField.MainDeck.Count; j++)
                 {
                     deck.AddMainKeywordOnDeck(garbageField.DrawMainKeyword());
                 }
@@ -344,7 +364,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
-        
+        charactorState.ReductionOnBeforeAttack();
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
 
@@ -510,7 +530,7 @@ public class Actor : MonoBehaviour
     /// <summary>
     /// return totalDamage
     /// </summary>
-    protected int CalculateProtect(int totalDamage)
+    protected virtual int CalculateProtect(int totalDamage)
     {
         if (protect > 0)
         {
@@ -579,7 +599,7 @@ public class Actor : MonoBehaviour
     protected void DamagedSelf(int totalDamage)
     {
         totalDamage = CalculateAllProtection(totalDamage);
-
+        UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.black);
         hp -= totalDamage;
     }
     protected virtual void DamagedOther(int totalDamage, Actor attacker)
@@ -592,6 +612,8 @@ public class Actor : MonoBehaviour
 
         // 보호막 관련 모든 연산을 실행
         totalDamage = CalculateAllProtection(totalDamage);
+        
+        UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
         hp -= totalDamage;
 
@@ -601,10 +623,20 @@ public class Actor : MonoBehaviour
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
+
     public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
 
+        if (charactorState.GetStateStack(StateType.evasion) > 0)
+        {
+            int success = UnityEngine.Random.Range(0, 2);
+            if (success == 0)
+            {
+                Debug.Log("회피 성공~!!");
+                return;
+            }
+        }
         int totalDamage = _damage;
 
         if(attacker == this)

@@ -20,7 +20,7 @@ public class TrasureDragon : Monster
     {
         charactorState.AddState(StateDatabase.stateDatabase.treasureOfDragon, 200);
         charactorState.AddState(StateDatabase.stateDatabase.callingOfMommyDragon, 5);
-
+        gold = 10;
     }
 
     public override void Action(Actor target)
@@ -40,12 +40,13 @@ public class TrasureDragon : Monster
         if(totalDamage >= dragonTreasure)
         {
             totalDamage -= dragonTreasure;
+            gold += dragonTreasure;
             charactorState.ResetState(StateType.treasureOfDragon);
         }
         else
         {
             charactorState.ReductionByValue(StateType.treasureOfDragon, totalDamage);
-            // 플레이어 돈 주는 코드 넣어야 함.
+            gold += totalDamage;
             totalDamage = 0;
         }    
 
@@ -69,4 +70,5 @@ public class TrasureDragon : Monster
         else
             DamagedOther(totalDamage, attacker);
     }
+
 }

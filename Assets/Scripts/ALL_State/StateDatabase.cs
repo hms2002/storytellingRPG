@@ -25,7 +25,12 @@ public class StateDatabase : MonoBehaviour
     public StateData tentacleAttack;
     public StateData tentacleCondolidation;
     public StateData faint;
-
+    public StateData secession;
+    public StateData evasion;
+    public StateData thief;
+    public StateData selfRepair;
+    public StateData coreOverload;
+    
     public static StateDatabase stateDatabase;
 
     private void OnEnable()

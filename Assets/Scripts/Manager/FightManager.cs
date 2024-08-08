@@ -29,7 +29,7 @@ public class FightManager : MonoBehaviour
 
     void Awake()
     {
-        // 싱글톤 구조 보강
+        // 싱글톤 인스턴스 설정
         if (fightManager != null && fightManager != this)
         {
             Destroy(this.gameObject);
@@ -95,6 +95,11 @@ public class FightManager : MonoBehaviour
         RePositionMonsters();
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
+        foreach (Actor monster in monsterList)
+        {
+            monster.BeforeFightStart(player);
+        }
+
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
     }
@@ -146,6 +151,14 @@ public class FightManager : MonoBehaviour
                 return;
             }
             
+            if (!CheckMonsterSurvive())
+            {
+                // 전투 승리 문구 출력
+                PlayerWin();
+                MonsterTargetter.monsterTargetter.TargetUIOff();
+                return;
+            }
+
             monsterList[preparedActorCount].ShowSupKeywords();
 
             return;
@@ -156,6 +169,7 @@ public class FightManager : MonoBehaviour
             whoPlaying = player;
 
             player.StartTurn();
+            CheckPlayerSurvive();
             player.ShowSupKeywords();
 
             TextManager.instance.KeywordTextPlay(player);
@@ -262,7 +276,8 @@ public class FightManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
-        CheckPlayerSurvive();
+        if(CheckPlayerSurvive())
+            Flow();
     }
 
     private bool CheckMonsterSurvive()
@@ -285,7 +300,7 @@ public class FightManager : MonoBehaviour
             return true;
     }
 
-    private void CheckPlayerSurvive()
+    private bool CheckPlayerSurvive()
     {
         if (player.hp <= 0 || TensionManager.tensionManagerUI.tension <= 0)
         {
@@ -298,9 +313,10 @@ public class FightManager : MonoBehaviour
             UIManager.instance.ActiveTheEndIcon(true);
 
             // 게임 종료 (씬 전환?)
+            return false ;
         }
         else
-            Flow();
+            return true;
     }
 
     private void PlayerWin()
@@ -308,6 +324,24 @@ public class FightManager : MonoBehaviour
         player.gameObject.SetActive(false);
         TextManager.instance.PrintVictory();
         GameManager.instance.WinFight();
+    }
+
+    public void MonsterFlee(Actor monster)
+    {
+        foreach(Monster m in monsterList)
+        {
+            if (monster != m) continue;
+            preparedActorCount--;
+            monsterList.Remove(m);
+            ((Monster)monster).DestroySelf();
+            break;
+        }
+        if (!CheckMonsterSurvive())
+        {
+            RewardManager.instance.isMonsterFlee = true;
+            // 전투 승리 문구 출력
+            PlayerWin();
+        }
     }
 
     public void AddMonster(Monster monster)

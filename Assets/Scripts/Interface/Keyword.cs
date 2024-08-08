@@ -107,12 +107,12 @@ public class Keyword : MonoBehaviour
         get { return _isOneTimeUse; }
         set { _isOneTimeUse = value; }
     }
-
+    
     #endregion
 
     protected void Init()
     {
-        descriptionText = FindInfoText("InfoText");
+        descriptionText = transform.Find("Info").GetComponentInChildren<TextMeshProUGUI>();
         nameText = FindInfoText("Text (TMP)");
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;

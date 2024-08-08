@@ -104,7 +104,15 @@ public enum StateType
     /// <summary>
     /// 회피(공격 50퍼로 회피)
     /// </summary>
-    Evasion,
+    evasion,
+    /// <summary>
+    /// 자가수복(보석정령)
+    /// </summary>
+    selfRepair,
+    /// <summary>
+    /// 코어과부하(보석정령)
+    /// </summary>
+    coreOverload,
     /// <summary>
     /// 상태 목록 갯수
     /// </summary>
@@ -130,7 +138,7 @@ public class CharactorState
         {
             allStateList[(int)data.type] = new State(data, val);
             Debug.Log(stateUIController);
-            stateUIController.UpdateUI(allStateList[(int)data.type]); 
+            stateUIController.UpdateUI(allStateList[(int)data.type]);
             return;
         }
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
@@ -204,6 +212,20 @@ public class CharactorState
                 break;
             case StateType.faint:
                 AddState(stateDB.faint, val);
+            case StateType.secession:
+                AddState(stateDB.secession, val);
+                break;
+            case StateType.evasion:
+                AddState(stateDB.evasion, val);
+                break;
+            case StateType.thief:
+                AddState(stateDB.thief, val);
+                break;
+            case StateType.selfRepair:
+                AddState(stateDB.selfRepair, val);
+                break;
+            case StateType.coreOverload:
+                AddState(stateDB.coreOverload, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
@@ -314,6 +336,18 @@ public class CharactorState
         int oreStack = allStateList[(int)StateType.ore].stack;
         if (oreStack > actor.protect)
             actor.protect = oreStack;
+    }
+
+    internal void ReductionOnBeforeAttack()
+    {
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stack <= 0
+                || i.stateData.reductionTiming != ReductionTiming.OnBeforeAttack)
+                continue;
+            i.Reduction();
+            stateUIController.UpdateUI(i);
+        }
     }
 
     public void ReductionOnStartTurn()

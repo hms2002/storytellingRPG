@@ -115,24 +115,25 @@ namespace Map
                 case NodeType.NomalEnemy:
                     MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalEnemy);
                     GameManager.instance.EnterFightZone();
-                    MapState.InstanceMap.OnOffMap();
+                    UIManager.instance.ActiveMapUI(false);
                     break;
                 case NodeType.BossEnemy:
                     MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossEnemy);
                     GameManager.instance.EnterFightZone();
-                    MapState.InstanceMap.OnOffMap();
+                    UIManager.instance.ActiveMapUI(false);
                     break;
                 case NodeType.RestSite:
                     break;
                 case NodeType.Shop:
+                    GameManager.instance.EnterShop();
                     break;
                 case NodeType.Mystery:
                     break;
             }
+
                 // 노드 상태 변경 후 플레이어 이동 및 위치 저장
                 MovePlayerToNode();
             }
-
             else
             {
                 Debug.Log("노드가 이동 가능하지 않음: " + nodeStates);
