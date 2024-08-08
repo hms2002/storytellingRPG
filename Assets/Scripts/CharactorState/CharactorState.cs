@@ -212,6 +212,7 @@ public class CharactorState
                 break;
             case StateType.faint:
                 AddState(stateDB.faint, val);
+                break;
             case StateType.secession:
                 AddState(stateDB.secession, val);
                 break;
