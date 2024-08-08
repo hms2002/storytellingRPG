@@ -24,6 +24,7 @@ public class StateDatabase : MonoBehaviour
     public StateData nextTurnDamage;
     public StateData tentacleAttack;
     public StateData tentacleCondolidation;
+    public StateData faint;
 
     public static StateDatabase stateDatabase;
 

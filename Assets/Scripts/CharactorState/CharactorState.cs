@@ -94,6 +94,10 @@ public enum StateType
     /// </summary>
     thief,
     /// <summary>
+    /// 기절 (공격 및 선택 불가)
+    /// </summary>
+    faint,
+    /// <summary>
     /// 이탈(날치기)
     /// </summary>
     secession,
@@ -197,6 +201,9 @@ public class CharactorState
                 break;
             case StateType.tentacleCondolidation:
                 AddState(stateDB.tentacleCondolidation, val);
+                break;
+            case StateType.faint:
+                AddState(stateDB.faint, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");

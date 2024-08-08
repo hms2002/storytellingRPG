@@ -24,7 +24,6 @@ public class FightManager : MonoBehaviour
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
 
-
     /*==================================================================================================================================*/
 
 
@@ -118,8 +117,14 @@ public class FightManager : MonoBehaviour
         if (preparedActorCount == 0)
         {
             player.BeforeAction();
+
             foreach (Actor monster in monsterList)
-                monster.BeforeAction();
+            {
+                if (monster.charactorState.GetStateStack(StateType.faint) == 0)
+                {
+                    monster.BeforeAction();
+                }
+            }
         }
 
         if (!CheckMonsterSurvive())
@@ -130,24 +135,34 @@ public class FightManager : MonoBehaviour
             return;
         }
 
-        // 
         if (preparedActorCount < monsterList.Count)
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
+
+            //기절 상태이상
+            if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
+            {
+                return;
+            }
+            
             monsterList[preparedActorCount].ShowSupKeywords();
+
             return;
         }
+
         else if (preparedActorCount == monsterList.Count)
         {
             whoPlaying = player;
+
             player.StartTurn();
             player.ShowSupKeywords();
 
             TextManager.instance.KeywordTextPlay(player);
-            
+
             return;
         }
+
         else
             preparedActorCount = 0;
 
@@ -208,6 +223,9 @@ public class FightManager : MonoBehaviour
             tempList[i] = monsterList[i];
         foreach (Actor monster in tempList)
         {
+            if (monster.charactorState.GetStateStack(StateType.faint) > 0)
+                continue;
+
             monster.Action(player);
             dir = -3;
             originPos = monster.transform.position;
