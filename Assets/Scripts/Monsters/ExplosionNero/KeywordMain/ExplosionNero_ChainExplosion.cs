@@ -29,12 +29,11 @@ public class ExplosionNero_ChainExplosion : KeywordMain
         caster.tension += keywordTension;
 
         caster.repeatStack *= attackNum;
+
         caster.damage += damage;
         caster.Damaged(caster, selfDamage);
         
         caster.charactorState.AddState(StateDatabase.stateDatabase.faint, faintTime);
-
-
     }
 
     public override void Check(KeywordSup _keywordSup)

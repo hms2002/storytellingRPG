@@ -124,12 +124,7 @@ public class FightManager : MonoBehaviour
             player.BeforeAction();
 
             foreach (Actor monster in monsterList)
-            {
-                if (monster.charactorState.GetStateStack(StateType.faint) == 0)
-                {
-                    monster.BeforeAction();
-                }
-            }
+                monster.BeforeAction();
         }
 
         if (!CheckMonsterSurvive())
@@ -145,11 +140,15 @@ public class FightManager : MonoBehaviour
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
 
+            
             //기절 상태이상
             if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
             {
+                preparedActorCount++;
+                Flow();
                 return;
             }
+            
             
             if (!CheckMonsterSurvive())
             {
@@ -193,6 +192,7 @@ public class FightManager : MonoBehaviour
         const float ACTION_TIME = 0.2f;
         float curTime = 0;
         
+
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
@@ -238,7 +238,10 @@ public class FightManager : MonoBehaviour
         foreach (Actor monster in tempList)
         {
             if (monster.charactorState.GetStateStack(StateType.faint) > 0)
+            {
+                monster.charactorState.ResetState(StateType.faint);
                 continue;
+            }
 
             monster.Action(player);
             dir = -3;

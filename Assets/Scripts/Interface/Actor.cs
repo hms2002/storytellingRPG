@@ -166,9 +166,7 @@ public class Actor : MonoBehaviour
         } 
     }
     //플레이어의 최근 준 데미지 계산
-    public int beforePlayerDamage = 0;
-
-
+    public int beforeDamage = 0;
 
     private void OnEnable()
     {
@@ -380,6 +378,7 @@ public class Actor : MonoBehaviour
             PlayActionEffect(target);
 
             target.Damaged(this, damage);
+            beforeDamage = damage;
 
             TensionManager tensionManager = TensionManager.tensionManagerUI;
             tensionManager.tension += tension;
@@ -393,8 +392,6 @@ public class Actor : MonoBehaviour
 
             target.attackCount = false;
         }
-        //이전 공격값 저장
-        beforePlayerDamage = damage;
     }
 
     /// <summary>
