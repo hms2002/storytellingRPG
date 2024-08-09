@@ -112,22 +112,29 @@ namespace Map
 
             switch(nodeBlueprint.nodeType)
             {
-                case NodeType.NomalEnemy:
-                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalEnemy);
+                case NodeType.NomalMonsterNode:
+                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalMonsterNode);
                     GameManager.instance.EnterFightZone();
                     UIManager.instance.ActiveMapUI(false);
                     break;
-                case NodeType.BossEnemy:
-                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossEnemy);
+
+                case NodeType.EliteMonsterNode:
+                    break;
+
+                case NodeType.BossNode:
+                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossNode);
                     GameManager.instance.EnterFightZone();
                     UIManager.instance.ActiveMapUI(false);
                     break;
-                case NodeType.RestSite:
+
+                case NodeType.RestNode:
                     break;
-                case NodeType.Shop:
+
+                case NodeType.StoreNode:
                     GameManager.instance.EnterShop();
                     break;
-                case NodeType.Mystery:
+
+                case NodeType.TreasureNode:
                     break;
             }
 

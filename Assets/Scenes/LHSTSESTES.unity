@@ -4040,7 +4040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 682207150685018480, guid: ff1979e37a7e4334db153faa9d348a34, type: 3}
+  - {fileID: 682207150685018480, guid: e1bb48596edc31b4299e2f616506011a, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:

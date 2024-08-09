@@ -59,12 +59,12 @@ public class MonsterSetDatabase : MonoBehaviour
 
                 switch(nodeType)
                 {
-                    case Map.NodeType.NomalEnemy:
+                    case Map.NodeType.NomalMonsterNode:
                         //int randomIdx = Random.Range(0, stage1MonsterLists.Length);
                         //selectedMonsterSet = stage1MonsterLists[randomIdx];
                         selectedMonsterSet = stage1MonsterLists[monsterWaveIdx++];
                         break;
-                    case Map.NodeType.BossEnemy:
+                    case Map.NodeType.BossNode:
                         break;
                 }
 
@@ -73,9 +73,9 @@ public class MonsterSetDatabase : MonoBehaviour
 
                 switch (nodeType)
                 {
-                    case Map.NodeType.NomalEnemy:
+                    case Map.NodeType.NomalMonsterNode:
                         break;
-                    case Map.NodeType.BossEnemy:
+                    case Map.NodeType.BossNode:
                         break;
                 }
                 break;
@@ -83,9 +83,9 @@ public class MonsterSetDatabase : MonoBehaviour
 
                 switch (nodeType)
                 {
-                    case Map.NodeType.NomalEnemy:
+                    case Map.NodeType.NomalMonsterNode:
                         break;
-                    case Map.NodeType.BossEnemy:
+                    case Map.NodeType.BossNode:
                         break;
                 }
                 break;

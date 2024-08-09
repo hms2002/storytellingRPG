@@ -7,11 +7,12 @@ namespace Map
 {
     public enum NodeType
     {
-        NomalEnemy,
-        BossEnemy,
-        RestSite,
-        Mystery,
-        Shop
+        NomalMonsterNode,
+        EliteMonsterNode,
+        BossNode,
+        RestNode,
+        StoreNode,
+        TreasureNode
     }
 }
 
@@ -27,10 +28,10 @@ namespace Map
 {
     public class NodeBlueprint : ScriptableObject
     {
-        [Header("³ëµåÅ¸ÀÔ¿¡ µû¸¥ ÀÌ¹ÌÁö ³Ö¾î¾ßÇÔ")]
-        [Tooltip("¼ø¼­ 0 : NomalEnemy, 1: BossEnemy, RestSite, Mystery, Shop. °³¼ö ÇöÀç : 5°³")]
-        public Sprite sprite;
+        [Header("ë…¸ë“œ íƒ€ì… ì„¤ì •")]
         public NodeType nodeType;
+        [Header("ë…¸ë“œ ì´ë¯¸ì§€ ì„¤ì •")]
+        public Sprite sprite;
     }
 }
 
