@@ -42,6 +42,7 @@ namespace Map
             }
         }
 
+        //노드 상태별 행동 강령
         public void SetStage()
         {
             switch (nodeStates)

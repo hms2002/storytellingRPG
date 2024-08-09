@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 782650619}
   - component: {fileID: 782650618}
   m_Layer: 5
-  m_Name: MarkPlayer
+  m_Name: MapMark(Player)
   m_TagString: MapPlayerMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,10 +1510,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodePrefab:
   - {fileID: 827489751002107000, guid: c2fe65839f3e02c4cb39d5ea4ca22016, type: 3}
+  - {fileID: 827489751002107000, guid: 5d82bacede8d93b4796940b0d281a9a6, type: 3}
   - {fileID: 1791044728358153174, guid: d83b45db1e8eace4cbff482bc51d04a0, type: 3}
   - {fileID: 2420055620982699265, guid: 5ef28e26b4cd5c140bf0e6136c939628, type: 3}
-  - {fileID: 2704971783578454098, guid: 9c40190cadd4c904a94a1fe2b8bcd602, type: 3}
   - {fileID: 5966086147876695766, guid: 63cc624ce31bc8e42a34fdc6cf752184, type: 3}
+  - {fileID: 2704971783578454098, guid: 9c40190cadd4c904a94a1fe2b8bcd602, type: 3}
   mapParent: {fileID: 122865550}
   roadParent: {fileID: 1717873905}
   startNode: {fileID: 251512559}
@@ -1531,8 +1532,8 @@ MonoBehaviour:
   roadeLine: []
   startVector: {x: 600, y: 400}
   mapObj: {fileID: 1675232959}
-  playerMark: {fileID: 782650616}
-  noMoveNode: 0
+  mapMark: {fileID: 782650616}
+  noClickNode: 0
 --- !u!114 &1241458192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,7 +1558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53035d8ea9120ed42a39d64ffe65f309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMark: {fileID: 782650616}
 --- !u!1 &1303220066
 GameObject:
   m_ObjectHideFlags: 0
