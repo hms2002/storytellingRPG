@@ -5,33 +5,33 @@ using UnityEngine;
 
 namespace Map
 {
-    public class MapPlayerMove : MonoBehaviour
+    public class MapPlayeMove : MonoBehaviour
     {
-        public GameObject playerMark;
+        private GameObject mapMark;
 
         private void Start()
         {
             // 시작 시 플레이어 마크 참조
-            if (MapState.InstanceMap != null && MapState.InstanceMap.playerMark != null)
+            if (MapState.InstanceMap != null && MapState.InstanceMap.mapMark != null)
             {
-                playerMark = MapState.InstanceMap.playerMark;
+                mapMark = MapState.InstanceMap.mapMark;
             }
 
             // 플레이어 마크 초기 위치 설정
             SetInitialPlayerPosition();
         }
 
-        public void MovePlayerMark(Vector2 targetPosition)
+        public void MoveMapMark(Vector2 targetPosition)
         {
-            if (playerMark != null && MapState.InstanceMap.noMoveNode == false) // 이미 이동 중인 경우에는 무시
+            if (mapMark != null && MapState.InstanceMap.noClickNode == false) // 이미 이동 중인 경우에는 무시
             {
-                MapState.InstanceMap.noMoveNode = true;
+                MapState.InstanceMap.noClickNode = true;
                 // 플레이어 마크 이동
-                playerMark.GetComponent<RectTransform>().DOAnchorPos(targetPosition, 1f).OnComplete(() =>
+                mapMark.GetComponent<RectTransform>().DOAnchorPos(targetPosition, 1f).OnComplete(() =>
                 {
-                    MapState.InstanceMap.noMoveNode = false;
+                    MapState.InstanceMap.noClickNode = false;
                     Debug.Log("플레이어 마크 이동 완료: " + targetPosition);
-                    MapState.InstanceMap.SavePlayerMarkPosition(Application.persistentDataPath + "/playerData.json");
+                    MapState.InstanceMap.SavePlayerMarkPosition(Application.persistentDataPath + "/mapMarkData.json");
                 });
             }
             else
@@ -42,27 +42,27 @@ namespace Map
 
         private void SetInitialPlayerPosition() //초기 위치 세팅
         {
-            string filePath = Application.persistentDataPath + "/playerData.json";
+            string filePath = Application.persistentDataPath + "/mapMarkData.json";
 
-            if (playerMark != null)
+            if (mapMark != null)
             {
-                if (File.Exists(Application.persistentDataPath + "/playerData.json"))
+                if (File.Exists(Application.persistentDataPath + "/mapMarkData.json"))
                 {
                     try
                     {
                         string jsonData = File.ReadAllText(filePath);
-                        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonData);
-                        playerMark.GetComponent<RectTransform>().anchoredPosition = playerData.mapPosition;
+                        MapMarkData mapMarkData = JsonUtility.FromJson<MapMarkData>(jsonData);
+                        mapMark.GetComponent<RectTransform>().anchoredPosition = mapMarkData.mapMarkPosition;
                     }
                     catch (Exception e)
                     {
                         Debug.LogError("플레이어 데이터를 로드하는 중 오류 발생: " + e.Message);
-                        playerMark.GetComponent<RectTransform>().anchoredPosition = MapState.InstanceMap.startNode.GetComponent<RectTransform>().anchoredPosition;
+                        mapMark.GetComponent<RectTransform>().anchoredPosition = MapState.InstanceMap.startNode.GetComponent<RectTransform>().anchoredPosition;
                     }
                 }
                 else
                 {
-                    playerMark.GetComponent<RectTransform>().anchoredPosition = MapState.InstanceMap.startNode.GetComponent<RectTransform>().anchoredPosition;
+                    mapMark.GetComponent<RectTransform>().anchoredPosition = MapState.InstanceMap.startNode.GetComponent<RectTransform>().anchoredPosition;
                 }
             }
             else

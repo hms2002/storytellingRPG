@@ -19,11 +19,8 @@ public class BarnacleCrayfish : Monster
     //////////////////
     public override void Action(Actor target)
     {
-        keywordSup.Check(keywordMain);
-        keywordMain.Check(keywordSup);
-        keywordSup.Execute(this, target);
-        keywordMain.Execute(this, target);
-        Execute(target);
+        base.Action(target);
+
         SetAnimationState();
     }
 
@@ -33,17 +30,11 @@ public class BarnacleCrayfish : Monster
         SetAnimationState();
     }
 
-    public override void StartTurn()
-    {
-        base.StartTurn();
-        SetAnimationState();
-    }
-
     private void SetAnimationState()
     {
-        if (protect <= 8)
+        if (protect == 0)
             anim.SetTrigger("Type_0");
-        else if (1 <= protect && protect < 8)
+        else if (protect >= 1 && protect < 8) //1보다 크고 8보다 작으면
             anim.SetTrigger("Type_1");
         else
             anim.SetTrigger("Type_2");

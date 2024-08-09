@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 1397509530776510200}
-  descriptionText: {fileID: 0}
+  descriptionText: {fileID: 2573757441139147023}
   effectTarget: 0
   effectType: 0
   _keywordName: 

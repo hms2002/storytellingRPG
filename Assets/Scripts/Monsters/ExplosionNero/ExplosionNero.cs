@@ -24,4 +24,14 @@ public class ExplosionNero : Monster
         else
             anim.SetTrigger("Dwon");
     }
+
+    public override void ShowSupKeywords()
+    {
+        if (charactorState.GetStateStack(StateType.faint) == 0)
+            anim.SetTrigger("Idle");
+        else
+            anim.SetTrigger("Dwon");
+
+        base.ShowSupKeywords();
+    }
 }

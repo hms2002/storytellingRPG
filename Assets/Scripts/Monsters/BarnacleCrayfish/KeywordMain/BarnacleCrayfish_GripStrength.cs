@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarnacleCrayfish_GripStrength : KeywordSup
+public class BarnacleCrayfish_GripStrength : KeywordMain
 {
     [Header("집게 악력 키워드 데미지")]
     [SerializeField] private int damage = 12;
@@ -23,17 +23,18 @@ public class BarnacleCrayfish_GripStrength : KeywordSup
     {
         if (caster.protect >= 8)
         {
-            target.damage += damage + plusDamage;
+            caster.damage += damage + plusDamage;
         }
         else
         {
-            target.damage += damage + caster.protect;
+            caster.damage += damage + caster.protect;
         }
 
         caster.tension += keywordTension;
     }
 
-    public override void Check(KeywordMain _keywordMain)
+    public override void Check(KeywordSup _keywordSup)
     {
+        
     }
 }

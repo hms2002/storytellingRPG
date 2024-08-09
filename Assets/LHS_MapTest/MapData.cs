@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Map
 {
+    /// <summary>
+    /// 저장 데이터들 모음 (저장, 불러오기)
+    /// </summary>
     [System.Serializable]
     public class MapData
     {
@@ -29,13 +32,13 @@ namespace Map
     }
 
     [System.Serializable]
-    public class PlayerData
+    public class MapMarkData
     {
-        public Vector2 mapPosition;
+        public Vector2 mapMarkPosition;
 
-        public PlayerData(Vector2 _mapPosition)
+        public MapMarkData(Vector2 _mapMarkPosition)
         {
-            mapPosition = _mapPosition;
+            mapMarkPosition = _mapMarkPosition;
         }
     }
 }

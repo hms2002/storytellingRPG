@@ -19,7 +19,7 @@ public class ColdShark_Feverish : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.damage += selfDamage;
+        caster.Damaged(caster, keywordDamage);
         caster.tension += keywordTension;
     }
 

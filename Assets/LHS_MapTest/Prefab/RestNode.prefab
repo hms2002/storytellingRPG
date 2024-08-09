@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a17bacdef347c458342f05d2446478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 5915161158855880873}
+  icon: {fileID: 5915161158855880873}
   nodeStates: 0
   nodeBlueprint: {fileID: 11400000, guid: a86fc5eaf8c15a346a31cb1a87d9645e, type: 2}
   isEndNode: 0

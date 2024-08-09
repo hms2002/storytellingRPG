@@ -18,7 +18,7 @@ public class ColdShark_Sternutation : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.damage += keywordDamage;
+        caster.Damaged(caster, keywordDamage);
         caster.tension += keywordTension;
     }
 
