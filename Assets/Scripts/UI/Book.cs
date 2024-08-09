@@ -52,7 +52,7 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
-    /// 북마크 - 맵으로 UI 전환하는 메소드ㅋㅋ
+    /// 북마크 - 맵으로 UI를 전환합니다.
     /// </summary>
     public void EnterMap()
     {
@@ -80,7 +80,7 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
-    /// 북마크 - 키워드 세팅으로 UI 전환하는 메소드ㅋㅋ
+    /// 북마크 - 키워드 세팅으로 UI를 전환합니다.
     /// </summary>
     public void EnterKeywordSetting()
     {
@@ -106,16 +106,39 @@ public class Book : MonoBehaviour
         // 북마크 - 키워드 세팅 UI 활성화
         DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
 
-        // 오리지널 덱 키워드가 이미 인스턴스화 되어 있다면
+        // 오리지널 덱 키워드가 인스턴스화 되어있지 않다면
         if (!wasOriginalDeckInstanciate)
         {
             // 오리지널 덱 키워드 프리팹 인스턴스화
-            MakeOriginalDeckInfo();
+            MakeOriginalDeckInfo(Keyword.ButtonType.Use);
         }
     }
 
     /// <summary>
-    /// 전장에 돌입하면 BookPassR 애니메이션 재생, 전투 UI 활성화하는 메소드ㅋㅋ
+    /// 키워드 세팅으로 UI를 전환합니다.
+    /// </summary>
+    /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
+    public void EnterKeywordSetting(Keyword.ButtonType thisType)
+    {
+        // 페이지 넘기기 애니메이션
+        bookAnimator.SetTrigger("turnPageToLeft");
+
+        // 북마크 - 키워드 세팅 UI 활성화
+        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
+
+        // 소지금 표시창 활성화
+        DOVirtual.DelayedCall(UIActiveDelay, () => ShopManager.instance.goldPanel.SetActive(true));
+
+        // 오리지널 덱 키워드가 인스턴스화 되어있지 않다면
+        if (!wasOriginalDeckInstanciate)
+        {
+            // 오리지널 덱 키워드 프리팹 인스턴스화
+            MakeOriginalDeckInfo(thisType);
+        }
+    }
+
+    /// <summary>
+    /// 전장에 돌입하면 BookPassR 애니메이션 재생, 전투 UI를 활성화합니다.
     /// </summary>
     public void EnterBattleField()
     {
@@ -154,7 +177,8 @@ public class Book : MonoBehaviour
     /// <summary>
     /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화하는 메소드ㅋㅋ
     /// </summary>
-    private void MakeOriginalDeckInfo()
+    /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
+    private void MakeOriginalDeckInfo(Keyword.ButtonType thisType)
     {
         GameObject keywordTemp;     // 인스턴스화된 키워드를 잠시 담아놓을 변수
 
@@ -167,8 +191,8 @@ public class Book : MonoBehaviour
             // 키워드 SupKeywordBox 오브젝트 활성화
             keywordTemp.transform.Find("SupKeywordBox").gameObject.SetActive(true);
 
-            // 키워드 버튼 컴포넌트 비활성화
-            keywordTemp.GetComponent<Button>().interactable = false;
+            // 키워드 버튼타입 적용
+            keywordTemp.GetComponent<KeywordSup>().buttonType = thisType;
 
             // 키워드 각조 조절
             float randomAngle = Random.Range(-3.0f, 3.0f);
@@ -185,8 +209,8 @@ public class Book : MonoBehaviour
             // 키워드 MainKeywordBox 오브젝트 활성화
             keywordTemp.transform.Find("MainKeywordBox").gameObject.SetActive(true);
 
-            // 키워드 버튼 컴포넌트 비활성화
-            keywordTemp.GetComponent<Button>().interactable = false;
+            // 키워드 버튼타입 적용
+            keywordTemp.GetComponent<KeywordMain>().buttonType = thisType;
 
             // 키워드 각조 조절
             keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));

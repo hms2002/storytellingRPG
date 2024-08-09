@@ -1366,17 +1366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c170706a4245a134086ec5108c15c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1012105433 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-  m_PrefabInstance: {fileID: 1064700488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5267e1f5782226a4fa55529823013ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1034993442 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1791044728358153174, guid: d83b45db1e8eace4cbff482bc51d04a0, type: 3}
@@ -1626,21 +1615,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapBackground: []
-  bookmarks:
-  - {fileID: 1067182630}
-  - {fileID: 549822128}
   keywordSettingWindow: {fileID: 1122469494}
-  originalSupMainDeckUI:
-  - {fileID: 1174983375}
-  - {fileID: 1380319434}
   combatFunctionAndUI:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   combatKeywordUI: {fileID: 0}
-  originalDeck: {fileID: 1012105433}
   combatBackground: {fileID: 406064319}
-  bookAnimator: {fileID: 0}
+  ShopUI: {fileID: 0}
   theEndIcon: {fileID: 0}
 --- !u!1 &1122469494
 GameObject:
@@ -2646,6 +2628,8 @@ MonoBehaviour:
   roadeLine: []
   startVector: {x: 600, y: 400}
   mapObj: {fileID: 1995636438}
+  playerMark: {fileID: 0}
+  noMoveNode: 0
 --- !u!114 &1829738402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3083,7 +3067,10 @@ MonoBehaviour:
   audioManager: {fileID: 1389790998}
   tensionManager: {fileID: 29803607}
   rewardManager: {fileID: 746327108}
+  shopManager: {fileID: 0}
   cursorImg: {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
+  _allSupKeywordsForPlayer: []
+  _allMainKeywordsForPlayer: []
 --- !u!4 &2039066659
 Transform:
   m_ObjectHideFlags: 0

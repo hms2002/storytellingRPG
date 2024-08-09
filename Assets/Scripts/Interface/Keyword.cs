@@ -10,7 +10,8 @@ public class Keyword : MonoBehaviour
     public enum ButtonType
     {
         Use,
-        Purchase
+        Purchase,
+        Erase
     }
 
     protected ButtonType _buttonType = ButtonType.Use;          // 키워드 버튼의 클릭 타입

@@ -21,7 +21,13 @@ public abstract class KeywordSup : Keyword
 
             case ButtonType.Purchase:
 
-                ShopManager.instance.PurchaseKeyword(this.gameObject, this);
+                ShopManager.instance.PurchaseKeyword(gameObject, this);
+
+                break;
+
+            case ButtonType.Erase:
+
+                ShopManager.instance.EraseKeyword(gameObject, this);
 
                 break;
         }

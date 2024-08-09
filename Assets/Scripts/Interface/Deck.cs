@@ -156,6 +156,29 @@ public class Deck : MonoBehaviour
         mainDeck.Add(keyword);
     }
 
+    /// <summary>
+    /// 키워드 리스트에 들어있는 특정 키워드를 리스트에서 제거합니다.
+    /// </summary>
+    /// <param name="thisDeck">지우고자 하는 리스트 대상을 입력합니다. (Support 혹은 Main)</param>
+    /// <param name="whichNumber">지우고자 하는 키워드가 리스트에서 몇 번째 순번인지를 입력합니다.</param>
+    public void DeleteSpecificKeyword(WhatDeck thisDeck, int whichNumber)
+    {
+        switch (thisDeck)
+        {
+            case WhatDeck.SupportDeck:
+
+                supportDeck.RemoveAt(whichNumber);
+
+                break;
+
+            case WhatDeck.MainDeck:
+
+                mainDeck.RemoveAt(whichNumber);
+
+                break;
+        }
+    }
+
     #region Deck 클래스의 Getter, Setter 함수들
 
     public void DisCardByTextSource(TextMeshProUGUI source)

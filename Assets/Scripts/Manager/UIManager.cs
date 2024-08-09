@@ -86,11 +86,26 @@ public class UIManager : MonoBehaviour
         {
             keyword.transform.GetChild(i).gameObject.SetActive(false);
         }
-/*
-        foreach (GameObject childObject in keyword.transform)
+    }
+
+    /// <summary>
+    /// 키워드를 보이지 않게 만든다.
+    /// </summary>
+    /// <param name="keyword">안보이게 만들 키워드를 넘겨준다.</param>
+    /// <param name="replaceImage">키워드 박스 대신 교체할 이미지를 넘겨준다.</param>
+    public void MakeKeywordInvisible(GameObject keyword, Sprite replaceSprite)
+    {
+        // 키워드의 버튼 컴포넌트 비활성화
+        keyword.GetComponent<Button>().enabled = false;
+
+        // 키워드의 이미지 컴포넌트 교체
+        keyword.GetComponent<Image>().sprite = replaceSprite;
+
+        // 키워드 하위 오브젝트 전체 비활성화
+        for (int i = 0; i < keyword.transform.childCount; i++)
         {
-            childObject.SetActive(false);
-        }*/
+            keyword.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
     // UI Active 함수들 ================================
