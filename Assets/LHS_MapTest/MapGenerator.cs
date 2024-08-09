@@ -9,13 +9,15 @@ namespace Map
     public class MapGenerator : MonoBehaviour
     {
         [Header("노드 종류 세팅(프리팹)")]
-        public GameObject[] nodePrefab = new GameObject[5];
+        [Header("0: NomalMonsterNode │ 1:  EliteMonsterNode │ 2: BossNode\n3: RestNode │ 4: StoreNode │ 5: TreasureNode 순서로 배치")]
+        public GameObject[] nodePrefab = new GameObject[6];
+
         [Header("맵 베이스 판")]
         public RectTransform mapParent; //맵 판
         [Header("길 라인 보관 위치")]
         public RectTransform roadParent;
 
-        [Header("시작 노드과 끝 노드")]
+        [Header("시작 노드과 끝(보스) 노드[위치 배열 필요]")]
         public GameObject startNode;
         public GameObject endNode;
 
@@ -42,15 +44,14 @@ namespace Map
 
         //노드 저장
         public List<MapNode> nodes = new List<MapNode>();
-
         //노드 한 라인마다 끝 위치 확인
         public List<int> nodesEndLineCheck = new List<int>();
-
         //노드 길 저장
         public List<GameObject> roadeLine = new List<GameObject>();
+        //맵 생성 시작 위치
+        public Vector2 startVector = new Vector2(600, 400);
 
-        //노드 시작 위치
-        public Vector2 startVector;
+
 
         virtual public void SpawnMap()
         {

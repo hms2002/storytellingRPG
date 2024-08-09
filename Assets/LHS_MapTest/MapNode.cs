@@ -8,8 +8,10 @@ namespace Map
 {
     public class MapNode : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
+        
         [SerializeField]
-        private Image image;
+        [Header("해당 아이콘은 프리팹 속 아이콘 오브젝트에서 적용하기")]
+        private Image icon;
         [SerializeField]
         public NodeStates nodeStates;
         [SerializeField]
@@ -20,7 +22,7 @@ namespace Map
         [SerializeField]
         private float initialScale; // 아이콘 기본 크기
         [SerializeField]
-        private float HoveScaleFactor = 1.2f; // (마우스 가져다 됐을 시 아이콘 확대 배율 
+        private float HoveScaleFactor = 1.3f; // (마우스 가져다 됐을 시 아이콘 확대 배율 
 
         //연결되는 노드
         public List<MapNode> connectedNodes = new List<MapNode>();
@@ -36,7 +38,7 @@ namespace Map
         {
             if (nodeBlueprint != null)
             {
-                image.sprite = nodeBlueprint.sprite;
+                icon.sprite = nodeBlueprint.sprite;
             }
         }
 
@@ -45,36 +47,39 @@ namespace Map
             switch (nodeStates)
             {
                 case NodeStates.Locked: //잠김
-                    image.DOKill();
-                    image.color = Color.gray;
+                    icon.DOKill();
+                    icon.color = Color.gray;
                     break;
 
                 case NodeStates.Attainable: // 선택가능
-                    image.DOKill();
-                    image.DOColor(Color.white, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+                    icon.DOKill();
+                    icon.DOColor(Color.white, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
                     break;
 
                 case NodeStates.Visited: // 방문함
-                    image.DOKill();
-                    image.color = Color.white;
+                    icon.DOKill();
+                    icon.color = Color.white;
                     break;
             }
         }
 
-        //마우스 관련 코드
+        /// <summary>
+        /// 마우스 관련 코드
+        /// </summary>
+        /// <param name="eventData"></param>
         //마우스가 오브젝트에 들어왔을 때
         public void OnPointerEnter(PointerEventData eventData)
         {
-            image.transform.DOKill();
-            image.transform.DOScale(initialScale * HoveScaleFactor, 0.3f);
+            icon.transform.DOKill();
+            icon.transform.DOScale(initialScale * HoveScaleFactor, 0.3f);
         }
 
         //마우스가 오브젝트에 벗어났을 때
         public void OnPointerExit(PointerEventData eventData)
         {
             //마우스가 오브젝트에 벗어났을 때 코드
-            image.transform.DOKill();
-            image.transform.DOScale(initialScale, 0.3f);
+            icon.transform.DOKill();
+            icon.transform.DOScale(initialScale, 0.3f);
         }
 
         //마우스 버튼이 오브젝트를 눌렀을 때
@@ -87,7 +92,7 @@ namespace Map
         public void OnPointerUp(PointerEventData eventData)
         {
             //마우스 버튼이 오브젝트에 누르고 땠을 때 코드
-            if (MapState.InstanceMap.noMoveNode == true)
+            if (MapState.InstanceMap.noClickNode == true)
             {
                 return;
             }
@@ -108,39 +113,40 @@ namespace Map
                 }
                 // 노드 상태 변경 후 맵 저장
                 MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
-            
 
-            switch(nodeBlueprint.nodeType)
-            {
-                case NodeType.NomalMonsterNode:
-                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalMonsterNode);
-                    GameManager.instance.EnterFightZone();
-                    UIManager.instance.ActiveMapUI(false);
-                    break;
 
-                case NodeType.EliteMonsterNode:
-                    break;
+                switch (nodeBlueprint.nodeType)
+                {
+                    case NodeType.NomalMonsterNode:
+                        MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalMonsterNode);
+                        GameManager.instance.EnterFightZone();
+                        UIManager.instance.ActiveMapUI(false);
+                        break;
 
-                case NodeType.BossNode:
-                    MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossNode);
-                    GameManager.instance.EnterFightZone();
-                    UIManager.instance.ActiveMapUI(false);
-                    break;
+                    case NodeType.EliteMonsterNode:
+                        break;
 
-                case NodeType.RestNode:
-                    break;
+                    case NodeType.BossNode:
+                        MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossNode);
+                        GameManager.instance.EnterFightZone();
+                        UIManager.instance.ActiveMapUI(false);
+                        break;
 
-                case NodeType.StoreNode:
-                    GameManager.instance.EnterShop();
-                    break;
+                    case NodeType.RestNode:
+                        break;
 
-                case NodeType.TreasureNode:
-                    break;
-            }
+                    case NodeType.StoreNode:
+                        GameManager.instance.EnterShop();
+                        break;
+
+                    case NodeType.TreasureNode:
+                        break;
+                }
 
                 // 노드 상태 변경 후 플레이어 이동 및 위치 저장
                 MovePlayerToNode();
             }
+
             else
             {
                 Debug.Log("노드가 이동 가능하지 않음: " + nodeStates);
@@ -150,6 +156,7 @@ namespace Map
             MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
         }
 
+        //노드 상태 설정
         private void UpdateAllNodes()
         {
             // MapState의 인스턴스에서 모든 노드들을 가져옴
@@ -191,14 +198,15 @@ namespace Map
             Debug.Log("EndNode 클릭됨 - 특정 로직 실행");
         }
 
+        //플레이어가 해당 노드로 이동
         private void MovePlayerToNode()
         {
-            MapPlayerMove playerMove = FindObjectOfType<MapPlayerMove>();
-            if (playerMove != null)
+            MapPlayeMove mapPlayerMove = FindObjectOfType<MapPlayeMove>();
+            if (mapPlayerMove != null)
             {
                 // 플레이어 이동 시작 전에 위치 저장
                 Debug.Log("노드로 플레이어 이동 시작: " + this.GetComponent<RectTransform>().anchoredPosition);
-                playerMove.MovePlayerMark(this.GetComponent<RectTransform>().anchoredPosition);
+                mapPlayerMove.MoveMapMark(this.GetComponent<RectTransform>().anchoredPosition);
             }
             else
             {

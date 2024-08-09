@@ -5,6 +5,19 @@ using static TreeEditor.TreeEditorHelper;
 
 namespace Map
 {
+    /// <summary>
+    /// 노드 상태
+    /// </summary>
+    public enum NodeStates
+    {
+        Locked,
+        Visited,
+        Attainable
+    }
+
+    /// <summary>
+    /// 노드 타입
+    /// </summary>
     public enum NodeType
     {
         NomalMonsterNode,
@@ -16,6 +29,7 @@ namespace Map
     }
 }
 
+/*
 namespace Map
 {
     internal static class NodeTypeHelper
@@ -23,6 +37,7 @@ namespace Map
         public static readonly int nodeTypeCount = ((NodeType[])System.Enum.GetValues(typeof(NodeType))).Length;
     }
 }
+*/
 
 namespace Map
 {

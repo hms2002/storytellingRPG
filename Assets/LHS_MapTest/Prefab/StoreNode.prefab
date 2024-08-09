@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 5290627260059034311}
   - component: {fileID: 7065296387208242390}
   m_Layer: 5
-  m_Name: ShopNode
+  m_Name: StoreNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a17bacdef347c458342f05d2446478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 469386949818761421}
+  icon: {fileID: 469386949818761421}
   nodeStates: 0
   nodeBlueprint: {fileID: 11400000, guid: e91515611cb17a143a9659d1fa16041a, type: 2}
   isEndNode: 0

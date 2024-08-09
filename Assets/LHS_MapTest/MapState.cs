@@ -7,9 +7,13 @@ namespace Map
 {
     public class MapState : MapGenerator
     {
+        [Header("맵 전체(지도 페이지 포함")]
         public GameObject mapObj;
-        public GameObject playerMark;  // 플레이어 마크 추가
-        public bool noMoveNode = false;
+        [Header("지도 내 플레이어 마크")]
+        public GameObject mapMark;  // 플레이어 마크 추가
+
+        [Header("현재 움직여도 되나요?")]
+        public bool noClickNode = false;
 
         private static MapState instance;
         public static MapState InstanceMap
@@ -39,10 +43,10 @@ namespace Map
             SaveMapData(Application.persistentDataPath + "/mapData.json");
 
             //맵에서 플레이어 위치 저장파일 삭제 
-            if (File.Exists(Application.persistentDataPath + "/playerData.json"))
+            if (File.Exists(Application.persistentDataPath + "/mapMarkData.json"))
             {
-                File.Delete(Application.persistentDataPath + "/playerData.json");
-                playerMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+                File.Delete(Application.persistentDataPath + "/mapMarkData.json");
+                mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
             }
         }
 
@@ -84,7 +88,7 @@ namespace Map
                 nodeDataList.Add(nodeData);
             }
 
-            MapData mapData = new MapData(nodeDataList, new List<int>(nodesEndLineCheck), playerMark.GetComponent<RectTransform>().anchoredPosition);
+            MapData mapData = new MapData(nodeDataList, new List<int>(nodesEndLineCheck), mapMark.GetComponent<RectTransform>().anchoredPosition);
             string json = JsonUtility.ToJson(mapData, true);
             File.WriteAllText(filePath, json);
             Debug.Log("Map data saved to " + filePath);
@@ -142,7 +146,7 @@ namespace Map
                 }
 
                 // 플레이어 마크 위치 복원
-                playerMark.GetComponent<RectTransform>().anchoredPosition = mapData.lastPlayerPosition;
+                mapMark.GetComponent<RectTransform>().anchoredPosition = mapData.lastPlayerPosition;
 
                 // 시작 노드와 끝 노드를 연결
                 StartEndConnection();
@@ -158,8 +162,8 @@ namespace Map
         //맵 속 플레이어 위치 저장
         public void SavePlayerMarkPosition(string filePath)
         {
-            PlayerData playerData = new PlayerData(playerMark.GetComponent<RectTransform>().anchoredPosition);
-            string json = JsonUtility.ToJson(playerData);
+            MapMarkData mapMarkData = new MapMarkData(mapMark.GetComponent<RectTransform>().anchoredPosition);
+            string json = JsonUtility.ToJson(mapMarkData);
             File.WriteAllText(filePath, json);
         }
     }
