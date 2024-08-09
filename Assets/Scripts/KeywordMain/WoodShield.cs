@@ -7,6 +7,7 @@ public class WoodShield : KeywordMain
     private void Awake()
     {
         keywordName = "나무방패";
+        isPlayerKeyword = true;
         SetKeywordColor(B);
         keywordProtect = 6;
         Init();

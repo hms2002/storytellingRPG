@@ -9,6 +9,7 @@ public class Combo : KeywordSup
     private void Awake()
     {
         keywordName = "연속된";
+        isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();
     }

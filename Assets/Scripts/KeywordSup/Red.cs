@@ -12,6 +12,7 @@ public class R : KeywordSup
     private void Awake()
     {
         keywordName = "붉은";
+        isPlayerKeyword = true;
         SetKeywordColor(R);
         keywordDamage = 0;
         Init();

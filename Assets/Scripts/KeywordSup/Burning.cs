@@ -7,6 +7,7 @@ public class Burning : KeywordSup
     private void Awake()
     {
         keywordName = "불타는";
+        isPlayerKeyword = true;
         SetKeywordColor(Y);
         Init();
     }

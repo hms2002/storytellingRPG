@@ -75,7 +75,7 @@ public class InfoUI : MonoBehaviour
 
         // 팁 오브젝트 생성 및 관리
         _tipObjects.Add(Instantiate(_tipTop, tipParent));
-        for (int i = 0; i < rowCount; i++)
+        for (int i = 0; i < rowCount - 1; i++)
         {
             _tipObjects.Add(Instantiate(_tipMid, tipParent));
         }
@@ -176,12 +176,25 @@ public class InfoUI : MonoBehaviour
 
     private int CheckContent(string content)
     {
-        int rowCount = 1;
-        for (int i = 0; i < content.Length; i++)
-        {
-            if (content[i] == '\n')
-                rowCount++;
-        }
-        return rowCount;
+        return CalculateLineCount(tipText, content);
+    }
+
+    public static int CalculateLineCount(TextMeshProUGUI tmp, string text)
+    {
+        // 텍스트를 설정하기 전에 기존 텍스트를 저장
+        string originalText = tmp.text;
+
+        // 새로운 텍스트를 설정
+        tmp.text = text;
+
+        // 텍스트의 크기와 줄 수를 계산
+        tmp.ForceMeshUpdate(); // 강제로 텍스트를 업데이트
+        TMP_TextInfo textInfo = tmp.textInfo;
+        int lineCount = textInfo.lineCount;
+
+        // 원래 텍스트로 복원
+        tmp.text = originalText;
+
+        return lineCount;
     }
 }

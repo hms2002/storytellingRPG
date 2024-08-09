@@ -7,6 +7,7 @@ public class Shield : KeywordMain
     private void Awake()
     {
         keywordName = "방패";
+        isPlayerKeyword = true;
         SetKeywordColor(B);
         keywordProtect = 5;
         Init();

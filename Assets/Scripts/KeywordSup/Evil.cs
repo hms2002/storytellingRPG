@@ -7,6 +7,7 @@ public class Evil : KeywordSup
     private void Awake()
     {
         keywordName = "악랄한";
+        isPlayerKeyword = true;
         SetKeywordColor(Y);
         Init();
     }

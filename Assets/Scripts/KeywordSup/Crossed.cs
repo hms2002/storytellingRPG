@@ -7,6 +7,7 @@ public class Crossed : KeywordSup
     private void Awake()
     {
         keywordName = "교차된";
+        isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();
     }

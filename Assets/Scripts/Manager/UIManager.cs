@@ -170,8 +170,6 @@ public class UIManager : MonoBehaviour
                 find = true;
                 break;
             }
-
-            
         }
         isRunDlayShowDamage = false;
 

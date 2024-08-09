@@ -11,6 +11,7 @@ public class DaggerOfTheWicked : KeywordMain
     private void Awake()
     {
         keywordName = "악인의 단검";
+        isPlayerKeyword = true;
         keywordDamage = 2;
         keywordProtect = 0;
         SetKeywordColor(R);

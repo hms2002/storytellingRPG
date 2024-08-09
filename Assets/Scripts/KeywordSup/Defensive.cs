@@ -7,6 +7,7 @@ public class Defensive : KeywordSup
     private void Awake()
     {
         keywordName = "방어적인";
+        isPlayerKeyword = true;
         SetKeywordColor(B);
         Init();
     }
