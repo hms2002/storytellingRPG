@@ -13,7 +13,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
     [Header("맵")]
     [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경           ※후추
 

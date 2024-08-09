@@ -86,6 +86,10 @@ public class KeywordUIMovement : MonoBehaviour
             {
                 stretchKeywordsFlag = false;
                 curTime = 0;
+                for (int i = 0; i < keywords.Count; i++)
+                {
+                    keywords[i].GetComponent<KeywordInfoControler>().ableShowInfo();
+                }
             }
         }
         if(moveSelectedKeywordFlag)
