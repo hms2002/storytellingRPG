@@ -38,26 +38,54 @@ public class RogueWave_RapidsTorrent : KeywordMain
             randomIndex--;
         }
 
-        switch((StateType)buffEnum)
+        switch ((StateType)buffEnum)
         {
             case StateType.protect:
                 caster.protect += 8;
-                target.protect += 8;
                 break;
             case StateType.weaken:
                 caster.charactorState.AddState((StateType)buffEnum, 3);
-                target.charactorState.AddState((StateType)buffEnum, 3);
                 break;
             case StateType.reduction:
                 caster.charactorState.AddState((StateType)buffEnum, 3);
-                target.charactorState.AddState((StateType)buffEnum, 3);
                 break;
             case StateType.reinforce:
                 caster.charactorState.AddState((StateType)buffEnum, 3);
-                target.charactorState.AddState((StateType)buffEnum, 3);
                 break;
             case StateType.glassPragment:
                 caster.charactorState.AddState((StateType)buffEnum, 1);
+                break;
+            default:
+                Debug.LogError("인덱스 오버");
+                break;
+        }
+        randomIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(RogueWave.stateList)).Length);
+        buffEnum = RogueWave.stateList.protect;
+        foreach (RogueWave.stateList i in Enum.GetValues(typeof(RogueWave.stateList)))
+        {
+            // 반복마다 1씩 줄다가 0 되면 값 대입 후 break
+            if (randomIndex == 0)
+            {
+                buffEnum = i;
+                break;
+            }
+            randomIndex--;
+        }
+        switch ((StateType)buffEnum)
+        {
+            case StateType.protect:
+                target.protect += 8;
+                break;
+            case StateType.weaken:
+                target.charactorState.AddState((StateType)buffEnum, 3);
+                break;
+            case StateType.reduction:
+                target.charactorState.AddState((StateType)buffEnum, 3);
+                break;
+            case StateType.reinforce:
+                target.charactorState.AddState((StateType)buffEnum, 3);
+                break;
+            case StateType.glassPragment:
                 target.charactorState.AddState((StateType)buffEnum, 1);
                 break;
             default:

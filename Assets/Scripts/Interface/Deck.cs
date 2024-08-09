@@ -170,18 +170,18 @@ public class Deck : MonoBehaviour
     public void AddMainKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordMain>() == null) return;
-
+        if (keyword.GetComponent<KeywordMain>().isOneTimeUse) return;
         mainDeck.Add(keyword);
     }
     #endregion
 
     #region Deck 클래스의 Getter, Setter 함수들
 
-    public void DisCardByTextSource(TextMeshProUGUI source)
+    public void DisCardByTextSource(System.String source)
     {
         foreach (GameObject i in mainDeck)
         {
-            if (i.GetComponent<Keyword>().nameText.text == source.text)
+            if (i.name == source)
             {
                 mainDeck.Remove(i);
                 break;
@@ -189,7 +189,7 @@ public class Deck : MonoBehaviour
         }
         foreach (GameObject i in supportDeck)
         {
-            if (i.GetComponent<Keyword>().nameText.text == source.text)
+            if (i.name == source)
             {
                 supportDeck.Remove(i);
                 break;

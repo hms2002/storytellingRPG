@@ -9,6 +9,7 @@ public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
+    public string name;
     [SerializeField] public TextMeshProUGUI descriptionText;
 
     public enum EffectTarget
@@ -47,7 +48,7 @@ public class Keyword : MonoBehaviour
     [SerializeField] protected string keywordDescription = "";
 
     private bool _isCanUse = true;
-
+    private bool _isPlayerKeyword = false;
 
     public string keywordName
     {
@@ -107,7 +108,9 @@ public class Keyword : MonoBehaviour
         get { return _isOneTimeUse; }
         set { _isOneTimeUse = value; }
     }
-    
+
+    public bool isPlayerKeyword { get => _isPlayerKeyword; set => _isPlayerKeyword = value; }
+
     #endregion
 
     protected void Init()
@@ -116,6 +119,7 @@ public class Keyword : MonoBehaviour
         nameText = FindInfoText("Text (TMP)");
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;
+        name = new string(nameText.text);
         nameText.color = keywordColor;
         if(keywordColor == R)
         {
@@ -155,6 +159,7 @@ public class Keyword : MonoBehaviour
                        .Replace("protect", keywordProtect.ToString())
                        .Replace("heal", keywordHeal.ToString());
     }
+
     private TextMeshProUGUI FindInfoText(string name)
     {
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
@@ -166,5 +171,21 @@ public class Keyword : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ShowInfoUI()
+    {
+        string title = keywordName;
+        string content = FormatDescription(keywordDescription);
+
+        // InfoManager를 통해 InfoUI를 표시
+        if (!isPlayerKeyword)
+        {
+            InfoManager.instance.ShowTipUI(title, GetKeywordColor(), "긴장도 " + keywordTension.ToString(), content, transform);
+        }
+        else
+        {
+            InfoManager.instance.ShowTipUI(title, GetKeywordColor(), content, transform);
+        }
     }
 }

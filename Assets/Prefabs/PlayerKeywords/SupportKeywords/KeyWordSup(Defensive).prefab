@@ -623,16 +623,17 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
-  _keywordName: 
+  _keywordName: "\uBC29\uC5B4\uC801\uC778"
   _keywordDamage: 0
-  _keywordProtect: 0
+  _keywordProtect: 4
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
-  keywordDescription: 
+  keywordDescription: "\uC790\uC2E0\uC5D0\uAC8C protect\uC758 \uBCF4\uD638\uB97C
+    \uBD80\uC5EC"
 --- !u!114 &2131672833354806820
 MonoBehaviour:
   m_ObjectHideFlags: 0

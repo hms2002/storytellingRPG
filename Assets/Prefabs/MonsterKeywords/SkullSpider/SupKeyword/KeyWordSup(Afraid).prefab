@@ -162,8 +162,8 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
-  keywordDescription: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uACF5\uD3EC stack\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4
-    +tension"
+  keywordDescription: "\uC0C1\uB300\uBC29\uC5D0\uAC8C \uACF5\uD3EC debuffstack\uC744
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
 --- !u!114 &8950921027244622347
 MonoBehaviour:
   m_ObjectHideFlags: 0

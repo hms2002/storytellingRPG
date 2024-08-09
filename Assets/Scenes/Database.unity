@@ -6092,7 +6092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
+  - {fileID: 682207150685018480, guid: 8036a6f28aa7f4c4286071ea8be088ff, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:
@@ -6296,6 +6296,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 688349539}
     m_Modifications:
     - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: mana
+      value: 
+      objectReference: {fileID: 11400000, guid: 933ca9c5bea39314eb38fabe763c88cf, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: faint
+      value: 
+      objectReference: {fileID: 11400000, guid: f52c4eff12f877b40b33ade888ec6949, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
       propertyPath: thief
       value: 
       objectReference: {fileID: 11400000, guid: e6adee4eb1e0a7e4999f6d73dab86db6, type: 2}
@@ -6307,6 +6315,14 @@ PrefabInstance:
       propertyPath: secession
       value: 
       objectReference: {fileID: 11400000, guid: 11125423ffdc2cc46bfcdb21229b88c4, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: selfRepair
+      value: 
+      objectReference: {fileID: 11400000, guid: a2ad44f44fd7e9247a98e959a5986944, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: coreOverload
+      value: 
+      objectReference: {fileID: 11400000, guid: da874da0c43667e40843b58212d050d6, type: 2}
     - target: {fileID: 6266717122396702505, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
       propertyPath: m_Name
       value: StateDatabase

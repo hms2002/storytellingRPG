@@ -8,10 +8,6 @@ public class Burning : KeywordSup
     {
         keywordName = "불타는";
         SetKeywordColor(Y);
-        debuffType = "Burn";
-        debuffStack = 2;
-        effectTarget = EffectTarget.target;
-        effectType = EffectManager.EffectType.Flame;
         Init();
     }
 

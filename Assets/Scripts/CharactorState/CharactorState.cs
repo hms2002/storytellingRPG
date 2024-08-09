@@ -114,6 +114,10 @@ public enum StateType
     /// </summary>
     coreOverload,
     /// <summary>
+    /// 마나(로브 슬라임)
+    /// </summary>
+    mana,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -228,6 +232,9 @@ public class CharactorState
             case StateType.coreOverload:
                 AddState(stateDB.coreOverload, val);
                 break;
+            case StateType.mana:
+                AddState(stateDB.mana, val);
+                break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
                 break;
@@ -266,6 +273,18 @@ public class CharactorState
                 || i.stateData.stateProperty != StateProperty.Debuff)
                 continue;
             debuffCnt++;
+        }
+        return debuffCnt;
+    }
+    public int AllDebuffStack()
+    {
+        int debuffCnt = 0;
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stack <= 0
+                || i.stateData.stateProperty != StateProperty.Debuff)
+                continue;
+            debuffCnt += i.stack;
         }
         return debuffCnt;
     }

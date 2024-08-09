@@ -9,13 +9,12 @@ public class RogueWave_Calm : KeywordSup
         keywordName = "잔잔한";
 
         SetKeywordColor(Y);
-        keywordTension = -30;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.reduction, 5);
+        caster.charactorState.AddState(StateType.reduction, debuffStack);
         caster.tension += keywordTension;
     }
 
