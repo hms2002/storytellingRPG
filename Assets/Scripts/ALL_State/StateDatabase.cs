@@ -30,7 +30,8 @@ public class StateDatabase : MonoBehaviour
     public StateData thief;
     public StateData selfRepair;
     public StateData coreOverload;
-    
+    public StateData mana;
+
     public static StateDatabase stateDatabase;
 
     private void OnEnable()

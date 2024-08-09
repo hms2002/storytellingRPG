@@ -8,7 +8,6 @@ public class Defensive : KeywordSup
     {
         keywordName = "방어적인";
         SetKeywordColor(B);
-        keywordProtect = 4;
         Init();
     }
 

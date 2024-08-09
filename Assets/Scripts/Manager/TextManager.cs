@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,7 @@ public class TextManager : MonoBehaviour
     public static TextManager instance;
     public TextMeshProUGUI Text;
 
-    
-    private void Awake()
+private void Awake()
     {
         if (instance == null)
         {

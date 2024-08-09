@@ -148,6 +148,8 @@ public class FightManager : MonoBehaviour
             //기절 상태이상
             if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
             {
+                preparedActorCount++;
+                Flow();
                 return;
             }
             
@@ -238,7 +240,10 @@ public class FightManager : MonoBehaviour
         foreach (Actor monster in tempList)
         {
             if (monster.charactorState.GetStateStack(StateType.faint) > 0)
+            {
+                monster.charactorState.ResetState(StateType.faint);
                 continue;
+            }
 
             monster.Action(player);
             dir = -3;

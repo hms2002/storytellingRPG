@@ -51,7 +51,7 @@ public class TumbleBird : Monster
         SetAnimationState();
     }
 
-    public override void Damaged(Actor attacker, int _damage)
+    public override void Damaged(Actor attacker, int _damage )
     {
         base.Damaged(attacker, _damage);
         SetAnimationState();

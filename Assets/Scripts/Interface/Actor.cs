@@ -336,9 +336,9 @@ public class Actor : MonoBehaviour
 
         if (_keywordMain.isOneTimeUse)
         {
-            deck.DisCardByTextSource(_keywordMain.nameText);
+            deck.DisCardByTextSource(_keywordMain.name);
             if(OriginalDeck != null)
-                OriginalDeck.DisCardByTextSource(_keywordMain.nameText);
+                OriginalDeck.DisCardByTextSource(_keywordMain.name);
         }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 1f);
@@ -599,6 +599,7 @@ public class Actor : MonoBehaviour
     protected void DamagedSelf(int totalDamage)
     {
         totalDamage = CalculateAllProtection(totalDamage);
+        if (totalDamage < 0) totalDamage = 0;
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.black);
         hp -= totalDamage;
     }
@@ -612,7 +613,8 @@ public class Actor : MonoBehaviour
 
         // 보호막 관련 모든 연산을 실행
         totalDamage = CalculateAllProtection(totalDamage);
-        
+        if (totalDamage < 0) totalDamage = 0;
+
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
         hp -= totalDamage;
@@ -623,7 +625,33 @@ public class Actor : MonoBehaviour
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
+    /// <summary>
+    /// 관통 데미지를 받는 함수
+    /// </summary>
+    /// <param name="totalDamage"></param>
+    /// <param name="attacker"></param>
+    public virtual void Damaged(int totalDamage, Actor attacker, bool reallyPenetrate)
+    {
+        // 공격 전 피해량 계산
+        totalDamage = CalculateTotalDamageBeforeDamaged(totalDamage, attacker);
 
+        // 피해량 있으면, 반격 플래그 TRUE
+        CheckAttackCountFlag(totalDamage, attacker);
+
+        // 보호막 관련 모든 연산을 무시
+        //totalDamage = CalculateAllProtection(totalDamage);
+
+        if (totalDamage < 0) totalDamage = 0;
+        UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
+
+        hp -= totalDamage;
+
+
+        // 공격자, 공격 시 스택 감소할 것들 감소
+        attacker.charactorState.ReductionOnAttack();
+        // 피해자, 피해 시 스택 감소할 것들 감소
+        charactorState.ReductionOnDamaged();
+    }
     public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
@@ -639,10 +667,11 @@ public class Actor : MonoBehaviour
         }
         int totalDamage = _damage;
 
-        if(attacker == this)
+        if (attacker == this)
             DamagedSelf(totalDamage);
         else
             DamagedOther(totalDamage, attacker);
+
     }
 
 

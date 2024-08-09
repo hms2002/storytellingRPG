@@ -9,6 +9,7 @@ public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
+    public string name;
     [SerializeField] public TextMeshProUGUI descriptionText;
 
     public enum EffectTarget
@@ -116,6 +117,7 @@ public class Keyword : MonoBehaviour
         nameText = FindInfoText("Text (TMP)");
         fightManager = FightManager.fightManager;
         nameText.text = keywordName;
+        name = new string(nameText.text);
         nameText.color = keywordColor;
         if(keywordColor == R)
         {
