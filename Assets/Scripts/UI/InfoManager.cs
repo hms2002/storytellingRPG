@@ -40,6 +40,7 @@ public class InfoManager : MonoBehaviour
         {
             _rootCanvas = new GameObject("Canvas").AddComponent<Canvas>();
             _rootCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            _rootCanvas.sortingOrder = 1;
             _rootCanvas.transform.SetParent(_root.transform);
         }
 
