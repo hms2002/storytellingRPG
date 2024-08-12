@@ -7,6 +7,7 @@ public class Potion : KeywordMain
     private void Awake()
     {
         keywordName = "포션";
+        isPlayerKeyword = true;
         SetKeywordColor(D);
         keywordHeal = 12;
         Init();

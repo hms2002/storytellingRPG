@@ -8,6 +8,7 @@ public class Pike : KeywordSup
     {
         keywordName = "가시 돋은";
         SetKeywordColor(Y);
+        isPlayerKeyword = true;
         keywordDamage = 3;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
