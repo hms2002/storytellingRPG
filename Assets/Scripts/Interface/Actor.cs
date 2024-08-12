@@ -20,6 +20,7 @@ public class Actor : MonoBehaviour
 
     public string _attackSound = "타격음_주먹2";
 
+
     public void AddSupKeywordToOriginalDeck(GameObject keywordSup)
     {
         OriginalDeck.AddSupKeywordOnDeck(keywordSup);
