@@ -118,6 +118,10 @@ public enum StateType
     /// </summary>
     mana,
     /// <summary>
+    /// 흡수(보랏빛 손아귀)
+    /// </summary>
+    absorption,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -129,11 +133,22 @@ public class CharactorState
 
     public State[] allStateList = new State[(int)StateType.Size];
 
+    [HideInInspector]
+    public List<Actor> vampire = new List<Actor>();
+    //public Action endBattle;
+
     public void Init(ActorStateUIControler _stateUIController)
     {
+        //endBattle = null;
         stateUIController = _stateUIController;
+        vampire.Clear();
         foreach (StateType type in Enum.GetValues(typeof(StateType)))
             ResetState(type);
+    }
+
+    public void AddVampireActor(Actor actor)
+    {
+        vampire.Add(actor);
     }
 
     public void AddState(StateData data, int val)
@@ -235,6 +250,9 @@ public class CharactorState
             case StateType.mana:
                 AddState(stateDB.mana, val);
                 break;
+            case StateType.absorption:
+                AddState(stateDB.absorption, val);
+                break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
                 break;
@@ -321,6 +339,10 @@ public class CharactorState
             if(i.oneTimeRepeat)
             {
                 actor.Damaged(actor, i.stack * stackDamage);
+
+                foreach (Actor a in vampire)
+                    a.hp += i.stack * stackDamage;
+
                 if (i.stateData.reductionTiming == ReductionTiming.OnAttack)
                 {
                     i.Reduction();
@@ -330,6 +352,8 @@ public class CharactorState
             if(i.stack != 0)
             {
                 actor.Damaged(actor, i.stack * stackDamage);
+                foreach (Actor a in vampire)
+                    a.hp += i.stack * stackDamage;
             }
             stateUIController.UpdateUI(i);
         }
@@ -342,6 +366,16 @@ public class CharactorState
     public void StackDamageRepeat(StateType type)
     {
         allStateList[(int)type].oneTimeRepeat = true;
+    }
+    public void AllStackDamageRepeat()
+    {
+        foreach (State i in allStateList)
+        {
+            if (i == null || i.stateData.effectByTurn == false
+                || i.stack <= 0 || i.stateData.damagePerStack == 0)
+                continue;
+            i.oneTimeRepeat = true;
+        }
     }
 
     public void StartTurnEffect(Actor actor)

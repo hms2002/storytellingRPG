@@ -31,6 +31,7 @@ public class StateDatabase : MonoBehaviour
     public StateData selfRepair;
     public StateData coreOverload;
     public StateData mana;
+    public StateData absorption;
 
     public static StateDatabase stateDatabase;
 

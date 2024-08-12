@@ -9,7 +9,7 @@ public class Keyword : MonoBehaviour
 {
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
-    public string name;
+    [HideInInspector]public string name;
     [SerializeField] public TextMeshProUGUI descriptionText;
 
     public enum EffectTarget
