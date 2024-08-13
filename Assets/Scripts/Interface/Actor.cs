@@ -91,6 +91,10 @@ public class Actor : MonoBehaviour
                 if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
                     charactorState.ReductionByValue(StateType.ore, _hp - value);
 
+            if(value > _hp)
+                UIManager.instance.ActiveDamageText(transform.position, value-_hp, Color.green);
+
+
             _hp = value;
             if (_hp > _MAX_HP)
             {
@@ -659,7 +663,8 @@ public class Actor : MonoBehaviour
             int success = UnityEngine.Random.Range(0, 2);
             if (success == 0)
             {
-                Debug.Log("회피 성공~!!");
+                UIManager.instance.ActiveDamageText(transform.position, "회피", Color.gray);
+
                 return;
             }
         }

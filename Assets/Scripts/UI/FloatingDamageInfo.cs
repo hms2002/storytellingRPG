@@ -21,6 +21,12 @@ public class FloatingDamageInfo : MonoBehaviour
         damageText.text = damage.ToString();
         damageText.color = color;
     }
+    public void Init(string text, Color color)
+    {
+        isUsing = true;
+        damageText.text = text;
+        damageText.color = color;
+    }
 
     private void Off()
     {

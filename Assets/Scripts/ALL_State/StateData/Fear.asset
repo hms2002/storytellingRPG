@@ -17,6 +17,8 @@ MonoBehaviour:
   reductionTiming: 4
   stateProperty: 1
   stateImage: {fileID: 21300000, guid: 0c941baabf89f6d47af25e23d6581383, type: 3}
+  soundName: 
+  stateName: "\uACF5\uD3EC"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0

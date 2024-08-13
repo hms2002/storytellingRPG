@@ -8,9 +8,12 @@ public class InfoManager : MonoBehaviour
     public static InfoManager instance { get; private set; }
 
     public InfoUI infoUI { get; private set; }
+    public InfoUI worldInfoUI { get; private set; }
 
     private GameObject _root = null;
     private Canvas _rootCanvas = null;
+    private Canvas _rootWorldCanvas = null;
+
 
     private void Awake()
     {
@@ -44,11 +47,27 @@ public class InfoManager : MonoBehaviour
             _rootCanvas.transform.SetParent(_root.transform);
         }
 
+        if (_rootWorldCanvas == null)
+        {
+            _rootWorldCanvas = new GameObject("Canvas").AddComponent<Canvas>();
+            _rootWorldCanvas.renderMode = RenderMode.WorldSpace;
+            _rootWorldCanvas.sortingOrder = 6;
+            _rootWorldCanvas.planeDistance = 10f;
+            _rootWorldCanvas.transform.position = new Vector3(0, 0, 0);
+            _rootWorldCanvas.transform.SetParent(_root.transform);
+        }
+
         // InfoUI 초기화
         infoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/Tip"), _rootCanvas.transform);
+        worldInfoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/WorldTip"), _rootWorldCanvas.transform);
         InitUIParent();
     }
 
+    public void ShowWorldTipUI(string title, Color titleColor, string content, Transform parent = null)
+    {
+        worldInfoUI.gameObject.SetActive(true);
+        worldInfoUI.ShowTipUI(title, titleColor, content, parent);
+    }
     public void ShowTipUI(string title, Color titleColor, string tension, string content, Transform parent = null)
     {
         infoUI.gameObject.SetActive(true);
@@ -65,10 +84,19 @@ public class InfoManager : MonoBehaviour
         infoUI.gameObject.SetActive(false);
         infoUI.transform.SetParent(_rootCanvas.transform);
     }
+    public void HideWorldTipUI()
+    {
+        worldInfoUI.gameObject.SetActive(false);
+        worldInfoUI.transform.SetParent(_rootCanvas.transform);
+    }
 
     public void InitUIParent()
     {
+        infoUI.Init(_rootCanvas);
         infoUI.transform.SetParent(_rootCanvas.transform);
         infoUI.gameObject.SetActive(false);
+        worldInfoUI.Init(_rootWorldCanvas);
+        worldInfoUI.transform.SetParent(_rootCanvas.transform);
+        worldInfoUI.gameObject.SetActive(false);
     }
 }

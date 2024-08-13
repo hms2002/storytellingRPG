@@ -18,10 +18,11 @@ MonoBehaviour:
   stateProperty: 0
   stateImage: {fileID: 21300000, guid: a585c24bbaf1eea41acf2243cb107d25, type: 3}
   soundName: "\uB3C4\uB451\uC774\uC57C!"
+  stateName: "\uB3C4\uB451\uC774\uC57C!"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
-  stateExplanation: "\uB3C4\uB451\uC774\uC57C!\n\uD50C\uB808\uC774\uC5B4\uC758 \uC18C\uC9C0\uAE08\uC744
-    500(N)\uACE8\uB4DC \uBE7C\uC557\uB294\uB2E4.\n\uD50C\uB808\uC774\uC5B4\uC758
-    \uC18C\uC9C0\uAE08\uC774 500"
+  stateExplanation: "\uD50C\uB808\uC774\uC5B4\uC758 \uC18C\uC9C0\uAE08\uC744 500(N)\uACE8\uB4DC
+    \uBE7C\uC557\uB294\uB2E4.\n\uD50C\uB808\uC774\uC5B4\uC758 \uC18C\uC9C0\uAE08\uC774
+    500"
   effectByTurn: 0

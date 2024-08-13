@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System;
 
 public enum ETipPos
 {
@@ -27,14 +28,21 @@ public class InfoUI : MonoBehaviour
     private List<GameObject> _tipObjects = new List<GameObject>();
     private RectTransform _rectTransform;
 
+    private Canvas _myParent;
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
     }
 
+    public void Init(Canvas canvas)
+    {
+        _myParent = canvas;
+    }
 
     public void ShowTipUI(string title, Color titleColor, string tension, string content, Transform parent)
     {
+        transform.SetParent(_myParent.transform);
         InitializeTipObjects(content);
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
@@ -49,6 +57,7 @@ public class InfoUI : MonoBehaviour
 
     public void ShowTipUI(string title, Color titleColor, string content, Transform parent)
     {
+        transform.SetParent(_myParent.transform);
         InitializeTipObjects(content);
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
@@ -60,6 +69,8 @@ public class InfoUI : MonoBehaviour
         // 포지셔닝
         Positioning(parent);
     }
+
+
 
     private void InitializeTipObjects(string content)
     {
@@ -101,18 +112,18 @@ public class InfoUI : MonoBehaviour
     }
 
 
-/*    private void Positioning(Vector2 pos)
-    {
-        // 기본 위치 설정
-        _rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-        _rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-        transform.position = pos + new Vector2(_width / 2, _heightInRow / 2);
+    /*    private void Positioning(Vector2 pos)
+        {
+            // 기본 위치 설정
+            _rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            _rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            transform.position = pos + new Vector2(_width / 2, _heightInRow / 2);
 
-        // 위치 보정
-        AdjustPositionToFitScreen();
-    }
-*/
-    
+            // 위치 보정
+            AdjustPositionToFitScreen();
+        }
+    */
+
     private void AdjustPositionToFitScreen(Transform parent)
     {
         float width = _rectTransform.sizeDelta.x;
@@ -151,7 +162,8 @@ public class InfoUI : MonoBehaviour
         SetPosition(parent.position, tipPos, width, height);
 
         // 위치 보정 후, Canvas의 자식으로 설정하여 화면 상단에 표시
-        transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+        transform.SetParent(_myParent.transform);
+        //transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
         transform.SetAsLastSibling();
     }
 
@@ -194,7 +206,6 @@ public class InfoUI : MonoBehaviour
 
         // 원래 텍스트로 복원
         tmp.text = originalText;
-
         return lineCount;
     }
 }

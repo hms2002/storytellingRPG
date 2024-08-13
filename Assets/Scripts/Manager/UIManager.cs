@@ -147,6 +147,22 @@ public class UIManager : MonoBehaviour
         if(!isRunDlayShowDamage)
             StartCoroutine("DlayShowDamage");
     }
+    public void ActiveDamageText(Vector3 pos, string text, Color color)
+    {
+        if (damageTextPrefab == null && parentCanvas == null)
+        {
+            Debug.LogError("피해 텍스트 프리펩 안 넣음");
+            return;
+        }
+        //damageTextArr[idxCnt].gameObject.SetActive(true);
+        damageTextArr[idxCnt].transform.position = pos;
+        damageTextArr[idxCnt].Init(text, color);
+        //damageTextArr[idxCnt].gameObject.SetActive(false);
+        ++idxCnt;
+        idxCnt = idxCnt % damageTextArr.Length;
+        if (!isRunDlayShowDamage)
+            StartCoroutine("DlayShowDamage");
+    }
     bool isRunDlayShowDamage = false;
     IEnumerator DlayShowDamage()
     {
@@ -164,7 +180,6 @@ public class UIManager : MonoBehaviour
                 if (damageTextArr[i].isUsing == false) continue;
                 if (damageTextArr[i].gameObject.activeSelf == true) continue;
                 damageTextArr[i].gameObject.SetActive(true);
-                Debug.Log(Time.time);
                 textShowTime = Time.time;
 
                 find = true;

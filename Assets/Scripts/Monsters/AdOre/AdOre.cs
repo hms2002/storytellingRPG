@@ -5,14 +5,12 @@ using UnityEngine;
 public class AdOre : Monster
 {
     Animator anim;
-    private AdOre()
+    
+    private void Awake()
     {
         MAX_HP = 100;
         hp = MAX_HP;
         encounterText = "대부분의 젊은이들이, 그들 앞의 존재를 알지 못한 채 채광을 계속했다.";
-    }
-    private void Awake()
-    {
         anim = GetComponent<Animator>();
     }
 

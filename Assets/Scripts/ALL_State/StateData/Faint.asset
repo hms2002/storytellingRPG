@@ -18,9 +18,9 @@ MonoBehaviour:
   stateProperty: 1
   stateImage: {fileID: 21300000, guid: 57bbee34457714e47a0e2639d59547da, type: 3}
   soundName: 
+  stateName: "\uAE30\uC808"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
-  stateExplanation: "\uAE30\uC808\n\uCE74\uB4DC \uC120\uD0DD \uBC0F \uD589\uB3D9
-    \uBD88\uAC00."
+  stateExplanation: "\uCE74\uB4DC \uC120\uD0DD \uBC0F \uD589\uB3D9 \uBD88\uAC00."
   effectByTurn: 0

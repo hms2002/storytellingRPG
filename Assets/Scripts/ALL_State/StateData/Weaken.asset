@@ -18,9 +18,10 @@ MonoBehaviour:
   stateProperty: 1
   stateImage: {fileID: 21300000, guid: 1b292b332a79baa42be56758c1ad0b0a, type: 3}
   soundName: 
+  stateName: "\uCDE8\uC57D"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
-  stateExplanation: "\uCDE8\uC57D\n\uC2A4\uD0DD \uB2F9 \uBC1B\uB294 \uD53C\uD574
-    1 \uC99D\uAC00.\n\uD53C\uD574\uB97C \uBC1B\uC73C\uBA74 \uC2A4\uD0DD 1 \uAC10\uC18C"
+  stateExplanation: "\uC2A4\uD0DD \uB2F9 \uBC1B\uB294 \uD53C\uD574 1 \uC99D\uAC00.\n\uD53C\uD574\uB97C
+    \uBC1B\uC73C\uBA74 \uC2A4\uD0DD 1 \uAC10\uC18C"
   effectByTurn: 0
