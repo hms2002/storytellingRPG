@@ -48,7 +48,7 @@ public class RootTectacles : Monster
         {
             target.Damaged(this, tentacleAttackDamage);
         }
-        EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, repeatCnt);
+        EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatCnt);
         repeatCnt = 0;
         tentacleAttackDamage = 2;
         charactorState.ResetState(StateType.tentacleCondolidation);

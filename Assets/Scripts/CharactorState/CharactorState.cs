@@ -118,6 +118,10 @@ public enum StateType
     /// </summary>
     mana,
     /// <summary>
+    /// 탄약(딱총탕탕이후루후루)
+    /// </summary>
+    ammunition,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -148,6 +152,7 @@ public class CharactorState
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
         stateUIController.UpdateUI(allStateList[(int)data.type]);
     }
+
     public void AddState(StateType type, int val)
     {
         StateDatabase stateDB = StateDatabase.stateDatabase;
@@ -234,6 +239,9 @@ public class CharactorState
                 break;
             case StateType.mana:
                 AddState(stateDB.mana, val);
+                break;
+            case StateType.ammunition:
+                AddState(stateDB.ammunition, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");

@@ -5,12 +5,12 @@ using UnityEngine;
 public class JewelSpirit : Monster
 {
     [Header("초기 보호수치")]
-    [SerializeField] private int biginProtect = 70;
+    [SerializeField] private int beginProtect = 70;
     private void Start()
     {
         charactorState.AddState(StateType.selfRepair, 1);
         charactorState.AddState(StateType.coreOverload, 1);
-        protect = biginProtect;
+        protect = beginProtect;
     }
 
     private void Awake()
@@ -42,7 +42,7 @@ public class JewelSpirit : Monster
             garbageField.ClearDeckList(WhatDeck.MainDeck);
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
             sprite.sprite = overLoadSprite;
-            charactorState.ChangeStateSprite(StateType.coreOverload, overLoadSpriteState);
+            charactorState.ChangeStateSprite(StateType.coreOverload, overLoadSpriteState);  
             charactorState.ResetState(StateType.selfRepair);
         }
     }

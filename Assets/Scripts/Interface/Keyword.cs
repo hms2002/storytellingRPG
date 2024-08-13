@@ -46,7 +46,10 @@ public class Keyword : MonoBehaviour
 
     [Multiline(3)]
     [SerializeField] protected string keywordDescription = "";
-
+    [Header ("긴장도가 변경되는 키워드일 때 긴장도툴팁 텍스트 변경")]
+    [SerializeField] private string changeTensionText = "";
+    [Header("긴장도가 변경되는 키워드일 때 체크하면됨")]
+    [SerializeField] private bool _isChangeTension = false;
     private bool _isCanUse = true;
     private bool _isPlayerKeyword = false;
 
@@ -103,10 +106,16 @@ public class Keyword : MonoBehaviour
         get { return _isCanUse; }
         set { _isCanUse = value; }
     }
+
     public bool isOneTimeUse
     {
         get { return _isOneTimeUse; }
         set { _isOneTimeUse = value; }
+    }
+    public bool isChangeTension
+    {
+        get { return _isChangeTension; }
+        set { _isChangeTension = value; }
     }
 
     public bool isPlayerKeyword { get => _isPlayerKeyword; set => _isPlayerKeyword = value; }
@@ -181,7 +190,28 @@ public class Keyword : MonoBehaviour
         // InfoManager를 통해 InfoUI를 표시
         if (!isPlayerKeyword)
         {
-            InfoManager.instance.ShowTipUI(title, GetKeywordColor(), "긴장도 " + keywordTension.ToString(), content, transform);
+            if(isChangeTension)
+            {
+                if(keywordTension > 0)
+                {
+                    InfoManager.instance.ShowTipUI(title, GetKeywordColor(), changeTensionText + " +" + keywordTension.ToString(), content, transform);
+                }
+                else
+                {
+                    InfoManager.instance.ShowTipUI(title, GetKeywordColor(), changeTensionText + " " + keywordTension.ToString(), content, transform);
+                }
+            }
+            else
+            {
+                if(keywordTension > 0)
+                {
+                    InfoManager.instance.ShowTipUI(title, GetKeywordColor(), "긴장도 +" + keywordTension.ToString(), content, transform);
+                }
+                else
+                {
+                    InfoManager.instance.ShowTipUI(title, GetKeywordColor(), "긴장도 " + keywordTension.ToString(), content, transform);
+                }
+            }
         }
         else
         {
