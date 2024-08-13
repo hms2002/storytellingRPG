@@ -28,6 +28,7 @@ public class RootTectacles : Monster
         forestMaster = _forestMaster;
         charactorState.AddState(StateType.tentacleAttack,1);
     }
+
     public override void Action(Actor target)
     {
         base.Action(target);
@@ -47,6 +48,7 @@ public class RootTectacles : Monster
         {
             target.Damaged(this, tentacleAttackDamage);
         }
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, repeatCnt);
         repeatCnt = 0;
         tentacleAttackDamage = 2;
         charactorState.ResetState(StateType.tentacleCondolidation);

@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
@@ -345,7 +346,7 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
-  _buffStack: 1
+  _buffStack: 3
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: "\uD53C\uD574\uB97C 2\uBC88 \uC785\uD799\uB2C8\uB2E4."

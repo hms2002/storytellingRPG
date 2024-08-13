@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
@@ -484,7 +485,7 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
-  attackNum: 2
+  attackNum: 15
 --- !u!114 &5865672023352380158
 MonoBehaviour:
   m_ObjectHideFlags: 0

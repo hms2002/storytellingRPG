@@ -9,6 +9,7 @@ public class JewelSpirit : Monster
     private void Start()
     {
         charactorState.AddState(StateType.selfRepair, 1);
+        charactorState.AddState(StateType.coreOverload, 1);
         protect = biginProtect;
     }
 
@@ -21,6 +22,7 @@ public class JewelSpirit : Monster
 
     [Header("과부하 스프라이트")]
     [SerializeField] private Sprite overLoadSprite;
+    [SerializeField] private Sprite overLoadSpriteState;
     [Header("과부하 키워드 덱")]
     [SerializeField] private List<GameObject> overLoadKeyword;
     [Header ("자가수복 보호부여 수치")]
@@ -40,7 +42,7 @@ public class JewelSpirit : Monster
             garbageField.ClearDeckList(WhatDeck.MainDeck);
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
             sprite.sprite = overLoadSprite;
-            charactorState.AddState(StateType.coreOverload, 1);
+            charactorState.ChangeStateSprite(StateType.coreOverload, overLoadSpriteState);
             charactorState.ResetState(StateType.selfRepair);
         }
     }
@@ -58,7 +60,7 @@ public class JewelSpirit : Monster
             hp = 0;
         }
     }
-
+    
     protected override int CalculateProtect(int totalDamage)
     {
         if (protect > 0)

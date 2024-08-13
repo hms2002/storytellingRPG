@@ -247,6 +247,11 @@ public class CharactorState
         return allStateList[(int)type].stack;
     }
 
+    public void ChangeStateSprite(StateType type,Sprite sprite)
+    {
+        allStateList[(int)type].stateData.stateImage = sprite;
+    }
+
     /// <summary>
     /// 모든 디버프 제거
     /// </summary>
@@ -312,6 +317,7 @@ public class CharactorState
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
+            EffectManager.instance.PlayEffect(i.stateData.debuffEffect, actor);
             int stackDamage = i.stateData.damagePerStack;
             if(i.oneTimeMultiplication)
             {
@@ -320,7 +326,7 @@ public class CharactorState
             }
             if(i.oneTimeRepeat)
             {
-                actor.Damaged(actor, i.stack * stackDamage);
+                actor.Damaged(actor, stackDamage, i.stack);
                 if (i.stateData.reductionTiming == ReductionTiming.OnAttack)
                 {
                     i.Reduction();
@@ -329,7 +335,7 @@ public class CharactorState
             }
             if(i.stack != 0)
             {
-                actor.Damaged(actor, i.stack * stackDamage);
+                actor.Damaged(actor, stackDamage, i.stack);
             }
             stateUIController.UpdateUI(i);
         }

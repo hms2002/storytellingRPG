@@ -34,6 +34,7 @@ public class StateData : ScriptableObject
     public StateProperty stateProperty;
     public Sprite stateImage;
     public string soundName = "";
+    public EffectManager.EffectType debuffEffect;
 
     public int MAX_STACK;
     public int damagePerStack;
