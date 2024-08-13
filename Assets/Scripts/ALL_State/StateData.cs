@@ -39,6 +39,8 @@ public class StateData : ScriptableObject
     public int MAX_STACK;
     public int damagePerStack;
     public int tentionPerStack;
+    [Header("조건 스택. 예시 : needStackToEffect 당 3 데미지")]
+    public int needStackToEffect = 1;
 
     [Multiline(5)]
     public string stateExplanation;

@@ -141,6 +141,14 @@ public class FightManager : MonoBehaviour
             monsterList[preparedActorCount].StartTurn();
 
             
+            if (!CheckMonsterSurvive())
+            {
+                // 전투 승리 문구 출력
+                PlayerWin();
+                MonsterTargetter.monsterTargetter.TargetUIOff();
+                return;
+            }
+            
             //기절 상태이상
             if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
             {
@@ -149,14 +157,6 @@ public class FightManager : MonoBehaviour
                 return;
             }
             
-            
-            if (!CheckMonsterSurvive())
-            {
-                // 전투 승리 문구 출력
-                PlayerWin();
-                MonsterTargetter.monsterTargetter.TargetUIOff();
-                return;
-            }
 
             monsterList[preparedActorCount].ShowSupKeywords();
 

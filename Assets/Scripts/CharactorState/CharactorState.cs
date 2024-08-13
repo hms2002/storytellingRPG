@@ -122,6 +122,18 @@ public enum StateType
     /// </summary>
     absorption,
     /// <summary>
+    /// 푸른 포자(벌쉬룸 전용)
+    /// </summary>
+    blueSpore,
+    /// <summary>
+    /// 붉은 포자(벌쉬룸 전용)
+    /// </summary>
+    redSpore,
+    /// <summary>
+    /// 반격(피해 입으면 스택만큼 데미지 입힘)
+    /// </summary>
+    counterAttack,
+    /// <summary>
     /// 상태 목록 갯수
     /// </summary>
     Size
@@ -253,6 +265,15 @@ public class CharactorState
             case StateType.absorption:
                 AddState(stateDB.absorption, val);
                 break;
+            case StateType.blueSpore:
+                AddState(stateDB.blueSpore, val);
+                break;
+            case StateType.redSpore:
+                AddState(stateDB.redSpore, val);
+                break;
+            case StateType.counterAttack:
+                AddState(stateDB.counterAttack, val);
+                break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
                 break;
@@ -330,15 +351,17 @@ public class CharactorState
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
+
             int stackDamage = i.stateData.damagePerStack;
             if(i.oneTimeMultiplication)
             {
                 stackDamage *= 2;
                 i.oneTimeMultiplication = false;
             }
+
             if(i.oneTimeRepeat)
             {
-                actor.Damaged(actor, i.stack * stackDamage);
+                actor.Damaged(actor, (i.stack / i.stateData.needStackToEffect )* stackDamage);
 
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;
@@ -349,9 +372,10 @@ public class CharactorState
                 }
                 i.oneTimeRepeat = false;
             }
+
             if(i.stack != 0)
             {
-                actor.Damaged(actor, i.stack * stackDamage);
+                actor.Damaged(actor, (i.stack / i.stateData.needStackToEffect) * stackDamage);
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;
             }

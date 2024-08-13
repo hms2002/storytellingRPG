@@ -32,6 +32,9 @@ public class StateDatabase : MonoBehaviour
     public StateData coreOverload;
     public StateData mana;
     public StateData absorption;
+    public StateData blueSpore;
+    public StateData redSpore;
+    public StateData counterAttack;
 
     public static StateDatabase stateDatabase;
 

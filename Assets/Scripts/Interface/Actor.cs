@@ -241,12 +241,12 @@ public class Actor : MonoBehaviour
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
         charactorState.StartTurnEffect(this);
-        if(charactorState.allStateList[(int)StateType.callingOfMommyDragon] != null
+        if(charactorState.allStateList[(int)StateType.callingOfMommyDragon - 1] != null
             && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
         {
             FightManager.fightManager.MonsterFlee(this);
         }
-        if (charactorState.allStateList[(int)StateType.secession] != null
+        if (charactorState.allStateList[(int)StateType.secession - 1] != null
     && charactorState.GetStateStack(StateType.secession) == 0)
         {
             FightManager.fightManager.MonsterFlee(this);
@@ -591,9 +591,10 @@ public class Actor : MonoBehaviour
         int glassPragmentStack = FightBacker.charactorState.GetStateStack(StateType.glassPragment);
 
         int counterDamage = glassPragmentStack;
-        counterDamage +=FightBacker.charactorState.GetStateStack(StateType.pike);
-        
-        
+        counterDamage += FightBacker.charactorState.GetStateStack(StateType.pike);
+        counterDamage += FightBacker.charactorState.GetStateStack(StateType.counterAttack);
+        FightBacker.charactorState.ReductionByValue(StateType.counterAttack, 1);
+
         return counterDamage;
     }
     #endregion

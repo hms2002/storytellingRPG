@@ -6137,7 +6137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 717691908258792016, guid: ff125135384fc954c8b1f8d6704e3f7d, type: 3}
+  - {fileID: 682207150685018480, guid: 30ce1a9c468e3b540918a3e5feb87e90, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:
@@ -6357,6 +6357,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ccafa3453750de14f9a381bb30454ec0, type: 2}
     - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: redSpore
+      value: 
+      objectReference: {fileID: 11400000, guid: 302dd896b1a25da40908bf45b5c0bd4f, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: blueSpore
+      value: 
+      objectReference: {fileID: 11400000, guid: 3419c32a1dd411946b4428634eef6c5c, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
       propertyPath: secession
       value: 
       objectReference: {fileID: 11400000, guid: 11125423ffdc2cc46bfcdb21229b88c4, type: 2}
@@ -6372,6 +6380,10 @@ PrefabInstance:
       propertyPath: coreOverload
       value: 
       objectReference: {fileID: 11400000, guid: da874da0c43667e40843b58212d050d6, type: 2}
+    - target: {fileID: 1603106312686666835, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
+      propertyPath: counterAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d8e8627f924902438b7cea2d9cbbf43, type: 2}
     - target: {fileID: 6266717122396702505, guid: 312df4a7f128fa34fa7702ac2088e710, type: 3}
       propertyPath: m_Name
       value: StateDatabase
