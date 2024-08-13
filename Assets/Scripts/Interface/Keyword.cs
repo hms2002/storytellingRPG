@@ -36,10 +36,16 @@ public class Keyword : MonoBehaviour
     [SerializeField] private int    _keywordDamage = 0;
     [SerializeField] private int    _keywordProtect = 0;
     [SerializeField] private int    _keywordHeal = 0;
+
+    [Space(10.0f)]
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int    _debuffStack = 0;
     [SerializeField] private int    _buffStack = 0;
+
+    [Space(10.0f)]
     [SerializeField] private int    _keywordTension = 0;
+
+    [Space(10.0f)]
     [SerializeField] private bool   _isOneTimeUse = false;
     protected Color keywordColor;
 
@@ -48,9 +54,7 @@ public class Keyword : MonoBehaviour
     protected Color G = Color.green;
     protected Color B = Color.blue;
     protected Color Y = Color.yellow;
-    /// <summary>
-    /// 검은색임
-    /// </summary>
+    /// <summary> 검은색임 </summary>
     protected Color D = Color.black;
 
     [Multiline(3)]

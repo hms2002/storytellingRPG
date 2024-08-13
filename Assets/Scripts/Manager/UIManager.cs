@@ -7,6 +7,12 @@ using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum CursorType
+{
+    Default,
+    Eraser
+}
+
 /// <summary>
 /// 게임 운영에 필요한 UI 관리를 담당
 /// <para> 맵 UI, 덱 세팅 UI, 전투 UI 제어 </para>
@@ -15,8 +21,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    [Header("마우스 커서 이미지 리스트")]
+    [SerializeField] private List<Texture2D> cursorImage;
+
     [Header("맵")]
-    [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경           ※후추
+    [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경
 
     [Header("키워드 세팅 윈도우")]
     [SerializeField] private GameObject keywordSettingWindow;       // 키워드 세팅 윈도우 객체
@@ -26,10 +35,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject combatKeywordUI;
 
     [Header("전투 백그라운드")]
-    [SerializeField] private GameObject combatBackground;
+    [SerializeField] private GameObject combatBackground;           //
 
     [Header("상점 UI")]
-    [SerializeField] private GameObject ShopUI;
+    [SerializeField] private GameObject ShopUI;                     //
 
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
@@ -51,6 +60,28 @@ public class UIManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    /// <summary>
+    /// 커서 이미지를 파라미터 값으로 변경합니다.
+    /// </summary>
+    /// <param name="cursorType">CursorType.typename을 입력하세요.</param>
+    public void ChangeCursorImage(CursorType cursorType)
+    {
+        switch (cursorType)
+        {
+            case CursorType.Default:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Default], new Vector2(50, 50), CursorMode.ForceSoftware);
+
+                break;
+
+            case CursorType.Eraser:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.ForceSoftware);
+
+                break;
+        }
     }
 
     /// <summary>

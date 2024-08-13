@@ -6,9 +6,7 @@ public class Defensive : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "방어적인";
         SetKeywordColor(B);
-        keywordProtect = 4;
         Init();
     }
 
@@ -17,7 +15,5 @@ public class Defensive : KeywordSup
         caster.protect += keywordProtect;
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

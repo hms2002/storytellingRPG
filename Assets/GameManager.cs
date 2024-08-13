@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TensionManager tensionManager;
     [SerializeField] private RewardManager  rewardManager;
     [SerializeField] private ShopManager    shopManager;
-    [SerializeField] private Texture2D      cursorImg;
 
     [Header("플레이어의 모든 키워드 프리랩")]
     [SerializeField] private List<GameObject> _allSupKeywordsForPlayer;     // 플레이어가 가질 수 있는 모든 Support 키워드
@@ -59,7 +58,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        Cursor.SetCursor(cursorImg, new Vector2(50,50), CursorMode.ForceSoftware);
+        uiManager.ChangeCursorImage(CursorType.Default);
     }
 
     public void EnterFightZone()

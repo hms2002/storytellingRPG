@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
-    [Header("연속된 공격 횟수")]
-    private int repeatNum = 1;
+    [Header("연속된 키워드 공격 횟수")]
+    [SerializeField] private int repeatNum = 1;
 
 
     private void Awake()
     {
-        keywordName = "연속된";
         SetKeywordColor(R);
         Init();
     }
@@ -20,7 +19,5 @@ public class Combo : KeywordSup
         caster.repeatStack += repeatNum;
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

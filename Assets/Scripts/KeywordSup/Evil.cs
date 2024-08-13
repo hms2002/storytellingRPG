@@ -6,10 +6,7 @@ public class Evil : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "악랄한";
         SetKeywordColor(Y);
-        debuffType = "Weaken";
-        debuffStack = 2;
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -20,7 +17,5 @@ public class Evil : KeywordSup
         target.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

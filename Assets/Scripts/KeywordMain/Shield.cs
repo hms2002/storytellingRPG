@@ -6,9 +6,7 @@ public class Shield : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "방패";
         SetKeywordColor(B);
-        keywordProtect = 5;
         Init();
     }
 
@@ -17,7 +15,5 @@ public class Shield : KeywordMain
         caster.protect += keywordProtect;
     }
 
-    public override void Check(KeywordSup _keywordSup)
-    {
-    }
+    public override void Check(KeywordSup _keywordSup) { }
 }

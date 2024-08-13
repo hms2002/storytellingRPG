@@ -71,6 +71,10 @@ public class ShopManager : MonoBehaviour
 
         // 다른 UI 비활성화
         UIManager.instance.ActiveMapUI(false);
+        
+        // Player UI 비활성화
+        player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        player.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         // 페이지 넘기기 애니메이션
         Book.instance.bookAnimator.SetTrigger("turnPageToRight");
@@ -108,31 +112,47 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
-        // 플레이어 소지 금액에서 키워드 가격만큼 차감
-        player.gold -= pricePerKeyword;
-
-        // 보유 골드 HUD에 남은 소지금 업데이트
-        UpdateGoldHUD();
-
         // 플레이어의 오리지널덱에 추가
         if (keywordType is KeywordSup) // 키워드 타입이 Support라면
         {
-            Debug.Log("사졌니?");
-            // 플레이어의 오리지널 Support덱에 구매한 키워드 추가
-            player.AddSupKeywordToOriginalDeck(keyword);
+            // GameManager의 모든 Support 키워드 리스트 길이만큼 반복
+            for (int i = 0; i < GameManager.instance.allSupKeywordsForPlayer.Count; i++)
+            {
+                // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
+                if (GameManager.instance.allSupKeywordsForPlayer[i].GetComponent<KeywordSup>().keywordName
+                    == keyword.GetComponent<KeywordSup>().keywordName)
+                {
+                    // 보유 골드 HUD에 소지금 차감 및 업데이트
+                    UpdateGoldHUD(pricePerKeyword * -1);
+
+                    // 해당 키워드 프리팹을 오리지널 덱 리스트에 추가
+                    player.OriginalDeck.AddSupKeywordOnDeck(GameManager.instance.allSupKeywordsForPlayer[i]);
+                }
+            }
         }
         else if (keywordType is KeywordMain) // 키워드 타입이 Main이라면
         {
-            Debug.Log("사졌니?");
-            // 플레이어의 오리지널 Main덱에 구매한 키워드 추가
-            player.AddSupKeywordToOriginalDeck(keyword);
+            // GameManager의 모든 Main 키워드 리스트 길이만큼 반복
+            for (int i = 0; i < GameManager.instance.allMainKeywordsForPlayer.Count; i++)
+            {
+                // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
+                if (GameManager.instance.allMainKeywordsForPlayer[i].GetComponent<KeywordMain>().keywordName
+                    == keyword.GetComponent<KeywordMain>().keywordName)
+                {
+                    // 보유 골드 HUD에 소지금 차감 및 업데이트
+                    UpdateGoldHUD(pricePerKeyword * -1);
+
+                    // 해당 키워드 프리팹을 오리지널 덱 리스트에 추가
+                    player.OriginalDeck.AddMainKeywordOnDeck(GameManager.instance.allMainKeywordsForPlayer[i]);
+                }
+            }
         }
         else
         {
             Debug.LogError("뭐지.. 구매한 키워드가 없다는데?");
         }
 
-        // 키워드 버튼 비활성화
+        // 구매한 키워드 버튼 비활성화
         UIManager.instance.MakeKeywordInvisible(keyword);
     }
 
@@ -151,7 +171,7 @@ public class ShopManager : MonoBehaviour
         Book.instance.EnterKeywordSetting(Keyword.ButtonType.Erase);
 
         // 마우스 커서 이미지 변경
-
+        UIManager.instance.ChangeCursorImage(CursorType.Eraser);
 
         //
     }
@@ -183,8 +203,7 @@ public class ShopManager : MonoBehaviour
                 if (player.OriginalDeck.SupportDeck[i].GetComponent<KeywordSup>().keywordName == keyword.GetComponent<KeywordSup>().keywordName)
                 {
                     // Player 소지금 업데이트
-                    player.gold -= keywordErasingPrice;
-                    UpdateGoldHUD();
+                    UpdateGoldHUD(keywordErasingPrice * -1);
 
                     // 해당 키워드를 오리지널 덱 리스트에서 제거
                     player.OriginalDeck.DeleteSpecificKeyword(WhatDeck.SupportDeck, i);
@@ -206,8 +225,7 @@ public class ShopManager : MonoBehaviour
                 if (player.OriginalDeck.MainDeck[i].GetComponent<KeywordMain>().keywordName == keyword.GetComponent<KeywordMain>().keywordName)
                 {
                     // Player 소지금 업데이트
-                    player.gold -= keywordErasingPrice;
-                    UpdateGoldHUD();
+                    UpdateGoldHUD(keywordErasingPrice * -1);
 
                     // 해당 키워드를 오리지널 덱 리스트에서 제거
                     player.OriginalDeck.DeleteSpecificKeyword(WhatDeck.MainDeck, i);
@@ -224,8 +242,11 @@ public class ShopManager : MonoBehaviour
     /// <summary>
     /// Player의 소지금을 업데이트하는 애니메이션 메소드입니다.
     /// </summary>
-    private void UpdateGoldHUD()
+    /// <param name="goldDelta">소지금 증감 수치(변동가)를 입력하세요.</param>
+    private void UpdateGoldHUD(int goldDelta)
     {
+        player.gold += goldDelta;
+
         // 보유 골드 HUD에 남은 소지금 업데이트
         goldHUD.DOText(player.gold.ToString(), 1.0f, scrambleMode: ScrambleMode.Numerals).OnUpdate(() =>
         {
@@ -243,7 +264,15 @@ public class ShopManager : MonoBehaviour
     /// </summary>
     public void ExitShop()
     {
-        // 진열되어 있던 키워드 상품 폐기
+        // 진열되어 있던 상품 폐기
         shop.DisposalKeywordProducts();
+        /*shop.DisposalRelicProducts();*/
+
+
+        // 상점 UI 비활성화
+
+        // Player UI 활성화
+        player.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        player.gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

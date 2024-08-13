@@ -10,7 +10,6 @@ public class BlindSword : KeywordMain
 
     private void Awake()
     {
-        keywordName = "맹목의 검";
         SetKeywordColor(Y);
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;

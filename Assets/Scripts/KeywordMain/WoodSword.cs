@@ -6,7 +6,6 @@ public class WoodSword : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "나무검";
         SetKeywordColor(R);
         keywordDamage = 7;
         Init();
@@ -17,7 +16,5 @@ public class WoodSword : KeywordMain
         caster.damage += 7;
     }
 
-    public override void Check(KeywordSup _keywordSup)
-    {
-    }
+    public override void Check(KeywordSup _keywordSup) { }
 }

@@ -6,9 +6,7 @@ public class Pike : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "가시 돋은";
         SetKeywordColor(Y);
-        keywordDamage = 3;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -19,8 +17,5 @@ public class Pike : KeywordSup
         caster.charactorState.AddState(StateDatabase.stateDatabase.pike, keywordDamage);
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }
