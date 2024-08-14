@@ -9,8 +9,8 @@ namespace Map
     public class MapGenerator : MonoBehaviour
     {
         [Header("노드 종류 세팅(프리팹)")]
-        [Header("0: NomalMonsterNode │ 1:  EliteMonsterNode │ 2: BossNode\n3: RestNode │ 4: StoreNode │ 5: TreasureNode 순서로 배치")]
-        public GameObject[] nodePrefab = new GameObject[6];
+        [Header("0: NomalMonsterNode │ 1: EliteMonsterNode │ 2: EventNode\n3: RestNode │ 4: StoreNode │ 5: TreasureNode │ \n6: BossNode(항상 마지막) 순서로 배치")]
+        public GameObject[] nodePrefab = new GameObject[7];
 
         [Header("맵 베이스 판")]
         public RectTransform mapParent; //맵 판
@@ -39,7 +39,7 @@ namespace Map
         [Header("라인(길) 프리팹")]
         public Image roadPrefab;
 
-        [Header("노드 간 (라인 길) 간극 설정")] 
+        [Header("노드 간 (라인 길) 간극 설정")]
         public float nodeGap = 40f; // 노드와 노드 사이 간극
 
         //노드 저장
@@ -51,7 +51,26 @@ namespace Map
         //맵 생성 시작 위치
         public Vector2 startVector = new Vector2(600, 400);
 
+        
+        // 노드 타입별 생성 제한 설정
+        private int maxEventNodes = 3;
+        private int maxTreasureNodes = 4;
+        private int maxStoreNodes = 4;
+        private int maxRestNodes = 4;
+        private int maxEliteNodes = 5;
 
+
+        // 현재 생성된 각 노드 타입의 수를 기록
+        private Dictionary<NodeType, int> nodeCounts = new Dictionary<NodeType, int>
+        {
+            { NodeType.NomalMonsterNode, 0 },
+            { NodeType.EliteMonsterNode, 0 },
+            { NodeType.RestNode, 0 },
+            { NodeType.StoreNode, 0 },
+            { NodeType.TreasureNode, 0 },
+            { NodeType.EventNode, 0 },
+            { NodeType.BossNode, 0 }  // 보스 노드는 1개로 가정
+        };
 
         virtual public void SpawnMap()
         {
@@ -61,6 +80,18 @@ namespace Map
 
         public void GeneratorMap()
         {
+            // 노드 카운터 초기화
+            nodeCounts = new Dictionary<NodeType, int>
+            {
+                { NodeType.NomalMonsterNode, 0 },
+                { NodeType.EliteMonsterNode, 0 },
+                { NodeType.RestNode, 0 },
+                { NodeType.StoreNode, 0 },
+                { NodeType.TreasureNode, 0 },
+                { NodeType.EventNode, 0 },
+                { NodeType.BossNode, 0 }
+            };
+
             startNode.SetActive(true);
             endNode.SetActive(true);
 
@@ -94,34 +125,57 @@ namespace Map
 
         private void CreateNode(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height 
         {
-            int probabilty = Random.Range(1, 100);
-            int typeCount = 999; //null 값
+            NodeType selectedNodeType = GetNodeType();
+            if (selectedNodeType == NodeType.BossNode) return; // 보스 노드는 이미 설정된 것으로 가정
 
-            switch (probabilty)
-            {
-                case > 40: //60%, Nomal Enemy
-                    typeCount = 0;
-                    break;
-
-                case > 30: //10% Rest Site (1번은 보스임)
-                    typeCount = 2;
-                    break;
-
-                case > 10: //20% 미스터리(사건)
-                    typeCount = 3;
-                    break;
-
-                case > 0: //10% Shop 
-                    typeCount = 4;
-                    break;
-            }
-            //생성
-            GameObject nodeObject = Instantiate(nodePrefab[typeCount], mapParent);
-            //위치 설정
+            // 생성
+            GameObject nodeObject = Instantiate(nodePrefab[(int)selectedNodeType], mapParent);
+            // 위치 설정
             RectTransform rectTransform = nodeObject.GetComponent<RectTransform>();
             rectTransform.anchoredPosition = GetRandomPosition(_isWidth, _heiNum, _widNum) - startVector;
-            //노드 모음에 추가
+            // 노드 모음에 추가
             nodes.Add(nodeObject.GetComponent<MapNode>());
+
+            // 생성된 노드 카운트 업데이트
+            nodeCounts[selectedNodeType]++;
+        }
+
+        private NodeType GetNodeType()
+        {
+            int randomValue = Random.Range(1, 101); // 1부터 100까지의 랜덤 값
+            NodeType type = NodeType.NomalMonsterNode;
+
+            if (randomValue <= 44)
+            {
+                type = NodeType.NomalMonsterNode; // 44.44%
+            }
+            else if (randomValue <= 58)
+            {
+                if (nodeCounts[NodeType.EventNode] < maxEventNodes)
+                    type = NodeType.EventNode; // 8.33%
+            }
+            else if (randomValue <= 69)
+            {
+                if (nodeCounts[NodeType.TreasureNode] < maxTreasureNodes)
+                    type = NodeType.TreasureNode; // 11.11%
+            }
+            else if (randomValue <= 80)
+            {
+                if (nodeCounts[NodeType.StoreNode] < maxStoreNodes)
+                    type = NodeType.StoreNode; // 11.11%
+            }
+            else if (randomValue <= 91)
+            {
+                if (nodeCounts[NodeType.RestNode] < maxRestNodes)
+                    type = NodeType.RestNode; // 11.11%
+            }
+            else
+            {
+                if (nodeCounts[NodeType.EliteMonsterNode] < maxEliteNodes)
+                    type = NodeType.EliteMonsterNode; // 13.89%
+            }
+
+            return type;
         }
 
         Vector2 GetRandomPosition(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height
@@ -335,16 +389,6 @@ namespace Map
             {
                 return 2; // 30% 확률로 2개
             }
-            /*
-            else if (randomValue <= 90)
-            {
-                return 3; // 20% 확률로 3개
-            }
-            else
-            {
-                return maxHeightNodesCount; // 10% 확률로 maxHeightNodesCount
-            }
-            */
         }
 
         protected void ConnectRoadLine(RectTransform startTrans, RectTransform endTrans)
