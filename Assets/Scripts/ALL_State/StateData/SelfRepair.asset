@@ -16,12 +16,14 @@ MonoBehaviour:
   reductionType: 3
   reductionTiming: 4
   stateProperty: 0
+  debuffEffect: 0
   stateImage: {fileID: 21300000, guid: 9f725afa7ca7d50478d2fffd0d0bb0bf, type: 3}
   soundName: 
-  debuffEffect: 0
+  stateName: "\uC790\uAC00 \uC218\uBCF5"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
-  stateExplanation: "\uC790\uAC00 \uC218\uBCF5\n\uD134\uC774 \uB05D\uB0A0 \uB54C
-    \uB9C8\uB2E4 \uBCF4\uD638\uB97C 15 \uC5BB\uB294\uB2E4."
+  needStackToEffect: 1
+  stateExplanation: "\uD134\uC774 \uB05D\uB0A0 \uB54C \uB9C8\uB2E4 \uBCF4\uD638\uB97C
+    15 \uC5BB\uB294\uB2E4."
   effectByTurn: 0
