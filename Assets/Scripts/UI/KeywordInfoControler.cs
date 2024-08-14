@@ -38,6 +38,7 @@ public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointe
         onDestroying = true;
         InfoManager.instance.HideTipUI();
     }
+
     public void ableShowInfo()
     {
         onDestroying = false;

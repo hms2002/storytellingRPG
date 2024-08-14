@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Combo : KeywordSup
 {
-
-
     private void Awake()
     {
         keywordName = "연속된";

@@ -35,7 +35,7 @@ public class StateDatabase : MonoBehaviour
     public StateData blueSpore;
     public StateData redSpore;
     public StateData counterAttack;
-
+    public StateData ammunition;
     public static StateDatabase stateDatabase;
 
     private void OnEnable()

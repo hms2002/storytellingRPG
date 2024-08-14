@@ -47,7 +47,7 @@ public class InfoUI : MonoBehaviour
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
         string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>" + "  " + $"<color=#BF00FF>{tension}</color>\n\n" + // 보라색 텍스트
-                          $"{content}";
+                          $"<color=#7F6247>{content}";
 
         tipText.text = richText;
 
@@ -62,7 +62,7 @@ public class InfoUI : MonoBehaviour
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
         string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>\n\n" + // 보라색 텍스트
-                          $"{content}";
+                          $"<color=#7F6247>{content}";
 
         tipText.text = richText;
 

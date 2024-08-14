@@ -185,9 +185,10 @@ MonoBehaviour:
   stateUIController: {fileID: 2833284775063695184}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 1
-  beforePlayerDamage: 0
+  beforeDamage: 0
   biginProtect: 70
   overLoadSprite: {fileID: 21300000, guid: c6441ff18b7a2e04087c0b2ccd8aa23f, type: 3}
+  overLoadSpriteState: {fileID: 21300000, guid: b79325443a767dc4fa7dd03a037d242d, type: 3}
   overLoadKeyword:
   - {fileID: 4186999210832831636, guid: a0a5b67e8b972ce4a88bd4561cdf95e5, type: 3}
   - {fileID: 5054975764192728079, guid: 04d93a1580b76cd41ae472f486242af9, type: 3}

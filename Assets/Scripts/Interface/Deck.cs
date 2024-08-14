@@ -173,6 +173,12 @@ public class Deck : MonoBehaviour
         if (keyword.GetComponent<KeywordMain>().isOneTimeUse) return;
         mainDeck.Add(keyword);
     }
+
+    public List<GameObject> GetSupDeck()
+    {
+        return supportDeck;
+    }
+
     #endregion
 
     #region Deck 클래스의 Getter, Setter 함수들

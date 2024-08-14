@@ -385,9 +385,6 @@ public class Actor : MonoBehaviour
             target.Damaged(this, damage);
             beforeDamage = damage;
 
-            TensionManager tensionManager = TensionManager.tensionManagerUI;
-            tensionManager.tension += tension;
-
             // 반격 관련 코드
             if (target.attackCount == true)
             {
@@ -397,6 +394,8 @@ public class Actor : MonoBehaviour
 
             target.attackCount = false;
         }
+        TensionManager tensionManager = TensionManager.tensionManagerUI;
+        tensionManager.tension += tension;
     }
 
     /// <summary>
@@ -410,10 +409,18 @@ public class Actor : MonoBehaviour
         if (keywordMain.effectTarget == Keyword.EffectTarget.target)
         {
             if (mainColor == Color.red)
-            {
+            {   
                 if (damage != 0)
                 {
-                    EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                    if(repeatStack > 1)
+                    {
+                        /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
+                        EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
+                    }
+                    else
+                    {
+                        EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                    }
                 }
             }
             else
@@ -432,7 +439,18 @@ public class Actor : MonoBehaviour
             {
                 if (damage != 0)
                 {
-                    EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+                    if (repeatStack > 1)
+                    {
+                        if(mainColor != Color.red)
+                        {
+                            /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
+                        }
+                    }
+                    else
+                    {
+                        EffectManager.instance.PlayEffect(keywordSup.effectType, target);
+                    }
                 }
             }
             else
@@ -454,49 +472,49 @@ public class Actor : MonoBehaviour
         totalDamage = RatioCalculateTotalDamage(totalDamage, attacker);
         return totalDamage;
     }
-        #region 덧셈, 뺄셈 연산
-        /// <summary>
+    #region 덧셈, 뺄셈 연산
+    /// <summary>
     /// 총 데미지에 더하고 빼는 연산 실행
     /// </summary>
-        protected int AddSubCalculationTotalDamage(int totalDamage, Actor attacker)
-        {
-            totalDamage = CalculateReinforce(totalDamage, attacker);
-            totalDamage = CalculateOneTimeReinforce(totalDamage, attacker);
-            totalDamage = CalculateReduction(totalDamage, attacker);
-            totalDamage = CalculateWeaken(totalDamage);
-            return totalDamage;
-        }
-        protected int CalculateReinforce(int totalDamage, Actor attacker)
-        {
-            totalDamage += charactorState.GetStateStack(StateType.reinforce);
-            return totalDamage;
-        }
-        /// <summary>
-        /// return totalDamage
-        /// </summary>
-        protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
-        {
-            totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
-            return totalDamage;
-        }
-        /// <summary>
-        /// return totalDamage
-        /// </summary>
-        protected int CalculateWeaken(int totalDamage)
-        {
-            totalDamage += charactorState.GetStateStack(StateType.weaken);
-            return totalDamage;
-        }
-        /// <summary>
-        /// return totalDamage
-        /// </summary>
-        protected int CalculateReduction(int totalDamage, Actor attacker)
+    protected int AddSubCalculationTotalDamage(int totalDamage, Actor attacker)
+    {
+        totalDamage = CalculateReinforce(totalDamage, attacker);
+        totalDamage = CalculateOneTimeReinforce(totalDamage, attacker);
+        totalDamage = CalculateReduction(totalDamage, attacker);
+        totalDamage = CalculateWeaken(totalDamage);
+        return totalDamage;
+    }
+    protected int CalculateReinforce(int totalDamage, Actor attacker)
+    {
+        totalDamage += charactorState.GetStateStack(StateType.reinforce);
+        return totalDamage;
+    }
+    /// <summary>
+    /// return totalDamage
+    /// </summary>
+    protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
+    {
+        totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
+        return totalDamage;
+    }
+    /// <summary>
+    /// return totalDamage
+    /// </summary>
+    protected int CalculateWeaken(int totalDamage)
+    {
+        totalDamage += charactorState.GetStateStack(StateType.weaken);
+        return totalDamage;
+    }
+    /// <summary>
+    /// return totalDamage
+    /// </summary>
+    protected int CalculateReduction(int totalDamage, Actor attacker)
     {
         totalDamage -= attacker.charactorState.GetStateStack(StateType.reduction);
         return totalDamage;
     }
-        #endregion
-        #region 비율 연산
+    #endregion
+    #region 비율 연산
         protected int RatioCalculateTotalDamage(int totalDamage, Actor attacker)
         {
             totalDamage = CalculateFear(totalDamage, attacker);
@@ -622,7 +640,6 @@ public class Actor : MonoBehaviour
 
         hp -= totalDamage;
 
-
         // 공격자, 공격 시 스택 감소할 것들 감소
         attacker.charactorState.ReductionOnAttack();
         // 피해자, 피해 시 스택 감소할 것들 감소
@@ -633,6 +650,7 @@ public class Actor : MonoBehaviour
     /// </summary>
     /// <param name="totalDamage"></param>
     /// <param name="attacker"></param>
+
     public virtual void Damaged(int totalDamage, Actor attacker, bool reallyPenetrate)
     {
         // 공격 전 피해량 계산
@@ -649,12 +667,12 @@ public class Actor : MonoBehaviour
 
         hp -= totalDamage;
 
-
         // 공격자, 공격 시 스택 감소할 것들 감소
         attacker.charactorState.ReductionOnAttack();
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
+
     public virtual void Damaged(Actor attacker, int _damage)
     {
         if (_damage <= 0) return;
@@ -675,9 +693,24 @@ public class Actor : MonoBehaviour
             DamagedSelf(totalDamage);
         else
             DamagedOther(totalDamage, attacker);
-
     }
+    /// <summary>
+    /// 도트데미지를 처리하는 Damaged오버로딩이다.
+    /// </summary>
+    /// <param name="attacker"></param>
+    /// <param name="_damage"></param>
+    /// <param name="_stack"></param>
+    public virtual void Damaged(Actor attacker, int _damage, int _stack)
+    {
+        if (_damage <= 0) return;
 
+        int totalDamage = _damage * _stack;
+
+        if (attacker == this)
+            DamagedSelf(totalDamage);
+        else
+            DamagedOther(totalDamage, attacker);
+    }
 
     public virtual void ShowSupKeywords()
     {
