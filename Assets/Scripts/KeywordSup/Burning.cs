@@ -6,9 +6,10 @@ public class Burning : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "불타는";
         isPlayerKeyword = true;
         SetKeywordColor(Y);
+        effectTarget = EffectTarget.target;
+        effectType = EffectManager.EffectType.Flame;
         Init();
     }
 
@@ -17,8 +18,5 @@ public class Burning : KeywordSup
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack);
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

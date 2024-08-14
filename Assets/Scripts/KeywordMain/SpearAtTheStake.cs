@@ -6,7 +6,6 @@ public class SpearAtTheStake : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "화형의 창 날";
         isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();

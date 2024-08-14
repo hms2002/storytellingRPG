@@ -23,22 +23,24 @@ public class Actor : MonoBehaviour
 
     public void AddSupKeywordToOriginalDeck(GameObject keywordSup)
     {
-        OriginalDeck.AddSupKeywordOnDeck(keywordSup);
+        originalDeck.AddSupKeywordOnDeck(keywordSup);
     }
     public void AddMainKeywordToOriginalDeck(GameObject keywordMain)
     {
-        OriginalDeck.AddMainKeywordOnDeck(keywordMain);
+        originalDeck.AddMainKeywordOnDeck(keywordMain);
     }
 
     #region Actor의 키워드 관련 변수
-    private   Deck OriginalDeck;
-    protected Deck deck;                             // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
-    protected Hand hand;                             // Actor의 손패 (Support, Main 키워드)
-    protected Deck garbageField = new Deck();        // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+    private   Deck originalDeck;                    //
+    protected Deck deck;                            // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
+    protected Hand hand;                            // Actor의 손패 (Support, Main 키워드)
+    protected Deck garbageField = new Deck();       // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
+
+    public Deck OriginalDeck => originalDeck;
 
     [Header("덱 정보 피봇")]
-    protected DeckInfoPivot deckInfoPivot;           // 
-    protected DeckInfoPivot garbageFieldInfoPivot;   // 
+    protected DeckInfoPivot deckInfoPivot;          // 전투 중 기본덱을 확인
+    protected DeckInfoPivot garbageFieldInfoPivot;  // 전투 중 무덤덱을 확인
 
     private KeywordSup _keywordSup;
     private KeywordMain _keywordMain;
@@ -87,7 +89,7 @@ public class Actor : MonoBehaviour
     {
         get { return _hp; }
         set {
-            if(charactorState != null)
+            if (charactorState != null)
                 if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
                     charactorState.ReductionByValue(StateType.ore, _hp - value);
 
@@ -104,7 +106,7 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-            if(stateUIController != null)
+            if (stateUIController != null)
                 stateUIController.UpdateHpUI(_hp, MAX_HP);
         }
     }
@@ -128,7 +130,7 @@ public class Actor : MonoBehaviour
     public int damage
     {
         get { return _damage; }
-        set 
+        set
         { _damage = value;
             if (_damage < 0)
             {
@@ -147,7 +149,7 @@ public class Actor : MonoBehaviour
     {
         get { return _additionalDamage; }
         set { _additionalDamage = value;
-            charactorState.AddState(StateDatabase.stateDatabase.reinforce, 
+            charactorState.AddState(StateDatabase.stateDatabase.reinforce,
                 _additionalDamage);
         }
     }
@@ -171,22 +173,29 @@ public class Actor : MonoBehaviour
         } 
     }
     //플레이어의 최근 준 데미지 계산
-    public int beforeDamage = 0;
+    public int beforePlayerDamage = 0;
+
+    [SerializeField] private int _gold = 0;
+    public int gold { get { return _gold; } set { _gold = value; } }
+
+
+    /*==================================================================================================================================*/
+
 
     private void OnEnable()
     {
         // 원본 덱 가져오기 전에 있는지 확인
         if((int)transform.childCount >= 2)
-            OriginalDeck = transform.GetChild(1).GetComponent<Deck>();
+            originalDeck = transform.GetChild(1).GetComponent<Deck>();
 
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
 
         // 원본 덱 없으면 복사 X
-        if (OriginalDeck != null)
+        if (originalDeck != null)
         {
-            Debug.Log(OriginalDeck.gameObject.name);
-            deck.InitDeck(OriginalDeck);
+            Debug.Log(originalDeck.gameObject.name);
+            deck.InitDeck(originalDeck);
         }
 
         garbageField.InitDeck();
@@ -339,9 +348,9 @@ public class Actor : MonoBehaviour
 
         if (_keywordMain.isOneTimeUse)
         {
-            deck.DisCardByTextSource(_keywordMain.name);
-            if(OriginalDeck != null)
-                OriginalDeck.DisCardByTextSource(_keywordMain.name);
+            deck.DisCardByTextSource(_keywordMain.nameText);
+            if(originalDeck != null)
+                originalDeck.DisCardByTextSource(_keywordMain.nameText);
         }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 1f);
@@ -744,28 +753,3 @@ public class Actor : MonoBehaviour
         garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
 };
-//namespace DamagedCalculate
-//{
-//    class DamageCalculator
-//    {
-//        public static void CalculateProtect(int totalDamage, int protect)
-//        {
-//            if (protect > 0)
-//            {
-//                if (protect < totalDamage)
-//                {
-//                    totalDamage -= protect;
-//                    protect = 0;
-//                }
-//                else
-//                {
-//                    protect -= totalDamage;
-//                    totalDamage = 0;
-//                }
-//            }
-
-//            hp -= totalDamage;
-//            return;
-//        }
-//    }
-//}

@@ -4,16 +4,42 @@ using UnityEngine;
 
 public abstract class KeywordSup : Keyword
 {
-    public void OnClickButton()
-    {
-        fightManager.GetKeywordSup(this);
-    }
-
     private void Start()
     {
         fightManager = FightManager.fightManager;
     }
+
+    public void OnClickButton()
+    {
+        switch (buttonType)
+        {
+            case ButtonType.Use:
+
+                fightManager.GetKeywordSup(this);
+
+                break;
+
+            case ButtonType.Display:
+
+
+
+                break;
+
+            case ButtonType.Purchase:
+
+                ShopManager.instance.PurchaseKeyword(gameObject, this);
+
+                break;
+
+            case ButtonType.Erase:
+
+                ShopManager.instance.EraseKeyword(gameObject, this);
+
+                break;
+        }
+    }
+
     public virtual void CanUseCheck(Actor caster, Actor target) { isCanUse = true ; }
-        public abstract void Execute(Actor caster, Actor target);
+    public abstract void Execute(Actor caster, Actor target);
     public abstract void Check(KeywordMain _keywordMain);
 }

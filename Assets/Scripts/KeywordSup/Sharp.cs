@@ -6,10 +6,8 @@ public class Sharp : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "날카로운";
         isPlayerKeyword = true;
         SetKeywordColor(R);
-        keywordDamage = 2;
         Init();
     }
 
@@ -18,8 +16,5 @@ public class Sharp : KeywordSup
         caster.damage += keywordDamage;
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

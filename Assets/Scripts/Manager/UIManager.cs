@@ -3,8 +3,15 @@ using Map;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum CursorType
+{
+    Nib,
+    Eraser
+}
 
 /// <summary>
 /// 게임 운영에 필요한 UI 관리를 담당
@@ -13,8 +20,12 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    [Header("마우스 커서 이미지 리스트")]
+    [SerializeField] private List<Texture2D> cursorImage;
+    
     [Header("맵")]
-    [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경           ※후추
+    [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경
 
     [Header("키워드 세팅 윈도우")]
     [SerializeField] private GameObject keywordSettingWindow;       // 키워드 세팅 윈도우 객체
@@ -24,10 +35,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject combatKeywordUI;
 
     [Header("전투 백그라운드")]
-    [SerializeField] private GameObject combatBackground;
+    [SerializeField] private GameObject combatBackground;           //
 
     [Header("상점 UI")]
-    [SerializeField] private GameObject ShopUI;
+    [SerializeField] private GameObject ShopUI;                     //
 
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
@@ -70,6 +81,82 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    /// <summary>
+    /// 커서 이미지를 파라미터 값으로 변경합니다.
+    /// </summary>
+    /// <param name="cursorType">CursorType.typename을 입력하세요.</param>
+    public void ChangeCursorImage(CursorType cursorType)
+    {
+        switch (cursorType)
+        {
+            case CursorType.Nib:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.ForceSoftware);
+
+                break;
+
+            case CursorType.Eraser:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.ForceSoftware);
+
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 버튼 클릭 불가 연출을 재생한다.
+    /// </summary>
+    /// <param name="gameObject">적용시킬 오브젝트를 넘겨준다.</param>
+    public void ButtonClicklessFeedback(GameObject gameObject)
+    {
+        // 버튼 컴포넌트 비활성화
+        gameObject.GetComponent<Button>().enabled = false;
+
+        // 0.3초 뒤 버튼 컴포넌트 활성화
+        DOVirtual.DelayedCall(0.3f, () => gameObject.GetComponent<Button>().enabled = true);
+
+        // 좌우 횡이동 반복 연출 표현
+        gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+    }
+
+    /// <summary>
+    /// 키워드를 보이지 않게 만든다.
+    /// </summary>
+    /// <param name="keyword">안보이게 만들 키워드를 넘겨준다.</param>
+    public void MakeKeywordInvisible(GameObject keyword)
+    {
+        // 키워드의 버튼 컴포넌트 비활성화
+        keyword.GetComponent<Button>().enabled = false;
+
+        // 키워드의 이미지 컴포넌트 비활성화
+        keyword.GetComponent<Image>().enabled = false;
+
+        // 키워드 하위 오브젝트 전체 비활성화
+        for (int i = 0; i < keyword.transform.childCount; i++)
+        {
+            keyword.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 키워드를 보이지 않게 만든다.
+    /// </summary>
+    /// <param name="keyword">안보이게 만들 키워드를 넘겨준다.</param>
+    /// <param name="replaceImage">키워드 박스 대신 교체할 이미지를 넘겨준다.</param>
+    public void MakeKeywordInvisible(GameObject keyword, Sprite replaceSprite)
+    {
+        // 키워드의 버튼 컴포넌트 비활성화
+        keyword.GetComponent<Button>().enabled = false;
+
+        // 키워드의 이미지 컴포넌트 교체
+        keyword.GetComponent<Image>().sprite = replaceSprite;
+
+        // 키워드 하위 오브젝트 전체 비활성화
+        for (int i = 0; i < keyword.transform.childCount; i++)
+        {
+            keyword.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 
     // UI Active 함수들 ================================
 

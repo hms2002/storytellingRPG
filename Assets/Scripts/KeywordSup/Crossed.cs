@@ -6,7 +6,6 @@ public class Crossed : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "교차된";
         isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();
@@ -17,11 +16,5 @@ public class Crossed : KeywordSup
         caster.damage += caster.protect;
     }
 
-    public override void Check(KeywordMain _keywordMain)
-    {
-        if(_keywordMain.keywordProtect > 0)
-        {
-
-        }
-    }
+    public override void Check(KeywordMain _keywordMain) { }
 }

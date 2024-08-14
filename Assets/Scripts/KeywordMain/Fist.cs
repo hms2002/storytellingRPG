@@ -4,25 +4,17 @@ using UnityEngine;
 
 public class Fist : KeywordMain
 {
-    [Header("주먹 데미지")]
-    [SerializeField] private int fistDamage = 1;
-
-
     private void Awake()
     {
-        keywordName = "주먹";
         isPlayerKeyword = true;
         SetKeywordColor(R);
-        keywordDamage = 1;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += fistDamage;
+        caster.damage += keywordDamage;
     }
 
-    public override void Check(KeywordSup _keywordSup)
-    {
-    }
+    public override void Check(KeywordSup _keywordSup) { }
 }

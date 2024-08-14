@@ -7,6 +7,17 @@ using UnityEngine.UI;
 
 public class Keyword : MonoBehaviour
 {
+    public enum ButtonType
+    {
+        Use,
+        Display,
+        Purchase,
+        Erase
+    }
+
+    protected ButtonType _buttonType = ButtonType.Use;          // 키워드 버튼의 클릭 타입
+    public ButtonType buttonType { get => _buttonType; set => _buttonType = value; }
+
     protected FightManager fightManager;
     [SerializeField] public TextMeshProUGUI nameText;
     [HideInInspector]public string name;
@@ -27,10 +38,16 @@ public class Keyword : MonoBehaviour
     [SerializeField] private int    _keywordDamage = 0;
     [SerializeField] private int    _keywordProtect = 0;
     [SerializeField] private int    _keywordHeal = 0;
+
+    [Space(10.0f)]
     [SerializeField] private string _debuffType = "";
     [SerializeField] private int    _debuffStack = 0;
     [SerializeField] private int    _buffStack = 0;
+
+    [Space(10.0f)]
     [SerializeField] private int    _keywordTension = 0;
+
+    [Space(10.0f)]
     [SerializeField] private bool   _isOneTimeUse = false;
     protected Color keywordColor;
 
@@ -39,9 +56,7 @@ public class Keyword : MonoBehaviour
     protected Color G = Color.green;
     protected Color B = Color.blue;
     protected Color Y = Color.yellow;
-    /// <summary>
-    /// 검은색임
-    /// </summary>
+    /// <summary> 검은색임 </summary>
     protected Color D = Color.black;
 
     [Multiline(3)]
