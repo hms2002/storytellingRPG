@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ColdShark_Predator : KeywordMain
 {
-    // Start is called before the first frame update
     void Awake()
     {
         keywordName = "포식자";

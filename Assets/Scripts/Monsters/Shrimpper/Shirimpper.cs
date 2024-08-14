@@ -11,7 +11,7 @@ public class Shirimpper : Monster
 
     private void Start()
     {
-        supDeck = new List<GameObject>(deck.GetSupDeck());
+        supDeck = new List<GameObject>(deck.SupportDeck);
         charactorState.AddState(StateType.ammunition, beginAmmo);
     }
 

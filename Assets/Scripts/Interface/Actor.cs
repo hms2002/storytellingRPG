@@ -31,7 +31,7 @@ public class Actor : MonoBehaviour
     }
 
     #region Actor의 키워드 관련 변수
-    private   Deck originalDeck;                    //
+    private   Deck originalDeck;                    // 
     protected Deck deck;                            // Actor가 갖고 있는 "기본"덱 (Support, Main 키워드)
     protected Hand hand;                            // Actor의 손패 (Support, Main 키워드)
     protected Deck garbageField = new Deck();       // Actor가 갖고 있는 "무덤"덱 (Support, Main 키워드)
@@ -164,20 +164,18 @@ public class Actor : MonoBehaviour
 
     #endregion
 
-    int _gold = 0;
-    public int gold {
-        get { return _gold; } 
-        set {
+    public int beforeDamage = 0;      // 플레이어의 최근 준 데미지 계산
+
+    [SerializeField] private int _gold = 0; // 플레이어 소지금
+    public int gold
+    {
+        get { return _gold; }
+        set
+        {
             if (value < 0) value = 0;
-            _gold = value; 
-        } 
+            _gold = value;
+        }
     }
-    //플레이어의 최근 준 데미지 계산
-    public int beforePlayerDamage = 0;
-
-    [SerializeField] private int _gold = 0;
-    public int gold { get { return _gold; } set { _gold = value; } }
-
 
     /*==================================================================================================================================*/
 
@@ -348,9 +346,9 @@ public class Actor : MonoBehaviour
 
         if (_keywordMain.isOneTimeUse)
         {
-            deck.DisCardByTextSource(_keywordMain.nameText);
+            deck.DisCardByTextSource(_keywordMain.name);
             if(originalDeck != null)
-                originalDeck.DisCardByTextSource(_keywordMain.nameText);
+                originalDeck.DisCardByTextSource(_keywordMain.name);
         }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 1f);
