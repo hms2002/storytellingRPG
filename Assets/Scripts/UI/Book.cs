@@ -24,8 +24,8 @@ public class Book : MonoBehaviour
     public Animator bookAnimator => _bookAnimator;
 
     [Header("페이지 전환 애니메이션 이후 UI 활성화 딜레이 시간")]
-    [SerializeField] private float _UIActiveDelay = 0.9f;
-    public float UIActiveDelay { get => _UIActiveDelay; }
+    [SerializeField] private float _uIActiveDelay = 0.9f;
+    public float uIActiveDelay { get => _uIActiveDelay; }
 
     private bool _wasOriginalDeckInstanciate = false;   // 오리지널 덱 키워드들의 인스턴스화 여부
     public bool wasOriginalDeckInstanciate { get => _wasOriginalDeckInstanciate; set => _wasOriginalDeckInstanciate = value; }
@@ -76,7 +76,7 @@ public class Book : MonoBehaviour
         bookAnimator.SetTrigger("turnPageToLeft");
 
         // 북마크 - 맵 UI 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveMapUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveMapUI(true));
     }
 
     /// <summary>
@@ -104,37 +104,33 @@ public class Book : MonoBehaviour
         bookAnimator.SetTrigger("turnPageToRight");
 
         // 북마크 - 키워드 세팅 UI 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
 
         // 오리지널 덱 키워드가 인스턴스화 되어있지 않다면
         if (!wasOriginalDeckInstanciate)
         {
             // 오리지널 덱 키워드 프리팹 인스턴스화
-            MakeOriginalDeckInfo(Keyword.ButtonType.Use);
+            MakeOriginalDeckInfo(Keyword.ButtonType.Display);
         }
     }
 
     /// <summary>
     /// 키워드 세팅으로 UI를 전환합니다.
     /// </summary>
-    /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
+    /// <param name="thisType">키워드의 사용 용도를 입력합니다.</param>
     public void EnterKeywordSetting(Keyword.ButtonType thisType)
     {
         // 페이지 넘기기 애니메이션
         bookAnimator.SetTrigger("turnPageToLeft");
 
         // 북마크 - 키워드 세팅 UI 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));
 
         // 소지금 표시창 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => ShopManager.instance.goldPanel.SetActive(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => ShopManager.instance.goldPanel.SetActive(true));
 
-        // 오리지널 덱 키워드가 인스턴스화 되어있지 않다면
-        if (!wasOriginalDeckInstanciate)
-        {
-            // 오리지널 덱 키워드 프리팹 인스턴스화
-            MakeOriginalDeckInfo(thisType);
-        }
+        // 오리지널 덱 키워드 프리팹 인스턴스화
+        MakeOriginalDeckInfo(thisType);
     }
 
     /// <summary>
@@ -152,11 +148,11 @@ public class Book : MonoBehaviour
         bookAnimator.SetTrigger("turnPageToRight");
 
         // 전투 기능 및 UI 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveCombatFunctionAndUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveCombatFunctionAndUI(true));
     }
 
     /// <summary>
-    /// 전장에서 벗어나면 Player 제거, 전투 UI 비활성화, BookPassR 애니메이션 재생하는 메소드ㅋㅋ
+    /// 전장에서 벗어나면 Player 제거, 전투 UI 비활성화, BookPassR 애니메이션 재생하는 메소드입니다.
     /// </summary>
     public void GetOutOfBattleField()
     {
@@ -175,7 +171,7 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
-    /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화하는 메소드ㅋㅋ
+    /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화하는 메소드
     /// </summary>
     /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
     private void MakeOriginalDeckInfo(Keyword.ButtonType thisType)
@@ -193,6 +189,9 @@ public class Book : MonoBehaviour
 
             // 키워드 버튼타입 적용
             keywordTemp.GetComponent<KeywordSup>().buttonType = thisType;
+            
+            // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
+            if (keywordTemp.GetComponent<KeywordSup>().buttonType == Keyword.ButtonType.Display) keywordTemp.GetComponent<Button>().interactable = false;
 
             // 키워드 각조 조절
             float randomAngle = Random.Range(-3.0f, 3.0f);
@@ -212,6 +211,9 @@ public class Book : MonoBehaviour
             // 키워드 버튼타입 적용
             keywordTemp.GetComponent<KeywordMain>().buttonType = thisType;
 
+            // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
+            if (keywordTemp.GetComponent<KeywordMain>().buttonType == Keyword.ButtonType.Display) keywordTemp.GetComponent<Button>().interactable = false;
+
             // 키워드 각조 조절
             keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
             keywordTemp.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
@@ -224,15 +226,15 @@ public class Book : MonoBehaviour
     /// <summary>
     /// 오리지널 덱의 Support, Main 키워드 오브젝트를 제거하는 메소드ㅋㅋ
     /// </summary>
-    private void DestroyOriginalDeckInfo()
+    public void DestroyOriginalDeckInfo()
     {
         // 오리지널 덱 키워드를 인스턴스화하지 않았다면 반환
         if (!wasOriginalDeckInstanciate) return;
 
         GameObject keywordTemp;     // 제거할 키워드를 잠시 담아놓을 변수
 
-        // OriginalSupportDeck 그리드 레이아웃 그룹 
-        for (int i = 0; i < originalDeck.SupportDeck.Count; i++)
+        // OriginalSupportDeck 그리드 레이아웃 그룹
+        for (int i = 0; i < originalSupMainDeckUI[0].transform.childCount; i++)
         {
             // OriginalSupportDeck 하위 객체 참조
             keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
@@ -241,8 +243,8 @@ public class Book : MonoBehaviour
             Destroy(keywordTemp);
         }
 
-        // OriginalMainDeck 그리드 레이아웃 그룹 
-        for (int i = 0; i < originalDeck.MainDeck.Count; i++)
+        // OriginalMainDeck 그리드 레이아웃 그룹
+        for (int i = 0; i < originalSupMainDeckUI[1].transform.childCount; i++)
         {
             // OriginalMainDeck 하위 객체 참조
             keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;

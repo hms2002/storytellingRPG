@@ -111,6 +111,7 @@ public class Shop : MonoBehaviour
     /// </summary>
     public void DisposalKeywordProducts()
     {
+
         //
         foreach (GameObject keywordProduct in supKeywordProducts)
         {

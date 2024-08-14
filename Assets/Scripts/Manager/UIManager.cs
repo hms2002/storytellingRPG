@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public enum CursorType
 {
-    Default,
+    Nib,
     Eraser
 }
 
@@ -70,9 +70,9 @@ public class UIManager : MonoBehaviour
     {
         switch (cursorType)
         {
-            case CursorType.Default:
+            case CursorType.Nib:
 
-                Cursor.SetCursor(cursorImage[(int)CursorType.Default], new Vector2(50, 50), CursorMode.ForceSoftware);
+                Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.ForceSoftware);
 
                 break;
 

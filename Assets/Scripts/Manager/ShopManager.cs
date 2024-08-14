@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,23 +15,28 @@ public class ShopManager : MonoBehaviour
     public static ShopManager instance;                     // 싱글톤
 
     [Header("ShopUI 오브젝트")]
-    [SerializeField] private Shop shop;                     // ShopUI 오브젝트의 Shop 스크립트 컴포넌트
+    [SerializeField] private Shop shopUI;                     // ShopUI 오브젝트의 Shop 스크립트 컴포넌트
 
-    [Header("플레이어 오브젝트")]
+    [Header("Player 오브젝트")]
     [SerializeField] private Actor player;                  // Player 오브젝트의 Actor 스크립트 컴포넌트
 
-    [Header("골드 Panel")]
+    [Header("골드 패널")]
     [SerializeField] private GameObject _goldPanel;         //
     public GameObject goldPanel => _goldPanel;
 
-    [Header("골드 TextMeshPro 오브젝트")]
+    [Header("골드 텍스트")]
     [SerializeField] private TextMeshProUGUI goldHUD;       // 
 
-    [Header("키워드 가격표 오브젝트")]
+    [Header("키워드 가격 텍스트")]
     [SerializeField] private TextMeshProUGUI keywordPrice;  // 
 
-    [Header("키워드 제거 시 교체될 이미지")]
+    [Header("테이블보 태그 오브젝트")]
+    [SerializeField] private GameObject tableclothTag;      //
+
+    [Header("키워드 제거 시 교체될 스프라이트")]
     [SerializeField] private Sprite emptySpaceByErase;      // 
+
+    private bool areProductsDisplay;                        // 키워드 진열 여부
 
 
     [Space(40)]
@@ -71,17 +77,21 @@ public class ShopManager : MonoBehaviour
 
         // 다른 UI 비활성화
         UIManager.instance.ActiveMapUI(false);
+        UIManager.instance.ActiveKeywordSettingUI(false);
         
         // Player UI 비활성화
         player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         player.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
-        // 페이지 넘기기 애니메이션
+        // 페이지 우로 넘기기 애니메이션 재생
         Book.instance.bookAnimator.SetTrigger("turnPageToRight");
 
         // 상점 UI 활성화 및 플레이어 오브젝트 활성화
-        DOVirtual.DelayedCall(Book.instance.UIActiveDelay, () => UIManager.instance.ActiveShopUI(true));
-        DOVirtual.DelayedCall(Book.instance.UIActiveDelay, () => player.gameObject.SetActive(true));
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => UIManager.instance.ActiveShopUI(true));
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => player.gameObject.SetActive(true));
+
+        // 상점 UI 중 바로 사용하지 않는 UI 비활성화
+        tableclothTag.SetActive(false);
 
         // 키워드 가격 표시
         keywordPrice.text = "단돈 " + pricePerKeyword.ToString() + "G!";
@@ -89,11 +99,18 @@ public class ShopManager : MonoBehaviour
         // 플레이어 소지금 표기
         goldHUD.DOText(player.gold + "G", 0.0f);
 
-        // 키워드 발주 및 진열
-        shop.KeywordProductsDisplay();
+        // 상품이 진열되어 있지 않다면
+        if (!areProductsDisplay)
+        {
+            // 상품 진열 여부 true
+            areProductsDisplay = true;
 
-        // 유물 발주 및 진열
-        //shop.RelicProductsDisplay();
+            // 키워드 발주 및 진열
+            shopUI.KeywordProductsDisplay();
+
+            // 유물 발주 및 진열
+            //shop.RelicProductsDisplay();
+        }
     }
 
     /// <summary>
@@ -162,10 +179,8 @@ public class ShopManager : MonoBehaviour
     public void UseEraser()
     {
         // 상점 UI 비활성화
-        shop.tablecloths[0].SetActive(false);
-        shop.tablecloths[1].SetActive(false);
+        foreach (GameObject tablecloth in shopUI.tablecloths) tablecloth.SetActive(false);
         goldPanel.SetActive(false);
-
 
         // 키워드 세팅 북마크로 이동
         Book.instance.EnterKeywordSetting(Keyword.ButtonType.Erase);
@@ -173,7 +188,8 @@ public class ShopManager : MonoBehaviour
         // 마우스 커서 이미지 변경
         UIManager.instance.ChangeCursorImage(CursorType.Eraser);
 
-        //
+        // 테이블보 태그 활성화
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => tableclothTag.SetActive(true));
     }
 
     /// <summary>
@@ -190,13 +206,10 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
-
         // Player의 오리지널덱에 접근하여 키워드 제거
-
-        // 지우고자 하는 키워드가 Support 키워드라면
-        if (keywordType is KeywordSup)
+        if (keywordType is KeywordSup) // 지우고자 하는 키워드가 Support 키워드라면
         {
-            //
+            // Player의 오리지널 Support덱 리스트 길이만큼 반복
             for (int i = 0; i < player.OriginalDeck.SupportDeck.Count; i++)
             {
                 // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
@@ -216,9 +229,9 @@ public class ShopManager : MonoBehaviour
             }
         }
 
-        // 지우고자 하는 키워드가 Main 키워드라면
-        if (keywordType is KeywordMain)
+        if (keywordType is KeywordMain) // 지우고자 하는 키워드가 Main 키워드라면
         {
+            // Player의 오리지널 Main덱 리스트 길이만큼 반복
             for (int i = 0; i < player.OriginalDeck.MainDeck.Count; i++)
             {
                 // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
@@ -240,11 +253,37 @@ public class ShopManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 상품 진열대로 되돌아 가는 메소드입니다.
+    /// </summary>
+    public void BackToShelves()
+    {
+        // 인스턴스화된 오리지널 키워드 제거
+        Book.instance.DestroyOriginalDeckInfo();
+
+        // 다른 UI 비활성화
+        UIManager.instance.ActiveKeywordSettingUI(false);
+        tableclothTag.SetActive(false);
+        goldPanel.SetActive(false);
+
+        // 페이지 좌로 넘기기 애니메이션 재생
+        Book.instance.bookAnimator.SetTrigger("turnPageToLeft");
+
+        // 테이블보 UI 활성화
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => shopUI.tablecloths[0].SetActive(true));
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => shopUI.tablecloths[1].SetActive(true));
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => goldPanel.SetActive(true));
+
+        // 마우스 포인터 변경
+        UIManager.instance.ChangeCursorImage(CursorType.Nib);
+    }
+
+    /// <summary>
     /// Player의 소지금을 업데이트하는 애니메이션 메소드입니다.
     /// </summary>
     /// <param name="goldDelta">소지금 증감 수치(변동가)를 입력하세요.</param>
     private void UpdateGoldHUD(int goldDelta)
     {
+        // Player 소지금에 변동가 업데이트
         player.gold += goldDelta;
 
         // 보유 골드 HUD에 남은 소지금 업데이트
@@ -265,14 +304,27 @@ public class ShopManager : MonoBehaviour
     public void ExitShop()
     {
         // 진열되어 있던 상품 폐기
-        shop.DisposalKeywordProducts();
+        shopUI.DisposalKeywordProducts();
         /*shop.DisposalRelicProducts();*/
 
+        // 상품 진열 여부 false
+        areProductsDisplay = false;
 
         // 상점 UI 비활성화
+        UIManager.instance.ActiveShopUI(false);
 
-        // Player UI 활성화
+        // Player 비활성화 및 UI 부분활성화
+        player.gameObject.SetActive(false);
         player.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         player.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+        // BookTurnL 애니메이션 재생
+        Book.instance.bookAnimator.SetTrigger("turnPageToLeft");
+
+        // 맵 UI 활성화
+        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => UIManager.instance.ActiveMapUI(true));
+
+        // 게임 상태 Map으로 전환
+        GameManager.instance.gameState = GameState.Map;
     }
 }

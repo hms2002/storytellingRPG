@@ -19,6 +19,12 @@ public abstract class KeywordSup : Keyword
 
                 break;
 
+            case ButtonType.Display:
+
+
+
+                break;
+
             case ButtonType.Purchase:
 
                 ShopManager.instance.PurchaseKeyword(gameObject, this);

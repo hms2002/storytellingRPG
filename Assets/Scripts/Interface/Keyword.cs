@@ -10,6 +10,7 @@ public class Keyword : MonoBehaviour
     public enum ButtonType
     {
         Use,
+        Display,
         Purchase,
         Erase
     }

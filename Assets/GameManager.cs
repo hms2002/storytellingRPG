@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        uiManager.ChangeCursorImage(CursorType.Default);
+        uiManager.ChangeCursorImage(CursorType.Nib);
     }
 
     public void EnterFightZone()
