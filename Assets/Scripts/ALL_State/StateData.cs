@@ -32,6 +32,7 @@ public class StateData : ScriptableObject
     public ReductionType reductionType;
     public ReductionTiming reductionTiming;
     public StateProperty stateProperty;
+    public EffectManager.EffectType debuffEffect;
     public Sprite stateImage;
     public string soundName = "";
     public string stateName = "";

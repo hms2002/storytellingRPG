@@ -276,6 +276,7 @@ public class CharactorState
                 break;
             case StateType.counterAttack:
                 AddState(stateDB.counterAttack, val);
+                break;
             case StateType.ammunition:
                 AddState(stateDB.ammunition, val);
                 break;
