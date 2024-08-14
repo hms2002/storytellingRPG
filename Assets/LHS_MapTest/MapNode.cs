@@ -115,37 +115,39 @@ namespace Map
                 // 노드 상태 변경 후 맵 저장
                 MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
 
-
-                switch (nodeBlueprint.nodeType)
-                {
-                    case NodeType.NomalMonsterNode:
-                        MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalMonsterNode);
-                        GameManager.instance.EnterFightZone();
-                        UIManager.instance.ActiveMapUI(false);
-                        break;
-
-                    case NodeType.EliteMonsterNode:
-                        break;
-
-                    case NodeType.BossNode:
-                        MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossNode);
-                        GameManager.instance.EnterFightZone();
-                        UIManager.instance.ActiveMapUI(false);
-                        break;
-
-                    case NodeType.RestNode:
-                        break;
-
-                    case NodeType.StoreNode:
-                        GameManager.instance.EnterShop();
-                        break;
-
-                    case NodeType.TreasureNode:
-                        break;
-                }
-
-                // 노드 상태 변경 후 플레이어 이동 및 위치 저장
+                // 플레이어 이동 및 위치 후 저장 노드 상태 변경
                 MovePlayerToNode();
+
+                DOVirtual.DelayedCall(1, () =>
+                {
+                    switch (nodeBlueprint.nodeType)
+                    {
+                        case NodeType.NomalMonsterNode:
+                            MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.NomalMonsterNode);
+                            GameManager.instance.EnterFightZone();
+                            UIManager.instance.ActiveMapUI(false);
+                            break;
+
+                        case NodeType.EliteMonsterNode:
+                            break;
+
+                        case NodeType.BossNode:
+                            MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(1, NodeType.BossNode);
+                            GameManager.instance.EnterFightZone();
+                            UIManager.instance.ActiveMapUI(false);
+                            break;
+
+                        case NodeType.RestNode:
+                            break;
+
+                        case NodeType.StoreNode:
+                            GameManager.instance.EnterShop();
+                            break;
+
+                        case NodeType.TreasureNode:
+                            break;
+                    }
+                });
             }
 
             else

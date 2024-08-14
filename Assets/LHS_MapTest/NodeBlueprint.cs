@@ -22,10 +22,12 @@ namespace Map
     {
         NomalMonsterNode,
         EliteMonsterNode,
-        BossNode,
         RestNode,
         StoreNode,
-        TreasureNode
+        TreasureNode,
+        EventNode,
+        BossNode,
+        None
     }
 }
 
