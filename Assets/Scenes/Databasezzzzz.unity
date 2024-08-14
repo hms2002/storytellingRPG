@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSet1:
-  - {fileID: 682207150685018480, guid: 4022879be756eeb40acfcc044910a474, type: 3}
+  - {fileID: 682207150685018480, guid: 7d74b653d41d9ec448018daa84e3abc3, type: 3}
   monsterSet2:
   - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
   monsterSet3:
@@ -253,6 +253,7 @@ MonoBehaviour:
   selfRepair: {fileID: 0}
   coreOverload: {fileID: 0}
   mana: {fileID: 0}
+  ammunition: {fileID: 11400000, guid: d45f8af074c18a04bbb5bd0435a2646b, type: 2}
 --- !u!1 &47199195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.220581, y: -277.0897}
+  m_AnchoredPosition: {x: 5.220703, y: -277.0897}
   m_SizeDelta: {x: 0, y: 108.3405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &226761812
@@ -1918,7 +1919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.3496704, y: 1.2675018}
+  m_AnchoredPosition: {x: -0.34960938, y: 1.2675018}
   m_SizeDelta: {x: -807.4412, y: -114.265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &524150791
@@ -4768,34 +4769,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11886857642707240, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[3]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[4]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[5]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[2]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[3]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
-    - target: {fileID: 1603435647839028368, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[4]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
     - target: {fileID: 6021678662418298192, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4844,30 +4817,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[3]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[4]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[5]
-      value: 
-      objectReference: {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[2]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[3]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: supportDeck.Array.data[4]
-      value: 
-      objectReference: {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5282,7 +5231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1419222676

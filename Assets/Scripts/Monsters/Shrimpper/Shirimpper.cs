@@ -8,6 +8,7 @@ public class Shirimpper : Monster
     [SerializeField] private int beginAmmo = 5;
     private List<GameObject> supDeck;
     private bool ammoDeckCheck = false;
+
     private void Start()
     {
         supDeck = new List<GameObject>(deck.GetSupDeck());
