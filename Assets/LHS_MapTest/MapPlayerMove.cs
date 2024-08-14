@@ -17,6 +17,8 @@ namespace Map
                 mapMark = MapState.InstanceMap.mapMark;
             }
 
+            mapMark.SetActive(true);
+
             // 플레이어 마크 초기 위치 설정
             SetInitialPlayerPosition();
         }

@@ -41,4 +41,15 @@ namespace Map
             mapMarkPosition = _mapMarkPosition;
         }
     }
+
+    [System.Serializable]
+    public class StageData
+    {
+        public StageState stageState;
+
+        public StageData(StageState _stageState)
+        {
+            stageState = _stageState;
+        }
+    }
 }
