@@ -1407,7 +1407,6 @@ MonoBehaviour:
   tensionManager: {fileID: 1819022959}
   rewardManager: {fileID: 1281994447}
   shopManager: {fileID: 0}
-  cursorImg: {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
   _allSupKeywordsForPlayer: []
   _allMainKeywordsForPlayer: []
 --- !u!4 &459085383
@@ -2822,6 +2821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorImage: []
   mapBackground: []
   keywordSettingWindow: {fileID: 1293148404}
   combatFunctionAndUI:
@@ -4005,22 +4005,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1747265016}
-    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: rewardOffset_None
-      value: 
-      objectReference: {fileID: 6648241631914347089, guid: ac1a1207c41fd204884c17982ee93cd6, type: 3}
-    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: rewardOffset_gold
-      value: 
-      objectReference: {fileID: 6648241631914347089, guid: 69cad2e7ab2682a48954f821a66183ec, type: 3}
-    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: rewardOffset_relic
-      value: 
-      objectReference: {fileID: 6648241631914347089, guid: 69cad2e7ab2682a48954f821a66183ec, type: 3}
-    - target: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-      propertyPath: rewardOffset_keyword
-      value: 
-      objectReference: {fileID: 6648241631914347089, guid: 27855472b17417646ac6c32ea195d3fd, type: 3}
     - target: {fileID: 6658285197191529993, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5995,6 +5979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5334fa1b1a34f234aa57eb2da7e08f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboPosition: []
   effects:
   - type: 0
     prefab: {fileID: 8233226844660433020, guid: 79516890a2e50c447b761ea40c0b1a75, type: 3}

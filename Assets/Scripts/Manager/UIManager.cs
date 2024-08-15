@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
     private bool _isBattleOver = false;                             // 전투 종료 여부
     public bool isBattleOver { get => _isBattleOver; set => _isBattleOver = value; }
 
+    bool isRunDelayShowDamage = false;
+
     #region 데미지 텍스트 띄우기
     [Header("데미지 텍스트")]
     public GameObject damageTextPrefab;
@@ -201,7 +203,7 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// The End 아이콘을 활성화 혹은 비활성화하는 메소드ㅋㅋ
+    /// The End 아이콘 활성화 상태를 일괄 관리한다.
     /// </summary>
     /// <param name="enableOrDisable">아이콘 SetActive() 여부</param>
     public void ActiveTheEndIcon(bool enableOrDisable)
@@ -231,9 +233,10 @@ public class UIManager : MonoBehaviour
         //damageTextArr[idxCnt].gameObject.SetActive(false);
         ++idxCnt;
         idxCnt = idxCnt % damageTextArr.Length;
-        if(!isRunDlayShowDamage)
-            StartCoroutine("DlayShowDamage");
+        if(!isRunDelayShowDamage)
+            StartCoroutine("DelayShowDamage");
     }
+
     public void ActiveDamageText(Vector3 pos, string text, Color color)
     {
         if (damageTextPrefab == null && parentCanvas == null)
@@ -247,13 +250,13 @@ public class UIManager : MonoBehaviour
         //damageTextArr[idxCnt].gameObject.SetActive(false);
         ++idxCnt;
         idxCnt = idxCnt % damageTextArr.Length;
-        if (!isRunDlayShowDamage)
-            StartCoroutine("DlayShowDamage");
+        if (!isRunDelayShowDamage)
+            StartCoroutine("DelayShowDamage");
     }
-    bool isRunDlayShowDamage = false;
-    IEnumerator DlayShowDamage()
+
+    IEnumerator DelayShowDamage()
     {
-        isRunDlayShowDamage = true;
+        isRunDelayShowDamage = true;
         bool find = true;
         while(find)
         {
@@ -273,7 +276,7 @@ public class UIManager : MonoBehaviour
                 break;
             }
         }
-        isRunDlayShowDamage = false;
 
+        isRunDelayShowDamage = false;
     }
 };

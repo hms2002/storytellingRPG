@@ -21,7 +21,7 @@ public abstract class KeywordSup : Keyword
 
             case ButtonType.Display:
 
-
+                Debug.Log("디스플레이된 키워드입니다.");
 
                 break;
 

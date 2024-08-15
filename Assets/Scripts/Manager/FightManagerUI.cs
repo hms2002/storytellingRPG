@@ -6,17 +6,13 @@ using TMPro;
 public class FightManagerUI : MonoBehaviour
 {
     private static FightManagerUI _fightManagerUI;
-    static public FightManagerUI fightManagerUI
-    {
-        get { return _fightManagerUI; }
-    }
-
+    static public FightManagerUI fightManagerUI { get => _fightManagerUI; }
     
 
     private void Awake()
     {
-        if (_fightManagerUI != null)
-            return;
+        if (_fightManagerUI != null) return;
+
         _fightManagerUI = this;
     }
 
