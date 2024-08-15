@@ -224,6 +224,21 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
+    /// Rest 노드의 사용되는 애니메이션 및 생성 코드
+    /// </summary>
+    public void EnterRestField()
+    {
+        // gameState를 Battle로 전환
+        GameManager.instance.gameState = GameState.Battle;
+
+        // BookPassR 애니메이션 재생
+        bookAnimator.SetTrigger("turnPageToRight");
+
+        // 전투 기능 및 UI 활성화
+        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
+    }
+
+    /// <summary>
     /// 오리지널 덱의 Support, Main 키워드 오브젝트를 제거하는 메소드ㅋㅋ
     /// </summary>
     public void DestroyOriginalDeckInfo()

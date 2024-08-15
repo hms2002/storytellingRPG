@@ -9,7 +9,7 @@ namespace Map
     public class MapGenerator : MonoBehaviour
     {
         [Header("노드 종류 세팅(프리팹)")]
-        [Header("0: NomalMonsterNode │ 1: EliteMonsterNode │ 2: EventNode\n3: RestNode │ 4: StoreNode │ 5: TreasureNode │ \n6: BossNode(항상 마지막) 순서로 배치")]
+        [Header("0: NomalMonsterNode │ 1: EliteMonsterNode │ 2: RestNode\n3: EventNode │ 4: StoreNode │ 5: TreasureNode │ \n6: BossNode(항상 마지막) 순서로 배치")]
         public GameObject[] nodePrefab = new GameObject[7];
 
         [Header("맵 베이스 판")]

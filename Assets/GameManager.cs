@@ -14,6 +14,7 @@ public enum GameState
     Battle,
     KeywordSetting,
     Shop,
+    Rest,
     Treasure
 }
 
@@ -61,12 +62,13 @@ public class GameManager : MonoBehaviour
         uiManager.ChangeCursorImage(CursorType.Nib);
     }
 
+    //전투 돌입 (일반 몹, 보스 몹)
     public void EnterFightZone()
     {
         Book.instance.EnterBattleField();
         DOVirtual.DelayedCall(2.0f, fightManager.FightStart);
     }
-
+    
     public void WinFight()
     {
         // 승리 UI
@@ -91,6 +93,14 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Shop;
 
         shopManager.EnterShop();
+        Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+    }
+
+    public void EnterRest()
+    {
+        gameState = GameState.Rest;
+
+        Book.instance.EnterRestField();
     }
 
     internal void EndSelectReward()
