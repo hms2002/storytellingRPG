@@ -336,7 +336,10 @@ MonoBehaviour:
   - {fileID: 5368063289434621804}
   - {fileID: 6746241351033582012}
   - {fileID: 9149323348530927342}
-  rewardOffset: {fileID: 6648241631914347089, guid: 27855472b17417646ac6c32ea195d3fd, type: 3}
+  rewardOffset_keyword: {fileID: 6648241631914347089, guid: 27855472b17417646ac6c32ea195d3fd, type: 3}
+  rewardOffset_relic: {fileID: 6648241631914347089, guid: 69cad2e7ab2682a48954f821a66183ec, type: 3}
+  rewardOffset_gold: {fileID: 6648241631914347089, guid: 69cad2e7ab2682a48954f821a66183ec, type: 3}
+  rewardOffset_None: {fileID: 6648241631914347089, guid: ac1a1207c41fd204884c17982ee93cd6, type: 3}
   rewardKeywords:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class KeywordUIMovement : MonoBehaviour
 {
+    public static KeywordUIMovement instance;
+
     public Transform mainDeckPivot;
     public Transform usedDeckPivot;
     public Transform selectedPivot;
@@ -21,7 +23,6 @@ public class KeywordUIMovement : MonoBehaviour
     bool moveSelectedKeywordFlag = false;
     bool moveUsedKeywordFlag = false;
 
-    public static KeywordUIMovement instance;
 
     private void Awake()
     {

@@ -411,11 +411,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
   _keywordName: "\uC8FC\uBA39"
-  _keywordDamage: 1
+  _keywordDamage: 100
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
@@ -424,7 +425,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   keywordDescription: 
-  fistDamage: 100
+  changeTensionText: 
+  _isChangeTension: 0
 --- !u!114 &4475254289156577749
 MonoBehaviour:
   m_ObjectHideFlags: 0

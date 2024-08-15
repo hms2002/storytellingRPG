@@ -79,8 +79,8 @@ public class Shop : MonoBehaviour
     /// <returns>랜덤으로 발주된 키워드를 반환한다.</returns>
     private GameObject KeywordProductSelection(WhatDeck thisDeck)
     {
-        GameObject keywordToReturn = new GameObject();  // 리턴할 키워드 상품을 잠시 담아둘 변수
-        int maxRange;                                   // 랜덤값 최대 범위
+        GameObject keywordToReturn = null;  // 리턴할 키워드 상품을 잠시 담아둘 변수
+        int maxRange;                       // 랜덤값 최대 범위
 
         switch (thisDeck)
         {
