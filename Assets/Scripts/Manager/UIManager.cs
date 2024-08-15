@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
     [Header("상점 UI")]
     [SerializeField] private GameObject ShopUI;
 
+    [Header("쉬는 곳 UI")]
+    [SerializeField] private List<GameObject> RestUI;
+
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
 
@@ -129,6 +132,19 @@ public class UIManager : MonoBehaviour
     public void ActiveShopUI(bool enableOrDisable)
     {
         ShopUI.SetActive(enableOrDisable);
+    }
+    
+    /// <summary>
+    /// 쉬는 노드 UI의 활성화 상태를 일괄 관리한다.
+    /// </summary>
+    /// <param name="enableOrDisable"></param>
+    public void ActiveRestUI(bool enableOrDisable)
+    {
+        for (int i = 0; i < RestUI.Count; i++)
+        {
+            RestUI[i].SetActive(enableOrDisable);
+        }
+        combatBackground.SetActive(enableOrDisable);
     }
 
     public void ActiveDamageText(Vector3 pos, int damage, Color color)
