@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
   m_Name: Lady of the Lake
   m_EditorClassIdentifier: 
-  roomName: 
   roomImage: {fileID: 0}
   roomContents: 
   optionText: []
-  optionEvent: []
+  optionEvent:
+  - m_PersistentCalls:
+      m_Calls: []
   nextRoomContents: 
   nextOptionText: []
   nextOptionEvent: []
