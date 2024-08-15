@@ -47,6 +47,7 @@ public class Shop : MonoBehaviour
 
             // Support 키워드 박스 활성화
             supKeywordProducts[i].transform.Find("SupKeywordBox").gameObject.SetActive(true);
+            supKeywordProducts[i].GetComponent<KeywordInfoControler>().ableShowInfo();
         }
 
         // Main 키워드 상품 발주량만큼 반복
@@ -67,6 +68,7 @@ public class Shop : MonoBehaviour
 
             // Main 키워드 박스 활성화
             mainKeywordProducts[i].transform.Find("MainKeywordBox").gameObject.SetActive(true);
+            mainKeywordProducts[i].GetComponent<KeywordInfoControler>().ableShowInfo();
         }
     }
 
