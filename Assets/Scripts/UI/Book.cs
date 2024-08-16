@@ -2,6 +2,7 @@ using DG.Tweening;
 using Map;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,20 +15,41 @@ public class Book : MonoBehaviour
     public static Book instance;
 
     [Header("책갈피")]
-    [SerializeField] private List<GameObject> bookmarks;                // 북마크 버튼들
-    [SerializeField] private List<GameObject> originalSupMainDeckUI;    // 키워드 세팅의 오리지널 서포트, 메인 덱 UI를 담을 리스트
+    [SerializeField] private List<GameObject> bookmarks;                        // 북마크 버튼들
+    [SerializeField] private List<GameObject> originalSupMainDeckUI;            // 키워드 세팅의 오리지널 서포트, 메인 덱 UI를 담을 리스트
 
     [Header("플레이어 오리지널 덱")]
-    [SerializeField] private Deck originalDeck;         // 플레이어가 갖고 있는 오리지널 덱
+    [SerializeField] private Deck originalDeck;             // 플레이어가 갖고 있는 오리지널 덱
 
-    private Animator _bookAnimator;                     // 책 애니메이터
+    [Header("접힌 페이지 오브젝트")]
+    [SerializeField] private List<GameObject> foldedPages;  // Keyword Setting 캔버스 하위의 FoldedPageL,R 오브젝트를 담는 리스트
+
+    private Animator _bookAnimator;                         // 책 애니메이터
     public Animator bookAnimator => _bookAnimator;
+
+    private List<GameObject> supKeywordsForDisplay = new List<GameObject>();    // Keyword Setting의 Support 키워드들을 담아둘 리스트
+    private List<GameObject> mainKeywordsForDisplay = new List<GameObject>();   // Keyword Setting의 Main 키워드들을 담아둘 리스트
+
+    private int _keywordSettingPage = 1;                    // Keyword Setting의 현재 페이지를 담는 변수
+    public int keywordSettingPage
+    {
+        get { return _keywordSettingPage; }
+        set
+        {
+            _keywordSettingPage = value;
+
+            if (_keywordSettingPage <= 0)
+            {
+                _keywordSettingPage = 1;
+            }
+        }
+    }
 
     [Header("페이지 전환 애니메이션 이후 UI 활성화 딜레이 시간")]
     [SerializeField] private float _uIActiveDelay = 0.9f;
     public float uIActiveDelay { get => _uIActiveDelay; }
 
-    private bool _wasOriginalDeckInstanciate = false;   // 오리지널 덱 키워드들의 인스턴스화 여부
+    private bool _wasOriginalDeckInstanciate = false;       // 오리지널 덱 키워드들의 인스턴스화 여부
     public bool wasOriginalDeckInstanciate { get => _wasOriginalDeckInstanciate; set => _wasOriginalDeckInstanciate = value; }
 
 
@@ -79,6 +101,7 @@ public class Book : MonoBehaviour
         DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveMapUI(true));
     }
 
+    #region Keyword Setting 관련 함수들
     /// <summary>
     /// 북마크 - 키워드 세팅으로 UI를 전환합니다.
     /// </summary>
@@ -134,6 +157,262 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
+    /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화한다.
+    /// </summary>
+    /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
+    private void MakeOriginalDeckInfo(Keyword.ButtonType thisType)
+    {
+        keywordSettingPage = 1;
+
+        // 오리지널 Support덱의 키워드 수가 10개 초과라면
+        if (originalDeck.SupportDeck.Count > 10)
+        {
+            // 접힌 페이지R 버튼 활성화
+            foldedPages[1].SetActive(true);
+
+            // Support덱 인스턴스화
+            MakeKeywordsAndSetting(WhatDeck.SupportDeck, thisType);
+
+            // 11번째 Support 키워드부터 오리지널 Support덱 길이만큼 반복
+            for (int i = 10; i < originalDeck.SupportDeck.Count; i++)
+            {
+                // Support 키워드 비활성화
+                supKeywordsForDisplay[i].SetActive(false);
+            }
+        }
+        else
+        {
+            // Support덱 인스턴스화
+            MakeKeywordsAndSetting(WhatDeck.SupportDeck, thisType);
+        }
+
+        // 오리지널 Main덱의 키워드 수가 10개 초과라면
+        if (originalDeck.MainDeck.Count > 10)
+        {
+            // FoldedPageR이 비활성화 상태라면 활성화
+            if (!foldedPages[1].activeSelf) foldedPages[1].SetActive(true);
+
+            // Main덱 인스턴스화
+            MakeKeywordsAndSetting(WhatDeck.MainDeck, thisType);
+
+            // 11번째 Main 키워드부터 오리지널 Main덱 길이만큼 반복
+            for (int i = 10; i < originalDeck.MainDeck.Count; i++)
+            {
+                // Main 키워드 비활성화
+                mainKeywordsForDisplay[i].SetActive(false);
+            }
+        }
+        else
+        {
+            // Main덱 인스턴스화
+            MakeKeywordsAndSetting(WhatDeck.MainDeck, thisType);
+        }
+
+        // 오리지널 덱 UI 인스턴스화되었으니 true
+        wasOriginalDeckInstanciate = true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="thisDeck"></param>
+    private void MakeKeywordsAndSetting(WhatDeck thisDeck, Keyword.ButtonType thisType)
+    {
+        switch (thisDeck)
+        {
+            case WhatDeck.SupportDeck:
+
+                // Support 키워드 인스턴스화 및 설정
+                for (int i = 0; i < originalDeck.SupportDeck.Count; i++)
+                {
+                    // i번째 키워드 인스턴스화
+                    supKeywordsForDisplay.Add(Instantiate(originalDeck.SupportDeck[i], originalSupMainDeckUI[0].transform));
+
+                    // 키워드 SupKeywordBox 오브젝트 활성화
+                    supKeywordsForDisplay[i].transform.Find("SupKeywordBox").gameObject.SetActive(true);
+
+                    // 키워드 버튼타입 적용
+                    supKeywordsForDisplay[i].GetComponent<KeywordSup>().buttonType = thisType;
+
+                    // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
+                    if (supKeywordsForDisplay[i].GetComponent<KeywordSup>().buttonType == Keyword.ButtonType.Display)
+                        supKeywordsForDisplay[i].GetComponent<Button>().interactable = false;
+
+                    // 키워드 각조 조절
+                    float randomAngle = Random.Range(-3.0f, 3.0f);
+                    supKeywordsForDisplay[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, randomAngle);
+                    supKeywordsForDisplay[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                }
+
+                break;
+
+            case WhatDeck.MainDeck:
+
+                // Main 키워드 인스턴스화 및 설정
+                for (int i = 0; i < originalDeck.MainDeck.Count; i++)
+                {
+                    // i번째 키워드 인스턴스화
+                    mainKeywordsForDisplay.Add(Instantiate(originalDeck.MainDeck[i], originalSupMainDeckUI[1].transform));
+
+                    // 키워드 MainKeywordBox 오브젝트 활성화
+                    mainKeywordsForDisplay[i].transform.Find("MainKeywordBox").gameObject.SetActive(true);
+
+                    // 키워드 버튼타입 적용
+                    mainKeywordsForDisplay[i].GetComponent<KeywordMain>().buttonType = thisType;
+
+                    // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
+                    if (mainKeywordsForDisplay[i].GetComponent<KeywordMain>().buttonType == Keyword.ButtonType.Display)
+                        mainKeywordsForDisplay[i].GetComponent<Button>().interactable = false;
+
+                    // 키워드 각조 조절
+                    mainKeywordsForDisplay[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+                    mainKeywordsForDisplay[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                }
+
+                break;
+        }
+    }
+
+    /// <summary>
+    /// FoldedPageL 버튼 클릭 시 Keyword Setting 페이지를 왼쪽으로 넘긴다.
+    /// </summary>
+    public void TurnKeywordSettingPageToLeft()
+    {
+        // 이전 페이지 값 X 10 - 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+        {
+            // 이전 페이지 키워드들 비활성화
+            supKeywordsForDisplay[i].SetActive(false);
+            mainKeywordsForDisplay[i].SetActive(false);
+        }
+
+        // BookTurnR 애니메이션 재생
+        bookAnimator.SetTrigger("turnPageToLeft");
+
+        // 페이지 변수값 1 감소
+        keywordSettingPage--;
+
+        // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
+        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+        {
+            // 해당 범위 내의 Support, Main 키워드 uIActiveDelay초 후 활성화
+            DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
+            DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
+        }
+
+        // 페이지 값이 1이면
+        if (keywordSettingPage == 1)
+        {
+            // FoldedPageL 오브젝트 비활성화
+            foldedPages[0].SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// FoldedPageR 버튼 클릭 시 Keyword Setting 페이지를 오른쪽으로 넘긴다.
+    /// </summary>
+    public void TurnKeywordSettingPageToRight()
+    {
+        // 이전 페이지 값 X 10 - 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+        {
+            // 이전 페이지 키워드들 비활성화
+            supKeywordsForDisplay[i].SetActive(false);
+            mainKeywordsForDisplay[i].SetActive(false);
+        }
+
+        // BookTurnR 애니메이션 재생
+        bookAnimator.SetTrigger("turnPageToRight");
+
+        // 페이지 변수값 1 증가
+        keywordSettingPage++;
+
+        // FoldedPageL 오브젝트가 비활성화 상태라면 활성화
+        if (!foldedPages[0].activeSelf)
+            DOVirtual.DelayedCall(uIActiveDelay, () => foldedPages[0].SetActive(true));
+
+        // Support 키워드 리스트 길이가 페이지 X 10보다 크다면
+        if (supKeywordsForDisplay.Count >= keywordSettingPage * 10)
+        {
+            // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
+            for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+            {
+                // 해당 범위 내의 Support 키워드 uIActiveDelay초 후 활성화
+                DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
+            }
+        }
+        else
+        {
+            // 페이지 값 X 10 - 10부터 Support 키워드 리스트 길이만큼 반복
+            for (int i = keywordSettingPage * 10 - 10; i < supKeywordsForDisplay.Count; i++)
+            {
+                // 해당 범위 내의 Support 키워드 uIActiveDelay초 후 활성화
+                DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
+            }
+        }
+
+        // Main 키워드 리스트 길이가 페이지 X 10보다 크다면
+        if (mainKeywordsForDisplay.Count >= keywordSettingPage * 10)
+        {
+            // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
+            for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+            {
+                // 해당 범위 내의 Main 키워드 uIActiveDelay초 후 활성화
+                DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
+            }
+        }
+        else
+        {
+            // 페이지 값 X 10 - 10부터 Main 키워드 리스트 길이만큼 반복
+            for (int i = keywordSettingPage * 10 - 10; i < mainKeywordsForDisplay.Count; i++)
+            {
+                // 해당 범위 내의 Main 키워드 uIActiveDelay초 후 활성화
+                DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
+            }
+        }
+
+        // 페이지 값 X 10이 supKeywordsForDisplay 혹은 mainKeywordsForDisplay의 값보다 높다면
+        if (supKeywordsForDisplay.Count <= keywordSettingPage * 10 && mainKeywordsForDisplay.Count <= keywordSettingPage)
+        {
+            // FoldedPageR 오브젝트 비활성화
+            foldedPages[1].SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 오리지널 덱의 Support, Main 키워드 오브젝트를 제거한다.
+    /// </summary>
+    public void DestroyOriginalDeckInfo()
+    {
+        // 오리지널 덱 키워드를 인스턴스화하지 않았다면 반환
+        if (!wasOriginalDeckInstanciate) return;
+
+        // supKeywordsForDisplay 리스트의 길이만큼 반복
+        for (int i = 0; i < supKeywordsForDisplay.Count; i++)
+        {
+            // Support 키워드 제거
+            Destroy(supKeywordsForDisplay[i]);
+        }
+
+        // mainKeywordsForDisplay 리스트의 길이만큼 반복
+        for (int i = 0; i < mainKeywordsForDisplay.Count; i++)
+        {
+            // Main 키워드 제거
+            Destroy(mainKeywordsForDisplay[i]);
+        }
+
+        // 오리지널 덱 UI Destroy되었으니 false
+        wasOriginalDeckInstanciate = false;
+
+        // keyword Setting 페이지 변수 초기화
+        keywordSettingPage = 1;
+
+        // Folded Page 오브젝트 전부 비활성화
+        foreach (GameObject foldedPage in foldedPages) foldedPage.SetActive(false);
+    }
+    #endregion
+
+    /// <summary>
     /// 전장에 돌입하면 BookPassR 애니메이션 재생, 전투 UI를 활성화합니다.
     /// </summary>
     public void EnterBattleField()
@@ -171,60 +450,7 @@ public class Book : MonoBehaviour
     }
 
     /// <summary>
-    /// 오리지널 덱의 Support, Main 키워드 프리팹을 인스턴스화하는 메소드
-    /// </summary>
-    /// <param name="thisType">키워드의 사용 용도를 작성합니다.</param>
-    private void MakeOriginalDeckInfo(Keyword.ButtonType thisType)
-    {
-        GameObject keywordTemp;     // 인스턴스화된 키워드를 잠시 담아놓을 변수
-
-        // Support 키워드 인스턴스화 및 설정
-        for (int i = 0; i < originalDeck.SupportDeck.Count; i++)
-        {
-            // i번째 키워드 인스턴스화
-            keywordTemp = Instantiate(originalDeck.SupportDeck[i], originalSupMainDeckUI[0].transform);
-
-            // 키워드 SupKeywordBox 오브젝트 활성화
-            keywordTemp.transform.Find("SupKeywordBox").gameObject.SetActive(true);
-
-            // 키워드 버튼타입 적용
-            keywordTemp.GetComponent<KeywordSup>().buttonType = thisType;
-            
-            // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
-            if (keywordTemp.GetComponent<KeywordSup>().buttonType == Keyword.ButtonType.Display) keywordTemp.GetComponent<Button>().interactable = false;
-
-            // 키워드 각조 조절
-            float randomAngle = Random.Range(-3.0f, 3.0f);
-            keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, randomAngle);
-            keywordTemp.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        }
-
-        // Main 키워드 인스턴스화 및 설정
-        for (int i = 0; i < originalDeck.MainDeck.Count; i++)
-        {
-            // i번째 키워드 인스턴스화
-            keywordTemp = Instantiate(originalDeck.MainDeck[i], originalSupMainDeckUI[1].transform);
-
-            // 키워드 MainKeywordBox 오브젝트 활성화
-            keywordTemp.transform.Find("MainKeywordBox").gameObject.SetActive(true);
-
-            // 키워드 버튼타입 적용
-            keywordTemp.GetComponent<KeywordMain>().buttonType = thisType;
-
-            // 키워드 버튼타입이 Display라면 버튼 interactable 비활성화
-            if (keywordTemp.GetComponent<KeywordMain>().buttonType == Keyword.ButtonType.Display) keywordTemp.GetComponent<Button>().interactable = false;
-
-            // 키워드 각조 조절
-            keywordTemp.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
-            keywordTemp.transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        }
-
-        // 오리지널 덱 UI 인스턴스화되었으니 true
-        wasOriginalDeckInstanciate = true;
-    }
-
-    /// <summary>
-    /// Rest 노드의 사용되는 애니메이션 및 생성 코드
+    /// Rest 노드 애니메이션 및 생성 코드
     /// </summary>
     public void EnterRestField()
     {
@@ -237,41 +463,6 @@ public class Book : MonoBehaviour
         // 전투 기능 및 UI 활성화
         DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
     }
-
-    /// <summary>
-    /// 오리지널 덱의 Support, Main 키워드 오브젝트를 제거하는 메소드ㅋㅋ
-    /// </summary>
-    public void DestroyOriginalDeckInfo()
-    {
-        // 오리지널 덱 키워드를 인스턴스화하지 않았다면 반환
-        if (!wasOriginalDeckInstanciate) return;
-
-        GameObject keywordTemp;     // 제거할 키워드를 잠시 담아놓을 변수
-
-        // OriginalSupportDeck 그리드 레이아웃 그룹
-        for (int i = 0; i < originalSupMainDeckUI[0].transform.childCount; i++)
-        {
-            // OriginalSupportDeck 하위 객체 참조
-            keywordTemp = originalSupMainDeckUI[0].transform.GetChild(i).gameObject;
-
-            // 참조한 하위 객체 제거
-            Destroy(keywordTemp);
-        }
-
-        // OriginalMainDeck 그리드 레이아웃 그룹
-        for (int i = 0; i < originalSupMainDeckUI[1].transform.childCount; i++)
-        {
-            // OriginalMainDeck 하위 객체 참조
-            keywordTemp = originalSupMainDeckUI[1].transform.GetChild(i).gameObject;
-
-            // 참조한 하위 객체 제거
-            Destroy(keywordTemp);
-        }
-
-        // 오리지널 덱 UI Destroy되었으니 false
-        wasOriginalDeckInstanciate = false;
-    }
-
 
     // 사운드 출력 함수들 ================================
 
