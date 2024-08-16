@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 
 namespace Map
@@ -38,16 +39,16 @@ namespace Map
         {
             base.SpawnMap();
             MapStateSetting();
-            
-            // 맵 생성 후 저장
-            SaveMapData(Application.persistentDataPath + "/mapData.json");
 
             //맵에서 플레이어 위치 저장파일 삭제 
-            if (File.Exists(Application.persistentDataPath + "/mapMarkData.json"))
+            if (File.Exists(Application.persistentDataPath + "/mapData.json"))
             {
-                File.Delete(Application.persistentDataPath + "/mapMarkData.json");
-                mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+                File.Delete(Application.persistentDataPath + "/mapData.json");
             }
+
+            // 맵 생성 후 저장
+            mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+            SaveMapData(Application.persistentDataPath + "/mapData.json");
         }
 
         //맵 상태 세팅
@@ -93,6 +94,35 @@ namespace Map
             File.WriteAllText(filePath, json);
             Debug.Log("Map data saved to " + filePath);
         }
+        public void SaveMapData(Vector2 targetTrans, string filePath)
+        {
+            List<NodeData> nodeDataList = new List<NodeData>();
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                MapNode mapNode = nodes[i];
+                NodeData nodeData = new NodeData
+                {
+                    position = mapNode.GetComponent<RectTransform>().anchoredPosition,
+                    nodeType = mapNode.nodeBlueprint.nodeType,
+                    nodeState = mapNode.nodeStates,
+                    connectedNodeIndices = new List<int>()
+                };
+
+                foreach (var connectedNode in mapNode.connectedNodes)
+                {
+                    nodeData.connectedNodeIndices.Add(nodes.IndexOf(connectedNode));
+                }
+
+                nodeDataList.Add(nodeData);
+            }
+
+            MapData mapData = new MapData(nodeDataList, new List<int>(nodesEndLineCheck), targetTrans);
+            string json = JsonUtility.ToJson(mapData, true);
+            File.WriteAllText(filePath, json);
+            Debug.Log("Map data saved to " + filePath);
+        }
+
 
         //저장된 맵 로드
         public void LoadMapData(string filePath)
@@ -104,6 +134,8 @@ namespace Map
             {
                 string json = File.ReadAllText(filePath);
                 MapData mapData = JsonUtility.FromJson<MapData>(json);
+
+                mapMark.GetComponent<RectTransform>().anchoredPosition = mapData.mapMark;
 
                 ClearExistingNodes();
                 nodesEndLineCheck = new List<int>(mapData.nodesEndLineCheck); // nodesEndLineCheck 리스트 로드
@@ -145,9 +177,6 @@ namespace Map
                     }
                 }
 
-                // 플레이어 마크 위치 복원
-                mapMark.GetComponent<RectTransform>().anchoredPosition = mapData.lastPlayerPosition;
-
                 // 시작 노드와 끝 노드를 연결
                 StartEndConnection();
 
@@ -160,10 +189,10 @@ namespace Map
         }
 
         //맵 속 플레이어 위치 저장
-        public void SavePlayerMarkPosition(string filePath)
+        public void SavePlayerMarkPosition(Vector2 targetPosition, string filePath)
         {
-            MapMarkData mapMarkData = new MapMarkData(mapMark.GetComponent<RectTransform>().anchoredPosition);
-            string json = JsonUtility.ToJson(mapMarkData);
+            MapData mapData = new MapData(targetPosition);
+            string json = JsonUtility.ToJson(mapData);
             File.WriteAllText(filePath, json);
         }
     }

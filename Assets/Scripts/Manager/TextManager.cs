@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using System.Linq;
 
 public class TextManager : MonoBehaviour
 {
     public static TextManager instance;
     public TextMeshProUGUI Text;
 
-private void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -45,6 +46,38 @@ private void Awake()
             yield return new WaitForSeconds(3.0f);
         }
     }
+
+    public void OnlyTextPlay(string[] _textList, float _time)
+    {
+        /*
+        if (!Text.gameObject.activeInHierarchy)
+        {
+            // 필요한 경우 GameObject를 활성화합니다.
+            Text.gameObject.SetActive(true);
+        }
+        */
+
+        StartCoroutine(OnlyText(_textList, _time));
+    }
+
+    private IEnumerator OnlyText(string[] textList, float time)
+    {
+        for(int i=0; i < textList.Length; i++)
+        {
+            Text.text = string.Empty;
+
+            yield return Text.DOText(textList[i], time).WaitForCompletion();
+
+            if(i == textList.Length - 1 && textList.Length != 1)
+            {
+                UIManager.instance.ActiveRestButton(true);
+                yield return new WaitForSeconds(0);
+            }
+
+            yield return new WaitForSeconds(3.0f);
+        }
+    }
+
 
     public void KeywordTextPlay(Actor actor)
     {
