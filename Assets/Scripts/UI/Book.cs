@@ -27,10 +27,10 @@ public class Book : MonoBehaviour
     private Animator _bookAnimator;                         // 책 애니메이터
     public Animator bookAnimator => _bookAnimator;
 
-    private List<GameObject> supKeywordsForDisplay = new List<GameObject>();    // Keyword Setting의 Support 키워드들을 담아둘 리스트
-    private List<GameObject> mainKeywordsForDisplay = new List<GameObject>();   // Keyword Setting의 Main 키워드들을 담아둘 리스트
+    [SerializeField] private List<GameObject> supKeywordsForDisplay = new List<GameObject>();    // Keyword Setting의 Support 키워드들을 담아둘 리스트
+    [SerializeField] private List<GameObject> mainKeywordsForDisplay = new List<GameObject>();   // Keyword Setting의 Main 키워드들을 담아둘 리스트
 
-    private int _keywordSettingPage = 1;                    // Keyword Setting의 현재 페이지를 담는 변수
+    [SerializeField] private int _keywordSettingPage = 1;                    // Keyword Setting의 현재 페이지를 담는 변수
     public int keywordSettingPage
     {
         get { return _keywordSettingPage; }
@@ -119,6 +119,9 @@ public class Book : MonoBehaviour
         // gameState를 KeywordSetting으로 전환
         GameManager.instance.gameState = GameState.KeywordSetting;
 
+        // 오리지널 덱 UI 제거
+        DestroyOriginalDeckInfo();
+
         // 타 UI 전부 비활성화
         UIManager.instance.ActiveMapUI(false);
         /* 후에 추가될 UI들 이 아래로 SetActive(false) 추가 요망 */
@@ -143,6 +146,9 @@ public class Book : MonoBehaviour
     /// <param name="thisType">키워드의 사용 용도를 입력합니다.</param>
     public void EnterKeywordSetting(Keyword.ButtonType thisType)
     {
+        // 오리지널 덱 UI 제거
+        DestroyOriginalDeckInfo();
+
         // 페이지 넘기기 애니메이션
         bookAnimator.SetTrigger("turnPageToLeft");
 
@@ -278,12 +284,22 @@ public class Book : MonoBehaviour
     /// </summary>
     public void TurnKeywordSettingPageToLeft()
     {
-        // 이전 페이지 값 X 10 - 10부터 이전 페이지 값 X 10까지 반복
-        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+        int startIndex      = (keywordSettingPage - 1) * 10;                                    // SetActive() 돌릴 리스트 인덱스 시작점
+        int endIndexForSup  = Mathf.Min(keywordSettingPage * 10, supKeywordsForDisplay.Count);  // SetActive() 돌릴 Support 리스트 인덱스 끝점
+        int endIndexForMain = Mathf.Min(keywordSettingPage * 10, mainKeywordsForDisplay.Count); // SetActive() 돌릴 Support 리스트 인덱스 끝점
+
+        // Support - (이전 페이지 값 -1) X 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = startIndex; i < endIndexForSup; i++)
         {
-            // 이전 페이지 키워드들 비활성화
-            supKeywordsForDisplay[i].SetActive(false);
-            mainKeywordsForDisplay[i].SetActive(false);
+            // i가 Support 리스트 길이보다 작다면 이전 페이지 Support 키워드들 비활성화
+            if (i < supKeywordsForDisplay.Count) supKeywordsForDisplay[i].SetActive(false);
+        }
+
+        // Main - (이전 페이지 값 -1) X 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = startIndex; i < endIndexForMain; i++)
+        {
+            // i가 Main 리스트 길이보다 작다면 이전 페이지 Main 키워드들 비활성화
+            if (i < mainKeywordsForDisplay.Count)  mainKeywordsForDisplay[i].SetActive(false);
         }
 
         // BookTurnR 애니메이션 재생
@@ -292,20 +308,20 @@ public class Book : MonoBehaviour
         // 페이지 변수값 1 감소
         keywordSettingPage--;
 
-        // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
-        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
-        {
-            // 해당 범위 내의 Support, Main 키워드 uIActiveDelay초 후 활성화
-            DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
-            DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
-        }
+        // 시작과 끝 인덱스 변수 설정
+        startIndex = (keywordSettingPage - 1) * 10;
+        endIndexForSup = Mathf.Min(keywordSettingPage * 10, supKeywordsForDisplay.Count);
+        endIndexForMain = Mathf.Min(keywordSettingPage * 10, mainKeywordsForDisplay.Count);
 
-        // 페이지 값이 1이면
-        if (keywordSettingPage == 1)
-        {
-            // FoldedPageL 오브젝트 비활성화
-            foldedPages[0].SetActive(false);
-        }
+        // 
+        StartCoroutine(ActivateKeywordsWithDelay(supKeywordsForDisplay, startIndex, endIndexForSup, uIActiveDelay));
+        StartCoroutine(ActivateKeywordsWithDelay(mainKeywordsForDisplay, startIndex, endIndexForMain, uIActiveDelay));
+
+        // 
+        if (foldedPages[1].activeSelf == false) foldedPages[1].SetActive(true);
+
+        // 페이지 값이 1이면 FoldedPageL 오브젝트 비활성화
+        if (keywordSettingPage == 1) foldedPages[0].SetActive(false);
     }
 
     /// <summary>
@@ -313,12 +329,22 @@ public class Book : MonoBehaviour
     /// </summary>
     public void TurnKeywordSettingPageToRight()
     {
-        // 이전 페이지 값 X 10 - 10부터 이전 페이지 값 X 10까지 반복
-        for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
+        int startIndex      = (keywordSettingPage - 1) * 10;                                    // SetActive() 돌릴 리스트 인덱스 시작점
+        int endIndexForSup  = Mathf.Min(keywordSettingPage * 10, supKeywordsForDisplay.Count);  // SetActive() 돌릴 Support 리스트 인덱스 끝점
+        int endIndexForMain = Mathf.Min(keywordSettingPage * 10, mainKeywordsForDisplay.Count); // SetActive() 돌릴 Main 리스트 인덱스 끝점
+
+        // Support - (이전 페이지 값 -1) X 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = startIndex; i < endIndexForSup; i++)
         {
-            // 이전 페이지 키워드들 비활성화
-            supKeywordsForDisplay[i].SetActive(false);
-            mainKeywordsForDisplay[i].SetActive(false);
+            // i가 Support 리스트 길이보다 작다면 이전 페이지 Support 키워드들 비활성화
+            if (i < supKeywordsForDisplay.Count) supKeywordsForDisplay[i].SetActive(false);
+        }
+
+        // Main - (이전 페이지 값 -1) X 10부터 이전 페이지 값 X 10까지 반복
+        for (int i = startIndex; i < endIndexForMain; i++)
+        {
+            // i가 Main 리스트 길이보다 작다면 이전 페이지 Main 키워드들 비활성화
+            if (i < mainKeywordsForDisplay.Count) mainKeywordsForDisplay[i].SetActive(false);
         }
 
         // BookTurnR 애니메이션 재생
@@ -327,55 +353,42 @@ public class Book : MonoBehaviour
         // 페이지 변수값 1 증가
         keywordSettingPage++;
 
+        // 시작과 끝 인덱스 변수 설정
+        startIndex      = (keywordSettingPage - 1) * 10;
+        endIndexForSup  = Mathf.Min(keywordSettingPage * 10, supKeywordsForDisplay.Count);
+        endIndexForMain = Mathf.Min(keywordSettingPage * 10, mainKeywordsForDisplay.Count);
+
         // FoldedPageL 오브젝트가 비활성화 상태라면 활성화
         if (!foldedPages[0].activeSelf)
             DOVirtual.DelayedCall(uIActiveDelay, () => foldedPages[0].SetActive(true));
 
-        // Support 키워드 리스트 길이가 페이지 X 10보다 크다면
-        if (supKeywordsForDisplay.Count >= keywordSettingPage * 10)
-        {
-            // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
-            for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
-            {
-                // 해당 범위 내의 Support 키워드 uIActiveDelay초 후 활성화
-                DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
-            }
-        }
-        else
-        {
-            // 페이지 값 X 10 - 10부터 Support 키워드 리스트 길이만큼 반복
-            for (int i = keywordSettingPage * 10 - 10; i < supKeywordsForDisplay.Count; i++)
-            {
-                // 해당 범위 내의 Support 키워드 uIActiveDelay초 후 활성화
-                DOVirtual.DelayedCall(uIActiveDelay, () => supKeywordsForDisplay[i].SetActive(true));
-            }
-        }
+        // 
+        StartCoroutine(ActivateKeywordsWithDelay(supKeywordsForDisplay, startIndex, endIndexForSup, uIActiveDelay));
+        StartCoroutine(ActivateKeywordsWithDelay(mainKeywordsForDisplay, startIndex, endIndexForMain, uIActiveDelay));
 
-        // Main 키워드 리스트 길이가 페이지 X 10보다 크다면
-        if (mainKeywordsForDisplay.Count >= keywordSettingPage * 10)
-        {
-            // 페이지 값 X 10 - 10부터 페이지 값 X 10까지 반복
-            for (int i = keywordSettingPage * 10 - 10; i < keywordSettingPage * 10; i++)
-            {
-                // 해당 범위 내의 Main 키워드 uIActiveDelay초 후 활성화
-                DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
-            }
-        }
-        else
-        {
-            // 페이지 값 X 10 - 10부터 Main 키워드 리스트 길이만큼 반복
-            for (int i = keywordSettingPage * 10 - 10; i < mainKeywordsForDisplay.Count; i++)
-            {
-                // 해당 범위 내의 Main 키워드 uIActiveDelay초 후 활성화
-                DOVirtual.DelayedCall(uIActiveDelay, () => mainKeywordsForDisplay[i].SetActive(true));
-            }
-        }
-
-        // 페이지 값 X 10이 supKeywordsForDisplay 혹은 mainKeywordsForDisplay의 값보다 높다면
-        if (supKeywordsForDisplay.Count <= keywordSettingPage * 10 && mainKeywordsForDisplay.Count <= keywordSettingPage)
+        // endIndexForSup 값이 supKeywordsForDisplay 리스트 길이와 같고, endIndexForMain 값이 mainKeywordsForDisplay 리스트 길이와 같다면
+        if (endIndexForSup == supKeywordsForDisplay.Count && endIndexForMain == mainKeywordsForDisplay.Count)
         {
             // FoldedPageR 오브젝트 비활성화
             foldedPages[1].SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="keywordsList"></param>
+    /// <param name="startIndex"></param>
+    /// <param name="endIndex"></param>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    private IEnumerator ActivateKeywordsWithDelay(List<GameObject> keywordsList, int loopStart, int loopEnd, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        for (int i = loopStart; i < loopEnd; i++)
+        {
+            keywordsList[i].SetActive(true);
         }
     }
 
@@ -401,11 +414,18 @@ public class Book : MonoBehaviour
             Destroy(mainKeywordsForDisplay[i]);
         }
 
+        // 
+        supKeywordsForDisplay.Clear();
+        mainKeywordsForDisplay.Clear();
+
         // 오리지널 덱 UI Destroy되었으니 false
         wasOriginalDeckInstanciate = false;
 
         // keyword Setting 페이지 변수 초기화
         keywordSettingPage = 1;
+
+        // FoldedPageL 오브젝트 비활성화
+        foldedPages[0].SetActive(false);
 
         // Folded Page 오브젝트 전부 비활성화
         foreach (GameObject foldedPage in foldedPages) foldedPage.SetActive(false);
