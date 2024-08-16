@@ -235,7 +235,7 @@ public class Book : MonoBehaviour
         bookAnimator.SetTrigger("turnPageToRight");
 
         // 전투 기능 및 UI 활성화
-        DOVirtual.DelayedCall(UIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
     }
 
     /// <summary>

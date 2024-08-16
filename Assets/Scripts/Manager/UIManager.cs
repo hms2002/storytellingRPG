@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Texture2D> cursorImage;
     
     [Header("맵")]
-    [SerializeField] private List<GameObject> mapBackground;        // 전투맵 배경
+    [SerializeField] private GameObject mapBackground;        // 전투맵 배경
 
     [Header("키워드 세팅 윈도우")]
     [SerializeField] private GameObject keywordSettingWindow;       // 키워드 세팅 윈도우 객체
@@ -42,6 +42,8 @@ public class UIManager : MonoBehaviour
 
     [Header("쉬는 곳 UI")]
     [SerializeField] private List<GameObject> RestUI;
+    [Header("쉬는 곳 기능 세팅")]
+    [SerializeField] private List<GameObject> RestButton;
 
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
@@ -222,18 +224,53 @@ public class UIManager : MonoBehaviour
     {
         ShopUI.SetActive(enableOrDisable);
     }
-    
+    //===================== 휴식 노드 ====================
     /// <summary>
-    /// 쉬는 노드 UI의 활성화 상태를 일괄 관리한다.
+    /// 휴식 노드 UI의 활성화 상태를 일괄 관리한다.
     /// </summary>
     /// <param name="enableOrDisable"></param>
     public void ActiveRestUI(bool enableOrDisable)
     {
+        if (enableOrDisable == false)
+        {
+            string[] endText = { "당신의 몸은 활력을 가득찼다." };
+            TextManager.instance.OnlyTextPlay(endText, 1);
+            
+            ActiveRestButton(enableOrDisable);
+
+            DOVirtual.DelayedCall(2, () =>
+            {
+                for (int i = 0; i < RestUI.Count; i++)
+                {
+                    RestUI[i].SetActive(enableOrDisable);
+                }
+
+                ActiveCombatFunctionAndUI(enableOrDisable);
+                Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+                DOVirtual.DelayedCall(1, () => ActiveMapUI(true));
+            });
+
+            return;
+        }
+
         for (int i = 0; i < RestUI.Count; i++)
         {
             RestUI[i].SetActive(enableOrDisable);
         }
+
         combatBackground.SetActive(enableOrDisable);
+
+        string[] restText = { "고된 여정 중 당신은 캠핑하기 좋은 곳을 발견하였습니다.", "당신은...\n\n" };
+
+        DOVirtual.DelayedCall(0, () => TextManager.instance.OnlyTextPlay(restText, 1));
+    }
+
+    public void ActiveRestButton(bool enableorDisable)
+    {
+        for(int i = 0; i< RestButton.Count; i++)
+        {
+            RestButton[i].SetActive(enableorDisable);
+        }
     }
 
     public void ActiveDamageText(Vector3 pos, int damage, Color color)
