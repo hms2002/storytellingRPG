@@ -159,7 +159,7 @@ namespace Map
             }
 
             //맵 저장 및 노드 표시 저장
-            MapState.InstanceMap.SaveMapData(Application.persistentDataPath + "/mapData.json");
+            MapState.InstanceMap.SaveMapData(gameObject.GetComponent<RectTransform>().anchoredPosition, Application.persistentDataPath + "/mapData.json");
         }
 
         //노드 상태 설정

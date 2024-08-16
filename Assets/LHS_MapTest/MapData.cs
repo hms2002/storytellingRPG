@@ -12,13 +12,18 @@ namespace Map
     {
         public List<NodeData> nodes;
         public List<int> nodesEndLineCheck;
-        public Vector2 lastPlayerPosition;  // 마지막 플레이어 위치 추가
-
-        public MapData(List<NodeData> nodes, List<int> nodesEndLineCheck, Vector2 lastPlayerPosition)
+        public Vector2 mapMark;  // 마지막 플레이어 위치 추가
+        
+        public MapData(List<NodeData> nodes, List<int> nodesEndLineCheck, Vector2 mapMark)
         {
             this.nodes = nodes;
             this.nodesEndLineCheck = nodesEndLineCheck;
-            this.lastPlayerPosition = lastPlayerPosition;
+            this.mapMark = mapMark;
+        }
+
+        public MapData(Vector2 mapMark)
+        {
+            this.mapMark = mapMark;
         }
     }
 
@@ -29,17 +34,6 @@ namespace Map
         public NodeType nodeType;
         public NodeStates nodeState;
         public List<int> connectedNodeIndices;
-    }
-
-    [System.Serializable]
-    public class MapMarkData
-    {
-        public Vector2 mapMarkPosition;
-
-        public MapMarkData(Vector2 _mapMarkPosition)
-        {
-            mapMarkPosition = _mapMarkPosition;
-        }
     }
 
     [System.Serializable]

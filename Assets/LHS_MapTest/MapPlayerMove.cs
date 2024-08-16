@@ -28,12 +28,12 @@ namespace Map
             if (mapMark != null && MapState.InstanceMap.noClickNode == false) // 이미 이동 중인 경우에는 무시
             {
                 MapState.InstanceMap.noClickNode = true;
+                MapState.InstanceMap.SavePlayerMarkPosition(targetPosition, Application.persistentDataPath + "/mapData.json");
                 // 플레이어 마크 이동
                 mapMark.GetComponent<RectTransform>().DOAnchorPos(targetPosition, 1f).OnComplete(() =>
                 {
                     MapState.InstanceMap.noClickNode = false;
                     Debug.Log("플레이어 마크 이동 완료: " + targetPosition);
-                    MapState.InstanceMap.SavePlayerMarkPosition(Application.persistentDataPath + "/mapMarkData.json");
                 });
             }
             else
@@ -44,17 +44,17 @@ namespace Map
 
         private void SetInitialPlayerPosition() //초기 위치 세팅
         {
-            string filePath = Application.persistentDataPath + "/mapMarkData.json";
+            string filePath = Application.persistentDataPath + "/mapData.json";
 
             if (mapMark != null)
             {
-                if (File.Exists(Application.persistentDataPath + "/mapMarkData.json"))
+                if (File.Exists(Application.persistentDataPath + "/mapData.json"))
                 {
                     try
                     {
                         string jsonData = File.ReadAllText(filePath);
-                        MapMarkData mapMarkData = JsonUtility.FromJson<MapMarkData>(jsonData);
-                        mapMark.GetComponent<RectTransform>().anchoredPosition = mapMarkData.mapMarkPosition;
+                        MapData mapData = JsonUtility.FromJson<MapData>(jsonData);
+                        mapMark.GetComponent<RectTransform>().anchoredPosition = mapData.mapMark;
                     }
                     catch (Exception e)
                     {
