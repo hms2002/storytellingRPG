@@ -272,6 +272,12 @@ public class UIManager : MonoBehaviour
             RestButton[i].SetActive(enableorDisable);
         }
     }
+    //=====================================================
+
+    public void NextStagePage(StageState stageState)
+    {
+
+    }
 
     public void ActiveDamageText(Vector3 pos, int damage, Color color)
     {

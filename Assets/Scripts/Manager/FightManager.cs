@@ -18,6 +18,8 @@ public class FightManager : MonoBehaviour
     [SerializeField] private Actor player;
     [SerializeField] private List<Monster> monsterList;
 
+    public bool isBossStage = false;
+
     private int preparedActorCount = 0;
 
     private Actor whoPlaying;
@@ -294,13 +296,27 @@ public class FightManager : MonoBehaviour
                 MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
             }
         }
-
         if (monsterList.Count == 0)
         {
             return false;
         }
         else
             return true;
+    }
+
+    private void CheckBossStage()
+    {
+        for(int i =0; i < monsterList.Count; i++)
+        {
+            if (monsterList[i].isBossMonster)
+            {
+                isBossStage = true;
+                return;
+            }
+        }
+
+        isBossStage = false;
+        return;
     }
 
     private bool CheckPlayerSurvive()

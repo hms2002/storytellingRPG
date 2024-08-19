@@ -6,6 +6,8 @@ using UnityEngine.XR;
 public class Monster : Actor
 {
     private string _encounterText = " ";
+    [Header("보스 몬스터인가요")]
+    public bool isBossMonster = false;
 
 
     public string encounterText

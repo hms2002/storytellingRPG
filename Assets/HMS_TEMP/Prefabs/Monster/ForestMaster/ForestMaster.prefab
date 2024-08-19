@@ -190,6 +190,9 @@ MonoBehaviour:
   stateUIController: {fileID: 2833284775063695184}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  beforeDamage: 0
+  _gold: 0
+  isBossMonster: 1
   rootTectaclesPrefab: {fileID: 682207150685018480, guid: 9117e4ae4fea93f41a601d4aaa73ebda, type: 3}
 --- !u!1 &853710342350041675
 GameObject:
@@ -963,26 +966,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 8605514921327883061}
   hpSlider: {fileID: 2598670032157672780}
-  stateUIObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   protectUIObject: {fileID: 853710342350041675}
   hpUI: {fileID: 6284089335188282408}
   hpText: {fileID: 8194260412042938867}
