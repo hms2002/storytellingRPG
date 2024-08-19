@@ -502,7 +502,7 @@ public class Book : MonoBehaviour
             UIManager.instance.ActiveEventUI(true);
 
             // 딜레이 후 switch문 실행
-            switch (StageData.instance.nowStageState)
+            switch (StageManager.instance.nowStageState)
             {
                 case StageState.Forest:
                     EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage1EventList[GameManager.instance.eventIndex]);
