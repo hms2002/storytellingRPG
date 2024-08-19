@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class EventManager : MonoBehaviour
     private List<GameObject> eventHand = new List<GameObject>();      // Support 키워드 실체 타입
 
     [SerializeField]
-    private Sprite eventImage;
+    private GameObject eventImage;
     public Select select;
     public bool isSelected = false;
     public bool isBattle = false;
@@ -47,6 +48,7 @@ public class EventManager : MonoBehaviour
 
     public void ShowEvent(EventData eventData)
     {
+        eventImage.GetComponent<SpriteRenderer>().sprite = eventData.roomImage;
         player.gameObject.SetActive(true);
         this.eventData = eventData;
         StartCoroutine(PlayTextByLine(eventData.roomContents, 1.5f, 2f, eventData));
@@ -79,6 +81,7 @@ public class EventManager : MonoBehaviour
         {
             if(isBattle)
             {
+                eventImage.SetActive(false);
                 FightManager.fightManager.FightStart();
             }
             else
@@ -97,12 +100,24 @@ public class EventManager : MonoBehaviour
         {
             case Select.first:
                 StartCoroutine(PlayTextByLine(eventData.roomContentsAfter, 1.5f, 2f, eventData));
+                if(eventData.nextImage1 != null)
+                {
+                    eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage1;
+                }
                 break;
             case Select.second:
                 StartCoroutine(PlayTextByLine(eventData.roomContentsAfter2, 1.5f, 2f, eventData));
+                if (eventData.nextImage2 != null)
+                {
+                    eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage2;
+                }
                 break;
             case Select.third:
                 StartCoroutine(PlayTextByLine(eventData.roomContentsAfter3, 1.5f, 2f, eventData));
+                if (eventData.nextImage3 != null)
+                {
+                    eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage3;
+                }
                 break;
             default:
                 Debug.Log("말도안됨");
