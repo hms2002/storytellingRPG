@@ -275,6 +275,12 @@ public class UIManager : MonoBehaviour
             RestButton[i].SetActive(enableorDisable);
         }
     }
+    //=====================================================
+
+    public void NextStagePage(StageState stageState)
+    {
+
+    }
 
     public void ActiveEventUI(bool enableOrDisable)
     {

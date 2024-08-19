@@ -163,7 +163,7 @@ BoxCollider2D:
   m_Offset: {x: 0.041670084, y: 1.7677648}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.1099022}
     oldSize: {x: 9.48, y: 6.55}
     newSize: {x: 5, y: 5.38}
     adaptiveTilingThreshold: 0.5
@@ -188,7 +188,9 @@ MonoBehaviour:
   stateUIController: {fileID: 2833284775063695184}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 272
-  beforePlayerDamage: 0
+  beforeDamage: 0
+  _gold: 0
+  isBossMonster: 1
   additionalDeck:
   - {fileID: 4313671139727451894, guid: 9774ea00f58859d45a1618599ca390f7, type: 3}
   - {fileID: 8831157699760054587, guid: 81a7cf5b4fcbfa8469bc7cff4a14f4ec, type: 3}

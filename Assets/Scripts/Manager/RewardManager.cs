@@ -147,7 +147,7 @@ public class RewardManager : MonoBehaviour
         player.gold += rewardGold;
         rewardGold = 0;
         rewardCnt--;
-        if (rewardCnt == 0)
+        if (rewardCnt <= 0)
         {
             rewardCanvas.SetActive(false);
             GameManager.instance.EndSelectReward();

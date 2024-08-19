@@ -135,6 +135,8 @@ public enum StateType
     counterAttack,
     /// 탄약(딱총탕탕이후루후루)
     ammunition,
+    /// 종말(마탑보스)
+    end,
     /// <summary>
     /// 상태 목록 갯수
     /// </summary>
@@ -279,6 +281,9 @@ public class CharactorState
                 break;
             case StateType.ammunition:
                 AddState(stateDB.ammunition, val);
+                break;
+            case StateType.end:
+                AddState(stateDB.end, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");
