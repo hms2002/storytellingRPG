@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TensionManager tensionManager;
     [SerializeField] private RewardManager  rewardManager;
     [SerializeField] private ShopManager    shopManager;
+    [SerializeField] private RestManager    restManager;
     [SerializeField] private EventManager   eventManager;
 
     [Header("플레이어의 모든 키워드 프리랩")]

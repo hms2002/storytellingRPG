@@ -7,7 +7,6 @@ public class LakeShield : KeywordMain
     private void Awake()
     {
         isPlayerKeyword = true;
-        SetKeywordColor(B);
         Init();
     }
 

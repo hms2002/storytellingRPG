@@ -425,6 +425,7 @@ MonoBehaviour:
   addKeyword: {fileID: -181514814479852049, guid: d952464f989da234095c5de36f33c753, type: 3}
   isKeywordAddEvent: 1
   nameText: {fileID: 474287648051001404}
+  monsterSet: []
   _keywordName: "\uD638\uC218\uC758 \uBC29\uD328"
   selectedColor: 3
   select: 0
