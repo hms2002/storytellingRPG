@@ -147,6 +147,10 @@ namespace Map
                             GameManager.instance.EnterShop();
                             break;
 
+                        case NodeType.EventNode:
+                            GameManager.instance.EnterEvent();
+                            UIManager.instance.ActiveMapUI(false);
+                            break;
                         case NodeType.TreasureNode:
                             break;
                     }
