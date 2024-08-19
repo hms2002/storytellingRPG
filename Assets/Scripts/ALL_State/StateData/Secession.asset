@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
   m_Name: Secession
   m_EditorClassIdentifier: 
-  type: 22
+  type: 23
   reductionType: 0
   reductionTiming: 1
   stateProperty: 1
+  debuffEffect: 0
   stateImage: {fileID: 21300000, guid: a690433d8ef04d64c91e7c43eab77614, type: 3}
   soundName: "\uC774\uD0C8"
   stateName: "\uC774\uD0C8"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
+  needStackToEffect: 1
   stateExplanation: "\uC2A4\uD0DD\uC774 0\uC774 \uB418\uBA74, \uC544\uBB34\uB7F0
     \uBCF4\uC0C1 \uC5C6\uC774 \uC804\uD22C\uAC00 \uC885\uB8CC\uB41C\uB2E4.\n"
   effectByTurn: 1

@@ -21,7 +21,7 @@ public class GreenHerb : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         potionGlub = caster as PotionGlub;
-        potionGlub.potionNum += Random.Range(minRange,maxRange);
+        potionGlub.potionNum += Random.Range(minRange, maxRange + 1);
         potionGlub.ColorChecking();
         caster.tension += keywordTension;
     }

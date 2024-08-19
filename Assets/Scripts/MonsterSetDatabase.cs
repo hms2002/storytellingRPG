@@ -32,6 +32,7 @@ public class MonsterSetDatabase : MonoBehaviour
         stage1MonsterLists[6] = monsterSet7;
         stage1MonsterLists[7] = monsterSet8;
     }
+    
     public List<Monster> GetSelectedSet()
     {
         if (selectedMonsterSet == null) return null;
@@ -43,6 +44,11 @@ public class MonsterSetDatabase : MonoBehaviour
             returnList.Add(Instantiate(monster).GetComponent<Monster>());
         }
         return returnList;
+    }
+
+    public void SetSelectedSet(List<GameObject> monsterList)
+    {
+        selectedMonsterSet = monsterList;
     }
 
     static int monsterWaveIdx = 0;

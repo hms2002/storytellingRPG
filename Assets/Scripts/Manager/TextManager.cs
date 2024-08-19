@@ -24,29 +24,6 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    public void EventTextPlay(string _str, float time)
-    {
-        StartCoroutine(PlayTextByLine(_str, time));
-    }
-
-    private IEnumerator PlayTextByLine(string fullText, float time)
-    {
-        // 텍스트를 줄바꿈(\n)으로 분리
-        string[] lines = fullText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
-
-        foreach (string line in lines)
-        {
-            // 현재 줄을 출력하기 전에 텍스트를 비웁니다.
-            Text.text = string.Empty;
-
-            // 현재 줄을 타이핑 효과로 출력
-            yield return Text.DOText(line, time).WaitForCompletion();
-
-            // 다음 줄을 출력하기 전에 1초 대기 (필요에 따라 조정 가능)
-            yield return new WaitForSeconds(3.0f);
-        }
-    }
-
     public void OnlyTextPlay(string[] _textList, float _time)
     {
         /*
@@ -77,7 +54,6 @@ public class TextManager : MonoBehaviour
             yield return new WaitForSeconds(3.0f);
         }
     }
-
 
     public void KeywordTextPlay(Actor actor)
     {

@@ -140,4 +140,19 @@ public class KeywordUIMovement : MonoBehaviour
         selectedPivotOriginPos = selectedKeyword.transform.position;
         moveSelectedKeywordFlag = true;
     }
+
+    public void MoveSelectedEventKeyword(EventKeyword eventKeyword)
+    {
+        for (int i = 0; i < keywords.Count; i++)
+        {
+            objPos[i] = keywords[i].transform.position;
+            if (eventKeyword.gameObject == keywords[i])
+            {
+                keywords.RemoveAt(i);
+            }
+        }
+        selectedKeyword = eventKeyword.gameObject;
+        selectedPivotOriginPos = selectedKeyword.transform.position;
+        moveSelectedKeywordFlag = true;
+    }
 }

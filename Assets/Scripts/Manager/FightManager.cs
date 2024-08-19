@@ -105,6 +105,24 @@ public class FightManager : MonoBehaviour
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
     }
+
+    public void EventFightStart()
+    {
+        // 몬스터 가져오기
+        monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
+        if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
+        MonsterTargetter.monsterTargetter.target = monsterList[0];
+        RePositionMonsters();
+        TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
+
+        foreach (Actor monster in monsterList)
+        {
+            monster.BeforeFightStart(player);
+        }
+
+        DOVirtual.DelayedCall(5f, Flow);
+    }
+
     /// <summary>
     /// 몬스터 월드 포지션 위치 재정렬
     /// </summary>

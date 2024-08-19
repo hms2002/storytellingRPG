@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3690451593238013028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49,8 +49,8 @@ GameObject:
   - component: {fileID: 2858168614717186802}
   - component: {fileID: 2896334602860617370}
   - component: {fileID: 2845032619440608503}
-  - component: {fileID: 2808260568037531984}
   - component: {fileID: 6581875891979874322}
+  - component: {fileID: 2808260568037531984}
   m_Layer: 5
   m_Name: KeyWordMain(BlindSword)
   m_TagString: Untagged
@@ -174,6 +174,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6581875891979874322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310729120196642132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2808260568037531984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
@@ -199,21 +212,11 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
+  selectedColor: 3
   keywordDescription: 
+  changeTensionText: 
+  _isChangeTension: 0
   stack: 1
---- !u!114 &6581875891979874322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2310729120196642132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  info: {fileID: 1071546832249587797}
 --- !u!1 &2647476098587232570
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4591044702495612172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -366,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9012318621171736843
 RectTransform:
   m_ObjectHideFlags: 0

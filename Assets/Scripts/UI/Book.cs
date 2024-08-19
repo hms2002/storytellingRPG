@@ -92,6 +92,9 @@ public class Book : MonoBehaviour
 
         // 타 UI 전부 비활성화
         UIManager.instance.ActiveKeywordSettingUI(false);
+        UIManager.instance.ActiveCombatFunctionAndUI(false);
+        UIManager.instance.ActiveCombatKeywordUI(false);    
+        UIManager.instance.ActiveEventUI(false);
         /* 후에 추가될 UI들 이 아래로 SetActive(false) 추가 요망 */
 
         //BookPassL 애니메이션 재생
@@ -482,6 +485,39 @@ public class Book : MonoBehaviour
 
         // 전투 기능 및 UI 활성화
         DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
+    }
+
+    public void EnterEventField()
+    {
+        // gameState를 Battle로 전환
+        GameManager.instance.gameState = GameState.Event;
+
+        // BookPassR 애니메이션 재생
+        bookAnimator.SetTrigger("turnPageToRight");
+
+        // 전투 기능 및 UI 활성화
+        DOVirtual.DelayedCall(uIActiveDelay, () =>
+        {
+            // UI 활성화
+            UIManager.instance.ActiveEventUI(true);
+
+            // 딜레이 후 switch문 실행
+            switch (StageData.instance.nowStageState)
+            {
+                case StageState.Forest:
+                    EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage1EventList[GameManager.instance.eventIndex]);
+                    break;
+                case StageState.Cave:
+                    EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage2EventList[GameManager.instance.eventIndex]);
+                    break;
+                case StageState.Sea:
+                    EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage3EventList[GameManager.instance.eventIndex]);
+                    break;
+                case StageState.MagicTower:
+                    EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage4EventList[GameManager.instance.eventIndex]);
+                    break;
+            }
+        });
     }
 
     // 사운드 출력 함수들 ================================
