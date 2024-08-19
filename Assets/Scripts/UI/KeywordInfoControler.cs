@@ -6,15 +6,13 @@ using UnityEngine.EventSystems;
 
 public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject info;
     bool onDestroying = true;
     private Keyword keyword;
-
+    private EventKeyword eventKeyword;
     private void Awake()
     {
-        info = transform.GetChild(0).gameObject;
-        info.SetActive(false);
         keyword = GetComponent<Keyword>();
+        eventKeyword = GetComponent<EventKeyword>();
     }
 
 /*    public void OnPointerEnter(PointerEventData eventData)
@@ -50,6 +48,10 @@ public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointe
         if (keyword != null)
         {
             keyword.ShowInfoUI();
+        }
+        if (eventKeyword != null)
+        {
+            eventKeyword.ShowInfoUI();
         }
     }
 

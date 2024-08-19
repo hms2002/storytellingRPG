@@ -15,8 +15,10 @@ public enum GameState
     KeywordSetting,
     Shop,
     Rest,
-    Treasure
+    Treasure,
+    Event
 }
+
 
 /// <summary>
 /// 게임의 전체 흐름을 담당
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RewardManager  rewardManager;
     [SerializeField] private ShopManager    shopManager;
     [SerializeField] private RestManager restManager;
+    [SerializeField] private EventManager   eventManager;
 
     [Header("플레이어의 모든 키워드 프리랩")]
     [SerializeField] private List<GameObject> _allSupKeywordsForPlayer;     // 플레이어가 가질 수 있는 모든 Support 키워드
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     public GameState gameState {  get => _gameState; set => _gameState = value; }
 
+    public int eventIndex = 0;
 
     /*==================================================================================================================================*/
 
@@ -61,6 +65,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         uiManager.ChangeCursorImage(CursorType.Nib);
+    }
+
+    private void Start()
+    {
+        EventDatabase.eventDatas.ShuffleList();
     }
 
     //전투 돌입 (일반 몹, 보스 몹)
@@ -101,6 +110,12 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.Rest;
         Book.instance.EnterRestField();
+    }
+
+    public void EnterEvent()
+    {
+        gameState = GameState.Event;
+        Book.instance.EnterEventField();
     }
 
     internal void EndSelectReward()

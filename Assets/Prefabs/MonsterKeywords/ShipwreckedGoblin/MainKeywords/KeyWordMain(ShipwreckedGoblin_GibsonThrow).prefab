@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2709739028246294102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 8523745763889322074}
 --- !u!114 &2183094659200121201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
+  name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
@@ -249,9 +249,12 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: -60
   _isOneTimeUse: 1
+  selectedColor: 0
   keywordDescription: "\uC0C1\uB300\uBC29\uC5D0\uAC8C damage\uD53C\uD574\uB97C \uC900\uB2E4.\n\uC790\uC2E0\uC5D0\uAC8C
     \uCDE8\uC57D debuffstack, \uC57D\uD654 debuffstack \uBD80\uC5EC\n(\uC7AC\uC0AC\uC6A9
     \uBD88\uAC00) \n\uAE34\uC7A5\uB3C4 tension"
+  changeTensionText: 
+  _isChangeTension: 0
 --- !u!1 &6463570368478606698
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4407724075529674747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -552,7 +555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7125223617493147042
 RectTransform:
   m_ObjectHideFlags: 0
