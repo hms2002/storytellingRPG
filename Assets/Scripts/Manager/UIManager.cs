@@ -45,6 +45,9 @@ public class UIManager : MonoBehaviour
     [Header("쉬는 곳 기능 세팅")]
     [SerializeField] private List<GameObject> RestButton;
 
+    [Header("이벤트 UI")]
+    [SerializeField] private List<GameObject> EventUI;
+
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
 
@@ -271,6 +274,17 @@ public class UIManager : MonoBehaviour
         {
             RestButton[i].SetActive(enableorDisable);
         }
+    }
+
+    public void ActiveEventUI(bool enableOrDisable)
+    {
+        for (int i = 0; i < EventUI.Count; i++)
+        {
+            EventUI[i].SetActive(enableOrDisable);
+        }
+        ActiveCombatKeywordUI(enableOrDisable);
+        ActiveCombatFunctionAndUI(enableOrDisable);
+        combatBackground.SetActive(enableOrDisable);
     }
 
     public void ActiveDamageText(Vector3 pos, int damage, Color color)

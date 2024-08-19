@@ -58,9 +58,19 @@ public class Keyword : MonoBehaviour
     protected Color Y = Color.yellow;
     /// <summary> 검은색임 </summary>
     protected Color D = Color.black;
-
+    public enum KeywordColorOption
+    {
+        Red,
+        Green,
+        Blue,
+        Yellow,
+        Black
+    }
+    [Header("키워드의 색상")]
+    [SerializeField]
+    private KeywordColorOption selectedColor;
     [Multiline(3)]
-    [SerializeField] protected string keywordDescription = "";
+    [SerializeField] public string keywordDescription = "";
     [Header ("긴장도가 변경되는 키워드일 때 긴장도툴팁 텍스트 변경")]
     [SerializeField] private string changeTensionText = "";
     [Header("긴장도가 변경되는 키워드일 때 체크하면됨")]
@@ -136,7 +146,30 @@ public class Keyword : MonoBehaviour
     public bool isPlayerKeyword { get => _isPlayerKeyword; set => _isPlayerKeyword = value; }
 
     #endregion
-
+    public void Start()
+    {
+        switch (selectedColor)
+        {
+            case KeywordColorOption.Red:
+                keywordColor = R;
+                break;
+            case KeywordColorOption.Green:
+                keywordColor = G;
+                break;
+            case KeywordColorOption.Blue:
+                keywordColor = B;
+                break;
+            case KeywordColorOption.Yellow:
+                keywordColor = Y;
+                break;
+            case KeywordColorOption.Black:
+                keywordColor = D;
+                break;
+            default:
+                keywordColor = D;
+                break;
+        }
+    }
     protected void Init()
     {
         descriptionText = transform.Find("Info").GetComponentInChildren<TextMeshProUGUI>();
@@ -172,9 +205,10 @@ public class Keyword : MonoBehaviour
     {
         AudioManager.instance.PlaySound("Keyword","키워드_잡기");
     }
+
     public Color GetKeywordColor() { return keywordColor; }
     public void SetKeywordColor(Color color) { keywordColor = color; }
-    private string FormatDescription(string template)
+    public string FormatDescription(string template)
     {
         return template.Replace("debuffstack", debuffStack.ToString())
                        .Replace("buffstack", buffStack.ToString())

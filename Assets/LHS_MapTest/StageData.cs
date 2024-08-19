@@ -13,14 +13,29 @@ public enum StageState
     MagicTower
 }
 
-public class MapBackGround : MonoBehaviour
+public class StageData : MonoBehaviour
 {
+    public static StageData instance;
+
     [Header("0:숲 │ 1:동굴 │ 2: 바다 │ 3: 마탑")]
     [SerializeField] private GameObject[] mapBackGrounds = new GameObject[3];
     [Header("저장 값")]
-    [SerializeField] private StageState nowStageState= StageState.Forest;
+    [SerializeField] public StageState nowStageState= StageState.Forest;
     [Header("보스 클리어 체크")]
     public bool bossClear = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     //보스를 잡고 스테이지를 넘어가는 모든 장면 연출.
     public void NextStage()
