@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 4595920635642977702}
   - component: {fileID: 1603435647839028368}
   - component: {fileID: 8144957385851084348}
+  - component: {fileID: 695059539465718281}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -749,6 +750,8 @@ MonoBehaviour:
   stateUIController: {fileID: 5939631162291839986}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  beforeDamage: 0
+  _gold: 0
 --- !u!114 &1603435647839028368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +789,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb5b9dc07fab3394abb1bae882ece6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &695059539465718281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021678662418298192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97525364c0d9c64990fb11b318e44ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7344430793935493577

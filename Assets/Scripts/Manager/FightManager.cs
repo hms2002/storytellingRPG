@@ -16,7 +16,9 @@ public class FightManager : MonoBehaviour
     [Header("Actor 오브젝트")]
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Actor player;
+    [SerializeField] private PlayerRelic playerRelic;
     [SerializeField] private List<Monster> monsterList;
+    public List<Monster> MonsterList => monsterList;
 
     public bool isBossStage = false;
 
@@ -25,6 +27,9 @@ public class FightManager : MonoBehaviour
     private Actor whoPlaying;
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
+
+    public static int currentTurn;      // 현재 전투 턴 수를 담는 변수
+
 
     /*==================================================================================================================================*/
 
@@ -86,9 +91,8 @@ public class FightManager : MonoBehaviour
 
     public void FightStart()
     {
-        // 플레이어 프리팹 생성 및 Actor 할당
-        //player = Instantiate(playerPrefab).GetComponent<Actor>();
-        player.gameObject.SetActive(true);
+        // Player 오브젝트가 비활성화되어 있다면 활성화
+        if (!player.gameObject.activeSelf) player.gameObject.SetActive(true);
 
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
@@ -102,11 +106,14 @@ public class FightManager : MonoBehaviour
             monster.BeforeFightStart(player);
         }
 
+        // 전투 시작 시 발동되는 유물 적용
+        playerRelic.UseOnStartBattleRelic();
+
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
     }
 
-    public void EventFightStart()
+    /*public void EventFightStart()
     {
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
@@ -121,7 +128,7 @@ public class FightManager : MonoBehaviour
         }
 
         DOVirtual.DelayedCall(5f, Flow);
-    }
+    }*/
 
     /// <summary>
     /// 몬스터 월드 포지션 위치 재정렬
@@ -141,6 +148,8 @@ public class FightManager : MonoBehaviour
         // 
         if (preparedActorCount == 0)
         {
+            currentTurn++;
+
             player.BeforeAction();
 
             foreach (Actor monster in monsterList)
@@ -154,6 +163,9 @@ public class FightManager : MonoBehaviour
             MonsterTargetter.monsterTargetter.TargetUIOff();
             return;
         }
+
+        // 턴 시작 발동 유물 적용
+        playerRelic.UseOnStartTurnRelic();
 
         if (preparedActorCount < monsterList.Count)
         {

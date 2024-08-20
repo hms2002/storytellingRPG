@@ -21,7 +21,7 @@ public enum Relics
     PassionateSoul
 }
 
-[CreateAssetMenu(fileName = "RelicData", menuName = "Scriptable object/Relic Data")]
+[CreateAssetMenu(fileName = "RelicData", menuName = "Scriptable object/New Relic Data")]
 public class RelicData : ScriptableObject
 {
     [Header("유물")]
@@ -37,4 +37,9 @@ public class RelicData : ScriptableObject
     [Header("유물 설명")]
     [Multiline(5)]
     [SerializeField] private string relicDescription;
+
+    [Header("유물 발동 타입")]
+    public RelicType relicType;
+    public enum RelicType { OnStartBattle, OnEndBattle, OnStartTurn }
+    
 }
