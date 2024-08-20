@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firm : KeywordSup
+public class Tough : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "굳어진";
-
+        isPlayerKeyword = true;
+        keywordName = "강인한";
         SetKeywordColor(B);
         Init();
-    }
-    public override void Check(KeywordMain _keywordMain)
-    {
     }
 
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect += keywordProtect;
-        caster.tension += keywordTension;
     }
+
+    public override void Check(KeywordMain _keywordMain) { }
 }

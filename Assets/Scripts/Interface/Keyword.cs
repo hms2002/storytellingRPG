@@ -191,6 +191,7 @@ public class Keyword : MonoBehaviour
         if(descriptionText)
         {
             descriptionText.text = FormatDescription(keywordDescription);
+            descriptionText.transform.parent.gameObject.SetActive(false);
         }
     }
 

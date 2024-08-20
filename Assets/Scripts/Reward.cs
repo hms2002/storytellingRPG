@@ -19,7 +19,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     GameObject keywordPrefab;
     public GameObject info;
     public TextMeshProUGUI rewardNameText;
-    public TextMeshProUGUI rewardInfoText;
+    public string rewardInfoStr;
     public Button button;
 
     public void SettingReward_Keyword(GameObject _keywordPrefab)
@@ -31,9 +31,8 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         temp.SetActive(false);
 
         // 텍스트 정보, 키워드 프리펩 정보 가져오기
-        rewardNameText.text = temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
-        rewardInfoText.text = temp.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text;
-
+        rewardNameText.text = temp.GetComponent<Keyword>().keywordName;// temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
+        rewardInfoStr = temp.GetComponent<Keyword>().keywordDescription;
         // 메인 키워드면 AddThisToMainDeck()를 본인 버튼 이벤트에 추가
         if (temp.GetComponent<KeywordMain>() != null)
             button.onClick.AddListener(AddThisToMainDeck);
@@ -87,7 +86,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch(rewardType)
         {
             case RewardType.keyword:
-                info.SetActive(true);
+                InfoManager.instance.ShowTipUI(rewardNameText.text, Color.yellow, rewardInfoStr, transform);
                 break;
         }
     }
@@ -97,8 +96,26 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch (rewardType)
         {
             case RewardType.keyword:
-                info.SetActive(false);
+                InfoManager.instance.HideTipUI();
                 break;
         }
     }
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    if (onDestroying) return;
+    //    if (keyword != null)
+    //    {
+    //        keyword.ShowInfoUI();
+    //    }
+    //    if (eventKeyword != null)
+    //    {
+    //        eventKeyword.ShowInfoUI();
+    //    }
+    //}
+
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    if (onDestroying) return;
+    //    InfoManager.instance.HideTipUI();
+    //}
 }
