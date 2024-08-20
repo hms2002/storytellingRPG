@@ -112,6 +112,7 @@ public class EffectManager : MonoBehaviour
             }
         }
     }
+
     public void StartPlayEffectWithDelay(EffectType _type, Actor actor, int _repeat)
     {
         type = _type;
