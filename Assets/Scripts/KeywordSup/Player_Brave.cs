@@ -24,9 +24,4 @@ public class Player_Brave : KeywordSup
 
     public override void Check(KeywordMain _keywordMain) { }
 
-    public override void CanUseCheck(Actor caster, Actor target)
-    {
-        if (caster.protect >= 3) isCanUse = true;
-        else isCanUse = false;
-    }
 }

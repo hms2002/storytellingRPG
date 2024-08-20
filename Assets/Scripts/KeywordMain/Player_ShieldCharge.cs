@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Roar : KeywordMain
+public class Player_ShieldCharge : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "포효";
+        keywordName = "방패 돌격";
         isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();
@@ -14,9 +14,12 @@ public class Player_Roar : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
-        if(caster.protect >= 6)
-            caster.protect += keywordProtect;
+        if(caster.protect >= 4)
+        {
+            caster.protect -= 4;
+            caster.damage += 8;
+            target.charactorState.AddState(StateType.weaken, 2);
+        }
 
     }
 
