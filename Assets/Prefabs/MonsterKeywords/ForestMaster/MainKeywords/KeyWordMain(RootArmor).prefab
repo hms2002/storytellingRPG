@@ -176,7 +176,9 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uBCF4\uD638\uB97C 7 \uC5BB\uC2B5\uB2C8\uB2E4.\n\uC99D\uC2DD\uC744
+    2 \uC18C\uBAA8\uD569\uB2C8\uB2E4.\n\uC99D\uC2DD \uC2A4\uD0DD\uC774 \uBD80\uC871\uD558\uBA74,
+    \uBCF4\uD638\uB97C 4 \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &2965596496066280284

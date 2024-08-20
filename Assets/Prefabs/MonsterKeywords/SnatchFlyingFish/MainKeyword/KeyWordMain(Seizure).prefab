@@ -662,9 +662,8 @@ MonoBehaviour:
   _keywordTension: 10
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uB300\uC0C1\uC758 \uB3C8\uC744 debuffstack\uACE8\uB4DC \uB354
-    \uD6D4\uCE5C\uB2E4\n\uC0C1\uB300\uBC29\uC758 \uC18C\uC9C0\uAE08\uC774 50\uACE8\uB4DC
-    \uC774\uD558\uB77C\uBA74, \uC804\uBD80 \uAC00\uC838\uC628\uB2E4.\n\uAE34\uC7A5\uB3C4
-    tension"
+  keywordDescription: "\uB3C8\uC744 debuffstack\uACE8\uB4DC \uD6D4\uCE69\uB2C8\uB2E4.\n\uC0C1\uB300\uBC29\uC758
+    \uC18C\uC9C0\uAE08\uC774 50\uACE8\uB4DC \uC774\uD558\uB77C\uBA74, \uC804\uBD80
+    \uAC00\uC838\uC635\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0

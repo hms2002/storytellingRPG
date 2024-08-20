@@ -646,8 +646,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: -30
   _isOneTimeUse: 0
-  selectedColor: 0
-  keywordDescription: "\uC790\uC2E0\uC5D0\uAC8C \uC57D\uD654 debuffstack \uBD80\uC5EC\n\uAE34\uC7A5\uB3C4
-    tension "
+  selectedColor: 3
+  keywordDescription: "\uC57D\uD654\uB97C debuffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0

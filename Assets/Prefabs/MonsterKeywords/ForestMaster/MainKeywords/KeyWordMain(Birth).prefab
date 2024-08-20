@@ -251,7 +251,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uBFCC\uB9AC \uAD34\uBB3C\uC744 \uC18C\uD658\uD569\uB2C8\uB2E4.\n(\uBFCC\uB9AC
+    \uAD34\uBB3C\uC774 \uC8FD\uC9C0 \uC54A\uC558\uB2E4\uBA74 \uC0AC\uC6A9 \uBD88\uAC00\uD569\uB2C8\uB2E4)"
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &4617487296097820014

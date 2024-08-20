@@ -177,8 +177,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   selectedColor: 0
   keywordDescription: "\uC18C\uBAA8 \uB9C8\uB098 1 \uB2F9 \uC0C1\uB300\uBC29\uC5D0\uAC8C
-    \uC911\uB3C5 1 \uBD80\uC5EC(\uCD5C\uB300 2 \uBD80\uC5EC)\n\uAE34\uC7A5\uB3C4
-    tension"
+    \uC911\uB3C5\uC744 1 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n(\uCD5C\uB300 2 \uC18C\uBAA8\uD569\uB2C8\uB2E4)"
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &2594471883532618629

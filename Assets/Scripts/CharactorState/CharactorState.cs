@@ -407,6 +407,14 @@ public class CharactorState
     {
         allStateList[(int)type].oneTimeRepeat = true;
     }
+    public void StackReductionProtect(StateType type)
+    {
+        allStateList[(int)type].oneTimeNoReduction = true;
+    }
+    public void StackGainDouble(StateType type)
+    {
+        allStateList[(int)type].gainDoubleStack = true;
+    }
     public void AllStackDamageRepeat()
     {
         foreach (State i in allStateList)
@@ -463,6 +471,11 @@ public class CharactorState
             if (i == null || i.stack <= 0
                 || i.stateData.reductionTiming != ReductionTiming.OnAttack)
                 continue;
+            if(i.oneTimeNoReduction)
+            {
+                i.oneTimeNoReduction = false;
+                continue;
+            }
             i.Reduction();
             stateUIController.UpdateUI(i);
         }

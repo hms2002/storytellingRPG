@@ -340,8 +340,7 @@ MonoBehaviour:
   _keywordTension: -5
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uB300\uC0C1\uC5D0\uAC8C damage\uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4
-    tension"
+  keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &3327240069407620292

@@ -561,7 +561,7 @@ MonoBehaviour:
   name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
-  effectType: 0
+  effectType: 2
   _keywordName: 
   _keywordDamage: 0
   _keywordProtect: 0
@@ -571,8 +571,8 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
-  selectedColor: 0
-  keywordDescription: 
+  selectedColor: 3
+  keywordDescription: "\uAC15\uD654\uB97C 3 \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   amountOfReinforce: 3

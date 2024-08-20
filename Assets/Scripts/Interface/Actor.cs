@@ -513,6 +513,11 @@ public class Actor : MonoBehaviour
     /// </summary>
     protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
     {
+        if(attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack)
+        {
+            totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
+            attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack = false;
+        }
         totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
         return totalDamage;
     }

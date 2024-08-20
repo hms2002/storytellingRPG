@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 6310258120599126943}
 --- !u!114 &2130048777627127578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +175,10 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: -37
   _isOneTimeUse: 0
-  keywordDescription: "\uC18C\uBAA8\uD55C \uB9C8\uB098 1\uB2F9 \uC885\uB9D0\uC774
-    1 \uC99D\uAC00\uD569\uB2C8\uB2E4. \uCDE8\uC57D\uC744 debuffstack\uC5BB\uC2B5\uB2C8\uB2E4.(\uCD5C\uB300
-    2)\n\uAE34\uC7A5\uB3C4 tension"
+  selectedColor: 0
+  keywordDescription: "\uC18C\uBAA8\uD55C \uB9C8\uB098 1\uB2F9 \uC885\uB9D0\uC744
+    1 \uC5BB\uC2B5\uB2C8\uB2E4. \n\uCDE8\uC57D\uC744 debuffstack \uC5BB\uC2B5\uB2C8\uB2E4.\n(\uCD5C\uB300
+    2 \uC18C\uBAA8\uD569\uB2C8\uB2E4)"
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &2965596496066280284

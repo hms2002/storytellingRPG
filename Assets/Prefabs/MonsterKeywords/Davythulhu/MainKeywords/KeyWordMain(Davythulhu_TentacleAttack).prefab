@@ -325,8 +325,8 @@ MonoBehaviour:
   _keywordTension: 11
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "damage\uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4. \uACF5\uD3EC\uB97C
-    debuffstack\uBD80\uC5EC\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4 tension "
+  keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uACF5\uD3EC\uB97C
+    debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &2168599756560862937

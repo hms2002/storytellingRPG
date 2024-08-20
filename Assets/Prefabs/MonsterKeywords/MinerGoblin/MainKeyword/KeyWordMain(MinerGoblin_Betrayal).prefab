@@ -175,7 +175,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uC0C1\uB300 \uBCF4\uD638\uB97C \uC804\uBD80 \uC81C\uAC70\uD569\uB2C8\uB2E4.\n\uC5C6\uB2E4\uBA74
+    \uC77C\uD68C\uC131 \uC57D\uD654\uB97C 3 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   oneTimeReductionControl: 3
@@ -244,8 +245,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uB300 \uBC29\uC5B4\uB3C4\n\uC804\uC8FC \uC81C\uAC70\n\n\uC5C6\uB2E4\uBA74
-    \uC77C\uD68C\uC131 \uC57D\uD654 3 \uBD80\uC5EC\n\n\uAE34\uC7A5\uB3C4 +12"
+  m_text: "\uC0C1\uB300 \uBCF4\uD638\uB97C \uC804\uBD80 \uC81C\uAC70\uD569\uB2C8\uB2E4.\n\uC5C6\uB2E4\uBA74
+    \uC77C\uD68C\uC131 \uC57D\uD654\uB97C 3 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4
+    +12"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}

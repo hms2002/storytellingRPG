@@ -176,7 +176,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uBFCC\uB9AC \uCD09\uC218\uC5D0\uAC8C '\uBFCC\uB9AC \uAC15\uD654'\uB97C
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &401838453675980795
@@ -431,7 +432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBFCC\uB9AC \uCD09\uC218\uC5D0\uAC8C '\uBFCC\uB9AC \uAC15\uB878'\uB97C
+  m_text: "\uBFCC\uB9AC \uCD09\uC218\uC5D0\uAC8C '\uBFCC\uB9AC \uAC15\uD654'\uB97C
     \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4 +16"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
