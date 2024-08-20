@@ -44,6 +44,7 @@ public class EventManager : MonoBehaviour
         isSelected = false;
         eventData = null;
         isBattle = false;
+        eventHand.Clear();
     }
 
     public void ShowEvent(EventData eventData)
@@ -71,7 +72,7 @@ public class EventManager : MonoBehaviour
         if (!isSelected)
         {
             TextManager.instance.Text.alignment = TextAlignmentOptions.Top;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < eventData.eventKeyword.Count; i++)
             {
                 eventHand.Add(Instantiate(eventData.eventKeyword[i], createLocation, Quaternion.identity, CanvasData.canvasData.handCanvas.transform.Find("SelectedKeywordPivot")));
             }
@@ -83,6 +84,7 @@ public class EventManager : MonoBehaviour
             {
                 eventImage.SetActive(false);
                 FightManager.fightManager.FightStart();
+                Init();
             }
             else
             {
