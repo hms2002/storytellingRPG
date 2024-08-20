@@ -4876,7 +4876,7 @@ Transform:
   m_GameObject: {fileID: 847360358}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -956.16, y: -542.09, z: 0}
+  m_LocalPosition: {x: -956.16, y: -541.84, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8763,7 +8763,7 @@ MonoBehaviour:
   cursorImage:
   - {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
   - {fileID: 2800000, guid: 195dd8a5dd7e9e24ea8b974b006dfc8b, type: 3}
-  mapBackground: []
+  mapBackground: {fileID: 0}
   keywordSettingWindow: {fileID: 1854461914}
   combatFunctionAndUI:
   - {fileID: 1394731583}
@@ -8773,6 +8773,7 @@ MonoBehaviour:
   combatBackground: {fileID: 131565276}
   ShopUI: {fileID: 266349607}
   RestUI: []
+  RestButton: []
   EventUI:
   - {fileID: 847360358}
   theEndIcon: {fileID: 0}
@@ -10219,10 +10220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage1EventList:
+  - {fileID: 11400000, guid: 6025d009174d41b468b42c581ffdf158, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
+  - {fileID: 11400000, guid: c88f27356ce2f76478e54658f0daccec, type: 2}
   stage2EventList:
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}

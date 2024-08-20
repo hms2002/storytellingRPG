@@ -21,20 +21,20 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Actor player;                  // Player 오브젝트의 Actor 스크립트 컴포넌트
 
     [Header("골드 패널")]
-    [SerializeField] private GameObject _goldPanel;         //
+    [SerializeField] private GameObject _goldPanel;         // 소지금 패널 오브젝트
     public GameObject goldPanel => _goldPanel;
 
     [Header("골드 텍스트")]
-    [SerializeField] private TextMeshProUGUI goldHUD;       // 
+    [SerializeField] private TextMeshProUGUI goldHUD;       // 소지금 표시 텍스트
 
     [Header("키워드 가격 텍스트")]
-    [SerializeField] private TextMeshProUGUI keywordPrice;  // 
+    [SerializeField] private TextMeshProUGUI keywordPrice;  // 키워드 싯가 표시 텍스트
 
     [Header("테이블보 태그 오브젝트")]
-    [SerializeField] private GameObject tableclothTag;      //
+    [SerializeField] private GameObject tableclothTag;      // 테이블보 책갈피 오브젝트
 
     [Header("키워드 제거 시 교체될 스프라이트")]
-    [SerializeField] private Sprite emptySpaceByErase;      // 
+    [SerializeField] private Sprite emptySpaceByErase;      // 키워드 빈자리 스프라이트
 
     private bool areProductsDisplay;                        // 키워드 진열 여부
 
@@ -43,14 +43,17 @@ public class ShopManager : MonoBehaviour
 
 
     [Header("키워드 상품 발주량")]
-    [SerializeField] private int _orderVolume = 6;          // 키워드 상품 발주량
+    [SerializeField] private int _orderVolume = 6;
     public int orderVolume { get => _orderVolume; set => _orderVolume = value; }
 
-    [Header("키워드 개당 가격")]
-    [SerializeField] private int pricePerKeyword = 50;
+    [Header("키워드 당 가격")]
+    [SerializeField] private int pricePerKeyword = 75;
 
-    [Header("키워드 제거 가격")]
-    [SerializeField] private int keywordErasingPrice = 120;
+    [Header("유물 당 가격")]
+    [SerializeField] private List<int> PricesPerRelic = new List<int>() { 100, 125, 150, 175, 200 };
+
+    [Header("키워드 제거 개당 가격")]
+    [SerializeField] private int keywordErasingPrice = 75;
 
 
     /*==================================================================================================================================*/

@@ -126,4 +126,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   originalDeck: {fileID: 0}
-  _UIActiveDelay: 0.9
+  foldedPages:
+  - {fileID: 0}
+  - {fileID: 0}
+  supKeywordsForDisplay: []
+  mainKeywordsForDisplay: []
+  _keywordSettingPage: 1
+  _uIActiveDelay: 0.9

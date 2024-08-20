@@ -26,7 +26,7 @@ public class EventKeyword : MonoBehaviour
     protected Color Y = Color.yellow;
     /// <summary> 검은색임 </summary>
     protected Color D = Color.black;
-    protected Color Default = new Color(127, 98, 71);
+    protected Color Default = new Color(127f / 255f, 98f / 255f, 71f / 255f, 255f / 255f);
     [Header("이벤트 선택지 이름")]
     [SerializeField] private string _keywordName;
     protected Color keywordColor;
