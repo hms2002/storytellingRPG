@@ -78,10 +78,11 @@ public class KeywordUIMovement : MonoBehaviour
         if(stretchKeywordsFlag)
         {
             curTime += Time.deltaTime;
+            
             for(int i = 0; i < keywords.Count; i++)
             {
-                keywords[i].transform.position = Vector2.Lerp(mainDeckPivot.position, objPos[i], curTime / MOVE_TIME);
-                keywords[i].transform.localScale = Vector2.Lerp(startSize, endSize, curTime / MOVE_TIME);
+                    keywords[i].transform.position = Vector2.Lerp(mainDeckPivot.position, objPos[i], curTime / MOVE_TIME);
+                    keywords[i].transform.localScale = Vector2.Lerp(startSize, endSize, curTime / MOVE_TIME);
             }
             if (curTime > MOVE_TIME)
             {

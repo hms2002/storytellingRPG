@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
+  m_Name: HugeCristal
+  m_EditorClassIdentifier: 
+  roomImage: {fileID: 21300000, guid: 68cefeeb213431748bc5c1c4cc1404db, type: 3}
+  nextImage1: {fileID: 0}
+  nextImage2: {fileID: 0}
+  nextImage3: {fileID: 0}
+  roomContents: "\uB2F9\uC2E0\uC740 \uB3D9\uAD74 \uC548\uC5D0\uC11C \uCEE4\uB2E4\uB780
+    \uC218\uC815\uC744 \uBC1C\uACAC\uD569\uB2C8\uB2E4.\n\uCEE4\uB2E4\uB780 \uC218\uC815\uC5D0
+    \uAC00\uAE4C\uC774 \uB2E4\uAC00\uAC00\uC790, \uAC15\uD55C \uB9C8\uB825\uC758
+    \uAE30\uC6B4\uC774 \uB290\uAEF4\uC9D1\uB2C8\uB2E4.\n\uB2F9\uC2E0\uC740 \uC218\uC815\uC5D0
+    \uC190\uC744 \uAC00\uC838\uB2E4 \uB311\uB2C8\uB2E4.\n\uC190\uC744 \uAC00\uC838\uB2E4
+    \uB300\uC790, \uB9C8\uB825\uC758 \uAE30\uC6B4\uC774 \uB2F9\uC2E0\uC744 \uAC10\uC309\uB2C8\uB2E4."
+  eventKeyword:
+  - {fileID: 7579075665694996604, guid: b3ede532e115df34bb3bbdd6ed06acff, type: 3}
+  - {fileID: 7579075665694996604, guid: 81598163e689e324b827cbd738682063, type: 3}
+  - {fileID: 7579075665694996604, guid: 15fa74c92c6f9cb4ea40a6c4d3527585, type: 3}
+  roomContentsAfter: "\uB9C8\uB825\uC758 \uAE30\uC6B4\uC774 \uBAB8\uC73C\uB85C \uC2A4\uBA70\uB4DC\uB294
+    \uB290\uB08C\uC774 \uB4E0\uB2E4."
+  roomContentsAfter2: 
+  roomContentsAfter3: 

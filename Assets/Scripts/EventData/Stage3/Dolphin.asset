@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
+  m_Name: Dolphin
+  m_EditorClassIdentifier: 
+  roomImage: {fileID: 21300000, guid: 415419d85b125da41a59523954d6fdf1, type: 3}
+  nextImage1: {fileID: 0}
+  nextImage2: {fileID: 0}
+  nextImage3: {fileID: 0}
+  roomContents: "\uD56D\uD574\uB97C \uD558\uB358 \uC911 \uBC14\uB2F7\uC18D\uC5D0\uC11C
+    \uADC0\uC5EC\uC6B4 \uB3CC\uACE0\uB798\uAC00 \uD280\uC5B4\uC624\uB985\uB2C8\uB2E4.\n\"\uC090\uC774-\"
+    \uB3CC\uACE0\uB798\uB294 \uB2F9\uC2E0\uC5D0\uAC8C \uC778\uC0AC\uD569\uB2C8\uB2E4.\n\uB3CC\uACE0\uB798\uC5D0\uAC8C
+    \uAC00\uAE4C\uC774 \uB2E4\uAC00\uAC00 \uBA38\uB9AC\uB97C \uC4F0\uB2E4\uB4EC\uC790,\n\uB3CC\uACE0\uB798\uB294
+    \uAE30\uBED0\uD558\uBA70 \uC5B4\uB518\uAC00\uC5D0\uC11C \uC8FC\uBB38\uC11C\uAC00
+    \uB4E0 \uC720\uB9AC\uBCD1\uC744 \uAC00\uC838\uC635\uB2C8\uB2E4.\n\uB3CC\uACE0\uB798\uB294
+    \uB2F9\uC2E0\uC5D0\uAC8C \uC120\uBB3C\uD55C\uB2E4\uB294 \uB4EF \uC8FC\uBCC0\uC744
+    \uB3CC\uBA70 \uD5E4\uC5C4\uCE69\uB2C8\uB2E4."
+  eventKeyword:
+  - {fileID: 7579075665694996604, guid: 07550b16065f2944a92f846daea39ab4, type: 3}
+  - {fileID: 7579075665694996604, guid: 90b1f44bc69cc5c4eaa02016a223ea5a, type: 3}
+  - {fileID: 7579075665694996604, guid: 5b17c76a37ef9a244bde9f83cff1a4aa, type: 3}
+  roomContentsAfter: "\uCCAB \uBC88\uC9F8 \uC720\uB9AC\uBCD1\uC744 \uC90D\uC790,
+    \uB3CC\uACE0\uB798\uB294 \uC791\uBCC4\uC778\uC0AC\uB97C \uD558\uACE4 \uBC14\uB2F7\uB85C
+    \uB3CC\uC544\uAC11\uB2C8\uB2E4."
+  roomContentsAfter2: "\uB450 \uBC88\uC9F8 \uC720\uB9AC\uBCD1\uC744 \uC90D\uC790,
+    \uB3CC\uACE0\uB798\uB294 \uC791\uBCC4\uC778\uC0AC\uB97C \uD558\uACE4 \uBC14\uB2E4\uB85C
+    \uB3CC\uC544\uAC11\uB2C8\uB2E4."
+  roomContentsAfter3: "\uC138 \uBC88\uC9F8 \uC720\uB9AC\uBCD1\uC744 \uC90D\uC790,
+    \uB3CC\uACE0\uB798\uB294 \uC791\uBCC4\uC778\uC0AC\uB97C \uD558\uACE4 \uBC14\uB2E4\uB85C
+    \uB3CC\uC544\uAC11\uB2C8\uB2E4."
