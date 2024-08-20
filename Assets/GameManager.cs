@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         
         if (FightManager.fightManager.isBossStage)
         {
+            Debug.Log("보스였음: 이벤트 클리어");
             StageManager.instance.NextStage();
         }
     }

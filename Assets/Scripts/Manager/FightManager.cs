@@ -101,6 +101,7 @@ public class FightManager : MonoBehaviour
         {
             monster.BeforeFightStart(player);
         }
+        CheckBossStage();
 
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
@@ -350,7 +351,7 @@ public class FightManager : MonoBehaviour
             UIManager.instance.ActiveTheEndIcon(true);
 
             // 게임 종료 (씬 전환?)
-            return false ;
+            return false;
         }
         else
             return true;

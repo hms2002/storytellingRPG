@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using Map;
 using System.IO;
+using System.Data.SqlTypes;
 
 public enum StageState
 {
@@ -42,7 +43,7 @@ public class StageManager : MonoBehaviour
     //보스를 잡고 스테이지를 넘어가는 모든 장면 연출.
     public void NextStage()
     {
-        DOVirtual.DelayedCall(4, () =>
+        DOVirtual.DelayedCall(8, () =>
         {
             Book.instance.bookAnimator.SetTrigger("turnPageToRight");
 
@@ -64,6 +65,7 @@ public class StageManager : MonoBehaviour
                     break;
             }
 
+            MonsterSetDatabase.monsterSetDatabase.MonsterSetting();
             BackgroundSetting(nowStageState);
             MapState.InstanceMap.SpawnMap();
         });
@@ -89,8 +91,7 @@ public class StageManager : MonoBehaviour
                 mapBackGrounds[2].SetActive(true);
                 break;
             case StageState.MagicTower:
-                mapBackGrounds[1].SetActive(true);
-                Debug.LogWarning("일단 마탑 배경 없어서 바다로 설정");
+                mapBackGrounds[3].SetActive(true);
                 break;
             default:
                 Debug.LogWarning("스테이지 변경 오류");
@@ -124,5 +125,12 @@ public class StageManager : MonoBehaviour
             nowStageState = StageState.Forest; // 기본 스테이지 설정
             BackgroundSetting(nowStageState);
         }
+    }
+
+    public void StageReset()
+    {
+        string jsonData = JsonUtility.ToJson(StageState.Forest);
+        nowStageState = StageState.Forest;
+        File.WriteAllText(saveFilePath, jsonData);
     }
 }
