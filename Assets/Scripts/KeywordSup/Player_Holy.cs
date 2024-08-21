@@ -14,8 +14,8 @@ public class Player_Holy : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.protect, buffStack);
-        caster.charactorState.AddState(StateType.oneTimeProtect, 6);
+        caster.protect += keywordProtect;
+        caster.charactorState.AddState(StateType.oneTimeProtect, buffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

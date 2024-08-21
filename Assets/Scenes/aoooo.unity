@@ -1485,6 +1485,17 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!114 &208562567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+  m_PrefabInstance: {fileID: 1300979869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5267e1f5782226a4fa55529823013ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &222614817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3528,6 +3539,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7581883951533863366, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+      propertyPath: originalDeck
+      value: 
+      objectReference: {fileID: 208562567}
+    - target: {fileID: 7581883951533863366, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+      propertyPath: bookmarks.Array.data[0]
+      value: 
+      objectReference: {fileID: 778526102}
+    - target: {fileID: 7581883951533863366, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+      propertyPath: bookmarks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1931578670}
+    - target: {fileID: 7581883951533863366, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+      propertyPath: originalSupMainDeckUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 47199195}
+    - target: {fileID: 7581883951533863366, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
+      propertyPath: originalSupMainDeckUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1075025685}
     - target: {fileID: 8783971561002773909, guid: cf48e308a26e0264c85924dc685976d3, type: 3}
       propertyPath: m_Name
       value: Book
