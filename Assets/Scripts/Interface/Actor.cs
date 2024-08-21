@@ -54,7 +54,7 @@ public class Actor : MonoBehaviour
 
     [Header("최대 체력")]
     [SerializeField] protected int _MAX_HP = 100;
-    private int _hp;
+    [SerializeField] private int _hp;
     private int _protect = 0;
     private int _heal = 0;
     private int _damage = 0;

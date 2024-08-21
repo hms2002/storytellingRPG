@@ -101,6 +101,7 @@ public class FightManager : MonoBehaviour
         {
             monster.BeforeFightStart(player);
         }
+
         CheckBossStage();
 
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
