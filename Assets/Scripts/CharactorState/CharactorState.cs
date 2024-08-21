@@ -377,7 +377,7 @@ public class CharactorState
 
             if(i.oneTimeRepeat)
             {
-                actor.Damaged(actor, (i.stack / i.stateData.needStackToEffect )* stackDamage);
+                actor.Damaged(actor, new DamageInfo((i.stack / i.stateData.needStackToEffect )* stackDamage, false));
 
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;
@@ -391,7 +391,7 @@ public class CharactorState
 
             if(i.stack != 0)
             {
-                actor.Damaged(actor, (i.stack / i.stateData.needStackToEffect) * stackDamage);
+                actor.Damaged(actor, new DamageInfo((i.stack / i.stateData.needStackToEffect) * stackDamage, false));
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;
             }

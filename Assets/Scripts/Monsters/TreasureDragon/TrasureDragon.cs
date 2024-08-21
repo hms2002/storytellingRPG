@@ -59,11 +59,11 @@ public class TrasureDragon : Monster
         
         return totalDamage;
     }
-    public override void Damaged(Actor attacker, int _damage)
+    public override void Damaged(Actor attacker, DamageInfo _damage)
     {
-        if (_damage <= 0) return;
+        if (_damage.damage <= 0) return;
 
-        int totalDamage = _damage;
+        int totalDamage = _damage.damage;
 
         if (attacker == this)
             DamagedSelf(totalDamage);

@@ -17,7 +17,7 @@ public class Davythulhu_TentacleAttack : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage = keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         target.charactorState.AddState(StateType.fear, debuffStack);
         caster.tension += keywordTension;
     }
