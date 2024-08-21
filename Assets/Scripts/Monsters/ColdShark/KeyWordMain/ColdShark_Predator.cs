@@ -15,7 +15,7 @@ public class ColdShark_Predator : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        target.damage += keywordDamage;
+        target.dmgList.Add(keywordDamage);
     }
 
     public override void CanUseCheck(Actor caster, Actor target)

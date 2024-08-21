@@ -23,11 +23,11 @@ public class BarnacleCrayfish_GripStrength : KeywordMain
     {
         if (caster.protect >= 8)
         {
-            caster.damage += damage + plusDamage;
+            caster.dmgList.Add(damage + plusDamage);
         }
         else
         {
-            caster.damage += damage + caster.protect;
+            caster.dmgList.Add(damage + caster.protect);
         }
 
         caster.tension += keywordTension;

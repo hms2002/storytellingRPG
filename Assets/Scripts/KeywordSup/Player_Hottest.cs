@@ -17,7 +17,7 @@ public class Player_Hottest : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         int stack = target.charactorState.GetStateStack(StateType.burn) / 3;
-        caster.damage += stack;
+        caster.dmgList.Plus(stack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

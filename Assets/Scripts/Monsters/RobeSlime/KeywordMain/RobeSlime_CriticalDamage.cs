@@ -19,7 +19,7 @@ public class RobeSlime_CriticalDamage : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.charactorState.ReductionByValue(StateType.mana, COST);
-        target.Damaged(keywordDamage, caster, true);
+        caster.dmgList.Add(keywordDamage, true);
         caster.tension += keywordTension;
     }
 

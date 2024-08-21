@@ -15,7 +15,7 @@ public class Player_OilBottle : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         if (target.charactorState.GetStateStack(StateType.burn) > 0)
-            caster.damage += keywordDamage;
+            caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup _keywordSup)

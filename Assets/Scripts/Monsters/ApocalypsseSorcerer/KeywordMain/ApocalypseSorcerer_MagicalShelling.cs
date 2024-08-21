@@ -28,7 +28,7 @@ public class ApocalypseSorcerer_MagicalShelling : KeywordMain
             caster.charactorState.ReductionByValue(StateType.mana, usingManaStack);
 
             for (int i = 0; i < usingManaStack; i++)
-                target.Damaged(caster, keywordDamage);
+                caster.dmgList.Add(keywordDamage);
         }
         caster.tension += keywordTension;
     }

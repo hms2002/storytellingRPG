@@ -13,7 +13,7 @@ public class Crossed : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += caster.protect;
+        caster.dmgList.Plus(caster.protect);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

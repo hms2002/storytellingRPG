@@ -18,7 +18,7 @@ public class Fragmented : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        caster.damage += glassSpider.charactorState.GetStateStack(StateType.glassPragment);
+        caster.dmgList.Plus(glassSpider.charactorState.GetStateStack(StateType.glassPragment));
         caster.tension += keywordTension;
     }
 

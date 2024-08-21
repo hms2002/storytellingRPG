@@ -15,7 +15,7 @@ public class Rattling : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }
 

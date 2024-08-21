@@ -15,7 +15,7 @@ public class ForestMaster_ForestFury : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage * caster.charactorState.GetStateStack(StateType.multiplication);
+        caster.dmgList.Add(keywordDamage * caster.charactorState.GetStateStack(StateType.multiplication));
         caster.tension += keywordTension;
         caster.charactorState.ResetState(StateType.multiplication);
     }

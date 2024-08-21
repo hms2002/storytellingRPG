@@ -15,7 +15,7 @@ public class Player_DoubleEagleSwordOfSevenKingdom : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         for (int i = 0; i < 7; i++)
-            target.Damaged(caster, keywordDamage);
+            caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup _keywordSup)

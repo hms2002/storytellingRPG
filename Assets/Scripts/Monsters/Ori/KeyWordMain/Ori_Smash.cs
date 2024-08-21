@@ -19,7 +19,7 @@ public class Ori_Smash : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         keywordDamage = (int)Random.Range(minRange, maxRange + 1);
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 

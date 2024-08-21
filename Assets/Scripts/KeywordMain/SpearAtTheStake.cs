@@ -13,7 +13,7 @@ public class SpearAtTheStake : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += target.charactorState.GetStateStack(StateType.burn);
+        caster.dmgList.Add(target.charactorState.GetStateStack(StateType.burn));
     }
 
     public override void Check(KeywordSup _keywordSup)

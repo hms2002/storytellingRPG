@@ -22,7 +22,7 @@ public class ScatteringTreasures : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         trasureDragon = caster as TrasureDragon;
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, keywordDamage);
         trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keywordTension;

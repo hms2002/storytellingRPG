@@ -17,7 +17,7 @@ public class Player_ShieldCharge : KeywordMain
         if(caster.protect >= 4)
         {
             caster.protect -= 4;
-            caster.damage += 8;
+            caster.dmgList.Add(8);
             caster.afterAttackDel += (caster, target) =>
             {
                 target.charactorState.AddState(StateType.weaken, 2);

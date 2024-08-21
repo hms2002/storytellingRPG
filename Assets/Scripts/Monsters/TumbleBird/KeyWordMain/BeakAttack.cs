@@ -20,7 +20,7 @@ public class BeakAttack : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        caster.damage = keywordDamage;
+        caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup _keywordSup)

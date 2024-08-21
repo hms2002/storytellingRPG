@@ -15,9 +15,9 @@ public class SwordOfIgnightKnight : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         if(target.charactorState.GetStateStack(StateType.burn) >= 8)
-            caster.damage += keywordDamage;
+            caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup _keywordSup)

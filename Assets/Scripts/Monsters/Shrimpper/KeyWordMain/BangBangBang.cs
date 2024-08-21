@@ -14,7 +14,7 @@ public class BangBangBang : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension * caster.charactorState.GetStateStack(StateType.ammunition);
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.repeatStack = caster.charactorState.GetStateStack(StateType.ammunition);
         caster.charactorState.ResetState(StateType.ammunition);
     }

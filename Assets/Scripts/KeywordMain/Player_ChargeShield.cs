@@ -14,7 +14,7 @@ public class Player_ChargeShield : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += caster.protect;
+        caster.dmgList.Add(caster.protect);
     }
 
     public override void Check(KeywordSup _keywordSup)

@@ -21,30 +21,46 @@ public class DamageInfo
             damage = _damage;
             isPenetrate = _isPenetrate;
         }
+        public DamageInfo(int _damage)
+        {
+            damage = _damage;
+            isPenetrate = false;
+        }
     }
 public class DamageList
+{
+    public List<DamageInfo> damageList = new List<DamageInfo>();
+    bool isPlus = false;
+    public int GetAllDamage()
     {
-        public List<DamageInfo> damageList = new List<DamageInfo>();
-        public void Init(int damage)
+        int damage = 0;
+        foreach (DamageInfo d in damageList)
+            damage += d.damage;
+        return damage;
+    }
+    public void Add(int damage, bool isPenetrate = false)
+    {
+        if(isPlus)
         {
-            damageList.Clear();
+            isPlus = false;
+            damageList[0].damage += damage;
         }
-        public void Add(int damage, bool isPenetrate = false)
+        else
+            damageList.Add(new DamageInfo(damage, isPenetrate));
+    }
+    public void Plus(int damage, bool isPenetrate = false)
+    {
+        if(damageList.Count == 0)
         {
             damageList.Add(new DamageInfo(damage, isPenetrate));
+            isPlus = true;
         }
-        public void Plus(int damage, bool isPenetrate = false)
+        else
         {
-            if(damageList[0] == null)
-            {
-                damageList.Add(new DamageInfo(damage, isPenetrate));
-            }
-            else
-            {
-                damageList[0].damage += damage;
-            }
+            damageList[0].damage += damage;
         }
     }
+}
 public class Actor : MonoBehaviour
 {
 
@@ -300,6 +316,9 @@ public class Actor : MonoBehaviour
     {
         _lastTurnProtectReduction = _lastProtectReductTerminal;
         _lastProtectReductTerminal = 0;
+
+        dmgList.damageList.Clear();
+
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
@@ -556,7 +575,7 @@ public class Actor : MonoBehaviour
     }
     protected int CalculateReinforce(int totalDamage, Actor attacker)
     {
-        totalDamage += charactorState.GetStateStack(StateType.reinforce);
+        totalDamage += attacker.charactorState.GetStateStack(StateType.reinforce);
         return totalDamage;
     }
     /// <summary>

@@ -18,7 +18,7 @@ public class BirdInBoots_Raffier : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.repeatStack += 2;
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 }

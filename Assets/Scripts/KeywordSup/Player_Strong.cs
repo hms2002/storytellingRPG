@@ -15,7 +15,7 @@ public class Player_Strong : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         if (caster.protect >= 3)
-            caster.damage += keywordDamage;
+            caster.dmgList.Plus(keywordDamage);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

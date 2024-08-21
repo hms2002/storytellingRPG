@@ -19,7 +19,7 @@ public class SwingFist : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage * caster.charactorState.GetStateStack(StateType.stonePiece);
+        caster.dmgList.Add(keywordDamage * caster.charactorState.GetStateStack(StateType.stonePiece));
         caster.tension += keywordTension + caster.charactorState.GetStateStack(StateType.stonePiece) * stackTension;
         caster.charactorState.ResetState(StateType.stonePiece);
     }

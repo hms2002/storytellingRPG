@@ -46,7 +46,7 @@ public class RootTectacles : Monster
 
         for(int i = 0; i <= repeatCnt; i++)
         {
-            target.Damaged(this, tentacleAttackDamage);
+            target.Damaged(this, new DamageInfo(tentacleAttackDamage));
         }
         EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatCnt);
         repeatCnt = 0;

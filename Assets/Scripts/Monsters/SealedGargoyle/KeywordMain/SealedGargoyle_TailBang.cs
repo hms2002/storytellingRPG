@@ -17,8 +17,11 @@ public class SealedGargoyle_TailBang : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.Damaged(caster, keywordDamage);
-        target.charactorState.AddState(StateType.oneTimeReduction, debuffStack);
+        caster.dmgList.Add(keywordDamage);
+        caster.afterAttackDel += (caster, target) => 
+        {
+            target.charactorState.AddState(StateType.oneTimeReduction, debuffStack); 
+        };
         caster.tension += keywordTension;
     }
 }

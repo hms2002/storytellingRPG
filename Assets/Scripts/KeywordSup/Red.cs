@@ -20,7 +20,7 @@ public class R : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage + extraDamage;
+        caster.dmgList.Plus(keywordDamage + extraDamage);
     }
 
     public override void Check(KeywordMain _keywordMain)

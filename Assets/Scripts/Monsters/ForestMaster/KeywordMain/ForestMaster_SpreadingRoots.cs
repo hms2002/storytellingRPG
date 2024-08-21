@@ -20,7 +20,7 @@ public class ForestMaster_SpreadingRoots : KeywordMain
             caster.charactorState.ReductionByValue(StateType.multiplication, 2);
             keywordDamage = 10;
         }
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 

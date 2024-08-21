@@ -18,7 +18,7 @@ public class PushingCat : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += damage;
+        caster.dmgList.Add(damage);
         caster.tension += keywordTension;
     }
 

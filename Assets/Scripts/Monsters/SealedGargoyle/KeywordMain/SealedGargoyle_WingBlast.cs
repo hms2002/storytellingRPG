@@ -17,10 +17,10 @@ public class SealedGargoyle_WingBlast : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.Damaged(caster, 6);
-        target.Damaged(caster, 4);
-        target.Damaged(caster, 2);
-        target.Damaged(caster, 1);
+        caster.dmgList.Add(6);
+        caster.dmgList.Add(4);
+        caster.dmgList.Add(2);
+        caster.dmgList.Add(1);
         caster.tension += keywordTension;
     }
 }

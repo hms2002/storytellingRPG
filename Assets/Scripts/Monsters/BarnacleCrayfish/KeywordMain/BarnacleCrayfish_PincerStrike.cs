@@ -22,7 +22,7 @@ public class BarnacleCrayfish_PincerStrike : KeywordMain
     {
         if(caster.protect >= 9)
         {
-            caster.damage += damage + caster.protect;
+            caster.dmgList.Add(damage + caster.protect);
             caster.protect = 0;
         }
         else

@@ -19,7 +19,7 @@ public class DiceMagician_DecaDice : KeywordMain
     {
         int randomFlag = Random.Range(0, 2);
         if (randomFlag == 0)
-            caster.damage = Random.Range(1, 11);
+            caster.dmgList.Add(Random.Range(1, 11));
         else
             target.hp += Random.Range(1, 11);
 

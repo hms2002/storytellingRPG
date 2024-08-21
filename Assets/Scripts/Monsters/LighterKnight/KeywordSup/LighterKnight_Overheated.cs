@@ -18,8 +18,8 @@ public class LighterKnight_Overheated : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         caster.Damaged(caster, 
-            (caster.charactorState.GetStateStack(StateType.burn) / 2) * 3
-            );
+            new DamageInfo(( caster.charactorState.GetStateStack(StateType.burn) / 2) * 3
+            ));
         caster.charactorState.ResetState(StateType.burn);
         caster.tension += keywordTension;
     }
