@@ -152,6 +152,8 @@ namespace Map
                             UIManager.instance.ActiveMapUI(false);
                             break;
                         case NodeType.TreasureNode:
+                            GameManager.instance.EnterTreasure();
+                            UIManager.instance.ActiveMapUI(false);
                             break;
                     }
                 });

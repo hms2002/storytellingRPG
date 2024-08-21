@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         // 승리 UI
         // 이후 보상 UI
-        rewardManager.ShowRewards_Keyword();
+        rewardManager.ShowFightRewards_Keyword();
     }
 
     /// <summary>
@@ -117,6 +117,11 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.Event;
         Book.instance.EnterEventField();
+    }
+    public void EnterTreasure()
+    {
+        gameState = GameState.Event;
+        Book.instance.EnterTreasureField();
     }
 
     internal void EndSelectReward()

@@ -17,7 +17,7 @@ public class Davythulhu_Sunken : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage = keywordDamage + target.charactorState.GetStateStack(StateType.fear) * keywordDamage;
+        caster.dmgList.Plus(keywordDamage + target.charactorState.GetStateStack(StateType.fear) * keywordDamage);
         caster.tension += keywordTension;
     }
 }

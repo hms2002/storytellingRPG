@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class RewardManager : MonoBehaviour
 {
     public  Actor player;
@@ -10,6 +10,7 @@ public class RewardManager : MonoBehaviour
     public GameObject rewardCanvas;
 
     public List<Transform> rewordPivot;
+    public Transform treasurePivot;
     List<GameObject> btnList = new List<GameObject>();
 
     // 정보를 채워넣을 껍데기
@@ -20,6 +21,9 @@ public class RewardManager : MonoBehaviour
     [SerializeField] GameObject rewardOffset_gold;
     
     [SerializeField] GameObject rewardOffset_None;
+
+    delegate void AfterClickKeyword();
+    AfterClickKeyword afterClickKeywordDel;
 
     bool _isMonsterFlee = false;
     public bool isMonsterFlee
@@ -46,19 +50,75 @@ public class RewardManager : MonoBehaviour
 
     [Header("키워드 프리펩 넣으면 보상으로 나오게 됨")]
     [SerializeField] List<GameObject> rewardKeywords;
+    [Header("보물상자 키워드 프리펩 넣으면 보상으로 나오게 됨")]
+    [SerializeField] List<GameObject> treasureRewardKeywords;
+    [Header("보물상자 유물 프리펩 넣으면 보상으로 나오게 됨")]
+    [SerializeField] List<GameObject> treasureRewardRelics;
     private void Awake()
     {
         if (instance != null) Destroy(this);
         instance = this;
         rewardCanvas.SetActive(false);
     }
+    public void MakeTreasures()
+    {
+        // 보상 UI 띄우기
+        rewardCanvas.SetActive(true);
 
+        int keywordCounts = Random.Range(0, 4);
+        int relicCounts = 3 - keywordCounts;
+
+        for(int i = 0; i < keywordCounts; i++)
+        {
+            GameObject rewardInstance = Instantiate(rewardOffset_keyword, rewardCanvas.transform);
+            rewardInstance.GetComponent<Reward>().SettingReward_Keyword(treasureRewardKeywords[0]);
+            treasureRewardKeywords.Add(treasureRewardKeywords[0]);
+            treasureRewardKeywords.RemoveAt(0);
+            btnList.Add(rewardInstance);
+        }
+        for (int i = 0; i < relicCounts; i++)
+        {
+            GameObject rewardInstance = Instantiate(rewardOffset_keyword, rewardCanvas.transform);
+            rewardInstance.GetComponent<Reward>().SettingReward_Keyword(treasureRewardKeywords[0]);
+            treasureRewardKeywords.Add(treasureRewardKeywords[0]);
+            treasureRewardKeywords.RemoveAt(0);
+            btnList.Add(rewardInstance);
+        }
+
+        for(int i = 0; i < btnList.Count; i++)
+        {
+            btnList[i].transform.position = treasurePivot.position;
+            btnList[i].transform.DOMove(rewordPivot[i].position, 1);
+        }
+
+        afterClickKeywordDel = () =>
+        {
+            StartCoroutine("PlayText_GetItem");
+        };
+    }
+    string getItemName;
+    IEnumerator PlayText_GetItem()
+    {
+        rewardCanvas.SetActive(false);
+        
+        float time = 3f;
+        string line = "당신은 " + getItemName + " 을 손에 넣었다.";
+        yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
+
+        // 종료
+
+        Book.instance.EnterMap();
+        player.gameObject.SetActive(false);
+        foreach (GameObject g in btnList)
+            Destroy(g);
+        btnList.Clear();
+    }
     // 아직은 단순히 리스트의 0~2번째 소스를 보상으로 만들었음. 랜덤으로 바꿔야 함
-    public void  ShowRewards_Keyword()
+    public void  ShowFightRewards_Keyword()
     {
         if (isMonsterFlee)
         {
-            ShowRewards_Relic_Gold();
+            ShowFightRewards_Relic_Gold();
             return;
         }
 
@@ -78,8 +138,10 @@ public class RewardManager : MonoBehaviour
         btnList.Add(rewardInstance1);
         btnList.Add(rewardInstance2);
         btnList.Add(rewardInstance3);
+
+        afterClickKeywordDel = ShowFightRewards_Relic_Gold;
     }
-    public void ShowRewards_Relic_Gold()
+    public void ShowFightRewards_Relic_Gold()
     {
         // 보상 UI 띄우기
         rewardCanvas.SetActive(true);
@@ -93,27 +155,27 @@ public class RewardManager : MonoBehaviour
 
         if (dropRelic)
         {
-            GameObject rewardInstance_relic
-                = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic();
-
-            btnList.Add(rewardInstance_relic);
-
-            GameObject rewardInstance_gold
-                = Instantiate(rewardOffset_gold, rewordPivot[2].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
-
-            btnList.Add(rewardInstance_gold);
+            ShowFightRelic();
         }
-        else
-        {
-            GameObject rewardInstance_gold
-                = Instantiate(rewardOffset_gold, rewordPivot[1].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
-            btnList.Add(rewardInstance_gold);
-        }
+        ShowFightGold();
     }
-    
+
+    private void ShowFightRelic()
+    {
+        GameObject rewardInstance_relic
+            = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
+        rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic();
+
+        btnList.Add(rewardInstance_relic);
+    }
+    private void ShowFightGold()
+    {
+        GameObject rewardInstance_gold
+            = Instantiate(rewardOffset_gold, rewordPivot[2].transform.position, Quaternion.identity, rewardCanvas.transform);
+        rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
+
+        btnList.Add(rewardInstance_gold);
+    }
     private void ShowNoReward()
     {
         rewardCanvas.SetActive(true);
@@ -122,25 +184,32 @@ public class RewardManager : MonoBehaviour
         btnList.Add(rewardInstance_none);
     }
 
+    #region 버튼 눌렀을 때
     public void AddMainKeywordToDeck(GameObject _keywordmain)
     {
+        GameObject temp = Instantiate(_keywordmain);
+        getItemName = temp.GetComponent<Keyword>().nameText.text;
+        Destroy(temp);
         player.AddMainKeywordToOriginalDeck(_keywordmain);
         rewardCanvas.SetActive(false);
         foreach (GameObject g in btnList)
             Destroy(g);
         btnList.Clear();
-        ShowRewards_Relic_Gold();
+        afterClickKeywordDel();
     }
 
     public void AddSupKeywordToDeck(GameObject _keywordSup)
     {
+        GameObject temp = Instantiate(_keywordSup);
+        getItemName = temp.GetComponent<Keyword>().nameText.text;
+        Destroy(temp);
+
         player.AddSupKeywordToOriginalDeck(_keywordSup);
         rewardCanvas.SetActive(false);
         foreach (GameObject g in btnList)
             Destroy(g);
         btnList.Clear();
-        ShowRewards_Relic_Gold();
-        //GameManager.instance.EndSelectReward();
+        afterClickKeywordDel();
     }
     public void AddGoldToPlayer()
     {
@@ -180,4 +249,5 @@ public class RewardManager : MonoBehaviour
         btnList.Clear();
         GameManager.instance.ReturnMap();
     }
+    #endregion
 }

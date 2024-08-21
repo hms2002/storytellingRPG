@@ -243,7 +243,7 @@ public class Book : MonoBehaviour
 
     public void EnterEventField()
     {
-        // gameState를 Battle로 전환
+        // gameState를 Event로 전환
         GameManager.instance.gameState = GameState.Event;
 
         // BookPassR 애니메이션 재생
@@ -271,6 +271,23 @@ public class Book : MonoBehaviour
                     EventManager.instance.ShowEvent(EventDatabase.eventDatas.stage4EventList[GameManager.instance.eventIndex]);
                     break;
             }
+        });
+
+    }public void EnterTreasureField()
+    {
+        // gameState를 Event로 전환
+        GameManager.instance.gameState = GameState.Event;
+
+        // BookPassR 애니메이션 재생
+        bookAnimator.SetTrigger("turnPageToRight");
+
+        // 전투 기능 및 UI 활성화
+        DOVirtual.DelayedCall(uIActiveDelay, () =>
+        {
+            // UI 활성화
+            UIManager.instance.ActiveEventUI(true);
+
+            EventManager.instance.ShowTreasure();
         });
 
     }

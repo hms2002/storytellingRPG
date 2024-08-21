@@ -24,7 +24,7 @@ public class BarnacleCrayfish : Monster
         SetAnimationState();
     }
 
-    public override void Damaged(Actor attacker, int _damage)
+    public override void Damaged(Actor attacker, DamageInfo _damage)
     {
         base.Damaged(attacker, _damage);
         SetAnimationState();

@@ -16,7 +16,7 @@ public class Ori : Monster
         charactorState.AddState(StateType.ore, 18);
     }
 
-    public override void Damaged(Actor attacker, int _damage)
+    public override void Damaged(Actor attacker, DamageInfo _damage)
     {
         base.Damaged(attacker, _damage);
         if (charactorState.GetStateStack(StateType.ore) == 0)

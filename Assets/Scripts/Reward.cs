@@ -22,6 +22,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI rewardInfoText;
     public Button button;
 
+
     public void SettingReward_Keyword(GameObject _keywordPrefab)
     {
         keywordPrefab = _keywordPrefab;

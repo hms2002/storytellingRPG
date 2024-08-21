@@ -20,6 +20,10 @@ public class EventManager : MonoBehaviour
 
     [SerializeField]
     private GameObject eventImage;
+    [SerializeField]
+    private Sprite treasureCloseImg;
+    [SerializeField]
+    private Sprite treasureOpenImg;
     public Select select;
     public bool isSelected = false;
     public bool isBattle = false;
@@ -53,6 +57,15 @@ public class EventManager : MonoBehaviour
         player.gameObject.SetActive(true);
         this.eventData = eventData;
         StartCoroutine(PlayTextByLine(eventData.roomContents, 1.5f, 2f, eventData));
+    }
+    public void ShowTreasure()
+    {
+        eventImage.GetComponent<SpriteRenderer>().sprite = treasureCloseImg;
+        player.gameObject.SetActive(true);
+        string script =
+            "당신은 여정 중에서 보물을 발견하였습니다.\n상자 안에는......";
+        
+        StartCoroutine(PlayTreasureTextByLine(script, 1.5f, 2f, eventData));
     }
 
     private IEnumerator PlayTextByLine(string fullText, float time, float nextTime, EventData eventData)
@@ -93,6 +106,29 @@ public class EventManager : MonoBehaviour
                 GameManager.instance.eventIndex += 1;
                 Init();
             }
+        }
+    }
+
+    private IEnumerator PlayTreasureTextByLine(string fullText, float time, float nextTime, EventData eventData)
+    {
+        // 텍스트를 줄바꿈(\n)으로 분리
+        string[] lines = fullText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+        TextManager.instance.Text.alignment = TextAlignmentOptions.Midline;
+
+        foreach (string line in lines)
+        {
+            // 현재 줄을 타이핑 효과로 출력
+            yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
+            // 다음 줄을 출력하기 전에 대기 시간 설정
+            yield return new WaitForSeconds(nextTime);
+        }
+
+        eventImage.GetComponent<SpriteRenderer>().sprite = treasureOpenImg;
+
+        if (!isSelected)
+        {
+            // 보상 요청
+            RewardManager.instance.MakeTreasures();
         }
     }
 
