@@ -25,13 +25,13 @@ public class MapCharacterInterface : MonoBehaviour
     private void StateUpdate()
     {
         moneyText.text = "" + playerAction.gold + "G"; //나중에 작성
-        if (loding)
+        if (!loding)
         {
             hpText.text = playerAction.hp + "/" + playerAction.MAX_HP;
         }
         else
         {
-            hpText.text = playerAction.hp + "/" + playerAction.MAX_HP;
+            hpText.text = 100 + "/" + playerAction.MAX_HP;
         }
 
         tensionText.text = TensionManager.tensionManagerUI.tension + "/" + 100;
