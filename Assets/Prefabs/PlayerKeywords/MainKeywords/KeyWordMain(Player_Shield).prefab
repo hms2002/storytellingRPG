@@ -634,7 +634,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uC790\uC2E0\uC5D0\uAC8C 5\uC758 \uBCF4\uD638\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  keywordDescription: "\uC790\uC2E0\uC5D0\uAC8C protect\uC758 \uBCF4\uD638\uB97C
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &1451065599807496153

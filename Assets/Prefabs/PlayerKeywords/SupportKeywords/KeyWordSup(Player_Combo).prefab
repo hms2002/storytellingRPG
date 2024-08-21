@@ -346,7 +346,7 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
-  _buffStack: 3
+  _buffStack: 1
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0

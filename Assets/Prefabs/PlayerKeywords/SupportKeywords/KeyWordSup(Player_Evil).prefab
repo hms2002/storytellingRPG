@@ -629,7 +629,7 @@ MonoBehaviour:
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: Weaken
-  _debuffStack: 2
+  _debuffStack: 3
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
