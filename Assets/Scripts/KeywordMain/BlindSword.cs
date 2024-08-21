@@ -21,13 +21,6 @@ public class BlindSword : KeywordMain
 
     public override void Check(KeywordSup keywordSup)
     {
-        if (keywordSup.debuffType == "Burn")
-        {
-            keywordSup.debuffStack += stack;
-        }
-        if (keywordSup.debuffType == "Weaken")
-        {
-            keywordSup.debuffStack += stack;
-        }
+        keywordSup.debuffStack += stack;
     }
 }

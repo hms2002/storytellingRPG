@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evil : KeywordSup
+public class Player_Thoughtful : KeywordSup
 {
     private void Awake()
     {
         isPlayerKeyword = true;
-        SetKeywordColor(Y);
-        effectTarget = EffectTarget.target;
-        effectType = EffectManager.EffectType.ItemUse;
+        keywordName = "심사숙고한";
+        SetKeywordColor(B);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
-    { 
-        target.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
+    {
+        caster.protect += keywordProtect;
+        caster.charactorState.AddState(StateType.oneTimeReduction, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

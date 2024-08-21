@@ -18,9 +18,11 @@ public class Player_ShieldCharge : KeywordMain
         {
             caster.protect -= 4;
             caster.damage += 8;
-            target.charactorState.AddState(StateType.weaken, 2);
+            caster.afterAttackDel += (caster, target) =>
+            {
+                target.charactorState.AddState(StateType.weaken, 2);
+            };
         }
-
     }
 
     public override void Check(KeywordSup _keywordSup)

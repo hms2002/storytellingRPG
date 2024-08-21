@@ -458,6 +458,8 @@ public class Book : MonoBehaviour
     /// </summary>
     public void GetOutOfBattleField()
     {
+        GameManager.instance.gameState = GameState.EndBattle;
+
         // 전투 관련 캔버스 끄기
         UIManager.instance.ActiveCombatFunctionAndUI(false);
         UIManager.instance.ActiveCombatKeywordUI(false);

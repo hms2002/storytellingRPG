@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evil : KeywordSup
+public class Player_Powerful : KeywordSup
 {
     private void Awake()
     {
         isPlayerKeyword = true;
-        SetKeywordColor(Y);
-        effectTarget = EffectTarget.target;
-        effectType = EffectManager.EffectType.ItemUse;
+        keywordName = "강력한";
+        SetKeywordColor(R);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
-    { 
-        target.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
+    {
+        caster.damage += keywordDamage;
+        caster.charactorState.AddState(StateType.weaken, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

@@ -12,6 +12,7 @@ public enum GameState
 {
     Map,
     Battle,
+    EndBattle,
     KeywordSetting,
     Shop,
     Rest,
@@ -92,12 +93,6 @@ public class GameManager : MonoBehaviour
     public void ReturnMap()
     {
         Book.instance.GetOutOfBattleField();
-        
-        if (FightManager.fightManager.isBossStage)
-        {
-            Debug.Log("보스였음: 이벤트 클리어");
-            StageManager.instance.NextStage();
-        }
     }
 
     /// <summary>

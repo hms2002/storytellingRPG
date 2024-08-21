@@ -8,6 +8,7 @@ public class Pike : KeywordSup
     {
         isPlayerKeyword = true;
         SetKeywordColor(Y);
+        keywordName = "가시돋은";
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -15,7 +16,7 @@ public class Pike : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateDatabase.stateDatabase.pike, keywordDamage);
+        caster.charactorState.AddState(StateDatabase.stateDatabase.counterAttack, buffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

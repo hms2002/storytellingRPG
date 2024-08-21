@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evil : KeywordSup
+public class Player_Holy : KeywordSup
 {
     private void Awake()
     {
         isPlayerKeyword = true;
-        SetKeywordColor(Y);
-        effectTarget = EffectTarget.target;
-        effectType = EffectManager.EffectType.ItemUse;
+        keywordName = "성스러운";
+        SetKeywordColor(B);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
-    { 
-        target.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
+    {
+        caster.charactorState.AddState(StateType.protect, buffStack);
+        caster.charactorState.AddState(StateType.oneTimeProtect, 6);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sharp : KeywordSup
+public class Player_DistortedPotion : KeywordMain
 {
     private void Awake()
     {
         isPlayerKeyword = true;
-        keywordName = "날카로운";
-        SetKeywordColor(R);
+        keywordName = "왜곡된 포션";
+        SetKeywordColor(D);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.reinforce, buffStack);
+        target.protect = 0;
     }
 
-    public override void Check(KeywordMain _keywordMain) { }
+    public override void Check(KeywordSup _keywordSup)
+    {
+    }
 }

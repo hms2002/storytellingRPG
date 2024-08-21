@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sharp : KeywordSup
+public class Player_DoubleEagleSwordOfSevenKingdom : KeywordMain
 {
     private void Awake()
     {
         isPlayerKeyword = true;
-        keywordName = "날카로운";
+        keywordName = "공방 협차";
         SetKeywordColor(R);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.reinforce, buffStack);
+        for (int i = 0; i < 7; i++)
+            target.Damaged(caster, keywordDamage);
     }
 
-    public override void Check(KeywordMain _keywordMain) { }
+    public override void Check(KeywordSup _keywordSup)
+    {
+    }
 }

@@ -174,6 +174,11 @@ public class Actor : MonoBehaviour
 
     #endregion
 
+    #region 플레이어 델리게이트
+    public delegate void AfterAttackDel(Actor caster, Actor target);
+    public  AfterAttackDel afterAttackDel;
+    #endregion
+
     public int beforeDamage = 0;      // 플레이어의 최근 준 데미지 계산
 
     [SerializeField] private int _gold = 0; // 플레이어 소지금
@@ -393,6 +398,10 @@ public class Actor : MonoBehaviour
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
+
+        if (afterAttackDel != null)
+            afterAttackDel(this, target);
+        afterAttackDel = null;
     }
 
     public void Execute(Actor target)
@@ -513,7 +522,7 @@ public class Actor : MonoBehaviour
     /// </summary>
     protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
     {
-        if(attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack)
+        if(attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce] != null && attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack)
         {
             totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
             attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack = false;

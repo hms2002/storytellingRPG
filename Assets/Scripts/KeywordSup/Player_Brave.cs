@@ -16,9 +16,10 @@ public class Player_Brave : KeywordSup
     {
         if (caster.protect >= 3)
         {
-            caster.protect -= 3;
-            target.charactorState.AddState(StateType.oneTimeReduction, 2);
             caster.damage += keywordDamage;
+            caster.protect -= 3;
+
+            target.charactorState.AddState(StateType.oneTimeReduction, 2);
         }
     }
 

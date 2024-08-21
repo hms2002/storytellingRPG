@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DaggerOfTheWicked : KeywordMain
+public class Player_AttackDeffenceStraddle : KeywordMain
 {
-    [Header("악인의 단검 추가 데미지")]
-    [SerializeField] private int extraDamage = 3;
-
-
     private void Awake()
     {
         isPlayerKeyword = true;
+        keywordName = "공방 협차";
         SetKeywordColor(R);
         Init();
     }
@@ -18,8 +15,10 @@ public class DaggerOfTheWicked : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.damage += keywordDamage;
-        caster.damage += target.charactorState.GetStateStack(StateType.weaken) * 3;
+        caster.charactorState.AddState(StateType.evasion, buffStack);
     }
 
-    public override void Check(KeywordSup _keywordSup) { }
+    public override void Check(KeywordSup _keywordSup)
+    {
+    }
 }
