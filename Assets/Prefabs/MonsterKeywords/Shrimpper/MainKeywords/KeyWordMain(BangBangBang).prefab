@@ -571,8 +571,8 @@ MonoBehaviour:
   _keywordTension: 6
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uB0A8\uC740 \uD0C4\uC57D\uC744 \uC804\uBD80 \uC18C\uBAA8\uD574
-    \uC0C1\uB300\uBC29\uC5D0\uAC8C \uD0C4\uC57D \uD558\uB098\uB2F9 damage\uB97C \uC900\uB2E4."
+  keywordDescription: "\uD0C4\uC57D \uD558\uB098\uB2F9 damage \uD53C\uD574\uB97C
+    \uC90D\uB2C8\uB2E4.\n\uB0A8\uC740 \uD0C4\uC57D\uC744 \uC804\uBD80 \uC18C\uBAA8\uD569\uB2C8\uB2E4. "
   changeTensionText: "\uD0C4\uC57D \uB2F9 \uAE34\uC7A5\uB3C4"
   _isChangeTension: 1
 --- !u!1 &9215638900976889969

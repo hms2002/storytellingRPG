@@ -610,8 +610,7 @@ MonoBehaviour:
   _keywordTension: 8
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uACF5\uD3EC\uB97C debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4.
-    \n\uAE34\uC7A5\uB3C4 tension "
+  keywordDescription: "\uACF5\uD3EC\uB97C debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &8850045263886830709

@@ -176,7 +176,11 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uC790\uC2E0\uACFC \uBFCC\uB9AC\uCD09\uC218\uC758 \uB514\uBC84\uD504\uB97C
+    \uC81C\uAC70\uD569\uB2C8\uB2E4. \n\uBFCC\uB9AC \uCD09\uD6C4\uC758 \uCCB4\uB825\uC74415
+    \uD68C\uBCF5\uD569\uB2C8\uB2E4.\n\uC99D\uC2DD\uC744 2 \uC18C\uBAA8\uD569\uB2C8\uB2E4.
+    \n\uC99D\uC2DD\uC774 \uBD80\uC871\uD558\uBA74 \uBFCC\uB9AC\uCD09\uC218\uC758
+    \uCCB4\uB825\uC744 10 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &4617487296097820014

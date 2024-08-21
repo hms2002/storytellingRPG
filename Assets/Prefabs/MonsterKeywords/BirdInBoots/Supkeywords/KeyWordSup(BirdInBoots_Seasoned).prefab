@@ -177,7 +177,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   selectedColor: 0
   keywordDescription: "\uBC18\uACA9\uC744 buffstack, \uC57D\uD654\uB97C debuffstack
-    \uC5BB\uC2B5\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4 tension"
+    \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &401838453675980795

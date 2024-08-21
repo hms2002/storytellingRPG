@@ -8,6 +8,8 @@ public class State : StateInterface
     public int stack;
     public bool oneTimeMultiplication = false;
     public bool oneTimeRepeat = false;
+    public bool oneTimeNoReduction = false;
+    public bool gainDoubleStack = false;
 
     public State(StateData _stateData, int _stack)
     {

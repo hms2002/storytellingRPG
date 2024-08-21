@@ -649,7 +649,6 @@ MonoBehaviour:
   _isOneTimeUse: 0
   selectedColor: 0
   keywordDescription: "\uC18C\uBAA8 \uB9C8\uB098 2 \uB2F9 \uC0C1\uB300\uBC29\uC5D0\uAC8C
-    \uB9F9\uB3C5 2 \uBD80\uC5EC(\uCD5C\uB300 4 \uBD80\uC5EC)\n\uAE34\uC7A5\uB3C4
-    tension"
+    \uB9F9\uB3C5\uC744 2 \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n(\uCD5C\uB300 4 \uC18C\uBAA8\uD569\uB2C8\uB2E4.)"
   changeTensionText: 
   _isChangeTension: 0

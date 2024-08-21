@@ -400,7 +400,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uAC80\uC740 \uC57D\uCD08\uB97C \uD3EC\uC158\uC5D0 \uCD94\uAC00\uD569\uB2C8\uB2E4.\n(\uD3EC\uC158
+    \uC218\uCE58\uB97C -1 ~ -5 \uC5BB\uC2B5\uB2C8\uB2E4)"
   changeTensionText: 
   _isChangeTension: 0
   maxRange: -1

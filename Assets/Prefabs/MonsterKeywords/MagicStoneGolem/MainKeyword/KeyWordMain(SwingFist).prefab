@@ -239,7 +239,9 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uB3CC\uC870\uAC01 \uB2F9 5\uC758 \uD53C\uD574\uB97C \uC785\uD78C\uB2E4.
+    \uB3CC\uC870\uAC01\uC744 \uCD08\uAE30\uD654\uD55C\uB2E4.\n\uB3CC\uC870\uAC01
+    \uB2F9 \uAE34\uC7A5\uB3C4 +5"
   changeTensionText: 
   _isChangeTension: 0
   stackTension: 5

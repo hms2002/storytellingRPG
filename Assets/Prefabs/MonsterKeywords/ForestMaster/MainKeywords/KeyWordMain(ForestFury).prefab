@@ -498,7 +498,9 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uC99D\uC2DD \uC911\uCCA9\uC744 \uBAA8\uB450 \uC18C\uBAA8\uD569\uB2C8\uB2E4.\n\uC18C\uBAA8\uD55C
+    \uC2A4\uD0DD \uC218 * 7 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uC99D\uC2DD\uC2A4\uD0DD
+    2\uBBF8\uB9CC\uC774\uBA74 \uC0AC\uC6A9\uBD88\uAC00\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &2082217865306915194

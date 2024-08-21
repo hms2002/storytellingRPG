@@ -185,7 +185,7 @@ public class MonsterSetDatabase : MonoBehaviour
                 {
                     case Map.NodeType.NomalMonsterNode:
                         int randomIdN = Random.Range(0, stage1_NomalMonsterLists.Length);
-                        selectedMonsterSet = stage1_NomalMonsterLists[randomIdN];
+                        selectedMonsterSet = stage1_NomalMonsterLists[/*randomIdN*/0];
                         break;
 
                     case Map.NodeType.EliteMonsterNode:

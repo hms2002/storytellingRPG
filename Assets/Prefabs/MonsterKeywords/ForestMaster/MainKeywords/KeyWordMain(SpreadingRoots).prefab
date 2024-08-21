@@ -400,7 +400,9 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "10 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uC99D\uC2DD\uC744
+    2 \uC18C\uBAA8\uD569\uB2C8\uB2E4.\n\uC99D\uC2DD \uC2A4\uD0DD\uC774 \uBD80\uC871\uD558\uBA74, 
+    5 \uD53C\uD574\uB97C  \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &6704794907246415014

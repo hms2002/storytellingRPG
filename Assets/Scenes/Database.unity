@@ -1962,22 +1962,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb40ca7befab02438f37f3e01e0f16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterSet1:
-  - {fileID: 6669021695438124642, guid: 82f0f171fd05c514e89761d30f528e6f, type: 3}
-  monsterSet2:
-  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
-  monsterSet3:
-  - {fileID: 717691908258792016, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-  monsterSet4:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet5:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet6:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet7:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet8:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
+  s1_NomalMonsterSet1: []
+  s1_NomalMonsterSet2: []
+  s1_NomalMonsterSet3: []
+  s1_NomalMonsterSet4: []
+  s1_NomalMonsterSet5: []
+  s1_NomalMonsterSet6: []
+  s1_NomalMonsterSet7: []
+  s1_NomalMonsterSet8: []
+  s1_NomalMonsterSet9: []
+  s1_EliteMonsterSet1: []
+  s1_EliteMonsterSet2: []
+  s1_BossMonsterSet1: []
+  s2_NomalMonsterSet1: []
+  s2_NomalMonsterSet2: []
+  s2_NomalMonsterSet3: []
+  s2_NomalMonsterSet4: []
+  s2_NomalMonsterSet5: []
+  s2_NomalMonsterSet6: []
+  s2_NomalMonsterSet7: []
+  s2_EliteMonsterSet1: []
+  s2_EliteMonsterSet2: []
+  s2_EliteMonsterSet3: []
+  s2_BossMonsterSet1: []
+  s3_NomalMonsterSet1: []
+  s3_NomalMonsterSet2: []
+  s3_NomalMonsterSet3: []
+  s3_NomalMonsterSet4: []
+  s3_NomalMonsterSet5: []
+  s3_NomalMonsterSet6: []
+  s3_NomalMonsterSet7: []
+  s3_EliteMonsterSet1: []
+  s3_EliteMonsterSet2: []
+  s3_BossMonsterSet1: []
+  s4_NomalMonsterSet1: []
+  s4_NomalMonsterSet2: []
+  s4_NomalMonsterSet3: []
+  s4_NomalMonsterSet4: []
+  s4_NomalMonsterSet5: []
+  s4_NomalMonsterSet6: []
+  s4_NomalMonsterSet7: []
+  s4_NomalMonsterSet8: []
+  s4_EliteMonsterSet1: []
+  s4_EliteMonsterSet2: []
+  s4_BossMonsterSet1: []
 --- !u!1 &391980048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2538,7 @@ MonoBehaviour:
   emptySpaceByErase: {fileID: 21300000, guid: 8396a9b55d4a27548bc083db33af4c44, type: 3}
   _orderVolume: 6
   pricePerKeyword: 50
+  PricesPerRelic: 640000007d00000096000000af000000c8000000
   keywordErasingPrice: 120
 --- !u!4 &518365122
 Transform:
@@ -7915,6 +7944,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 6021678662418298192, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
   player: {fileID: 2026288596}
   monsterList: []
+  isBossStage: 0
 --- !u!1 &1723389564
 GameObject:
   m_ObjectHideFlags: 0

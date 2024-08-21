@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        EventDatabase.eventDatas.ShuffleList();
+        //EventDatabase.eventDatas.ShuffleList();
     }
 
     //전투 돌입 (일반 몹, 보스 몹)

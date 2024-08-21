@@ -56,6 +56,8 @@ public class Actor : MonoBehaviour
     [SerializeField] protected int _MAX_HP = 100;
     [SerializeField] private int _hp;
     private int _protect = 0;
+    private int _lastTurnProtectReduction = 0;
+    private int _lastProtectReductTerminal= 0;
     private int _heal = 0;
     private int _damage = 0;
     private int _repeatStack = 1;
@@ -116,9 +118,17 @@ public class Actor : MonoBehaviour
         get { return _protect; }
         set
         {
+            if (_protect > value)
+                _lastProtectReductTerminal += _protect - value;
             _protect = value;
             stateUIController.ProtectOn(_protect);
         }
+    }
+    
+    public int lastTurnProtectReduction
+    {
+        get { return lastTurnProtectReduction; }
+        private set { }
     }
 
     public int heal
@@ -244,6 +254,8 @@ public class Actor : MonoBehaviour
     /// </summary>
     public virtual void StartTurn()
     {
+        _lastTurnProtectReduction = _lastProtectReductTerminal;
+        _lastProtectReductTerminal = 0;
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
@@ -501,6 +513,11 @@ public class Actor : MonoBehaviour
     /// </summary>
     protected int CalculateOneTimeReinforce(int totalDamage, Actor attacker)
     {
+        if(attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack)
+        {
+            totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
+            attacker.charactorState.allStateList[(int)StateType.oneTimeReinforce].gainDoubleStack = false;
+        }
         totalDamage += attacker.charactorState.GetStateStack(StateType.oneTimeReinforce);
         return totalDamage;
     }

@@ -326,8 +326,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC790\uC2E0\uC5D0\uAC8C \uBCF4\uD638 5\n\uC77C\uD68C\uC131 \uAC15\uD654
-    3\n\uBD80\uC5EC\n\n\uAE34\uC7A5\uB3C4 +8\n\n"
+  m_text: "\uC790\uC2E0\uC5D0\uAC8C \uBCF4\uD638 5 \uC77C\uD68C\uC131 \uAC15\uD654
+    3\uBD80\uC5EC\n\uAE34\uC7A5\uB3C4 +8\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
@@ -572,7 +572,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: 
+  keywordDescription: "\uBCF4\uD638\uB97C 5, \uC77C\uD68C\uC131 \uAC15\uD654\uB97C
+    3 \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   protecte: 8

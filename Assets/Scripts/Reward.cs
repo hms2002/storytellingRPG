@@ -100,6 +100,16 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 break;
         }
     }
+
+    private void OnDestroy()
+    {
+        switch (rewardType)
+        {
+            case RewardType.keyword:
+                InfoManager.instance.HideTipUI();
+                break;
+        }
+    }
     //public void OnPointerEnter(PointerEventData eventData)
     //{
     //    if (onDestroying) return;

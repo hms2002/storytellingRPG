@@ -14,8 +14,9 @@ public class Player_Roar : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += caster.protect;
-        caster.protect = 0;
+        caster.damage += keywordDamage;
+        if(caster.protect >= 6)
+            caster.protect += keywordProtect;
 
     }
 
