@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -21,6 +22,11 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI rewardNameText;
     public TextMeshProUGUI rewardInfoText;
     public Button button;
+
+    private void OnEnable()
+    {
+        info.SetActive(false);
+    }
 
     public void SettingReward_Keyword(GameObject _keywordPrefab)
     {
@@ -54,17 +60,18 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     }
 
-    public void SettingReward_Relic()
+    /// <summary>
+    /// 보상으로 나오는 유물 버튼을 세팅합니다.
+    /// </summary>
+    /// <param name="relicData">설정할 세팅값 참조를 위해 유물 데이터를 받아옵니다.</param>
+    public void SettingReward_Relic(GameObject relicPrefab, PlayerRelic playerRelic)
     {
-        // 텍스트 정보, 키워드 프리펩 정보 가져오기
+        //gameObject.GetComponent<Image>().sprite = relicPrefab.GetComponent<RelicData>().relicImage;
+        //rewardNameText.text = "유물띠";
 
-        button.onClick.AddListener(AddGoldToPlayer);
-        Destroy(gameObject);
+        button.onClick.AddListener(() => playerRelic.AddRelic(relicPrefab));
     }
-    private void OnEnable()
-    {
-        info.SetActive(false);
-    }
+
     public void AddThisToMainDeck()
     {
         RewardManager.instance.AddMainKeywordToDeck(keywordPrefab);

@@ -665,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6339924582874757890
 Transform:
   m_ObjectHideFlags: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
   beforeDamage: 0
-  _gold: 0
+  _gold: 10000
 --- !u!114 &1603435647839028368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97525364c0d9c64990fb11b318e44ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRelicCanvas: {fileID: 0}
 --- !u!1 &7344430793935493577
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class RewardManager : MonoBehaviour
 
     int rewardCnt = 0;
 
-    bool _dropRelic = false;
+    [SerializeField] private bool _dropRelic = false;
     bool dropRelic
     {
         get { return _dropRelic; }
@@ -93,25 +93,15 @@ public class RewardManager : MonoBehaviour
 
         if (dropRelic)
         {
-            GameObject rewardInstance_relic
-                = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic();
+            GameObject rewardInstance_relic = MakeRelicButton();
 
             btnList.Add(rewardInstance_relic);
-
-            GameObject rewardInstance_gold
-                = Instantiate(rewardOffset_gold, rewordPivot[2].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
-
-            btnList.Add(rewardInstance_gold);
         }
-        else
-        {
-            GameObject rewardInstance_gold
-                = Instantiate(rewardOffset_gold, rewordPivot[1].transform.position, Quaternion.identity, rewardCanvas.transform);
-            rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
-            btnList.Add(rewardInstance_gold);
-        }
+
+        GameObject rewardInstance_gold
+            = Instantiate(rewardOffset_gold, rewordPivot[1].transform.position, Quaternion.identity, rewardCanvas.transform);
+        rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
+        btnList.Add(rewardInstance_gold);
     }
     
     private void ShowNoReward()
@@ -169,6 +159,18 @@ public class RewardManager : MonoBehaviour
                 Destroy(g);
             btnList.Clear();
         }
+    }
+
+    /// <summary>
+    /// 유물 보상 버튼을 인스턴스화합니다.
+    /// </summary>
+    /// <returns></returns>
+    public GameObject MakeRelicButton()
+    {
+        GameObject rewardInstance_relic = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
+        rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic(RelicManager.instance.GetRandomRelic(), player.GetComponent<PlayerRelic>());
+
+        return rewardInstance_relic;
     }
 
     public void ClickNoReward()

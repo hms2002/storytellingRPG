@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7993e84c26ce8d4f8e94b7d7efa3919, type: 3}
-  m_Name: 1.EquivalentExchange
+  m_Name: 5.BerserkerHelmet
   m_EditorClassIdentifier: 
-  _relicTicker: 0
-  _relicImage: {fileID: 21300000, guid: 60488d9c79700ee4690fc4e17f7112e5, type: 3}
-  relicName: "\uB4F1\uAC00\uAD50\uD658"
-  relicDescription: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uCCB4\uB825\uC744 3 \uC783\uC9C0\uB9CC,\n\uAC15\uD654\uB97C
-    3 \uC5BB\uC2B5\uB2C8\uB2E4."
-  relicType: 0
+  _relicTicker: 4
+  _relicImage: {fileID: 21300000, guid: 830a3e82e7fa5f244844865d8f9d15f6, type: 3}
+  relicName: "\uAD11\uC804\uC0AC\uC758 \uD22C\uAD6C"
+  relicDescription: "\uCCB4\uB825\uC774 40 \uC774\uD558\uB77C\uBA74\n\uB9E4 \uD134\uB9C8\uB2E4
+    \uAC15\uD654 \uD6A8\uACFC\uB97C 2 \uC5BB\uC2B5\uB2C8\uB2E4."
+  relicType: 2

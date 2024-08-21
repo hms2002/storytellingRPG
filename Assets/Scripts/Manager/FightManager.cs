@@ -107,7 +107,7 @@ public class FightManager : MonoBehaviour
         }
 
         // 전투 시작 시 발동되는 유물 적용
-        playerRelic.UseOnStartBattleRelic();
+        playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 
         DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
         DOVirtual.DelayedCall(5f, Flow);
@@ -165,7 +165,7 @@ public class FightManager : MonoBehaviour
         }
 
         // 턴 시작 발동 유물 적용
-        playerRelic.UseOnStartTurnRelic();
+        playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
 
         if (preparedActorCount < monsterList.Count)
         {
@@ -311,6 +311,7 @@ public class FightManager : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
+
         if(CheckPlayerSurvive())
             Flow();
     }
@@ -370,6 +371,7 @@ public class FightManager : MonoBehaviour
 
     private void PlayerWin()
     {
+        playerRelic.UseRelic(RelicData.RelicType.OnVictory);
         player.gameObject.SetActive(false);
         TextManager.instance.PrintVictory();
         GameManager.instance.WinFight();

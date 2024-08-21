@@ -2,33 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Relics
-{
-    EquivalentExchange,
-    DoOrDie,
-    PocketOfDesire,
-    LuckyCoin,
-    BerserkerHelmet,
-    SmallBottle,
-    OverflowingPocket,
-    BrokenMirrorFragment,
-    AbsorbingHandMirror,
-    SecretOfWealth,
-    HeartOfWarrior,
-    JewelryCore,
-    IgnitingDice,
-    BurningRose,
-    PassionateSoul
-}
-
 [CreateAssetMenu(fileName = "RelicData", menuName = "Scriptable object/New Relic Data")]
 public class RelicData : ScriptableObject
 {
-    [Header("유물")]
-    [SerializeField] private Relics relic;
+    [Header("유물 티커")]
+    [SerializeField] private Relics _relicTicker;
+    public Relics relicTicker { get => _relicTicker; }
 
     [Header("유물 이미지")]
-    [SerializeField] private Sprite relicImage;
+    [SerializeField] private Sprite _relicImage;
+    public Sprite relicImage { get => _relicImage; }
 
     [Header("유물 이름")]
     [SerializeField] private string relicName;
@@ -40,6 +23,6 @@ public class RelicData : ScriptableObject
 
     [Header("유물 발동 타입")]
     public RelicType relicType;
-    public enum RelicType { OnStartBattle, OnEndBattle, OnStartTurn }
+    public enum RelicType { OnStartBattle, OnVictory, OnStartTurn }
     
 }
