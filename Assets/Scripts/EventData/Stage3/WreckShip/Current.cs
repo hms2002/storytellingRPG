@@ -20,14 +20,9 @@ public class Current : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        for (int i = 0; i <= caster.repeatStack; i++)
-        {
-            target.Damaged(caster, firstAttack);
-            target.Damaged(caster, secondAttack);
-            target.Damaged(caster, thirdAttack);
-        }
-
-        EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, 3 * caster.repeatStack);
+        caster.dmgList.Add(firstAttack);
+        caster.dmgList.Add(secondAttack);
+        caster.dmgList.Add(thirdAttack);
     }
 
     public override void Check(KeywordSup keywordSup)

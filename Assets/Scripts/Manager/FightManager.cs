@@ -93,6 +93,9 @@ public class FightManager : MonoBehaviour
     {
         // Player 오브젝트가 비활성화되어 있다면 활성화
         if (!player.gameObject.activeSelf) player.gameObject.SetActive(true);
+        // 플레이어 프리팹 생성 및 Actor 할당
+        //player = Instantiate(playerPrefab).GetComponent<Actor>();
+        player.gameObject.SetActive(true);
 
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
@@ -116,6 +119,7 @@ public class FightManager : MonoBehaviour
     }
 
     /*public void EventFightStart()
+    public void EventFightStart()
     {
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
@@ -131,6 +135,7 @@ public class FightManager : MonoBehaviour
 
         DOVirtual.DelayedCall(5f, Flow);
     }*/
+    }
 
     /// <summary>
     /// 몬스터 월드 포지션 위치 재정렬
@@ -312,7 +317,6 @@ public class FightManager : MonoBehaviour
             }
             yield return new WaitForSeconds(2);
         }
-
 
         if(CheckPlayerSurvive())
             Flow();
