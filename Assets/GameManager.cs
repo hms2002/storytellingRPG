@@ -35,16 +35,180 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("매니저")]
-    [SerializeField] private FightManager   fightManager;
-    [SerializeField] private UIManager      uiManager;
-    [SerializeField] private TextManager    textManager;
-    [SerializeField] private EffectManager  effectManager;
-    [SerializeField] private AudioManager   audioManager;
-    [SerializeField] private TensionManager tensionManager;
-    [SerializeField] private RewardManager  rewardManager;
-    [SerializeField] private ShopManager    shopManager;
-    [SerializeField] private RestManager    restManager;
-    [SerializeField] private EventManager   eventManager;
+    [SerializeField] private FightManager   _fightManager;
+    private FightManager fightManager 
+    { 
+        get 
+        { 
+            if(_fightManager == null)
+            {
+                _fightManager = FightManager.fightManager;
+                if (_fightManager == null)
+                {
+                    _fightManager = FindObjectOfType<FightManager>();
+                    if (_fightManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _fightManager;
+                
+        } 
+    }
+    [SerializeField] private UIManager      _uiManager;
+    private UIManager uiManager
+    {
+        get
+        {
+            if (_uiManager == null)
+            {
+                _uiManager = UIManager.instance;
+                if (_uiManager == null)
+                {
+                    _uiManager = FindObjectOfType<UIManager>();
+                    if (_uiManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _uiManager;
+        }
+    }
+    [SerializeField] private TextManager    _textManager;
+    private TextManager textManager
+    {
+        get
+        {
+            if (_textManager == null)
+            {
+                _textManager = TextManager.instance;
+                if (_textManager == null)
+                {
+                    _textManager = FindObjectOfType<TextManager>();
+                    if (_textManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _textManager;
+        }
+    }
+    [SerializeField] private EffectManager  _effectManager;
+    private EffectManager effectManager
+    {
+        get
+        {
+            if (_effectManager == null)
+            {
+                _effectManager = FindObjectOfType<EffectManager>();
+                if (_effectManager == null)
+                    Debug.LogWarning("매니저 없음. 참조하지 마..");
+            }
+            return _effectManager;
+        }
+    }
+    [SerializeField] private AudioManager   _audioManager;
+    private AudioManager audioManager
+    {
+        get
+        {
+            if (_audioManager == null)
+            {
+                _audioManager = AudioManager.instance;
+                if (_audioManager == null)
+                {
+                    _audioManager = FindObjectOfType<AudioManager>();
+                    if (_audioManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _audioManager;
+        }
+    }
+    [SerializeField] private TensionManager _tensionManager;
+    private TensionManager tensionManager
+    {
+        get
+        {
+            if (_tensionManager == null)
+            {
+                _tensionManager = TensionManager.tensionManagerUI;
+                if (_tensionManager == null)
+                {
+                    _tensionManager = FindObjectOfType<TensionManager>();
+                    if (_tensionManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _tensionManager;
+        }
+    }
+    [SerializeField] private RewardManager  _rewardManager;
+    private RewardManager rewardManager
+    {
+        get
+        {
+            if (_rewardManager == null)
+            {
+                _rewardManager = RewardManager.instance;
+                if (_rewardManager == null)
+                {
+                    _rewardManager = FindObjectOfType<RewardManager>();
+                    if (_rewardManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _rewardManager;
+        }
+    }
+    [SerializeField] private ShopManager    _shopManager;
+    private ShopManager shopManager
+    {
+        get
+        {
+            if (_shopManager == null)
+            {
+                _shopManager = ShopManager.instance;
+                if (_shopManager == null)
+                {
+                    _shopManager = FindObjectOfType<ShopManager>();
+                    if (_shopManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _shopManager;
+        }
+    }
+    [SerializeField] private RestManager    _restManager;
+    private RestManager restManager
+    {
+        get
+        {
+            if (_restManager == null)
+            {
+                _restManager = FindObjectOfType<RestManager>();
+                if (_restManager == null)
+                    Debug.LogWarning("매니저 없음. 참조하지 마..");
+            }
+            
+            return _restManager;
+        }
+    }
+    [SerializeField] private EventManager   _eventManager;
+    private EventManager eventManager
+    {
+        get
+        {
+            if (_eventManager == null)
+            {
+                _eventManager = EventManager.instance;
+                if (_eventManager == null)
+                {
+                    _eventManager = FindObjectOfType<EventManager>();
+                    if (_eventManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _eventManager;
+        }
+    }
 
     [Header("플레이어의 모든 키워드 프리랩")]
     [SerializeField] private List<GameObject> _allSupKeywordsForPlayer;     // 플레이어가 가질 수 있는 모든 Support 키워드

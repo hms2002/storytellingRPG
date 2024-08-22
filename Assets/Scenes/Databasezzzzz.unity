@@ -301,51 +301,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s1_NomalMonsterSet1:
+  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
+  s1_NomalMonsterSet2:
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
+  s1_NomalMonsterSet3:
+  - {fileID: 6669021695438124642, guid: 17be2b1609dd07d49a3c96013b6b88af, type: 3}
+  s1_NomalMonsterSet4:
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  s1_NomalMonsterSet5:
+  - {fileID: 682207150685018480, guid: 30ce1a9c468e3b540918a3e5feb87e90, type: 3}
+  s1_NomalMonsterSet6:
+  - {fileID: 682207150685018480, guid: aa107211f96705c48a01724509f81d5e, type: 3}
+  s1_NomalMonsterSet7:
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  s1_NomalMonsterSet8:
+  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
+  - {fileID: 6669021695438124642, guid: 17be2b1609dd07d49a3c96013b6b88af, type: 3}
+  s1_NomalMonsterSet9:
+  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
+  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
+  s1_EliteMonsterSet1:
+  - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
+  s1_EliteMonsterSet2:
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  - {fileID: 682207150685018480, guid: 30ce1a9c468e3b540918a3e5feb87e90, type: 3}
+  s1_BossMonsterSet1:
+  - {fileID: 682207150685018480, guid: fa2dfea5ba39f334e9199c3a9d2b44aa, type: 3}
+  s2_NomalMonsterSet1:
+  - {fileID: 8961265491340249417, guid: a827c86e01dd3464d91e30aa4f561a16, type: 3}
+  s2_NomalMonsterSet2:
+  - {fileID: 682207150685018480, guid: aa107211f96705c48a01724509f81d5e, type: 3}
+  s2_NomalMonsterSet3:
+  - {fileID: 682207150685018480, guid: 4022879be756eeb40acfcc044910a474, type: 3}
+  s2_NomalMonsterSet4:
+  - {fileID: 717691908258792016, guid: 3b5d14581be9fda4db4c32f1c525065a, type: 3}
+  s2_NomalMonsterSet5:
+  - {fileID: 717691908258792016, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
+  s2_NomalMonsterSet6:
+  - {fileID: 717691908258792016, guid: 3b5d14581be9fda4db4c32f1c525065a, type: 3}
+  - {fileID: 717691908258792016, guid: 3b5d14581be9fda4db4c32f1c525065a, type: 3}
+  s2_NomalMonsterSet7:
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
+  s2_EliteMonsterSet1:
+  - {fileID: 682207150685018480, guid: b14b9dc5732aedf448191fb5877d4702, type: 3}
+  s2_EliteMonsterSet2:
+  - {fileID: 8961265491340249417, guid: a827c86e01dd3464d91e30aa4f561a16, type: 3}
+  - {fileID: 682207150685018480, guid: 4022879be756eeb40acfcc044910a474, type: 3}
+  s2_EliteMonsterSet3:
+  - {fileID: 717691908258792016, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
+  - {fileID: 8961265491340249417, guid: a827c86e01dd3464d91e30aa4f561a16, type: 3}
+  s2_BossMonsterSet1:
+  - {fileID: 717691908258792016, guid: ff125135384fc954c8b1f8d6704e3f7d, type: 3}
+  s3_NomalMonsterSet1:
+  - {fileID: 717691908258792016, guid: 8a3dfb12ebde47c419ff78b98362d626, type: 3}
+  s3_NomalMonsterSet2:
+  - {fileID: 682207150685018480, guid: 6dd75d04ea63de541a37cab53257b810, type: 3}
+  s3_NomalMonsterSet3:
   - {fileID: 682207150685018480, guid: 7d74b653d41d9ec448018daa84e3abc3, type: 3}
-  - {fileID: 682207150685018480, guid: 7d74b653d41d9ec448018daa84e3abc3, type: 3}
-  s1_NomalMonsterSet2: []
-  s1_NomalMonsterSet3: []
-  s1_NomalMonsterSet4: []
-  s1_NomalMonsterSet5: []
-  s1_NomalMonsterSet6: []
-  s1_NomalMonsterSet7: []
-  s1_NomalMonsterSet8: []
-  s1_NomalMonsterSet9: []
-  s1_EliteMonsterSet1: []
-  s1_EliteMonsterSet2: []
-  s1_BossMonsterSet1: []
-  s2_NomalMonsterSet1: []
-  s2_NomalMonsterSet2: []
-  s2_NomalMonsterSet3: []
-  s2_NomalMonsterSet4: []
-  s2_NomalMonsterSet5: []
-  s2_NomalMonsterSet6: []
-  s2_NomalMonsterSet7: []
-  s2_EliteMonsterSet1: []
-  s2_EliteMonsterSet2: []
-  s2_EliteMonsterSet3: []
-  s2_BossMonsterSet1: []
-  s3_NomalMonsterSet1: []
-  s3_NomalMonsterSet2: []
-  s3_NomalMonsterSet3: []
-  s3_NomalMonsterSet4: []
-  s3_NomalMonsterSet5: []
-  s3_NomalMonsterSet6: []
-  s3_NomalMonsterSet7: []
-  s3_EliteMonsterSet1: []
-  s3_EliteMonsterSet2: []
-  s3_BossMonsterSet1: []
-  s4_NomalMonsterSet1: []
-  s4_NomalMonsterSet2: []
-  s4_NomalMonsterSet3: []
-  s4_NomalMonsterSet4: []
-  s4_NomalMonsterSet5: []
-  s4_NomalMonsterSet6: []
-  s4_NomalMonsterSet7: []
-  s4_NomalMonsterSet8: []
-  s4_EliteMonsterSet1: []
-  s4_EliteMonsterSet2: []
-  s4_BossMonsterSet1: []
+  s3_NomalMonsterSet4:
+  - {fileID: 682207150685018480, guid: ff1979e37a7e4334db153faa9d348a34, type: 3}
+  s3_NomalMonsterSet5:
+  - {fileID: 682207150685018480, guid: e1bb48596edc31b4299e2f616506011a, type: 3}
+  s3_NomalMonsterSet6:
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  s3_NomalMonsterSet7:
+  - {fileID: 682207150685018480, guid: 30ce1a9c468e3b540918a3e5feb87e90, type: 3}
+  s3_EliteMonsterSet1:
+  - {fileID: 682207150685018480, guid: b13d03f8802367144bd39b5272961e8b, type: 3}
+  s3_EliteMonsterSet2:
+  - {fileID: 682207150685018480, guid: 6dd75d04ea63de541a37cab53257b810, type: 3}
+  - {fileID: 682207150685018480, guid: 6dd75d04ea63de541a37cab53257b810, type: 3}
+  s3_BossMonsterSet1:
+  - {fileID: 682207150685018480, guid: aea040ae283e917429db2d33722c3e64, type: 3}
+  s4_NomalMonsterSet1:
+  - {fileID: 682207150685018480, guid: 5a1e6f981652c0e44bb06e25bc669ad8, type: 3}
+  s4_NomalMonsterSet2:
+  - {fileID: 682207150685018480, guid: 1d28804110c9ded47938ba833320cb54, type: 3}
+  s4_NomalMonsterSet3:
+  - {fileID: 682207150685018480, guid: 8036a6f28aa7f4c4286071ea8be088ff, type: 3}
+  s4_NomalMonsterSet4:
+  - {fileID: 682207150685018480, guid: 8cebfc05d715ae6418507f6f5619bafd, type: 3}
+  s4_NomalMonsterSet5:
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
+  s4_NomalMonsterSet6:
+  - {fileID: 682207150685018480, guid: 35807451868db8640a929f497fa59470, type: 3}
+  s4_NomalMonsterSet7:
+  - {fileID: 6669021695438124642, guid: 82f0f171fd05c514e89761d30f528e6f, type: 3}
+  s4_NomalMonsterSet8:
+  - {fileID: 682207150685018480, guid: a83049b63553fee4aa96b35802216137, type: 3}
+  s4_EliteMonsterSet1:
+  - {fileID: 682207150685018480, guid: 8036a6f28aa7f4c4286071ea8be088ff, type: 3}
+  - {fileID: 682207150685018480, guid: aa107211f96705c48a01724509f81d5e, type: 3}
+  s4_EliteMonsterSet2:
+  - {fileID: 682207150685018480, guid: 1d28804110c9ded47938ba833320cb54, type: 3}
+  - {fileID: 682207150685018480, guid: 1d28804110c9ded47938ba833320cb54, type: 3}
+  s4_BossMonsterSet1:
+  - {fileID: 682207150685018480, guid: 9f216cf10c02c60449ad2a86c60f7a99, type: 3}
 --- !u!114 &14533441 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
@@ -1924,6 +1979,7 @@ MonoBehaviour:
   keywordShelves:
   - {fileID: 1915776792}
   - {fileID: 1708562906}
+  relicShelve: {fileID: 0}
 --- !u!1 &279306619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,6 +2363,10 @@ MonoBehaviour:
   - {fileID: 9042582839630738889, guid: 91f5f1c93578e7649b82724617f6fcc1, type: 3}
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
+  _gameState: 0
+  relicCnt: 0
+  goldCnt: 0
+  keywordCnt: 0
   eventIndex: 0
 --- !u!1 &329217890
 GameObject:
