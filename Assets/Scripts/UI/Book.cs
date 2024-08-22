@@ -65,7 +65,6 @@ public class Book : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()

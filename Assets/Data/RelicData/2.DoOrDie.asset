@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7993e84c26ce8d4f8e94b7d7efa3919, type: 3}
   m_Name: 2.DoOrDie
   m_EditorClassIdentifier: 
-  relic: 0
-  relicImage: {fileID: 0}
-  relicName: 
-  relicDescription: 
+  _relicTicker: 1
+  _relicImage: {fileID: 21300000, guid: 766f40e9322eeed49b002bd1bcea9391, type: 3}
+  relicName: "\uC774\uD310\uC0AC\uD310"
+  relicDescription: "5\uD134\uB9C8\uB2E4 \uC790\uC2E0\uACFC \uC801\uC5D0\uAC8C\n10\uC758
+    \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  relicType: 2

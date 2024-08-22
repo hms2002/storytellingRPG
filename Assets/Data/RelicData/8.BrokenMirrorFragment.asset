@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7993e84c26ce8d4f8e94b7d7efa3919, type: 3}
-  m_Name: 1.EquivalentExchange
+  m_Name: 8.BrokenMirrorFragment
   m_EditorClassIdentifier: 
-  _relicTicker: 0
-  _relicImage: {fileID: 21300000, guid: 60488d9c79700ee4690fc4e17f7112e5, type: 3}
-  relicName: "\uB4F1\uAC00\uAD50\uD658"
-  relicDescription: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uCCB4\uB825\uC744 3 \uC783\uC9C0\uB9CC,\n\uAC15\uD654\uB97C
-    3 \uC5BB\uC2B5\uB2C8\uB2E4."
+  _relicTicker: 7
+  _relicImage: {fileID: 21300000, guid: a17433686dc26aa4883a9c3fa607e39f, type: 3}
+  relicName: "\uAE68\uC9C4 \uAC70\uC6B8 \uD30C\uD3B8"
+  relicDescription: "\uC804\uD22C \uC2DC\uC791 \uC2DC\n\uC720\uB9AC \uD30C\uD3B8
+    \uD6A8\uACFC\uB97C 2 \uC5BB\uC2B5\uB2C8\uB2E4."
   relicType: 0
