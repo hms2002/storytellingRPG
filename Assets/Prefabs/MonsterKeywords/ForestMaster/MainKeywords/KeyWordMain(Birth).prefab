@@ -250,6 +250,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "\uBFCC\uB9AC \uAD34\uBB3C\uC744 \uC18C\uD658\uD569\uB2C8\uB2E4.\n(\uBFCC\uB9AC
     \uAD34\uBB3C\uC774 \uC8FD\uC9C0 \uC54A\uC558\uB2E4\uBA74 \uC0AC\uC6A9 \uBD88\uAC00\uD569\uB2C8\uB2E4)"
@@ -329,7 +330,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 1}
-  m_SizeDelta: {x: 61.35, y: 70}
+  m_SizeDelta: {x: 66.39, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5252857566739783516
 CanvasRenderer:
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

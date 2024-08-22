@@ -287,6 +287,7 @@ MonoBehaviour:
   _buffStack: 4
   _keywordTension: 0
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 3
   keywordDescription: "\uD654\uC5FC\uC744 buffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4.
     \uB300\uC0C1\uC5D0\uAC8C \uD654\uC5FC\uC774 \uC5C6\uB2E4\uBA74 \uD654\uC5FC\uC744
@@ -602,7 +603,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
