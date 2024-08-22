@@ -300,7 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb40ca7befab02438f37f3e01e0f16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1_NomalMonsterSet1: []
+  s1_NomalMonsterSet1:
+  - {fileID: 682207150685018480, guid: 7d74b653d41d9ec448018daa84e3abc3, type: 3}
   s1_NomalMonsterSet2: []
   s1_NomalMonsterSet3: []
   s1_NomalMonsterSet4: []
@@ -3084,81 +3085,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 291268464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &462170228
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 462170229}
-  - component: {fileID: 462170231}
-  - component: {fileID: 462170230}
-  m_Layer: 5
-  m_Name: Corver_Right
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &462170229
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462170228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 363, y: -1.9663}
-  m_SizeDelta: {x: 660, y: 795}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &462170230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462170228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff6a4efdee6d04945b91540f0eb0abe5, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &462170231
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462170228}
-  m_CullTransparentMesh: 1
 --- !u!1 &500384967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,10 +5111,10 @@ MonoBehaviour:
     prefab: {fileID: 3177010102358360083, guid: 93022f97d7f442d42a8d83681519cf06, type: 3}
     isTemporary: 1
   - type: 5
-    prefab: {fileID: 3177010102358360083, guid: 93022f97d7f442d42a8d83681519cf06, type: 3}
+    prefab: {fileID: 2855600895070655413, guid: 842f7ccdecd203546aed654d42bd39a1, type: 3}
     isTemporary: 1
   - type: 6
-    prefab: {fileID: 8652555446407995636, guid: 9fea081585be1614896b362c177142c9, type: 3}
+    prefab: {fileID: 2855600895070655413, guid: 0734554f78affdf49b494b48f134605b, type: 3}
     isTemporary: 1
 --- !u!1 &965774216
 GameObject:
@@ -5602,6 +5528,17 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 30}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1090925729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7097780386140532382, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+  m_PrefabInstance: {fileID: 1300979869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd903ca61d46d4f8bad9d538abf4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097516017
 GameObject:
   m_ObjectHideFlags: 0
@@ -7047,7 +6984,7 @@ PrefabInstance:
     - target: {fileID: 4595920635642977702, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: stateUIController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1090925729}
     - target: {fileID: 5469943792477412574, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -7114,6 +7051,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+--- !u!114 &1300979870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 695059539465718281, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+  m_PrefabInstance: {fileID: 1300979869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97525364c0d9c64990fb11b318e44ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1304107169
 GameObject:
   m_ObjectHideFlags: 0
@@ -7341,7 +7289,7 @@ MonoBehaviour:
   fightManagerUI: {fileID: 1369950803}
   playerPrefab: {fileID: 6021678662418298192, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
   player: {fileID: 1875399256}
-  playerRelic: {fileID: 0}
+  playerRelic: {fileID: 1300979870}
   monsterList: []
   isBossStage: 0
 --- !u!1 &1367826620
@@ -8438,7 +8386,8 @@ MonoBehaviour:
   - {fileID: 1885850006}
   - {fileID: 632453401}
   combatKeywordUI: {fileID: 2012705079}
-  combatBackground: []
+  combatBackground:
+  - {fileID: 131565276}
   ShopUI: {fileID: 266349607}
   RestUI: []
   RestButton: []
@@ -10291,4 +10240,3 @@ SceneRoots:
   - {fileID: 1149695056}
   - {fileID: 137822779}
   - {fileID: 1268899263}
-  - {fileID: 462170229}

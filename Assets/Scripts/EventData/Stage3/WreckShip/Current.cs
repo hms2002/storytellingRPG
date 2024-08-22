@@ -20,13 +20,16 @@ public class Current : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.dmgList.Add(firstAttack);
-        caster.dmgList.Add(secondAttack);
-        caster.dmgList.Add(thirdAttack);
+        for (int i = 0; i <= caster.repeatStack; i++)
+        {
+            target.Damaged(caster, new DamageInfo(firstAttack));
+            target.Damaged(caster, new DamageInfo(secondAttack));
+            target.Damaged(caster, new DamageInfo(thirdAttack));
+        }
+
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, 3 * caster.repeatStack);
+
     }
 
-    public override void Check(KeywordSup keywordSup)
-    {
-
-    }
+    public override void Check(KeywordSup keywordSup) { }
 }
