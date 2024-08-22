@@ -43,9 +43,19 @@ public class StageManager : MonoBehaviour
     //보스를 잡고 스테이지를 넘어가는 모든 장면 연출.
     public void NextStage()
     {
-        DOVirtual.DelayedCall(8, () =>
+        DOVirtual.DelayedCall(0, () =>
         {
+            GameManager.instance.gameState = GameState.EndBattle;
+
+            // 전투 관련 캔버스 끄기
+            UIManager.instance.ActiveCombatFunctionAndUI(false);
+            UIManager.instance.ActiveCombatKeywordUI(false);
+
+            // 책 페이지 오른쪽으로 넘기도록 트리거 발동
             Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+
+            // 2초 뒤 맵 북마크로 이동
+            DOVirtual.DelayedCall(2.0f, Book.instance.EnterMap);
 
             switch (nowStageState)
             {
