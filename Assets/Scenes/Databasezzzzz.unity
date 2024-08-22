@@ -7051,6 +7051,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+--- !u!114 &1300979870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 695059539465718281, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+  m_PrefabInstance: {fileID: 1300979869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97525364c0d9c64990fb11b318e44ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1304107169
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,7 +7289,7 @@ MonoBehaviour:
   fightManagerUI: {fileID: 1369950803}
   playerPrefab: {fileID: 6021678662418298192, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
   player: {fileID: 1875399256}
-  playerRelic: {fileID: 0}
+  playerRelic: {fileID: 1300979870}
   monsterList: []
   isBossStage: 0
 --- !u!1 &1367826620
