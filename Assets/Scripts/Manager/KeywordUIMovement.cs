@@ -90,6 +90,7 @@ public class KeywordUIMovement : MonoBehaviour
                 curTime = 0;
                 for (int i = 0; i < keywords.Count; i++)
                 {
+                    if (keywords[i].GetComponent<KeywordInfoControler>() == null) continue;
                     keywords[i].GetComponent<KeywordInfoControler>().ableShowInfo();
                 }
             }
@@ -143,6 +144,20 @@ public class KeywordUIMovement : MonoBehaviour
     }
 
     public void MoveSelectedEventKeyword(EventKeyword eventKeyword)
+    {
+        for (int i = 0; i < keywords.Count; i++)
+        {
+            objPos[i] = keywords[i].transform.position;
+            if (eventKeyword.gameObject == keywords[i])
+            {
+                keywords.RemoveAt(i);
+            }
+        }
+        selectedKeyword = eventKeyword.gameObject;
+        selectedPivotOriginPos = selectedKeyword.transform.position;
+        moveSelectedKeywordFlag = true;
+    }
+    public void MoveSelectedEventKeyword(GameObject eventKeyword)
     {
         for (int i = 0; i < keywords.Count; i++)
         {

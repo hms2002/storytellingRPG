@@ -23,6 +23,7 @@ public class TensionManager : MonoBehaviour
         if (_tensionManagerUI != null)
             return;
         _tensionManagerUI = this;
+        tension = BASIC_MAX_TENSION;
     }
     public int BASIC_MAX_TENSION
     {

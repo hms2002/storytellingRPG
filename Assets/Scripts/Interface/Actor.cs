@@ -696,6 +696,7 @@ public class Actor : MonoBehaviour
             else
             {
                 oneTimeProtect -= totalDamage;
+                
                 totalDamage = 0;
                 charactorState.ResetState(StateType.oneTimeProtect);
             }
@@ -746,8 +747,12 @@ public class Actor : MonoBehaviour
 
         // 보호막 관련 모든 연산을 실행
         totalDamage = CalculateAllProtection(totalDamage);
-        if (totalDamage < 0) totalDamage = 0;
-
+        if (totalDamage <= 0)
+        {
+            if(dmgList.damageList.Count == 1)   
+                AudioManager.instance.PlaySound("Character", attackSound);
+            totalDamage = 0;
+        }
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
         hp -= totalDamage;
