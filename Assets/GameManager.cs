@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -156,5 +157,16 @@ public class GameManager : MonoBehaviour
     internal void EndSelectReward()
     {
         ReturnMap();
+    }
+
+    /// <summary>
+    /// 전달한 오브젝트의 인스턴스화 여부를 반환합니다.
+    /// </summary>
+    /// <param name="prefab">검사하고자 하는 오브젝트를 입력합니다.</param>
+    /// <returns></returns>
+    public bool IsInstantiated(GameObject prefab)
+    {
+        if (prefab.scene.name != null) return true;     // 씬에 존재하면 인스턴스화된 객체임
+        else                           return false;    // 씬에 존재하지 않으면 프리팹임
     }
 }

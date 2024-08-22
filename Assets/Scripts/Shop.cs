@@ -11,21 +11,26 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     [Header("테이블보 L, R")]
-    [SerializeField] private List<GameObject> _tablecloths;                   // 테이블보 좌, 우 오브젝트를 담는 리스트
+    [SerializeField] private List<GameObject> _tablecloths;                 // 테이블보 좌, 우 오브젝트를 담는 리스트
     public List<GameObject> tablecloths => _tablecloths;
 
     [Header("키워드 상품 진열대")]
-    [SerializeField] private List<Transform> keywordShelves;               // Support, Main 키워드 상품 진열대
+    [SerializeField] private List<Transform> keywordShelves;                // Support, Main 키워드 상품 진열대
 
     private List<GameObject> supKeywordProducts = new List<GameObject>();   // Support 키워드 상품 리스트
     private List<GameObject> mainKeywordProducts = new List<GameObject>();  // Main 키워드 상품 리스트
+
+    [Header("유물 상품 진열대")]
+    [SerializeField] private Transform relicShelve;                         // 유물 상품 진열대
+
+    private List<GameObject> relicProducts = new List<GameObject>();        // 유물 상품 리스트
 
 
     /*==================================================================================================================================*/
 
 
     /// <summary>
-    /// 랜덤 발주한 키워드를 키워드 상품 진열대에 진열한다.
+    /// 랜덤 발주한 키워드를 키워드 상품 진열대에 진열합니다.
     /// </summary>
     public void KeywordProductsDisplay()
     {
@@ -73,6 +78,23 @@ public class Shop : MonoBehaviour
     }
 
     /// <summary>
+    /// 랜덤 발주한 유물 상품을 상품 진열대에 진열합니다.
+    /// </summary>
+    public void RelicProductsDisplay()
+    {
+        // 상품 발주량만큼 반복
+        for (int i = 0; i < ShopManager.instance.orderVolume; i++)
+        {
+            // 랜덤 발주한 유물 인스턴스화 및 진열
+            relicProducts.Add(Instantiate(RelicManager.instance.GetRandomRelic(), relicShelve));
+
+            // 유물 상품 각조 조절
+            relicProducts[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+            relicProducts[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
+    }
+
+    /// <summary>
     /// 키워드 타입에 맞게 상품 한 개를 랜덤 발주합니다.
     /// </summary>
     /// <param name="thisDeck">랜덤 발주할 키워드의 타입을 입력하세요. (Support 혹은 Main)</param>
@@ -114,24 +136,25 @@ public class Shop : MonoBehaviour
     public void DisposalKeywordProducts()
     {
 
-        //
-        foreach (GameObject keywordProduct in supKeywordProducts)
-        {
-            //
-            Destroy(keywordProduct);
-        }
+        // Support 키워드 상품 리스트 길이만큼 반복하여 키워드 상품 폐기
+        foreach (GameObject keywordProduct in supKeywordProducts) Destroy(keywordProduct);
 
-        //
         supKeywordProducts.Clear();
 
-        //
-        foreach (GameObject keywordProduct in mainKeywordProducts)
-        {
-            //
-            Destroy(keywordProduct);
-        }
+        // Main 키워드 상품 리스트 길이만큼 반복하여 키워드 상품 폐기
+        foreach (GameObject keywordProduct in mainKeywordProducts) Destroy(keywordProduct);
 
-        //
         mainKeywordProducts.Clear();
+    }
+
+    /// <summary>
+    /// 진열되어 있던 유물 상품들을 폐기처분합니다.
+    /// </summary>
+    public void DisposalRelicProducts()
+    {
+        // 유물 상품 리스트 길이만큼 반복하여 유물 상품 폐기
+        foreach (GameObject relicProduct in relicProducts) Destroy(relicProduct);
+
+        relicProducts.Clear();
     }
 }
