@@ -132,5 +132,7 @@ public class StageManager : MonoBehaviour
         string jsonData = JsonUtility.ToJson(StageState.Forest);
         nowStageState = StageState.Forest;
         File.WriteAllText(saveFilePath, jsonData);
+
+        BackgroundSetting(StageState.Forest);
     }
 }
