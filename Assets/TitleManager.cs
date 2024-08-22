@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
         if (isClick == false)
         {
             OnSound();
-            DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene(1); });
+            DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); });
             isClick = true;
         }
     }

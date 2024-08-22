@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be728efe4cbc94b8a64a2c2bac6168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  book: {fileID: 0}
+  book: {fileID: 930383873}
   isClick: 0
   gameObjectSet:
   - {fileID: 721148391}

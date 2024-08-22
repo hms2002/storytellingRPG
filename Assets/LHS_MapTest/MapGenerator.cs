@@ -125,17 +125,8 @@ namespace Map
 
         private void CreateNode(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height 
         {
-            NodeType selectedNodeType;
-
-            // 첫 번째 노드는 항상 NomalMonsterNode로 설정
-            if (_widNum == 0 && _heiNum == 0)
-            {
-                selectedNodeType = NodeType.NomalMonsterNode;
-            }
-            else
-            {
-                selectedNodeType = GetNodeType();
-            }
+            NodeType selectedNodeType = GetNodeType();
+            if (selectedNodeType == NodeType.BossNode) return; // 보스 노드는 이미 설정된 것으로 가정
 
             // 생성
             GameObject nodeObject = Instantiate(nodePrefab[(int)selectedNodeType], mapParent);
