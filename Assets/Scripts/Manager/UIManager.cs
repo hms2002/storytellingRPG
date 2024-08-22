@@ -2,6 +2,7 @@ using DG.Tweening;
 using Map;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject combatKeywordUI;
 
     [Header("전투 백그라운드")]
-    [SerializeField] private GameObject combatBackground;           //
+    [SerializeField] private GameObject[] combatBackground;           //
 
     [Header("상점 UI")]
     [SerializeField] private GameObject ShopUI;                     //
@@ -189,7 +190,30 @@ public class UIManager : MonoBehaviour
         {
             combatFunctionAndUI[i].SetActive(enableOrDisable);
         }
-        combatBackground.SetActive(enableOrDisable);
+
+        for (int i = 0; i < combatBackground.Length; i++)
+        {
+            combatBackground[i].SetActive(false);
+        }
+
+        if (enableOrDisable == true)
+        {
+            switch (StageManager.instance.nowStageState)
+            {
+                case StageState.Forest:
+                    combatBackground[0].SetActive(true);
+                    break;
+                case StageState.Cave:
+                    combatBackground[1].SetActive(true);
+                    break;
+                case StageState.Sea:
+                    combatBackground[2].SetActive(true);
+                    break;
+                case StageState.MagicTower:
+                    combatBackground[3].SetActive(true);
+                    break;
+            }
+        }
     }
 
     /// <summary>
@@ -260,8 +284,30 @@ public class UIManager : MonoBehaviour
         {
             RestUI[i].SetActive(enableOrDisable);
         }
+        
+        for(int i=0; i < combatBackground.Length; i++)
+        {
+            combatBackground[i].SetActive(false);
+        }
 
-        combatBackground.SetActive(enableOrDisable);
+        if (enableOrDisable == true)
+        {
+            switch (StageManager.instance.nowStageState)
+            {
+                case StageState.Forest:
+                    combatBackground[0].SetActive(true);
+                    break;
+                case StageState.Cave:
+                    combatBackground[1].SetActive(true);
+                    break;
+                case StageState.Sea:
+                    combatBackground[2].SetActive(true);
+                    break;
+                case StageState.MagicTower:
+                    combatBackground[3].SetActive(true);
+                    break;
+            }
+        }
 
         string[] restText = { "고된 여정 중 당신은 캠핑하기 좋은 곳을 발견하였습니다.", "당신은...\n\n" };
 
@@ -290,7 +336,30 @@ public class UIManager : MonoBehaviour
         }
         ActiveCombatKeywordUI(enableOrDisable);
         ActiveCombatFunctionAndUI(enableOrDisable);
-        combatBackground.SetActive(enableOrDisable);
+
+        for (int i = 0; i < combatBackground.Length; i++)
+        {
+            combatBackground[i].SetActive(false);
+        }
+
+        if (enableOrDisable == true)
+        {
+            switch (StageManager.instance.nowStageState)
+            {
+                case StageState.Forest:
+                    combatBackground[0].SetActive(true);
+                    break;
+                case StageState.Cave:
+                    combatBackground[1].SetActive(true);
+                    break;
+                case StageState.Sea:
+                    combatBackground[2].SetActive(true);
+                    break;
+                case StageState.MagicTower:
+                    combatBackground[3].SetActive(true);
+                    break;
+            }
+        }
     }
 
     public void ActiveDamageText(Vector3 pos, int damage, Color color)
