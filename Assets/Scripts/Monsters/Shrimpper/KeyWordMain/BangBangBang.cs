@@ -21,5 +21,6 @@ public class BangBangBang : KeywordMain
 
     public override void Check(KeywordSup _keywordSup)
     {
+
     }
 }

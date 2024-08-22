@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB9F9\uBAA9\uC758 \uAC80"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.00000002073648, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
     \uC2A4\uD0DD \uC218 * 7 \uD53C\uD574\uB97C \uC900\uB2E4.\n\uC99D\uC2DD\uC2A4\uD0DD
     2\uBBF8\uB9CC\uC774\uBA74 \uC0AC\uC6A9\uBD88\uAC00.\n\uAE34\uC7A5\uB3C4+5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -471,7 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 124822588074102987}
 --- !u!114 &8958551928190135659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +497,7 @@ MonoBehaviour:
   _buffStack: 18
   _keywordTension: -40
   _isOneTimeUse: 0
+  selectedColor: 0
   keywordDescription: "\uC885\uB9D0\uC774 2 \uAC10\uC18C\uD569\uB2C8\uB2E4. \uB9C8\uB098\uB97C
     buffstack\uD68C\uBCF5\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4 tension"
   changeTensionText: 

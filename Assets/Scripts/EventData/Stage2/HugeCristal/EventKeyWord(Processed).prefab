@@ -105,8 +105,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -391,7 +391,7 @@ MonoBehaviour:
         m_MethodName: AddMainKeyword
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2310729120196642132, guid: ca3fcba3f9e217a46b2dff6538588c37, type: 3}
+          m_ObjectArgument: {fileID: 6242434244011439031, guid: abab6c6309bee254da604d7c9b4e692e, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e537bf45b7731a49b9c67803c3b6bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addKeyword: {fileID: -316144076187356224, guid: ca3fcba3f9e217a46b2dff6538588c37, type: 3}
+  addKeyword: {fileID: 2722136089751099164, guid: abab6c6309bee254da604d7c9b4e692e, type: 3}
   isKeywordAddEvent: 1
   nameText: {fileID: 474287648051001404}
   monsterSet: []
@@ -571,8 +571,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB300\uC0C1\uC5D0\uAC8C 1\uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -635,6 +635,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

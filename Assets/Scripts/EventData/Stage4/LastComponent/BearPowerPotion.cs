@@ -13,8 +13,7 @@ public class BearPowerPotion : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.oneTimeProtect, buffStack);
-        caster.protect += keywordProtect;
+        caster.charactorState.AddState(StateType.reinforce, buffStack);
     }
 
     public override void Check(KeywordSup keywordSup)

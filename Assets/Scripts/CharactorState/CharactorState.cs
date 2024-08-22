@@ -148,9 +148,10 @@ public class CharactorState
     ActorStateUIControler stateUIController;
 
     public State[] allStateList = new State[(int)StateType.Size];
-
+    public Actor actor;
     [HideInInspector]
     public List<Actor> vampire = new List<Actor>();
+
     //public Action endBattle;
 
     public void Init(ActorStateUIControler _stateUIController)
@@ -174,10 +175,39 @@ public class CharactorState
             allStateList[(int)data.type] = new State(data, val);
             Debug.Log(stateUIController);
             stateUIController.UpdateUI(allStateList[(int)data.type]);
+            AddStateEffect(data);
             return;
         }
         allStateList[(int)data.type].AddState(val);// 재귀 아님, state클래스 내부 함수임
+        AddStateEffect(data);
         stateUIController.UpdateUI(allStateList[(int)data.type]);
+    }
+
+    public void AddStateEffect(StateData data)
+    {
+        if(data.stateProperty == StateProperty.Buff)
+        {
+            Debug.Log(data);
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Buff, actor);
+            AudioManager.instance.PlaySound("Character", "버프");
+        }
+        if (data.stateProperty == StateProperty.Debuff)
+        {
+            if(!data.effectByTurn)
+            {
+                EffectManager.instance.PlayEffect(EffectManager.EffectType.Debuff, actor);
+                AudioManager.instance.PlaySound("Character", "디버프");
+            }
+            else
+            {
+                EffectManager.instance.PlayEffect(data.debuffEffect, actor);
+                AudioManager.instance.PlaySound("Debuff", data.soundName);
+            }
+        }
+        if(data.stateProperty == StateProperty.None)
+        {
+            return;
+        }
     }
 
     public void AddState(StateType type, int val)
@@ -188,7 +218,6 @@ public class CharactorState
             case StateType.glassPragment:
                 AddState(stateDB.glassPragment, val);
                 break;
-
             case StateType.treasureOfDragon:
                 AddState(stateDB.treasureOfDragon, val);
                 break;

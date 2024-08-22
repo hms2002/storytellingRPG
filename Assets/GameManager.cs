@@ -12,11 +12,15 @@ public enum GameState
 {
     Map,
     Battle,
+    BossBattle,
     KeywordSetting,
     Shop,
     Rest,
     Treasure,
-    Event
+    Event,
+    Title,
+    Ending,
+    GameOver
 }
 
 

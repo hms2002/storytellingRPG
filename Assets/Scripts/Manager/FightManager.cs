@@ -216,7 +216,7 @@ public class FightManager : MonoBehaviour
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
-            if (player.damage != 0)
+            if (player.damage != 0 || player.keywordMain.isIrregularCombo)
             {
                 player.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
             }
@@ -233,7 +233,7 @@ public class FightManager : MonoBehaviour
         while (curTime < ACTION_TIME)
         {
             curTime += Time.deltaTime;
-            if (player.damage != 0)
+            if (player.damage != 0 || player.keywordMain.isIrregularCombo)
             {
                 player.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
             }
@@ -272,7 +272,7 @@ public class FightManager : MonoBehaviour
             while (curTime < ACTION_TIME)
             {
                 curTime += Time.deltaTime;
-                if (monster.damage != 0)
+                if (monster.damage != 0 || monster.keywordMain.isIrregularCombo)
                 {
                     monster.transform.position = Vector3.Lerp(originPos, objectPos, curTime / ACTION_TIME);
                 }
@@ -290,7 +290,7 @@ public class FightManager : MonoBehaviour
             while (curTime < ACTION_TIME)
             {
                 curTime += Time.deltaTime;
-                if (monster.damage != 0)
+                if (monster.damage != 0 || monster.keywordMain.isIrregularCombo)
                 {
                     monster.transform.position = Vector3.Lerp(objectPos, originPos, curTime / ACTION_TIME);
                 }

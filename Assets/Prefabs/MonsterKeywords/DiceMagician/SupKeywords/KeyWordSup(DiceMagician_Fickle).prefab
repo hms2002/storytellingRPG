@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -329,8 +329,8 @@ MonoBehaviour:
   m_text: "\uC790\uC2E0\uC5D0\uAC8C \uAC15\uD654 3 \uBD80\uC5EC.\n\uAE34\uC7A5\uB3C4
     +8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -545,7 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 2011207267858382188}
 --- !u!114 &1191383557056630302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +571,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 12
   _isOneTimeUse: 0
+  selectedColor: 0
   keywordDescription: "\uC790\uC2E0 \uD639\uC740 \uC0C1\uB300\uC5D0\uAC8C damage\uC758
     \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4 tension"
   changeTensionText: 

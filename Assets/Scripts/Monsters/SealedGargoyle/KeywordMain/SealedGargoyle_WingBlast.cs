@@ -17,10 +17,15 @@ public class SealedGargoyle_WingBlast : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.Damaged(caster, 6);
-        target.Damaged(caster, 4);
-        target.Damaged(caster, 2);
-        target.Damaged(caster, 1);
+        for (int i = 0; i <= caster.repeatStack; i++)
+        {
+            target.Damaged(caster, 6);
+            target.Damaged(caster, 4);
+            target.Damaged(caster, 2);
+            target.Damaged(caster, 1);
+        }
         caster.tension += keywordTension;
+
+        EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, 4 * caster.repeatStack);
     }
 }

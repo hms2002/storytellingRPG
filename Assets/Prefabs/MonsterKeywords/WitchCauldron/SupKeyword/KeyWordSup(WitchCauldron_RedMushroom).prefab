@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 1929857860463317395}
 --- !u!114 &-1699653748309160454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +175,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 5
   _isOneTimeUse: 0
+  selectedColor: 0
   keywordDescription: "\uBD89\uC740 \uBC84\uC12F\uC744 \uAC00\uB9C8\uC1A5\uC5D0 \uB123\uB294\uB2E4.(\uD3EC\uC158
     \uC218\uCE58 -2~2)\n\uAE34\uC7A5\uB3C4 tension"
   changeTensionText: 
@@ -287,8 +287,8 @@ MonoBehaviour:
   m_text: "\uCD08\uB85D \uC57D\uCD08\uB97C \uD3EC\uC158\uC5D0 \uCD94\uAC00\uD569\uB2C8\uB2E4
     (\uD3EC\uC158 \uC218\uCE58 2 ~ 3\uCD94\uAC00)\n\uAE34\uC7A5\uB3C4 -7"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -497,8 +497,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

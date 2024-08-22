@@ -16,8 +16,20 @@ MonoBehaviour:
   nextImage1: {fileID: 0}
   nextImage2: {fileID: 0}
   nextImage3: {fileID: 0}
-  roomContents: 
-  eventKeyword: []
-  roomContentsAfter: 
-  roomContentsAfter2: 
-  roomContentsAfter3: 
+  roomContents: "\uB2F9\uC2E0\uC740 \uD0D1\uC744 \uD0D0\uC0C9\uD558\uB358 \uC911
+    \uB9C8\uBC95\uC9C4\uC744 \uBC1C\uACAC\uD569\uB2C8\uB2E4.\n\uB9C8\uBC95\uC9C4
+    \uC55E\uC5D0\uB294 \uCC45\uC774 \uB193\uC5EC\uC838 \uC788\uC2B5\uB2C8\uB2E4.\n\uCC45\uC744
+    \uB4E4\uC5B4 \uB0B4\uC6A9\uC744 \uD655\uC778\uD574 \uBCF4\uB2C8, \uC8FC\uBB38\uC11C\uB97C
+    \uC0DD\uC131\uD558\uB294 \uC8FC\uBB38\uC774 \uC368\uC838 \uC788\uC2B5\uB2C8\uB2E4.\n\uB2F9\uC2E0\uC740
+    \uC8FC\uBB38 \uC911 \uD55C \uAC00\uC9C0\uB97C \uC601\uCC3D \uD558\uAE30\uB85C
+    \uD569\uB2C8\uB2E4."
+  eventKeyword:
+  - {fileID: 7579075665694996604, guid: 2a57c811d73fef940a8ae173d9ecb01b, type: 3}
+  - {fileID: 7579075665694996604, guid: bcd7971e201894e4284ffd9f7d6c4f21, type: 3}
+  - {fileID: 7579075665694996604, guid: 8313e7b04740ce44080a44222c64ccf9, type: 3}
+  roomContentsAfter: "\uCCAB \uBC88\uC9F8 \uC8FC\uBB38\uC744 \uC601\uCC3D\uD558\uACE0,
+    \uC0DD\uC131\uB41C \uC8FC\uBB38\uC11C\uB97C \uCC59\uACBC\uB2E4."
+  roomContentsAfter2: "\uB450 \uBC88\uC9F8 \uC8FC\uBB38\uC744 \uC601\uCC3D\uD558\uACE0,
+    \uC0DD\uC131\uB41C \uC8FC\uBB38\uC11C\uB97C \uCC59\uACBC\uB2E4."
+  roomContentsAfter3: "\uC138 \uBC88\uC9F8 \uC8FC\uBB38\uC744 \uC601\uCC3D\uD558\uACE0,
+    \uC0DD\uC131\uB41C \uC8FC\uBB38\uC11C\uB97C \uCC59\uACBC\uB2E4."
