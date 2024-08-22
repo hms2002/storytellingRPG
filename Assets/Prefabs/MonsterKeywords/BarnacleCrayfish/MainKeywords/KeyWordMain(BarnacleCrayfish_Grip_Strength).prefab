@@ -422,7 +422,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -647,6 +647,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "8 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uAC00\uC9C4 \uBCF4\uD638\uB9CC\uD07C
     \uCD94\uAC00 \uD53C\uD574(\uCD5C\uB300 8)\uB97C \uC90D\uB2C8\uB2E4."

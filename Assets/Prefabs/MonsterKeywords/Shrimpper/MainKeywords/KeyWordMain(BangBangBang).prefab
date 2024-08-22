@@ -174,7 +174,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -570,6 +570,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 6
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "\uD0C4\uC57D \uD558\uB098\uB2F9 damage \uD53C\uD574\uB97C
     \uC90D\uB2C8\uB2E4.\n\uB0A8\uC740 \uD0C4\uC57D\uC744 \uC804\uBD80 \uC18C\uBAA8\uD569\uB2C8\uB2E4. "

@@ -23,7 +23,7 @@ public class EventKeyword : MonoBehaviour
     protected Color R = Color.red;
     protected Color G = Color.green;
     protected Color B = Color.blue;
-    protected Color Y = Color.yellow;
+    protected Color Y = new Color(217 / 255f, 173f / 255f, 50f / 255f, 255f / 255f);
     /// <summary> 검은색임 </summary>
     protected Color D = Color.black;
     protected Color Default = new Color(127f / 255f, 98f / 255f, 71f / 255f, 255f / 255f);

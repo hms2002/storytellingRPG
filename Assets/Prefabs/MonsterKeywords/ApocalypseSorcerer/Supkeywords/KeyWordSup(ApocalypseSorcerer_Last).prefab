@@ -100,7 +100,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -661,6 +661,7 @@ MonoBehaviour:
   _buffStack: 3
   _keywordTension: 13
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "\uAC15\uD654\uB97C buffstack \uC5BB\uC2B5\uB2C8\uB2E4.\n\uB9C8\uB098\uB97C
     1 \uC18C\uBAA8\uD569\uB2C8\uB2E4. "
