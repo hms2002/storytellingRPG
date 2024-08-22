@@ -299,6 +299,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "5 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uBC14\uC704 \uAD73\uD788\uAE30\uC640
     \uC0AC\uC6A9\uC2DC \uB3CC\uC870\uAC01\uC744 1 \uC5BB\uC2B5\uB2C8\uB2E4.\n"
@@ -415,7 +416,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

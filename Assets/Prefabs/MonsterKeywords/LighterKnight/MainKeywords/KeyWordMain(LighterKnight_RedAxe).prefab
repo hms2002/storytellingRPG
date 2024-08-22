@@ -421,7 +421,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -646,6 +646,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: 18
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uC790\uC2E0\uACFC
     \uC0C1\uB300\uC5D0\uAC8C \uD654\uC5FC\uC744 debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4."

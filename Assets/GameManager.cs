@@ -51,7 +51,23 @@ public class GameManager : MonoBehaviour
     public IReadOnlyList<GameObject> allMainKeywordsForPlayer => _allMainKeywordsForPlayer;
 
     private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
-    public GameState gameState {  get => _gameState; set => _gameState = value; }
+    private GameState beforeState;
+    public GameState gameState 
+    {  get => _gameState;
+        set 
+        {
+            _gameState = beforeState;
+            _gameState = value;
+            if(beforeState == _gameState)
+            {
+                return;
+            }
+            else 
+            {
+                AudioManager.instance.UpdateBGM();
+            }
+        }
+    }
 
     public int eventIndex = 0;
 
@@ -70,6 +86,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         uiManager.ChangeCursorImage(CursorType.Nib);
+        gameState = GameState.Map;
     }
 
     private void Start()

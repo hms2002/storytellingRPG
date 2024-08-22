@@ -83,6 +83,7 @@ public class AudioManager : MonoBehaviour
             AudioClip clip = clips.Find(c => c.name == clipName);
             if (clip != null && bgmSource.clip != clip)
             {
+                bgmSource.volume *= 0.2f;
                 bgmSource.clip = clip;
                 bgmSource.Play();
             }
@@ -95,7 +96,7 @@ public class AudioManager : MonoBehaviour
         bgmSource.clip = null;
     }
 
-    private void UpdateBGM()
+    public void UpdateBGM()
     {
         switch (GameManager.instance.gameState)
         {
@@ -143,6 +144,8 @@ public class AudioManager : MonoBehaviour
                 break;
             case GameState.Ending:
                 PlayBGM("엔딩");
+                break;
+            default:
                 break;
         }
     }
