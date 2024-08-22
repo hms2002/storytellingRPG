@@ -35,6 +35,7 @@ RectTransform:
   - {fileID: 5368063289434621804}
   - {fileID: 6746241351033582012}
   - {fileID: 9149323348530927342}
+  - {fileID: 7351466490301242941}
   m_Father: {fileID: 6658285197191529993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -215,6 +216,50 @@ RectTransform:
   m_AnchoredPosition: {x: -418, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5974912548821340904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7351466490301242941}
+  - component: {fileID: 3984928888864315877}
+  m_Layer: 0
+  m_Name: TreasurePivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7351466490301242941
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974912548821340904}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6174854565094762689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 413, y: -101}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3984928888864315877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974912548821340904}
+  m_CullTransparentMesh: 1
 --- !u!1 &7566221633402920384
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,11 +381,21 @@ MonoBehaviour:
   - {fileID: 5368063289434621804}
   - {fileID: 6746241351033582012}
   - {fileID: 9149323348530927342}
+  treasurePivot: {fileID: 7351466490301242941}
   rewardOffset_keyword: {fileID: 6648241631914347089, guid: 27855472b17417646ac6c32ea195d3fd, type: 3}
   rewardOffset_relic: {fileID: 1752465682288060733, guid: 9412931e015210947ae7ff6f2f21b3f9, type: 3}
   rewardOffset_gold: {fileID: 6648241631914347089, guid: 69cad2e7ab2682a48954f821a66183ec, type: 3}
   rewardOffset_None: {fileID: 6648241631914347089, guid: ac1a1207c41fd204884c17982ee93cd6, type: 3}
+  _dropRelic: 0
   rewardKeywords:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   - {fileID: 7579075665694996604, guid: 9edc07f5ee611c24d8974a6c079683b5, type: 3}
+  treasureRewardKeywords:
+  - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
+  - {fileID: 7579075665694996604, guid: 0c109d6c6d6495345abb22cd1f4c0bce, type: 3}
+  - {fileID: 7579075665694996604, guid: 9edc07f5ee611c24d8974a6c079683b5, type: 3}
+  treasureRewardRelics:
+  - {fileID: 7579075665694996604, guid: 9edc07f5ee611c24d8974a6c079683b5, type: 3}
+  - {fileID: 5705998811923563030, guid: 16456a4f87be89e4f9a6190815a26166, type: 3}
+  - {fileID: 2310729120196642132, guid: 517236f0ca063184bbd3174ef6efce9e, type: 3}

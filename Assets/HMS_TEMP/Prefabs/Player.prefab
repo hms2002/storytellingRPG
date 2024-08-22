@@ -79,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6339924582874757890
 Transform:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9124022208103450165}
+  - {fileID: 2057602407164552014}
   - {fileID: 7694452138271725012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -161,9 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c170706a4245a134086ec5108c15c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateUIController: {fileID: 40948013742689253}
+  stateUIController: {fileID: 7097780386140532382}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  _hp: 0
   beforeDamage: 0
   _gold: 0
 --- !u!114 &1603435647839028368
@@ -218,9 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRelicCanvas: {fileID: 0}
---- !u!1 &7344430793935493577
-GameObject:
---- !u!1001 &885290269752996525
+--- !u!1001 &7951163866799183830
+PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -277,15 +277,15 @@ GameObject:
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -293,7 +293,7 @@ GameObject:
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.3
+      value: 0.2999878
       objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -316,10 +316,15 @@ GameObject:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
---- !u!114 &40948013742689253 stripped
+--- !u!224 &2057602407164552014 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
+  m_PrefabInstance: {fileID: 7951163866799183830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7097780386140532382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 925582972379773256, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
-  m_PrefabInstance: {fileID: 885290269752996525}
+  m_PrefabInstance: {fileID: 7951163866799183830}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -327,8 +332,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dd903ca61d46d4f8bad9d538abf4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &9124022208103450165 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
-  m_PrefabInstance: {fileID: 885290269752996525}
+--- !u!114 &40948013742689253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd903ca61d46d4f8bad9d538abf4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pivot: {fileID: 0}
+  hpSlider: {fileID: 0}
+  protectUIObject: {fileID: 0}
+  hpUI: {fileID: 0}
+  hpText: {fileID: 0}

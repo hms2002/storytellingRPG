@@ -500,12 +500,12 @@ public class Actor : MonoBehaviour
             {
                 if (mainColor == Color.red)
                 {
-                    if (damage != 0)
+                    if (dmgList.GetAllDamage() != 0)
                     {
-                        if (repeatStack > 1)
+                        if (dmgList.damageList.Count > 1)
                         {
                             /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
-                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageList.Count);
                         }
                         else
                         {
@@ -532,14 +532,14 @@ public class Actor : MonoBehaviour
         {
             if (supColor == Color.red)
             {
-                if (damage != 0)
+                if (dmgList.GetAllDamage() != 0)
                 {
-                    if (repeatStack > 1)
+                    if (dmgList.damageList.Count > 1)
                     {
                         if(mainColor != Color.red)
                         {
                             /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
-                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageList.Count);
                         }
                     }
                     else
