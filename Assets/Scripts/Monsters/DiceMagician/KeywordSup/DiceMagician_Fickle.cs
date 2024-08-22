@@ -19,9 +19,9 @@ public class DiceMagician_Fickle : KeywordSup
     {
         int randomFlag = Random.Range(0, 2);
         if (randomFlag == 0)
-            caster.damage = keywordDamage;
+            caster.dmgList.Plus(keywordDamage);
         else
-            caster.Damaged(caster, keywordDamage);
+            caster.Damaged(caster, new DamageInfo(keywordDamage));
 
         caster.tension += keywordTension;
     }

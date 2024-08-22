@@ -20,7 +20,7 @@ public class RogueWave_RapidsTorrent : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         wave = caster as RogueWave;
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
 
         // Enum 0부터 항목 갯수 - 1 중에 Random값 뽑기
         int randomIndex = UnityEngine.Random.Range(0, Enum.GetValues(typeof(RogueWave.stateList)).Length);

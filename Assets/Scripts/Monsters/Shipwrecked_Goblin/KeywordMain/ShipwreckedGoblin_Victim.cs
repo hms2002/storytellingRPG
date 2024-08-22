@@ -17,7 +17,7 @@ public class ShipwreckedGoblin_Victim : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += target.charactorState.AllDebuffStack();
+        caster.dmgList.Add(target.charactorState.AllDebuffStack());
         caster.tension += keywordTension;
     }
 }

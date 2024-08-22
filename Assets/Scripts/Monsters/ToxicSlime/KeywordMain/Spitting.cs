@@ -16,7 +16,7 @@ public class Spitting : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
 
         target.charactorState.AddState(StateDatabase.stateDatabase.addiction, debuffStack);
 

@@ -19,7 +19,7 @@ public class Shiny : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         glassSpider = caster as GlassSpider;
-        caster.damage = keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }
 

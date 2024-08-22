@@ -19,7 +19,7 @@ public class Ori_Pointed : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         keywordDamage = Random.Range(minRange, maxRange + 1);
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }
 

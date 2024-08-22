@@ -19,7 +19,7 @@ public class DiceMagician_QuadraeDice : KeywordMain
     {
         for(int i = 0; i < 3; i++)
         {
-            target.Damaged(caster, Random.Range(1, 5));
+            caster.dmgList.Add(Random.Range(1, 5));
         }
         
         caster.tension += keywordTension;

@@ -16,7 +16,7 @@ public class Hard : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         if(isHardKeyword)
         {
             caster.charactorState.AddState(StateDatabase.stateDatabase.stonePiece, 1);

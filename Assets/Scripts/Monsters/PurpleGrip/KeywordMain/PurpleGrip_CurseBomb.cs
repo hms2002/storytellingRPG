@@ -17,7 +17,7 @@ public class PurpleGrip_CurseBomb : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += target.charactorState.AllDebuffCount();
+        caster.dmgList.Add(target.charactorState.AllDebuffCount());
         target.charactorState.DeleteAllDebuff();
         caster.tension += keywordTension;
     }

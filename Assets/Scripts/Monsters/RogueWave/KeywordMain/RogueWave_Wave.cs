@@ -17,7 +17,7 @@ public class RogueWave_Wave : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         if(caster is RogueWave)
         {
             RogueWave child = (RogueWave)caster;

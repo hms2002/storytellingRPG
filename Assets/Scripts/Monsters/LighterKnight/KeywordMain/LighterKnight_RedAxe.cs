@@ -18,7 +18,7 @@ public class LighterKnight_RedAxe : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
 
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.charactorState.AddState(StateType.burn, debuffStack);
         target.charactorState.AddState(StateType.burn, debuffStack);
         caster.tension += keywordTension;

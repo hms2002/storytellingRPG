@@ -18,7 +18,7 @@ public class AdOre_ShardSpread : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
 
         caster.charactorState.ReductionByValue(StateType.ore, amountOfDecrease);
 

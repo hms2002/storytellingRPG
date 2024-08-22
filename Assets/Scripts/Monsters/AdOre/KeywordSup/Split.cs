@@ -18,7 +18,7 @@ public class Split : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += amountOfDamage;
+        caster.dmgList.Plus(amountOfDamage);
 
         caster.tension += keywordTension;
     }

@@ -12,8 +12,63 @@ public enum DamageType
     Beat
 }
 
+public class DamageInfo
+    {
+        public int damage;
+        public bool isPenetrate;
+        public DamageInfo(int _damage, bool _isPenetrate)
+        {
+            damage = _damage;
+            isPenetrate = _isPenetrate;
+        }
+        public DamageInfo(int _damage)
+        {
+            damage = _damage;
+            isPenetrate = false;
+        }
+    }
+public class DamageList
+{
+    public List<DamageInfo> damageList = new List<DamageInfo>();
+    bool isPlus = false;
+    public int GetAllDamage()
+    {
+        int damage = 0;
+        foreach (DamageInfo d in damageList)
+            damage += d.damage;
+        return damage;
+    }
+    public void Add(int damage, bool isPenetrate = false)
+    {
+        if(isPlus)
+        {
+            isPlus = false;
+            damageList[0].damage += damage;
+        }
+        else
+            damageList.Add(new DamageInfo(damage, isPenetrate));
+    }
+    public void Plus(int damage, bool isPenetrate = false)
+    {
+        if(damageList.Count == 0)
+        {
+            damageList.Add(new DamageInfo(damage, isPenetrate));
+            isPlus = true;
+        }
+        else
+        {
+            damageList[0].damage += damage;
+        }
+    }
+}
 public class Actor : MonoBehaviour
 {
+
+    /// <summary>
+    /// 데미지 모아주는 컨테이너
+    /// </summary>
+    public DamageList dmgList = new DamageList();
+
     [Header("상태창 UI")]
     public ActorStateUIControler stateUIController;
     public readonly CharactorState charactorState = new CharactorState();
@@ -261,6 +316,9 @@ public class Actor : MonoBehaviour
     {
         _lastTurnProtectReduction = _lastProtectReductTerminal;
         _lastProtectReductTerminal = 0;
+
+        dmgList.damageList.Clear();
+
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
@@ -410,17 +468,20 @@ public class Actor : MonoBehaviour
         {
             PlayActionEffect(target);
 
-            target.Damaged(this, damage);
-            beforeDamage = damage;
-
-            // 반격 관련 코드
-            if (target.attackCount == true)
+            foreach(DamageInfo t in dmgList.damageList)
             {
-                int counterDamage = target.CalculateCounterAttackDamage(target);
-                Damaged(this, counterDamage);
-            }
+                target.Damaged(this, t);
+                beforeDamage = damage;
 
-            target.attackCount = false;
+                // 반격 관련 코드
+                if (target.attackCount == true)
+                {
+                    int counterDamage = target.CalculateCounterAttackDamage(target);
+                    Damaged(this, new DamageInfo(counterDamage, false));
+                }
+
+                target.attackCount = false;
+            }
         }
         TensionManager tensionManager = TensionManager.tensionManagerUI;
         tensionManager.tension += tension;
@@ -514,7 +575,7 @@ public class Actor : MonoBehaviour
     }
     protected int CalculateReinforce(int totalDamage, Actor attacker)
     {
-        totalDamage += charactorState.GetStateStack(StateType.reinforce);
+        totalDamage += attacker.charactorState.GetStateStack(StateType.reinforce);
         return totalDamage;
     }
     /// <summary>
@@ -684,7 +745,7 @@ public class Actor : MonoBehaviour
     /// <param name="totalDamage"></param>
     /// <param name="attacker"></param>
 
-    public virtual void Damaged(int totalDamage, Actor attacker, bool reallyPenetrate)
+    public virtual void PenetrateDamaged(int totalDamage, Actor attacker)
     {
         // 공격 전 피해량 계산
         totalDamage = CalculateTotalDamageBeforeDamaged(totalDamage, attacker);
@@ -706,9 +767,9 @@ public class Actor : MonoBehaviour
         charactorState.ReductionOnDamaged();
     }
 
-    public virtual void Damaged(Actor attacker, int _damage)
+    public virtual void Damaged(Actor attacker, DamageInfo _damage)
     {
-        if (_damage <= 0) return;
+        if (_damage.damage <= 0) return;
 
         if (charactorState.GetStateStack(StateType.evasion) > 0)
         {
@@ -720,13 +781,20 @@ public class Actor : MonoBehaviour
                 return;
             }
         }
-        int totalDamage = _damage;
+        int totalDamage = _damage.damage;
 
         if (attacker == this)
             DamagedSelf(totalDamage);
         else
-            DamagedOther(totalDamage, attacker);
+        {
+            if (_damage.isPenetrate)
+                PenetrateDamaged(_damage.damage, attacker);
+            else
+                DamagedOther(totalDamage, attacker);
+        }
     }
+
+
     /// <summary>
     /// 도트데미지를 처리하는 Damaged오버로딩이다.
     /// </summary>

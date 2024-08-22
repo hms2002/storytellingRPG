@@ -22,7 +22,7 @@ public class UnstableCore : KeywordMain
     {
         caster.tension += keywordTension;
         caster.protect -= keywordProtect;
-        caster.damage = keywordDamage;
+        caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup _keywordSup)

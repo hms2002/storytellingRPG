@@ -30,8 +30,8 @@ public class ExplosionNero_ChainExplosion : KeywordMain
 
         caster.repeatStack *= attackNum;
 
-        caster.damage += damage;
-        caster.Damaged(caster, selfDamage);
+        caster.dmgList.Add(damage);
+        caster.Damaged(caster, new DamageInfo(selfDamage));
         
         caster.charactorState.AddState(StateDatabase.stateDatabase.faint, faintTime);
     }

@@ -17,7 +17,7 @@ public class RogueWave_Swirling : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         target.charactorState.AddState(StateType.reduction, debuffStack);
         caster.tension += keywordTension;
     }

@@ -13,7 +13,7 @@ public class WoodSword : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += 7;
+        caster.dmgList.Add(7);
     }
 
     public override void Check(KeywordSup _keywordSup) { }

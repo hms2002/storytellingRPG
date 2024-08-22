@@ -24,7 +24,7 @@ public class Ori_Fregments : KeywordMain
             maximumDamage = 18;
         }
         keywordDamage = (int)Random.Range(minimumDamage, maximumDamage + 1);
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 

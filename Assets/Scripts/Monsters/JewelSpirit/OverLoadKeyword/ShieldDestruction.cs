@@ -22,7 +22,7 @@ public class ShieldDestruction : KeywordMain
         if(target.protect > 0)
         {
             caster.protect -= keywordProtect;
-            caster.damage += DamagePerProtect * target.protect;
+            caster.dmgList.Add(DamagePerProtect * target.protect);
             target.protect = 0;
         }
         else

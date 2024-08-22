@@ -476,7 +476,7 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uC18D\uAE30\uC0AC\uC758 \uAC80"
-  _keywordDamage: 2
+  _keywordDamage: 4
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
@@ -485,7 +485,7 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "2\uC758 \uD53C\uD574\uB97C \uB450 \uBC88 \uC90D\uB2C8\uB2E4."
+  keywordDescription: "damage \uD53C\uD574\uB97C \uB450 \uBC88 \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   attackCount: 2

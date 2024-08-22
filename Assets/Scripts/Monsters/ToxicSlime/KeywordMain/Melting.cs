@@ -16,7 +16,7 @@ public class Melting : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         int addictionStack = target.charactorState.GetStateStack(StateType.addiction);
-        caster.damage += addictionStack * keywordDamage;
+        caster.dmgList.Add(addictionStack * keywordDamage);
 
         caster.tension += addictionStack * keywordTension;
 

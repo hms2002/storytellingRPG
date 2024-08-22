@@ -17,8 +17,8 @@ public class DaggerOfTheWicked : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
-        caster.damage += target.charactorState.GetStateStack(StateType.weaken) * 3;
+        caster.dmgList.Add(keywordDamage);
+        caster.dmgList.Add(target.charactorState.GetStateStack(StateType.weaken) * 3);
     }
 
     public override void Check(KeywordSup _keywordSup) { }

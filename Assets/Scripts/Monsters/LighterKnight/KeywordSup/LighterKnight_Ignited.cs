@@ -17,7 +17,7 @@ public class LighterKnight_Ignited : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.charactorState.AddState(StateType.burn, debuffStack);
         target.charactorState.AddState(StateType.burn, debuffStack);
         caster.tension += keywordTension;

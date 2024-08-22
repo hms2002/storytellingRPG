@@ -21,7 +21,7 @@ public class Cough : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         keywordDamage = Random.Range(minRange, maxRange);
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack);
         caster.tension += keywordTension;
     }

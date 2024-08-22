@@ -13,7 +13,7 @@ public class MagicBullet : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.Damaged(keywordDamage, caster, true);
+        caster.dmgList.Add(keywordDamage, true);
     }
 
     public override void Check(KeywordSup keywordSup)

@@ -515,7 +515,7 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uC545\uC778\uC758 \uB2E8\uAC80"
-  _keywordDamage: 2
+  _keywordDamage: 5
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
@@ -524,9 +524,8 @@ MonoBehaviour:
   _keywordTension: 0
   _isOneTimeUse: 0
   selectedColor: 0
-  keywordDescription: "\uB300\uC0C1\uC5D0\uAC8C 2\uD53C\uD574\uB97C \uC900\uB2E4.
-    \uCDE8\uC57D \uC0C1\uD0DC\uC778 \uC801\uC5D0\uAC8C \uCD94\uAC00\uB85C 3\uC758
-    \uD53C\uD574\uB97C \uC900\uB2E4."
+  keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uB300\uC0C1\uC758
+    \uCDE8\uC57D 1 \uB2F9 3\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   extraDamage: 3

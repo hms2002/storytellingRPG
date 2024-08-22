@@ -19,7 +19,7 @@ public class PurpleGrip_Magical : KeywordSup
     {
         if (!target.charactorState.vampire.Contains(caster))
             target.charactorState.vampire.Add(caster);
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }
 }

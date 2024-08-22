@@ -14,7 +14,7 @@ public class Bang : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.charactorState.ReductionByValue(StateType.ammunition, buffStack);
     }
 

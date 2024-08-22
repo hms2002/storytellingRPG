@@ -14,7 +14,7 @@ public class Player_Powerful : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.charactorState.AddState(StateType.weaken, debuffStack);
     }
 

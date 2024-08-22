@@ -17,8 +17,8 @@ public class FastKnightSword : KeywordMain
     
     public override void Execute(Actor caster, Actor target)
     {
-        caster.repeatStack *= (attackCount);
-        caster.damage += (keywordDamage);
+        caster.dmgList.Add(keywordDamage);
+        caster.dmgList.Add(keywordDamage);
     }
 
     public override void Check(KeywordSup keywordSup) { }

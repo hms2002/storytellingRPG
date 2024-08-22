@@ -18,7 +18,7 @@ public class ColdShark_Offensive : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.tension =+ keywordTension;
     }
 

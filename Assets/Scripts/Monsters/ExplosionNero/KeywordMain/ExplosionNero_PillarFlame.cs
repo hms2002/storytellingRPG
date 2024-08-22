@@ -23,7 +23,7 @@ public class ExplosionNero_PillarFlame : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        target.damage += damage;
+        target.dmgList.Add(damage);
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, BurnTime);
         caster.charactorState.AddState(StateDatabase.stateDatabase.faint, faintTime);
     }

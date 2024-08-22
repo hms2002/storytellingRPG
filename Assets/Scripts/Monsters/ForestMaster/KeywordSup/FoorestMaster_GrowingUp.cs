@@ -17,7 +17,7 @@ public class FoorestMaster_GrowingUp : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Plus(keywordDamage);
         caster.charactorState.AddState(StateType.multiplication, debuffStack);
         caster.tension += keywordTension;
     }

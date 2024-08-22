@@ -17,7 +17,7 @@ public class RobeSlime_SlimeThrow : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 }

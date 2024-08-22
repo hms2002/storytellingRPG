@@ -14,7 +14,7 @@ public class Player_Roar : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         if(caster.protect >= 6)
             caster.protect += keywordProtect;
 

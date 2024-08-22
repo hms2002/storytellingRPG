@@ -17,7 +17,7 @@ public class CoreRay : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.protect -= keywordProtect;
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 

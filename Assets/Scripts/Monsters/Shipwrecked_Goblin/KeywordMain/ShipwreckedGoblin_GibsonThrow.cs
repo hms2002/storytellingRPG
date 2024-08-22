@@ -17,7 +17,7 @@ public class ShipwreckedGoblin_GibsonThrow : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.damage += keywordDamage;
+        caster.dmgList.Add(keywordDamage);
         caster.charactorState.AddState(StateType.weaken, debuffStack);
         caster.charactorState.AddState(StateType.reduction, debuffStack);
         caster.tension += keywordTension;
