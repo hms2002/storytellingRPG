@@ -28,6 +28,7 @@ public class Current : KeywordMain
         }
 
         EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, 3 * caster.repeatStack);
+
     }
 
     public override void Check(KeywordSup keywordSup) { }
