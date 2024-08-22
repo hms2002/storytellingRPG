@@ -38,7 +38,7 @@ public class Relic : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*
             case Relics.EquivalentExchange:
 
                 // 플레이어에게 3 데미지
-                player.Damaged(player, 3);
+                player.Damaged(player, new DamageInfo(3));
 
                 // 플레이어에게 강화 3 부여
                 player.charactorState.AddState(StateType.reinforce, 3);
@@ -51,10 +51,10 @@ public class Relic : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*
                 if (FightManager.currentTurn % 5 == 0)
                 {
                     // 플레이어에게 10 데미지
-                    player.Damaged(player, 10);
+                    player.Damaged(player, new DamageInfo(10));
 
                     // 몬스터 전체에게 10 데미지
-                    foreach (Monster monster in Monsters) monster.Damaged(monster, 10);
+                    foreach (Monster monster in Monsters) monster.Damaged(monster, new DamageInfo(10));
                 }
 
                 break;
