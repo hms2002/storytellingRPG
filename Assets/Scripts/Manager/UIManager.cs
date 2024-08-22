@@ -25,9 +25,6 @@ public class UIManager : MonoBehaviour
     [Header("마우스 커서 이미지 리스트")]
     [SerializeField] private List<Texture2D> cursorImage;
     
-    [Header("맵")]
-    [SerializeField] private GameObject mapBackground;        // 전투맵 배경
-
     [Header("키워드 세팅 윈도우")]
     [SerializeField] private GameObject keywordSettingWindow;       // 키워드 세팅 윈도우 객체
 
