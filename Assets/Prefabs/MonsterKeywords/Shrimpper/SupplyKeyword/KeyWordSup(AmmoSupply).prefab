@@ -496,6 +496,7 @@ MonoBehaviour:
   _buffStack: 1
   _keywordTension: -5
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "\uD0C4\uC57D\uC744 buffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
@@ -599,7 +600,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

@@ -11,12 +11,12 @@ public class BangBang : KeywordMain
         SetKeywordColor(R);
         Init();
     }
-
+        
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
         caster.dmgList.Add(keywordDamage);
-        caster.repeatStack = buffStack;
+        caster.dmgList.Add(keywordDamage);
         caster.charactorState.ReductionByValue(StateType.ammunition, buffStack);
     }
 

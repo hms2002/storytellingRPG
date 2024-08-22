@@ -57,7 +57,7 @@ public class TextManager : MonoBehaviour
 
     public void KeywordTextPlay(Actor actor)
     {
-        Text.DOText($"{actor.name}은 _____ _____을 사용했다.", 1f);
+        Text.DOText($"{actor.Name}은 _____ _____을 사용했다.", 1f);
         Text.alignment = TextAlignmentOptions.Top;
     }
 
@@ -66,7 +66,7 @@ public class TextManager : MonoBehaviour
         string sup = actor.keywordSup.keywordName;
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
-        Text.DOText($"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
+        Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
         /*Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";*/
         Text.alignment = TextAlignmentOptions.Top;
     }
@@ -79,7 +79,7 @@ public class TextManager : MonoBehaviour
         string main = actor.keywordMain.keywordName;
         Color mainColor = actor.keywordMain.GetKeywordColor();
         string mainColorHex = ColorUtility.ToHtmlStringRGB(mainColor);
-        Text.DOText($"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
+        Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
 /*        Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";*/
         Text.alignment = TextAlignmentOptions.Top;
         if(textTime < 1f)
@@ -96,13 +96,13 @@ public class TextManager : MonoBehaviour
 
     public void PrintVictory()
     {
-        Text.DOText("기사는 승리하였다.", 2f);
+        Text.DOText("당신은 승리하였다.", 2f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void PrintPlayerDie()
     {
-        Text.DOText("기사의 이야기는 여기에서 끝났다.", 2f);
+        Text.DOText("당신의 이야기는 여기에서 끝났다.", 2f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 }

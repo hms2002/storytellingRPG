@@ -396,7 +396,6 @@ public class CharactorState
                 || i.stack <= 0 || i.stateData.damagePerStack == 0)
                 continue;
             AudioManager.instance.PlaySound("Debuff", i.stateData.soundName);
-            EffectManager.instance.PlayEffect(i.stateData.debuffEffect, actor);
             int stackDamage = i.stateData.damagePerStack;
             if(i.oneTimeMultiplication)
             {

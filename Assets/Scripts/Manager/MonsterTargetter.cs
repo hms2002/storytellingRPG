@@ -11,8 +11,37 @@ public class MonsterTargetter : MonoBehaviour
     public Actor target
     {
         get { return _target; }
-        set { _target = value;
-            targetUIObj.position = _target.transform.position;
+        set 
+        {   _target = value;
+
+            if(value == null)
+            {
+                targetUIObj.gameObject.SetActive(false);
+            }
+            else
+            {
+                targetUIObj.gameObject.SetActive(true);
+            }
+            if (_target != null)
+            {
+                // _target의 SpriteRenderer를 얻어옴
+                SpriteRenderer spriteRenderer = _target.GetComponent<SpriteRenderer>();
+
+                if (spriteRenderer != null)
+                {
+                    // 스프라이트의 최상단 위치를 계산
+                    float spriteHeight = spriteRenderer.bounds.size.y;
+                    Vector3 topPosition = _target.transform.position + new Vector3(0, spriteHeight, 0);
+
+                    // targetUIObj를 최상단 위치로 이동
+                    targetUIObj.position = topPosition;
+                }
+                else
+                {
+                    // SpriteRenderer가 없으면 기본적으로 _target의 위치를 사용
+                    targetUIObj.position = _target.transform.position;
+                }
+            }
         }
     }
 

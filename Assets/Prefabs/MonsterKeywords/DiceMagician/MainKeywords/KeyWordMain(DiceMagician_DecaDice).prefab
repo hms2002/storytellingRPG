@@ -421,7 +421,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -646,6 +646,7 @@ MonoBehaviour:
   _buffStack: 0
   _keywordTension: -22
   _isOneTimeUse: 0
+  _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "1~10 \uD53C\uD574\uB97C \uC8FC\uAC70\uB098 \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
   changeTensionText: 

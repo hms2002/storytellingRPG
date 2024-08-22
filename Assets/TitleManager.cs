@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GameStart()
     {
-        
+        SceneManager.LoadScene("/*해당 부분에 게임 시작 씬 적어줘*/");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameQuit()
     {
-        
+        Application.Quit();
     }
 }
