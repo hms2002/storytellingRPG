@@ -121,6 +121,9 @@ public class Actor : MonoBehaviour
     private int _additionalDamage = 0;
     private int _additionalStack = 0;
     private bool _attackCount = false;
+    [SerializeField]
+    [Header("이름")]
+    private string _Name;
 
     private int[] buffList;
     private int[] debuffList;
@@ -178,6 +181,10 @@ public class Actor : MonoBehaviour
         {
             if (_protect > value)
                 _lastProtectReductTerminal += _protect - value;
+            if (value > _protect)
+            {
+                AudioManager.instance.PlaySound("Character", "보호");
+            }
             _protect = value;
             if (_protect < 0) _protect = 0;
             stateUIController.ProtectOn(_protect);
@@ -229,6 +236,7 @@ public class Actor : MonoBehaviour
         set { _attackCount = value; }
     }
 
+    public string Name { get => _Name; set => _Name = value; }
 
     #endregion
 
@@ -285,6 +293,7 @@ public class Actor : MonoBehaviour
         _additionalDamage = 0;
         _additionalStack = 0;
         _attackCount = false;
+        stateUIController.UpdateHpUI(_hp, MAX_HP);
     }
 
     private void StackInit()
@@ -509,7 +518,7 @@ public class Actor : MonoBehaviour
                 {
                     if (dmgList.GetAllDamage() != 0)
                     {
-                        if (dmgList.damageList.Count > 1)
+                        if (dmgList.damageList.Count > 1 || repeatStack > 1)
                         {
                             /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
                             EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageList.Count);
@@ -522,10 +531,6 @@ public class Actor : MonoBehaviour
                 }
                 else
                 {
-                    if(mainColor == Color.blue)
-                    {
-                        AudioManager.instance.PlaySound("Character", "보호");
-                    }
                     EffectManager.instance.PlayEffect(keywordMain.effectType, target);
                 }
             }
@@ -541,7 +546,7 @@ public class Actor : MonoBehaviour
             {
                 if (dmgList.GetAllDamage() != 0)
                 {
-                    if (dmgList.damageList.Count > 1)
+                    if (dmgList.damageList.Count > 1 || repeatStack > 1)
                     {
                         if(mainColor != Color.red)
                         {
@@ -557,10 +562,6 @@ public class Actor : MonoBehaviour
             }
             else
             {
-                if (mainColor == Color.blue)
-                {
-                    AudioManager.instance.PlaySound("Character", "보호");
-                }
                 EffectManager.instance.PlayEffect(keywordSup.effectType, target);
             }
         }
@@ -861,4 +862,4 @@ public class Actor : MonoBehaviour
         // 무덤덱 정보 리스트에 버려진 Main 키워드 프리팹 정보 전달
         garbageFieldInfoPivot.RecieveDeckInfo(garbageField.MainDeck);
     }
-};
+}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
   m_Name: WreckShip
   m_EditorClassIdentifier: 
-  roomImage: {fileID: 21300000, guid: 4321fa5c056b1fc419ed4f2167994db7, type: 3}
+  roomImage: {fileID: 21300000, guid: a3a3a36fe8c7ba04ab124f1f3d24ca59, type: 3}
   nextImage1: {fileID: 0}
   nextImage2: {fileID: 0}
   nextImage3: {fileID: 0}

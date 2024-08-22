@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -51,8 +52,24 @@ public class GameManager : MonoBehaviour
     public IReadOnlyList<GameObject> allSupKeywordsForPlayer => _allSupKeywordsForPlayer;
     public IReadOnlyList<GameObject> allMainKeywordsForPlayer => _allMainKeywordsForPlayer;
 
-    private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
-    public GameState gameState {  get => _gameState; set => _gameState = value; }
+    public GameState _gameState = GameState.Map;   // 게임의 상태를 저장
+    private GameState beforeState;
+    public GameState gameState 
+    {  get => _gameState;
+        set 
+        {
+            _gameState = beforeState;
+            _gameState = value;
+            if(beforeState == _gameState)
+            {
+                return;
+            }
+            else 
+            {
+                AudioManager.instance.UpdateBGM();
+            }
+        }
+    }
 
     int killCnt_nomalMonster = 0;
     int killCnt_eleteMonster = 0;
@@ -80,6 +97,7 @@ public class GameManager : MonoBehaviour
 
         if(uiManager !=null)
             uiManager.ChangeCursorImage(CursorType.Nib);
+        gameState = GameState.Map;
     }
 
     private void Start()
@@ -179,5 +197,15 @@ public class GameManager : MonoBehaviour
     public void LoadScene(int idx)
     {
         SceneManager.LoadScene(0);
+    }
+    /// <summary>
+    /// 전달한 오브젝트의 인스턴스화 여부를 반환합니다.
+    /// </summary>
+    /// <param name="prefab">검사하고자 하는 오브젝트를 입력합니다.</param>
+    /// <returns></returns>
+    public bool IsInstantiated(GameObject prefab)
+    {
+        if (prefab.scene.name != null) return true;     // 씬에 존재하면 인스턴스화된 객체임
+        else                           return false;    // 씬에 존재하지 않으면 프리팹임
     }
 }

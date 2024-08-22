@@ -16,7 +16,7 @@ public enum StageState
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
-    public StageState nowStageState;
+    private StageState _nowStageState;
 
     [Header("0:숲 │ 1:동굴 │ 2: 바다 │ 3: 마탑")]
     [SerializeField] private GameObject[] mapBackGrounds = new GameObject[3];
@@ -33,6 +33,16 @@ public class StageManager : MonoBehaviour
             return;
         }
         instance = this;
+    }
+
+    public StageState nowStageState
+    {
+        get { return _nowStageState; }
+        set 
+        { 
+            _nowStageState = value;
+            AudioManager.instance.UpdateBGM();
+        }
     }
 
     private void Start()

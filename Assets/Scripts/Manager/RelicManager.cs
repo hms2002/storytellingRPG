@@ -24,7 +24,6 @@ public class RelicManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     /// <summary>

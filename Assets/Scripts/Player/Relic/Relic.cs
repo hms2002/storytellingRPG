@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,12 +6,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Relic : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*/
+public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private RelicData _relicData;
     public RelicData relicData { get => _relicData; set => _relicData = value; }
 
     private Image relicImage;
+
+    private bool isPerchased = false;
 
 
     /*==================================================================================================================================*/
@@ -24,6 +27,38 @@ public class Relic : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*
     private void OnEnable()
     {
         relicImage.sprite = relicData.relicImage;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // 게임 상태가 Shop이 아니거나 구매한 상태라면 반환
+        if (GameManager.instance.gameState != GameState.Shop || isPerchased) return;
+
+        // PlayerRelic의 AddRelic에 접근하여 추가
+        PlayerRelic.instance.AddRelic(gameObject);
+
+        // 유물의 이미지 컴포넌트 비활성화
+        //gameObject.GetComponent<Image>().enabled = false;
+
+        // 유물 크기 조정
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 120);
+
+        // 구매 여부 true
+        isPerchased = true;
     }
 
     /// <summary>

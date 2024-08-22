@@ -347,6 +347,7 @@ public class FightManager : MonoBehaviour
             if (monsterList[i].isBossMonster)
             {
                 isBossStage = true;
+                GameManager.instance.gameState = GameState.BossBattle;
                 return;
             }
         }
