@@ -781,17 +781,6 @@ MonoBehaviour:
   m_Spacing: {x: 100, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &74229431 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 40948013742689253, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-  m_PrefabInstance: {fileID: 1300979869}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14dd903ca61d46d4f8bad9d538abf4e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &80400527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,7 +3171,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 575472245}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7115,7 +7104,7 @@ PrefabInstance:
     - target: {fileID: 4595920635642977702, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: stateUIController
       value: 
-      objectReference: {fileID: 74229431}
+      objectReference: {fileID: 0}
     - target: {fileID: 5469943792477412574, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -10360,3 +10349,4 @@ SceneRoots:
   - {fileID: 1149695056}
   - {fileID: 137822779}
   - {fileID: 1268899263}
+  - {fileID: 462170229}

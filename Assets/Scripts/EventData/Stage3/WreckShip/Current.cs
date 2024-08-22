@@ -22,9 +22,9 @@ public class Current : KeywordMain
     {
         for (int i = 0; i <= caster.repeatStack; i++)
         {
-            target.Damaged(caster, firstAttack);
-            target.Damaged(caster, secondAttack);
-            target.Damaged(caster, thirdAttack);
+            target.Damaged(caster, new DamageInfo(firstAttack));
+            target.Damaged(caster, new DamageInfo(secondAttack));
+            target.Damaged(caster, new DamageInfo(thirdAttack));
         }
 
         EffectManager.instance.PlayEffect(EffectManager.EffectType.Combo, target, 3 * caster.repeatStack);
