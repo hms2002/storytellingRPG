@@ -35,7 +35,7 @@ public class RewardManager : MonoBehaviour
 
     int rewardCnt = 0;
 
-    bool _dropRelic = false;
+    [SerializeField] private bool _dropRelic = false;
     bool dropRelic
     {
         get { return _dropRelic; }
@@ -153,18 +153,14 @@ public class RewardManager : MonoBehaviour
         if(rewardCnt == 0)
             ShowNoReward();
 
-        if (dropRelic)
-        {
-            ShowFightRelic();
-        }
+        if (dropRelic) ShowFightRelic();
+        
         ShowFightGold();
     }
 
     private void ShowFightRelic()
     {
-        GameObject rewardInstance_relic
-            = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
-        rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic();
+        GameObject rewardInstance_relic = MakeRelicButton();
 
         btnList.Add(rewardInstance_relic);
     }
@@ -238,6 +234,18 @@ public class RewardManager : MonoBehaviour
                 Destroy(g);
             btnList.Clear();
         }
+    }
+
+    /// <summary>
+    /// 유물 보상 버튼을 인스턴스화합니다.
+    /// </summary>
+    /// <returns></returns>
+    public GameObject MakeRelicButton()
+    {
+        GameObject rewardInstance_relic = Instantiate(rewardOffset_relic, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
+        rewardInstance_relic.GetComponent<Reward>().SettingReward_Relic(RelicManager.instance.GetRandomRelic(), player.GetComponent<PlayerRelic>());
+
+        return rewardInstance_relic;
     }
 
     public void ClickNoReward()
