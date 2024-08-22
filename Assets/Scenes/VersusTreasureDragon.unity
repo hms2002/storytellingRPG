@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightManagerUI: {fileID: 1530738481}
+  playerPrefab: {fileID: 0}
   player: {fileID: 8178805086710085527}
-  monster: {fileID: 8547383146019090346}
+  playerRelic: {fileID: 0}
+  monsterList: []
+  isBossStage: 0
 --- !u!4 &74525324
 Transform:
   m_ObjectHideFlags: 0
@@ -678,13 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dae7bb494d25e64ca0c27503c941610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burn: {fileID: 2570607699521440470, guid: a9a0767a00fdeed4f909f964b102eeca, type: 3}
-  weaken: {fileID: 6201245243508318255, guid: 9a479e062e255114db0fe5e605c695f3, type: 3}
-  reduction: {fileID: 1792148658275494843, guid: 2b1ec6ac437af3d47a9b11adc42c4174, type: 3}
-  glassFragment: {fileID: 649827547615506844, guid: faf45b4ad360d3d4c823a0c3691d7c9c, type: 3}
-  treasureOfDragon: {fileID: 1073344793545041436, guid: 64b7081064ddaec49b52025379b29c45, type: 3}
-  callingOfMommy: {fileID: 6474338348034067855, guid: 8d25f603bb65f254e9bb5e6fad4b32d1, type: 3}
-  power: {fileID: 7593584670278851843, guid: 0e7060ce2df50634aa35ccdca9089b8c, type: 3}
+  stateUIPrefab: {fileID: 0}
+  stateInfoUI: {fileID: 0}
 --- !u!4 &1254263880
 Transform:
   m_ObjectHideFlags: 0
@@ -740,8 +738,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -868,7 +866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: -54.17}
+  m_AnchoredPosition: {x: 22, y: -3.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290977795
@@ -893,8 +891,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1182,7 +1180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e473b3a4c480a438077f2ae1f3ea0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnText: {fileID: 1278691630}
 --- !u!4 &1530738482
 Transform:
   m_ObjectHideFlags: 0
@@ -1690,7 +1687,7 @@ MonoBehaviour:
   hpSlider: {fileID: 7431888056973913793}
   protectUIObject: {fileID: 5109897590501928265}
   hpUI: {fileID: 4085916252577531073}
-  hpText: {fileID: 6361574947307335135}
+  hpText: {fileID: 0}
 --- !u!1 &1241927757954339248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2045,7 @@ MonoBehaviour:
   hpSlider: {fileID: 5786885927348131254}
   protectUIObject: {fileID: 1241927757954339248}
   hpUI: {fileID: 8100262624503186196}
-  hpText: {fileID: 196136724937501728}
+  hpText: {fileID: 0}
 --- !u!222 &3355594445628707545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2971,7 +2968,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 3348788097442404563}
+  _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  _hp: 0
+  _Name: 
+  beforeDamage: 0
+  _gold: 0
 --- !u!224 &8190967143311773334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3092,7 +3094,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 1117406027094938717}
+  _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  _hp: 0
+  _Name: 
+  beforeDamage: 0
+  _gold: 0
+  isBossMonster: 0
 --- !u!224 &8578155662736942768
 RectTransform:
   m_ObjectHideFlags: 0

@@ -142,6 +142,8 @@ MonoBehaviour:
   stateUIController: {fileID: 6040497596858301806}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  _hp: 0
+  _Name: "\uAC10\uAE30\uC0C1\uC5B4"
   beforeDamage: 0
   _gold: 0
   isBossMonster: 0
@@ -179,9 +181,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.005729437, y: 0.9555066}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.74, z: 0, w: 0}
+    border: {x: 0, y: 0.5692308, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.14879227}
-    oldSize: {x: 7.4, y: 5}
+    oldSize: {x: 5.6923075, y: 2.3692307}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

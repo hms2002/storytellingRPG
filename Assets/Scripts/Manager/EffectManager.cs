@@ -138,7 +138,6 @@ public class EffectManager : MonoBehaviour
             Vector3 effectPosition = target.transform.position + new Vector3(positionOffset.x, positionOffset.y, 0f);
 
             GameObject effectInstance = Instantiate(effect.prefab, effectPosition, Quaternion.identity, target.transform);
-
             if (effect.isTemporary)
             {
                 float duration = GetEffectDuration(effectInstance);
@@ -183,7 +182,7 @@ public class EffectManager : MonoBehaviour
                 float duration = GetEffectDuration(effectInstance);
                 Destroy(effectInstance, duration);
             }
-
+            AudioManager.instance.PlaySound("Character", "타격음_주먹2");
             // Introduce a delay before the next effect instantiation
             yield return new WaitForSeconds(0.1f);
         }

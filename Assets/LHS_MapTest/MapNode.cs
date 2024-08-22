@@ -220,6 +220,7 @@ namespace Map
             if (mapPlayerMove != null)
             {
                 // 플레이어 이동 시작 전에 위치 저장
+                AudioManager.instance.PlaySound("Character", "걷기");
                 Debug.Log("노드로 플레이어 이동 시작: " + this.GetComponent<RectTransform>().anchoredPosition);
                 mapPlayerMove.MoveMapMark(this.GetComponent<RectTransform>().anchoredPosition);
             }

@@ -243,7 +243,7 @@ public class FightManager : MonoBehaviour
 
             yield return null;
         }
-        if (player.dmgList.GetAllDamage() != 0)
+        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageList.Count > 1)
         {
             AudioManager.instance.PlaySound("Character", player.attackSound);
         }
@@ -300,7 +300,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
-            if (monster.dmgList.GetAllDamage() != 0)
+            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageList.Count > 1)
             {
                 AudioManager.instance.PlaySound("Character", monster.attackSound);
             }

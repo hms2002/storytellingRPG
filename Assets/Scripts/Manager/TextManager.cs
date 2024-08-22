@@ -57,7 +57,23 @@ public class TextManager : MonoBehaviour
 
     public void KeywordTextPlay(Actor actor)
     {
-        Text.DOText($"{actor.Name}은 _____ _____을 사용했다.", 1f);
+        char lastString = actor.Name[actor.Name.Length - 1];
+        if (lastString >= 0xAC00 && lastString <= 0xD7A3)
+        {
+            // 한글의 유니코드에서 종성 인덱스 추출
+            int unicodeIndex = lastString - 0xAC00;
+            int jongseongIndex = unicodeIndex % 28;
+
+            // 종성이 있는지 확인
+            if (jongseongIndex == 0)
+            {
+                Text.DOText($"{actor.Name}는 _____ _____을 사용했다.", 1f);
+            }
+            else
+            {
+                Text.DOText($"{actor.Name}은 _____ _____을 사용했다.", 1f);
+            }
+        }
         Text.alignment = TextAlignmentOptions.Top;
     }
 
@@ -66,23 +82,100 @@ public class TextManager : MonoBehaviour
         string sup = actor.keywordSup.keywordName;
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
-        Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
-        /*Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";*/
-        Text.alignment = TextAlignmentOptions.Top;
+        char lastString = actor.Name[actor.Name.Length - 1];
+        if (lastString >= 0xAC00 && lastString <= 0xD7A3)
+        {
+            // 한글의 유니코드에서 종성 인덱스 추출
+            int unicodeIndex = lastString - 0xAC00;
+            int jongseongIndex = unicodeIndex % 28;
+
+            // 종성이 있는지 확인
+            if (jongseongIndex == 0)
+            {
+                Text.DOText($"{actor.Name}는 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
+            }
+            else
+            {
+                Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
+            }
+        }
+            /*Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";*/
+            Text.alignment = TextAlignmentOptions.Top;
     }
 
     public void MainKeywordTextPlay(Actor actor,float textTime)
     {
+        /* string sup = actor.keywordSup.keywordName;
+         Color supColor = actor.keywordSup.GetKeywordColor();
+         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
+         string main = actor.keywordMain.keywordName;
+         Color mainColor = actor.keywordMain.GetKeywordColor();
+         string mainColorHex = ColorUtility.ToHtmlStringRGB(mainColor);
+         char lastString = actor.Name[actor.Name.Length - 1];
+         if (lastString >= 0xAC00 && lastString <= 0xD7A3)
+         {
+             // 한글의 유니코드에서 종성 인덱스 추출
+             int unicodeIndex = lastString - 0xAC00;
+             int jongseongIndex = unicodeIndex % 28;
+
+             // 종성이 있는지 확인
+             if (jongseongIndex == 0)
+             {
+                 Text.DOText($"{actor.Name}는 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
+             }
+             else
+             {
+                 Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
+             }
+         }
+                 *//*        Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";*//*
+         Text.alignment = TextAlignmentOptions.Top;
+         if(textTime < 1f)
+         {
+             Text.alignment = TextAlignmentOptions.Midline;
+         }*/
         string sup = actor.keywordSup.keywordName;
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
         string main = actor.keywordMain.keywordName;
         Color mainColor = actor.keywordMain.GetKeywordColor();
         string mainColorHex = ColorUtility.ToHtmlStringRGB(mainColor);
-        Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
-/*        Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";*/
+        char lastNameChar = actor.Name[actor.Name.Length - 1];
+        char lastMainChar = main[main.Length - 1];
+
+        string subjectPostfix = "은";
+        string objectPostfix = "을";
+
+        // 한글의 유니코드 범위에서 종성 확인
+        if (lastNameChar >= 0xAC00 && lastNameChar <= 0xD7A3)
+        {
+            int nameUnicodeIndex = lastNameChar - 0xAC00;
+            int nameJongseongIndex = nameUnicodeIndex % 28;
+
+            // 종성이 없으면 "는", 있으면 "은"
+            if (nameJongseongIndex == 0)
+            {
+                subjectPostfix = "는";
+            }
+        }
+
+        // main의 마지막 글자에 따라 "을/를" 결정
+        if (lastMainChar >= 0xAC00 && lastMainChar <= 0xD7A3)
+        {
+            int mainUnicodeIndex = lastMainChar - 0xAC00;
+            int mainJongseongIndex = mainUnicodeIndex % 28;
+
+            // 종성이 없으면 "를", 있으면 "을"
+            if (mainJongseongIndex == 0)
+            {
+                objectPostfix = "를";
+            }
+        }
+
+        Text.DOText($"{actor.Name}{subjectPostfix} <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>{objectPostfix} 사용했다.", textTime);
+
         Text.alignment = TextAlignmentOptions.Top;
-        if(textTime < 1f)
+        if (textTime < 1f)
         {
             Text.alignment = TextAlignmentOptions.Midline;
         }

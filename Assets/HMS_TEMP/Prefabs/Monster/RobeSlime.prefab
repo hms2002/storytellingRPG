@@ -160,7 +160,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.29, y: 0}
-    oldSize: {x: 2.905, y: 2.5}
+    oldSize: {x: 2.905, y: 2.165}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   stateUIController: {fileID: 485498546829273800}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 90
+  _hp: 0
+  _Name: "\uB85C\uBE0C \uC2AC\uB77C\uC784"
   beforeDamage: 0
   _gold: 0
   isBossMonster: 0

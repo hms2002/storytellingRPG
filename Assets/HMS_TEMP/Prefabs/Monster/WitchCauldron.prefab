@@ -213,6 +213,8 @@ MonoBehaviour:
   stateUIController: {fileID: 1825483196356793806}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
+  _hp: 0
+  _Name: "\uB9C8\uB140\uC758 \uAC00\uB9C8\uC1A5"
   beforeDamage: 0
   _gold: 0
   isBossMonster: 0
