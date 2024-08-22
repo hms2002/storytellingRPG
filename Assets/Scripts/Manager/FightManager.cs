@@ -142,10 +142,22 @@ public class FightManager : MonoBehaviour
     private void RePositionMonsters()
     {
         float pos = 3.87f;
-        foreach (Actor monster in monsterList)
+        float pos2 = 5f;
+        if(monsterList.Count > 1)
         {
-            monster.transform.position = new Vector3(pos, -1.17f, 0);
-            pos -= 2;
+            foreach (Actor monster in monsterList)
+            {
+                monster.transform.position = new Vector3(pos2, -1.17f, 0);
+                pos2 -= 2.2f;
+            }
+        }
+        else
+        {
+            foreach (Actor monster in monsterList)
+            {
+                monster.transform.position = new Vector3(pos, -1.17f, 0);
+                pos -= 2;
+            }
         }
     }
 
