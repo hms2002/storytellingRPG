@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 /// <summary>
@@ -7,15 +8,29 @@ using UnityEngine;
 /// </summary>
 public class PlayerRelic : MonoBehaviour
 {
-    private Actor player;
+    public static PlayerRelic instance;
 
-    private List<GameObject> relics = new List<GameObject>();
+    private Actor player;       // 플레이어의 Actor 컴포넌트
+
+    [SerializeField] private List<GameObject> relics = new List<GameObject>();
 
     [Header("Player 유물 캔버스")]
-    [SerializeField] private GameObject playerRelicCanvas;
+    [SerializeField] private Transform playerRelicCanvas;
+
 
     /*==================================================================================================================================*/
 
+
+    private void Awake()
+    {
+        // 싱글톤 인스턴스 설정
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        instance = this;
+    }
 
     private void Start()
     {
@@ -30,8 +45,18 @@ public class PlayerRelic : MonoBehaviour
     {
         if (relic == null) return;
 
+        // relic 프리팹이 이미 인스턴스화되어 있다면
+        if (GameManager.instance.IsInstantiated(relic))
+        {
+            relics.Add(relic);
+
+            relics[relics.Count -1].transform.SetParent(playerRelicCanvas, false);
+
+            return;
+        }
+
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
-        relics.Add(Instantiate(relic, playerRelicCanvas.transform));
+        relics.Add(Instantiate(relic, playerRelicCanvas));
     }
 
     /// <summary>
