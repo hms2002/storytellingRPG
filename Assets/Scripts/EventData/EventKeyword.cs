@@ -9,7 +9,7 @@ public class EventKeyword : MonoBehaviour
     [Header("이벤트에서 추가될 키워드")]
     [SerializeField]
     private Keyword addKeyword;
-    [Header("키워드 추가 이벤트인지")]
+    [Header("키워드 정보를 확인할 수 있는 이벤트인지")]
     [SerializeField]
     private bool isKeywordAddEvent = false;
     [SerializeField] public TextMeshProUGUI nameText;

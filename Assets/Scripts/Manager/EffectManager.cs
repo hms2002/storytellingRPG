@@ -16,7 +16,10 @@ public class EffectManager : MonoBehaviour
         Attack,
         ItemUse,
         Shield,
-        Combo
+        Combo,
+        Debuff,
+        Buff,
+        None
     }
 
     [System.Serializable]
@@ -52,6 +55,10 @@ public class EffectManager : MonoBehaviour
     // 이펙트를 생성하는 메서드
     public void PlayEffect(EffectType effectType, Actor target)
     {
+        if(effectType == EffectType.None)
+        {
+            return;
+        }
         Effect effect = effects.Find(e => e.type == effectType);
         if (effect == null)
         {
@@ -61,14 +68,41 @@ public class EffectManager : MonoBehaviour
 
         GameObject effectInstance;
 
-        if (effectType == EffectType.Combo)
+        SpriteRenderer spriteRenderer = target.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
         {
-            effectInstance = Instantiate(effect.prefab, target.transform.position, Quaternion.identity, target.transform);
+            Vector3 spriteCenter = spriteRenderer.bounds.center;
+            effectInstance = Instantiate(effect.prefab, spriteCenter, Quaternion.identity, target.transform);
         }
         else
         {
+            // SpriteRenderer가 없으면 기본적으로 target의 위치를 사용
             effectInstance = Instantiate(effect.prefab, target.transform.position, Quaternion.identity, target.transform);
         }
+
+        if (effect.isTemporary)
+        {
+            float duration = GetEffectDuration(effectInstance);
+            Destroy(effectInstance, duration);
+        }
+    }
+
+    public void PlayEffect(EffectType effectType)
+    {
+        if (effectType == EffectType.None)
+        {
+            return;
+        }
+        Effect effect = effects.Find(e => e.type == effectType);
+        if (effect == null)
+        {
+            Debug.LogWarning($"Effect of type {effectType} not found");
+            return;
+        }
+
+        GameObject effectInstance;
+
+        effectInstance = Instantiate(effect.prefab, gameObject.transform.position, Quaternion.identity, gameObject.transform);
 
         if (effect.isTemporary)
         {

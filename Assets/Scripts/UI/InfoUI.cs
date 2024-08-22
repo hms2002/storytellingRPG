@@ -46,9 +46,12 @@ public class InfoUI : MonoBehaviour
         InitializeTipObjects(content);
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
-        string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>" + "  " + $"<color=#BF00FF>{tension}</color>\n\n" + // 보라색 텍스트
-                          $"<color=#7F6247>{content}";
-
+        /*        string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>" + "  " + $"<color=#BF00FF>{tension}</color>\n\n" + // 보라색 텍스트
+                                  $"<color=#7F6247>{content}";*/
+        string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>" +
+                          "  " + $"<color=#BF00FF>{tension}</color>\n" +
+                          $"<size=50%>\n</size>" + // 줄바꿈 부분의 글씨 크기를 50%로 줄임
+                          $"<color=#7F6247>{content}</color>";
         tipText.text = richText;
 
         // 포지셔닝
@@ -61,7 +64,7 @@ public class InfoUI : MonoBehaviour
         InitializeTipObjects(content);
 
         // 타이틀, 텐션, 콘텐츠 텍스트 설정 (리치 텍스트 사용)
-        string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>\n\n" + // 보라색 텍스트
+        string richText = $"<color=#{ColorUtility.ToHtmlStringRGB(titleColor)}>{title}</color>\n" + $"<size=50%>\n</size>" +// 보라색 텍스트
                           $"<color=#7F6247>{content}";
 
         tipText.text = richText;

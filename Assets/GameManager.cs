@@ -13,11 +13,15 @@ public enum GameState
     Map,
     Battle,
     EndBattle,
+    BossBattle,
     KeywordSetting,
     Shop,
     Rest,
     Treasure,
-    Event
+    Event,
+    Title,
+    Ending,
+    GameOver
 }
 
 

@@ -130,6 +130,7 @@ public class Actor : MonoBehaviour
         get { return _attackSound; }
         set { _attackSound = value; }
     }
+
     public int tension
     {
         get { return _tension; }
@@ -219,7 +220,6 @@ public class Actor : MonoBehaviour
         }
     }
 
-
     public bool attackCount
     {
         get { return _attackCount; }
@@ -258,7 +258,6 @@ public class Actor : MonoBehaviour
 
         deck = GetComponent<Deck>();
         hand = GetComponent<Hand>();
-
         // 원본 덱 없으면 복사 X
         if (originalDeck != null)
         {
@@ -269,6 +268,7 @@ public class Actor : MonoBehaviour
         garbageField.InitDeck();
 
         charactorState.Init(stateUIController);
+        charactorState.actor = this;
 
         _hp = _MAX_HP;
         _protect = 0;
@@ -494,32 +494,38 @@ public class Actor : MonoBehaviour
     {
         Color mainColor = keywordMain.GetKeywordColor();
         Color supColor = keywordSup.GetKeywordColor();
-
-        if (keywordMain.effectTarget == Keyword.EffectTarget.target)
+        if (!keywordMain.isIrregularCombo)
         {
-            if (mainColor == Color.red)
-            {   
-                if (damage != 0)
+            if (keywordMain.effectTarget == Keyword.EffectTarget.target)
+            {
+                if (mainColor == Color.red)
                 {
-                    if(repeatStack > 1)
+                    if (damage != 0)
                     {
-                        /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
-                        EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
-                    }
-                    else
-                    {
-                        EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                        if (repeatStack > 1)
+                        {
+                            /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, repeatStack);
+                        }
+                        else
+                        {
+                            EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                        }
                     }
                 }
+                else
+                {
+                    if(mainColor == Color.blue)
+                    {
+                        AudioManager.instance.PlaySound("Character", "보호");
+                    }
+                    EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                }
             }
-            else
+            if (keywordMain.effectTarget == Keyword.EffectTarget.caster)
             {
-                EffectManager.instance.PlayEffect(keywordMain.effectType, target);
+                EffectManager.instance.PlayEffect(keywordMain.effectType, this);
             }
-        }
-        if (keywordMain.effectTarget == Keyword.EffectTarget.caster)
-        {
-            EffectManager.instance.PlayEffect(keywordMain.effectType, this);
         }
 
         if (keywordSup.effectTarget == Keyword.EffectTarget.target)
@@ -544,6 +550,10 @@ public class Actor : MonoBehaviour
             }
             else
             {
+                if (mainColor == Color.blue)
+                {
+                    AudioManager.instance.PlaySound("Character", "보호");
+                }
                 EffectManager.instance.PlayEffect(keywordSup.effectType, target);
             }
         }

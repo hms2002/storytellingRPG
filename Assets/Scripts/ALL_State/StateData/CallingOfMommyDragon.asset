@@ -15,13 +15,15 @@ MonoBehaviour:
   type: 3
   reductionType: 0
   reductionTiming: 0
-  stateProperty: 2
+  stateProperty: 0
+  debuffEffect: 0
   stateImage: {fileID: 21300000, guid: 1f0f5a64a1e85cf4db78adfa96a3c296, type: 3}
   soundName: 
   stateName: "\uC5B4\uBBF8 \uC6A9\uC758 \uBD80\uB984"
   MAX_STACK: 0
   damagePerStack: 0
   tentionPerStack: 0
+  needStackToEffect: 1
   stateExplanation: "\uC5B4\uBBF8 \uC6A9\uC758 \uBD80\uB984\n\uC6A9\uC758 \uACF5\uACA9
     \uC2DC\uC791 \uC9C1\uC804\uC5D0 1\uC529 \uAC10\uC18C\n0\uC774 \uB418\uBA74 \uC804\uD22C\uAC00
     \uC885\uB8CC\uB41C\uB2E4."

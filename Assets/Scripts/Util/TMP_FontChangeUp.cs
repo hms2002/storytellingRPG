@@ -8,7 +8,7 @@ namespace Modules.Util
 {
     public class TMP_FontChangeUp : MonoBehaviour
     {
-        public const string PATH_FONT_TEXTMESHPRO = "";
+        public const string PATH_FONT_TEXTMESHPRO = "Assets/TextMesh Pro/Resources/Fonts & Materials/JunnamYuna OTF Regular SDF.asset";
         [MenuItem("CustomMenu/Text/ChangeAllTMPFont(텍스트 폰트를 변경함)")]
         public static void ChangeAllTMPFont()
         {

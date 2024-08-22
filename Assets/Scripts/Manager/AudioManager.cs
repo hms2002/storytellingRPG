@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private List<AudioSource> audioSourcePool;
     private Dictionary<string, List<AudioClip>> soundGroups;
+    private AudioSource bgmSource;
 
     private void Awake()
     {
@@ -16,12 +17,14 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             LoadSoundGroups();
             InitializeAudioSourcePool();
+            InitializeBGMSource();
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
     private void InitializeAudioSourcePool()
     {
         audioSourcePool = new List<AudioSource>();
@@ -37,6 +40,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void InitializeBGMSource()
+    {
+        GameObject bgmSourceObj = new GameObject("BGMSource");
+        bgmSourceObj.transform.SetParent(transform);
+        bgmSource = bgmSourceObj.AddComponent<AudioSource>();
+        bgmSource.loop = true; // BGM은 반복 재생
+        bgmSource.spatialBlend = 0.0f; // 2D 사운드로 설정
+    }
+    
     private void LoadSoundGroups()
     {
         soundGroups = new Dictionary<string, List<AudioClip>>();
@@ -46,6 +58,7 @@ public class AudioManager : MonoBehaviour
         soundGroups["Book"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Book"));
         soundGroups["Debuff"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Debuff"));
         soundGroups["Character"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Character"));
+        soundGroups["BGM"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/BGM"));
     }
 
     public void PlaySound(string group, string clipName)
@@ -60,6 +73,77 @@ public class AudioManager : MonoBehaviour
                 audioSource.Play();
                 StartCoroutine(ReturnAfterPlaying(audioSource, clip.length));
             }
+        }
+    }
+
+    public void PlayBGM(string clipName)
+    {
+        if (soundGroups.TryGetValue("BGM", out List<AudioClip> clips))
+        {
+            AudioClip clip = clips.Find(c => c.name == clipName);
+            if (clip != null && bgmSource.clip != clip)
+            {
+                bgmSource.clip = clip;
+                bgmSource.Play();
+            }
+        }
+    }
+
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+        bgmSource.clip = null;
+    }
+
+    private void UpdateBGM()
+    {
+        switch (GameManager.instance.gameState)
+        {
+            case GameState.Title:
+                PlayBGM("타이틀화면");
+                break;
+            case GameState.Map:
+                if(StageManager.instance.nowStageState == StageState.Forest)
+                {
+                    PlayBGM("숲");
+                }
+                if (StageManager.instance.nowStageState == StageState.Cave)
+                {
+                    PlayBGM("동굴");
+                }
+                if (StageManager.instance.nowStageState == StageState.Sea)
+                {
+                    PlayBGM("바다");
+                }
+                if (StageManager.instance.nowStageState == StageState.MagicTower)
+                {
+                    PlayBGM("마탑");
+                }
+                break;
+            case GameState.GameOver:
+                PlayBGM("게임오버");
+                break;
+            case GameState.BossBattle:
+                if (StageManager.instance.nowStageState == StageState.Forest)
+                {
+                    PlayBGM("숲보스");
+                }
+                if (StageManager.instance.nowStageState == StageState.Cave)
+                {
+                    PlayBGM("동굴보스");
+                }
+                if (StageManager.instance.nowStageState == StageState.Sea)
+                {
+                    PlayBGM("바다보스");
+                }
+                if (StageManager.instance.nowStageState == StageState.MagicTower)
+                {
+                    PlayBGM("마탑보스");
+                }
+                break;
+            case GameState.Ending:
+                PlayBGM("엔딩");
+                break;
         }
     }
 
@@ -82,6 +166,7 @@ public class AudioManager : MonoBehaviour
         audioSourcePool.Add(newAudioSource);
         return newAudioSource;
     }
+
     private void ReturnAudioSource(AudioSource audioSource)
     {
         audioSource.clip = null;
