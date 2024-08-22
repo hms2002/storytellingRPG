@@ -12,7 +12,7 @@ public class ActorStateUIControler : MonoBehaviour
     GameObject[] stateUIObjects = new GameObject[(int)StateType.Size];
     public GameObject protectUIObject;
     public GameObject hpUI;
-    public Text hpText;
+    public TextMeshProUGUI hpText;
 
     public void UpdateUI(State state)
     {

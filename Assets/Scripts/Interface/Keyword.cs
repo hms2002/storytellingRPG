@@ -49,6 +49,11 @@ public class Keyword : MonoBehaviour
 
     [Space(10.0f)]
     [SerializeField] private bool   _isOneTimeUse = false;
+
+    [Space(10.0f)]
+    [Header("불규칙적인 연타키워드일 때")]
+    [SerializeField] private bool _isIrregularCombo = false;
+
     protected Color keywordColor;
 
     [Header("키워드 특성별 색")]
@@ -144,6 +149,7 @@ public class Keyword : MonoBehaviour
     }
 
     public bool isPlayerKeyword { get => _isPlayerKeyword; set => _isPlayerKeyword = value; }
+    public bool isIrregularCombo { get => _isIrregularCombo; set => _isIrregularCombo = value; }
 
     #endregion
     public void Start()
@@ -188,6 +194,10 @@ public class Keyword : MonoBehaviour
             effectTarget = EffectTarget.caster;
             effectType = EffectManager.EffectType.Shield;
         }
+        if(keywordColor == Y)
+        {
+            effectType = EffectManager.EffectType.None;
+        }
         if(descriptionText)
         {
             descriptionText.text = FormatDescription(keywordDescription);
@@ -204,7 +214,14 @@ public class Keyword : MonoBehaviour
 
     public void PlayClickSound()
     {
-        AudioManager.instance.PlaySound("Keyword","키워드_잡기");
+        if(buttonType == ButtonType.Purchase)
+        {
+            AudioManager.instance.PlaySound("Shop", "상점키워드");
+        }
+        else
+        {
+            AudioManager.instance.PlaySound("Keyword", "키워드_잡기");
+        }
     }
 
     public Color GetKeywordColor() { return keywordColor; }

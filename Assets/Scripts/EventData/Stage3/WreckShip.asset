@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
+  m_Name: WreckShip
+  m_EditorClassIdentifier: 
+  roomImage: {fileID: 21300000, guid: 4321fa5c056b1fc419ed4f2167994db7, type: 3}
+  nextImage1: {fileID: 0}
+  nextImage2: {fileID: 0}
+  nextImage3: {fileID: 0}
+  roomContents: "\uB2F9\uC2E0\uC740 \uD56D\uD574\uB97C \uD558\uB358 \uC911 \uB09C\uD30C\uC120\uC744
+    \uBC1C\uACAC\uD569\uB2C8\uB2E4.\n\uB09C\uD30C\uC120\uC5D0 \uB2E4\uAC00\uAC00\uC790,
+    \uC5EC\uB7EC\uAC00\uC9C0 \uBCF4\uBB3C\uB4E4\uC774 \uBCF4\uC785\uB2C8\uB2E4.\n\uB2F9\uC2E0\uC740
+    \uBCF4\uBB3C\uB4E4 \uC911 \uD558\uB098\uB97C \uAC00\uC838\uAC00\uAE30\uB85C \uD569\uB2C8\uB2E4."
+  eventKeyword:
+  - {fileID: 7579075665694996604, guid: 2c7d4c9b22f4d7c40a76c929df5e93a5, type: 3}
+  - {fileID: 7579075665694996604, guid: fd4d8ed4dd09b2f4f8659d7f188263bd, type: 3}
+  - {fileID: 7579075665694996604, guid: b754a7b7aa0589d4fa47937305972c0b, type: 3}
+  roomContentsAfter: "\uB9CE\uC740 \uACE8\uB4DC\uB97C \uC5BB\uC5C8\uB2E4."
+  roomContentsAfter2: "\uACE0\uB300\uC758 \uC720\uBB3C\uC778 \uBC14\uB2E4\uC758 \uC2EC\uC7A5\uC744
+    \uC5BB\uC5C8\uB2E4."
+  roomContentsAfter3: "\uB9C8\uB825\uC774 \uBAB8 \uC548\uC73C\uB85C \uC2A4\uBA70\uB4DC\uB294
+    \uB290\uB08C\uC774 \uB4E0\uB2E4."

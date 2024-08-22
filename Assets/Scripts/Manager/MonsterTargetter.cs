@@ -15,6 +15,7 @@ public class MonsterTargetter : MonoBehaviour
             targetUIObj.position = _target.transform.position;
         }
     }
+
     const int MaxDistance = 10;
     LayerMask layerMask;
 

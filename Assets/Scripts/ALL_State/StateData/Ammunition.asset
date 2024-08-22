@@ -24,5 +24,5 @@ MonoBehaviour:
   damagePerStack: 0
   tentionPerStack: 0
   needStackToEffect: 0
-  stateExplanation: "\uD0D5\uD0D5\uD6C4\uB8E8\uD6C4\uB8E8"
+  stateExplanation: 
   effectByTurn: 0

@@ -16,5 +16,4 @@ public class StateUIDatabase : MonoBehaviour
             Destroy(this);
         stateUIDB = this;
     }
-
 }
