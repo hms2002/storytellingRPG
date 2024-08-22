@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public IReadOnlyList<GameObject> allSupKeywordsForPlayer => _allSupKeywordsForPlayer;
     public IReadOnlyList<GameObject> allMainKeywordsForPlayer => _allMainKeywordsForPlayer;
 
-    private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
+    public GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     private GameState beforeState;
     public GameState gameState 
     {  get => _gameState;
