@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrasureDragon : Monster
 {
+    public GameObject specialKeywordReward;
+
     private int _trasureDamage = 0;
 
 
@@ -70,5 +72,9 @@ public class TrasureDragon : Monster
         else
             DamagedOther(totalDamage, attacker);
     }
-
+    public override void DestroySelf()
+    {
+        RewardManager.instance.AddSpecialReward(specialKeywordReward);
+        base.DestroySelf();
+    }
 }

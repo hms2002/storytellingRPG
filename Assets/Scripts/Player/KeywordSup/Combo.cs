@@ -14,7 +14,7 @@ public class Combo : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.repeatStack = buffStack;
+        caster.repeatStack = buffStack + 1;
     }
 
     public override void Check(KeywordMain _keywordMain) { }

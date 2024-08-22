@@ -144,6 +144,7 @@ MonoBehaviour:
   beforeDamage: 0
   _gold: 0
   isBossMonster: 0
+  specialKeywordReward: {fileID: 7579075665694996604, guid: 8d638f6293ad84a4a84609a2e28ade64, type: 3}
 --- !u!61 &8998466684965950549
 BoxCollider2D:
   m_ObjectHideFlags: 0

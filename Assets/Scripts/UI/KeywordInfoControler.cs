@@ -15,17 +15,6 @@ public class KeywordInfoControler : MonoBehaviour, IPointerEnterHandler, IPointe
         eventKeyword = GetComponent<EventKeyword>();
     }
 
-/*    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (onDestroying) return;
-        info.SetActive(true);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (onDestroying) return;
-        info.SetActive(false);
-    }*/
     
     private void OnDestroy()
     {

@@ -70,7 +70,10 @@ public class StageManager : MonoBehaviour
             switch (nowStageState)
             {
                 case StageState.Forest:
-                    nowStageState = StageState.Cave;
+                    //nowStageState = StageState.Cave;
+                    nowStageState = StageState.Ending;
+                    GameManager.instance.LoadScene(2);
+                    return;
                     break;
                 case StageState.Cave:
                     nowStageState = StageState.Sea;

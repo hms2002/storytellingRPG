@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 8881439983349813415}
   m_Layer: 6
   m_Name: ApocalypseSorcerer
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

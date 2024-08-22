@@ -35,12 +35,13 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
+        InfoManager.instance.ShowTipUI(relicData.RelicName, Color.black, relicData.RelicDescription, transform);
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        InfoManager.instance.HideTipUI();
     }
 
     public void OnPointerClick(PointerEventData eventData)

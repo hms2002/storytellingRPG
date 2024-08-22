@@ -282,19 +282,21 @@ public class GameManager : MonoBehaviour
     {
         // 승리 UI
         // 이후 보상 UI
-        rewardManager.ShowFightRewards_Keyword();
         switch(monsterType)
         {
             case Map.NodeType.BossNode:
+                rewardManager.dropRelic = true;
                 killCnt_bossMonster++;
                 break;
             case Map.NodeType.EliteMonsterNode:
+                rewardManager.dropRelic = true;
                 killCnt_eleteMonster++;
                 break;
             case Map.NodeType.NomalMonsterNode:
                 killCnt_nomalMonster++;
                     break;
         }
+        rewardManager.ShowFightRewards_Keyword();
     }
 
     /// <summary>
@@ -360,7 +362,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int idx)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(idx);
     }
     /// <summary>
     /// 전달한 오브젝트의 인스턴스화 여부를 반환합니다.

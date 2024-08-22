@@ -13,7 +13,8 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         keyword,
         relic,
         gold,
-        none
+        none,
+        skip
     }
     public RewardType rewardType;
 
@@ -27,7 +28,6 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void OnEnable()
     {
-        info.SetActive(false);
     }
 
     public void SettingReward_Keyword(GameObject _keywordPrefab)
@@ -40,7 +40,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         // 텍스트 정보, 키워드 프리펩 정보 가져오기
         rewardNameText.text = temp.GetComponent<Keyword>().keywordName;// temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
-        rewardInfoStr = temp.GetComponent<Keyword>().keywordDescription;
+        rewardInfoStr = temp.GetComponent<Keyword>().FormatDescription(temp.GetComponent<Keyword>().keywordDescription);
         KeywordColor = temp.GetComponent<Keyword>().GetKeywordColor();
         // 메인 키워드면 AddThisToMainDeck()를 본인 버튼 이벤트에 추가
         if (temp.GetComponent<KeywordMain>() != null)
@@ -59,7 +59,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         rewardNameText.text = gold.ToString() + " G";
 
         button.onClick.AddListener(AddGoldToPlayer);
-
+        button.onClick.AddListener(() => Destroy(gameObject));
     }
 
     /// <summary>
@@ -76,6 +76,11 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         button.onClick.AddListener(() => playerRelic.AddRelic(dataObj));
         button.onClick.AddListener(() => RewardManager.instance.AddRelicToPlayer(data));
+        button.onClick.AddListener(() => Destroy(gameObject));
+    }
+    public void SettingSkipReward()
+    {
+        button.onClick.AddListener(() => ClickSkipReward());
     }
 
     public void AddThisToMainDeck()
@@ -93,6 +98,10 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void ClickNoReward()
     {
         RewardManager.instance.ClickNoReward();
+    }
+    public void ClickSkipReward()
+    {
+        RewardManager.instance.ClickSkipButton();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

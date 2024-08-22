@@ -27,6 +27,9 @@ public class RootTectacles : Monster
     {
         forestMaster = _forestMaster;
         charactorState.AddState(StateType.tentacleAttack,1);
+        MAX_HP = 50;
+        hp = MAX_HP;
+        gold = 0;
     }
 
     public override void Action(Actor target)

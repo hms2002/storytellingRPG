@@ -22,9 +22,12 @@ public class RewardManager : MonoBehaviour
     
     [SerializeField] GameObject rewardOffset_None;
 
+    [SerializeField] GameObject rewardOffset_Skip;
+
     delegate void AfterClickKeyword();
     AfterClickKeyword afterClickKeywordDel;
     AfterClickKeyword afterClickRelicDel;
+    AfterClickKeyword afterClickSkipReward;
 
     bool _isMonsterFlee = false;
     public bool isMonsterFlee
@@ -37,7 +40,7 @@ public class RewardManager : MonoBehaviour
     int rewardCnt = 0;
 
     [SerializeField] private bool _dropRelic = false;
-    bool dropRelic
+    public bool dropRelic
     {
         get { return _dropRelic; }
         set { _dropRelic = value; }
@@ -53,8 +56,11 @@ public class RewardManager : MonoBehaviour
     [SerializeField] List<GameObject> rewardKeywords;
     [Header("보물상자 키워드 프리펩 넣으면 보상으로 나오게 됨")]
     [SerializeField] List<GameObject> treasureRewardKeywords;
-    [Header("보물상자 유물 프리펩 넣으면 보상으로 나오게 됨")]
-    [SerializeField] List<GameObject> treasureRewardRelics;
+    GameObject speCialReward;
+    public void AddSpecialReward(GameObject keywordPrefab)
+    {
+        speCialReward = keywordPrefab;
+    }
     private void Awake()
     {
         if (instance != null) Destroy(this);
@@ -90,23 +96,38 @@ public class RewardManager : MonoBehaviour
             btnList[i].transform.DOMove(rewordPivot[i].position, 1);
         }
 
+        GameObject rewardSkip = Instantiate(rewardOffset_Skip, rewordPivot[1].transform.position - new Vector3(0, 165), Quaternion.identity, rewardCanvas.transform);
+        rewardSkip.GetComponent<Reward>().SettingSkipReward();
+        btnList.Add(rewardSkip);
+
         afterClickKeywordDel = () =>
         {
+            skipReward = false;
             StartCoroutine("PlayText_GetItem");
         };
         afterClickRelicDel = () =>
         {
+            skipReward = false;
+            rewardCanvas.SetActive(false);
+            StartCoroutine("PlayText_GetItem");
+        };
+        afterClickSkipReward = () =>
+        {
+            skipReward = true;
             rewardCanvas.SetActive(false);
             StartCoroutine("PlayText_GetItem");
         };
     }
     string getItemName;
+    bool skipReward = false;
     IEnumerator PlayText_GetItem()
     {
         rewardCanvas.SetActive(false);
         
         float time = 3f;
-        string line = "당신은 " + getItemName + " 을 손에 넣었다.";
+
+        string line = skipReward ? "당신은 보상을 받지 않았다." : "당신은 " + getItemName + " 을 손에 넣었다.";
+        skipReward = false;
         yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
 
         // 종료
@@ -128,22 +149,46 @@ public class RewardManager : MonoBehaviour
 
         // 보상 UI 띄우기
         rewardCanvas.SetActive(true);
+
+        int randIdx = Random.Range(0, rewardKeywords.Count - 2);
+
         // 보상 버튼 생성
         GameObject rewardInstance1 = Instantiate(rewardOffset_keyword, rewordPivot[0].transform.position, Quaternion.identity, rewardCanvas.transform);
         // 보상 데이터 채우기
-        rewardInstance1.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[0]);
+        if(speCialReward != null)
+        {
+            rewardInstance1.GetComponent<Reward>().SettingReward_Keyword(speCialReward);
+            speCialReward = null;
+        }
+        else
+        {
+            rewardInstance1.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[randIdx]);
+            rewardKeywords.Add(rewardKeywords[randIdx]);
+            rewardKeywords.Remove(rewardKeywords[randIdx]);
+        }
+
+        randIdx = Random.Range(0, rewardKeywords.Count - 2);
         // 반복
         GameObject rewardInstance2 = Instantiate(rewardOffset_keyword, rewordPivot[1].transform.position, Quaternion.identity, rewardCanvas.transform);
-        rewardInstance2.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[1]);
-        
+        rewardInstance2.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[randIdx]);
+        rewardKeywords.Add(rewardKeywords[randIdx]);
+        rewardKeywords.Remove(rewardKeywords[randIdx]);
+
         GameObject rewardInstance3 = Instantiate(rewardOffset_keyword, rewordPivot[2].transform.position, Quaternion.identity, rewardCanvas.transform);
-        rewardInstance3.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[2]);
-        
+        rewardInstance3.GetComponent<Reward>().SettingReward_Keyword(rewardKeywords[randIdx]);
+        rewardKeywords.Add(rewardKeywords[randIdx]);
+        rewardKeywords.Remove(rewardKeywords[randIdx]);
+
+        GameObject rewardSkip = Instantiate(rewardOffset_Skip, rewordPivot[1].transform.position - new Vector3(0, 165), Quaternion.identity, rewardCanvas.transform);
+        rewardSkip.GetComponent<Reward>().SettingSkipReward();
+
         btnList.Add(rewardInstance1);
         btnList.Add(rewardInstance2);
         btnList.Add(rewardInstance3);
+        btnList.Add(rewardSkip);
 
         afterClickKeywordDel = ShowFightRewards_Relic_Gold;
+        afterClickSkipReward = ShowFightRewards_Relic_Gold;
     }
     public void ShowFightRewards_Relic_Gold()
     {
@@ -156,10 +201,24 @@ public class RewardManager : MonoBehaviour
             rewardCnt++;
         if(rewardCnt == 0)
             ShowNoReward();
+        else
+        {
+            if (dropRelic) ShowFightRelic();
 
-        if (dropRelic) ShowFightRelic();
+            ShowFightGold();
+
+            GameObject rewardSkip = Instantiate(rewardOffset_Skip, rewordPivot[1].transform.position - new Vector3(0, 165), Quaternion.identity, rewardCanvas.transform);
+            rewardSkip.GetComponent<Reward>().SettingSkipReward();
+            
+            afterClickSkipReward = () => {
+                rewardCanvas.SetActive(false);
+                GameManager.instance.EndSelectReward();
+                foreach (GameObject g in btnList)
+                    Destroy(g);
+                btnList.Clear();
+            };
+        }
         
-        ShowFightGold();
     }
 
     private void ShowFightRelic()
@@ -179,10 +238,11 @@ public class RewardManager : MonoBehaviour
 
         btnList.Add(rewardInstance_relic);
     }
+
     private void ShowFightGold()
     {
         GameObject rewardInstance_gold
-            = Instantiate(rewardOffset_gold, rewordPivot[2].transform.position, Quaternion.identity, rewardCanvas.transform);
+            = Instantiate(rewardOffset_gold, dropRelic ? rewordPivot[2].transform.position : rewordPivot[1].transform.position, Quaternion.identity, rewardCanvas.transform);
         rewardInstance_gold.GetComponent<Reward>().SettingReward_Gold(rewardInstance_gold, rewardGold);
 
         btnList.Add(rewardInstance_gold);
@@ -229,9 +289,12 @@ public class RewardManager : MonoBehaviour
     }
     public void AddGoldToPlayer()
     {
+        if (_rewardGold > 0)
+            rewardCnt--;
+
         player.gold += rewardGold;
         rewardGold = 0;
-        rewardCnt--;
+
         if (rewardCnt <= 0)
         {
             rewardCanvas.SetActive(false);
@@ -245,12 +308,23 @@ public class RewardManager : MonoBehaviour
     {
         getItemName = data.RelicName;
 
+        //foreach (GameObject g in btnList)
+        //    Destroy(g);
+        //btnList.Clear();
+
+        if(afterClickRelicDel != null)
+            afterClickRelicDel();
+        afterClickRelicDel = null;
+    }
+    public void ClickSkipButton()
+    {
         foreach (GameObject g in btnList)
             Destroy(g);
         btnList.Clear();
 
-        afterClickRelicDel();
-        afterClickRelicDel = null;
+        if (afterClickSkipReward != null)
+            afterClickSkipReward();
+        afterClickSkipReward = null;
     }
 
     /// <summary>

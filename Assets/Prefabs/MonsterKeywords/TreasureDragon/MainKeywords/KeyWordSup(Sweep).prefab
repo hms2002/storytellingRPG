@@ -484,8 +484,8 @@ GameObject:
   - component: {fileID: 6390276021068583536}
   - component: {fileID: 323881766732009504}
   - component: {fileID: 1826213277865098437}
-  - component: {fileID: 2200484804556417572}
   - component: {fileID: 4368992656465421033}
+  - component: {fileID: 1670736359258534312}
   m_Layer: 5
   m_Name: KeyWordSup(Sweep)
   m_TagString: Untagged
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2200484804556417572}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KeywordMain, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -609,7 +609,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2200484804556417572
+--- !u!114 &4368992656465421033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,7 +618,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7914619055270898774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41551311f97908744828edf27c49a26f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1670736359258534312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914619055270898774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbfd90bdcd98064d834ff9c6560feed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
@@ -641,15 +653,5 @@ MonoBehaviour:
     \uBCF4\uBB3C\uC744 10 \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
---- !u!114 &4368992656465421033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7914619055270898774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxRange: 18
+  minRange: 15

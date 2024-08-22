@@ -651,8 +651,9 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "3 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uACF5\uD3EC\uB97C
-    1 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  keywordDescription: "\uB300\uC0C1\uC774 \uAC00\uC9C4 \uC911\uB3C5 \uC2A4\uD0DD
+    \uB2F9 damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uC911\uB3C5 \uC2A4\uD0DD\uC774
+    \uCD08\uAE30\uD654\uB429\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &1298368689448772767

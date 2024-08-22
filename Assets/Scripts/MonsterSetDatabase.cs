@@ -196,6 +196,8 @@ public class MonsterSetDatabase : MonoBehaviour
                     case Map.NodeType.BossNode:
                         int randomIdB = Random.Range(0, stage1_BossMonsterLists.Length);
                         selectedMonsterSet = stage1_BossMonsterLists[randomIdB];
+                        foreach (GameObject m in selectedMonsterSet)
+                            Debug.Log(m.name);
                         break;
                 }
 

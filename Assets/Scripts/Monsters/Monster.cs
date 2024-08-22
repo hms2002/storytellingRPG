@@ -83,7 +83,7 @@ public class Monster : Actor
         }
     }
 
-    public void DestroySelf()
+    public virtual void DestroySelf()
     {
         stateUIController.DestroySelf();
         charactorState.DestroySelf();

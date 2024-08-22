@@ -401,7 +401,7 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
-  _keywordName: 
+  _keywordName: "\uD750\uBB3C\uAC70\uB9AC\uB294"
   _keywordDamage: 0
   _keywordProtect: 0
   _keywordHeal: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "3 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4"
+  keywordDescription: "\uBCF4\uD638\uB97C protect \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &6342447335995684699

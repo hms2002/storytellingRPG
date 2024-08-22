@@ -75,7 +75,7 @@ public class PlayerRelic : MonoBehaviour
         foreach (GameObject relic in relics)
         {
             // 유물의 발동 타입이 일치한다면
-            if (relic.GetComponent<RelicData>().relicType == relicType)
+            if (relic.GetComponent<Relic>().relicData.relicType == relicType)
             {
                 // 유물 효과 발동
                 relic.GetComponent<Relic>().ApplyEffect(player, FightManager.fightManager.MonsterList);
