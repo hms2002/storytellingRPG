@@ -69,7 +69,7 @@ public class KeywordUIMovement : MonoBehaviour
 
     }
     float curTime = 0;
-    public const float MOVE_TIME = 0.5f;
+    public const float MOVE_TIME = 0.3f;
 
     Vector2 startSize = new Vector2(0, 0);
     Vector2 endSize = new Vector2(1f, 1f);

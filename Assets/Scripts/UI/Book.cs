@@ -94,6 +94,7 @@ public class Book : MonoBehaviour
         UIManager.instance.ActiveCombatFunctionAndUI(false);
         UIManager.instance.ActiveCombatKeywordUI(false);    
         UIManager.instance.ActiveEventUI(false);
+        UIManager.instance.ActiveIsland(false);
         /* 후에 추가될 UI들 이 아래로 SetActive(false) 추가 요망 */
 
         //BookPassL 애니메이션 재생
@@ -486,6 +487,10 @@ public class Book : MonoBehaviour
             // UI 활성화
             UIManager.instance.ActiveEventUI(true);
             EventManager.instance.ShowEvent(EventDatabase.eventDatas.rest);
+            if (StageManager.instance.nowStageState == StageState.Sea)
+        {
+            UIManager.instance.ActiveIsland(true);
+        }
         });
     }
 
@@ -537,6 +542,10 @@ public class Book : MonoBehaviour
             UIManager.instance.ActiveEventUI(true);
 
             EventManager.instance.ShowTreasure();
+            if(StageManager.instance.nowStageState == StageState.Sea)
+            {
+                UIManager.instance.ActiveIsland(true);
+            }
         });
 
     }

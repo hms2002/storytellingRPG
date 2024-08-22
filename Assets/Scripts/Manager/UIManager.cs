@@ -46,6 +46,9 @@ public class UIManager : MonoBehaviour
     [Header("이벤트 UI")]
     [SerializeField] private List<GameObject> EventUI;
 
+    [Header("섬")]
+    [SerializeField] private GameObject island;
+
     [Header("아이콘")]
     [SerializeField] private GameObject theEndIcon;                 //게임 오버 아이콘
 
@@ -86,7 +89,6 @@ public class UIManager : MonoBehaviour
                 damageTextArr[i].gameObject.SetActive(false);
             }
         }
-
     }
 
     /// <summary>
@@ -318,6 +320,12 @@ public class UIManager : MonoBehaviour
             RestButton[i].SetActive(enableorDisable);
         }
     }
+
+    public void ActiveIsland(bool enableorDisable)
+    {
+        island.SetActive(enableorDisable);
+    }
+
     //=====================================================
 
     public void NextStagePage(StageState stageState)
