@@ -13,6 +13,8 @@ public class EventDatabase : MonoBehaviour
     public List<EventData> stage3EventList;
     [Header("스테이지4의 이벤트 리스트")]
     public List<EventData> stage4EventList;
+    [Header("쉼 이벤트")]
+    public EventData rest;
 
     private void Awake()
     {

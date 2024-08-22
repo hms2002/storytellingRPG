@@ -334,6 +334,7 @@ public class FightManager : MonoBehaviour
         }
         if (monsterList.Count == 0)
         {
+            MonsterTargetter.monsterTargetter.TargetUIOff();
             return false;
         }
         else

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -12,9 +13,16 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [Header("효과 가이드")]
     [SerializeField] private GameObject InfoTextImage;
 
+    private void Awake()
+    {
+        RestManager.btnList.Add(GetComponent<Button>());
+    }
+
     //안정된 휴식
     public void StableHealing()
     {
+        if(player == null)
+            player = EventManager.instance.player;
         player.hp += 30;
         ClickOff();
     }
@@ -22,6 +30,8 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //효율적인 휴식
     public void EfficientHealing()
     {
+        if (player == null)
+            player = EventManager.instance.player;
         player.tension += 50;
 
         ClickOff();
@@ -30,6 +40,8 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     //조화로운 휴식
     public void HarmoniousHealing()
     {
+        if (player == null)
+            player = EventManager.instance.player;
         player.hp += 15;
         player.tension += 25;
 
@@ -38,7 +50,10 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void ClickOff()
     {
-        UIManager.instance.ActiveRestUI(false);
+        EventManager.instance.isSelected = true;
+        EventManager.instance.NextEvent(EventDatabase.eventDatas.rest);
+        KeywordUIMovement.instance.MoveSelectedEventKeyword(gameObject);
+        RestManager.allBtnOff();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
