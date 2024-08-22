@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 게임의 상태를 표기
@@ -53,6 +54,14 @@ public class GameManager : MonoBehaviour
     private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     public GameState gameState {  get => _gameState; set => _gameState = value; }
 
+    int killCnt_nomalMonster = 0;
+    int killCnt_eleteMonster = 0;
+    int killCnt_bossMonster = 0;
+    public int relicCnt = 0;
+    public int goldCnt = 0;
+    public int keywordCnt = 0;
+
+
     public int eventIndex = 0;
 
     /*==================================================================================================================================*/
@@ -69,7 +78,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        uiManager.ChangeCursorImage(CursorType.Nib);
+        if(uiManager !=null)
+            uiManager.ChangeCursorImage(CursorType.Nib);
     }
 
     private void Start()
@@ -77,9 +87,11 @@ public class GameManager : MonoBehaviour
         //EventDatabase.eventDatas.ShuffleList();
     }
 
+    Map.NodeType monsterType;
     //전투 돌입 (일반 몹, 보스 몹)
-    public void EnterFightZone()
+    public void EnterFightZone(Map.NodeType type)
     {
+        monsterType = type;
         Book.instance.EnterBattleField();
         DOVirtual.DelayedCall(2.0f, fightManager.FightStart);
     }
@@ -89,6 +101,18 @@ public class GameManager : MonoBehaviour
         // 승리 UI
         // 이후 보상 UI
         rewardManager.ShowFightRewards_Keyword();
+        switch(monsterType)
+        {
+            case Map.NodeType.BossNode:
+                killCnt_bossMonster++;
+                break;
+            case Map.NodeType.EliteMonsterNode:
+                killCnt_eleteMonster++;
+                break;
+            case Map.NodeType.NomalMonsterNode:
+                killCnt_nomalMonster++;
+                    break;
+        }
     }
 
     /// <summary>
@@ -136,8 +160,24 @@ public class GameManager : MonoBehaviour
         Book.instance.EnterTreasureField();
     }
 
+    public void PrintGameClearCredit()
+    {
+        RecordTextDatabase recordDatas = RecordTextDatabase.instance;
+        recordDatas.timeText.text                   = recordDatas.timeText.text + " " + Time.time / 60 + "분 " + Time.time % 60 + "초";
+        recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " + killCnt_nomalMonster.ToString();
+        recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " + killCnt_eleteMonster.ToString();
+        recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " + killCnt_bossMonster.ToString();
+        recordDatas.GetRelicCounting.text           = recordDatas.GetRelicCounting.text + " " + relicCnt.ToString();
+        recordDatas.GetGoldCounting.text            = recordDatas.GetGoldCounting.text + " " + goldCnt.ToString();
+        recordDatas.GetKeywordCounting.text         = recordDatas.GetKeywordCounting.text + " " + keywordCnt.ToString();
+    }
     internal void EndSelectReward()
     {
         ReturnMap();
+    }
+
+    public void LoadScene(int idx)
+    {
+        SceneManager.LoadScene(0);
     }
 }

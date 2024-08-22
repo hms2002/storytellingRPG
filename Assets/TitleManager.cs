@@ -8,7 +8,7 @@ public class TitleManager : MonoBehaviour
 {
     public void GameStart()
     {
-        SceneManager.LoadScene("/*해당 부분에 게임 시작 씬 적어줘*/");
+        SceneManager.LoadScene(1);
     }
 
     public void GameQuit()

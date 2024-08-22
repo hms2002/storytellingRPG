@@ -78,10 +78,12 @@ public class Actor : MonoBehaviour
 
     public void AddSupKeywordToOriginalDeck(GameObject keywordSup)
     {
+        GameManager.instance.keywordCnt++;
         originalDeck.AddSupKeywordOnDeck(keywordSup);
     }
     public void AddMainKeywordToOriginalDeck(GameObject keywordMain)
     {
+        GameManager.instance.keywordCnt++;
         originalDeck.AddMainKeywordOnDeck(keywordMain);
     }
 
@@ -177,6 +179,7 @@ public class Actor : MonoBehaviour
             if (_protect > value)
                 _lastProtectReductTerminal += _protect - value;
             _protect = value;
+            if (_protect < 0) _protect = 0;
             stateUIController.ProtectOn(_protect);
         }
     }
@@ -243,6 +246,10 @@ public class Actor : MonoBehaviour
         set
         {
             if (value < 0) value = 0;
+
+            if (_gold < value && gameObject.tag == "Player")
+                GameManager.instance.goldCnt += value - _gold;
+
             _gold = value;
         }
     }

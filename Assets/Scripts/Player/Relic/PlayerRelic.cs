@@ -32,7 +32,14 @@ public class PlayerRelic : MonoBehaviour
 
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
         relics.Add(Instantiate(relic, playerRelicCanvas.transform));
+        GameManager.instance.relicCnt++;
     }
+
+    public int GetRelicCnt()
+    {
+        return relics.Count;
+    }
+
 
     /// <summary>
     /// 전달받은 타입에 맞는 유물들을 찾아 효과를 적용시킵니다.

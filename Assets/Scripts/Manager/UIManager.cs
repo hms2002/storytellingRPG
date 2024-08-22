@@ -87,7 +87,6 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        DontDestroyOnLoad(this.gameObject);
     }
 
     /// <summary>

@@ -24,6 +24,7 @@ public class RewardManager : MonoBehaviour
 
     delegate void AfterClickKeyword();
     AfterClickKeyword afterClickKeywordDel;
+    AfterClickKeyword afterClickRelicDel;
 
     bool _isMonsterFlee = false;
     public bool isMonsterFlee
@@ -78,10 +79,8 @@ public class RewardManager : MonoBehaviour
         }
         for (int i = 0; i < relicCounts; i++)
         {
-            GameObject rewardInstance = Instantiate(rewardOffset_keyword, rewardCanvas.transform);
-            rewardInstance.GetComponent<Reward>().SettingReward_Keyword(treasureRewardKeywords[0]);
-            treasureRewardKeywords.Add(treasureRewardKeywords[0]);
-            treasureRewardKeywords.RemoveAt(0);
+            GameObject rewardInstance = Instantiate(rewardOffset_relic, rewardCanvas.transform);
+            rewardInstance.GetComponent<Reward>().SettingReward_Relic(RelicManager.instance.GetRandomRelic(), player.GetComponent<PlayerRelic>());
             btnList.Add(rewardInstance);
         }
 
@@ -93,6 +92,11 @@ public class RewardManager : MonoBehaviour
 
         afterClickKeywordDel = () =>
         {
+            StartCoroutine("PlayText_GetItem");
+        };
+        afterClickRelicDel = () =>
+        {
+            rewardCanvas.SetActive(false);
             StartCoroutine("PlayText_GetItem");
         };
     }
@@ -162,6 +166,17 @@ public class RewardManager : MonoBehaviour
     {
         GameObject rewardInstance_relic = MakeRelicButton();
 
+        afterClickRelicDel = () =>
+        {
+            dropRelic = false;
+            rewardCnt--;
+            if (rewardCnt == 0)
+            {
+                rewardCanvas.SetActive(false);
+                GameManager.instance.EndSelectReward();
+            }
+        };
+
         btnList.Add(rewardInstance_relic);
     }
     private void ShowFightGold()
@@ -192,6 +207,7 @@ public class RewardManager : MonoBehaviour
             Destroy(g);
         btnList.Clear();
         afterClickKeywordDel();
+        afterClickKeywordDel = null;
     }
 
     public void AddSupKeywordToDeck(GameObject _keywordSup)
@@ -201,11 +217,15 @@ public class RewardManager : MonoBehaviour
         Destroy(temp);
 
         player.AddSupKeywordToOriginalDeck(_keywordSup);
+        
         rewardCanvas.SetActive(false);
+        
         foreach (GameObject g in btnList)
             Destroy(g);
         btnList.Clear();
+
         afterClickKeywordDel();
+        afterClickKeywordDel = null;
     }
     public void AddGoldToPlayer()
     {
@@ -221,19 +241,16 @@ public class RewardManager : MonoBehaviour
             btnList.Clear();
         }
     }
-    public void AddRelicToPlayer()
+    public void AddRelicToPlayer(RelicData data)
     {
+        getItemName = data.RelicName;
 
-        dropRelic = false;
-        rewardCnt--;
-        if (rewardCnt == 0)
-        {
-            rewardCanvas.SetActive(false);
-            GameManager.instance.EndSelectReward();
-            foreach (GameObject g in btnList)
-                Destroy(g);
-            btnList.Clear();
-        }
+        foreach (GameObject g in btnList)
+            Destroy(g);
+        btnList.Clear();
+
+        afterClickRelicDel();
+        afterClickRelicDel = null;
     }
 
     /// <summary>

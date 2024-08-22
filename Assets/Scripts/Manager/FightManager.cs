@@ -100,8 +100,8 @@ public class FightManager : MonoBehaviour
         // 몬스터 가져오기
         monsterList = MonsterSetDatabase.monsterSetDatabase.GetSelectedSet();
         if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
-        MonsterTargetter.monsterTargetter.target = monsterList[0];
         RePositionMonsters();
+        MonsterTargetter.monsterTargetter.target = monsterList[0];
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
         foreach (Actor monster in monsterList)
