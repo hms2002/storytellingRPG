@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RestManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static List<Button> btnList = new List<Button>();
+    public static void allBtnOff()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach(Button b in  btnList)
+        {
+            b.enabled = false;
+        }
+        btnList.Clear();
     }
 }

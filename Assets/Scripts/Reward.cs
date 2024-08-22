@@ -23,6 +23,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public string rewardInfoStr;
     public Button button;
     public Image RelicImage;
+    Color KeywordColor;
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         // 텍스트 정보, 키워드 프리펩 정보 가져오기
         rewardNameText.text = temp.GetComponent<Keyword>().keywordName;// temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
         rewardInfoStr = temp.GetComponent<Keyword>().keywordDescription;
+        KeywordColor = temp.GetComponent<Keyword>().GetKeywordColor();
         // 메인 키워드면 AddThisToMainDeck()를 본인 버튼 이벤트에 추가
         if (temp.GetComponent<KeywordMain>() != null)
             button.onClick.AddListener(AddThisToMainDeck);
@@ -98,10 +100,10 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch(rewardType)
         {
             case RewardType.keyword:
-                InfoManager.instance.ShowTipUI(rewardNameText.text, Color.yellow, rewardInfoStr, transform);
+                InfoManager.instance.ShowTipUI(rewardNameText.text, KeywordColor, rewardInfoStr, transform);
                 break;
             case RewardType.relic:
-                InfoManager.instance.ShowTipUI(rewardNameText.text, Color.yellow, rewardInfoStr, transform);
+                InfoManager.instance.ShowTipUI(rewardNameText.text, Color.black, rewardInfoStr, transform);
                 break;
         }
     }

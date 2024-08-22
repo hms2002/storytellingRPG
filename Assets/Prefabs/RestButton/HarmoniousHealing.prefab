@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC870\uD654\uB85C\uC6B4 \uD734\uC2DD"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -372,7 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce400703c0631948993394fd213543b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfoTextImage: {fileID: 1735228574854979793}
+  player: {fileID: 0}
+  InfoTextImage: {fileID: 6310258120599126943}
 --- !u!1 &2168599756560862937
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8048332327557078571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -666,8 +667,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "HP +15, \uAE34\uC7A5\uB3C4 25+\n\uD68C\uBCF5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

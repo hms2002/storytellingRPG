@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC548\uC815\uB41C \uD734\uC2DD"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce400703c0631948993394fd213543b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   InfoTextImage: {fileID: 6310258120599126943}
 --- !u!1 &2168599756560862937
 GameObject:
@@ -613,7 +614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8048332327557078571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -702,7 +703,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "HP +30\n\uD68C\uBCF5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -766,7 +767,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7260925460841784094

@@ -476,13 +476,17 @@ public class Book : MonoBehaviour
     public void EnterRestField()
     {
         // gameState를 Battle로 전환
-        GameManager.instance.gameState = GameState.Battle;
+        GameManager.instance.gameState = GameState.Rest;
 
         // BookPassR 애니메이션 재생
         bookAnimator.SetTrigger("turnPageToRight");
 
         // 전투 기능 및 UI 활성화
-        DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveRestUI(true));
+        DOVirtual.DelayedCall(uIActiveDelay, () => {
+            // UI 활성화
+            UIManager.instance.ActiveEventUI(true);
+            EventManager.instance.ShowEvent(EventDatabase.eventDatas.rest);
+        });
     }
 
     public void EnterEventField()

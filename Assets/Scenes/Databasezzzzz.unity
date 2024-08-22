@@ -474,21 +474,21 @@ MonoBehaviour:
   oneTimeReinforce: {fileID: 11400000, guid: 6ac2c4c6300a61842b947171b2b25ec3, type: 2}
   oneTimeReduction: {fileID: 11400000, guid: 5d4ec62e73955b04da274777fa9c86d7, type: 2}
   nextTurnDamage: {fileID: 11400000, guid: 7f2a619ac01b0b84d99f3183a1cad9fd, type: 2}
-  tentacleAttack: {fileID: 0}
-  tentacleCondolidation: {fileID: 0}
-  faint: {fileID: 0}
-  secession: {fileID: 0}
-  evasion: {fileID: 0}
-  thief: {fileID: 0}
-  selfRepair: {fileID: 0}
-  coreOverload: {fileID: 0}
-  mana: {fileID: 0}
-  absorption: {fileID: 0}
-  blueSpore: {fileID: 0}
-  redSpore: {fileID: 0}
+  tentacleAttack: {fileID: 11400000, guid: da3d0a74a42dd504f89eae7eb2a9d061, type: 2}
+  tentacleCondolidation: {fileID: 11400000, guid: f03ddbf8b736d804fabd0d697df45c4b, type: 2}
+  faint: {fileID: 11400000, guid: f52c4eff12f877b40b33ade888ec6949, type: 2}
+  secession: {fileID: 11400000, guid: 11125423ffdc2cc46bfcdb21229b88c4, type: 2}
+  evasion: {fileID: 11400000, guid: ccafa3453750de14f9a381bb30454ec0, type: 2}
+  thief: {fileID: 11400000, guid: e6adee4eb1e0a7e4999f6d73dab86db6, type: 2}
+  selfRepair: {fileID: 11400000, guid: a2ad44f44fd7e9247a98e959a5986944, type: 2}
+  coreOverload: {fileID: 11400000, guid: da874da0c43667e40843b58212d050d6, type: 2}
+  mana: {fileID: 11400000, guid: 933ca9c5bea39314eb38fabe763c88cf, type: 2}
+  absorption: {fileID: 11400000, guid: f796fee026b73d143ac749a28dc60475, type: 2}
+  blueSpore: {fileID: 11400000, guid: 3419c32a1dd411946b4428634eef6c5c, type: 2}
+  redSpore: {fileID: 11400000, guid: 302dd896b1a25da40908bf45b5c0bd4f, type: 2}
   counterAttack: {fileID: 11400000, guid: 7d8e8627f924902438b7cea2d9cbbf43, type: 2}
   ammunition: {fileID: 11400000, guid: d45f8af074c18a04bbb5bd0435a2646b, type: 2}
-  end: {fileID: 0}
+  end: {fileID: 11400000, guid: f41fa17de36844b4497c7b5cfeceffc6, type: 2}
 --- !u!1 &47199195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,16 +2335,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf1cdfcd540e984d9a4fc75d2217a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fightManager: {fileID: 1367631705}
-  uiManager: {fileID: 1618870758}
-  textManager: {fileID: 912867321}
-  effectManager: {fileID: 961754231}
-  audioManager: {fileID: 2089065587}
-  tensionManager: {fileID: 239664178}
-  rewardManager: {fileID: 1256012564}
-  shopManager: {fileID: 436645517}
-  restManager: {fileID: 0}
-  eventManager: {fileID: 427916748}
+  _fightManager: {fileID: 0}
+  _uiManager: {fileID: 0}
+  _textManager: {fileID: 0}
+  _effectManager: {fileID: 0}
+  _audioManager: {fileID: 0}
+  _tensionManager: {fileID: 0}
+  _rewardManager: {fileID: 0}
+  _shopManager: {fileID: 0}
+  _restManager: {fileID: 0}
+  _eventManager: {fileID: 0}
   _allSupKeywordsForPlayer:
   - {fileID: 8593624912257865420, guid: e6cc9f2d76a5be1429ec2c20a680cdf4, type: 3}
   - {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 100/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
@@ -6825,17 +6825,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6658285197191529993, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
   m_PrefabInstance: {fileID: 1256012562}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1256012564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
-  m_PrefabInstance: {fileID: 1256012562}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf5ca615bfb9e8646ac7317b9b0a33d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1263533677
 GameObject:
   m_ObjectHideFlags: 0
@@ -7194,7 +7183,11 @@ PrefabInstance:
     - target: {fileID: 695059539465718281, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: playerRelicCanvas
       value: 
-      objectReference: {fileID: 591297470}
+      objectReference: {fileID: 591297474}
+    - target: {fileID: 4595920635642977702, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+      propertyPath: _Name
+      value: "\uB2F9\uC2E0"
+      objectReference: {fileID: 0}
     - target: {fileID: 4595920635642977702, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: stateUIController
       value: 
