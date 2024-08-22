@@ -92,12 +92,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ReturnMap()
     {
-        Book.instance.GetOutOfBattleField();
-
         if(FightManager.fightManager.isBossStage)
         {
             StageManager.instance.NextStage();
             FightManager.fightManager.isBossStage = false;
+        }
+        else
+        {
+            Book.instance.GetOutOfBattleField();
         }
     }
 
