@@ -20,6 +20,7 @@ public class RelicData : ScriptableObject
     [Header("유물 설명")]
     [Multiline(5)]
     [SerializeField] private string relicDescription;
+    public string RelicDescription { get => relicDescription; }
 
     [Header("유물 발동 타입")]
     public RelicType relicType;

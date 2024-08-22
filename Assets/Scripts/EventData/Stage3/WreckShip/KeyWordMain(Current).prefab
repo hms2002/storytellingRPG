@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6342447335995684699}
   - component: {fileID: 5971724702717520807}
   m_Layer: 5
-  m_Name: KeyWordSup(Current)
+  m_Name: KeyWordMain(Current)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

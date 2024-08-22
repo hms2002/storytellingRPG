@@ -124,19 +124,19 @@ namespace Map
                     {
                         case NodeType.NomalMonsterNode:
                             MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(StageManager.instance.nowStageState, NodeType.NomalMonsterNode);
-                            GameManager.instance.EnterFightZone();
+                            GameManager.instance.EnterFightZone(nodeBlueprint.nodeType);
                             UIManager.instance.ActiveMapUI(false);
                             break;
 
                         case NodeType.EliteMonsterNode:
                             MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(StageManager.instance.nowStageState, NodeType.EliteMonsterNode);
-                            GameManager.instance.EnterFightZone();
+                            GameManager.instance.EnterFightZone(nodeBlueprint.nodeType);
                             UIManager.instance.ActiveMapUI(false);
                             break;
 
                         case NodeType.BossNode:
                             MonsterSetDatabase.monsterSetDatabase.SettingSelectedSet(StageManager.instance.nowStageState, NodeType.BossNode);
-                            GameManager.instance.EnterFightZone();
+                            GameManager.instance.EnterFightZone(nodeBlueprint.nodeType);
                             UIManager.instance.ActiveMapUI(false);
                             break;
 

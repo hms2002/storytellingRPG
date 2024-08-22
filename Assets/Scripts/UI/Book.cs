@@ -152,7 +152,7 @@ public class Book : MonoBehaviour
         DestroyOriginalDeckInfo();
 
         // 페이지 넘기기 애니메이션
-        bookAnimator.SetTrigger("turnPageToLeft");
+        bookAnimator.SetTrigger("turnPageToRight");
 
         // 북마크 - 키워드 세팅 UI 활성화
         DOVirtual.DelayedCall(uIActiveDelay, () => UIManager.instance.ActiveKeywordSettingUI(true));

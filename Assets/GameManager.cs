@@ -2,8 +2,10 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 게임의 상태를 표기
@@ -33,16 +35,180 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("매니저")]
-    [SerializeField] private FightManager   fightManager;
-    [SerializeField] private UIManager      uiManager;
-    [SerializeField] private TextManager    textManager;
-    [SerializeField] private EffectManager  effectManager;
-    [SerializeField] private AudioManager   audioManager;
-    [SerializeField] private TensionManager tensionManager;
-    [SerializeField] private RewardManager  rewardManager;
-    [SerializeField] private ShopManager    shopManager;
-    [SerializeField] private RestManager    restManager;
-    [SerializeField] private EventManager   eventManager;
+    [SerializeField] private FightManager   _fightManager;
+    private FightManager fightManager 
+    { 
+        get 
+        { 
+            if(_fightManager == null)
+            {
+                _fightManager = FightManager.fightManager;
+                if (_fightManager == null)
+                {
+                    _fightManager = FindObjectOfType<FightManager>();
+                    if (_fightManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _fightManager;
+                
+        } 
+    }
+    [SerializeField] private UIManager      _uiManager;
+    private UIManager uiManager
+    {
+        get
+        {
+            if (_uiManager == null)
+            {
+                _uiManager = UIManager.instance;
+                if (_uiManager == null)
+                {
+                    _uiManager = FindObjectOfType<UIManager>();
+                    if (_uiManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _uiManager;
+        }
+    }
+    [SerializeField] private TextManager    _textManager;
+    private TextManager textManager
+    {
+        get
+        {
+            if (_textManager == null)
+            {
+                _textManager = TextManager.instance;
+                if (_textManager == null)
+                {
+                    _textManager = FindObjectOfType<TextManager>();
+                    if (_textManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _textManager;
+        }
+    }
+    [SerializeField] private EffectManager  _effectManager;
+    private EffectManager effectManager
+    {
+        get
+        {
+            if (_effectManager == null)
+            {
+                _effectManager = FindObjectOfType<EffectManager>();
+                if (_effectManager == null)
+                    Debug.LogWarning("매니저 없음. 참조하지 마..");
+            }
+            return _effectManager;
+        }
+    }
+    [SerializeField] private AudioManager   _audioManager;
+    private AudioManager audioManager
+    {
+        get
+        {
+            if (_audioManager == null)
+            {
+                _audioManager = AudioManager.instance;
+                if (_audioManager == null)
+                {
+                    _audioManager = FindObjectOfType<AudioManager>();
+                    if (_audioManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _audioManager;
+        }
+    }
+    [SerializeField] private TensionManager _tensionManager;
+    private TensionManager tensionManager
+    {
+        get
+        {
+            if (_tensionManager == null)
+            {
+                _tensionManager = TensionManager.tensionManagerUI;
+                if (_tensionManager == null)
+                {
+                    _tensionManager = FindObjectOfType<TensionManager>();
+                    if (_tensionManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _tensionManager;
+        }
+    }
+    [SerializeField] private RewardManager  _rewardManager;
+    private RewardManager rewardManager
+    {
+        get
+        {
+            if (_rewardManager == null)
+            {
+                _rewardManager = RewardManager.instance;
+                if (_rewardManager == null)
+                {
+                    _rewardManager = FindObjectOfType<RewardManager>();
+                    if (_rewardManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _rewardManager;
+        }
+    }
+    [SerializeField] private ShopManager    _shopManager;
+    private ShopManager shopManager
+    {
+        get
+        {
+            if (_shopManager == null)
+            {
+                _shopManager = ShopManager.instance;
+                if (_shopManager == null)
+                {
+                    _shopManager = FindObjectOfType<ShopManager>();
+                    if (_shopManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _shopManager;
+        }
+    }
+    [SerializeField] private RestManager    _restManager;
+    private RestManager restManager
+    {
+        get
+        {
+            if (_restManager == null)
+            {
+                _restManager = FindObjectOfType<RestManager>();
+                if (_restManager == null)
+                    Debug.LogWarning("매니저 없음. 참조하지 마..");
+            }
+            
+            return _restManager;
+        }
+    }
+    [SerializeField] private EventManager   _eventManager;
+    private EventManager eventManager
+    {
+        get
+        {
+            if (_eventManager == null)
+            {
+                _eventManager = EventManager.instance;
+                if (_eventManager == null)
+                {
+                    _eventManager = FindObjectOfType<EventManager>();
+                    if (_eventManager == null)
+                        Debug.LogWarning("매니저 없음. 참조하지 마..");
+                }
+            }
+            return _eventManager;
+        }
+    }
 
     [Header("플레이어의 모든 키워드 프리랩")]
     [SerializeField] private List<GameObject> _allSupKeywordsForPlayer;     // 플레이어가 가질 수 있는 모든 Support 키워드
@@ -50,7 +216,7 @@ public class GameManager : MonoBehaviour
     public IReadOnlyList<GameObject> allSupKeywordsForPlayer => _allSupKeywordsForPlayer;
     public IReadOnlyList<GameObject> allMainKeywordsForPlayer => _allMainKeywordsForPlayer;
 
-    private GameState _gameState = GameState.Map;   // 게임의 상태를 저장
+    public GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     private GameState beforeState;
     public GameState gameState 
     {  get => _gameState;
@@ -69,6 +235,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    int killCnt_nomalMonster = 0;
+    int killCnt_eleteMonster = 0;
+    int killCnt_bossMonster = 0;
+    public int relicCnt = 0;
+    public int goldCnt = 0;
+    public int keywordCnt = 0;
+
+
     public int eventIndex = 0;
 
     /*==================================================================================================================================*/
@@ -85,7 +259,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        uiManager.ChangeCursorImage(CursorType.Nib);
+        if(uiManager !=null)
+            uiManager.ChangeCursorImage(CursorType.Nib);
         gameState = GameState.Map;
     }
 
@@ -94,9 +269,11 @@ public class GameManager : MonoBehaviour
         //EventDatabase.eventDatas.ShuffleList();
     }
 
+    Map.NodeType monsterType;
     //전투 돌입 (일반 몹, 보스 몹)
-    public void EnterFightZone()
+    public void EnterFightZone(Map.NodeType type)
     {
+        monsterType = type;
         Book.instance.EnterBattleField();
         DOVirtual.DelayedCall(2.0f, fightManager.FightStart);
     }
@@ -106,6 +283,18 @@ public class GameManager : MonoBehaviour
         // 승리 UI
         // 이후 보상 UI
         rewardManager.ShowFightRewards_Keyword();
+        switch(monsterType)
+        {
+            case Map.NodeType.BossNode:
+                killCnt_bossMonster++;
+                break;
+            case Map.NodeType.EliteMonsterNode:
+                killCnt_eleteMonster++;
+                break;
+            case Map.NodeType.NomalMonsterNode:
+                killCnt_nomalMonster++;
+                    break;
+        }
     }
 
     /// <summary>
@@ -153,8 +342,34 @@ public class GameManager : MonoBehaviour
         Book.instance.EnterTreasureField();
     }
 
+    public void PrintGameClearCredit()
+    {
+        RecordTextDatabase recordDatas = RecordTextDatabase.instance;
+        recordDatas.timeText.text                   = recordDatas.timeText.text + " " + Time.time / 60 + "분 " + Time.time % 60 + "초";
+        recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " + killCnt_nomalMonster.ToString();
+        recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " + killCnt_eleteMonster.ToString();
+        recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " + killCnt_bossMonster.ToString();
+        recordDatas.GetRelicCounting.text           = recordDatas.GetRelicCounting.text + " " + relicCnt.ToString();
+        recordDatas.GetGoldCounting.text            = recordDatas.GetGoldCounting.text + " " + goldCnt.ToString();
+        recordDatas.GetKeywordCounting.text         = recordDatas.GetKeywordCounting.text + " " + keywordCnt.ToString();
+    }
     internal void EndSelectReward()
     {
         ReturnMap();
+    }
+
+    public void LoadScene(int idx)
+    {
+        SceneManager.LoadScene(0);
+    }
+    /// <summary>
+    /// 전달한 오브젝트의 인스턴스화 여부를 반환합니다.
+    /// </summary>
+    /// <param name="prefab">검사하고자 하는 오브젝트를 입력합니다.</param>
+    /// <returns></returns>
+    public bool IsInstantiated(GameObject prefab)
+    {
+        if (prefab.scene.name != null) return true;     // 씬에 존재하면 인스턴스화된 객체임
+        else                           return false;    // 씬에 존재하지 않으면 프리팹임
     }
 }

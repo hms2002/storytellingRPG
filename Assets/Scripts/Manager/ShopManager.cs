@@ -42,7 +42,7 @@ public class ShopManager : MonoBehaviour
     [Space(40)]
 
 
-    [Header("키워드 상품 발주량")]
+    [Header("상품 발주량")]
     [SerializeField] private int _orderVolume = 6;
     public int orderVolume { get => _orderVolume; set => _orderVolume = value; }
 
@@ -112,7 +112,7 @@ public class ShopManager : MonoBehaviour
             shopUI.KeywordProductsDisplay();
 
             // 유물 발주 및 진열
-            //shop.RelicProductsDisplay();
+            shopUI.RelicProductsDisplay();
         }
     }
 
@@ -308,7 +308,7 @@ public class ShopManager : MonoBehaviour
     {
         // 진열되어 있던 상품 폐기
         shopUI.DisposalKeywordProducts();
-        /*shop.DisposalRelicProducts();*/
+        shopUI.DisposalRelicProducts();
 
         // 상품 진열 여부 false
         areProductsDisplay = false;

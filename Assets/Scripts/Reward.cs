@@ -22,6 +22,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public TextMeshProUGUI rewardNameText;
     public string rewardInfoStr;
     public Button button;
+    public Image RelicImage;
 
     private void OnEnable()
     {
@@ -63,12 +64,16 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// 보상으로 나오는 유물 버튼을 세팅합니다.
     /// </summary>
     /// <param name="relicData">설정할 세팅값 참조를 위해 유물 데이터를 받아옵니다.</param>
-    public void SettingReward_Relic(GameObject relicPrefab, PlayerRelic playerRelic)
+    public void SettingReward_Relic(GameObject dataObj, PlayerRelic playerRelic)
     {
-        //gameObject.GetComponent<Image>().sprite = relicPrefab.GetComponent<RelicData>().relicImage;
-        //rewardNameText.text = "유물띠";
 
-        button.onClick.AddListener(() => playerRelic.AddRelic(relicPrefab));
+        RelicData data = dataObj.GetComponent<Relic>().relicData;
+        RelicImage.sprite = data.relicImage;
+        rewardNameText.text = data.RelicName;
+        rewardInfoStr = data.RelicDescription;
+
+        button.onClick.AddListener(() => playerRelic.AddRelic(dataObj));
+        button.onClick.AddListener(() => RewardManager.instance.AddRelicToPlayer(data));
     }
 
     public void AddThisToMainDeck()
@@ -95,6 +100,9 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case RewardType.keyword:
                 InfoManager.instance.ShowTipUI(rewardNameText.text, Color.yellow, rewardInfoStr, transform);
                 break;
+            case RewardType.relic:
+                InfoManager.instance.ShowTipUI(rewardNameText.text, Color.yellow, rewardInfoStr, transform);
+                break;
         }
     }
 
@@ -105,6 +113,9 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case RewardType.keyword:
                 InfoManager.instance.HideTipUI();
                 break;
+            case RewardType.relic:
+                InfoManager.instance.HideTipUI();
+                break;
         }
     }
 
@@ -113,6 +124,9 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch (rewardType)
         {
             case RewardType.keyword:
+                InfoManager.instance.HideTipUI();
+                break;
+            case RewardType.relic:
                 InfoManager.instance.HideTipUI();
                 break;
         }

@@ -102,7 +102,6 @@ public class FightManager : MonoBehaviour
         if (monsterList == null) Debug.LogError("몬스터 리스트 NULL 리턴");
         RePositionMonsters();
         MonsterTargetter.monsterTargetter.target = monsterList[0];
-        
         TextManager.instance.EncounterTextPlay(monsterList[monsterList.Count - 1]);
 
         foreach (Actor monster in monsterList)

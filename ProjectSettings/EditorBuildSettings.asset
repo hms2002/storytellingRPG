@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneCrashShelter.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 439aa111b2af57045b44fb6cdeb91fdf
+  - enabled: 1
+    path: Assets/Scenes/Databasezzzzz.unity
+    guid: 1fd65adf15f2a504c93e6249d23680b6
+  - enabled: 1
+    path: Assets/Scenes/Endding.unity
+    guid: 5e6d2a6f5b0665e4191536b06804887b
   m_configObjects: {}

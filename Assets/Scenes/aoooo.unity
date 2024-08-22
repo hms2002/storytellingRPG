@@ -13665,6 +13665,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 178405247}
     m_Modifications:
+    - target: {fileID: 671868092169468545, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 938390787295070607, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13748,6 +13752,30 @@ PrefabInstance:
     - target: {fileID: 8745471025286865840, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
       propertyPath: m_Name
       value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801109590139738352, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
