@@ -28,7 +28,7 @@ public class RelicData : ScriptableObject
 
     [Header("유물 획득 경로")]
     public RelicAcquirePath relicAcquirePath;
-    public enum RelicAcquirePath { Common, Event }
+    public enum RelicAcquirePath { Common, Event_HandMirror, Event_JewelCart, Event_WreckedShip }
 
 
 }
