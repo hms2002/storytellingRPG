@@ -14,32 +14,32 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 /// </summary>
 public class ShopManager : MonoBehaviour
 {
-    public static ShopManager instance;                     // 싱글톤
+    public static ShopManager instance;                      // 싱글톤
 
     [Header("ShopUI 오브젝트")]
-    [SerializeField] private Shop shopUI;                     // ShopUI 오브젝트의 Shop 스크립트 컴포넌트
+    [SerializeField] private Shop shopUI;                    // ShopUI 오브젝트의 Shop 스크립트 컴포넌트
 
     [Header("Player 오브젝트")]
     [SerializeField] private Actor _player;                  // Player 오브젝트의 Actor 스크립트 컴포넌트
     public Actor player => _player;
 
     [Header("골드 패널")]
-    [SerializeField] private GameObject _goldPanel;         // 소지금 패널 오브젝트
+    [SerializeField] private GameObject _goldPanel;          // 소지금 패널 오브젝트
     public GameObject goldPanel => _goldPanel;
 
     [Header("골드 텍스트")]
-    [SerializeField] private TextMeshProUGUI goldHUD;       // 소지금 표시 텍스트
+    [SerializeField] private TextMeshProUGUI goldHUD;        // 소지금 표시 텍스트
 
     [Header("키워드 가격 텍스트")]
-    [SerializeField] private TextMeshProUGUI keywordPrice;  // 키워드 싯가 표시 텍스트
+    [SerializeField] private TextMeshProUGUI keywordPrice;   // 키워드 싯가 표시 텍스트
 
     [Header("테이블보 태그 오브젝트")]
-    [SerializeField] private GameObject tableclothTag;      // 테이블보 책갈피 오브젝트
+    [SerializeField] private GameObject tableclothTag;       // 테이블보 책갈피 오브젝트
 
     [Header("키워드 제거 시 교체될 스프라이트")]
-    [SerializeField] private Sprite emptySpaceByErase;      // 키워드 빈자리 스프라이트
+    [SerializeField] private Sprite emptySpaceByErase;       // 키워드 빈자리 스프라이트
 
-    private bool areProductsDisplay;                        // 키워드 진열 여부
+    private bool areProductsDisplay;                         // 키워드 진열 여부
 
 
     [Space(40)]
@@ -149,6 +149,8 @@ public class ShopManager : MonoBehaviour
                     // 보유 골드 HUD에 소지금 차감 및 업데이트
                     UpdateGoldHUD(pricePerKeyword * -1);
 
+                    AudioManager.instance.PlaySound("Shop", "상점키워드");
+
                     // 해당 키워드 프리팹을 오리지널 덱 리스트에 추가
                     player.OriginalDeck.AddSupKeywordOnDeck(GameManager.instance.allSupKeywordsForPlayer[i]);
                 }
@@ -165,6 +167,8 @@ public class ShopManager : MonoBehaviour
                 {
                     // 보유 골드 HUD에 소지금 차감 및 업데이트
                     UpdateGoldHUD(pricePerKeyword * -1);
+
+                    AudioManager.instance.PlaySound("Shop", "상점키워드");
 
                     // 해당 키워드 프리팹을 오리지널 덱 리스트에 추가
                     player.OriginalDeck.AddMainKeywordOnDeck(GameManager.instance.allMainKeywordsForPlayer[i]);

@@ -7,7 +7,7 @@ public class RootTentacles_Proliferating : KeywordMain
     RootTectacles rootTectacles;
     private void Awake()
     {
-        keywordName = "증식하는";
+        keywordName = "증식";
 
         SetKeywordColor(Y);
         keywordTension = -10;

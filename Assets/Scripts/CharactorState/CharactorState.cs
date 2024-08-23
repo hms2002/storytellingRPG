@@ -441,7 +441,10 @@ public class CharactorState
     }
     public void StackGainDouble(StateType type)
     {
-        allStateList[(int)type].gainDoubleStack = true;
+        if(allStateList[(int)type].stack > 0)
+        {
+            allStateList[(int)type].gainDoubleStack = true;
+        }
     }
     public void AllStackDamageRepeat()
     {

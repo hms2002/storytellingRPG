@@ -270,11 +270,6 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, false);
     }
 
-    private void Start()
-    {
-        EventDatabase.eventDatas.ShuffleList();
-    }
-
     /// <summary>
     /// 커서 이미지를 파라미터 값으로 변경합니다.
     /// </summary>
@@ -381,7 +376,7 @@ public class GameManager : MonoBehaviour
     public void PrintGameClearCredit()
     {
         RecordTextDatabase recordDatas = RecordTextDatabase.instance;
-        recordDatas.timeText.text                   = recordDatas.timeText.text + " " + Time.time / 60 + "분 " + Time.time % 60 + "초";
+        recordDatas.timeText.text = recordDatas.timeText.text + " " + (int)(Time.time / 60) + "분 " + (int)(Time.time % 60) + "초";
         recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " + killCnt_nomalMonster.ToString();
         recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " + killCnt_eleteMonster.ToString();
         recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " + killCnt_bossMonster.ToString();

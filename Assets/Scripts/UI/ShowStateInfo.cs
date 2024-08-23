@@ -25,4 +25,10 @@ public class ShowStateInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //StateUIDatabase.stateUIDB.stateInfoUI.transform.SetParent(StateUIDatabase.stateUIDB.transform);
 
     }
+
+
+    private void OnDisable()
+    {
+        InfoManager.instance.HideWorldTipUI();
+    }
 }
