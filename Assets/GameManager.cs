@@ -267,7 +267,7 @@ public class GameManager : MonoBehaviour
 
         gameState = GameState.Map;
 
-        Screen.SetResolution(1920, 1080, false);
+        Screen.SetResolution(1920, 1080, true);
     }
 
     /// <summary>

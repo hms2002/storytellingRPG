@@ -56,7 +56,6 @@ public class FightManager : MonoBehaviour
     {
         if (_keywordSup == null) return;
         
-        //if (!_keywordSup.ActivationConditionCheck())
         if (whoPlaying == player)
             _keywordSup.CanUseCheck(player, MonsterTargetter.monsterTargetter.target);
         else if (whoPlaying != player)
@@ -94,8 +93,7 @@ public class FightManager : MonoBehaviour
     {
         // Player 오브젝트가 비활성화되어 있다면 활성화
         if (!player.gameObject.activeSelf) player.gameObject.SetActive(true);
-        // 플레이어 프리팹 생성 및 Actor 할당
-        //player = Instantiate(playerPrefab).GetComponent<Actor>();
+
         player.gameObject.SetActive(true);
 
         // 몬스터 가져오기
@@ -177,6 +175,9 @@ public class FightManager : MonoBehaviour
 
             player.BeforeAction();
 
+            // 턴 시작 발동 유물 적용
+            playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
+
             playSurive = CheckPlayerSurvive();
 
             if (!playSurive)
@@ -232,10 +233,7 @@ public class FightManager : MonoBehaviour
             TextManager.instance.KeywordTextPlay(whoPlaying);
         }
         
-        Debug.Log("턴" + currentTurn);
 
-        // 턴 시작 발동 유물 적용
-        playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
 
         if (preparedActorCount < monsterList.Count)
         {
@@ -331,7 +329,7 @@ public class FightManager : MonoBehaviour
         {
             // 전투 승리 문구 출력
             PlayerWin();
-
+            isAction = false;
             yield break;
         }
 

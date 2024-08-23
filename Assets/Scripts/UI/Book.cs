@@ -106,7 +106,7 @@ public class Book : MonoBehaviour
         UIManager.instance.ActiveEventUI(false);
         UIManager.instance.ActiveIsland(false);
         /* 후에 추가될 UI들 이 아래로 SetActive(false) 추가 요망 */
-
+        TextManager.instance.Text.text = string.Empty;
         //BookPassL 애니메이션 재생
         bookAnimator.SetTrigger("turnPageToLeft");
 
