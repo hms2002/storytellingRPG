@@ -83,8 +83,17 @@ public class Book : MonoBehaviour
             GameManager.instance.gameState == GameState.Shop)   return;
 
         // Map 버튼 클릭 시 1초동안 비활성화
-        bookmarks[1].GetComponent<Button>().enabled = false;
-        DOVirtual.DelayedCall(1.0f, () => bookmarks[1].GetComponent<Button>().enabled = true);
+        foreach (GameObject g in bookmarks)
+        {
+            g.GetComponent<Button>().enabled = false;
+        }
+        DOVirtual.DelayedCall(1.0f, () =>
+        {
+            foreach (GameObject g in bookmarks)
+            {
+                g.GetComponent<Button>().enabled = true;
+            }
+        });
 
         // gameState를 Map으로 전환
         GameManager.instance.gameState = GameState.Map;
@@ -112,12 +121,21 @@ public class Book : MonoBehaviour
     {
         // gameState가 KeywordSetting, Battle, Shop이면 return
         if (GameManager.instance.gameState == GameState.KeywordSetting ||
-            GameManager.instance.gameState == GameState.Battle         ||
-            GameManager.instance.gameState == GameState.Shop)          return;
+            GameManager.instance.gameState == GameState.Battle ||
+            GameManager.instance.gameState == GameState.Shop) return;
 
         // KeywordSetting 버튼 클릭 시 1초동안 비활성화
-        bookmarks[0].GetComponent<Button>().enabled = false;
-        DOVirtual.DelayedCall(1.0f, () => bookmarks[0].GetComponent<Button>().enabled = true);
+        foreach (GameObject g in bookmarks)
+        {
+            g.GetComponent<Button>().enabled = false;
+        }
+        DOVirtual.DelayedCall(1.0f, () =>
+        {
+            foreach (GameObject g in bookmarks)
+            {
+                g.GetComponent<Button>().enabled = true;
+            }
+        });
 
         // gameState를 KeywordSetting으로 전환
         GameManager.instance.gameState = GameState.KeywordSetting;
@@ -428,10 +446,16 @@ public class Book : MonoBehaviour
         keywordSettingPage = 1;
 
         // FoldedPageL 오브젝트 비활성화
-        foldedPages[0].SetActive(false);
+        if(foldedPages[0] != null)
+            foldedPages[0].SetActive(false);
 
         // Folded Page 오브젝트 전부 비활성화
-        foreach (GameObject foldedPage in foldedPages) foldedPage.SetActive(false);
+        foreach (GameObject foldedPage in foldedPages)
+        {
+            if (foldedPage != null)
+                foldedPage.SetActive(false);
+        }
+
     }
     #endregion
 
