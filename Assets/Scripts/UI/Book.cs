@@ -80,7 +80,8 @@ public class Book : MonoBehaviour
         // gameState가 Map, Battle, Shop이면 return
         if (GameManager.instance.gameState == GameState.Map     ||
             GameManager.instance.gameState == GameState.Battle  ||
-            GameManager.instance.gameState == GameState.Shop)   return;
+            GameManager.instance.gameState == GameState.Shop ||
+            GameManager.instance.gameState == GameState.Event)   return;
 
         // Map 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)
@@ -122,7 +123,8 @@ public class Book : MonoBehaviour
         // gameState가 KeywordSetting, Battle, Shop이면 return
         if (GameManager.instance.gameState == GameState.KeywordSetting ||
             GameManager.instance.gameState == GameState.Battle ||
-            GameManager.instance.gameState == GameState.Shop) return;
+            GameManager.instance.gameState == GameState.Shop ||
+            GameManager.instance.gameState == GameState.Event) { return; }
 
         // KeywordSetting 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)
