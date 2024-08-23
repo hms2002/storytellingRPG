@@ -343,6 +343,10 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Event;
         Book.instance.EnterTreasureField();
     }
+    public void GameOver()
+    {
+        LoadScene(0);
+    }
 
     public void PrintGameClearCredit()
     {
