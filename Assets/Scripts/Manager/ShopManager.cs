@@ -6,8 +6,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using static UnityEditor.Experimental.GraphView.GraphView;
-
+#endif
 /// <summary>
 /// 상점 시스템 흐름 제어
 /// </summary>
