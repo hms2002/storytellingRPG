@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static RelicData;
 
@@ -47,7 +48,7 @@ public class RelicManager : MonoBehaviour
 
             foreach (RelicData relic in relicList)
             {
-                if (relic == RelicDatabase.instance.relicsData[randomIndex])
+                if (relic == RelicDatabase.instance.relicsData[randomIndex] || relic.GetComponent<RelicData>().relicAcquirePath != RelicAcquirePath.Common)
                 {
                     overlapFlag = true;
 
@@ -67,6 +68,13 @@ public class RelicManager : MonoBehaviour
     public void GetRelic(Relics whatRelic)
     {
         relicPrefab.GetComponent<Relic>().relicData = RelicDatabase.instance.relicsData[(int)whatRelic];
+
+        PlayerRelic.instance.AddRelic(relicPrefab);
+    }
+
+    public void AddRelicWithData(RelicData relicData)
+    {
+        relicPrefab.GetComponent<Relic>().relicData = relicData;
 
         PlayerRelic.instance.AddRelic(relicPrefab);
     }
