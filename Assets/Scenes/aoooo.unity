@@ -968,24 +968,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage1EventList:
-  - {fileID: 11400000, guid: 969acbeae683b2049b547369f4ee888c, type: 2}
-  - {fileID: 11400000, guid: 969acbeae683b2049b547369f4ee888c, type: 2}
-  - {fileID: 11400000, guid: 969acbeae683b2049b547369f4ee888c, type: 2}
-  stage2EventList:
-  - {fileID: 11400000, guid: 969acbeae683b2049b547369f4ee888c, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  stage3EventList:
   - {fileID: 11400000, guid: c88f27356ce2f76478e54658f0daccec, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
+  - {fileID: 11400000, guid: 6025d009174d41b468b42c581ffdf158, type: 2}
+  stage2EventList:
+  - {fileID: 11400000, guid: 4eed52975103a334f9805a78f2850725, type: 2}
+  - {fileID: 11400000, guid: f696ef8fc1c8d284d82bfa572bd78597, type: 2}
+  - {fileID: 11400000, guid: b217101a7d721684498d005660f29c68, type: 2}
+  - {fileID: 11400000, guid: 969acbeae683b2049b547369f4ee888c, type: 2}
+  stage3EventList:
+  - {fileID: 11400000, guid: fabd8eef899afc0419b2d5648ae0838f, type: 2}
+  - {fileID: 11400000, guid: a4deb34c7a9417442a53cf0ec3f12d30, type: 2}
+  - {fileID: 11400000, guid: 63fb99d59476d354e8f52e563db00c19, type: 2}
   stage4EventList:
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
-  - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
+  - {fileID: 11400000, guid: cc5ddca018d8407409b3aba46719a90f, type: 2}
+  - {fileID: 11400000, guid: 9560d0441d95d1a4a83fa69bedf6e53c, type: 2}
+  - {fileID: 11400000, guid: eb010cf2f1f940741bf39c84e142a69a, type: 2}
   rest: {fileID: 11400000, guid: 8daf6c184ba951049a22ecbb37cb1b4f, type: 2}
 --- !u!1 &146239311
 GameObject:
