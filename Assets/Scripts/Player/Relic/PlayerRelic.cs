@@ -45,12 +45,6 @@ public class PlayerRelic : MonoBehaviour
     {
         if (relic == null) return;
 
-        RelicManager.instance.RelicList.Clear();
-
-        foreach (GameObject myRelic in relics)
-        {
-            RelicManager.instance.RelicList.Add(myRelic.GetComponent<Relic>().relicData);
-        }
 
         /*// relic 프리팹이 이미 인스턴스화되어 있다면
         if (GameManager.instance.IsInstantiated(relic))
@@ -64,6 +58,12 @@ public class PlayerRelic : MonoBehaviour
 
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
         relics.Add(Instantiate(relic, playerRelicCanvas.transform));
+        RelicManager.instance.RelicList.Clear();
+
+        foreach (GameObject myRelic in relics)
+        {
+            RelicManager.instance.RelicList.Add(myRelic.GetComponent<Relic>().relicData);
+        }
         GameManager.instance.relicCnt++;
     }
 
