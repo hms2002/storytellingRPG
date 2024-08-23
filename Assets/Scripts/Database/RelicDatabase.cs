@@ -70,7 +70,7 @@ public enum Relics
     IgnitingDice,
 
     /// <summary>불타는 장미
-    /// <para>전투 시작 시 화염 효과를 4 부여합니다</para>
+    /// <para>전투 시작 시 화염 효과를 4 부여합니다.</para>
     /// </summary>
     BurningRose,
 

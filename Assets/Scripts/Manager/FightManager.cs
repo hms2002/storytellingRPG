@@ -256,9 +256,12 @@ public class FightManager : MonoBehaviour
 
             yield return null;
         }
-        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageList.Count > 1)
+        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageList.Count == 1)
         {
             AudioManager.instance.PlaySound("Character", player.attackSound);
+
+            // 몬스터 타격 시점 발동 유물 적용
+            playerRelic.UseRelic(RelicData.RelicType.OnHitMonster);
         }
 
         curTime = 0;
@@ -313,7 +316,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
-            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageList.Count > 1)
+            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageList.Count == 1)
             {
                 AudioManager.instance.PlaySound("Character", monster.attackSound);
             }

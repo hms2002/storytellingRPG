@@ -13,7 +13,8 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
     private Image relicImage;
 
-    private bool isPerchased = false;
+    private bool _isPerchased = false;
+    public bool isPerchased { get => _isPerchased; set => _isPerchased = value; }
 
 
     /*==================================================================================================================================*/
