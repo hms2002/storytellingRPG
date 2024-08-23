@@ -14,9 +14,9 @@ public class Player_ShieldCharge : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        if(caster.protect >= 4)
+        if(caster.protect >= 3)
         {
-            caster.protect -= 4;
+            caster.protect -= 3;
             caster.dmgList.Add(8);
             caster.afterAttackDel += (caster, target) =>
             {
@@ -27,13 +27,5 @@ public class Player_ShieldCharge : KeywordMain
 
     public override void Check(KeywordSup _keywordSup)
     {
-    }
-
-    public override void CanUseCheck(Actor caster, Actor target)
-    {
-        if(caster.protect < 4)
-        {
-            isCanUse = false;
-        }    
     }
 }
