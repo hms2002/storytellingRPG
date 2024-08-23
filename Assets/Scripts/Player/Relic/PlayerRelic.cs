@@ -75,6 +75,7 @@ public class PlayerRelic : MonoBehaviour
         InitRelicList();
         GameManager.instance.relicCnt++;
     }
+
     public void InitRelicList()
     {
         if (RelicManager.instance == null) return;

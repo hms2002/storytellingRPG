@@ -48,7 +48,7 @@ public class RelicManager : MonoBehaviour
 
             foreach (RelicData relic in relicList)
             {
-                if (relic == RelicDatabase.instance.relicsData[randomIndex] || relic.GetComponent<RelicData>().relicAcquirePath != RelicAcquirePath.Common)
+                if (relic == RelicDatabase.instance.relicsData[randomIndex])
                 {
                     overlapFlag = true;
 
@@ -63,13 +63,6 @@ public class RelicManager : MonoBehaviour
         relicPrefab.GetComponent<Relic>().relicData = RelicDatabase.instance.relicsData[randomIndex];
 
         return relicPrefab;
-    }
-
-    public void GetRelic(Relics whatRelic)
-    {
-        relicPrefab.GetComponent<Relic>().relicData = RelicDatabase.instance.relicsData[(int)whatRelic];
-
-        PlayerRelic.instance.AddRelic(relicPrefab);
     }
 
     public void AddRelicWithData(RelicData relicData)

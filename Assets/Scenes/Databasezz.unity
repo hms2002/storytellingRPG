@@ -1534,11 +1534,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 250b577931d259e4094f378719b86600, type: 2}
   - {fileID: 11400000, guid: 23991dbac5e58ab43b3898e899448f79, type: 2}
   - {fileID: 11400000, guid: 1d9b666fb7522dc4fb5592a53539f3fc, type: 2}
-  - {fileID: 11400000, guid: eba763ea19292864db48fef45ace6140, type: 2}
-  - {fileID: 11400000, guid: 0d47acc4fe64ab24db65679b5f6a6c57, type: 2}
-  - {fileID: 11400000, guid: ef326be26f1384d4a9f5e15f9fea59d1, type: 2}
-  - {fileID: 11400000, guid: c2887e8fd4d717e448736baea8cf62ba, type: 2}
-  - {fileID: 11400000, guid: 35fcc47c772d1fd4380a3f54b1da1849, type: 2}
   - {fileID: 11400000, guid: c917d57c0b89922479e6930f39f3d876, type: 2}
   - {fileID: 11400000, guid: f58689854b87d2c40a67d2dea3750f6f, type: 2}
   - {fileID: 11400000, guid: cb91478cc131e9041ab0d47b4eaa2836, type: 2}
@@ -1550,7 +1545,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 515f13008e89a034ebdf71bececcacd0, type: 2}
   - {fileID: 11400000, guid: 1dfd3639ce090bc4b9a0f175220a28fa, type: 2}
   - {fileID: 11400000, guid: 3745a56d8f44511439a93fb0e21645b0, type: 2}
-  - {fileID: 11400000, guid: 0c5a23eaa1e5e304293d4709439c0d35, type: 2}
 --- !u!1 &214915283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,10 +2355,14 @@ MonoBehaviour:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   _gameState: 0
+  killCnt_nomalMonster: 0
+  killCnt_eleteMonster: 0
+  killCnt_bossMonster: 0
   relicCnt: 0
   goldCnt: 0
   keywordCnt: 0
   eventIndex: 0
+  gameOverCanvas: {fileID: 0}
 --- !u!1 &329217890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,7 +3484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopUI: {fileID: 266349609}
-  player: {fileID: 1875399256}
+  _player: {fileID: 0}
   _goldPanel: {fileID: 885815287}
   goldHUD: {fileID: 965774218}
   keywordPrice: {fileID: 1778937835}
@@ -3494,7 +3492,7 @@ MonoBehaviour:
   emptySpaceByErase: {fileID: 21300000, guid: 8396a9b55d4a27548bc083db33af4c44, type: 3}
   _orderVolume: 6
   pricePerKeyword: 75
-  PricesPerRelic: 640000007d00000096000000af000000c8000000
+  _pricesPerRelic: 640000007d00000096000000af000000c8000000
   keywordErasingPrice: 75
 --- !u!4 &436645518
 Transform:

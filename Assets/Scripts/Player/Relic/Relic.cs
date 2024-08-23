@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,6 +13,12 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     public RelicData relicData { get => _relicData; set => _relicData = value; }
 
     private Image relicImage;
+
+    private int _price = 0;
+    public int price { get => _price; set => _price = value; }
+
+    [Header("유물 가격표")]
+    [SerializeField] private GameObject priceTag;
 
     private bool _isPerchased = false;
     public bool isPerchased { get => _isPerchased; set => _isPerchased = value; }
@@ -44,6 +51,17 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     {
         // 게임 상태가 Shop이 아니거나 구매한 상태라면 반환
         if (GameManager.instance.gameState != GameState.Shop || isPerchased) return;
+
+        if (ShopManager.instance.player.gold < price)
+        {
+            // 좌우 횡이동 반복 연출 표현
+            gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+
+            return;
+        }
+
+        ShopManager.instance.UpdateGoldHUD(price * -1);
+        Destroy(priceTag);
 
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);
