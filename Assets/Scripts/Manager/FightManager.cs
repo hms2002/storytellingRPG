@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 /// <summary>
 /// 전투 기능 및 흐름을 담당
@@ -163,14 +164,27 @@ public class FightManager : MonoBehaviour
 
     public void Flow()
     {
-        // 
+        bool playSurive = CheckPlayerSurvive();
+
+        if(!playSurive)
+        {
+            return;
+        }
+
         if (preparedActorCount == 0)
         {
             currentTurn++;
 
             player.BeforeAction();
 
-            foreach(Monster m in monsterList)
+            playSurive = CheckPlayerSurvive();
+
+            if (!playSurive)
+            {
+                return;
+            }
+
+            foreach (Monster m in monsterList)
             {
                 int temp = preparedActorCount;
                 if(m != null)
@@ -377,6 +391,8 @@ public class FightManager : MonoBehaviour
 
     private bool CheckMonsterSurvive()
     {
+        CheckPlayerSurvive();
+
         for (int i = 0; i < monsterList.Count; i++)
         {
             if (monsterList[i].hp <= 0)
@@ -431,27 +447,32 @@ public class FightManager : MonoBehaviour
 
     private void PlayerWin()
     {
-        playerRelic.UseRelic(RelicData.RelicType.OnVictory);
-        player.gameObject.SetActive(false);
-        TextManager.instance.PrintVictory();
-        GameManager.instance.WinFight();
+        if (player.hp != 0)
+        {
+            playerRelic.UseRelic(RelicData.RelicType.OnVictory);
+            player.gameObject.SetActive(false);
+            TextManager.instance.PrintVictory();
+            GameManager.instance.WinFight();
+        }
     }
     public bool fleeFlag = false;
     public void MonsterFlee(Actor monster)
     {
-        fleeFlag = true;
-        foreach(Monster m in monsterList)
+        if (player.hp == 0)
         {
+            CheckPlayerSurvive();
+        }
+        
+        fleeFlag = true;
+
+        foreach (Monster m in monsterList)
+        {
+            CheckPlayerSurvive();
+
             if (monster != m) continue;
             monsterList.Remove(m);
             ((Monster)monster).DestroySelf();
             break;
-        }
-        if (!CheckMonsterSurvive())
-        {
-            RewardManager.instance.isMonsterFlee = true;
-            // 전투 승리 문구 출력
-            PlayerWin();
         }
     }
 
