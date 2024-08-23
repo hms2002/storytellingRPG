@@ -27,7 +27,7 @@ public class RootTectacles : Monster
     {
         forestMaster = _forestMaster;
         charactorState.AddState(StateType.tentacleAttack,1);
-        MAX_HP = 50;
+        MAX_HP = 20;
         hp = MAX_HP;
         gold = 0;
     }

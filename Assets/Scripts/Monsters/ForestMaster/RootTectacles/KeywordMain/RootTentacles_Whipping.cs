@@ -9,7 +9,7 @@ public class RootTentacles_Whipping : KeywordMain
         keywordName = "채찍질";
         SetKeywordColor(R);
         keywordDamage = 2;
-        keywordTension = -8;
+        keywordTension = -5;
         Init();
     }
 
