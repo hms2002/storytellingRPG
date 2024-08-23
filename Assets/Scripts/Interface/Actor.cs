@@ -265,16 +265,21 @@ public class Actor : MonoBehaviour
     /*==================================================================================================================================*/
 
 
+    bool isFirstTime = true;
     private void OnEnable()
     {
-        if (gameObject.tag == "Player")
-            gold = 150;
-        else if (gameObject.tag == "Elete")
-            gold = UnityEngine.Random.Range(80, 100);
-        else if (gameObject.tag == "Boss")
-            gold = 200;
-        else
-            gold = UnityEngine.Random.Range(40, 61);
+        if(isFirstTime == true)
+        {
+            isFirstTime = false;
+            if (gameObject.tag == "Player")
+                gold = 150;
+            else if (gameObject.tag == "Elete")
+                gold = UnityEngine.Random.Range(80, 100);
+            else if (gameObject.tag == "Boss")
+                gold = 200;
+            else
+                gold = UnityEngine.Random.Range(40, 61);
+        }
 
         // 원본 덱 가져오기 전에 있는지 확인
         if ((int)transform.childCount >= 2)

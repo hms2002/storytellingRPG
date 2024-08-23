@@ -20,7 +20,10 @@ public class PlayerRelic : MonoBehaviour
 
     /*==================================================================================================================================*/
 
-
+    private void OnEnable()
+    {
+        InitRelicList();
+    }
     private void Awake()
     {
         // 싱글톤 인스턴스 설정
@@ -45,26 +48,50 @@ public class PlayerRelic : MonoBehaviour
     {
         if (relic == null) return;
 
+
+        //if (GameManager.instance.IsInstantiated(relic))
+        //{
+        //    relics.Add(relic);
+
+        //    relics[relics.Count -1].transform.SetParent(playerRelicCanvas, false);
+
+        //    return;
+        //}
+
+        // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
+        relics.Add(Instantiate(relic, playerRelicCanvas.transform));
+        InitRelicList();
+        GameManager.instance.relicCnt++;
+    }
+    public void AddRelicForInstantciated(GameObject relic)
+    {
+        if (relic == null) return;
+
+
+        //if (GameManager.instance.IsInstantiated(relic))
+        //{
+        //    relics.Add(relic);
+
+        //    relics[relics.Count -1].transform.SetParent(playerRelicCanvas, false);
+
+        //    return;
+        //}
+        relic.SetActive(true);
+        relic.transform.SetParent(playerRelicCanvas.transform);
+
+        // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
+        relics.Add(relic);
+        InitRelicList();
+        GameManager.instance.relicCnt++;
+    }
+    public void InitRelicList()
+    {
         RelicManager.instance.RelicList.Clear();
 
         foreach (GameObject myRelic in relics)
         {
             RelicManager.instance.RelicList.Add(myRelic.GetComponent<Relic>().relicData);
         }
-
-        /*// relic 프리팹이 이미 인스턴스화되어 있다면
-        if (GameManager.instance.IsInstantiated(relic))
-        {
-            relics.Add(relic);
-
-            relics[relics.Count -1].transform.SetParent(playerRelicCanvas, false);
-
-            return;
-        }*/
-
-        // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
-        relics.Add(Instantiate(relic, playerRelicCanvas.transform));
-        GameManager.instance.relicCnt++;
     }
 
     public int GetRelicCnt()

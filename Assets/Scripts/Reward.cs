@@ -39,6 +39,9 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         temp.SetActive(false);
 
         // 텍스트 정보, 키워드 프리펩 정보 가져오기
+        Debug.Log(temp);
+        Debug.Log(temp.GetComponent<Keyword>());
+        Debug.Log(temp.GetComponent<Keyword>().keywordName);
         rewardNameText.text = temp.GetComponent<Keyword>().keywordName;// temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
         rewardInfoStr = temp.GetComponent<Keyword>().FormatDescription(temp.GetComponent<Keyword>().keywordDescription);
         KeywordColor = temp.GetComponent<Keyword>().GetKeywordColor();
@@ -62,6 +65,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         button.onClick.AddListener(() => Destroy(gameObject));
     }
 
+    GameObject tempRelicModel;
     /// <summary>
     /// 보상으로 나오는 유물 버튼을 세팅합니다.
     /// </summary>
@@ -74,7 +78,10 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         rewardNameText.text = data.RelicName;
         rewardInfoStr = data.RelicDescription;
 
-        button.onClick.AddListener(() => playerRelic.AddRelic(dataObj));
+        tempRelicModel = Instantiate(dataObj);
+        tempRelicModel.SetActive(false);
+
+        button.onClick.AddListener(() => playerRelic.AddRelicForInstantciated(tempRelicModel));
         button.onClick.AddListener(() => RewardManager.instance.AddRelicToPlayer(data));
         button.onClick.AddListener(() => Destroy(gameObject));
     }

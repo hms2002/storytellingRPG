@@ -273,8 +273,8 @@ GameObject:
   - component: {fileID: 2307486014034593641}
   - component: {fileID: 2725389129916691502}
   - component: {fileID: 6763341974645325548}
-  - component: {fileID: 319073863429456667}
   - component: {fileID: 4475254289156577749}
+  - component: {fileID: 8440257239716415110}
   m_Layer: 5
   m_Name: KeyWordMain(Player_Fist)
   m_TagString: Untagged
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 319073863429456667}
+      - m_Target: {fileID: 8440257239716415110}
         m_TargetAssemblyTypeName: KeywordMain, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -398,7 +398,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &319073863429456667
+--- !u!114 &4475254289156577749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579075665694996604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8440257239716415110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,7 +428,7 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uC8FC\uBA39"
-  _keywordDamage: 100
+  _keywordDamage: 1
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
@@ -426,21 +438,9 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uB300\uC0C1\uC5D0\uAC8C 1\uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  keywordDescription: "damage\uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
---- !u!114 &4475254289156577749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579075665694996604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aaceb2712c65f547a20809b126d9c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8004628757678576544
 GameObject:
   m_ObjectHideFlags: 0

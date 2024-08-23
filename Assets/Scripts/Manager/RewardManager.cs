@@ -74,6 +74,11 @@ public class RewardManager : MonoBehaviour
 
         int keywordCounts = Random.Range(0, 4);
         int relicCounts = 3 - keywordCounts;
+        if(relicCounts > RelicManager.instance.HowManyRelicLeft())
+        {
+            relicCounts = RelicManager.instance.HowManyRelicLeft();
+            keywordCounts = 3 - relicCounts;
+        }
 
         for(int i = 0; i < keywordCounts; i++)
         {
@@ -198,7 +203,12 @@ public class RewardManager : MonoBehaviour
         if (_rewardGold > 0)
             rewardCnt++;
         if(dropRelic)
-            rewardCnt++;
+        {
+            if (RelicManager.instance.HowManyRelicLeft() < 1)
+                dropRelic = false;
+            else
+                rewardCnt++;
+        }
         if(rewardCnt == 0)
             ShowNoReward();
         else
