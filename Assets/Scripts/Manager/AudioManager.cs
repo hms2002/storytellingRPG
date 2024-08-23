@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
             AudioClip clip = clips.Find(c => c.name == clipName);
             if (clip != null && bgmSource.clip != clip)
             {
-                bgmSource.volume *= 0.2f;
+                bgmSource.volume *= 0.5f;
                 bgmSource.clip = clip;
                 bgmSource.Play();
             }

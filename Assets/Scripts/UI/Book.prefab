@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1977492269481120988}
-  - component: {fileID: 2473739514444461473}
   - component: {fileID: 8186246336372768624}
   - component: {fileID: 7581883951533863366}
+  - component: {fileID: 6720530184128562434}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -34,7 +34,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2473739514444461473
+--- !u!95 &8186246336372768624
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783971561002773909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32099e454984cbf489b2c7622fda11f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7581883951533863366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783971561002773909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a300c88175796348a7b25e8cce1dc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bookmarks:
+  - {fileID: 0}
+  - {fileID: 0}
+  originalSupMainDeckUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  originalDeck: {fileID: 0}
+  foldedPages:
+  - {fileID: 0}
+  - {fileID: 0}
+  supKeywordsForDisplay: []
+  mainKeywordsForDisplay: []
+  _keywordSettingPage: 1
+  _uIActiveDelay: 0.9
+--- !u!212 &6720530184128562434
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,50 +133,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8186246336372768624
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783971561002773909}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 32099e454984cbf489b2c7622fda11f7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7581883951533863366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783971561002773909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a300c88175796348a7b25e8cce1dc10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bookmarks:
-  - {fileID: 0}
-  - {fileID: 0}
-  originalSupMainDeckUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  originalDeck: {fileID: 0}
-  foldedPages:
-  - {fileID: 0}
-  - {fileID: 0}
-  supKeywordsForDisplay: []
-  mainKeywordsForDisplay: []
-  _keywordSettingPage: 1
-  _uIActiveDelay: 0.9
