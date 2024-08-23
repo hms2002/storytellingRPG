@@ -24,6 +24,7 @@ public class TitleManager : MonoBehaviour
         {
             OnSound();
             DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); });
+            GameManager.instance.gameState = GameState.Map;
             isClick = true;
         }
     }

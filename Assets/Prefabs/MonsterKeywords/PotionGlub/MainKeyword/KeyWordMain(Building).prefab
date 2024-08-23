@@ -513,8 +513,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uBAA8\uB4E0 \uC7AC\uB8CC\uB97C \uB9C8\uAD6C \uC11E\uC2B5\uB2C8\uB2E4.
-    \n(\uD3EC\uC158 \uC218\uCE58\uB97C -2 ~ +1 \uC5BB\uC2B5\uB2C8\uB2E4.)"
+  keywordDescription: "\uBAA8\uB4E0 \uC7AC\uB8CC\uB97C \uB9C8\uAD6C \uC11E\uC2B5\uB2C8\uB2E4. "
   changeTensionText: 
   _isChangeTension: 0
   maxRange: 1
