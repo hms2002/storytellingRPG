@@ -333,6 +333,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
             yield return new WaitForSeconds(1);
+            TextManager.instance.Text.text = string.Empty;
         }
 
         if(CheckPlayerSurvive())
