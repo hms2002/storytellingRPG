@@ -280,6 +280,7 @@ public class Actor : MonoBehaviour
                 gold = 200;
             else
                 gold = UnityEngine.Random.Range(40, 61);
+            hp = MAX_HP;
         }
 
         // 원본 덱 가져오기 전에 있는지 확인
