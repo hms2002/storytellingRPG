@@ -203,7 +203,12 @@ public class RewardManager : MonoBehaviour
         if (_rewardGold > 0)
             rewardCnt++;
         if(dropRelic)
-            rewardCnt++;
+        {
+            if (RelicManager.instance.HowManyRelicLeft() < 1)
+                dropRelic = false;
+            else
+                rewardCnt++;
+        }
         if(rewardCnt == 0)
             ShowNoReward();
         else
