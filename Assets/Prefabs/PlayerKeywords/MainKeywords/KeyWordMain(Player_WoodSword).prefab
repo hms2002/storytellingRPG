@@ -503,7 +503,7 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uB098\uBB34 \uAC80"
-  _keywordDamage: 7
+  _keywordDamage: 11
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 

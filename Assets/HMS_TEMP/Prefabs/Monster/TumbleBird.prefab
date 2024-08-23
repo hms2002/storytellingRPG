@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 5558999363025938964}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
-  _MAX_HP: 72
+  _MAX_HP: 38
   _hp: 0
   _Name: "\uD140\uBE14\uBC84\uB4DC"
   beforeDamage: 0
