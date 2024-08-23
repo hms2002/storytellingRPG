@@ -382,9 +382,8 @@ public class FightManager : MonoBehaviour
 
             // 플레이어 사망 문구 출력
             TextManager.instance.PrintPlayerDie();
-
-            // The End 아이콘 활성화
-            UIManager.instance.ActiveTheEndIcon(true);
+            GameManager.instance.GameOver();
+            player.GetComponent<Animator>().SetTrigger("Lose");
 
             // 게임 종료 (씬 전환?)
             return false;
