@@ -15,6 +15,7 @@ MonoBehaviour:
   _relicTicker: 12
   _relicImage: {fileID: 21300000, guid: 7f34ad15fdbd4e243a4e2c3b0058d28c, type: 3}
   relicName: "\uBC1C\uD654\uD558\uB294 \uC8FC\uC0AC\uC704"
-  relicDescription: "\uC801\uC5D0\uAC8C \uB450 \uD134\uB9C8\uB2E4\n\uD654\uC5FC \uD6A8\uACFC\uB97C
+  relicDescription: "\uB450 \uD134\uB9C8\uB2E4 \uC801\uC5D0\uAC8C\n\uD654\uC5FC \uD6A8\uACFC\uB97C
     1 ~ 4 \uB79C\uB364 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
   relicType: 2
+  relicAcquirePath: 0

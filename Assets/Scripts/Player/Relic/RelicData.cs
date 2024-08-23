@@ -25,5 +25,10 @@ public class RelicData : ScriptableObject
     [Header("유물 발동 타입")]
     public RelicType relicType;
     public enum RelicType { OnStartBattle, OnVictory, OnStartTurn, OnHitMonster }
-    
+
+    [Header("유물 획득 경로")]
+    public RelicAcquirePath relicAcquirePath;
+    public enum RelicAcquirePath { Common, Event_HandMirror, Event_JewelCart, Event_WreckedShip }
+
+
 }
