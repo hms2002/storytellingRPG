@@ -7,7 +7,7 @@ public class Player_AttackDeffenceStraddle : KeywordMain
     private void Awake()
     {
         isPlayerKeyword = true;
-        keywordName = "공방 협차";
+        keywordName = "동방 협차";
         SetKeywordColor(R);
         Init();
     }

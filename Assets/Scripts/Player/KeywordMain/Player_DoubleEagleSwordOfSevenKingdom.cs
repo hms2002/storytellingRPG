@@ -7,7 +7,7 @@ public class Player_DoubleEagleSwordOfSevenKingdom : KeywordMain
     private void Awake()
     {
         isPlayerKeyword = true;
-        keywordName = "공방 협차";
+        keywordName = "칠왕국의 쌍검";
         SetKeywordColor(R);
         Init();
     }
