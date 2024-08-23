@@ -235,9 +235,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int killCnt_nomalMonster = 0;
-    int killCnt_eleteMonster = 0;
-    int killCnt_bossMonster = 0;
+    public int killCnt_nomalMonster = 0;
+    public int killCnt_eleteMonster = 0;
+    public int killCnt_bossMonster = 0;
     public int relicCnt = 0;
     public int goldCnt = 0;
     public int keywordCnt = 0;

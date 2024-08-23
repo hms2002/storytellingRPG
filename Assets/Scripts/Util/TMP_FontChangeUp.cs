@@ -1,3 +1,5 @@
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,11 +16,11 @@ namespace Modules.Util
         {
             GameObject[] rootObj = SceneManager.GetActiveScene().GetRootGameObjects();
 
-            for(int i = 0; i < rootObj.Length; i++)
+            for (int i = 0; i < rootObj.Length; i++)
             {
                 GameObject gbj = (GameObject)rootObj[i] as GameObject;
                 Component[] com = gbj.transform.GetComponentsInChildren(typeof(TextMeshProUGUI), true);
-                foreach(TextMeshProUGUI tmp in com)
+                foreach (TextMeshProUGUI tmp in com)
                 {
                     tmp.font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(PATH_FONT_TEXTMESHPRO);
                 }
@@ -26,3 +28,4 @@ namespace Modules.Util
         }
     }
 }
+#endif
