@@ -164,7 +164,7 @@ MonoBehaviour:
   _hp: 0
   _Name: "\uB2F9\uC2E0"
   beforeDamage: 0
-  _gold: 10000
+  _gold: 150
 --- !u!114 &1603435647839028368
 MonoBehaviour:
   m_ObjectHideFlags: 0
