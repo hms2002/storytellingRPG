@@ -463,10 +463,10 @@ public class Book : MonoBehaviour
         // 전투 관련 캔버스 끄기
         UIManager.instance.ActiveCombatFunctionAndUI(false);
         UIManager.instance.ActiveCombatKeywordUI(false);
-
+        UIManager.instance.ActiveIsland(false); 
         // 책 페이지 오른쪽으로 넘기도록 트리거 발동
-        bookAnimator.SetTrigger("turnPageToRight");
-
+/*        bookAnimator.SetTrigger("turnPageToRight");
+*/
         // 2초 뒤 맵 북마크로 이동
         DOVirtual.DelayedCall(2.0f, EnterMap);
     }
