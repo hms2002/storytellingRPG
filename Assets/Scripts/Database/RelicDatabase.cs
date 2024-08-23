@@ -10,7 +10,7 @@ public enum Relics
     EquivalentExchange,
 
     /// <summary> 이판사판
-    /// <para>5턴마다 자신과 적에게 10의 피해를 줍니다.</para>
+    /// <para>다섯 턴마다 자신과 적에게 10의 피해를 줍니다.</para>
     /// </summary>
     DoOrDie,
 
@@ -50,7 +50,7 @@ public enum Relics
     AbsorbingHandMirror,
 
     /// <summary>부의 비밀
-    /// <para>전투 승리 시 100 골드를 추가 획득합니다.</para>
+    /// <para>전투 승리 시 100G를 추가 획득합니다.</para>
     /// </summary>
     SecretOfWealth,
 
@@ -65,12 +65,12 @@ public enum Relics
     JewelryCore,
 
     /// <summary>발화하는 주사위
-    /// <para>적에게 두 턴마다 화염 효과를 1 ~ 4 랜덤 부여합니다.</para>
+    /// <para>두 턴마다 적에게 화염 효과를 1 ~ 4 랜덤 부여합니다.</para>
     /// </summary>
     IgnitingDice,
 
     /// <summary>불타는 장미
-    /// <para>전투 시작 시 화염 효과를 4 부여합니다.</para>
+    /// <para>전투 시작 시 적에게 화염 효과를 4 부여합니다.</para>
     /// </summary>
     BurningRose,
 

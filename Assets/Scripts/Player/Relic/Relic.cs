@@ -62,9 +62,13 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     /// 유물의 효과를 사용합니다.
     /// </summary>
     /// <param name="player">효과를 적용할 Player를 입력합니다.</param>
-    /// <param name="Monster">효과를 적용할 Monster를 리스트 형태로 입력합니다.</param>
-    public virtual void ApplyEffect(Actor player, List<Monster> Monsters)
+    /// <param name="monsters">효과를 적용할 Monster를 리스트 형태로 입력합니다.</param>
+    public virtual void ApplyEffect(Actor player, List<Monster> monsters)
     {
+        int totalQuantity = 0;      // 부여 스택 연산용 변수
+        int pickOne = 0;
+
+
         switch (relicData.relicTicker)
         {
             case Relics.EquivalentExchange:
@@ -86,7 +90,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
                     player.Damaged(player, new DamageInfo(10));
 
                     // 몬스터 전체에게 10 데미지
-                    foreach (Monster monster in Monsters) monster.Damaged(monster, new DamageInfo(10));
+                    foreach (Monster monster in monsters) monster.Damaged(monster, new DamageInfo(10));
                 }
 
                 break;
@@ -117,6 +121,169 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
             case Relics.SmallBottle:
 
                 player.hp += 4;
+
+                break;
+
+            case Relics.OverflowingPocket:
+
+                if (player.gold >= 100)
+                    player.charactorState.AddState(StateType.oneTimeReinforce, player.gold / 100);
+
+                break;
+
+            case Relics.BrokenMirrorFragment:
+
+                player.hp += 2;
+
+                break;
+
+            case Relics.SecretOfWealth:
+
+                player.gold += 100;
+
+                break;
+
+            case Relics.HeartOfWarrior:
+
+                player.charactorState.AddState(StateType.oneTimeReinforce, 3);
+
+                break;
+
+            case Relics.JewelryCore:
+                
+                player.charactorState.AddState(StateType.protect, 5);
+
+                break;
+
+            case Relics.IgnitingDice:
+
+                if (FightManager.currentTurn % 2 == 0)
+                {
+                    int howMany;
+
+                    foreach (Monster monster in monsters)
+                    {
+                        howMany = Random.Range(1, 4);
+
+                        monster.charactorState.AddState(StateType.burn, howMany);
+                    }
+                }
+
+                break;
+
+            case Relics.BurningRose:
+
+                foreach (Monster monster in monsters)
+                {
+                    monster.charactorState.AddState(StateType.burn, 4);
+                }
+
+                break;
+
+            case Relics.PassionateSoul:
+
+                totalQuantity = 0;
+
+                foreach (Monster monster in monsters)
+                {
+                    totalQuantity += monster.charactorState.GetStateStack(StateType.burn) / 5;
+                }
+
+                player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
+
+                break;
+
+            case Relics.BrokenBlade:
+
+                player.charactorState.AddState(StateType.oneTimeReinforce, 1);
+
+                break;
+
+            case Relics.IndomitableHeart:
+
+                totalQuantity = 0;
+
+                totalQuantity += player.charactorState.BuffCount();
+                totalQuantity += player.charactorState.AllDebuffCount();
+
+                player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
+
+                break;
+
+            case Relics.BlueWish:
+
+                player.charactorState.AddState(StateType.protect, 11);
+
+                break;
+
+            case Relics.ImprintedRing:
+
+                if (FightManager.currentTurn % 2 == 0 && player.charactorState.GetStateStack(StateType.protect) >= 10)
+                {
+                    player.charactorState.AddState(StateType.protect, -2);
+
+                    foreach (Monster monster in monsters) monster.Damaged(monster, new DamageInfo(6));
+                }
+
+                break;
+
+            case Relics.Anguish:
+
+                if (player.charactorState.GetStateStack(StateType.protect) >= 12)
+                {
+                    player.charactorState.AddState(StateType.oneTimeReinforce, 3);
+                }
+
+                break;
+
+            case Relics.GreenJelly:
+
+                foreach (Monster monster in monsters) monster.charactorState.AddState(StateType.venom, 3);
+
+                break;
+
+            case Relics.WeaknessMagnifier:
+
+                foreach (Monster monster in monsters) monster.charactorState.AddState(StateType.weaken, 3);
+
+                break;
+
+            case Relics.RefractivePolyhedron:
+
+                if (FightManager.currentTurn % 2 == 0)
+                {
+                    player.charactorState.AddState(StateType.oneTimeProtect, 3);
+                }
+
+                break;
+
+            case Relics.HeartOfTheSea:
+
+                pickOne = Random.Range(1, 3);
+
+                if (FightManager.currentTurn % 3 == 0)
+                {
+                    switch (pickOne)
+                    {
+                        case 1:
+
+                            player.charactorState.AddState(StateType.protect, 2);
+
+                            break;
+
+                        case 2:
+
+                            player.charactorState.AddState(StateType.oneTimeReinforce, 2);
+
+                            break;
+
+                        case 3:
+
+                            player.charactorState.AddState(StateType.counterAttack, 2);
+
+                            break;
+                    }
+                }
 
                 break;
         }
