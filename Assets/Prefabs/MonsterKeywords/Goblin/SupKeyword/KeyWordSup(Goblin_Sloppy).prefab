@@ -513,18 +513,18 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
-  _keywordName: 
+  _keywordName: "\uC5C9\uC131\uD55C"
   _keywordDamage: 0
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
-  _debuffStack: 0
+  _debuffStack: 2
   _buffStack: 0
-  _keywordTension: 0
+  _keywordTension: -18
   _isOneTimeUse: 0
   _isIrregularCombo: 0
-  selectedColor: 0
-  keywordDescription: "\uC77C\uD68C\uC131 \uC57D\uD654\uB97C 2 \uC5BB\uC2B5\uB2C8\uB2E4."
+  selectedColor: 3
+  keywordDescription: "\uC77C\uD68C\uC131 \uC57D\uD654\uB97C debuffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   oneTimeReductionControl: 1
