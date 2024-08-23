@@ -437,7 +437,10 @@ public class CharactorState
     }
     public void StackReductionProtect(StateType type)
     {
-        allStateList[(int)type].oneTimeNoReduction = true;
+        if (allStateList[(int)type].stack > 0)
+        {
+            allStateList[(int)type].oneTimeNoReduction = true;
+        }
     }
     public void StackGainDouble(StateType type)
     {
