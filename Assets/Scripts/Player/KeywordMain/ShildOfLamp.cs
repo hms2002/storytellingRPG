@@ -14,6 +14,7 @@ public class ShildOfLamp : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
+        caster.protect += keywordProtect;
         target.charactorState.AddState(StateType.burn, buffStack);
     }
 
