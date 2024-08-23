@@ -119,7 +119,6 @@ public class EventKeyword : MonoBehaviour
                 keywordColor = Default;
                 break;
         }
-
         nameText.color = keywordColor;
     }
 

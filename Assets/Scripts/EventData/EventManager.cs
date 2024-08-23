@@ -33,6 +33,7 @@ public class EventManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            EventDatabase.eventDatas.ShuffleList();
             DontDestroyOnLoad(gameObject);
         }
         else

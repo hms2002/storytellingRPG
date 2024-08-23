@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 /// <summary>
 /// 전투 기능 및 흐름을 담당
@@ -161,7 +162,13 @@ public class FightManager : MonoBehaviour
 
     public void Flow()
     {
-        // 
+        bool playSurive = CheckPlayerSurvive();
+
+        if(!playSurive)
+        {
+            return;
+        }
+
         if (preparedActorCount == 0)
         {
             currentTurn++;
@@ -171,9 +178,40 @@ public class FightManager : MonoBehaviour
             // 턴 시작 발동 유물 적용
             playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
 
-            Debug.Log("턴" + currentTurn);
+            playSurive = CheckPlayerSurvive();
 
-            monsterList[preparedActorCount].BeforeAction();
+            if (!playSurive)
+            {
+                return;
+            }
+
+            foreach (Monster m in monsterList)
+            {
+                int temp = preparedActorCount;
+                if(m != null)
+                    m.BeforeAction();
+
+                if(fleeFlag)
+                {
+                    break;
+                }
+            }
+            while(fleeFlag)
+            {
+                fleeFlag = false;
+
+                foreach (Monster m in monsterList)
+                {
+                    int temp = preparedActorCount;
+                    if (m != null)
+                        m.BeforeAction();
+
+                    if (fleeFlag)
+                    {
+                        break;
+                    }
+                }
+            }
         }
 
         if (!CheckMonsterSurvive())
@@ -183,6 +221,17 @@ public class FightManager : MonoBehaviour
             MonsterTargetter.monsterTargetter.TargetUIOff();
             return;
         }
+
+        if (preparedActorCount < monsterList.Count)
+        {
+            whoPlaying = monsterList[preparedActorCount];
+            TextManager.instance.KeywordTextPlay(whoPlaying);
+        }
+        else if (preparedActorCount == monsterList.Count)
+        {
+            whoPlaying = player;
+            TextManager.instance.KeywordTextPlay(whoPlaying);
+        }
         
 
 
@@ -190,7 +239,6 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
-            monsterList[preparedActorCount].BeforeAction();
 
             if (!CheckMonsterSurvive())
             {
@@ -256,7 +304,7 @@ public class FightManager : MonoBehaviour
 
             yield return null;
         }
-        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageList.Count == 1)
+        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageL.Count == 1)
         {
             AudioManager.instance.PlaySound("Character", player.attackSound);
 
@@ -315,7 +363,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
-            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageList.Count == 1)
+            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageL.Count == 1)
             {
                 AudioManager.instance.PlaySound("Character", monster.attackSound);
             }
@@ -394,27 +442,30 @@ public class FightManager : MonoBehaviour
 
     private void PlayerWin()
     {
-        playerRelic.UseRelic(RelicData.RelicType.OnVictory);
-        player.gameObject.SetActive(false);
-        TextManager.instance.PrintVictory();
-        GameManager.instance.WinFight();
+        if (player.hp != 0)
+        {
+            playerRelic.UseRelic(RelicData.RelicType.OnVictory);
+            player.gameObject.SetActive(false);
+            TextManager.instance.PrintVictory();
+            GameManager.instance.WinFight();
+        }
     }
-
+    public bool fleeFlag = false;
     public void MonsterFlee(Actor monster)
     {
-        foreach(Monster m in monsterList)
+        if (player.hp == 0)
+        {
+            CheckPlayerSurvive();
+        }
+        
+        fleeFlag = true;
+
+        foreach (Monster m in monsterList)
         {
             if (monster != m) continue;
-            preparedActorCount--;
             monsterList.Remove(m);
             ((Monster)monster).DestroySelf();
             break;
-        }
-        if (!CheckMonsterSurvive())
-        {
-            RewardManager.instance.isMonsterFlee = true;
-            // 전투 승리 문구 출력
-            PlayerWin();
         }
     }
 
