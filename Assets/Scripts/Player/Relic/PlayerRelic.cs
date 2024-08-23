@@ -76,6 +76,7 @@ public class PlayerRelic : MonoBehaviour
 
         //    return;
         //}
+        relic.GetComponent<Relic>().isPerchased = true;
         relic.SetActive(true);
         relic.transform.SetParent(playerRelicCanvas.transform);
 
