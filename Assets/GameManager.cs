@@ -235,6 +235,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Header("마우스 커서 이미지 리스트")]
+    [SerializeField] private List<Texture2D> cursorImage;
+
     public int killCnt_nomalMonster = 0;
     public int killCnt_eleteMonster = 0;
     public int killCnt_bossMonster = 0;
@@ -244,6 +247,7 @@ public class GameManager : MonoBehaviour
 
 
     public int eventIndex = 0;
+
 
     /*==================================================================================================================================*/
 
@@ -259,8 +263,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        if(uiManager !=null)
-            uiManager.ChangeCursorImage(CursorType.Nib);
+        ChangeCursorImage(CursorType.Nib);
+
         gameState = GameState.Map;
 
         Screen.SetResolution(1920, 1080, false);
@@ -269,6 +273,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EventDatabase.eventDatas.ShuffleList();
+    }
+
+    /// <summary>
+    /// 커서 이미지를 파라미터 값으로 변경합니다.
+    /// </summary>
+    /// <param name="cursorType">CursorType.typename을 입력하세요.</param>
+    public void ChangeCursorImage(CursorType cursorType)
+    {
+        switch (cursorType)
+        {
+            case CursorType.Nib:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.ForceSoftware);
+
+                break;
+
+            case CursorType.Eraser:
+
+                Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.ForceSoftware);
+
+                break;
+        }
     }
 
     Map.NodeType monsterType;

@@ -193,7 +193,7 @@ public class ShopManager : MonoBehaviour
         Book.instance.EnterKeywordSetting(Keyword.ButtonType.Erase);
 
         // 마우스 커서 이미지 변경
-        UIManager.instance.ChangeCursorImage(CursorType.Eraser);
+        GameManager.instance.ChangeCursorImage(CursorType.Eraser);
 
         // 테이블보 태그 활성화
         DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => tableclothTag.SetActive(true));
@@ -281,7 +281,7 @@ public class ShopManager : MonoBehaviour
         DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => goldPanel.SetActive(true));
 
         // 마우스 포인터 변경
-        UIManager.instance.ChangeCursorImage(CursorType.Nib);
+        GameManager.instance.ChangeCursorImage(CursorType.Nib);
     }
 
     /// <summary>

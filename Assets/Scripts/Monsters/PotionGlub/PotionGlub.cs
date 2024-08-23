@@ -21,7 +21,8 @@ public class PotionGlub : Monster
     {
         get { return _potionNum; }
         set 
-        { 
+        {
+            if (value < 1) value = 1;
             if(!isJellyShot)
             {
                 _potionNum = value;

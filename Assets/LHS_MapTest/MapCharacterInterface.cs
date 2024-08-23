@@ -24,7 +24,7 @@ public class MapCharacterInterface : MonoBehaviour
 
     private void StateUpdate()
     {
-        moneyText.text = "" + playerAction.gold + "G"; //나중에 작성
+        moneyText.text = playerAction.gold + "G"; //나중에 작성
         if (!loding && playerAction.hp != 0)
         {
             hpText.text = playerAction.hp + "/" + playerAction.MAX_HP;
