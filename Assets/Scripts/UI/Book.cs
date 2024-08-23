@@ -492,7 +492,7 @@ public class Book : MonoBehaviour
 /*        bookAnimator.SetTrigger("turnPageToRight");
 */
         // 2초 뒤 맵 북마크로 이동
-        DOVirtual.DelayedCall(2.0f, EnterMap);
+        DOVirtual.DelayedCall(0.5f, EnterMap);
     }
 
     /// <summary>

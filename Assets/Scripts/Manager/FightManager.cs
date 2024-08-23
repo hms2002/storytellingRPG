@@ -114,8 +114,8 @@ public class FightManager : MonoBehaviour
         // 전투 시작 시 발동되는 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 
-        DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
-        DOVirtual.DelayedCall(5f, Flow);
+        DOVirtual.DelayedCall(2f, () => UIManager.instance.ActiveCombatKeywordUI(true));
+        DOVirtual.DelayedCall(2f, Flow);
     }
 
     /*public void EventFightStart()
