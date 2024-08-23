@@ -343,9 +343,11 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Event;
         Book.instance.EnterTreasureField();
     }
+    [SerializeField] GameObject gameOverCanvas;
     public void GameOver()
     {
-        LoadScene(0);
+        DOVirtual.DelayedCall(2.0f, () => GameOverCanvasDatabase.instance.GameOverCanvas.SetActive(true));
+        DOVirtual.DelayedCall(5.0f, () => LoadScene(0));
     }
 
     public void PrintGameClearCredit()
