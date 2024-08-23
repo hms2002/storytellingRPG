@@ -384,8 +384,6 @@ public class FightManager : MonoBehaviour
 
     private bool CheckMonsterSurvive()
     {
-        CheckPlayerSurvive();
-
         for (int i = 0; i < monsterList.Count; i++)
         {
             if (monsterList[i].hp <= 0)
@@ -460,8 +458,6 @@ public class FightManager : MonoBehaviour
 
         foreach (Monster m in monsterList)
         {
-            CheckPlayerSurvive();
-
             if (monster != m) continue;
             monsterList.Remove(m);
             ((Monster)monster).DestroySelf();
