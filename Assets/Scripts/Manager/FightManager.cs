@@ -464,6 +464,7 @@ public class FightManager : MonoBehaviour
         {
             if (monster != m) continue;
             monsterList.Remove(m);
+            m.gold = 0;
             ((Monster)monster).DestroySelf();
             break;
         }
