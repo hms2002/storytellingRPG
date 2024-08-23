@@ -39,4 +39,11 @@ public class SnatchFlyingFish : Monster
         charactorState.AddState(StateType.thief, stealGoldAmount);
         return stealGoldAmount;
     }
+
+    public override void DestroySelf()
+    {
+        if (charactorState.GetStateStack(StateType.secession) == 0)
+            gold = 0;
+        base.DestroySelf();
+    }
 }

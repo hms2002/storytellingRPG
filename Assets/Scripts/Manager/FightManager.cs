@@ -170,7 +170,11 @@ public class FightManager : MonoBehaviour
 
             player.BeforeAction();
 
-            monsterList[preparedActorCount].BeforeAction();
+            foreach(Monster m in monsterList)
+            {
+                if(m != null)
+                    m.BeforeAction();
+            }
         }
 
         if (!CheckMonsterSurvive())
@@ -190,7 +194,6 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
-            monsterList[preparedActorCount].BeforeAction();
 
             if (!CheckMonsterSurvive())
             {
