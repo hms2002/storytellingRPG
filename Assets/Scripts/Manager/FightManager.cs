@@ -331,7 +331,7 @@ public class FightManager : MonoBehaviour
         {
             // 전투 승리 문구 출력
             PlayerWin();
-
+            isAction = false;
             yield break;
         }
 
