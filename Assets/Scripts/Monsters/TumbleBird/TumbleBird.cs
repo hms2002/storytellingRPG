@@ -28,7 +28,7 @@ public class TumbleBird : Monster
         hp = MAX_HP; 
         encounterText = "날지 못하는 새는 구르는 방법을 배웠다. 그리고 더욱 위험해졌다. ";
         anim = GetComponent<Animator>();
-        if (StageManager.instance.nowStageState == StageState.Forest)
+        if (StageManager.instance.nowStageState == StageState.Sea)
         {
             UIManager.instance.ActiveIsland(true);
         }
