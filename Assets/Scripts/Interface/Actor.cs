@@ -338,6 +338,23 @@ public class Actor : MonoBehaviour
 
         deck.ShuffleDeck();
         StackInit();
+
+
+        #region 턴중 버프, 디버프 관리
+        charactorState.StartTurnDamage(this);
+        charactorState.ReductionOnStartTurn();
+        charactorState.StartTurnEffect(this);
+        if (charactorState.allStateList[(int)StateType.callingOfMommyDragon] != null
+            && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
+        if (charactorState.allStateList[(int)StateType.secession] != null
+    && charactorState.GetStateStack(StateType.secession) == 0)
+        {
+            FightManager.fightManager.MonsterFlee(this);
+        }
+        #endregion
     }
 
     /// <summary>
@@ -350,21 +367,6 @@ public class Actor : MonoBehaviour
 
         dmgList.damageList.Clear();
 
-        #region 턴중 버프, 디버프 관리
-        charactorState.StartTurnDamage(this);
-        charactorState.ReductionOnStartTurn();
-        charactorState.StartTurnEffect(this);
-        if(charactorState.allStateList[(int)StateType.callingOfMommyDragon - 1] != null
-            && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
-        {
-            FightManager.fightManager.MonsterFlee(this);
-        }
-        if (charactorState.allStateList[(int)StateType.secession - 1] != null
-    && charactorState.GetStateStack(StateType.secession) == 0)
-        {
-            FightManager.fightManager.MonsterFlee(this);
-        }
-        #endregion
     }
 
     /// <summary>
