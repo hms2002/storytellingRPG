@@ -15,7 +15,7 @@ public class PlayerRelic : MonoBehaviour
     [SerializeField] private List<GameObject> relics = new List<GameObject>();
 
     [Header("Player 유물 캔버스")]
-    [SerializeField] private Transform _playerRelicCanvas;
+    [SerializeField] private Transform playerRelicCanvas;
 
 
     /*==================================================================================================================================*/
