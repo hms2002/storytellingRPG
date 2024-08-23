@@ -185,7 +185,7 @@ public class TextManager : MonoBehaviour
     public void EncounterTextPlay(Monster monster)
     {
         Text.text = string.Empty;
-        Text.DOText(monster.encounterText, 1f);
+        Text.DOText(monster.encounterText, 2.5f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 
