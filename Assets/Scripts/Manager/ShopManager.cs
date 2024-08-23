@@ -287,7 +287,7 @@ public class ShopManager : MonoBehaviour
     /// Player의 소지금을 업데이트하는 애니메이션 메소드입니다.
     /// </summary>
     /// <param name="goldDelta">소지금 증감 수치(변동가)를 입력하세요.</param>
-    private void UpdateGoldHUD(int goldDelta)
+    public void UpdateGoldHUD(int goldDelta)
     {
         // Player 소지금에 변동가 업데이트
         player.gold += goldDelta;
