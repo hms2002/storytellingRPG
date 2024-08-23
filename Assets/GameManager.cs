@@ -262,6 +262,8 @@ public class GameManager : MonoBehaviour
         if(uiManager !=null)
             uiManager.ChangeCursorImage(CursorType.Nib);
         gameState = GameState.Map;
+
+        Screen.SetResolution(1920, 1080, false);
     }
 
     private void Start()
