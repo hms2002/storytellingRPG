@@ -121,7 +121,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.LuckyCoin:
 
-                int frontOrBack = Random.Range(0, 1);
+                int frontOrBack = Random.Range(0, 2);
 
                 if (frontOrBack == 0) player.charactorState.AddState(StateType.reinforce, 2);
                 else if (frontOrBack == 1) player.charactorState.AddState(StateType.weaken, 2);
