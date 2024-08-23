@@ -8824,34 +8824,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[0]
-      value: 
-      objectReference: {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[1]
-      value: 
-      objectReference: {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[2]
-      value: 
-      objectReference: {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[3]
-      value: 
-      objectReference: {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7142055507719875880, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
-      propertyPath: mainDeck.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
