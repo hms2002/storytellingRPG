@@ -15,12 +15,12 @@ public enum Relics
     DoOrDie,
 
     /// <summary> 욕망 주머니
-    /// <para>매 턴마다 소지금이 2 증가합니다.</para>
+    /// <para>매 턴마다 소지금 2G를 획득합니다.</para>
     /// </summary>
     PocketOfDesire,
 
     /// <summary> 행운의 동전
-    /// <para>매 턴마다 무작위로 강화 효과를 2 얻거나 취약 효과를 2 얻습니다.</para>
+    /// <para>매 턴마다 무작위로 강화 효과를 2 얻거나, 취약 효과를 2 얻습니다.</para>
     /// </summary>
     LuckyCoin,
 
@@ -35,7 +35,7 @@ public enum Relics
     SmallBottle,
 
     /// <summary>넘쳐흐른 주머니
-    /// <para>매 턴마다 소지금 100G당 일회성 강화를 얻습니다.</para>
+    /// <para>매 턴마다 소지금 100G당 일회성 강화 효과를 1 얻습니다.</para>
     /// </summary>
     OverflowingPocket,
 
@@ -55,7 +55,7 @@ public enum Relics
     SecretOfWealth,
 
     /// <summary>전사의 심장
-    /// <para>전투 시작 시 일회성 강화 효과를 3 획득합니다.</para>
+    /// <para>전투 시작 시 일회성 강화 효과를 3 얻습니다.</para>
     /// </summary>
     HeartOfWarrior,
 
@@ -75,9 +75,55 @@ public enum Relics
     BurningRose,
 
     /// <summary>열정적인 영혼
-    /// <para>대상의 화염 수치 5마다 매 턴 강화 효과 1을 얻습니다.</para>
+    /// <para>적의 화염 수치 5마다 매 턴 강화 효과를 1 얻습니다.</para>
     /// </summary>
-    PassionateSoul
+    PassionateSoul,
+
+    /// <summary>부러진 칼날
+    /// <para>매 턴마다 일회성 강화 효과를 1 얻습니다.</para>
+    /// </summary>
+    BrokenBlade,
+
+    /// <summary>불굴의 심장
+    /// <para>보유한 상태이상의 수만큼 매 턴마다 일회성 강화 효과를 1 얻습니다.</para>
+    /// <para>ex) 일강 1, 취약 2, 화상 4 = 일강 3획득</para>
+    /// </summary>
+    IndomitableHeart,
+
+    /// <summary>푸른 소망
+    /// <para>전투 시작 시 보호 효과를 11 얻습니다.</para>
+    /// </summary>
+    BlueWish,
+
+    /// <summary>각인된 반지
+    /// <para>두 턴마다 보유한 보호 효과가 10 이상이면, 보호 2를 소모하고 적에게 6의 피해를 줍니다.</para>
+    /// </summary>
+    ImprintedRing,
+
+    /// <summary>번뇌
+    /// <para>보유한 보호 효과가 12 이상이면, 매 턴마다 일회성 강화 효과를 3 얻습니다.</para>
+    /// </summary>
+    Anguish,
+
+    /// <summary>초록 젤리
+    /// <para>전투 시작 시 적에게 맹독 효과를 3 부여합니다.</para>
+    /// </summary>
+    GreenJelly,
+
+    /// <summary>약점보기
+    /// <para>전투 시작 시 적에게 취약 효과를 3 부여합니다.</para>
+    /// </summary>
+    WeaknessMagnifier,
+
+    /// <summary>굴절 다면체
+    /// <para>두 턴마다 일회성 보호 효과를 3 얻습니다.</para>
+    /// </summary>
+    RefractivePolyhedron,
+
+    /// <summary>바다의 심장
+    /// <para>세 턴마다 보호, 일회성 강화, 반격 효과 중 하나를 2 얻습니다.</para>
+    /// </summary>
+    HeartOfTheSea
 }
 
 public class RelicDatabase : MonoBehaviour
