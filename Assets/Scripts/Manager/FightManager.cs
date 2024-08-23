@@ -172,8 +172,30 @@ public class FightManager : MonoBehaviour
 
             foreach(Monster m in monsterList)
             {
+                int temp = preparedActorCount;
                 if(m != null)
                     m.BeforeAction();
+
+                if(fleeFlag)
+                {
+                    break;
+                }
+            }
+            while(fleeFlag)
+            {
+                fleeFlag = false;
+
+                foreach (Monster m in monsterList)
+                {
+                    int temp = preparedActorCount;
+                    if (m != null)
+                        m.BeforeAction();
+
+                    if (fleeFlag)
+                    {
+                        break;
+                    }
+                }
             }
         }
 
@@ -183,6 +205,17 @@ public class FightManager : MonoBehaviour
             PlayerWin();
             MonsterTargetter.monsterTargetter.TargetUIOff();
             return;
+        }
+
+        if (preparedActorCount < monsterList.Count)
+        {
+            whoPlaying = monsterList[preparedActorCount];
+            TextManager.instance.KeywordTextPlay(whoPlaying);
+        }
+        else if (preparedActorCount == monsterList.Count)
+        {
+            whoPlaying = player;
+            TextManager.instance.KeywordTextPlay(whoPlaying);
         }
         
         Debug.Log("턴" + currentTurn);
@@ -258,7 +291,7 @@ public class FightManager : MonoBehaviour
 
             yield return null;
         }
-        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageList.Count == 1)
+        if (player.dmgList.GetAllDamage() != 0 && player.dmgList.damageL.Count == 1)
         {
             AudioManager.instance.PlaySound("Character", player.attackSound);
 
@@ -317,7 +350,7 @@ public class FightManager : MonoBehaviour
                 yield return null;
             }
 
-            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageList.Count == 1)
+            if (monster.dmgList.GetAllDamage() != 0 && monster.dmgList.damageL.Count == 1)
             {
                 AudioManager.instance.PlaySound("Character", monster.attackSound);
             }
@@ -401,13 +434,13 @@ public class FightManager : MonoBehaviour
         TextManager.instance.PrintVictory();
         GameManager.instance.WinFight();
     }
-
+    public bool fleeFlag = false;
     public void MonsterFlee(Actor monster)
     {
+        fleeFlag = true;
         foreach(Monster m in monsterList)
         {
             if (monster != m) continue;
-            preparedActorCount--;
             monsterList.Remove(m);
             ((Monster)monster).DestroySelf();
             break;

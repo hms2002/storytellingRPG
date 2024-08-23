@@ -29,12 +29,12 @@ public class DamageInfo
     }
 public class DamageList
 {
-    public List<DamageInfo> damageList = new List<DamageInfo>();
+    public List<DamageInfo> damageL = new List<DamageInfo>();
     bool isPlus = false;
     public int GetAllDamage()
     {
         int damage = 0;
-        foreach (DamageInfo d in damageList)
+        foreach (DamageInfo d in damageL)
             damage += d.damage;
         return damage;
     }
@@ -43,21 +43,26 @@ public class DamageList
         if(isPlus)
         {
             isPlus = false;
-            damageList[0].damage += damage;
+            damageL[0].damage += damage;
         }
         else
-            damageList.Add(new DamageInfo(damage, isPenetrate));
+            damageL.Add(new DamageInfo(damage, isPenetrate));
     }
+    /// <summary>
+    /// 서폿 키워드가 데미지 입히면 이거임
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="isPenetrate"></param>
     public void Plus(int damage, bool isPenetrate = false)
     {
-        if(damageList.Count == 0)
+        if(damageL.Count == 0)
         {
-            damageList.Add(new DamageInfo(damage, isPenetrate));
             isPlus = true;
+            damageL.Add(new DamageInfo(damage, isPenetrate));
         }
         else
         {
-            damageList[0].damage += damage;
+            damageL[0].damage += damage;
         }
     }
 }
@@ -334,7 +339,6 @@ public class Actor : MonoBehaviour
         deckInfoPivot = pivotTemp[0].GetComponent<DeckInfoPivot>();
         garbageFieldInfoPivot = pivotTemp[1].GetComponent<DeckInfoPivot>();
 
-        TextManager.instance.KeywordTextPlay(this);
 
         deck.ShuffleDeck();
         StackInit();
@@ -365,7 +369,7 @@ public class Actor : MonoBehaviour
         _lastTurnProtectReduction = _lastProtectReductTerminal;
         _lastProtectReductTerminal = 0;
 
-        dmgList.damageList.Clear();
+        dmgList.damageL.Clear();
 
     }
 
@@ -501,7 +505,12 @@ public class Actor : MonoBehaviour
         {
             PlayActionEffect(target);
 
-            foreach(DamageInfo t in dmgList.damageList)
+            if (dmgList.damageL == null)
+            {
+                Debug.Log("??????????????");
+                break;
+            }
+            foreach(DamageInfo t in dmgList.damageL)
             {
                 target.Damaged(this, t);
                 beforeDamage = damage;
@@ -535,10 +544,10 @@ public class Actor : MonoBehaviour
                 {
                     if (dmgList.GetAllDamage() != 0)
                     {
-                        if (dmgList.damageList.Count > 1 || repeatStack > 1)
+                        if (dmgList.damageL.Count > 1 || repeatStack > 1)
                         {
                             /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
-                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageList.Count);
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageL.Count);
                         }
                         else
                         {
@@ -563,12 +572,12 @@ public class Actor : MonoBehaviour
             {
                 if (dmgList.GetAllDamage() != 0)
                 {
-                    if (dmgList.damageList.Count > 1 || repeatStack > 1)
+                    if (dmgList.damageL.Count > 1 || repeatStack > 1)
                     {
                         if(mainColor != Color.red)
                         {
                             /*EffectManager.instance.PlayEffect(keywordMain.effectType, target, repeatStack);*/
-                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageList.Count);
+                            EffectManager.instance.StartPlayEffectWithDelay(EffectManager.EffectType.Combo, target, dmgList.damageL.Count);
                         }
                     }
                     else
@@ -766,7 +775,7 @@ public class Actor : MonoBehaviour
         totalDamage = CalculateAllProtection(totalDamage);
         if (totalDamage <= 0)
         {
-            if(dmgList.damageList.Count == 1)   
+            if(dmgList.damageL.Count == 1)   
                 AudioManager.instance.PlaySound("Character", attackSound);
             totalDamage = 0;
         }
