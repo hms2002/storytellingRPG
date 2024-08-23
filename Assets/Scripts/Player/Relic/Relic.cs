@@ -121,7 +121,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.LuckyCoin:
 
-                int frontOrBack = Random.Range(0, 1);
+                int frontOrBack = Random.Range(0, 2);
 
                 if (frontOrBack == 0) player.charactorState.AddState(StateType.reinforce, 2);
                 else if (frontOrBack == 1) player.charactorState.AddState(StateType.weaken, 2);
@@ -180,7 +180,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
                     foreach (Monster monster in monsters)
                     {
-                        howMany = Random.Range(1, 4);
+                        howMany = Random.Range(1, 5);
 
                         monster.charactorState.AddState(StateType.burn, howMany);
                     }
@@ -276,7 +276,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.HeartOfTheSea:
 
-                pickOne = Random.Range(1, 3);
+                pickOne = Random.Range(1, 4);
 
                 if (FightManager.currentTurn % 3 == 0)
                 {
