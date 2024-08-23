@@ -8,15 +8,15 @@ public class Player_ShieldSlam : KeywordMain
     {
         isPlayerKeyword = true;
         keywordName = "방패 밀치기";
-        SetKeywordColor(B);
+        SetKeywordColor(Y);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        if(caster.protect >= 15)
+        if(caster.protect >= 10)
         {
-            caster.protect = 0;
+            caster.protect -= 10;
             target.charactorState.AddState(StateType.faint, 1);
         }   
     }

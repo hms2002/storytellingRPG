@@ -177,7 +177,14 @@ public class FightManager : MonoBehaviour
 
             player.BeforeAction();
 
-            foreach(Monster m in monsterList)
+            playSurive = CheckPlayerSurvive();
+
+            if (!playSurive)
+            {
+                return;
+            }
+
+            foreach (Monster m in monsterList)
             {
                 int temp = preparedActorCount;
                 if(m != null)

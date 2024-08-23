@@ -14,7 +14,7 @@ public class Player_Mountain : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (caster.protect >= 6)
+        if (caster.protect >= 3)
             caster.charactorState.AddState(StateType.reinforce, buffStack);
     }
 
