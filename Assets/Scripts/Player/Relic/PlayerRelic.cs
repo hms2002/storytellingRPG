@@ -60,6 +60,7 @@ public class PlayerRelic : MonoBehaviour
     {
         if (relic == null) return;
 
+        relic.GetComponent<Relic>().isPerchased = true;
         relic.SetActive(true);
         relic.transform.SetParent(playerRelicCanvas.transform);
 
@@ -73,6 +74,8 @@ public class PlayerRelic : MonoBehaviour
     }
     public void InitRelicList()
     {
+        if (RelicManager.instance == null) return;
+
         RelicManager.instance.RelicList.Clear();
 
         foreach (GameObject myRelic in relics)
