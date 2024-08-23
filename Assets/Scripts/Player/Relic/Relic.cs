@@ -50,10 +50,13 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
         if (ShopManager.instance.player.gold < price)
         {
-            UIManager.instance.ButtonClicklessFeedback(gameObject);
-            
+            // 좌우 횡이동 반복 연출 표현
+            gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+
             return;
         }
+
+        ShopManager.instance.player.gold -= price;
 
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);
