@@ -151,6 +151,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf1cdfcd540e984d9a4fc75d2217a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fightManager: {fileID: 0}
+  _uiManager: {fileID: 0}
+  _textManager: {fileID: 0}
+  _effectManager: {fileID: 0}
+  _audioManager: {fileID: 0}
+  _tensionManager: {fileID: 0}
+  _rewardManager: {fileID: 0}
+  _shopManager: {fileID: 0}
+  _restManager: {fileID: 0}
+  _eventManager: {fileID: 0}
+  _allSupKeywordsForPlayer: []
+  _allMainKeywordsForPlayer: []
+  _gameState: 0
+  cursorImage: []
+  killCnt_nomalMonster: 0
+  killCnt_eleteMonster: 0
+  killCnt_bossMonster: 0
+  relicCnt: 0
+  goldCnt: 0
+  keywordCnt: 0
+  eventIndex: 0
+  gameOverCanvas: {fileID: 0}
 --- !u!4 &14362062
 Transform:
   m_ObjectHideFlags: 0
@@ -355,7 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e473b3a4c480a438077f2ae1f3ea0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnText: {fileID: 459883024}
 --- !u!4 &195287754
 Transform:
   m_ObjectHideFlags: 0
@@ -423,6 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1770151026}
+  firstText: 1
 --- !u!114 &203470790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,19 +1237,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb40ca7befab02438f37f3e01e0f16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterSet1:
-  - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
-  monsterSet2:
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet3:
-  - {fileID: 717691908258792016, guid: 39ee08fcd4b39b048be6a69c6d8d4f34, type: 3}
-  - {fileID: 6669021695438124642, guid: 49105ad07f5c30747b7edeb28893164f, type: 3}
-  monsterSet4:
-  - {fileID: 8961265491340249417, guid: f682a13cae4ffb943b0892077721bc39, type: 3}
-  monsterSet5: []
-  monsterSet6: []
-  monsterSet7: []
-  monsterSet8: []
+  s1_NomalMonsterSet1: []
+  s1_NomalMonsterSet2: []
+  s1_NomalMonsterSet3: []
+  s1_NomalMonsterSet4: []
+  s1_NomalMonsterSet5: []
+  s1_NomalMonsterSet6: []
+  s1_NomalMonsterSet7: []
+  s1_NomalMonsterSet8: []
+  s1_NomalMonsterSet9: []
+  s1_EliteMonsterSet1: []
+  s1_EliteMonsterSet2: []
+  s1_BossMonsterSet1: []
+  s2_NomalMonsterSet1: []
+  s2_NomalMonsterSet2: []
+  s2_NomalMonsterSet3: []
+  s2_NomalMonsterSet4: []
+  s2_NomalMonsterSet5: []
+  s2_NomalMonsterSet6: []
+  s2_NomalMonsterSet7: []
+  s2_EliteMonsterSet1: []
+  s2_EliteMonsterSet2: []
+  s2_EliteMonsterSet3: []
+  s2_BossMonsterSet1: []
+  s3_NomalMonsterSet1: []
+  s3_NomalMonsterSet2: []
+  s3_NomalMonsterSet3: []
+  s3_NomalMonsterSet4: []
+  s3_NomalMonsterSet5: []
+  s3_NomalMonsterSet6: []
+  s3_NomalMonsterSet7: []
+  s3_EliteMonsterSet1: []
+  s3_EliteMonsterSet2: []
+  s3_BossMonsterSet1: []
+  s4_NomalMonsterSet1: []
+  s4_NomalMonsterSet2: []
+  s4_NomalMonsterSet3: []
+  s4_NomalMonsterSet4: []
+  s4_NomalMonsterSet5: []
+  s4_NomalMonsterSet6: []
+  s4_NomalMonsterSet7: []
+  s4_NomalMonsterSet8: []
+  s4_EliteMonsterSet1: []
+  s4_EliteMonsterSet2: []
+  s4_BossMonsterSet1: []
 --- !u!1 &510432779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2670,21 @@ MonoBehaviour:
   oneTimeReinforce: {fileID: 11400000, guid: 6ac2c4c6300a61842b947171b2b25ec3, type: 2}
   oneTimeReduction: {fileID: 11400000, guid: 5d4ec62e73955b04da274777fa9c86d7, type: 2}
   nextTurnDamage: {fileID: 11400000, guid: 7f2a619ac01b0b84d99f3183a1cad9fd, type: 2}
+  tentacleAttack: {fileID: 0}
+  tentacleCondolidation: {fileID: 0}
+  faint: {fileID: 0}
+  secession: {fileID: 0}
+  evasion: {fileID: 0}
+  thief: {fileID: 0}
+  selfRepair: {fileID: 0}
+  coreOverload: {fileID: 0}
+  mana: {fileID: 0}
+  absorption: {fileID: 0}
+  blueSpore: {fileID: 0}
+  redSpore: {fileID: 0}
+  counterAttack: {fileID: 0}
+  ammunition: {fileID: 0}
+  end: {fileID: 0}
 --- !u!1 &1770151024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,8 +3009,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightManagerUI: {fileID: 195287753}
+  playerPrefab: {fileID: 0}
   player: {fileID: 432854973}
+  playerRelic: {fileID: 0}
   monsterList: []
+  isBossStage: 0
 --- !u!4 &1944148736
 Transform:
   m_ObjectHideFlags: 0
