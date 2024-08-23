@@ -435,7 +435,7 @@ public class Actor : MonoBehaviour
         AddToSupGarbageField();
 
         // 2초 뒤 Main 키워드
-        DOVirtual.DelayedCall(2.0f, ShowMainKeywords);
+        DOVirtual.DelayedCall(1.0f, ShowMainKeywords);
     }
 
     public void GetKeywordMain(KeywordMain _keywordMain)
