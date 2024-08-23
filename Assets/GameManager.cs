@@ -270,11 +270,6 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, false);
     }
 
-    private void Start()
-    {
-        EventDatabase.eventDatas.ShuffleList();
-    }
-
     /// <summary>
     /// 커서 이미지를 파라미터 값으로 변경합니다.
     /// </summary>
