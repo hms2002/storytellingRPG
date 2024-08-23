@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,6 +16,9 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
     private int _price = 0;
     public int price { get => _price; set => _price = value; }
+
+    [Header("유물 가격표")]
+    [SerializeField] private GameObject priceTag;
 
     private bool _isPerchased = false;
     public bool isPerchased { get => _isPerchased; set => _isPerchased = value; }
@@ -57,6 +61,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         }
 
         ShopManager.instance.UpdateGoldHUD(price * -1);
+        Destroy(priceTag);
 
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);

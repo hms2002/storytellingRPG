@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -95,6 +97,9 @@ public class Shop : MonoBehaviour
             randomIndex = Random.Range(0, ShopManager.instance.pricesPerRelic.Count);
 
             relicProducts[i].GetComponent<Relic>().price = ShopManager.instance.pricesPerRelic[randomIndex];
+
+            relicProducts[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = relicProducts[i].GetComponent<Relic>().price + "G";
+            relicProducts[i].transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
