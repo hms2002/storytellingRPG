@@ -241,7 +241,6 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
-            monsterList[preparedActorCount].BeforeAction();
 
             if (!CheckMonsterSurvive())
             {
