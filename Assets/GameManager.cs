@@ -268,7 +268,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //EventDatabase.eventDatas.ShuffleList();
+        EventDatabase.eventDatas.ShuffleList();
     }
 
     Map.NodeType monsterType;

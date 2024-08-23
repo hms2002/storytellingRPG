@@ -59,6 +59,7 @@ public class EventManager : MonoBehaviour
     }
     public void ShowTreasure()
     {
+        TextManager.instance.Text.text = string.Empty;
         eventImage.GetComponent<SpriteRenderer>().sprite = treasureCloseImg;
         player.gameObject.SetActive(true);
         string script =
@@ -69,6 +70,7 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator PlayTextByLine(string fullText, float time, float nextTime, EventData eventData)
     {
+        TextManager.instance.Text.text = string.Empty;
         // 텍스트를 줄바꿈(\n)으로 분리
         string[] lines = fullText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
         TextManager.instance.Text.alignment = TextAlignmentOptions.Midline;
