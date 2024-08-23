@@ -270,6 +270,7 @@ public class Actor : MonoBehaviour
     {
         if(isFirstTime == true)
         {
+            _hp = _MAX_HP;
             isFirstTime = false;
             if (gameObject.tag == "Player")
                 gold = 150;
