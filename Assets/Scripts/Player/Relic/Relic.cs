@@ -51,9 +51,6 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         // 유물의 이미지 컴포넌트 비활성화
         gameObject.GetComponent<Image>().enabled = false;
 
-        /*// 유물 크기 조정
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 120);*/
-
         // 구매 여부 true
         isPerchased = true;
     }
