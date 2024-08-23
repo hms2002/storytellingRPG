@@ -72,10 +72,10 @@ public class EventKeyword : MonoBehaviour
         EventManager.instance.player.AddMainKeywordToOriginalDeck(keyword);
     }
 
-    /*    public void AddRelic(Relic relic)
-        {
+    public void AddRelic(Relic relic)
+    {
 
-        }*/
+    }
 
     public void ChangeHp(int hp)
     {
