@@ -55,7 +55,7 @@ public class EventManager : MonoBehaviour
         eventImage.GetComponent<SpriteRenderer>().sprite = eventData.roomImage;
         player.gameObject.SetActive(true);
         this.eventData = eventData;
-        StartCoroutine(PlayTextByLine(eventData.roomContents, 1.5f, 2f, eventData));
+        StartCoroutine(PlayTextByLine(eventData.roomContents, 1f, 1.2f, eventData));
     }
     public void ShowTreasure()
     {
@@ -64,7 +64,7 @@ public class EventManager : MonoBehaviour
         string script =
             "당신은 여정 중에서 보물을 발견하였습니다.\n상자 안에는......";
         
-        StartCoroutine(PlayTreasureTextByLine(script, 1.5f, 2f, eventData));
+        StartCoroutine(PlayTreasureTextByLine(script, 1f, 1.2f, eventData));
     }
 
     private IEnumerator PlayTextByLine(string fullText, float time, float nextTime, EventData eventData)
@@ -136,21 +136,21 @@ public class EventManager : MonoBehaviour
         switch(select)
         {
             case Select.first:
-                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter, 1.5f, 2f, eventData));
+                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter, 1f, 1.2f, eventData));
                 if(eventData.nextImage1 != null)
                 {
                     eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage1;
                 }
                 break;
             case Select.second:
-                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter2, 1.5f, 2f, eventData));
+                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter2, 1f, 1.2f, eventData));
                 if (eventData.nextImage2 != null)
                 {
                     eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage2;
                 }
                 break;
             case Select.third:
-                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter3, 1.5f, 2f, eventData));
+                StartCoroutine(PlayTextByLine(eventData.roomContentsAfter3, 1f, 1.2f, eventData));
                 if (eventData.nextImage3 != null)
                 {
                     eventImage.GetComponent<SpriteRenderer>().sprite = eventData.nextImage3;

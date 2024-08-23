@@ -114,8 +114,8 @@ public class FightManager : MonoBehaviour
         // 전투 시작 시 발동되는 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 
-        DOVirtual.DelayedCall(5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
-        DOVirtual.DelayedCall(5f, Flow);
+        DOVirtual.DelayedCall(4f, () => UIManager.instance.ActiveCombatKeywordUI(true));
+        DOVirtual.DelayedCall(4f, Flow);
     }
 
     /*public void EventFightStart()
@@ -274,7 +274,7 @@ public class FightManager : MonoBehaviour
             }
             yield return null;
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         // 남은 몬스터 있는지 확인.
         if(!CheckMonsterSurvive())
@@ -331,7 +331,7 @@ public class FightManager : MonoBehaviour
                 }
                 yield return null;
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
         }
 
         if(CheckPlayerSurvive())
