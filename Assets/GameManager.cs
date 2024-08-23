@@ -235,9 +235,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    int killCnt_nomalMonster = 0;
-    int killCnt_eleteMonster = 0;
-    int killCnt_bossMonster = 0;
+    public int killCnt_nomalMonster = 0;
+    public int killCnt_eleteMonster = 0;
+    public int killCnt_bossMonster = 0;
     public int relicCnt = 0;
     public int goldCnt = 0;
     public int keywordCnt = 0;
@@ -343,9 +343,11 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Event;
         Book.instance.EnterTreasureField();
     }
+    [SerializeField] GameObject gameOverCanvas;
     public void GameOver()
     {
-        LoadScene(0);
+        DOVirtual.DelayedCall(2.0f, () => GameOverCanvasDatabase.instance.GameOverCanvas.SetActive(true));
+        DOVirtual.DelayedCall(5.0f, () => LoadScene(0));
     }
 
     public void PrintGameClearCredit()

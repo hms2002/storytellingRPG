@@ -9,7 +9,8 @@ public class Fist : KeywordMain
         isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();
-    }
+        keywordDamage = keywordDamage + GameManager.instance.killCnt_bossMonster + GameManager.instance.killCnt_eleteMonster + GameManager.instance.killCnt_nomalMonster;
+}
 
     public override void Execute(Actor caster, Actor target)
     {

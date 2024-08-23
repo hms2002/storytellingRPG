@@ -14,7 +14,9 @@ namespace Map
             filePath = Application.persistentDataPath + "/mapData.json";
 
             // 맵 데이터 불러오기
-            MapState.InstanceMap.LoadMapData(filePath);
+            //MapState.InstanceMap.LoadMapData(filePath);
+            MapState.InstanceMap.SpawnMap();
+            StageManager.instance.StageReset();
         }
     }
 }
