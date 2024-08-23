@@ -59,6 +59,7 @@ public class AudioManager : MonoBehaviour
         soundGroups["Debuff"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Debuff"));
         soundGroups["Character"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Character"));
         soundGroups["BGM"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/BGM"));
+        soundGroups["Shop"] = new List<AudioClip>(Resources.LoadAll<AudioClip>("Sounds/Shop"));
     }
 
     public void PlaySound(string group, string clipName)
