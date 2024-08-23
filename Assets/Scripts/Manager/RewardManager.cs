@@ -136,7 +136,7 @@ public class RewardManager : MonoBehaviour
         yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
 
         // 종료
-
+        GameManager.instance.gameState = GameState.EndBattle;
         Book.instance.EnterMap();
         player.gameObject.SetActive(false);
         foreach (GameObject g in btnList)

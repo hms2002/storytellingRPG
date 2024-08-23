@@ -80,7 +80,8 @@ public class Book : MonoBehaviour
         // gameState가 Map, Battle, Shop이면 return
         if (GameManager.instance.gameState == GameState.Map     ||
             GameManager.instance.gameState == GameState.Battle  ||
-            GameManager.instance.gameState == GameState.Shop)   return;
+            GameManager.instance.gameState == GameState.Shop ||
+            GameManager.instance.gameState == GameState.Event)   return;
 
         // Map 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)
@@ -122,7 +123,8 @@ public class Book : MonoBehaviour
         // gameState가 KeywordSetting, Battle, Shop이면 return
         if (GameManager.instance.gameState == GameState.KeywordSetting ||
             GameManager.instance.gameState == GameState.Battle ||
-            GameManager.instance.gameState == GameState.Shop) return;
+            GameManager.instance.gameState == GameState.Shop ||
+            GameManager.instance.gameState == GameState.Event) { return; }
 
         // KeywordSetting 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)
@@ -323,6 +325,12 @@ public class Book : MonoBehaviour
             if (i < mainKeywordsForDisplay.Count)  mainKeywordsForDisplay[i].SetActive(false);
         }
 
+        // 접힌 페이지 UI 비활성화
+        foreach (GameObject foldedPage in foldedPages)
+        {
+            foldedPage.SetActive(false);
+        }
+
         // BookTurnR 애니메이션 재생
         bookAnimator.SetTrigger("turnPageToLeft");
 
@@ -339,10 +347,12 @@ public class Book : MonoBehaviour
         StartCoroutine(ActivateKeywordsWithDelay(mainKeywordsForDisplay, startIndex, endIndexForMain, uIActiveDelay));
 
         // 
-        if (foldedPages[1].activeSelf == false) foldedPages[1].SetActive(true);
+        if (foldedPages[1].activeSelf == false)
+            DOVirtual.DelayedCall(uIActiveDelay, () => foldedPages[1].SetActive(true));
 
         // 페이지 값이 1이면 FoldedPageL 오브젝트 비활성화
         if (keywordSettingPage == 1) foldedPages[0].SetActive(false);
+        else if (keywordSettingPage > 1) DOVirtual.DelayedCall(uIActiveDelay, () => foldedPages[0].SetActive(true));
     }
 
     /// <summary>
@@ -366,6 +376,12 @@ public class Book : MonoBehaviour
         {
             // i가 Main 리스트 길이보다 작다면 이전 페이지 Main 키워드들 비활성화
             if (i < mainKeywordsForDisplay.Count) mainKeywordsForDisplay[i].SetActive(false);
+        }
+
+        // 접힌 페이지 UI 비활성화
+        foreach (GameObject foldedPage in foldedPages)
+        {
+            foldedPage.SetActive(false);
         }
 
         // BookTurnR 애니메이션 재생
@@ -392,6 +408,10 @@ public class Book : MonoBehaviour
         {
             // FoldedPageR 오브젝트 비활성화
             foldedPages[1].SetActive(false);
+        }
+        else if (endIndexForSup < supKeywordsForDisplay.Count || endIndexForMain < mainKeywordsForDisplay.Count)
+        {
+            DOVirtual.DelayedCall(uIActiveDelay, () => foldedPages[1].SetActive(true));
         }
     }
 
