@@ -6,14 +6,15 @@ public class ShildOfLamp : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "붉은 용의 송곳니";
+        keywordName = "등불의 방패";
         isPlayerKeyword = true;
-        SetKeywordColor(Y);
+        SetKeywordColor(B);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
+        caster.protect += keywordProtect;
         target.charactorState.AddState(StateType.burn, buffStack);
     }
 
