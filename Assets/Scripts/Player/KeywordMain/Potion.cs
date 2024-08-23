@@ -16,7 +16,7 @@ public class Potion : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.heal += keywordHeal;
+        caster.hp += keywordHeal;
     }
 
     public override void Check(KeywordSup _keywordSup)
