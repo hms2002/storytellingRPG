@@ -12,7 +12,7 @@ public class FightManager : MonoBehaviour
 {
     public static FightManager fightManager;
     public FightManagerUI fightManagerUI;
-
+    public bool isAction = false;
     [Header("Actor 오브젝트")]
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Actor player;
@@ -114,8 +114,8 @@ public class FightManager : MonoBehaviour
         // 전투 시작 시 발동되는 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 
-        DOVirtual.DelayedCall(2f, () => UIManager.instance.ActiveCombatKeywordUI(true));
-        DOVirtual.DelayedCall(2f, Flow);
+        DOVirtual.DelayedCall(3.5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
+        DOVirtual.DelayedCall(3.5f, Flow);
     }
 
     /*public void EventFightStart()
@@ -227,6 +227,7 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
+            monsterList[preparedActorCount].BeforeAction();
 
             if (!CheckMonsterSurvive())
             {
@@ -271,6 +272,7 @@ public class FightManager : MonoBehaviour
 
     private IEnumerator ActorAction()
     {
+        isAction = true;
         player.Action(MonsterTargetter.monsterTargetter.target);
 
         int dir = 3;
@@ -368,7 +370,7 @@ public class FightManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             TextManager.instance.Text.text = string.Empty;
         }
-
+        isAction = false;
         if(CheckPlayerSurvive())
             Flow();
     }

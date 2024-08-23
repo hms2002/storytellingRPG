@@ -57,7 +57,7 @@ namespace Map
         private int maxTreasureNodes = 4;
         private int maxStoreNodes = 4;
         private int maxRestNodes = 3;
-        private int maxEliteNodes = 5;
+        private int maxEliteNodes = 6;
 
 
         // 현재 생성된 각 노드 타입의 수를 기록

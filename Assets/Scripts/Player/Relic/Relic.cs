@@ -63,6 +63,8 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         ShopManager.instance.UpdateGoldHUD(price * -1);
         Destroy(priceTag);
 
+        AudioManager.instance.PlaySound("Shop", "동전");
+
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);
 
