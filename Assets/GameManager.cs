@@ -277,7 +277,7 @@ public class GameManager : MonoBehaviour
     {
         monsterType = type;
         Book.instance.EnterBattleField();
-        DOVirtual.DelayedCall(2.0f, fightManager.FightStart);
+        DOVirtual.DelayedCall(1.5f, fightManager.FightStart);
     }
     
     public void WinFight()
