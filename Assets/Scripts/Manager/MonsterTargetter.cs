@@ -57,7 +57,7 @@ public class MonsterTargetter : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0)&& !FightManager.fightManager.isAction)
+        if(Input.GetMouseButtonDown(0) && !FightManager.fightManager.isAction)
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
