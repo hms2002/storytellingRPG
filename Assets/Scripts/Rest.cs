@@ -32,7 +32,7 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (player == null)
             player = EventManager.instance.player;
-        player.tension += 50;
+        TensionManager.tensionManagerUI.tension += 50;
 
         ClickOff();
     }
@@ -43,7 +43,7 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (player == null)
             player = EventManager.instance.player;
         player.hp += 15;
-        player.tension += 25;
+        TensionManager.tensionManagerUI.tension += 25;
 
         ClickOff();
     }
