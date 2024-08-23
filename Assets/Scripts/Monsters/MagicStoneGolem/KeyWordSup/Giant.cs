@@ -8,7 +8,7 @@ public class Giant : KeywordSup
     {
         keywordName = "거대한";
         SetKeywordColor(Y);
-        keywordTension = -8;
+        keywordTension = -5;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();

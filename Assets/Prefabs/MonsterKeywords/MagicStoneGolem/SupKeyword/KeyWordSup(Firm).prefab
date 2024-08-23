@@ -173,7 +173,7 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _buffStack: 0
-  _keywordTension: -16
+  _keywordTension: 10
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0

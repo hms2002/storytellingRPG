@@ -7,7 +7,7 @@ public class MonsterSetDatabase : MonoBehaviour
     public static MonsterSetDatabase monsterSetDatabase;
 
     internal List<GameObject> selectedMonsterSet;
-    List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[9];
+    List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[7];
     List<GameObject>[] stage1_EliteMonsterLists = new List<GameObject>[2];
     List<GameObject>[] stage1_BossMonsterLists = new List<GameObject>[1];
 
