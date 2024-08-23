@@ -87,6 +87,8 @@ public class PlayerRelic : MonoBehaviour
     }
     public void InitRelicList()
     {
+        if (RelicManager.instance == null) return;
+
         RelicManager.instance.RelicList.Clear();
 
         foreach (GameObject myRelic in relics)
