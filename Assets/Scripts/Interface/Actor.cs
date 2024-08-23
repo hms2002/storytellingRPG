@@ -156,7 +156,7 @@ public class Actor : MonoBehaviour
                 if (charactorState.GetStateStack(StateType.ore) != 0 && value < _hp)
                     charactorState.ReductionByValue(StateType.ore, _hp - value);
 
-            if(value > _hp && value == MAX_HP)
+            if(value > _hp && value != MAX_HP)
                 UIManager.instance.ActiveDamageText(transform.position, value-_hp, Color.green);
 
 
@@ -299,7 +299,6 @@ public class Actor : MonoBehaviour
         charactorState.Init(stateUIController);
         charactorState.actor = this;
 
-        _hp = _MAX_HP;
         _protect = 0;
         _heal = 0;
         _damage = 0;
