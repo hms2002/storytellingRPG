@@ -30,8 +30,8 @@ public class Melting : KeywordMain
     public override void CanUseCheck(Actor caster, Actor target)
     {
         if (target.charactorState.GetStateStack(StateType.addiction) < 1)
-            isCanUse = true;
-        else
             isCanUse = false;
+        else
+            isCanUse = true;
     }
 }
