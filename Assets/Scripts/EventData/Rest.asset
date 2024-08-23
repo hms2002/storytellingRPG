@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab451ad516a21e64b85ba9d30bce3e07, type: 3}
   m_Name: Rest
   m_EditorClassIdentifier: 
-  roomImage: {fileID: 21300000, guid: 7e97f916b449d2d48b0c4b33d0c40549, type: 3}
+  roomImage: {fileID: 21300000, guid: a5a799f503bd51944b1147f110b8905b, type: 3}
   nextImage1: {fileID: 0}
   nextImage2: {fileID: 0}
   nextImage3: {fileID: 0}
