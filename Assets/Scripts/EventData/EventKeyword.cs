@@ -74,12 +74,7 @@ public class EventKeyword : MonoBehaviour
 
     public void GetRelics(RelicData relics)
     {
-
-    }
-
-    public void AddRelic()
-    {
-/*        RelicManager.instance.GetRelic(GetRelics().GetComponent<RelicData>().relicTicker);*/
+        RelicManager.instance.AddRelicWithData(relics);
     }
 
     public void ChangeHp(int hp)
