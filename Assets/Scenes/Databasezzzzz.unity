@@ -2379,7 +2379,7 @@ MonoBehaviour:
   _effectManager: {fileID: 961754231}
   _audioManager: {fileID: 2089065587}
   _tensionManager: {fileID: 239664178}
-  _rewardManager: {fileID: 1256012564}
+  _rewardManager: {fileID: 0}
   _shopManager: {fileID: 436645517}
   _restManager: {fileID: 0}
   _eventManager: {fileID: 427916748}
@@ -3130,7 +3130,7 @@ MonoBehaviour:
   select: 0
   isSelected: 0
   isBattle: 0
-  eventData: {fileID: 0}
+  eventData: {fileID: 11400000, guid: 8daf6c184ba951049a22ecbb37cb1b4f, type: 2}
 --- !u!1 &436645516
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,7 +7302,7 @@ PrefabInstance:
     - target: {fileID: 4595920635642977702, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: stateUIController
       value: 
-      objectReference: {fileID: 1090925729}
+      objectReference: {fileID: 0}
     - target: {fileID: 5469943792477412574, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -10119,6 +10119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
+  rest: {fileID: 0}
 --- !u!1001 &2081450237
 PrefabInstance:
   m_ObjectHideFlags: 0
