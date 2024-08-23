@@ -6,9 +6,9 @@ public class Player_ProtectivePosture : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "처형자의 칼날";
+        keywordName = "보호 태세";
         isPlayerKeyword = true;
-        SetKeywordColor(R);
+        SetKeywordColor(B);
         Init();
     }
 

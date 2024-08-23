@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateUIController: {fileID: 1960719146187118969}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
-  _MAX_HP: 100
+  _MAX_HP: 50
   _hp: 0
   _Name: "\uC720\uB3C5\uC131 \uC2AC\uB77C\uC784"
   beforeDamage: 0
@@ -181,7 +181,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.3333333, y: 3.76}
+    oldSize: {x: 2.173913, y: 2.452174}
     newSize: {x: 5, y: 5.38}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
