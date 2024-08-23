@@ -10,6 +10,7 @@ public class TextManager : MonoBehaviour
 {
     public static TextManager instance;
     public TextMeshProUGUI Text;
+    public bool firstText = true;
 
     private void Awake()
     {
@@ -39,10 +40,9 @@ public class TextManager : MonoBehaviour
 
     private IEnumerator OnlyText(string[] textList, float time)
     {
-        for(int i=0; i < textList.Length; i++)
+        Text.text = string.Empty;
+        for (int i=0; i < textList.Length; i++)
         {
-            Text.text = string.Empty;
-
             yield return Text.DOText(textList[i], time).WaitForCompletion();
 
             if(i == textList.Length - 1 && textList.Length != 1)
@@ -57,6 +57,7 @@ public class TextManager : MonoBehaviour
 
     public void KeywordTextPlay(Actor actor)
     {
+        Text.text = string.Empty;
         char lastString = actor.Name[actor.Name.Length - 1];
         if (lastString >= 0xAC00 && lastString <= 0xD7A3)
         {
@@ -183,6 +184,7 @@ public class TextManager : MonoBehaviour
 
     public void EncounterTextPlay(Monster monster)
     {
+        Text.text = string.Empty;
         Text.DOText(monster.encounterText, 1f);
         Text.alignment = TextAlignmentOptions.Midline;
     }

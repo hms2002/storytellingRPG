@@ -23,9 +23,6 @@ public enum CursorType
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
-    [Header("마우스 커서 이미지 리스트")]
-    [SerializeField] private List<Texture2D> cursorImage;
     
     [Header("키워드 세팅 윈도우")]
     [SerializeField] private GameObject keywordSettingWindow;       // 키워드 세팅 윈도우 객체
@@ -90,28 +87,6 @@ public class UIManager : MonoBehaviour
                 damageTextArr[i] = Instantiate(damageTextPrefab, parentCanvas.transform).GetComponent<FloatingDamageInfo>();
                 damageTextArr[i].gameObject.SetActive(false);
             }
-        }
-    }
-
-    /// <summary>
-    /// 커서 이미지를 파라미터 값으로 변경합니다.
-    /// </summary>
-    /// <param name="cursorType">CursorType.typename을 입력하세요.</param>
-    public void ChangeCursorImage(CursorType cursorType)
-    {
-        switch (cursorType)
-        {
-            case CursorType.Nib:
-
-                Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.ForceSoftware);
-
-                break;
-
-            case CursorType.Eraser:
-
-                Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.ForceSoftware);
-
-                break;
         }
     }
 

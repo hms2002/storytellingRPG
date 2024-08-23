@@ -993,6 +993,9 @@ MonoBehaviour:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   _gameState: 0
+  cursorImage:
+  - {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
+  - {fileID: 2800000, guid: 195dd8a5dd7e9e24ea8b974b006dfc8b, type: 3}
   killCnt_nomalMonster: 0
   killCnt_eleteMonster: 0
   killCnt_bossMonster: 0
