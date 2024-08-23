@@ -28,4 +28,12 @@ public class Player_ShieldCharge : KeywordMain
     public override void Check(KeywordSup _keywordSup)
     {
     }
+
+    public override void CanUseCheck(Actor caster, Actor target)
+    {
+        if(caster.protect < 4)
+        {
+            isCanUse = false;
+        }    
+    }
 }
