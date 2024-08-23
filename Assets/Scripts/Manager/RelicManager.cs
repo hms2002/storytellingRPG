@@ -64,6 +64,13 @@ public class RelicManager : MonoBehaviour
         return relicPrefab;
     }
 
+    public void GetRelic(Relics whatRelic)
+    {
+        relicPrefab.GetComponent<Relic>().relicData = RelicDatabase.instance.relicsData[(int)whatRelic];
+
+        PlayerRelic.instance.AddRelic(relicPrefab);
+    }
+
     public int HowManyRelicLeft()
     {
         return RelicDatabase.instance.relicsData.Count - PlayerRelic.instance.GetRelicCnt();
