@@ -379,8 +379,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uAC8C\uC784 \uC885\uB8CC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -993,10 +993,14 @@ MonoBehaviour:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   _gameState: 0
+  killCnt_nomalMonster: 0
+  killCnt_eleteMonster: 0
+  killCnt_bossMonster: 0
   relicCnt: 0
   goldCnt: 0
   keywordCnt: 0
   eventIndex: 0
+  gameOverCanvas: {fileID: 0}
 --- !u!4 &1218756857
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,8 +1430,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uAC8C\uC784 \uC2DC\uC791"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
-  m_sharedMaterial: {fileID: 7634899782584969210, guid: e4d57e2f662ec994f9303265a420a96b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
+  m_sharedMaterial: {fileID: 2187444110035342960, guid: b2c5931c632b55e47affdd87dfc273f5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1457,7 +1461,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
