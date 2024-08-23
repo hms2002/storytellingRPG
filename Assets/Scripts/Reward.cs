@@ -72,7 +72,6 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// <param name="relicData">설정할 세팅값 참조를 위해 유물 데이터를 받아옵니다.</param>
     public void SettingReward_Relic(GameObject dataObj, PlayerRelic playerRelic)
     {
-
         RelicData data = dataObj.GetComponent<Relic>().relicData;
         RelicImage.sprite = data.relicImage;
         rewardNameText.text = data.RelicName;
@@ -92,14 +91,17 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void AddThisToMainDeck()
     {
+        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
         RewardManager.instance.AddMainKeywordToDeck(keywordPrefab);
     }
     public void AddThisToSupDeck()
     {
+        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
         RewardManager.instance.AddSupKeywordToDeck(keywordPrefab);
     }
     public void AddGoldToPlayer()
     {
+        AudioManager.instance.PlaySound("Shop", "동전");
         RewardManager.instance.AddGoldToPlayer();
     }
     public void ClickNoReward()

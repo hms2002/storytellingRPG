@@ -58,6 +58,8 @@ public class PlayerRelic : MonoBehaviour
     }
     public void AddRelicForInstantciated(GameObject relic)
     {
+        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
+
         if (relic == null) return;
 
         relic.GetComponent<Relic>().isPerchased = true;
