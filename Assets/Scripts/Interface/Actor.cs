@@ -34,11 +34,6 @@ public class DamageList
     public int GetAllDamage()
     {
         int damage = 0;
-        if (damageL == null)
-        {
-            Debug.Log("????????????????????????????????????");
-            return 0; 
-        }
         foreach (DamageInfo d in damageL)
             damage += d.damage;
         return damage;
@@ -50,8 +45,10 @@ public class DamageList
             isPlus = false;
             if(damageL.Count == 0)
                 damageL.Add(new DamageInfo(damage, isPenetrate));
-            else
+            else if(damageL[0] == null)
                 damageL[0].damage += damage;
+            else
+                damageL.Add(new DamageInfo(damage, isPenetrate));
         }
         else
             damageL.Add(new DamageInfo(damage, isPenetrate));
@@ -70,7 +67,10 @@ public class DamageList
         }
         else
         {
-            damageL[0].damage += damage;
+            if (damageL[0] == null)
+                damageL.Add(new DamageInfo(damage, isPenetrate));
+            else
+                damageL[0].damage += damage;
         }
     }
 }
@@ -513,11 +513,6 @@ public class Actor : MonoBehaviour
         {
             PlayActionEffect(target);
 
-            if (dmgList.damageL == null)
-            {
-                Debug.Log("??????????????");
-                break;
-            }
             foreach(DamageInfo t in dmgList.damageL)
             {
                 target.Damaged(this, t);
