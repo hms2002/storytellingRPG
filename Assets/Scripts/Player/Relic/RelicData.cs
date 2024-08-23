@@ -24,6 +24,6 @@ public class RelicData : ScriptableObject
 
     [Header("유물 발동 타입")]
     public RelicType relicType;
-    public enum RelicType { OnStartBattle, OnVictory, OnStartTurn }
+    public enum RelicType { OnStartBattle, OnVictory, OnStartTurn, OnHitMonster }
     
 }

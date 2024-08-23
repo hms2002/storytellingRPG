@@ -183,6 +183,10 @@ public class EffectManager : MonoBehaviour
                 Destroy(effectInstance, duration);
             }
             AudioManager.instance.PlaySound("Character", "타격음_주먹2");
+
+            // 몬스터 타격 시점 발동 유물 적용
+            PlayerRelic.instance.UseRelic(RelicData.RelicType.OnHitMonster);
+
             // Introduce a delay before the next effect instantiation
             yield return new WaitForSeconds(0.1f);
         }

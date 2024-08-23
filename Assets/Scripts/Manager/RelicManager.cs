@@ -9,7 +9,7 @@ public class RelicManager : MonoBehaviour
     [Header("유물 프리팹")]
     [SerializeField] private GameObject relicPrefab;
     
-    private List<RelicData> relicList = new List<RelicData>();
+    [SerializeField] private List<RelicData> relicList = new List<RelicData>();
     public List<RelicData> RelicList => relicList;
 
     private int randomIndex;        // 무작위 유물 리스트 인덱스를 담을 변수

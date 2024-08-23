@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6955088831041231507}
         m_TargetAssemblyTypeName: KeywordSup, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1

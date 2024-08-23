@@ -181,6 +181,8 @@ public class FightManager : MonoBehaviour
             MonsterTargetter.monsterTargetter.TargetUIOff();
             return;
         }
+        
+        Debug.Log("턴" + currentTurn);
 
         // 턴 시작 발동 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);

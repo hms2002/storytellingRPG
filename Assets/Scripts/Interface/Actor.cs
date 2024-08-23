@@ -193,8 +193,8 @@ public class Actor : MonoBehaviour
     
     public int lastTurnProtectReduction
     {
-        get { return lastTurnProtectReduction; }
-        private set { }
+        get { return _lastTurnProtectReduction; }
+        set { _lastTurnProtectReduction = value; }
     }
 
     public int heal
