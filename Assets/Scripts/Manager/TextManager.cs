@@ -189,13 +189,13 @@ public class TextManager : MonoBehaviour
 
     public void PrintVictory()
     {
-        Text.DOText("당신은 승리하였다.", 2f);
+        Text.DOText("당신은 승리하였다.", 1f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void PrintPlayerDie()
     {
-        Text.DOText("당신의 이야기는 여기에서 끝났다.", 2f);
+        Text.DOText("당신의 이야기는 여기에서 끝났다.", 1f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 }
