@@ -1546,7 +1546,7 @@ GameObject:
   - component: {fileID: 214915284}
   - component: {fileID: 214915287}
   - component: {fileID: 214915286}
-  - component: {fileID: 214915285}
+  - component: {fileID: 214915288}
   m_Layer: 5
   m_Name: PlayerRelic
   m_TagString: Untagged
@@ -1573,32 +1573,6 @@ RectTransform:
   m_AnchoredPosition: {x: -410, y: 460}
   m_SizeDelta: {x: 1000, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &214915285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214915283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 3
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &214915286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,6 +1611,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214915283}
   m_CullTransparentMesh: 1
+--- !u!114 &214915288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214915283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 50, y: 50}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &226761810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,16 +2264,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf1cdfcd540e984d9a4fc75d2217a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fightManager: {fileID: 0}
-  _uiManager: {fileID: 0}
-  _textManager: {fileID: 0}
-  _effectManager: {fileID: 0}
-  _audioManager: {fileID: 0}
-  _tensionManager: {fileID: 0}
-  _rewardManager: {fileID: 0}
-  _shopManager: {fileID: 0}
+  _fightManager: {fileID: 1367631705}
+  _uiManager: {fileID: 1618870758}
+  _textManager: {fileID: 912867321}
+  _effectManager: {fileID: 961754231}
+  _audioManager: {fileID: 2089065587}
+  _tensionManager: {fileID: 239664178}
+  _rewardManager: {fileID: 1350185124}
+  _shopManager: {fileID: 436645517}
   _restManager: {fileID: 0}
-  _eventManager: {fileID: 0}
+  _eventManager: {fileID: 427916748}
   _allSupKeywordsForPlayer:
   - {fileID: 8593624912257865420, guid: e6cc9f2d76a5be1429ec2c20a680cdf4, type: 3}
   - {fileID: 3631724143054633209, guid: b318812a70b76014085a6eda0dc01eb9, type: 3}
@@ -2711,8 +2709,8 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 230, y: 230}
-  m_Spacing: {x: 40, y: 80}
+  m_CellSize: {x: 200, y: 200}
+  m_Spacing: {x: 10, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &359114248
@@ -2731,7 +2729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &359114249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7779,6 +7777,17 @@ RectTransform:
   m_AnchoredPosition: {x: 128.6744, y: -31.039936}
   m_SizeDelta: {x: 228.6387, y: 38.8691}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1350185124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1579865217142991662, guid: fa5bf3b7273a11a4f9cc42864ad32fb0, type: 3}
+  m_PrefabInstance: {fileID: 1256012562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5ca615bfb9e8646ac7317b9b0a33d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1367631703
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,6 +9182,7 @@ MonoBehaviour:
   RestButton: []
   EventUI:
   - {fileID: 847360358}
+  island: {fileID: 0}
   theEndIcon: {fileID: 0}
   damageTextPrefab: {fileID: 8326966368782848885, guid: 786ecfbabcd7c514a9c1a6c4291abb11, type: 3}
   parentCanvas: {fileID: 1623553921}
@@ -10569,6 +10579,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
   - {fileID: 11400000, guid: dfcd6c3b238b9d74db7d825a231ef402, type: 2}
+  rest: {fileID: 0}
 --- !u!1001 &2081450237
 PrefabInstance:
   m_ObjectHideFlags: 0
