@@ -82,6 +82,8 @@ public class Shop : MonoBehaviour
     /// </summary>
     public void RelicProductsDisplay()
     {
+        int randomIndex = 0;
+
         // 상품 발주량만큼 반복
         for (int i = 0; i < ShopManager.instance.orderVolume; i++)
         {
@@ -89,6 +91,10 @@ public class Shop : MonoBehaviour
 
             // 랜덤 발주한 유물 인스턴스화 및 진열
             relicProducts.Add(Instantiate(RelicManager.instance.GetRandomRelic(), relicShelve));
+
+            randomIndex = Random.Range(0, ShopManager.instance.pricesPerRelic.Count);
+
+            relicProducts[i].GetComponent<Relic>().price = ShopManager.instance.pricesPerRelic[randomIndex];
         }
     }
 

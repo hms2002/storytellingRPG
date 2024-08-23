@@ -13,6 +13,9 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
     private Image relicImage;
 
+    private int _price = 0;
+    public int price { get => _price; set => _price = value; }
+
     private bool _isPerchased = false;
     public bool isPerchased { get => _isPerchased; set => _isPerchased = value; }
 
@@ -44,6 +47,13 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     {
         // 게임 상태가 Shop이 아니거나 구매한 상태라면 반환
         if (GameManager.instance.gameState != GameState.Shop || isPerchased) return;
+
+        if (ShopManager.instance.player.gold < price)
+        {
+            UIManager.instance.ButtonClicklessFeedback(gameObject);
+            
+            return;
+        }
 
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);

@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// 상점 시스템 흐름 제어
@@ -18,7 +19,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Shop shopUI;                     // ShopUI 오브젝트의 Shop 스크립트 컴포넌트
 
     [Header("Player 오브젝트")]
-    [SerializeField] private Actor player;                  // Player 오브젝트의 Actor 스크립트 컴포넌트
+    [SerializeField] private Actor _player;                  // Player 오브젝트의 Actor 스크립트 컴포넌트
+    public Actor player => _player;
 
     [Header("골드 패널")]
     [SerializeField] private GameObject _goldPanel;         // 소지금 패널 오브젝트
@@ -50,7 +52,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private int pricePerKeyword = 75;
 
     [Header("유물 당 가격")]
-    [SerializeField] private List<int> PricesPerRelic = new List<int>() { 100, 125, 150, 175, 200 };
+    [SerializeField] private List<int> _pricesPerRelic = new List<int>() { 100, 125, 150, 175, 200 };
+    public IReadOnlyList<int> pricesPerRelic { get => _pricesPerRelic; }
 
     [Header("키워드 제거 개당 가격")]
     [SerializeField] private int keywordErasingPrice = 75;
