@@ -10,7 +10,7 @@ public class HardeningRock : KeywordMain
         keywordName = "바위 굳히기";
 
         SetKeywordColor(Y);
-        keywordTension = -8;
+        keywordTension = -7;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();

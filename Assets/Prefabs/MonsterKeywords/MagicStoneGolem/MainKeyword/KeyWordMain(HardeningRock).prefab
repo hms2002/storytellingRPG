@@ -385,12 +385,11 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _buffStack: 0
-  _keywordTension: 0
+  _keywordTension: -7
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uC274\uB4DC \uC2A4\uD0DD\uC744 10\uB9CC\uD07C \uD68D\uB4DD\uD569\uB2C8\uB2E4.\n\uAE34\uC7A5\uB3C4
-    +6"
+  keywordDescription: "\uC274\uB4DC \uC2A4\uD0DD\uC744 10\uB9CC\uD07C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &4444115996627761596
