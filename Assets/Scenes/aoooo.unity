@@ -2999,6 +2999,9 @@ MonoBehaviour:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   _gameState: 0
+  killCnt_nomalMonster: 0
+  killCnt_eleteMonster: 0
+  killCnt_bossMonster: 0
   relicCnt: 0
   goldCnt: 0
   keywordCnt: 0
@@ -13574,7 +13577,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 2effb0324b3f0874e90a6831aec1be22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14939,11 +14942,11 @@ SceneRoots:
   - {fileID: 178405247}
   - {fileID: 181785501}
   - {fileID: 1304107172}
+  - {fileID: 1919555909}
   - {fileID: 1701297618}
   - {fileID: 1316923059}
   - {fileID: 1097516019}
   - {fileID: 1623553925}
-  - {fileID: 1919555909}
   - {fileID: 1336054972}
   - {fileID: 2053585530}
   - {fileID: 447479124}
