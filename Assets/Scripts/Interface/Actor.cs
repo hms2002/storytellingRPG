@@ -279,6 +279,7 @@ public class Actor : MonoBehaviour
                 gold = 200;
             else
                 gold = UnityEngine.Random.Range(40, 61);
+            hp = MAX_HP;
         }
 
         // 원본 덱 가져오기 전에 있는지 확인
@@ -299,7 +300,6 @@ public class Actor : MonoBehaviour
         charactorState.Init(stateUIController);
         charactorState.actor = this;
 
-        _hp = _MAX_HP;
         _protect = 0;
         _heal = 0;
         _damage = 0;
