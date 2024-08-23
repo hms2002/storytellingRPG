@@ -426,8 +426,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uD3EC\uC158\uC744 \uC548\uC815\uD654 \uD569\uB2C8\uB2E4.
-    \n(\uD3EC\uC158\uC218\uCE58\uAC00 \uACE0\uC815\uB429\uB2C8\uB2E4)"
+  keywordDescription: "\uD3EC\uC158\uC744 \uC548\uC815\uD654 \uD569\uB2C8\uB2E4. "
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &8702495295601821500
