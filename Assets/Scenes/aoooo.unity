@@ -748,7 +748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -330}
+  m_AnchoredPosition: {x: 0, y: -469}
   m_SizeDelta: {x: 640, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107747665
@@ -1312,7 +1312,6 @@ RectTransform:
   - {fileID: 2012705081}
   - {fileID: 260517878}
   - {fileID: 2014379441}
-  - {fileID: 1003167481}
   - {fileID: 673154224}
   - {fileID: 1115819382}
   - {fileID: 704807534}
@@ -2318,6 +2317,7 @@ RectTransform:
   - {fileID: 458777283}
   - {fileID: 1538723685}
   - {fileID: 787736604}
+  - {fileID: 1003167481}
   m_Father: {fileID: 178405247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5977,7 +5977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 680.6588, y: 509.36}
+  m_AnchoredPosition: {x: 665.2189, y: 504.36}
   m_SizeDelta: {x: 558.6824, y: 61.274}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787736605
@@ -6960,17 +6960,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003167480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 819842751}
-  m_Father: {fileID: 178405247}
+  m_Father: {fileID: 260517878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 841.44, y: 416}
+  m_AnchoredPosition: {x: 826, y: 411}
   m_SizeDelta: {x: 237.1257, y: 81.4475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003167482
@@ -7533,7 +7533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 175427801}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: ExitShop
         m_Mode: 1
