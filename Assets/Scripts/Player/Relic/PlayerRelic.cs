@@ -45,7 +45,14 @@ public class PlayerRelic : MonoBehaviour
     {
         if (relic == null) return;
 
-        // relic 프리팹이 이미 인스턴스화되어 있다면
+        RelicManager.instance.RelicList.Clear();
+
+        foreach (GameObject myRelic in relics)
+        {
+            RelicManager.instance.RelicList.Add(myRelic.GetComponent<Relic>().relicData);
+        }
+
+        /*// relic 프리팹이 이미 인스턴스화되어 있다면
         if (GameManager.instance.IsInstantiated(relic))
         {
             relics.Add(relic);
@@ -53,7 +60,7 @@ public class PlayerRelic : MonoBehaviour
             relics[relics.Count -1].transform.SetParent(playerRelicCanvas, false);
 
             return;
-        }
+        }*/
 
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
         relics.Add(Instantiate(relic, playerRelicCanvas.transform));
@@ -64,7 +71,6 @@ public class PlayerRelic : MonoBehaviour
     {
         return relics.Count;
     }
-
 
     /// <summary>
     /// 전달받은 타입에 맞는 유물들을 찾아 효과를 적용시킵니다.

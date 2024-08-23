@@ -78,20 +78,20 @@ public class ShopManager : MonoBehaviour
         // gameState가 Map이거나 Battle이면 return
         if (GameManager.instance.gameState == GameState.Map || GameManager.instance.gameState == GameState.Battle) return;
 
+        // Player UI 비활성화 및 오브젝트 활성화
+        player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        player.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        player.gameObject.SetActive(true);
+
         // 다른 UI 비활성화
         UIManager.instance.ActiveMapUI(false);
         UIManager.instance.ActiveKeywordSettingUI(false);
-        
-        // Player UI 비활성화
-        player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        player.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         // 페이지 우로 넘기기 애니메이션 재생
         Book.instance.bookAnimator.SetTrigger("turnPageToRight");
 
         // 상점 UI 활성화 및 플레이어 오브젝트 활성화
         DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => UIManager.instance.ActiveShopUI(true));
-        DOVirtual.DelayedCall(Book.instance.uIActiveDelay, () => player.gameObject.SetActive(true));
 
         // 상점 UI 중 바로 사용하지 않는 UI 비활성화
         tableclothTag.SetActive(false);

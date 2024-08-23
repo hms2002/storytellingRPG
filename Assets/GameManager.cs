@@ -364,6 +364,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(idx);
     }
+
     /// <summary>
     /// 전달한 오브젝트의 인스턴스화 여부를 반환합니다.
     /// </summary>

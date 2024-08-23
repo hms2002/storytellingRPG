@@ -8,6 +8,9 @@ public class RelicManager : MonoBehaviour
 
     [Header("유물 프리팹")]
     [SerializeField] private GameObject relicPrefab;
+    
+    private List<RelicData> relicList = new List<RelicData>();
+    public List<RelicData> RelicList => relicList;
 
     private int randomIndex;        // 무작위 유물 리스트 인덱스를 담을 변수
 
@@ -32,12 +35,36 @@ public class RelicManager : MonoBehaviour
     /// <returns>뽑은 유물 데이터를 프리팹에 적용하여 유물 프리팹을 반환합니다.</returns>
     public GameObject GetRandomRelic()
     {
-        // 유물 리스트 중 하나의 인덱스를 무작위로 선택
-        randomIndex = Random.Range(0, RelicDatabase.instance.relicsData.Count);
+        bool overlapFlag = true;
+
+        while (overlapFlag)
+        {
+            overlapFlag = false;
+
+            // 유물 리스트 중 하나의 인덱스를 무작위로 선택
+            randomIndex = Random.Range(0, RelicDatabase.instance.relicsData.Count);
+
+            foreach (RelicData relic in relicList)
+            {
+                if (relic == RelicDatabase.instance.relicsData[randomIndex])
+                {
+                    overlapFlag = true;
+
+                    break;
+                }
+            }
+        }
+
+        relicList.Add(RelicDatabase.instance.relicsData[randomIndex]);
 
         // 무작위 선택된 유물을 유물 프리팹에 적용
         relicPrefab.GetComponent<Relic>().relicData = RelicDatabase.instance.relicsData[randomIndex];
 
         return relicPrefab;
+    }
+
+    public int HowManyRelicLeft()
+    {
+        return RelicDatabase.instance.relicsData.Count - PlayerRelic.instance.GetRelicCnt();
     }
 }

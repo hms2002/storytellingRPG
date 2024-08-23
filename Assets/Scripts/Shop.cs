@@ -85,12 +85,10 @@ public class Shop : MonoBehaviour
         // 상품 발주량만큼 반복
         for (int i = 0; i < ShopManager.instance.orderVolume; i++)
         {
+            if (i == RelicManager.instance.HowManyRelicLeft()) return;
+
             // 랜덤 발주한 유물 인스턴스화 및 진열
             relicProducts.Add(Instantiate(RelicManager.instance.GetRandomRelic(), relicShelve));
-
-            // 유물 상품 각조 조절
-            relicProducts[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
-            relicProducts[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
     }
 

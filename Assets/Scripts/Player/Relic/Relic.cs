@@ -29,14 +29,9 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         relicImage.sprite = relicData.relicImage;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         InfoManager.instance.ShowTipUI(relicData.RelicName, Color.black, relicData.RelicDescription, transform);
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -53,10 +48,10 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         PlayerRelic.instance.AddRelic(gameObject);
 
         // 유물의 이미지 컴포넌트 비활성화
-        //gameObject.GetComponent<Image>().enabled = false;
+        gameObject.GetComponent<Image>().enabled = false;
 
-        // 유물 크기 조정
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 120);
+        /*// 유물 크기 조정
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 120);*/
 
         // 구매 여부 true
         isPerchased = true;
