@@ -56,7 +56,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
             return;
         }
 
-        ShopManager.instance.player.gold -= price;
+        ShopManager.instance.UpdateGoldHUD(price * -1);
 
         // PlayerRelic의 AddRelic에 접근하여 추가
         PlayerRelic.instance.AddRelic(gameObject);
