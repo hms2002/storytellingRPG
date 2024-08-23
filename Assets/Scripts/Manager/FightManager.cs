@@ -86,7 +86,7 @@ public class FightManager : MonoBehaviour
         whoPlaying.GetKeywordMain(_keywordMain);
         _keywordMain.PlayClickSound();
         preparedActorCount++;
-        Invoke("Flow",2);
+        Invoke("Flow",1);
     }
 
     public void FightStart()
@@ -170,8 +170,7 @@ public class FightManager : MonoBehaviour
 
             player.BeforeAction();
 
-            foreach (Actor monster in monsterList)
-                monster.BeforeAction();
+            monsterList[preparedActorCount].BeforeAction();
         }
 
         if (!CheckMonsterSurvive())
@@ -191,8 +190,8 @@ public class FightManager : MonoBehaviour
         {
             whoPlaying = monsterList[preparedActorCount];
             monsterList[preparedActorCount].StartTurn();
+            monsterList[preparedActorCount].BeforeAction();
 
-            
             if (!CheckMonsterSurvive())
             {
                 // 전투 승리 문구 출력
@@ -209,7 +208,7 @@ public class FightManager : MonoBehaviour
                 return;
             }
             
-
+            
             monsterList[preparedActorCount].ShowSupKeywords();
 
             return;
@@ -287,7 +286,6 @@ public class FightManager : MonoBehaviour
 
         
         Monster[] tempList = new Monster[monsterList.Count];
-
         for (int i = 0; i < tempList.Length; i++)
             tempList[i] = monsterList[i];
         foreach (Actor monster in tempList)
