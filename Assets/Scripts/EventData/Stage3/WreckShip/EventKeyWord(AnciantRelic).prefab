@@ -388,11 +388,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -7252933589081442648}
         m_TargetAssemblyTypeName: EventKeyword, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
+        m_MethodName: GetRelics
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 0c5a23eaa1e5e304293d4709439c0d35, type: 2}
+          m_ObjectArgumentAssemblyTypeName: RelicData, Assembly-CSharp
           m_IntArgument: -10
           m_FloatArgument: 0
           m_StringArgument: 

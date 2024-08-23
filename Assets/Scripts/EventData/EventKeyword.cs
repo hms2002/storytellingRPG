@@ -72,9 +72,9 @@ public class EventKeyword : MonoBehaviour
         EventManager.instance.player.AddMainKeywordToOriginalDeck(keyword);
     }
 
-    public void AddRelic(Relic relic)
+    public void GetRelics(RelicData relics)
     {
-
+        RelicManager.instance.AddRelicWithData(relics);
     }
 
     public void ChangeHp(int hp)
