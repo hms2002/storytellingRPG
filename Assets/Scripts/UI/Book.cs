@@ -504,6 +504,8 @@ public class Book : MonoBehaviour
     {
         GameManager.instance.gameState = GameState.EndBattle;
 
+        FightManager.currentTurn = 0;
+
         // 전투 관련 캔버스 끄기
         UIManager.instance.ActiveCombatFunctionAndUI(false);
         UIManager.instance.ActiveCombatKeywordUI(false);
