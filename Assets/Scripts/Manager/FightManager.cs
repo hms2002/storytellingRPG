@@ -110,7 +110,7 @@ public class FightManager : MonoBehaviour
         }
 
         CheckBossStage();
-        
+        preparedActorCount = 0;
         // 전투 시작 시 발동되는 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 

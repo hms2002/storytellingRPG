@@ -6143,8 +6143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.34960938, y: 1.2675018}
-  m_SizeDelta: {x: -807.4412, y: -114.265}
+  m_AnchoredPosition: {x: -1.8283081, y: 1.2675018}
+  m_SizeDelta: {x: -786.3555, y: -114.265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &878694282
 GameObject:
@@ -6473,9 +6473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304317703e5c3fe40817f430b78d07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorImage:
-  - {fileID: 2800000, guid: 14ab3cad1f15b134bb215333036e299f, type: 3}
-  - {fileID: 2800000, guid: 195dd8a5dd7e9e24ea8b974b006dfc8b, type: 3}
   keywordSettingWindow: {fileID: 11852568}
   combatFunctionAndUI:
   - {fileID: 528026672}
@@ -6946,6 +6943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 1275471346}
+  firstText: 1
 --- !u!114 &1126570524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11359,6 +11357,7 @@ MonoBehaviour:
   - {fileID: 8784785789567149138, guid: 96eca9e3537a5b644b3f93e4d950b747, type: 3}
   - {fileID: 7579075665694996604, guid: 0e5543ed6a72d3b4d9433701360b5d8b, type: 3}
   _gameState: 0
+  cursorImage: []
   killCnt_nomalMonster: 0
   killCnt_eleteMonster: 0
   killCnt_bossMonster: 0
