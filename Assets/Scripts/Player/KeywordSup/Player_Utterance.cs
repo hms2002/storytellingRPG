@@ -17,7 +17,7 @@ public class Player_Utterance : KeywordSup
     public override void Execute(Actor caster, Actor target)
     {
         int bonus = 0;
-        if (target.charactorState.GetStateStack(StateType.burn) > 0) bonus = 3;
+        if (target.charactorState.GetStateStack(StateType.burn) == 0) { bonus = 3; }
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack + bonus);
     }
 
