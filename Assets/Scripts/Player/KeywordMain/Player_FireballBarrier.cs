@@ -14,7 +14,7 @@ public class Player_FireballBarrier : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect += target.charactorState.GetStateStack(StateType.burn) / 2;
+        caster.protect += target.charactorState.GetStateStack(StateType.burn);
     }
 
     public override void Check(KeywordSup _keywordSup)

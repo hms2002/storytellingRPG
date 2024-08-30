@@ -21,7 +21,7 @@ MonoBehaviour:
   soundName: "\uBD88"
   stateName: "\uC911\uB3C5"
   MAX_STACK: 8
-  damagePerStack: 1
+  damagePerStack: 3
   tentionPerStack: 3
   needStackToEffect: 1
   stateExplanation: "\uC2A4\uD0DD \uB2F9 3 \uD53C\uD574\uC640 3 \uAE34\uC7A5\uB3C4,

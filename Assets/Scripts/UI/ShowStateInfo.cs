@@ -26,7 +26,6 @@ public class ShowStateInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     }
 
-
     private void OnDisable()
     {
         InfoManager.instance.HideWorldTipUI();

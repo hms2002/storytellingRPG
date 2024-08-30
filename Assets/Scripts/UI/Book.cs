@@ -259,7 +259,7 @@ public class Book : MonoBehaviour
 
                     // 키워드 SupKeywordBox 오브젝트 활성화
                     supKeywordsForDisplay[i].transform.Find("SupKeywordBox").gameObject.SetActive(true);
-
+                    supKeywordsForDisplay[i].GetComponent<KeywordInfoControler>().ableShowInfo();
                     // 키워드 버튼타입 적용
                     supKeywordsForDisplay[i].GetComponent<KeywordSup>().buttonType = thisType;
 
@@ -285,6 +285,7 @@ public class Book : MonoBehaviour
 
                     // 키워드 MainKeywordBox 오브젝트 활성화
                     mainKeywordsForDisplay[i].transform.Find("MainKeywordBox").gameObject.SetActive(true);
+                    mainKeywordsForDisplay[i].GetComponent<KeywordInfoControler>().ableShowInfo();
 
                     // 키워드 버튼타입 적용
                     mainKeywordsForDisplay[i].GetComponent<KeywordMain>().buttonType = thisType;

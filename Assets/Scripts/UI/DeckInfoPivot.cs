@@ -103,6 +103,7 @@ public class DeckInfoPivot : MonoBehaviour
         {
             // i번째 키워드 인스턴스화
             keywordTemp = Instantiate(_deckInfo[i], info.transform);
+            keywordTemp.GetComponent<KeywordInfoControler>().ableShowInfo();
 
             // 키워드 버튼 컴포넌트의 상호작용 비활성화
             keywordTemp.GetComponent<Button>().interactable = false;

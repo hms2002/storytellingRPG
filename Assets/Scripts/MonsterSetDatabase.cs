@@ -8,7 +8,7 @@ public class MonsterSetDatabase : MonoBehaviour
 
     internal List<GameObject> selectedMonsterSet;
     List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[7];
-    List<GameObject>[] stage1_EliteMonsterLists = new List<GameObject>[2];
+    List<GameObject>[] stage1_EliteMonsterLists = new List<GameObject>[3];
     List<GameObject>[] stage1_BossMonsterLists = new List<GameObject>[1];
 
     public List<GameObject> s1_NomalMonsterSet1;
@@ -21,6 +21,8 @@ public class MonsterSetDatabase : MonoBehaviour
 
     public List<GameObject> s1_EliteMonsterSet1;
     public List<GameObject> s1_EliteMonsterSet2;
+    public List<GameObject> s1_EliteMonsterSet3;
+
 
     public List<GameObject> s1_BossMonsterSet1;
 
@@ -104,6 +106,8 @@ public class MonsterSetDatabase : MonoBehaviour
 
         stage1_EliteMonsterLists[0] = s1_EliteMonsterSet1;
         stage1_EliteMonsterLists[1] = s1_EliteMonsterSet2;
+        stage1_EliteMonsterLists[2] = s1_EliteMonsterSet3;
+
 
         stage1_BossMonsterLists[0] = s1_BossMonsterSet1;
 

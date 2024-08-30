@@ -14,8 +14,8 @@ public class Player_Buckler : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.oneTimeProtect, buffStack);
-        caster.charactorState.AddState(StateType.counterAttack, 2);
+        caster.protect += keywordProtect;
+        caster.charactorState.AddState(StateType.counterAttack, buffStack);
     }
 
     public override void Check(KeywordSup _keywordSup)

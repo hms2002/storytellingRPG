@@ -642,7 +642,7 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 1
-  _buffStack: 3
+  _buffStack: 8
   _keywordTension: 0
   _isOneTimeUse: 0
   _isIrregularCombo: 0

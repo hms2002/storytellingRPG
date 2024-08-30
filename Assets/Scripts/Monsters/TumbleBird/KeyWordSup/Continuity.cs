@@ -11,7 +11,7 @@ public class Continuity : KeywordSup
     {
         keywordName = "연속";
         SetKeywordColor(Y);
-        keywordTension = 10;
+        keywordTension = 20;
         effectTarget = EffectTarget.caster;
         effectType = EffectManager.EffectType.ItemUse;
         Init();

@@ -17,7 +17,7 @@ public class TumbleBird : Monster
     {
         protect = StateType.protect,
         oneTimeReinforce = StateType.oneTimeReinforce,
-        glassPragment = StateType.glassPragment,
+        glassPragment = StateType.counterAttack,
         reduction = StateType.reduction,
         weaken = StateType.weaken,
         oneTimeProtect = StateType.oneTimeProtect,

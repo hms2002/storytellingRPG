@@ -503,8 +503,8 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uAE30\uC0AC\uC758 \uAC80"
-  _keywordDamage: 8
-  _keywordProtect: 2
+  _keywordDamage: 10
+  _keywordProtect: 3
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0

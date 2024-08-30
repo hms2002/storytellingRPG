@@ -504,17 +504,16 @@ MonoBehaviour:
   effectType: 0
   _keywordName: "\uBC84\uD074\uB7EC"
   _keywordDamage: 0
-  _keywordProtect: 0
+  _keywordProtect: 5
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
-  _buffStack: 9
+  _buffStack: 5
   _keywordTension: 0
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uC77C\uD68C\uC131 \uBCF4\uD638\uB97C buffstack, \uBC18\uACA9\uC744
-    2 \uC5BB\uC2B5\uB2C8\uB2E4."
+  keywordDescription: "\uBCF4\uD638\uB97C protect, \uBC18\uACA9\uC744 buffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &8887301706594238736

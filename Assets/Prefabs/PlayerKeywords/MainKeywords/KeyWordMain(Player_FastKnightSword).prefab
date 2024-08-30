@@ -476,7 +476,7 @@ MonoBehaviour:
   effectTarget: 0
   effectType: 0
   _keywordName: "\uC18D\uAE30\uC0AC\uC758 \uAC80"
-  _keywordDamage: 4
+  _keywordDamage: 5
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
