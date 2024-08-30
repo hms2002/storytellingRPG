@@ -467,9 +467,10 @@ public class Actor : MonoBehaviour
 
         if (_keywordMain.isOneTimeUse)
         {
-            deck.DisCardByTextSource(_keywordMain.name);
+            deck.DisCardByTextSource(_keywordMain.gameObject.name);
+            hand.DisCardByTextSource(_keywordMain.gameObject.name);
             if(originalDeck != null)
-                originalDeck.DisCardByTextSource(_keywordMain.name);
+                originalDeck.DisCardByTextSource(_keywordMain.gameObject.name);
         }
         AddToMainGarbageField();
         TextManager.instance.MainKeywordTextPlay(this, 1f);
@@ -486,8 +487,9 @@ public class Actor : MonoBehaviour
 
     private void AddToMainGarbageField()
     {
+        int handSize = hand.mainHandSize;
         // HANDSIZE만큼 반복하여 사용한 Main 키워드 + 나머지 Main 키워드 무덤덱으로 이동
-        for (int i = 0; i < hand.HANDSIZE; i++)
+        for (int i = 0; i < handSize; i++)
         {
             garbageField.AddMainKeywordOnDeck(hand.ThrowMainKeyword(0));
         }

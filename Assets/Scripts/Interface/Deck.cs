@@ -170,7 +170,6 @@ public class Deck : MonoBehaviour
     public void AddMainKeywordOnDeck(GameObject keyword)
     {
         if (keyword.GetComponent<KeywordMain>() == null) return;
-        if (keyword.GetComponent<KeywordMain>().isOneTimeUse) return;
         mainDeck.Add(keyword);
     }
 
@@ -201,7 +200,7 @@ public class Deck : MonoBehaviour
     {
         foreach (GameObject i in mainDeck)
         {
-            if (i.name == source)
+            if (i.name + "(Clone)" == source)
             {
                 mainDeck.Remove(i);
                 break;
@@ -209,7 +208,7 @@ public class Deck : MonoBehaviour
         }
         foreach (GameObject i in supportDeck)
         {
-            if (i.name == source)
+            if (i.name + "(Clone)" == source)
             {
                 supportDeck.Remove(i);
                 break;

@@ -21,6 +21,7 @@ public class Hand : MonoBehaviour
     [Header("핸드의 양")]
     [SerializeField] private const int _HANDSIZE = 3;                   // 플레이 주체가 가져야 하는 키워드 개수
     public int HANDSIZE { get { return _HANDSIZE; } }
+    public int mainHandSize { get { return mainKeywordPrefab.Count; } }
 
     private Vector2 createLocation = new Vector2(0, -930);              // 키워드 생성 위치
 
@@ -105,4 +106,25 @@ public class Hand : MonoBehaviour
     public void SetSupPrefabInfo(GameObject gameObject) { supKeywordPrefab.Add(gameObject); }
     public void SetMainPrefabInfo(GameObject gameObject) { mainKeywordPrefab.Add(gameObject); }
 
+    public void DisCardByTextSource(System.String source)
+    {
+        for(int i = 0; i < mainKeywordPrefab.Count; i++)
+        {
+            if (mainKeywordPrefab[i].name + "(Clone)" == source)
+            {
+                mainKeywordPrefab.RemoveAt(i);
+                mainHand.RemoveAt(i);
+                break;
+            }
+        }
+        for(int i = 0; i < supKeywordPrefab.Count; i++)
+        {
+            if (supKeywordPrefab[i].name + "(Clone)" == source)
+            {
+                supKeywordPrefab.RemoveAt(i);
+                supportHand.RemoveAt(i);
+                break;
+            }
+        }
+    }
 }
