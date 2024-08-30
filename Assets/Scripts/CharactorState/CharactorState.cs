@@ -328,6 +328,8 @@ public class CharactorState
 
     public void ChangeStateSprite(StateType type,Sprite sprite)
     {
+
+        if (allStateList[(int)type] == null) return;
         allStateList[(int)type].stateData.stateImage = sprite;
     }
 
@@ -429,22 +431,24 @@ public class CharactorState
 
     public void StackDamageMultiplication(StateType type)
     {
+        if (allStateList[(int)type] == null) return;
         allStateList[(int)type].oneTimeMultiplication = true;
     }
     public void StackDamageRepeat(StateType type)
     {
+        if (allStateList[(int)type] == null) return;
         allStateList[(int)type].oneTimeRepeat = true;
     }
     public void StackReductionProtect(StateType type)
     {
-        if (allStateList[(int)type].stack > 0)
+        if (allStateList[(int)type] != null && allStateList[(int)type].stack > 0)
         {
             allStateList[(int)type].oneTimeNoReduction = true;
         }
     }
     public void StackGainDouble(StateType type)
     {
-        if(allStateList[(int)type].stack > 0)
+        if(allStateList[(int)type]!= null && allStateList[(int)type].stack > 0)
         {
             allStateList[(int)type].gainDoubleStack = true;
         }
