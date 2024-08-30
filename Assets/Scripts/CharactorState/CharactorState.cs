@@ -170,6 +170,9 @@ public class CharactorState
 
     public void AddState(StateData data, int val)
     {
+        if(data.type == StateType.protect)
+                actor.protect += val;
+
         if (allStateList[(int)data.type] == null)
         {
             allStateList[(int)data.type] = new State(data, val);
@@ -215,6 +218,9 @@ public class CharactorState
         StateDatabase stateDB = StateDatabase.stateDatabase;
         switch (type)
         {
+            case StateType.protect:
+                actor.protect += val;
+                break;
             case StateType.glassPragment:
                 AddState(stateDB.glassPragment, val);
                 break;
@@ -321,6 +327,9 @@ public class CharactorState
     }
     public int GetStateStack(StateType type)
     {
+        if (type == StateType.protect)
+            return actor.protect;
+
         if (allStateList[(int)type] == null) return 0;
 
         return allStateList[(int)type].stack;

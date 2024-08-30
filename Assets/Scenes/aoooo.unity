@@ -8780,6 +8780,10 @@ PrefabInstance:
       propertyPath: playerRelicCanvas
       value: 
       objectReference: {fileID: 1284892856}
+    - target: {fileID: 1877798600998251034, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6021678662418298192, guid: dd80ab2bb4ac42145bf95d800e39f081, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9636,7 +9640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1394731584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9676,7 +9680,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1394731586
 Canvas:
   m_ObjectHideFlags: 0
@@ -11172,7 +11176,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 2.8207874, z: -0.00000002073648, w: -37.78798}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1591836699

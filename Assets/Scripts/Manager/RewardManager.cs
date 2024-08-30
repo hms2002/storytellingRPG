@@ -82,10 +82,11 @@ public class RewardManager : MonoBehaviour
 
         for(int i = 0; i < keywordCounts; i++)
         {
+            int randIdx = Random.Range(0, treasureRewardKeywords.Count - 1);
             GameObject rewardInstance = Instantiate(rewardOffset_keyword, rewardCanvas.transform);
-            rewardInstance.GetComponent<Reward>().SettingReward_Keyword(treasureRewardKeywords[0]);
-            treasureRewardKeywords.Add(treasureRewardKeywords[0]);
-            treasureRewardKeywords.RemoveAt(0);
+            rewardInstance.GetComponent<Reward>().SettingReward_Keyword(treasureRewardKeywords[randIdx]);
+            treasureRewardKeywords.Add(treasureRewardKeywords[randIdx]);
+            treasureRewardKeywords.RemoveAt(randIdx);
             btnList.Add(rewardInstance);
         }
         for (int i = 0; i < relicCounts; i++)
