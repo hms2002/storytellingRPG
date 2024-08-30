@@ -29,7 +29,7 @@ public class FightManager : MonoBehaviour
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
 
-    public static int currentTurn;      // 현재 전투 턴 수를 담는 변수
+    public static int currentTurn = 0;      // 현재 전투 턴 수를 담는 변수
 
 
     /*==================================================================================================================================*/
@@ -171,9 +171,10 @@ public class FightManager : MonoBehaviour
 
         if (preparedActorCount == 0)
         {
-            currentTurn++;
-
             player.BeforeAction();
+
+            currentTurn++;
+            Debug.Log("턴 : " + currentTurn);
 
             // 턴 시작 발동 유물 적용
             playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
