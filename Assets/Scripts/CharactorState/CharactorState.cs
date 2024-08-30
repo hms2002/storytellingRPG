@@ -430,6 +430,7 @@ public class CharactorState
 
             if(i.stack != 0)
             {
+                if (i.stateData.needStackToEffect <= 0) i.stateData.needStackToEffect = 1;
                 actor.Damaged(actor, new DamageInfo((i.stack / i.stateData.needStackToEffect) * stackDamage, false));
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;
