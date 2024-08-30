@@ -23,6 +23,7 @@ public class TextManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        transform.parent.gameObject.SetActive(false);
     }
 
     public void OnlyTextPlay(string[] _textList, float _time)

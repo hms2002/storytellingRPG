@@ -108,11 +108,14 @@ public class RewardManager : MonoBehaviour
         afterClickKeywordDel = () =>
         {
             skipReward = false;
+            EventManager.instance.isSelected = false;
+            rewardCanvas.SetActive(false);
             StartCoroutine("PlayText_GetItem");
         };
         afterClickRelicDel = () =>
         {
             skipReward = false;
+            EventManager.instance.isSelected = false;
             rewardCanvas.SetActive(false);
             StartCoroutine("PlayText_GetItem");
         };
