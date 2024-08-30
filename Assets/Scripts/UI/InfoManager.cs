@@ -65,6 +65,11 @@ public class InfoManager : MonoBehaviour
 
     public void ShowWorldTipUI(string title, Color titleColor, string content, Transform parent = null)
     {
+        if (worldInfoUI == null)
+        {
+            worldInfoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/WorldTip"), _rootWorldCanvas.transform);
+            InitUIParent();
+        }
         worldInfoUI.gameObject.SetActive(true);
         worldInfoUI.ShowTipUI(title, titleColor, content, parent);
     }
@@ -86,6 +91,11 @@ public class InfoManager : MonoBehaviour
     }
     public void HideWorldTipUI()
     {
+        if(worldInfoUI == null)
+        {
+            worldInfoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/WorldTip"), _rootWorldCanvas.transform);
+            InitUIParent();
+        }
         worldInfoUI.gameObject.SetActive(false);
         worldInfoUI.transform.SetParent(_rootCanvas.transform);
     }

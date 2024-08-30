@@ -170,6 +170,9 @@ public class CharactorState
 
     public void AddState(StateData data, int val)
     {
+        if(data.type == StateType.protect)
+                actor.protect += val;
+
         if (allStateList[(int)data.type] == null)
         {
             allStateList[(int)data.type] = new State(data, val);
@@ -207,6 +210,9 @@ public class CharactorState
         StateDatabase stateDB = StateDatabase.stateDatabase;
         switch (type)
         {
+            case StateType.protect:
+                actor.protect += val;
+                break;
             case StateType.glassPragment:
                 AddState(stateDB.glassPragment, val);
                 break;
@@ -313,6 +319,9 @@ public class CharactorState
     }
     public int GetStateStack(StateType type)
     {
+        if (type == StateType.protect)
+            return actor.protect;
+
         if (allStateList[(int)type] == null) return 0;
 
         return allStateList[(int)type].stack;
@@ -413,6 +422,7 @@ public class CharactorState
 
             if(i.stack != 0)
             {
+                if (i.stateData.needStackToEffect <= 0) i.stateData.needStackToEffect = 1;
                 actor.Damaged(actor, new DamageInfo((i.stack / i.stateData.needStackToEffect) * stackDamage, false));
                 foreach (Actor a in vampire)
                     a.hp += i.stack * stackDamage;

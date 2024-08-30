@@ -168,7 +168,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.JewelryCore:
                 
-                player.charactorState.AddState(StateType.protect, 5);
+                player.protect += 5;
 
                 break;
 
@@ -229,15 +229,15 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.BlueWish:
 
-                player.charactorState.AddState(StateType.protect, 11);
+                player.protect += 11;
 
                 break;
 
             case Relics.ImprintedRing:
 
-                if (FightManager.currentTurn % 2 == 0 && player.charactorState.GetStateStack(StateType.protect) >= 10)
+                if (FightManager.currentTurn % 2 == 0 && player.protect >= 10)
                 {
-                    player.charactorState.AddState(StateType.protect, -2);
+                    player.protect -= 2;
 
                     foreach (Monster monster in monsters) monster.Damaged(monster, new DamageInfo(6));
                 }
@@ -246,7 +246,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.Anguish:
 
-                if (player.charactorState.GetStateStack(StateType.protect) >= 12)
+                if (player.protect >= 12)
                 {
                     player.charactorState.AddState(StateType.oneTimeReinforce, 3);
                 }
@@ -284,7 +284,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
                     {
                         case 1:
 
-                            player.charactorState.AddState(StateType.protect, 2);
+                            player.protect += 2;
 
                             break;
 
