@@ -196,16 +196,8 @@ public class CharactorState
         }
         if (data.stateProperty == StateProperty.Debuff)
         {
-            if(!data.effectByTurn)
-            {
-                EffectManager.instance.PlayEffect(EffectManager.EffectType.Debuff, actor);
-                AudioManager.instance.PlaySound("Character", "디버프");
-            }
-            else
-            {
-                EffectManager.instance.PlayEffect(data.debuffEffect, actor);
-                AudioManager.instance.PlaySound("Debuff", data.soundName);
-            }
+            EffectManager.instance.PlayEffect(EffectManager.EffectType.Debuff, actor);
+            AudioManager.instance.PlaySound("Character", "디버프");
         }
         if(data.stateProperty == StateProperty.None)
         {

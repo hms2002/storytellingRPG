@@ -18,8 +18,6 @@ public class MonsterSetDatabase : MonoBehaviour
     public List<GameObject> s1_NomalMonsterSet5;
     public List<GameObject> s1_NomalMonsterSet6;
     public List<GameObject> s1_NomalMonsterSet7;
-    public List<GameObject> s1_NomalMonsterSet8;
-    public List<GameObject> s1_NomalMonsterSet9;
 
     public List<GameObject> s1_EliteMonsterSet1;
     public List<GameObject> s1_EliteMonsterSet2;

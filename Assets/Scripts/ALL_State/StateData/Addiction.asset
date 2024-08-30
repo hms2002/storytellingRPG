@@ -21,10 +21,10 @@ MonoBehaviour:
   soundName: "\uBD88"
   stateName: "\uC911\uB3C5"
   MAX_STACK: 8
-  damagePerStack: 4
-  tentionPerStack: 4
+  damagePerStack: 1
+  tentionPerStack: 3
   needStackToEffect: 1
-  stateExplanation: "\uC2A4\uD0DD \uB2F9 5 \uD53C\uD574\uC640 5 \uAE34\uC7A5\uB3C4,
+  stateExplanation: "\uC2A4\uD0DD \uB2F9 3 \uD53C\uD574\uC640 3 \uAE34\uC7A5\uB3C4,
     \n\uCD5C\uB300 8\uC2A4\uD0DD\n\uD0A4\uC6CC\uB4DC\uB97C \uD1B5\uD574 \uC2A4\uD0DD\uC744
     \uC904\uC77C \uC218 \uC788\uB2E4."
   effectByTurn: 1
