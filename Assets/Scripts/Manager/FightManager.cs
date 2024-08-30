@@ -213,6 +213,7 @@ public class FightManager : MonoBehaviour
                     }
                 }
             }
+            MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
         }
 
         if (!CheckMonsterSurvive())
