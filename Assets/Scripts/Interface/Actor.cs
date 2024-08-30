@@ -315,6 +315,7 @@ public class Actor : MonoBehaviour
         charactorState.actor = this;
 
         _protect = 0;
+        stateUIController.ProtectOn(_protect);
         _heal = 0;
         _damage = 0;
         _repeatStack = 1;
