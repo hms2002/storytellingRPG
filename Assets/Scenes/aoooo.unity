@@ -316,8 +316,6 @@ MonoBehaviour:
   s1_NomalMonsterSet7:
   - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
   - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
-  s1_NomalMonsterSet8: []
-  s1_NomalMonsterSet9: []
   s1_EliteMonsterSet1:
   - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
   s1_EliteMonsterSet2:
@@ -6727,6 +6725,12 @@ MonoBehaviour:
   - type: 4
     prefab: {fileID: 3177010102358360083, guid: 93022f97d7f442d42a8d83681519cf06, type: 3}
     isTemporary: 1
+  - type: 6
+    prefab: {fileID: 2855600895070655413, guid: 0734554f78affdf49b494b48f134605b, type: 3}
+    isTemporary: 1
+  - type: 5
+    prefab: {fileID: 2855600895070655413, guid: 842f7ccdecd203546aed654d42bd39a1, type: 3}
+    isTemporary: 1
 --- !u!1 &1003167480
 GameObject:
   m_ObjectHideFlags: 0
@@ -9636,7 +9640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1394731584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9676,7 +9680,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1394731586
 Canvas:
   m_ObjectHideFlags: 0
@@ -11172,7 +11176,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 2.8207874, z: -0.00000002073648, w: -37.78798}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1591836699
