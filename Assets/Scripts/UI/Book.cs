@@ -597,11 +597,6 @@ public class Book : MonoBehaviour
 
     }
 
-    public void EnterOption()
-    {
-        UIManager.instance.ActiveOptionUI(true);
-    }
-
     // 사운드 출력 함수들 ================================
 
     /// <summary>

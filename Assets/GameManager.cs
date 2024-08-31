@@ -374,14 +374,6 @@ public class GameManager : MonoBehaviour
         DOVirtual.DelayedCall(5.0f, () => LoadScene(0));
     }
 
-    public void ExitGame()
-    {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-    }
-
     public void PrintGameClearCredit()
     {
         RecordTextDatabase recordDatas = RecordTextDatabase.instance;
