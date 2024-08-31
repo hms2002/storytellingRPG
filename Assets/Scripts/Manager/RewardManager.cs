@@ -197,7 +197,8 @@ public class RewardManager : MonoBehaviour
         btnList.Add(rewardSkip);
 
         afterClickKeywordDel = ShowFightRewards_Relic_Gold;
-        afterClickSkipReward = ShowFightRewards_Relic_Gold;
+        afterClickSkipReward = () => afterClickSkipReward = null; ;
+        afterClickSkipReward += ShowFightRewards_Relic_Gold;
     }
     public void ShowFightRewards_Relic_Gold()
     {
@@ -225,6 +226,8 @@ public class RewardManager : MonoBehaviour
             rewardSkip.GetComponent<Reward>().SettingSkipReward();
             
             afterClickSkipReward = () => {
+
+                afterClickSkipReward = null;
                 rewardCanvas.SetActive(false);
                 GameManager.instance.EndSelectReward();
                 foreach (GameObject g in btnList)
@@ -338,7 +341,6 @@ public class RewardManager : MonoBehaviour
 
         if (afterClickSkipReward != null)
             afterClickSkipReward();
-        afterClickSkipReward = null;
     }
 
     /// <summary>
