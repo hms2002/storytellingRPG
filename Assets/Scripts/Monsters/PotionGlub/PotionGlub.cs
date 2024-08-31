@@ -22,6 +22,7 @@ public class PotionGlub : Monster
         get { return _potionNum; }
         set 
         {
+            Debug.Log("포션수치 : " + _potionNum);
             if (value < 1) value = 1;
             if(!isJellyShot)
             {
@@ -34,7 +35,7 @@ public class PotionGlub : Monster
     public PotionColor potionColor
     {
         get { return _potionColor; }
-        set { _potionColor = PotionColor.Black; }
+        set { _potionColor = value; }
     }
 
     public bool isJellyShot
@@ -50,6 +51,11 @@ public class PotionGlub : Monster
         encounterText = "포션은 마셔도 죽는다. 마시지 않아도 죽는다.";
     }
 
+    public override void BeforeAction()
+    {
+        base.BeforeAction();
+        ColorChecking();
+    }
 
     protected override void DamagedOther(int totalDamage, Actor attacker)
     {
@@ -74,42 +80,71 @@ public class PotionGlub : Monster
         // 피해자, 피해 시 스택 감소할 것들 감소
         charactorState.ReductionOnDamaged();
     }
-
+    public override void Action(Actor target)
+    {
+        base.Action(target);
+        ColorChecking();
+    }
     public void ColorChecking()
     {
-        if(potionNum >= 1 && potionNum < 4)
+        charactorState.ResetState(StateType.potionGlub_State1);
+        charactorState.ResetState(StateType.potionGlub_State2);
+        charactorState.ResetState(StateType.potionGlub_State3);
+        charactorState.ResetState(StateType.potionGlub_State4);
+        charactorState.ResetState(StateType.potionGlub_State5);
+        charactorState.ResetState(StateType.potionGlub_State6);
+        charactorState.ResetState(StateType.potionGlub_State7);
+        animator.SetBool("purple", false);
+        animator.SetBool("green", false);
+        animator.SetBool("red", false);
+        animator.SetBool("black", false);
+        if (potionNum >= 1 && potionNum < 4)
         {
+            charactorState.AddState(StateType.potionGlub_State1, 1);
             animator.SetTrigger("isPurple");
+            animator.SetBool("purple", true);
             potionColor = PotionColor.Purple;
         }
         if(potionNum == 4)
         {
+            charactorState.AddState(StateType.potionGlub_State2, 1);
             animator.SetTrigger("isBlack");
+            animator.SetBool("black", true);
             potionColor = PotionColor.Black;
         }
         if (potionNum >= 5 && potionNum < 8)
         {
+            charactorState.AddState(StateType.potionGlub_State3, 1);
             animator.SetTrigger("isGreen");
+            animator.SetBool("green", true);
             potionColor = PotionColor.Green;
         }
         if (potionNum == 8)
         {
+            charactorState.AddState(StateType.potionGlub_State4, 1);
             animator.SetTrigger("isBlack");
+            animator.SetBool("black", true);
             potionColor = PotionColor.Black;
         }
         if (potionNum >= 9 && potionNum < 12)
         {
+            charactorState.AddState(StateType.potionGlub_State5, 1);
             animator.SetTrigger("isPurple");
+            animator.SetBool("purple", true);
             potionColor = PotionColor.Purple;
         }
         if (potionNum >= 12 && potionNum < 21)
         {
+            charactorState.AddState(StateType.potionGlub_State6, 1);
             animator.SetTrigger("isBlack");
+            animator.SetBool("black", true);
             potionColor = PotionColor.Black;
         }
         if (potionNum >= 21)
         {
+            charactorState.AddState(StateType.potionGlub_State7, 1);
             animator.SetTrigger("isRed");
+            animator.SetBool("red", true);
             potionColor = PotionColor.Red;
         }
     }

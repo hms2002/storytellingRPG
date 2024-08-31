@@ -476,6 +476,13 @@ MonoBehaviour:
   counterAttack: {fileID: 11400000, guid: 7d8e8627f924902438b7cea2d9cbbf43, type: 2}
   ammunition: {fileID: 11400000, guid: d45f8af074c18a04bbb5bd0435a2646b, type: 2}
   end: {fileID: 11400000, guid: f41fa17de36844b4497c7b5cfeceffc6, type: 2}
+  potionGlub_State1: {fileID: 11400000, guid: 33e4bc18be0825549bef29bc63eab5d6, type: 2}
+  potionGlub_State2: {fileID: 11400000, guid: ace4c90842995474fab798aaa8c691e6, type: 2}
+  potionGlub_State3: {fileID: 11400000, guid: 3dc19bdece87cd04faea79fea8d5dcb6, type: 2}
+  potionGlub_State4: {fileID: 11400000, guid: ad5b75ecf5ce4ef49b586d4098ca6a32, type: 2}
+  potionGlub_State5: {fileID: 11400000, guid: ed22a84c97a5eb34a8d77b3d7ee21bed, type: 2}
+  potionGlub_State6: {fileID: 11400000, guid: 190bcb6abcfcd194881cb408bd8451ee, type: 2}
+  potionGlub_State7: {fileID: 11400000, guid: ccabf7614e79cfd4aacfc13490c1b178, type: 2}
 --- !u!1 &47199195
 GameObject:
   m_ObjectHideFlags: 0

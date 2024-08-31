@@ -37,6 +37,13 @@ public class StateDatabase : MonoBehaviour
     public StateData counterAttack;
     public StateData ammunition;
     public StateData end;
+    public StateData potionGlub_State1;
+    public StateData potionGlub_State2;
+    public StateData potionGlub_State3;
+    public StateData potionGlub_State4;
+    public StateData potionGlub_State5;
+    public StateData potionGlub_State6;
+    public StateData potionGlub_State7;
     public static StateDatabase stateDatabase;
 
     private void OnEnable()
