@@ -141,7 +141,6 @@ namespace Map
                             break;
 
                         case NodeType.RestNode:
-                            
                             GameManager.instance.EnterRest();
                             UIManager.instance.ActiveMapUI(false);
                             break;

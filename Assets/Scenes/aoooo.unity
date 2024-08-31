@@ -14454,6 +14454,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54fa4efe3215b044a821a33b912af49, type: 3}
+--- !u!114 &2053950823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4799610137650900426, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
+  m_PrefabInstance: {fileID: 9078739965099160538}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a17bacdef347c458342f05d2446478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2056063179
 GameObject:
   m_ObjectHideFlags: 0
@@ -15382,6 +15393,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2689746736224702837, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
+      propertyPath: connectedNodes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2053950823}
     - target: {fileID: 2880258023074443396, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
       propertyPath: connectedNodes.Array.data[0]
       value: 
@@ -15394,6 +15409,14 @@ PrefabInstance:
       propertyPath: connectedNodes.Array.data[0]
       value: 
       objectReference: {fileID: 2020738286}
+    - target: {fileID: 7699198630587840803, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
+      propertyPath: connectedNodes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699198630587840803, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
+      propertyPath: connectedNodes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2053950823}
     - target: {fileID: 7974821525110981952, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
       propertyPath: connectedNodes.Array.data[0]
       value: 
