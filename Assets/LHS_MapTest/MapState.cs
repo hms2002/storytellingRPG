@@ -38,8 +38,6 @@ namespace Map
         override public void SpawnMap()
         {
             base.SpawnMap();
-
-            mapMark.transform.position = startNode.transform.position;
             //MapStateSetting();
 
             //맵에서 플레이어 위치 저장파일 삭제 
@@ -127,6 +125,7 @@ namespace Map
 
 
         //저장된 맵 로드
+        
         public void LoadMapData(string filePath)
         {
             startNode.SetActive(true);

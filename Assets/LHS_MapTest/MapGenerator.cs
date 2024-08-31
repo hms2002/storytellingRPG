@@ -72,9 +72,14 @@ namespace Map
             { NodeType.BossNode, 0 }  // 보스 노드는 1개로 가정
         };
 
-        [Header("rk")]
+        [Header("새로운 맵")]
         [SerializeField]
         private GameObject[] mapSetting;
+
+        private void Start()
+        {
+            SpawnMap();
+        }
 
         virtual public void SpawnMap()
         {
@@ -99,8 +104,17 @@ namespace Map
             {
                 startNode.GetComponent<MapNode>().connectedNodes.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>());
                 startNode.GetComponent<MapNode>().connectedNodes[i].nodeStates = NodeStates.Attainable;
-                Debug.Log("가나다");
                 startNode.GetComponent<MapNode>().connectedNodes[i].SetStage();
+            }
+
+            for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes.Length; i++)
+            {
+                nodes.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>());
+            }
+
+            for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck.Length; i++)
+            {
+                nodesEndLineCheck.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck[i]);
             }
         }
 

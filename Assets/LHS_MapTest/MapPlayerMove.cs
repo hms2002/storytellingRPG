@@ -19,8 +19,7 @@ namespace Map
 
             mapMark.SetActive(true);
 
-            // 플레이어 마크 초기 위치 설정
-            SetInitialPlayerPosition();
+            mapMark.GetComponent<RectTransform>().anchoredPosition = MapState.InstanceMap.startNode.GetComponent<RectTransform>().anchoredPosition;
         }
 
         public void MoveMapMark(Vector2 targetPosition)
@@ -42,6 +41,7 @@ namespace Map
             }
         }
 
+        /*
         private void SetInitialPlayerPosition() //초기 위치 세팅
         {
             string filePath = Application.persistentDataPath + "/mapData.json";
@@ -72,6 +72,7 @@ namespace Map
                 Debug.LogWarning("맵 플레이어 마크 오브젝트 or 설정 안됨 없음");
             }
         }
+        */
 
         public void DeletePlayerPositionData()
         {
