@@ -385,21 +385,30 @@ public class GameManager : MonoBehaviour
     public void PrintGameClearCredit()
     {
         RecordTextDatabase recordDatas = RecordTextDatabase.instance;
-        recordDatas.timeText.text = recordDatas.timeText.text + " " + (int)(Time.time / 60) + "분 " + (int)(Time.time % 60) + "초";
-        recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " + killCnt_nomalMonster.ToString();
-        recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " + killCnt_eleteMonster.ToString();
-        recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " + killCnt_bossMonster.ToString();
-        recordDatas.GetRelicCounting.text           = recordDatas.GetRelicCounting.text + " " + relicCnt.ToString();
-        recordDatas.GetGoldCounting.text            = recordDatas.GetGoldCounting.text + " " + goldCnt.ToString();
-        recordDatas.GetKeywordCounting.text         = recordDatas.GetKeywordCounting.text + " " + keywordCnt.ToString();
+        recordDatas.timeText.text = recordDatas.timeText.text + " " + (int)((Time.time - enterMainSceneTime) / 60) + "분 " + (int)((Time.time - enterMainSceneTime) % 60) + "초";
+        recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " +     killCnt_nomalMonster.ToString();
+        recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " +     killCnt_eleteMonster.ToString();
+        recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " +             killCnt_bossMonster.ToString();
+        recordDatas.GetRelicCounting.text           = recordDatas.GetRelicCounting.text + " " +         relicCnt.ToString();
+        recordDatas.GetGoldCounting.text            = recordDatas.GetGoldCounting.text + " " +          goldCnt.ToString();
+        recordDatas.GetKeywordCounting.text         = recordDatas.GetKeywordCounting.text + " " +       keywordCnt.ToString();
+
+        killCnt_nomalMonster    = 0;
+        killCnt_eleteMonster    = 0;
+        killCnt_bossMonster     = 0;
+        relicCnt                = 0;
+        goldCnt                 = 0;
+        keywordCnt              = 0;
     }
     internal void EndSelectReward()
     {
         ReturnMap();
     }
 
+    float enterMainSceneTime = 0;
     public void LoadScene(int idx)
     {
+        if (idx == 0) enterMainSceneTime = Time.time;
         SceneManager.LoadScene(idx);
     }
 }

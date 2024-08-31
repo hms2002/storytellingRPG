@@ -14,7 +14,7 @@ public class Player_VenomPotion : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.venom, debuffStack);
+        target.charactorState.AddState(StateType.venom, debuffStack);
     }
 
     public override void Check(KeywordSup _keywordSup)
