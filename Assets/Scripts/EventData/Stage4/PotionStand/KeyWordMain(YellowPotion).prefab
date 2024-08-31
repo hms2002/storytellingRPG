@@ -201,7 +201,7 @@ MonoBehaviour:
   nameText: {fileID: 0}
   name: 
   descriptionText: {fileID: 0}
-  effectTarget: 1
+  effectTarget: 0
   effectType: 2
   _keywordName: "\uB178\uB780 \uD3EC\uC158"
   _keywordDamage: 0

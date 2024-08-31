@@ -634,8 +634,8 @@ MonoBehaviour:
   nameText: {fileID: 0}
   name: 
   descriptionText: {fileID: 0}
-  effectTarget: 0
-  effectType: 0
+  effectTarget: 1
+  effectType: 2
   _keywordName: "\uB9F9\uB3C5 \uD3EC\uC158"
   _keywordDamage: 0
   _keywordProtect: 0

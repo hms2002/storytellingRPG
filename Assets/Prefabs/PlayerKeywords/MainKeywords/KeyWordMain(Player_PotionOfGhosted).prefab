@@ -635,7 +635,7 @@ MonoBehaviour:
   name: 
   descriptionText: {fileID: 0}
   effectTarget: 0
-  effectType: 0
+  effectType: 2
   _keywordName: "\uADC0\uC2E0\uB4E4\uB9B0 \uD3EC\uC158"
   _keywordDamage: 0
   _keywordProtect: 0
