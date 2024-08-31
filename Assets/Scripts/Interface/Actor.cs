@@ -45,7 +45,7 @@ public class DamageList
             isPlus = false;
             if(damageL.Count == 0)
                 damageL.Add(new DamageInfo(damage, isPenetrate));
-            else if(damageL[0] == null)
+            else if(damageL[0] != null)
                 damageL[0].damage += damage;
             else
                 damageL.Add(new DamageInfo(damage, isPenetrate));
