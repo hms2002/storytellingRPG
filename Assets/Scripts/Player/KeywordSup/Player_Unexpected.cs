@@ -14,7 +14,7 @@ public class Player_Unexpected : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.weaken, debuffStack);
+        target.charactorState.AddState(StateType.weaken, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }
