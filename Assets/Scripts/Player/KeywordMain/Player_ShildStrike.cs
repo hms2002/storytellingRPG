@@ -14,8 +14,9 @@ public class Player_ShildStrike : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.dmgList.Add(caster.protect);
-        caster.protect = 0;
+        if(caster.protect >= 7)
+            caster.dmgList.Add(caster.protect);
+        
 
     }
 
