@@ -72,12 +72,39 @@ namespace Map
             { NodeType.BossNode, 0 }  // 보스 노드는 1개로 가정
         };
 
+        [Header("rk")]
+        [SerializeField]
+        private GameObject[] mapSetting;
+
         virtual public void SpawnMap()
         {
-            GeneratorMap();
-            StartEndConnection();
+            MakeSettingMapSet();
+            //GeneratorMap();
+            //StartEndConnection();
         }
 
+        //임시 고정 맵 코드
+        public void MakeSettingMapSet()
+        {
+            for(int i =0; i < mapSetting.Length; i++)
+            {
+                mapSetting[i].SetActive(false);
+            }
+
+            int setNum = Random.Range(0, mapSetting.Length);
+            
+            mapSetting[setNum].SetActive(true);
+
+            for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck[0]; i++)
+            {
+                startNode.GetComponent<MapNode>().connectedNodes.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>());
+                startNode.GetComponent<MapNode>().connectedNodes[i].nodeStates = NodeStates.Attainable;
+                Debug.Log("가나다");
+                startNode.GetComponent<MapNode>().connectedNodes[i].SetStage();
+            }
+        }
+
+        //쓰지마
         public void GeneratorMap()
         {
             // 노드 카운터 초기화
@@ -123,6 +150,7 @@ namespace Map
             CreateNodeLine();//임시 나중에 없애
         }
 
+        //쓰지마.
         private void CreateNode(bool _isWidth, int _heiNum, int _widNum) //True -> Width, False -> Height 
         {
             NodeType selectedNodeType;
@@ -149,6 +177,7 @@ namespace Map
             nodeCounts[selectedNodeType]++;
         }
 
+        //쓰지마.
         private NodeType GetNodeType()
         {
             int randomValue = Random.Range(1, 101); // 1부터 100까지의 랜덤 값
@@ -205,6 +234,7 @@ namespace Map
             nodesEndLineCheck.Clear();
         }
 
+        //쓰지마
         private void CreateNodeLine()
         {
             if (roadeLine != null && roadeLine.Count != 0)

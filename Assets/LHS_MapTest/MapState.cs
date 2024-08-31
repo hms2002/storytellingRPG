@@ -38,17 +38,19 @@ namespace Map
         override public void SpawnMap()
         {
             base.SpawnMap();
-            MapStateSetting();
+
+            mapMark.transform.position = startNode.transform.position;
+            //MapStateSetting();
 
             //맵에서 플레이어 위치 저장파일 삭제 
-            if (File.Exists(Application.persistentDataPath + "/mapData.json"))
+            //if (File.Exists(Application.persistentDataPath + "/mapData.json"))
             {
-                File.Delete(Application.persistentDataPath + "/mapData.json");
+            //    File.Delete(Application.persistentDataPath + "/mapData.json");
             }
 
             // 맵 생성 후 저장
-            mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
-            SaveMapData(Application.persistentDataPath + "/mapData.json");
+            //mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+            //SaveMapData(Application.persistentDataPath + "/mapData.json");
         }
 
         //맵 상태 세팅
