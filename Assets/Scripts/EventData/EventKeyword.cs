@@ -81,7 +81,7 @@ public class EventKeyword : MonoBehaviour
     {
         EventManager.instance.player.hp += hp;
     }
-    
+
     public void Battle()
     {
         MonsterSetDatabase.monsterSetDatabase.SetSelectedSet(monsterSet);
@@ -128,6 +128,7 @@ public class EventKeyword : MonoBehaviour
         WhatSelected();
         EventManager.instance.NextEvent(EventManager.instance.eventData);
         EventManager.instance.isSelected = true;
+        GameManager.instance.eventIndex += 1;
         KeywordUIMovement.instance.MoveSelectedEventKeyword(this);
     }
 

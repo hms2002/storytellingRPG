@@ -388,7 +388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -7252933589081442648}
         m_TargetAssemblyTypeName: EventKeyword, Assembly-CSharp
-        m_MethodName: Select
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -106,7 +106,6 @@ public class EventManager : MonoBehaviour
                 GameManager.instance.gameState = GameState.EndBattle;
                 Book.instance.EnterMap();
                 player.gameObject.SetActive(false);
-                GameManager.instance.eventIndex += 1;
                 Init();
             }
         }
