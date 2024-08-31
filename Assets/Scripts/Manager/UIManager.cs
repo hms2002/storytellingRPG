@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> combatFunctionAndUI;  // 전투 관련 모든 UI를 담는 리스트
     [SerializeField] private GameObject combatKeywordUI;
 
+    [Header("옵션")]
+    [SerializeField] private GameObject optionUI;
+
     [Header("전투 백그라운드")]
     [SerializeField] private GameObject[] combatBackground;           //
 
@@ -199,6 +202,11 @@ public class UIManager : MonoBehaviour
     public void ActiveCombatKeywordUI(bool enableOrDisable)
     {
         combatKeywordUI.SetActive(enableOrDisable);
+    }
+
+    public void ActiveOptionUI(bool enableOrDisable)
+    {
+        optionUI.SetActive(enableOrDisable);
     }
 
     /// <summary>
