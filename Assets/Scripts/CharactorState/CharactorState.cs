@@ -133,10 +133,42 @@ public enum StateType
     /// 반격(피해 입으면 스택만큼 데미지 입힘)
     /// </summary>
     counterAttack,
+    /// </summary>
     /// 탄약(딱총탕탕이후루후루)
+    /// </summary>
     ammunition,
+    /// </summary>
     /// 종말(마탑보스)
+    /// </summary>
     end,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State1,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State2,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State3,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State4,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State5,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State6,
+    /// <summary>
+    /// 포션글럽 현재상태(1단계)
+    /// </summary>
+    potionGlub_State7,
     /// <summary>
     /// 상태 목록 갯수
     /// </summary>
@@ -311,6 +343,27 @@ public class CharactorState
                 break;
             case StateType.end:
                 AddState(stateDB.end, val);
+                break;
+            case StateType.potionGlub_State1:
+                AddState(stateDB.potionGlub_State1, val);
+                break;
+            case StateType.potionGlub_State2:
+                AddState(stateDB.potionGlub_State2, val);
+                break;
+            case StateType.potionGlub_State3:
+                AddState(stateDB.potionGlub_State3, val);
+                break;
+            case StateType.potionGlub_State4:
+                AddState(stateDB.potionGlub_State4, val);
+                break;
+            case StateType.potionGlub_State5:
+                AddState(stateDB.potionGlub_State5, val);
+                break;
+            case StateType.potionGlub_State6:
+                AddState(stateDB.potionGlub_State6, val);
+                break;
+            case StateType.potionGlub_State7:
+                AddState(stateDB.potionGlub_State7, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");

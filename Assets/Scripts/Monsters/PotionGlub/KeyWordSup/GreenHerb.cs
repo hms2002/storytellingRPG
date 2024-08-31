@@ -22,7 +22,6 @@ public class GreenHerb : KeywordSup
     {
         potionGlub = caster as PotionGlub;
         potionGlub.potionNum += Random.Range(minRange, maxRange + 1);
-        potionGlub.ColorChecking();
         caster.tension += keywordTension;
     }
 

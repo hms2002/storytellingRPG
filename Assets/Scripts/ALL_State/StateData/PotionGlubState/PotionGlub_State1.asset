@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccf0aeb51f6e5c4fb3c2c5c627407f0, type: 3}
+  m_Name: PotionGlub_State1
+  m_EditorClassIdentifier: 
+  type: 34
+  reductionType: 3
+  reductionTiming: 5
+  stateProperty: 0
+  debuffEffect: 7
+  stateImage: {fileID: -1251682166, guid: e019214ea11c25544bcb9226297caf39, type: 3}
+  soundName: "\uD3EC\uC158 \uAE00\uB7FD 1\uB2E8\uACC4 - \uB9F9\uB3C5"
+  stateName: "\uD3EC\uC158 \uAE00\uB7FD 1\uB2E8\uACC4 - \uB9F9\uB3C5"
+  MAX_STACK: 1
+  damagePerStack: 0
+  tentionPerStack: 0
+  needStackToEffect: 1
+  stateExplanation: "\uD53C\uACA9\uB420 \uC2DC \uB300\uC0C1\uC5D0\uAC8C \uB9F9\uB3C5\uC744
+    \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+  effectByTurn: 0
