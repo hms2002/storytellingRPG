@@ -7,7 +7,7 @@ public class Player_RoundedSolarShield : KeywordMain
     private void Awake()
     {
         isPlayerKeyword = true;
-        keywordName = "독장미 방패";
+        keywordName = "원형 태양 방패";
         SetKeywordColor(B);
         Init();
     }

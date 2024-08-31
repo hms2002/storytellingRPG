@@ -283,7 +283,7 @@ MonoBehaviour:
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
-  _debuffStack: 4
+  _debuffStack: 2
   _buffStack: 0
   _keywordTension: 0
   _isOneTimeUse: 0

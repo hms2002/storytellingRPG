@@ -7,8 +7,8 @@ public class BlackHerb : KeywordSup
     PotionGlub potionGlub;
 
     [Header("랜덤 포션수치 제어")]
-    [SerializeField] private int maxRange = -1;
-    [SerializeField] private int minRange = -5;
+    [SerializeField] private int maxRange = 1;
+    [SerializeField] private int minRange = 5;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class BlackHerb : KeywordSup
         potionGlub.potionNum += Random.Range(minRange, maxRange + 1);
         caster.tension += keywordTension;
     }
+
     public override void Check(KeywordMain _keywordMain)
     {
 

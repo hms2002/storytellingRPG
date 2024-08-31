@@ -110,7 +110,6 @@ MonoBehaviour:
   - {fileID: 1667625397761100750, guid: 0853910903e5efd4a856fd916a6584dc, type: 3}
   mainDeck:
   - {fileID: 8318680284939046795, guid: 071cc428d20d4204d94f629f5f55a093, type: 3}
-  - {fileID: 3780687299296200833, guid: 79a1c5e794229fe4b93d60750a6f7bbc, type: 3}
   - {fileID: 866918657734550199, guid: 1f8b0981d90dd0240ab093192357cebd, type: 3}
   - {fileID: 7106746398147728805, guid: cc8a517bf43acce4bb0ffac69da8a1c3, type: 3}
   - {fileID: 2111361836599138352, guid: 71802ab50f411fd40a7c233cc51e8abb, type: 3}

@@ -206,7 +206,10 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
                     totalQuantity += monster.charactorState.GetStateStack(StateType.burn) / 5;
                 }
 
-                player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
+                if(totalQuantity > 0)
+                {
+                    player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
+                }
 
                 break;
 
@@ -223,8 +226,10 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
                 totalQuantity += player.charactorState.BuffCount();
                 totalQuantity += player.charactorState.AllDebuffCount();
 
-                player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
-
+                if (totalQuantity > 0)
+                {
+                    player.charactorState.AddState(StateType.oneTimeReinforce, totalQuantity);
+                }
                 break;
 
             case Relics.BlueWish:
