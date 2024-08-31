@@ -201,8 +201,8 @@ MonoBehaviour:
   nameText: {fileID: 0}
   name: 
   descriptionText: {fileID: 0}
-  effectTarget: 0
-  effectType: 2
+  effectTarget: 1
+  effectType: 1
   _keywordName: "\uBE68\uAC04 \uD3EC\uC158"
   _keywordDamage: 14
   _keywordProtect: 0
