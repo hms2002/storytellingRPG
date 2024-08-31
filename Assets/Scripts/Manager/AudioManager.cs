@@ -5,9 +5,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public List<AudioSource> audioSourcePool;
+    private List<AudioSource> audioSourcePool;
     private Dictionary<string, List<AudioClip>> soundGroups;
-    public AudioSource bgmSource;
+    private AudioSource bgmSource;
 
     private void Awake()
     {
@@ -180,31 +180,6 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         ReturnAudioSource(audioSource);
-    }public void SetBGMVolume(float volume)
-    {
-        bgmSource.volume = volume;
-    }
-
-    public float GetBGMVolume()
-    {
-        return bgmSource.volume;
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-        foreach (var audioSource in audioSourcePool)
-        {
-            audioSource.volume = volume;
-        }
-    }
-
-    public float GetSFXVolume()
-    {
-        if (audioSourcePool.Count > 0)
-        {
-            return audioSourcePool[0].volume;
-        }
-        return 1.0f;
     }
 }
 

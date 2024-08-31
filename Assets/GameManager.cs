@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Map;
 
 /// <summary>
 /// 게임의 상태를 표기
@@ -371,14 +372,6 @@ public class GameManager : MonoBehaviour
     {
         DOVirtual.DelayedCall(2.0f, () => GameOverCanvasDatabase.instance.GameOverCanvas.SetActive(true));
         DOVirtual.DelayedCall(5.0f, () => LoadScene(0));
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
     }
 
     public void PrintGameClearCredit()
