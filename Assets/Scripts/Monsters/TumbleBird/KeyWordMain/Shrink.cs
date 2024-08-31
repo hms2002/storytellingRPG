@@ -8,7 +8,7 @@ public class Shrink : KeywordMain
     {
         keywordName = "웅크리기";
         SetKeywordColor(B);
-        keywordProtect = 10;
+        keywordProtect = 3;
         keywordTension = -21;
         Init();
     }
