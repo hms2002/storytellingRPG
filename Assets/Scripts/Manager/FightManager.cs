@@ -52,6 +52,11 @@ public class FightManager : MonoBehaviour
         fightManagerUI = FightManagerUI.fightManagerUI;
     }
 
+    public Actor GetPlayer()
+    {
+        return player;
+    }
+
     public void GetKeywordSup(KeywordSup _keywordSup)
     {
         if (_keywordSup == null) return;

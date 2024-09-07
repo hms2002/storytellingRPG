@@ -412,6 +412,12 @@ public class GameManager : MonoBehaviour
         ReturnMap();
     }
 
+    public void FullRecovery()
+    {
+        fightManager.GetPlayer().hp = fightManager.GetPlayer().MAX_HP;
+        tensionManager.tension = tensionManager.BASIC_MAX_TENSION;
+    }
+
     float enterMainSceneTime = 0;
     public void LoadScene(int idx)
     {

@@ -43,7 +43,7 @@ public class InfoManager : MonoBehaviour
         {
             _rootCanvas = new GameObject("Canvas").AddComponent<Canvas>();
             _rootCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            _rootCanvas.sortingOrder = 6;
+            _rootCanvas.sortingOrder = 8;
             _rootCanvas.transform.SetParent(_root.transform);
         }
 
@@ -51,7 +51,7 @@ public class InfoManager : MonoBehaviour
         {
             _rootWorldCanvas = new GameObject("Canvas").AddComponent<Canvas>();
             _rootWorldCanvas.renderMode = RenderMode.WorldSpace;
-            _rootWorldCanvas.sortingOrder = 6;
+            _rootWorldCanvas.sortingOrder = 8;
             _rootWorldCanvas.planeDistance = 10f;
             _rootWorldCanvas.transform.position = new Vector3(0, 0, 0);
             _rootWorldCanvas.transform.SetParent(_root.transform);
@@ -93,7 +93,7 @@ public class InfoManager : MonoBehaviour
     {
         if(worldInfoUI == null)
         {
-            worldInfoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/WorldTip"), _rootWorldCanvas.transform);
+            worldInfoUI = Object.Instantiate(Resources.Load<InfoUI>("UI/WorldTip"), _rootWorldCanvas.transform);    
             InitUIParent();
         }
         worldInfoUI.gameObject.SetActive(false);

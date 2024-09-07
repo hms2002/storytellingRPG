@@ -62,9 +62,9 @@ public class StageManager : MonoBehaviour
             UIManager.instance.ActiveCombatFunctionAndUI(false);
             UIManager.instance.ActiveCombatKeywordUI(false);
 
-            // 책 페이지 오른쪽으로 넘기도록 트리거 발동
+/*            // 책 페이지 오른쪽으로 넘기도록 트리거 발동
             Book.instance.bookAnimator.SetTrigger("turnPageToRight");
-
+*/
             // 2초 뒤 맵 북마크로 이동
             DOVirtual.DelayedCall(2.0f, Book.instance.EnterMap);
 
@@ -89,6 +89,8 @@ public class StageManager : MonoBehaviour
                 case StageState.Ending:
                     break;
             }
+
+            GameManager.instance.FullRecovery();
 
             MonsterSetDatabase.monsterSetDatabase.MonsterSetting();
             BackgroundSetting(nowStageState);

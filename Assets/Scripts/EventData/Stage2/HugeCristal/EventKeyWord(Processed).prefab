@@ -428,7 +428,7 @@ MonoBehaviour:
   monsterSet: []
   _keywordName: "\uAC00\uACF5\uB41C"
   selectedColor: 4
-  select: 2
+  select: 0
 --- !u!1 &8004628757678576544
 GameObject:
   m_ObjectHideFlags: 0
