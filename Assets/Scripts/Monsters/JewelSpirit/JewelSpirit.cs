@@ -50,15 +50,15 @@ public class JewelSpirit : Monster
     public override void Action(Actor target)
     {
         base.Action(target);
-        OverLoading();
+        if(protect <= 0)
+        {
+            hp = 0; 
+        }
         if(charactorState.GetStateStack(StateType.selfRepair) > 0)
         {
             protect += 15;
         }
-        if(protect <= 0)
-        {
-            hp = 0;
-        }
+        OverLoading();
     }
     
     protected override int CalculateProtect(int totalDamage)

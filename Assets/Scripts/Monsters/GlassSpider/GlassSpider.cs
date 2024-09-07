@@ -6,7 +6,7 @@ public class GlassSpider : Monster
 {
     GlassSpider()
     {
-        encounterText = "";
+        encounterText = "유리는 쉽게 깨지지만, 그만큼 쉽게 날카로워진다.";
         _MAX_HP = 50;
     }
 
