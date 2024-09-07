@@ -16,6 +16,7 @@ public enum StageState
 public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
+    [SerializeField]
     private StageState _nowStageState;
 
     [Header("0:숲 │ 1:동굴 │ 2: 바다 │ 3: 마탑")]
@@ -71,8 +72,8 @@ public class StageManager : MonoBehaviour
             {
                 case StageState.Forest:
                     //nowStageState = StageState.Cave;
-                    nowStageState = StageState.Ending;
-                    GameManager.instance.LoadScene(2);
+                    nowStageState = StageState.Cave;
+                    //GameManager.instance.LoadScene(2);
                     return;
                     break;
                 case StageState.Cave:
@@ -83,6 +84,7 @@ public class StageManager : MonoBehaviour
                     break;
                 case StageState.MagicTower:
                     nowStageState = StageState.Ending;
+                    GameManager.instance.LoadScene(2);
                     break;
                 case StageState.Ending:
                     break;
@@ -145,17 +147,17 @@ public class StageManager : MonoBehaviour
         else
         {
             Debug.Log("StageData 파일이 존재하지 않음. 기본 상태로 설정.");
-            nowStageState = StageState.Forest; // 기본 스테이지 설정
+            nowStageState = StageState.Cave; // 기본 스테이지 설정
             BackgroundSetting(nowStageState);
         }
     }
 
     public void StageReset()
     {
-        string jsonData = JsonUtility.ToJson(StageState.Forest);
-        nowStageState = StageState.Forest;
+        string jsonData = JsonUtility.ToJson(StageState.Cave);
+        nowStageState = StageState.Cave;
         File.WriteAllText(saveFilePath, jsonData);
 
-        BackgroundSetting(StageState.Forest);
+        BackgroundSetting(StageState.Cave);
     }
 }

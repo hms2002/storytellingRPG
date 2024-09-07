@@ -385,7 +385,12 @@ public class GameManager : MonoBehaviour
     public void PrintGameClearCredit()
     {
         RecordTextDatabase recordDatas = RecordTextDatabase.instance;
-        recordDatas.timeText.text = recordDatas.timeText.text + " " + (int)((Time.time - enterMainSceneTime) / 60) + "분 " + (int)((Time.time - enterMainSceneTime) % 60) + "초";
+        float elapsedTime = Time.time - enterMainSceneTime;
+        int minutes = (int)(elapsedTime / 60);
+        int seconds = (int)(elapsedTime % 60);
+
+        // 각 레코드 텍스트에 경과 시간과 각종 카운팅 값을 추가
+        recordDatas.timeText.text = recordDatas.timeText.text + " " + minutes + "분 " + seconds + "초";
         recordDatas.nomalMonsterCounting.text       = recordDatas.nomalMonsterCounting.text + " " +     killCnt_nomalMonster.ToString();
         recordDatas.eliteMonsterCounting.text       = recordDatas.eliteMonsterCounting.text + " " +     killCnt_eleteMonster.ToString();
         recordDatas.bossCounting.text               = recordDatas.bossCounting.text + " " +             killCnt_bossMonster.ToString();
@@ -393,12 +398,14 @@ public class GameManager : MonoBehaviour
         recordDatas.GetGoldCounting.text            = recordDatas.GetGoldCounting.text + " " +          goldCnt.ToString();
         recordDatas.GetKeywordCounting.text         = recordDatas.GetKeywordCounting.text + " " +       keywordCnt.ToString();
 
+
         killCnt_nomalMonster    = 0;
         killCnt_eleteMonster    = 0;
         killCnt_bossMonster     = 0;
         relicCnt                = 0;
         goldCnt                 = 0;
         keywordCnt              = 0;
+        enterMainSceneTime = Time.time;
     }
     internal void EndSelectReward()
     {

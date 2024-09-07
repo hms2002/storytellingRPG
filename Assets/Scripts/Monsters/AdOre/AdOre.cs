@@ -16,7 +16,7 @@ public class AdOre : Monster
 
     private void Start()
     {
-        charactorState.AddState(StateType.ore, 1);
+        charactorState.AddState(StateType.ore, 25);
     }
     public override void Damaged(Actor attacker, DamageInfo _damage)
     {

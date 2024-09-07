@@ -17,7 +17,7 @@ public class AdOre_ShardRefraction : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.ReductionByValue(StateType.weaken, 3);
+        target.charactorState.AddState(StateType.weaken, 3);
 
         caster.tension += keywordTension;
     }

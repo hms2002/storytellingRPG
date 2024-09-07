@@ -133,9 +133,21 @@ public class RewardManager : MonoBehaviour
     {
         rewardCanvas.SetActive(false);
         
-        float time = 3f;
+        float time = 2f;
+        char lastNameChar = getItemName[getItemName.Length - 1];
+        string objectPostfix = "을";
+        if (lastNameChar >= 0xAC00 && lastNameChar <= 0xD7A3)
+        {
+            int mainUnicodeIndex = lastNameChar - 0xAC00;
+            int mainJongseongIndex = mainUnicodeIndex % 28;
 
-        string line = skipReward ? "당신은 보상을 받지 않았다." : "당신은 " + getItemName + " 을 손에 넣었다.";
+            // 종성이 없으면 "를", 있으면 "을"
+            if (mainJongseongIndex == 0)
+            {
+                objectPostfix = "를";
+            }
+        }
+        string line = skipReward ? "당신은 보상을 받지 않았다." : "당신은 " + getItemName + objectPostfix + " 손에 넣었다.";
         skipReward = false;
         yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
 

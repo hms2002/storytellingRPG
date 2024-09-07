@@ -45,6 +45,7 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         rewardNameText.text = temp.GetComponent<Keyword>().keywordName;// temp.transform.GetComponentInChildren<TextMeshProUGUI>().text;
         rewardInfoStr = temp.GetComponent<Keyword>().FormatDescription(temp.GetComponent<Keyword>().keywordDescription);
         KeywordColor = temp.GetComponent<Keyword>().GetKeywordColor();
+        rewardNameText.color = KeywordColor;
         // 메인 키워드면 AddThisToMainDeck()를 본인 버튼 이벤트에 추가
         if (temp.GetComponent<KeywordMain>() != null)
             button.onClick.AddListener(AddThisToMainDeck);

@@ -16,7 +16,6 @@ public class RecordTextDatabase : MonoBehaviour
     private void Start()
     {
         GameManager.instance.PrintGameClearCredit();
-        EndBtn.onClick.AddListener(() => { StartCoroutine("GoToStart"); });
     }
 
     IEnumerator GoToStart()

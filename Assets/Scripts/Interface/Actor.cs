@@ -519,7 +519,7 @@ public class Actor : MonoBehaviour
             foreach(DamageInfo t in dmgList.damageL)
             {
                 target.Damaged(this, t);
-                beforeDamage = damage;
+                
 
                 // 반격 관련 코드
                 if (target.attackCount == true)
@@ -787,6 +787,7 @@ public class Actor : MonoBehaviour
         }
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
+        beforeDamage = totalDamage;
         hp -= totalDamage;
 
         // 공격자, 공격 시 스택 감소할 것들 감소
