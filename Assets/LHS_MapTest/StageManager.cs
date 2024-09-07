@@ -74,7 +74,6 @@ public class StageManager : MonoBehaviour
                     //nowStageState = StageState.Cave;
                     nowStageState = StageState.Cave;
                     //GameManager.instance.LoadScene(2);
-                    return;
                     break;
                 case StageState.Cave:
                     nowStageState = StageState.Sea;

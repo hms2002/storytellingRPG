@@ -66,7 +66,6 @@ public class TitleManager : MonoBehaviour
 
     public void TitleSceneLoad()
     {
-        PageGo();
         DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("Title"); });
         GameManager.instance.gameState = GameState.Map;
     }
