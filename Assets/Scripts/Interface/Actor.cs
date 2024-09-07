@@ -354,9 +354,9 @@ public class Actor : MonoBehaviour
 
 
         #region 턴중 버프, 디버프 관리
+        charactorState.StartTurnEffect(this);
         charactorState.StartTurnDamage(this);
         charactorState.ReductionOnStartTurn();
-        charactorState.StartTurnEffect(this);
         if (charactorState.allStateList[(int)StateType.callingOfMommyDragon] != null
             && charactorState.GetStateStack(StateType.callingOfMommyDragon) == 0)
         {
@@ -620,6 +620,7 @@ public class Actor : MonoBehaviour
         totalDamage = CalculateReinforce(totalDamage, attacker);
         totalDamage = CalculateOneTimeReinforce(totalDamage, attacker);
         totalDamage = CalculateReduction(totalDamage, attacker);
+        totalDamage = CalculateOneTimeReduction(totalDamage, attacker);
         totalDamage = CalculateWeaken(totalDamage);
         return totalDamage;
     }
@@ -657,6 +658,11 @@ public class Actor : MonoBehaviour
         totalDamage -= attacker.charactorState.GetStateStack(StateType.reduction);
         return totalDamage;
     }
+    protected int CalculateOneTimeReduction(int totalDamage, Actor attacker)
+    {
+        totalDamage -= attacker.charactorState.GetStateStack(StateType.oneTimeReduction);
+        return totalDamage;
+    }
     #endregion
     #region 비율 연산
         protected int RatioCalculateTotalDamage(int totalDamage, Actor attacker)
@@ -673,7 +679,7 @@ public class Actor : MonoBehaviour
             // 공격자 공포스택 1 당 피해량 10% 감소
             if (fearStack <= 10)
             {
-                totalDamage = (int)(totalDamage * (1 - (fearStack * 0.1f)));
+                totalDamage = (int)Math.Ceiling(totalDamage * (1 - (fearStack * 0.1f)));
             }
             else
             {

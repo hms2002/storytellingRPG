@@ -150,7 +150,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.BrokenMirrorFragment:
 
-                player.hp += 2;
+                player.charactorState.AddState(StateType.glassPragment,2);
 
                 break;
 
