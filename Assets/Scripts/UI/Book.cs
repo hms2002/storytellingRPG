@@ -78,10 +78,15 @@ public class Book : MonoBehaviour
     public void EnterMap()
     {
         // gameState가 Map, Battle, Shop이면 return
-        if (GameManager.instance.gameState == GameState.Map     ||
-            GameManager.instance.gameState == GameState.Battle  ||
+        if (GameManager.instance.gameState == GameState.BossBattle ||
+            GameManager.instance.gameState == GameState.Battle ||
             GameManager.instance.gameState == GameState.Shop ||
-            GameManager.instance.gameState == GameState.Event)   return;
+            GameManager.instance.gameState == GameState.Rest ||
+            GameManager.instance.gameState == GameState.Event ||
+            GameManager.instance.gameState == GameState.Title ||
+            GameManager.instance.gameState == GameState.Ending ||
+            GameManager.instance.gameState == GameState.GameOver ||
+            GameManager.instance.gameState == GameState.Map || GameManager.instance.isMoving)   return;
 
         // Map 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)
@@ -121,10 +126,7 @@ public class Book : MonoBehaviour
     public void EnterKeywordSetting()
     {
         // gameState가 KeywordSetting, Battle, Shop이면 return
-        if (GameManager.instance.gameState == GameState.KeywordSetting ||
-            GameManager.instance.gameState == GameState.Battle ||
-            GameManager.instance.gameState == GameState.Shop ||
-            GameManager.instance.gameState == GameState.Event) { return; }
+        if (GameManager.instance.gameState != GameState.Map || GameManager.instance.isMoving) { return; }
 
         // KeywordSetting 버튼 클릭 시 1초동안 비활성화
         foreach (GameObject g in bookmarks)

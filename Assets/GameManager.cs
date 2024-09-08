@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
 
     public int eventIndex = 0;
 
-
+    public bool isMoving = false;
     /*==================================================================================================================================*/
 
 

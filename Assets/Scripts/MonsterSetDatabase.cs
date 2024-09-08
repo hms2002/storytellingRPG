@@ -7,7 +7,7 @@ public class MonsterSetDatabase : MonoBehaviour
     public static MonsterSetDatabase monsterSetDatabase;
 
     internal List<GameObject> selectedMonsterSet;
-    List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[9];
+    List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[7];
     List<GameObject>[] stage1_EliteMonsterLists = new List<GameObject>[3];
     List<GameObject>[] stage1_BossMonsterLists = new List<GameObject>[1];
 
@@ -18,8 +18,8 @@ public class MonsterSetDatabase : MonoBehaviour
     public List<GameObject> s1_NomalMonsterSet5;
     public List<GameObject> s1_NomalMonsterSet6;
     public List<GameObject> s1_NomalMonsterSet7;
-    public List<GameObject> s1_NomalMonsterSet8;
-    public List<GameObject> s1_NomalMonsterSet9;
+/*    public List<GameObject> s1_NomalMonsterSet8;
+    public List<GameObject> s1_NomalMonsterSet9;*/
 
     public List<GameObject> s1_EliteMonsterSet1;
     public List<GameObject> s1_EliteMonsterSet2;
@@ -103,8 +103,8 @@ public class MonsterSetDatabase : MonoBehaviour
         stage1_NomalMonsterLists[5] = s1_NomalMonsterSet6;
         stage1_NomalMonsterLists[6] = s1_NomalMonsterSet7;
         // 인덱스 outOfRange 때문에 잠궈둠.
-        stage1_NomalMonsterLists[7] = s1_NomalMonsterSet8;
-        stage1_NomalMonsterLists[8] = s1_NomalMonsterSet9;
+/*        stage1_NomalMonsterLists[7] = s1_NomalMonsterSet8;
+        stage1_NomalMonsterLists[8] = s1_NomalMonsterSet9;*/
 
         stage1_EliteMonsterLists[0] = s1_EliteMonsterSet1;
         stage1_EliteMonsterLists[1] = s1_EliteMonsterSet2;

@@ -117,7 +117,7 @@ namespace Map
 
                 // 플레이어 이동 및 위치 후 저장 노드 상태 변경
                 MovePlayerToNode();
-
+                GameManager.instance.isMoving = true;
                 DOVirtual.DelayedCall(1, () =>
                 {
                     switch (nodeBlueprint.nodeType)
@@ -158,6 +158,8 @@ namespace Map
                             UIManager.instance.ActiveMapUI(false);
                             break;
                     }
+
+                    GameManager.instance.isMoving = false;
                 });
             }
 
