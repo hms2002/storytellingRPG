@@ -196,5 +196,10 @@ namespace Map
             string json = JsonUtility.ToJson(mapData);
             File.WriteAllText(filePath, json);
         }
+
+        public void MapMarkReBatch()
+        {
+            mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
+        }
     }
 }
