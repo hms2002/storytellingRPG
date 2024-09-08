@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Fragmented : KeywordSup
 {
-    GlassSpider glassSpider;
-
-
     private void Awake()
     {
         keywordName = "파편화된";
@@ -17,8 +14,7 @@ public class Fragmented : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        glassSpider = caster as GlassSpider;
-        caster.dmgList.Plus(glassSpider.charactorState.GetStateStack(StateType.glassPragment));
+        caster.dmgList.Plus(caster.charactorState.GetStateStack(StateType.glassPragment));
         caster.tension += keywordTension;
     }
 

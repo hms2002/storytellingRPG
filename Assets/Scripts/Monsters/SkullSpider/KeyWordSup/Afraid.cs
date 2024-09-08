@@ -10,7 +10,6 @@ public class Afreid : KeywordSup
 
         SetKeywordColor(Y);
         keywordTension = 3;
-        debuffStack = 1;
         debuffType = "Fear";
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
@@ -21,7 +20,6 @@ public class Afreid : KeywordSup
     {
         target.charactorState.AddState(StateDatabase.stateDatabase.fear, debuffStack);
         caster.tension += keywordTension;
-        caster.attackSound = "타격음_주먹2";
     }
 
     public override void Check(KeywordMain _keywordMain)

@@ -9,7 +9,6 @@ public class Ori_Hardy : KeywordSup
         keywordName = "튼튼한";
 
         SetKeywordColor(B);
-        keywordProtect = 5;
         keywordTension = -4;
         Init();
     }

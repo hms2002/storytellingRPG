@@ -219,20 +219,15 @@ public class GameManager : MonoBehaviour
 
     public GameState _gameState = GameState.Map;   // 게임의 상태를 저장
     private GameState beforeState;
+
     public GameState gameState 
     {  get => _gameState;
         set 
         {
             _gameState = beforeState;
             _gameState = value;
-            if(beforeState == _gameState)
-            {
-                return;
-            }
-            else 
-            {
-                AudioManager.instance.UpdateBGM();
-            }
+
+            AudioManager.instance.UpdateBGM();
         }
     }
 

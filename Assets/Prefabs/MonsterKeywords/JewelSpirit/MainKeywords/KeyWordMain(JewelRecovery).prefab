@@ -168,16 +168,19 @@ MonoBehaviour:
   effectType: 0
   _keywordName: 
   _keywordDamage: 0
-  _keywordProtect: 0
+  _keywordProtect: 4
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
   _buffStack: 0
-  _keywordTension: 0
+  _keywordTension: 15
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "8~12 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4. "
+  keywordDescription: "\uC774\uC804 \uD134\uC5D0 \uB370\uBBF8\uC9C0\uB97C \uBC1B\uC544
+    \uAC10\uC18C\uB41C \uBCF4\uD638\uC218\uCE58 \uB9CC\uD07C \uBCF4\uD638\uB97C \uC5BB\uC2B5\uB2C8\uB2E4.(\uCD5C\uB300
+    7)\n\uB370\uBBF8\uC9C0\uB97C \uBC1B\uC9C0 \uC54A\uC558\uB2E4\uBA74 \uBCF4\uD638\uB97C
+    protect\uBD80\uC5EC"
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &4265096882646728136

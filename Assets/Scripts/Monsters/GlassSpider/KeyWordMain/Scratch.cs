@@ -8,7 +8,6 @@ public class Scratch : KeywordMain
     {
         keywordName = "할퀴기";
         SetKeywordColor(R);
-        keywordDamage = 3;
         keywordTension = -20;
         Init();
     }

@@ -9,8 +9,6 @@ public class JewelBang : KeywordMain
     {
         keywordName = "보석 강타";
         SetKeywordColor(R);
-        keywordDamage = 6;
-        keywordTension = -10;
         Init();
     }
 

@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class Betrayal : KeywordMain
 {
-    [Header("배신감 키워드 약화 수치")]
-    [SerializeField] private int oneTimeReductionControl = 3;
-
     // Start is called before the first frame update
     void Awake()
     {
         keywordName = "배신감";
         SetKeywordColor(Y);
         keywordTension = 12;
-        keywordProtect = 0;
         effectTarget = EffectTarget.target;
         effectType = EffectManager.EffectType.ItemUse;
         Init();
@@ -27,7 +23,7 @@ public class Betrayal : KeywordMain
         }
         else
         {
-            target.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, oneTimeReductionControl);
+            target.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, debuffStack);
         }
 
         caster.tension += keywordTension;

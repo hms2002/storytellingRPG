@@ -13,8 +13,6 @@ public class UnstableCore : KeywordMain
         keywordName = "불안정 코어";
         SetKeywordColor(R);
         keywordDamage = Random.Range(minRange, maxRange);
-        keywordProtect = 20;
-        keywordTension = -10;
         Init();
     }
 

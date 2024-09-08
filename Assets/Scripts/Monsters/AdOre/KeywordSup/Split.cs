@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Split : KeywordSup
 {
-    [Header("쪼개진 키워드 데미지 수치 제어")]
-    [SerializeField] private int amountOfDamage = 5;
-
-
     private void Awake()
     {
         keywordName = "쪼개진";
@@ -18,8 +14,7 @@ public class Split : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.dmgList.Plus(amountOfDamage);
-
+        caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }
 

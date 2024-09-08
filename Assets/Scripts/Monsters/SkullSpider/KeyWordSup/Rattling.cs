@@ -9,7 +9,6 @@ public class Rattling : KeywordSup
         keywordName = "달그락거리는";
         SetKeywordColor(R);
         keywordTension = -10;
-        keywordDamage = 3;
         Init();
     }
 

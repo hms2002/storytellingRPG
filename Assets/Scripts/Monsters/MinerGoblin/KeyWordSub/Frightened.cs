@@ -6,9 +6,6 @@ using static Keyword;
 
 public class Frightened : KeywordSup
 {
-    [Header("부여되는 일회성 약화 수치")]
-    [SerializeField] private int oneTimeReductionControl = 4;
-
     private void Awake()
     {
         keywordName = "겁에 질린";
@@ -21,7 +18,7 @@ public class Frightened : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, oneTimeReductionControl);
+        target.charactorState.AddState(StateDatabase.stateDatabase.oneTimeReduction, debuffStack);
 
         caster.tension += keywordTension;
     }

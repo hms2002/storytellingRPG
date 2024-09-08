@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class HardHat : KeywordMain
 {
-    [Header("안전모 키워드 쉴드 수치")]
-    [SerializeField] private int amountOfProtect = 10;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,8 +15,8 @@ public class HardHat : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect += amountOfProtect;
-        caster.tension += keywordProtect;
+        caster.protect += keywordProtect;
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)

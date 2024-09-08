@@ -8,9 +8,6 @@ public class DigestiveFluid : KeywordMain
     {
         keywordName = "소화액";
         SetKeywordColor(R);
-        keywordDamage = 2;
-        debuffType = "Reduction";
-        debuffStack = 3;
         keywordTension = 10;
         Init();
     }

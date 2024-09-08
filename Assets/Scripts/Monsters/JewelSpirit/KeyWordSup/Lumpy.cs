@@ -10,7 +10,6 @@ public class Lumpy : KeywordSup
 
         SetKeywordColor(B);
         keywordTension = 7;
-        keywordProtect = 4;
         Init();
     }
 

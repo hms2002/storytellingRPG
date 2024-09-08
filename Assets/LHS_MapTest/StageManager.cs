@@ -71,9 +71,7 @@ public class StageManager : MonoBehaviour
             switch (nowStageState)
             {
                 case StageState.Forest:
-                    //nowStageState = StageState.Cave;
                     nowStageState = StageState.Cave;
-                    //GameManager.instance.LoadScene(2);
                     break;
                 case StageState.Cave:
                     nowStageState = StageState.Sea;
@@ -88,6 +86,8 @@ public class StageManager : MonoBehaviour
                 case StageState.Ending:
                     break;
             }
+
+            AudioManager.instance.UpdateBGM();
 
             GameManager.instance.FullRecovery();
 
@@ -148,7 +148,7 @@ public class StageManager : MonoBehaviour
         else
         {
             Debug.Log("StageData 파일이 존재하지 않음. 기본 상태로 설정.");
-            nowStageState = StageState.Cave; // 기본 스테이지 설정
+            nowStageState = StageState.Forest; // 기본 스테이지 설정
             BackgroundSetting(nowStageState);
         }
     }
@@ -156,9 +156,9 @@ public class StageManager : MonoBehaviour
     public void StageReset()
     {
         string jsonData = JsonUtility.ToJson(StageState.Cave);
-        nowStageState = StageState.Cave;
+        nowStageState = StageState.Forest;
         File.WriteAllText(saveFilePath, jsonData);
 
-        BackgroundSetting(StageState.Cave);
+        BackgroundSetting(StageState.Forest);
     }
 }

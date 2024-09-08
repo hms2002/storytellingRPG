@@ -17,8 +17,8 @@ public class Ori_Ore : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.ReductionByValue(StateType.ore, 1);
-        caster.charactorState.AddState(StateType.oneTimeReinforce, 3);
+        caster.charactorState.ReductionByValue(StateType.ore, debuffStack);
+        caster.charactorState.AddState(StateType.oneTimeReinforce, buffStack);
         caster.tension += keywordTension;
     }
 

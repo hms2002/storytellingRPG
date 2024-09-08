@@ -10,8 +10,6 @@ public class CreationFear : KeywordMain
         
         SetKeywordColor(R);
         keywordTension = 5;
-        keywordDamage = 3;
-        debuffStack = 1;
         debuffType = "Fear";    
         Init();
     }

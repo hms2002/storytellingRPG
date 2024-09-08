@@ -631,15 +631,14 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
-  _buffStack: 0
-  _keywordTension: 0
+  _buffStack: 1
+  _keywordTension: 20
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uC720\uB9AC \uD30C\uD3B8 \uC2A4\uD0DD\uC744 1 \uC5BB\uC2B5\uB2C8\uB2E4."
+  keywordDescription: "\uC720\uB9AC \uD30C\uD3B8 \uC2A4\uD0DD\uC744 buffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
-  stack: 1
 --- !u!114 &3504148208307001644
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class Biting : KeywordMain
     {
         keywordName = "물어뜯기";
         SetKeywordColor(R);
-        keywordDamage = 10;
         keywordTension = 10;
         Init();
     }

@@ -11,8 +11,6 @@ public class ShieldDestruction : KeywordMain
     {
         keywordName = "보호막 강타";
         SetKeywordColor(R);
-        keywordDamage = 20;
-        keywordProtect = 15;
         keywordTension = 35;
         Init();
     }

@@ -8,8 +8,6 @@ public class CoreRay : KeywordMain
     {
         keywordName = "코어 광선";
         SetKeywordColor(R);
-        keywordProtect = 25;
-        keywordDamage = 35;
         keywordTension = -10;
         Init();
     }

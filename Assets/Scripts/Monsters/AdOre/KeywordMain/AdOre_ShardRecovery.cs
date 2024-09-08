@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AdOre_ShardRecovery : KeywordMain
 {
-    [Header("부여되는 광석 스택 수치 제어")]
-    [SerializeField] int amountOfRecovery = 25;
-
-
     private void Awake()
     {
         keywordName = "파편 복구";
@@ -20,7 +16,7 @@ public class AdOre_ShardRecovery : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.ore, amountOfRecovery);
+        caster.charactorState.AddState(StateType.ore, buffStack);
 
         caster.tension += keywordTension;
     }

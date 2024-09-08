@@ -9,8 +9,6 @@ public class JumpScare : KeywordMain
         keywordName = "점프스케어";
 
         SetKeywordColor(R);
-        keywordTension = 5;
-        keywordDamage = 7;  
         Init();
     }
 

@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class Shiny : KeywordSup
 {
-    GlassSpider glassSpider;
-
-
     private void Awake()
     {
         keywordName = "반짝이는";
         SetKeywordColor(R);
-        keywordDamage = 3;
         keywordTension = 8;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        glassSpider = caster as GlassSpider;
         caster.dmgList.Plus(keywordDamage);
         caster.tension += keywordTension;
     }

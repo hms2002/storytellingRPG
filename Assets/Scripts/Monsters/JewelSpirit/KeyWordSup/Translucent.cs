@@ -11,7 +11,6 @@ public class Translucent : KeywordSup
 
         SetKeywordColor(B);
         keywordTension = 5;
-        keywordProtect = 3;
         Init();
     }
 
@@ -20,7 +19,7 @@ public class Translucent : KeywordSup
         caster.protect += keywordProtect;
         caster.tension += keywordTension;
     }
-
+        
     public override void Check(KeywordMain _keywordMain)
     {
     }

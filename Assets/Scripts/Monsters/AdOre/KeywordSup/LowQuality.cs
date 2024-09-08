@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class LowQuality : KeywordSup
 {
-    [Header("부여되는 취약 수치 제어")]
-    [SerializeField] private int amountOfWeakenStack = 2;
-
-
     private void Awake()
     {
         keywordName = "저품질";
@@ -20,7 +16,7 @@ public class LowQuality : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateDatabase.stateDatabase.weaken, amountOfWeakenStack);
+        caster.charactorState.AddState(StateDatabase.stateDatabase.weaken, debuffStack);
  
         caster.tension += keywordTension;
     }

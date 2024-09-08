@@ -8,7 +8,6 @@ public class SpiderWeb : KeywordMain
     {
         keywordName = "거미줄";
         SetKeywordColor(R);
-        keywordDamage = 5;
         keywordTension = -10;
         Init();
     }

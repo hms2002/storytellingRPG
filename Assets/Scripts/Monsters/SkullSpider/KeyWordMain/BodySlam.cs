@@ -10,7 +10,6 @@ public class BodySlam : KeywordMain
 
         SetKeywordColor(R);
         keywordTension = -10;
-        keywordDamage = 3;
         Init();
     }
 

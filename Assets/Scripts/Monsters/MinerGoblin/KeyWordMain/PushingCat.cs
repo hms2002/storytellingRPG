@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class PushingCat : KeywordMain
 {
-    [Header("수레 밀치기 키워드 데미지 수치")]
-    [SerializeField] private int damage = 30;
-
     private void Awake()
     {
         keywordName = "수레 밀치기";
         SetKeywordColor(R);
         keywordTension = 18;
-        keywordDamage = damage;
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.dmgList.Add(damage);
+        caster.dmgList.Add(keywordDamage);
         caster.tension += keywordTension;
     }
 

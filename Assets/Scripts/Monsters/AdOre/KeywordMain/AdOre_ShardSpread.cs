@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class AdOre_ShardSpread : KeywordMain
 {
-    [Header("광석 스택 감소 수치 제어")]
-    [SerializeField] int amountOfDecrease = 6;
-
     private void Awake()
     {
         keywordName = "파편 확산";
         SetKeywordColor(R);
-        keywordDamage = 32; 
         keywordTension = 32;
         Init();
     }
@@ -20,7 +16,7 @@ public class AdOre_ShardSpread : KeywordMain
     {
         caster.dmgList.Add(keywordDamage);
 
-        caster.charactorState.ReductionByValue(StateType.ore, amountOfDecrease);
+        caster.charactorState.ReductionByValue(StateType.ore, buffStack);
 
         caster.tension += keywordTension;
     }

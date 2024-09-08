@@ -7,15 +7,14 @@ public class Crouch : KeywordMain
     private void Awake()
     {
         keywordName = "웅크리기";
-        SetKeywordColor(B);
-        keywordProtect = 10;
         keywordTension = 6;
+        SetKeywordColor(B);
         Init();
     }
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect = 10;
+        caster.protect = keywordProtect;
         caster.tension += keywordTension;
     }
 
