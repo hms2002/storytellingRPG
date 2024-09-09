@@ -116,6 +116,22 @@ namespace Map
             {
                 nodesEndLineCheck.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck[i]);
             }
+
+            //노드 상태 초기화
+            for(int i =0; i< mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes.Length; i++)
+            {
+                mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>().nodeStates = NodeStates.Locked;
+                mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>().SetStage();
+            }
+
+            for(int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck[0]; i++)
+            {
+                mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>().nodeStates = NodeStates.Attainable;
+                mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>().SetStage();
+            }
+
+            endNode.GetComponent<MapNode>().nodeStates = NodeStates.Locked;
+            endNode.GetComponent<MapNode>().SetStage();
         }
 
         //쓰지마
