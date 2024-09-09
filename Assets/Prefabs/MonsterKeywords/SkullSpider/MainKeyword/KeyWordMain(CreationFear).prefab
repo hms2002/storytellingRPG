@@ -652,7 +652,7 @@ MonoBehaviour:
   _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uACF5\uD3EC\uB97C
-    damagestack\uBD80\uC5EC\uD569\uB2C8\uB2E4."
+    debuffstack\uBD80\uC5EC\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!114 &1298368689448772767
