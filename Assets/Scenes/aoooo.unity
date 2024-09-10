@@ -316,8 +316,6 @@ MonoBehaviour:
   s1_NomalMonsterSet7:
   - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
   - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
-  s1_NomalMonsterSet8: []
-  s1_NomalMonsterSet9: []
   s1_EliteMonsterSet1:
   - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
   s1_EliteMonsterSet2:
@@ -3118,6 +3116,7 @@ MonoBehaviour:
   goldCnt: 0
   keywordCnt: 0
   eventIndex: 0
+  isMoving: 0
   gameOverCanvas: {fileID: 835442127}
 --- !u!1 &332756593
 GameObject:
@@ -3257,6 +3256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538723685}
     m_Modifications:
+    - target: {fileID: 347289201296925713, guid: d83b45db1e8eace4cbff482bc51d04a0, type: 3}
+      propertyPath: nodeStates
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1791044728358153174, guid: d83b45db1e8eace4cbff482bc51d04a0, type: 3}
       propertyPath: m_Name
       value: EndNode
