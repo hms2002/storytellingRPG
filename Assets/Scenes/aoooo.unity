@@ -300,22 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb40ca7befab02438f37f3e01e0f16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1_NomalMonsterSet1:
-  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
-  s1_NomalMonsterSet2:
-  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
-  s1_NomalMonsterSet3:
-  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
-  s1_NomalMonsterSet4:
-  - {fileID: 682207150685018480, guid: 30ce1a9c468e3b540918a3e5feb87e90, type: 3}
-  s1_NomalMonsterSet5:
-  - {fileID: 682207150685018480, guid: aa107211f96705c48a01724509f81d5e, type: 3}
-  s1_NomalMonsterSet6:
-  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
-  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
-  s1_NomalMonsterSet7:
-  - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
-  - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  s1_NomalMonsterSet1: []
+  s1_NomalMonsterSet2: []
+  s1_NomalMonsterSet3: []
+  s1_NomalMonsterSet4: []
+  s1_NomalMonsterSet5: []
+  s1_NomalMonsterSet6: []
+  s1_NomalMonsterSet7: []
   s1_EliteMonsterSet1:
   - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
   s1_EliteMonsterSet2:

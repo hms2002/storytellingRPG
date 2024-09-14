@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BarnacleCrayfish_GripStrength : KeywordMain
 {
-    [Header("집게 악력 키워드 데미지")]
-    [SerializeField] private int damage = 12;
     [Header("집게 악력 키워드 보호 수치에 따른 추가 데미지 최대 수치")]
     [SerializeField] private int plusDamage = 8;
 
@@ -23,11 +21,11 @@ public class BarnacleCrayfish_GripStrength : KeywordMain
     {
         if (caster.protect >= 8)
         {
-            caster.dmgList.Add(damage + plusDamage);
+            caster.dmgList.Add(keywordDamage + plusDamage);
         }
         else
         {
-            caster.dmgList.Add(damage + caster.protect);
+            caster.dmgList.Add(keywordDamage + caster.protect);
         }
 
         caster.tension += keywordTension;

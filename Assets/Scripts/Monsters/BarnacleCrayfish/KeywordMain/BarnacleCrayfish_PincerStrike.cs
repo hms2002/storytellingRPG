@@ -6,9 +6,6 @@ using static Keyword;
 
 public class BarnacleCrayfish_PincerStrike : KeywordMain
 {
-    [Header("집게 강타 키워드 데미지 수치")]
-    [SerializeField] private int damage = 8;
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,12 +19,12 @@ public class BarnacleCrayfish_PincerStrike : KeywordMain
     {
         if(caster.protect >= 9)
         {
-            caster.dmgList.Add(damage + caster.protect);
+            caster.dmgList.Add(keywordDamage + caster.protect);
             caster.protect = 0;
         }
         else
         {
-            caster.damage += damage + caster.protect;
+            caster.damage += keywordDamage + caster.protect;
         }
 
         caster.protect += keywordProtect;

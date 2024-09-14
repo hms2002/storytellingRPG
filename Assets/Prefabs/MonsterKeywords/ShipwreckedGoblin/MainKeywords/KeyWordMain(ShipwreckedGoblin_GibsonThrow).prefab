@@ -252,8 +252,8 @@ MonoBehaviour:
   _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uCDE8\uC57D\uC744
-    debuffstack, \uC57D\uD654\uB97C debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n(\uC7AC\uC0AC\uC6A9
-    \uBD88\uAC00\uD569\uB2C8\uB2E4)"
+    debuffstack, \uC57D\uD654\uB97C debuffstack \uBD80\uC5EC\uD569\uB2C8\uB2E4.\n(\uC0AC\uC6A9
+    \uC774\uD6C4 \uB4F1\uC7A5\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.)"
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &6463570368478606698

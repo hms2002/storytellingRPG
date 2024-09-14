@@ -10,10 +10,14 @@ public class BarnacleCrayfish : Monster
     private void Awake()
     {
         MAX_HP = 80;
-        protect = 10;
         hp = MAX_HP;
         encounterText = "강철같은 따개비를 두르고 있는 가재가 나타났다.";
         anim = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        protect = 10;
     }
 
     //////////////////

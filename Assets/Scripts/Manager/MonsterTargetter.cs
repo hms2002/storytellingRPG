@@ -24,7 +24,7 @@ public class MonsterTargetter : MonoBehaviour
             }
             if (_target != null)
             {
-                // _target의 SpriteRenderer를 얻어옴
+                /*// _target의 SpriteRenderer를 얻어옴
                 SpriteRenderer spriteRenderer = _target.GetComponent<SpriteRenderer>();
 
                 if (spriteRenderer != null)
@@ -34,6 +34,26 @@ public class MonsterTargetter : MonoBehaviour
                     Vector3 topPosition = _target.transform.position + new Vector3(0, spriteHeight, 0);
 
                     // targetUIObj를 최상단 위치로 이동
+                    targetUIObj.position = topPosition;
+                }
+                else
+                {
+                    // SpriteRenderer가 없으면 기본적으로 _target의 위치를 사용
+                    targetUIObj.position = _target.transform.position;
+                }*/
+                // _target의 SpriteRenderer를 얻어옴
+                SpriteRenderer spriteRenderer = _target.GetComponent<SpriteRenderer>();
+
+                if (spriteRenderer != null)
+                {
+                    // 스프라이트의 최상단 위치를 계산
+                    float spriteHeight = spriteRenderer.bounds.size.y;
+                    Vector2 pivotOffset = spriteRenderer.sprite.pivot / spriteRenderer.sprite.pixelsPerUnit;
+
+                    // PIVOT에 따른 조정된 최상단 위치 계산
+                    Vector3 topPosition = _target.transform.position + new Vector3(0, spriteHeight - pivotOffset.y, 0);
+
+                    // targetUIObj를 조정된 최상단 위치로 이동
                     targetUIObj.position = topPosition;
                 }
                 else

@@ -18,7 +18,7 @@ public class RogueWave_ToxicJellyfish : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.venom, debuffStack);
+        target.charactorState.AddState(StateType.venom, debuffStack);
         caster.tension += keywordTension;
     }
 }
