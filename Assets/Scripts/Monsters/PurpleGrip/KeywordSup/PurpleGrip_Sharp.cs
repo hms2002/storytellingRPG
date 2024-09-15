@@ -19,7 +19,7 @@ public class PurpleGrip_Sharp : KeywordSup
     {
         if (!target.charactorState.vampire.Contains(caster))
             target.charactorState.vampire.Add(caster);
-        caster.charactorState.AddState(StateType.weaken, debuffStack);
+        target.charactorState.AddState(StateType.weaken, debuffStack);
         caster.tension += keywordTension;
     }
 }

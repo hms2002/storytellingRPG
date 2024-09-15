@@ -35,7 +35,7 @@ public class WitchCauldron : Monster
     public PotionColor potionColor
     {
         get { return _potionColor; }
-        set { _potionColor = PotionColor.Black; }
+        set { _potionColor = value; }
     }
 
     public bool isSpellUp
@@ -48,7 +48,7 @@ public class WitchCauldron : Monster
     {
         animator = GetComponent<Animator>();
         MAX_HP = 64;
-        encounterText = "부글부글. 다양한 재료의 냄새 공간을 가득 채운다.";
+        encounterText = "부글부글, 다양한 재료의 냄새가 공간을 가득 채운다.";
     }
 
 

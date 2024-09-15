@@ -177,8 +177,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uBD89\uC740 \uBC84\uC12F\uC744 \uAC00\uB9C8\uC1A5\uC5D0 \uB123\uC2B5\uB2C8\uB2E4.\n(\uD3EC\uC158
-    \uC218\uCE58\uB97C -2~2 \uC5BB\uC2B5\uB2C8\uB2E4)"
+  keywordDescription: "\uBD89\uC740 \uBC84\uC12F\uC744 \uAC00\uB9C8\uC1A5\uC5D0 \uB123\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
   maxRange: 2

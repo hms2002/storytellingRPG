@@ -10,10 +10,12 @@ public class ApocalypseSorcerer : Monster
         hp = MAX_HP;
         encounterText = "종말을 알리는 불길한 주문이 시작된다.";
     }
+
     private void Start()
     {
         charactorState.AddState(StateType.mana, 30);
     }
+
     public override void StartTurn()
     {
         charactorState.AddState(StateType.mana, 3);

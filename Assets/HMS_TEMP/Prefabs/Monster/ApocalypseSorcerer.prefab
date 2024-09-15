@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 118458055, guid: 98889c02b8a0cef4281342b64cd555cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2963f9fd67e541e43942d5ed3bca3429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateUIController: {fileID: 0}
+  stateUIController: {fileID: 3252021009432519945}
   _attackSound: "\uD0C0\uACA9\uC74C_\uC8FC\uBA392"
   _MAX_HP: 100
   _hp: 0
@@ -310,6 +310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8139660526183196566}
     m_Modifications:
+    - target: {fileID: 3120775626924063872, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -390,6 +394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8383295160003689932, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8443018864190916328, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
       propertyPath: m_Name
       value: StateCanvas
@@ -399,6 +407,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
+--- !u!114 &3252021009432519945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 925582972379773256, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}
+  m_PrefabInstance: {fileID: 2448035357536394305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd903ca61d46d4f8bad9d538abf4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5994023079900686553 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8274844333257307288, guid: 5d7ce6c3ff59a7e498e1b8482a24f4ae, type: 3}

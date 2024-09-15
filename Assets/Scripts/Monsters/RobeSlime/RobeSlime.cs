@@ -10,6 +10,7 @@ public class RobeSlime : Monster
         hp = MAX_HP;
         encounterText = "로브를 뒤집어 쓴 슬라임이 나타났다.\n스치기만 해도 중독에 걸릴 것 같다.";
     }
+
     private void Start()
     {
         charactorState.AddState(StateType.mana, 10);

@@ -513,8 +513,7 @@ MonoBehaviour:
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uAC00\uB9C8\uC1A5\uC744 \uD718\uC813\uC2B5\uB2C8\uB2E4. \n(\uD3EC\uC158\uC218\uCE58\uB97C
-    -2~2 \uC5BB\uC2B5\uB2C8\uB2E4.)"
+  keywordDescription: "\uAC00\uB9C8\uC1A5\uC744 \uD718\uC813\uC2B5\uB2C8\uB2E4. "
   changeTensionText: 
   _isChangeTension: 0
   maxRange: 2
