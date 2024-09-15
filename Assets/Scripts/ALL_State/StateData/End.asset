@@ -17,7 +17,7 @@ MonoBehaviour:
   reductionTiming: 0
   stateProperty: 1
   debuffEffect: 0
-  stateImage: {fileID: 21300000, guid: 1400cf534cd81b54eafbebb56fdb1d0d, type: 3}
+  stateImage: {fileID: 21300000, guid: e0159b38b2e8b3a4981dea75498860ce, type: 3}
   soundName: 
   stateName: "\uC885\uB9D0"
   MAX_STACK: 0
