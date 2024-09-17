@@ -232,11 +232,15 @@ public class FightManager : MonoBehaviour
         if (preparedActorCount < monsterList.Count)
         {
             whoPlaying = monsterList[preparedActorCount];
+            whoPlaying.stateUIController.SetTurnUIActive(true);
+            player.stateUIController.SetTurnUIActive(false);
             TextManager.instance.KeywordTextPlay(whoPlaying);
         }
         else if (preparedActorCount == monsterList.Count)
         {
             whoPlaying = player;
+            whoPlaying.stateUIController.SetTurnUIActive(true);
+            FalseAllMonsterTurnUI();
             TextManager.instance.KeywordTextPlay(whoPlaying);
         }
         
@@ -245,7 +249,11 @@ public class FightManager : MonoBehaviour
         if (preparedActorCount < monsterList.Count)
         {
             whoPlaying = monsterList[preparedActorCount];
+            FalseAllMonsterTurnUI();
+            whoPlaying.stateUIController.SetTurnUIActive(true);
             monsterList[preparedActorCount].StartTurn();
+
+            
 
             if (!CheckMonsterSurvive())
             {
@@ -272,11 +280,11 @@ public class FightManager : MonoBehaviour
         else if (preparedActorCount == monsterList.Count)
         {
             whoPlaying = player;
-
+            whoPlaying.stateUIController.SetTurnUIActive(true);
+            FalseAllMonsterTurnUI();
             player.StartTurn();
             CheckPlayerSurvive();
             player.ShowSupKeywords();
-
             TextManager.instance.KeywordTextPlay(player);
 
             return;
@@ -284,7 +292,7 @@ public class FightManager : MonoBehaviour
 
         else
             preparedActorCount = 0;
-
+        FalseAllTurnUI();
         StartCoroutine(ActorAction());
     }
 
@@ -483,6 +491,22 @@ public class FightManager : MonoBehaviour
         RePositionMonsters();
     }
 
+    public void FalseAllMonsterTurnUI()
+    {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            monsterList[i].stateUIController.SetTurnUIActive(false);
+        }
+    }
+
+    public void FalseAllTurnUI()
+    {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            monsterList[i].stateUIController.SetTurnUIActive(false);
+        }
+        player.stateUIController.SetTurnUIActive(false);
+    }
     // 데이터 값 획득 변수
     #region
     public int getPlayerDamaged()

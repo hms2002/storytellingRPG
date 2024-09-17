@@ -13,6 +13,7 @@ public class ActorStateUIControler : MonoBehaviour
     public GameObject protectUIObject;
     public GameObject hpUI;
     public TextMeshProUGUI hpText;
+    public GameObject turnUI;
 
     public void UpdateUI(State state)
     {
@@ -69,5 +70,10 @@ public class ActorStateUIControler : MonoBehaviour
     {
         hpSlider.fillAmount = hp / (float)MAX_HP;
         hpText.text = hp + " / " + MAX_HP;
+    }
+
+    public void SetTurnUIActive(bool isActive)
+    {
+        turnUI.SetActive(isActive);
     }
 }

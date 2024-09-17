@@ -13,7 +13,7 @@ public class Composure : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-
+        caster.tension += keywordTension;
     }
 
     public override void Check(KeywordSup _keywordSup)
