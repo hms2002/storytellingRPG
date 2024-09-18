@@ -26,6 +26,7 @@ public class Fantastic : KeywordSup
         trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, damageFigures);
         trasureDragon.trasureDamage += damageFigures;
         caster.tension += keywordTension;
+        target.gold += damageFigures;
     }
 
     public override void Check(KeywordMain _keywordMain)

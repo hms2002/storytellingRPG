@@ -14,9 +14,11 @@ public class Player_Thrilled : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.charactorState.AddState(StateType.oneTimeReinforce, caster.charactorState.GetStateStack(StateType.weaken) / 2);
+        int num;
+        num = caster.charactorState.GetStateStack(StateType.weaken) / 2;
+        caster.charactorState.AddState(StateType.oneTimeReinforce, num * 3);
     }
-
+        
     public override void Check(KeywordMain _keywordMain)
     {
     }

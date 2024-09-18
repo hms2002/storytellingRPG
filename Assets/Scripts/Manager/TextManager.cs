@@ -11,7 +11,7 @@ public class TextManager : MonoBehaviour
     public static TextManager instance;
     public TextMeshProUGUI Text;
     public bool firstText = true;
-
+    private Tween currentTween; // 현재 재생 중인 Tween을 추적
     private void Awake()
     {
         if (instance == null)
@@ -24,6 +24,15 @@ public class TextManager : MonoBehaviour
             Destroy(gameObject);
         }
         transform.parent.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // 마우스 왼쪽 클릭 시, 진행 중인 Tween을 완성
+        if (Input.GetMouseButtonDown(0) && currentTween != null && currentTween.IsActive())
+        {
+            currentTween.Complete(); // 현재 실행 중인 텍스트 애니메이션을 즉시 완료
+        }
     }
 
     public void OnlyTextPlay(string[] _textList, float _time)
@@ -44,9 +53,12 @@ public class TextManager : MonoBehaviour
         Text.text = string.Empty;
         for (int i=0; i < textList.Length; i++)
         {
-            yield return Text.DOText(textList[i], time).WaitForCompletion();
+            currentTween = Text.DOText(textList[i], time);
 
-            if(i == textList.Length - 1 && textList.Length != 1)
+            // Tween이 끝날 때까지 대기
+            yield return currentTween.WaitForCompletion();
+
+            if (i == textList.Length - 1 && textList.Length != 1)
             {
                 UIManager.instance.ActiveRestButton(true);
                 yield return new WaitForSeconds(0);
@@ -69,11 +81,11 @@ public class TextManager : MonoBehaviour
             // 종성이 있는지 확인
             if (jongseongIndex == 0)
             {
-                Text.DOText($"{actor.Name}는 _____ _____을 사용했다.", 1f);
+                currentTween = Text.DOText($"{actor.Name}는 _____ _____을 사용했다.", 1f);
             }
             else
             {
-                Text.DOText($"{actor.Name}은 _____ _____을 사용했다.", 1f);
+                currentTween = Text.DOText($"{actor.Name}은 _____ _____을 사용했다.", 1f);
             }
         }
         Text.alignment = TextAlignmentOptions.Top;
@@ -94,11 +106,11 @@ public class TextManager : MonoBehaviour
             // 종성이 있는지 확인
             if (jongseongIndex == 0)
             {
-                Text.DOText($"{actor.Name}는 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
+                currentTween = Text.DOText($"{actor.Name}는 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
             }
             else
             {
-                Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
+                currentTween = Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.", 1f);
             }
         }
             /*Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup} </color> _____을 사용했다.";*/
@@ -107,35 +119,6 @@ public class TextManager : MonoBehaviour
 
     public void MainKeywordTextPlay(Actor actor,float textTime)
     {
-        /* string sup = actor.keywordSup.keywordName;
-         Color supColor = actor.keywordSup.GetKeywordColor();
-         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
-         string main = actor.keywordMain.keywordName;
-         Color mainColor = actor.keywordMain.GetKeywordColor();
-         string mainColorHex = ColorUtility.ToHtmlStringRGB(mainColor);
-         char lastString = actor.Name[actor.Name.Length - 1];
-         if (lastString >= 0xAC00 && lastString <= 0xD7A3)
-         {
-             // 한글의 유니코드에서 종성 인덱스 추출
-             int unicodeIndex = lastString - 0xAC00;
-             int jongseongIndex = unicodeIndex % 28;
-
-             // 종성이 있는지 확인
-             if (jongseongIndex == 0)
-             {
-                 Text.DOText($"{actor.Name}는 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
-             }
-             else
-             {
-                 Text.DOText($"{actor.Name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.", textTime);
-             }
-         }
-                 *//*        Text.text = $"{actor.name}은 <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>을 사용했다.";*//*
-         Text.alignment = TextAlignmentOptions.Top;
-         if(textTime < 1f)
-         {
-             Text.alignment = TextAlignmentOptions.Midline;
-         }*/
         string sup = actor.keywordSup.keywordName;
         Color supColor = actor.keywordSup.GetKeywordColor();
         string supColorHex = ColorUtility.ToHtmlStringRGB(supColor);
@@ -174,7 +157,7 @@ public class TextManager : MonoBehaviour
             }
         }
 
-        Text.DOText($"{actor.Name}{subjectPostfix} <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>{objectPostfix} 사용했다.", textTime);
+        currentTween = Text.DOText($"{actor.Name}{subjectPostfix} <color=#{supColorHex}>{sup}</color> <color=#{mainColorHex}>{main}</color>{objectPostfix} 사용했다.", textTime);
 
         Text.alignment = TextAlignmentOptions.Top;
         if (textTime < 1f)
@@ -186,19 +169,31 @@ public class TextManager : MonoBehaviour
     public void EncounterTextPlay(Monster monster)
     {
         Text.text = string.Empty;
-        Text.DOText(monster.encounterText, 2.5f);
+        float textTime = 2.5f; // 텍스트가 완전히 표시될 시간
+
+        // 텍스트 애니메이션 실행
+        currentTween = Text.DOText(monster.encounterText, textTime).OnComplete(() =>
+        {
+            // 텍스트 애니메이션이 완료되면 1.5초 후에 UI 활성화와 Flow 함수 실행
+            DOVirtual.DelayedCall(1.5f, () =>
+            {
+                UIManager.instance.ActiveCombatKeywordUI(true);
+                FightManager.fightManager.Flow(); // Flow 함수가 FightManager에 있는 것으로 가정
+            });
+        });
+
         Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void PrintVictory()
     {
-        Text.DOText("당신은 승리하였다.", 1f);
+        currentTween = Text.DOText("당신은 승리하였다.", 1f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 
     public void PrintPlayerDie()
     {
-        Text.DOText("당신의 이야기는 여기에서 끝났다.", 1f);
+        currentTween = Text.DOText("당신의 이야기는 여기에서 끝났다.", 1f);
         Text.alignment = TextAlignmentOptions.Midline;
     }
 }

@@ -28,6 +28,7 @@ public class EventManager : MonoBehaviour
     public bool isBattle = false;
     private Vector2 createLocation = new Vector2(0, -930);
     public EventData eventData;
+    private Tween currentTween;
     private void Awake()
     {
         if (instance == null)
@@ -41,7 +42,14 @@ public class EventManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Update()
+    {
+        // 마우스 왼쪽 클릭 시 진행 중인 Tween 즉시 완료
+        if (Input.GetMouseButtonDown(0) && currentTween != null && currentTween.IsActive())
+        {
+            currentTween.Complete();  // 현재 진행 중인 텍스트 애니메이션 즉시 완료
+        }
+    }
     private void Init()
     {
         select = Select.first;
@@ -78,8 +86,13 @@ public class EventManager : MonoBehaviour
 
         foreach (string line in lines)
         {
+            TextManager.instance.Text.text = string.Empty;
             // 현재 줄을 타이핑 효과로 출력
-            yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
+            currentTween = TextManager.instance.Text.DOText(line, time);
+
+            // Tween이 끝날 때까지 대기
+            yield return currentTween.WaitForCompletion();
+
             // 다음 줄을 출력하기 전에 대기 시간 설정
             yield return new WaitForSeconds(nextTime);
         }
@@ -113,14 +126,21 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator PlayTreasureTextByLine(string fullText, float time, float nextTime, EventData eventData)
     {
+        TextManager.instance.Text.text = string.Empty;
+
         // 텍스트를 줄바꿈(\n)으로 분리
         string[] lines = fullText.Split(new string[] { "\n" }, System.StringSplitOptions.None);
         TextManager.instance.Text.alignment = TextAlignmentOptions.Midline;
 
         foreach (string line in lines)
         {
-            // 현재 줄을 타이핑 효과로 출력
-            yield return TextManager.instance.Text.DOText(line, time).WaitForCompletion();
+            TextManager.instance.Text.text = string.Empty;
+
+            currentTween = TextManager.instance.Text.DOText(line, time);
+
+            // Tween이 끝날 때까지 대기
+            yield return currentTween.WaitForCompletion();
+
             // 다음 줄을 출력하기 전에 대기 시간 설정
             yield return new WaitForSeconds(nextTime);
         }

@@ -30,6 +30,13 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
     }
 
+    private void Awake()
+    {
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(PlayClickSound);
+        RestManager.btnList.Add(GetComponent<Button>());
+    }
+
     public void SettingReward_Keyword(GameObject _keywordPrefab)
     {
         keywordPrefab = _keywordPrefab;
@@ -92,12 +99,12 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void AddThisToMainDeck()
     {
-        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
+/*        AudioManager.instance.PlaySound("Keyword", "키워드_등장");*/
         RewardManager.instance.AddMainKeywordToDeck(keywordPrefab);
     }
     public void AddThisToSupDeck()
     {
-        AudioManager.instance.PlaySound("Keyword", "키워드_등장");
+/*        AudioManager.instance.PlaySound("Keyword", "키워드_등장");*/
         RewardManager.instance.AddSupKeywordToDeck(keywordPrefab);
     }
     public void AddGoldToPlayer()
@@ -152,6 +159,12 @@ public class Reward : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 break;
         }
     }
+
+    public void PlayClickSound()
+    {
+        AudioManager.instance.PlaySound("Keyword", "키워드_잡기");
+    }
+
     //public void OnPointerEnter(PointerEventData eventData)
     //{
     //    if (onDestroying) return;

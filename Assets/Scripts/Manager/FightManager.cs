@@ -29,7 +29,7 @@ public class FightManager : MonoBehaviour
     private KeywordSup keywordSup;
     private KeywordMain keywordMain;
 
-    public static int currentTurn = 0;      // 현재 전투 턴 수를 담는 변수
+    public static int currentTurn = -1;      // 현재 전투 턴 수를 담는 변수
 
 
     /*==================================================================================================================================*/
@@ -118,8 +118,8 @@ public class FightManager : MonoBehaviour
         // 전투 시작 시 발동되는 유물 적용
         playerRelic.UseRelic(RelicData.RelicType.OnStartBattle);
 
-        DOVirtual.DelayedCall(3.5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
-        DOVirtual.DelayedCall(3.5f, Flow);
+/*        DOVirtual.DelayedCall(3.5f, () => UIManager.instance.ActiveCombatKeywordUI(true));
+        DOVirtual.DelayedCall(3.5f, Flow);*/
     }
 
     /*public void EventFightStart()
@@ -365,6 +365,8 @@ public class FightManager : MonoBehaviour
             originPos = monster.transform.position;
             objectPos = monster.transform.position + new Vector3(dir, 0, 0);
             curTime = 0;
+             TextManager.instance.Text.text = string.Empty;
+
 
             while (curTime < ACTION_TIME)
             {

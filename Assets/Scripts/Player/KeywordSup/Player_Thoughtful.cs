@@ -14,8 +14,8 @@ public class Player_Thoughtful : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        caster.protect += keywordProtect;
-        caster.charactorState.AddState(StateType.oneTimeReduction, debuffStack);
+        caster.charactorState.AddState(StateType.oneTimeProtect, buffStack);
+        caster.charactorState.AddState(StateType.weaken, debuffStack);
     }
 
     public override void Check(KeywordMain _keywordMain) { }

@@ -358,14 +358,13 @@ MonoBehaviour:
   _debuffType: 
   _debuffStack: 0
   _buffStack: 0
-  _keywordTension: 0
+  _keywordTension: -8
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
   keywordDescription: "damage \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
-  damage: 0
 --- !u!1 &8360591550431473978
 GameObject:
   m_ObjectHideFlags: 0

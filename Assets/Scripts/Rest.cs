@@ -15,6 +15,8 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Awake()
     {
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(PlayClickSound);
         RestManager.btnList.Add(GetComponent<Button>());
     }
 
@@ -65,4 +67,10 @@ public class Rest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         InfoTextImage.SetActive(false);
     }
+
+    public void PlayClickSound()
+    {
+        AudioManager.instance.PlaySound("Keyword", "키워드_잡기");
+    }
+
 }

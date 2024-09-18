@@ -605,14 +605,14 @@ MonoBehaviour:
   _keywordProtect: 0
   _keywordHeal: 0
   _debuffType: 
-  _debuffStack: 1
+  _debuffStack: 3
   _buffStack: 3
-  _keywordTension: 12
+  _keywordTension: 8
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 0
-  keywordDescription: "\uC77C\uD68C\uC131 \uAC15\uD654\uB97C 3 \uC5BB\uC2B5\uB2C8\uB2E4.\n\uAD11\uC11D\uC744
-    1 \uC18C\uBAA8\uD569\uB2C8\uB2E4."
+  keywordDescription: "\uC77C\uD68C\uC131 \uAC15\uD654\uB97C buffstack\uC5BB\uC2B5\uB2C8\uB2E4.\n\uAD11\uC11D\uC744
+    debuffstack \uC18C\uBAA8\uD569\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
 --- !u!1 &8850045263886830709

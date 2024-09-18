@@ -26,6 +26,7 @@ public class ScatteringTreasures : KeywordMain
         trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, keywordDamage);
         trasureDragon.trasureDamage += keywordDamage;
         caster.tension += keywordTension;
+        target.gold += keywordDamage;
     }
 
     public override void Check(KeywordSup _keywordSup)

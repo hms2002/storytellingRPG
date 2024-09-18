@@ -301,7 +301,7 @@ MonoBehaviour:
   _Name: "\uC885\uB9D0\uC758 \uB9C8\uBC95\uC0AC"
   beforeDamage: 0
   _gold: 0
-  isBossMonster: 0
+  isBossMonster: 1
 --- !u!1001 &2448035357536394305
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -68,6 +68,7 @@ public class StageManager : MonoBehaviour
             // 2초 뒤 맵 북마크로 이동
             DOVirtual.DelayedCall(2.0f, Book.instance.EnterMap);
 
+            GameManager.instance.eventIndex = 0;
             switch (nowStageState)
             {
                 case StageState.Forest:

@@ -23,6 +23,7 @@ public class Playful : KeywordSup
         trasureDragon.charactorState.ReductionByValue(StateType.treasureOfDragon, 10);
         trasureDragon.trasureDamage += 10;
         caster.tension += keywordTension;
+        target.gold += 10;
     }
 
     public override void Check(KeywordMain _keywordMain)

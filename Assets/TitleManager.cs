@@ -18,7 +18,15 @@ public class TitleManager : MonoBehaviour
     private void Start()
     {
         imageSet.SetActive(true);
-        GameManager.instance._gameState = GameState.Title;
+        string sceneName = SceneManager.GetActiveScene().name;
+        if(sceneName == "Title")
+        {
+            GameManager.instance._gameState = GameState.Title;
+        }
+        if(sceneName == "Endding")
+        {
+            GameManager.instance._gameState = GameState.Ending;
+        }
         AudioManager.instance.UpdateBGM();
         foreach (Transform child in imageSet.transform)
         {
@@ -67,7 +75,7 @@ public class TitleManager : MonoBehaviour
     public void TitleSceneLoad()
     {
         DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("Title"); });
-        GameManager.instance.gameState = GameState.Map;
+/*        GameManager.instance.gameState = GameState.Map;*/
     }
 
     public IEnumerator StartProduction()

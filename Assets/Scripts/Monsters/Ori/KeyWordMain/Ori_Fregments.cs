@@ -15,13 +15,13 @@ public class Ori_Fregments : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        int minimumDamage = 10;
-        int maximumDamage = 15;
-        if(caster.charactorState.GetStateStack(StateType.ore) >= 3)
+        int minimumDamage = 5;
+        int maximumDamage = 8;
+        if(caster.charactorState.GetStateStack(StateType.ore) >= 5)
         {
-            caster.charactorState.ReductionByValue(StateType.ore, 3);
-            minimumDamage = 13;
-            maximumDamage = 18;
+            caster.charactorState.ReductionByValue(StateType.ore, 5);
+            minimumDamage = 7;
+            maximumDamage = 12;
         }
         keywordDamage = (int)Random.Range(minimumDamage, maximumDamage + 1);
         caster.dmgList.Add(keywordDamage);
