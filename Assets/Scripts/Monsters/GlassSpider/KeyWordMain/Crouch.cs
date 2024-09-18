@@ -7,7 +7,7 @@ public class Crouch : KeywordMain
     private void Awake()
     {
         keywordName = "웅크리기";
-        keywordTension = 6;
+        keywordTension = -9;
         SetKeywordColor(B);
         Init();
     }
