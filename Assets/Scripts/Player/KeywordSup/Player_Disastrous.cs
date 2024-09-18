@@ -6,7 +6,7 @@ public class Player_Disastrous : KeywordSup
 {
     private void Awake()
     {
-        keywordName = "재앙 같은";
+        keywordName = "재앙같은";
         isPlayerKeyword = true;
         SetKeywordColor(Y);
         Init();

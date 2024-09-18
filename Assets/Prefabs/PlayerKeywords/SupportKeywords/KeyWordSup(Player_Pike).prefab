@@ -266,7 +266,7 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
-  _keywordName: "\uAC00\uC2DC \uB3CB\uC740"
+  _keywordName: "\uAC00\uC2DC\uB3CB\uC740"
   _keywordDamage: 3
   _keywordProtect: 0
   _keywordHeal: 0

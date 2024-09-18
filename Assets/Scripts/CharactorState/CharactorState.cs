@@ -146,29 +146,53 @@ public enum StateType
     /// </summary>
     potionGlub_State1,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(2단계)
     /// </summary>
     potionGlub_State2,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(3단계)
     /// </summary>
     potionGlub_State3,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(4단계)
     /// </summary>
     potionGlub_State4,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(5단계)
     /// </summary>
     potionGlub_State5,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(6단계)
     /// </summary>
     potionGlub_State6,
     /// <summary>
-    /// 포션글럽 현재상태(1단계)
+    /// 포션글럽 현재상태(7단계)
     /// </summary>
     potionGlub_State7,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(1단계)
+    /// </summary>
+    witchCauldron_State1,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(2단계)
+    /// </summary>
+    witchCauldron_State2,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(3단계)
+    /// </summary>
+    witchCauldron_State3,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(4단계)
+    /// </summary>
+    witchCauldron_State4,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(5단계)
+    /// </summary>
+    witchCauldron_State5,
+    /// <summary>
+    /// 마녀의 가마솥 현재상태(6단계)
+    /// </summary>
+    witchCauldron_State6,
     /// <summary>
     /// 상태 목록 갯수
     /// </summary>
@@ -364,6 +388,24 @@ public class CharactorState
                 break;
             case StateType.potionGlub_State7:
                 AddState(stateDB.potionGlub_State7, val);
+                break;
+            case StateType.witchCauldron_State1:
+                AddState(stateDB.witchCauldron_State1, val);
+                break;
+            case StateType.witchCauldron_State2:
+                AddState(stateDB.witchCauldron_State2, val);
+                break;
+            case StateType.witchCauldron_State3:
+                AddState(stateDB.witchCauldron_State3, val);
+                break;
+            case StateType.witchCauldron_State4:
+                AddState(stateDB.witchCauldron_State4, val);
+                break;
+            case StateType.witchCauldron_State5:
+                AddState(stateDB.witchCauldron_State5, val);
+                break;
+            case StateType.witchCauldron_State6:
+                AddState(stateDB.witchCauldron_State6, val);
                 break;
             default:
                 Debug.LogError("추가되지 않은 상태 입력");

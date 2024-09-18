@@ -636,7 +636,7 @@ MonoBehaviour:
   descriptionText: {fileID: 0}
   effectTarget: 0
   effectType: 0
-  _keywordName: "\uC810\uD654 \uAE30\uC0AC\uC758 \uAC80 "
+  _keywordName: "\uC810\uD654 \uAE30\uC0AC\uC758 \uAC80"
   _keywordDamage: 8
   _keywordProtect: 0
   _keywordHeal: 0

@@ -6,7 +6,7 @@ public class Player_ShildStrike : KeywordMain
 {
     private void Awake()
     {
-        keywordName = "방패 강타";
+        keywordName = "방패강타";
         isPlayerKeyword = true;
         SetKeywordColor(R);
         Init();

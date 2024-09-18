@@ -44,6 +44,12 @@ public class StateDatabase : MonoBehaviour
     public StateData potionGlub_State5;
     public StateData potionGlub_State6;
     public StateData potionGlub_State7;
+    public StateData witchCauldron_State1;
+    public StateData witchCauldron_State2;
+    public StateData witchCauldron_State3;
+    public StateData witchCauldron_State4;
+    public StateData witchCauldron_State5;
+    public StateData witchCauldron_State6;
     public static StateDatabase stateDatabase;
 
     private void OnEnable()

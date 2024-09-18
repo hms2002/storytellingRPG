@@ -24,6 +24,7 @@ public class WitchCauldron : Monster
         get { return _potionNum; }
         set
         {
+            if (value < 1) value = 1;
             if (!_isSpellUp)
             {
                 _potionNum = value;
@@ -51,6 +52,17 @@ public class WitchCauldron : Monster
         encounterText = "부글부글, 다양한 재료의 냄새가 공간을 가득 채운다.";
     }
 
+    public override void Action(Actor target)
+    {
+        base.Action(target);
+        ColorChecking();
+    }
+
+    public override void BeforeAction()
+    {
+        base.BeforeAction();
+        ColorChecking();
+    }
 
     protected override void DamagedOther(int totalDamage, Actor attacker)
     {
@@ -78,33 +90,45 @@ public class WitchCauldron : Monster
 
     public void ColorChecking()
     {
+        charactorState.ResetState(StateType.witchCauldron_State1);
+        charactorState.ResetState(StateType.witchCauldron_State2);
+        charactorState.ResetState(StateType.witchCauldron_State3);
+        charactorState.ResetState(StateType.witchCauldron_State4);
+        charactorState.ResetState(StateType.witchCauldron_State5);
+        charactorState.ResetState(StateType.witchCauldron_State6);
         if (potionNum >= 1 && potionNum < 4)
         {
+            charactorState.AddState(StateType.witchCauldron_State1, 1);
             animator.SetTrigger("isPurple");
             potionColor = PotionColor.Purple;
         }
         if (potionNum >= 4 && potionNum < 7)
         {
+            charactorState.AddState(StateType.witchCauldron_State2, 1);
             animator.SetTrigger("isGreen");
             potionColor = PotionColor.Green;
         }
         if (potionNum >= 7 && potionNum < 10)
         {
+            charactorState.AddState(StateType.witchCauldron_State3, 1);
             animator.SetTrigger("isRed");
             potionColor = PotionColor.Red;
         }
         if (potionNum >= 11 && potionNum < 14)
         {
+            charactorState.AddState(StateType.witchCauldron_State4, 1);
             animator.SetTrigger("isBlack");
             potionColor = PotionColor.Black;
         }
         if (potionNum >= 14 && potionNum < 20)
         {
+            charactorState.AddState(StateType.witchCauldron_State5, 1);
             animator.SetTrigger("isMix");
             potionColor = PotionColor.Mix;
         }
         if (potionNum >= 21)
         {
+            charactorState.AddState(StateType.witchCauldron_State6, 1);
             animator.SetTrigger("isBlue");
             potionColor = PotionColor.Blue;
         }

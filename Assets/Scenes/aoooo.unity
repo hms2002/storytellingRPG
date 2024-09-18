@@ -340,6 +340,12 @@ MonoBehaviour:
   potionGlub_State5: {fileID: 11400000, guid: ed22a84c97a5eb34a8d77b3d7ee21bed, type: 2}
   potionGlub_State6: {fileID: 11400000, guid: 190bcb6abcfcd194881cb408bd8451ee, type: 2}
   potionGlub_State7: {fileID: 11400000, guid: ccabf7614e79cfd4aacfc13490c1b178, type: 2}
+  witchCauldron_State1: {fileID: 11400000, guid: 267b621d43a3de64bb2e2bd6887fd35d, type: 2}
+  witchCauldron_State2: {fileID: 11400000, guid: b901143c1f705e144b6e3df186dbe170, type: 2}
+  witchCauldron_State3: {fileID: 11400000, guid: 5c1c5e94ac8499a42ac3e8c2a8b9b750, type: 2}
+  witchCauldron_State4: {fileID: 11400000, guid: c5d45798b51c79842a35d038a4f38c70, type: 2}
+  witchCauldron_State5: {fileID: 11400000, guid: 9a0cce8e1ccf0ad49b96299445f7b538, type: 2}
+  witchCauldron_State6: {fileID: 11400000, guid: a3b98954299b3b645a38d0ed1fe035bd, type: 2}
 --- !u!1 &39092647
 GameObject:
   m_ObjectHideFlags: 0
@@ -15496,6 +15502,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1294268353110488498, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600484154501633558, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
+      propertyPath: nodeStates
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2689746736224702837, guid: 35374329ba0ad9147852e1569c2bf74a, type: 3}
