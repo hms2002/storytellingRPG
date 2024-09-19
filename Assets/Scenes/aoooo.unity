@@ -8891,7 +8891,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -608.7999, y: 70.3}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 165, y: 165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1256012562
 PrefabInstance:
@@ -14027,7 +14027,9 @@ MonoBehaviour:
   - {fileID: 717691908258792016, guid: 3b5d14581be9fda4db4c32f1c525065a, type: 3}
   s2_NomalMonsterSet5:
   - {fileID: 717691908258792016, guid: 023c9068c19c0364d8d5b169b955bf67, type: 3}
-  s2_NomalMonsterSet6: []
+  s2_NomalMonsterSet6:
+  - {fileID: 717691908258792016, guid: 3b5d14581be9fda4db4c32f1c525065a, type: 3}
+  - {fileID: 682207150685018480, guid: 59398c47d4412c34fb72321694077e36, type: 3}
   s2_EliteMonsterSet1:
   - {fileID: 682207150685018480, guid: b14b9dc5732aedf448191fb5877d4702, type: 3}
   s2_EliteMonsterSet2:
