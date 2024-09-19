@@ -136,6 +136,8 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
+
+        string splitName = keyword.name.Split(')')[0];
         // 플레이어의 오리지널덱에 추가
         if (keywordType is KeywordSup) // 키워드 타입이 Support라면
         {
@@ -143,8 +145,8 @@ public class ShopManager : MonoBehaviour
             for (int i = 0; i < GameManager.instance.allSupKeywordsForPlayer.Count; i++)
             {
                 // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
-                if (GameManager.instance.allSupKeywordsForPlayer[i].GetComponent<KeywordSup>().keywordName
-                    == keyword.GetComponent<KeywordSup>().keywordName)
+                if (GameManager.instance.allSupKeywordsForPlayer[i].name.Split(')')[0]
+                    == splitName)
                 {
                     // 보유 골드 HUD에 소지금 차감 및 업데이트
                     UpdateGoldHUD(pricePerKeyword * -1);
@@ -162,8 +164,8 @@ public class ShopManager : MonoBehaviour
             for (int i = 0; i < GameManager.instance.allMainKeywordsForPlayer.Count; i++)
             {
                 // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
-                if (GameManager.instance.allMainKeywordsForPlayer[i].GetComponent<KeywordMain>().keywordName
-                    == keyword.GetComponent<KeywordMain>().keywordName)
+                if (GameManager.instance.allMainKeywordsForPlayer[i].name.Split(')')[0]
+                    == splitName)
                 {
                     // 보유 골드 HUD에 소지금 차감 및 업데이트
                     UpdateGoldHUD(pricePerKeyword * -1);
