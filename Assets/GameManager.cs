@@ -304,8 +304,16 @@ public class GameManager : MonoBehaviour
         switch(monsterType)
         {
             case Map.NodeType.BossNode:
-                rewardManager.dropRelic = true;
-                killCnt_bossMonster++;
+                if(StageManager.instance.nowStageState == StageState.MagicTower)
+                {
+                    EndSelectReward();
+                    return;
+                }   
+                else
+                {
+                    rewardManager.dropRelic = true;
+                    killCnt_bossMonster++;
+                }
                 break;
             case Map.NodeType.EliteMonsterNode:
                 rewardManager.dropRelic = true;

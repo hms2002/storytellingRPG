@@ -164,8 +164,117 @@ public class FightManager : MonoBehaviour
             }
         }
     }
-
     public void Flow()
+    {
+        bool playSurive = CheckPlayerSurvive();
+
+        if (!playSurive)
+        {
+            return;
+        }
+
+        if (preparedActorCount == 0)
+        {
+            player.BeforeAction();
+
+            currentTurn++;
+            Debug.Log("턴 : " + currentTurn);
+
+            // 턴 시작 발동 유물 적용
+            playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
+
+            playSurive = CheckPlayerSurvive();
+
+            if (!playSurive)
+            {
+                return;
+            }
+
+            foreach (Monster m in monsterList)
+            {
+                if (m != null)
+                    m.BeforeAction();
+
+                if (fleeFlag)
+                {
+                    break;
+                }
+            }
+
+            while (fleeFlag)
+            {
+                fleeFlag = false;
+
+                foreach (Monster m in monsterList)
+                {
+                    if (m != null)
+                        m.BeforeAction();
+
+                    if (fleeFlag)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
+        }
+
+        if (!CheckMonsterSurvive())
+        {
+            // 전투 승리 문구 출력
+            PlayerWin();
+            MonsterTargetter.monsterTargetter.TargetUIOff();
+            return;
+        }
+
+        if (preparedActorCount < monsterList.Count)
+        {
+            whoPlaying = monsterList[preparedActorCount];
+            FalseAllMonsterTurnUI();
+            whoPlaying.stateUIController.SetTurnUIActive(true);
+            player.stateUIController.SetTurnUIActive(false);
+            whoPlaying.StartTurn();
+
+            if (!CheckMonsterSurvive())
+            {
+                // 전투 승리 문구 출력
+                PlayerWin();
+                MonsterTargetter.monsterTargetter.TargetUIOff();
+                return;
+            }
+
+            // 기절 상태이상 처리
+            if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
+            {
+                preparedActorCount++;
+                Flow();
+                return;
+            }
+
+            whoPlaying.ShowSupKeywords();
+            TextManager.instance.KeywordTextPlay(whoPlaying);
+            return;
+        }
+
+        // 플레이어 턴 처리
+        else if (preparedActorCount == monsterList.Count)
+        {
+            whoPlaying = player;
+            FalseAllMonsterTurnUI();
+            whoPlaying.stateUIController.SetTurnUIActive(true);
+            player.StartTurn();
+            CheckPlayerSurvive();
+            player.ShowSupKeywords();
+            TextManager.instance.KeywordTextPlay(player);
+            return;
+        }
+
+        preparedActorCount = 0;
+        FalseAllTurnUI();
+        StartCoroutine(ActorAction());
+    }
+    /*public void Flow()
     {
         bool playSurive = CheckPlayerSurvive();
 
@@ -243,7 +352,7 @@ public class FightManager : MonoBehaviour
             FalseAllMonsterTurnUI();
             TextManager.instance.KeywordTextPlay(whoPlaying);
         }
-        
+
 
 
         if (preparedActorCount < monsterList.Count)
@@ -294,7 +403,7 @@ public class FightManager : MonoBehaviour
             preparedActorCount = 0;
         FalseAllTurnUI();
         StartCoroutine(ActorAction());
-    }
+    }*/
 
     private IEnumerator ActorAction()
     {
