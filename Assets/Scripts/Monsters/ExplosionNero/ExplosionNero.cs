@@ -20,18 +20,31 @@ public class ExplosionNero : Monster
         base.Action(target);
 
         if (charactorState.GetStateStack(StateType.faint) == 0)
-            anim.SetTrigger("Idle");
+        {
+            anim.SetBool("Idle", true);
+            anim.SetBool("Down", false);
+        }
         else
-            anim.SetTrigger("Dwon");
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("Down", true);
+        }
+            
     }
 
-    public override void ShowSupKeywords()
+    public override void BeforeAction()
     {
+        base.BeforeAction();
         if (charactorState.GetStateStack(StateType.faint) == 0)
-            anim.SetTrigger("Idle");
+        {
+            anim.SetBool("Idle", true);
+            anim.SetBool("Down", false);
+        }
         else
-            anim.SetTrigger("Dwon");
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("Down", true);
+        }
 
-        base.ShowSupKeywords();
     }
 }

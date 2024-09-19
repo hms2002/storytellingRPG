@@ -16,7 +16,7 @@ public class ExplosionNero_PillarFlame : KeywordMain
     {
         caster.tension += keywordTension;
         caster.dmgList.Add(keywordDamage);
-        target.dmgList.Add(25);
+        caster.Damaged(caster, new DamageInfo(25));
         target.charactorState.AddState(StateDatabase.stateDatabase.burn, debuffStack);
         caster.charactorState.AddState(StateDatabase.stateDatabase.faint, 1);
     }
