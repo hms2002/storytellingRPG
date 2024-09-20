@@ -49,7 +49,7 @@ public class TitleManager : MonoBehaviour
         PageGo();
         if (isClick == false)
         {
-            OnSound();
+/*            OnSound();*/
             DOVirtual.DelayedCall(2, () => { StartCoroutine(StartProduction()); });
             isClick = true;
             isSatarted = false;
@@ -70,7 +70,8 @@ public class TitleManager : MonoBehaviour
     public void GameSceneLoad()
     {
         PageGo();
-        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); GameManager.instance.gameState = GameState.Map; }).onComplete();
+        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); });
+        GameManager.instance.gameState = GameState.Map;
     }
 
     public void TitleSceneLoad()
