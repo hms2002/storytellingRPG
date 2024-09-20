@@ -61,6 +61,7 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < ShopManager.instance.orderVolume; i++)
         {
             // 랜덤 발주한 키워드 인스턴스화 및 진열
+
             mainKeywordProducts.Add(Instantiate(KeywordProductSelection(WhatDeck.MainDeck), keywordShelves[1]));
 
             // 키워드 버튼 클릭타입 전환
@@ -131,8 +132,9 @@ public class Shop : MonoBehaviour
                 maxRange = GameManager.instance.allMainKeywordsForPlayer.Count;
 
                 // Main 키워드 리스트에서 프리팹 한 개를 랜덤 발주
-                keywordToReturn = GameManager.instance.allMainKeywordsForPlayer[Random.Range(0, maxRange)];
-
+                do
+                    keywordToReturn = GameManager.instance.allMainKeywordsForPlayer[Random.Range(0, maxRange)];
+                while (keywordToReturn == null);
                 break;
         }
 

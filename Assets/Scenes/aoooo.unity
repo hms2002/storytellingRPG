@@ -15541,10 +15541,6 @@ MonoBehaviour:
   startVector: {x: 600, y: 400}
   mapSetting:
   - {fileID: 830065933}
-  - {fileID: 118366171}
-  - {fileID: 15451274}
-  - {fileID: 1354797617}
-  - {fileID: 869011895}
   mapObj: {fileID: 1538723684}
   mapMark: {fileID: 1246331604}
   noClickNode: 0
