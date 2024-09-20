@@ -107,6 +107,8 @@ namespace Map
                 startNode.GetComponent<MapNode>().connectedNodes[i].SetStage();
             }
 
+            nodes.Clear();
+
             for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes.Length; i++)
             {
                 nodes.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>());
@@ -132,6 +134,20 @@ namespace Map
 
             endNode.GetComponent<MapNode>().nodeStates = NodeStates.Locked;
             endNode.GetComponent<MapNode>().SetStage();
+
+
+            for(int i=0; i < nodesEndLineCheck[0]; i++)
+            {
+                ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
+            }
+
+            for (int i=0; i < nodes.Count; i++)
+            {
+                for(int j=0; j < nodes[i].connectedNodes.Count; j++)
+                {
+                    ConnectRoadLine(nodes[i].GetComponent<RectTransform>(), nodes[i].connectedNodes[j].GetComponent<RectTransform>());
+                }
+            }
         }
 
         //쓰지마
