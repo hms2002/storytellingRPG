@@ -14,11 +14,8 @@ public class Player_Steel : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (caster.protect >= 2)
-        {
             target.charactorState.AddState(StateType.reduction, debuffStack);
             caster.protect += keywordProtect;
-        }
     }
 
     public override void Check(KeywordMain _keywordMain) { }
