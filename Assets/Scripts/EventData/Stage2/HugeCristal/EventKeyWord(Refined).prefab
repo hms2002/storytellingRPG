@@ -388,7 +388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -7252933589081442648}
         m_TargetAssemblyTypeName: EventKeyword, Assembly-CSharp
-        m_MethodName: AddMainKeyword
+        m_MethodName: AddSupKeyword
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6242434244011439031, guid: fe2b85b0ffcb4c54c8da60153da08486, type: 3}
