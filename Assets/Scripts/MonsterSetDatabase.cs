@@ -10,6 +10,8 @@ public class MonsterSetDatabase : MonoBehaviour
     List<GameObject>[] stage1_NomalMonsterLists = new List<GameObject>[8];
     List<GameObject>[] stage1_EliteMonsterLists = new List<GameObject>[3];
     List<GameObject>[] stage1_BossMonsterLists = new List<GameObject>[1];
+    List<int> stage1_NomalMonsterRandomTable;
+    List<int> stage1_EliteMonsterRandomTable;
 
     public List<GameObject> s1_NomalMonsterSet1;
     public List<GameObject> s1_NomalMonsterSet2;
@@ -31,6 +33,8 @@ public class MonsterSetDatabase : MonoBehaviour
     List<GameObject>[] stage2_NomalMonsterLists = new List<GameObject>[6];
     List<GameObject>[] stage2_EliteMonsterLists = new List<GameObject>[3];
     List<GameObject>[] stage2_BossMonsterLists = new List<GameObject>[1];
+    List<int> stage2_NomalMonsterRandomTable;
+    List<int> stage2_EliteMonsterRandomTable;
 
     public List<GameObject> s2_NomalMonsterSet1;
     public List<GameObject> s2_NomalMonsterSet2;
@@ -49,6 +53,8 @@ public class MonsterSetDatabase : MonoBehaviour
     List<GameObject>[] stage3_NomalMonsterLists = new List<GameObject>[7];
     List<GameObject>[] stage3_EliteMonsterLists = new List<GameObject>[2];
     List<GameObject>[] stage3_BossMonsterLists = new List<GameObject>[1];
+    List<int> stage3_NomalMonsterRandomTable;
+    List<int> stage3_EliteMonsterRandomTable;
 
     public List<GameObject> s3_NomalMonsterSet1;
     public List<GameObject> s3_NomalMonsterSet2;
@@ -66,6 +72,8 @@ public class MonsterSetDatabase : MonoBehaviour
     List<GameObject>[] stage4_NomalMonsterLists = new List<GameObject>[8];
     List<GameObject>[] stage4_EliteMonsterLists = new List<GameObject>[2];
     List<GameObject>[] stage4_BossMonsterLists = new List<GameObject>[1];
+    List<int> stage4_NomalMonsterRandomTable;
+    List<int> stage4_EliteMonsterRandomTable;
 
     public List<GameObject> s4_NomalMonsterSet1;
     public List<GameObject> s4_NomalMonsterSet2;
@@ -90,7 +98,6 @@ public class MonsterSetDatabase : MonoBehaviour
         }
 
         MonsterSetting();
-
     }
 
     public void MonsterSetting()
@@ -102,6 +109,8 @@ public class MonsterSetDatabase : MonoBehaviour
         stage1_NomalMonsterLists[4] = s1_NomalMonsterSet5;
         stage1_NomalMonsterLists[5] = s1_NomalMonsterSet6;
         stage1_NomalMonsterLists[6] = s1_NomalMonsterSet7;
+        stage1_NomalMonsterRandomTable = GetRandomSortList(stage1_NomalMonsterLists.Length);
+
         // 인덱스 outOfRange 때문에 잠궈둠.
         stage1_NomalMonsterLists[7] = s1_NomalMonsterSet8;
 /*        stage1_NomalMonsterLists[8] = s1_NomalMonsterSet9;*/
@@ -109,6 +118,7 @@ public class MonsterSetDatabase : MonoBehaviour
         stage1_EliteMonsterLists[0] = s1_EliteMonsterSet1;
         stage1_EliteMonsterLists[1] = s1_EliteMonsterSet2;
         stage1_EliteMonsterLists[2] = s1_EliteMonsterSet3;
+        stage1_EliteMonsterRandomTable = GetRandomSortList(stage1_EliteMonsterLists.Length);
 
 
         stage1_BossMonsterLists[0] = s1_BossMonsterSet1;
@@ -119,11 +129,13 @@ public class MonsterSetDatabase : MonoBehaviour
         stage2_NomalMonsterLists[3] = s2_NomalMonsterSet4;
         stage2_NomalMonsterLists[4] = s2_NomalMonsterSet5;
         stage2_NomalMonsterLists[5] = s2_NomalMonsterSet6;
-/*        stage2_NomalMonsterLists[6] = s2_NomalMonsterSet7;*/
-
+        /*        stage2_NomalMonsterLists[6] = s2_NomalMonsterSet7;*/
+        stage2_NomalMonsterRandomTable = GetRandomSortList(stage2_NomalMonsterLists.Length);
+        
         stage2_EliteMonsterLists[0] = s2_EliteMonsterSet1;
         stage2_EliteMonsterLists[1] = s2_EliteMonsterSet2;
         stage2_EliteMonsterLists[2] = s2_EliteMonsterSet3;
+        stage2_EliteMonsterRandomTable = GetRandomSortList(stage2_EliteMonsterLists.Length);
 
         stage2_BossMonsterLists[0] = s2_BossMonsterSet1;
 
@@ -134,9 +146,11 @@ public class MonsterSetDatabase : MonoBehaviour
         stage3_NomalMonsterLists[4] = s3_NomalMonsterSet5;
         stage3_NomalMonsterLists[5] = s3_NomalMonsterSet6;
         stage3_NomalMonsterLists[6] = s3_NomalMonsterSet7;
-
+        stage3_NomalMonsterRandomTable = GetRandomSortList(stage3_NomalMonsterLists.Length);
+        
         stage3_EliteMonsterLists[0] = s3_EliteMonsterSet1;
         stage3_EliteMonsterLists[1] = s3_EliteMonsterSet2;
+        stage3_EliteMonsterRandomTable = GetRandomSortList(stage3_EliteMonsterLists.Length);
 
         stage3_BossMonsterLists[0] = s3_BossMonsterSet1;
 
@@ -148,9 +162,11 @@ public class MonsterSetDatabase : MonoBehaviour
         stage4_NomalMonsterLists[5] = s4_NomalMonsterSet6;
         stage4_NomalMonsterLists[6] = s4_NomalMonsterSet7;
         stage4_NomalMonsterLists[7] = s4_NomalMonsterSet8;
-
+        stage4_NomalMonsterRandomTable = GetRandomSortList(stage4_NomalMonsterLists.Length);
+        
         stage4_EliteMonsterLists[0] = s4_EliteMonsterSet1;
         stage4_EliteMonsterLists[1] = s4_EliteMonsterSet2;
+        stage4_EliteMonsterRandomTable = GetRandomSortList(stage4_EliteMonsterLists.Length);
 
         stage4_BossMonsterLists[0] = s4_BossMonsterSet1;
 
@@ -174,7 +190,8 @@ public class MonsterSetDatabase : MonoBehaviour
         selectedMonsterSet = nomalMonsterList;
     }
 
-    static int monsterWaveIdx = 0;
+    static int nomalTableIdx = 0;
+    static int eliteTableIdx = 0;
     /// <summary>
     /// 첫번째 스테이지 인덱스는 1, 두번째는 2......   
     /// </summary>
@@ -182,25 +199,25 @@ public class MonsterSetDatabase : MonoBehaviour
     /// <param name="nodeType"></param>
     internal void SettingSelectedSet(StageState stageState, Map.NodeType nodeType)
     {
-        switch(stageState)
+        int idx;
+        switch (stageState)
         {
             case StageState.Forest:
 
                 switch(nodeType)
                 {
                     case Map.NodeType.NomalMonsterNode:
-                        int randomIdN = Random.Range(0, stage1_NomalMonsterLists.Length);
-                        selectedMonsterSet = stage1_NomalMonsterLists[randomIdN];
+                        idx = nomalTableIdx++ % stage1_NomalMonsterLists.Length;
+                        selectedMonsterSet = stage1_NomalMonsterLists[stage1_NomalMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.EliteMonsterNode:
-                        int randomIdE = Random.Range(0, stage1_EliteMonsterLists.Length);
-                        selectedMonsterSet = stage1_EliteMonsterLists[randomIdE];
+                        idx = eliteTableIdx++ % stage1_EliteMonsterLists.Length;
+                        selectedMonsterSet = stage1_EliteMonsterLists[stage1_EliteMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.BossNode:
-                        int randomIdB = Random.Range(0, stage1_BossMonsterLists.Length);
-                        selectedMonsterSet = stage1_BossMonsterLists[randomIdB];
+                        selectedMonsterSet = stage1_BossMonsterLists[0];
                         foreach (GameObject m in selectedMonsterSet)
                             Debug.Log(m.name);
                         break;
@@ -212,13 +229,13 @@ public class MonsterSetDatabase : MonoBehaviour
                 switch (nodeType)
                 {
                     case Map.NodeType.NomalMonsterNode:
-                        int randomIdN = Random.Range(0, stage2_NomalMonsterLists.Length);
-                        selectedMonsterSet = stage2_NomalMonsterLists[randomIdN];
+                        idx = nomalTableIdx++ % stage2_NomalMonsterLists.Length;
+                        selectedMonsterSet = stage2_NomalMonsterLists[stage2_NomalMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.EliteMonsterNode:
-                        int randomIdE = Random.Range(0, stage2_EliteMonsterLists.Length);
-                        selectedMonsterSet = stage2_EliteMonsterLists[randomIdE];
+                        idx = eliteTableIdx++ % stage2_EliteMonsterLists.Length;
+                        selectedMonsterSet = stage2_EliteMonsterLists[stage2_EliteMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.BossNode:
@@ -231,13 +248,13 @@ public class MonsterSetDatabase : MonoBehaviour
                 switch (nodeType)
                 {
                     case Map.NodeType.NomalMonsterNode:
-                        int randomIdN = Random.Range(0, stage3_NomalMonsterLists.Length);
-                        selectedMonsterSet = stage3_NomalMonsterLists[randomIdN];
+                        idx = nomalTableIdx++ % stage3_NomalMonsterLists.Length;
+                        selectedMonsterSet = stage3_NomalMonsterLists[stage3_NomalMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.EliteMonsterNode:
-                        int randomIdE = Random.Range(0, stage3_EliteMonsterLists.Length);
-                        selectedMonsterSet = stage3_EliteMonsterLists[randomIdE];
+                        idx = eliteTableIdx++ % stage3_EliteMonsterLists.Length;
+                        selectedMonsterSet = stage3_EliteMonsterLists[stage3_EliteMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.BossNode:
@@ -250,13 +267,13 @@ public class MonsterSetDatabase : MonoBehaviour
                 switch (nodeType)
                 {
                     case Map.NodeType.NomalMonsterNode:
-                        int randomIdN = Random.Range(0, stage4_NomalMonsterLists.Length);
-                        selectedMonsterSet = stage4_NomalMonsterLists[randomIdN];
+                        idx = nomalTableIdx++ % stage4_NomalMonsterLists.Length;
+                        selectedMonsterSet = stage4_NomalMonsterLists[stage4_NomalMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.EliteMonsterNode:
-                        int randomIdE = Random.Range(0, stage4_EliteMonsterLists.Length);
-                        selectedMonsterSet = stage4_EliteMonsterLists[randomIdE];
+                        idx = eliteTableIdx++ % stage4_EliteMonsterLists.Length;
+                        selectedMonsterSet = stage4_EliteMonsterLists[stage4_EliteMonsterRandomTable[idx]];
                         break;
 
                     case Map.NodeType.BossNode:
@@ -305,4 +322,22 @@ public class MonsterSetDatabase : MonoBehaviour
         return returnList;
     }
     */
+
+    List<int> GetRandomSortList(int length)
+    {
+        List<int> temp = new List<int>();
+
+        for(int i = 0; i < length; i++)
+        {
+            temp.Add(i);
+        }
+        for(int i = 0; i < length; i++)
+        {
+            int rand = Random.Range(0, length);
+            temp.Add(temp[rand]);
+            temp.RemoveAt(rand);
+        }
+
+        return temp;
+    }
 }
