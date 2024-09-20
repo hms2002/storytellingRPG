@@ -2009,6 +2009,7 @@ MonoBehaviour:
   goldCnt: 0
   keywordCnt: 0
   eventIndex: 0
+  isMoving: 0
   gameOverCanvas: {fileID: 0}
 --- !u!4 &1218756857
 Transform:

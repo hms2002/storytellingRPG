@@ -9,7 +9,7 @@ public class TitleManager : MonoBehaviour
 {
     public Book book;
     public bool isClick = false;
-    private bool isWait = false;
+    private bool isSatarted = false;
     public GameObject titleObjectSet;
     public GameObject imageSet;
     private List<CanvasGroup> images = new List<CanvasGroup>();
@@ -52,6 +52,7 @@ public class TitleManager : MonoBehaviour
             OnSound();
             DOVirtual.DelayedCall(2, () => { StartCoroutine(StartProduction()); });
             isClick = true;
+            isSatarted = false;
         }
     }
 
@@ -69,8 +70,7 @@ public class TitleManager : MonoBehaviour
     public void GameSceneLoad()
     {
         PageGo();
-        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); });
-        GameManager.instance.gameState = GameState.Map;
+        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); GameManager.instance.gameState = GameState.Map; }).onComplete();
     }
 
     public void TitleSceneLoad()
@@ -105,7 +105,6 @@ public class TitleManager : MonoBehaviour
             if (i == images.Count - 1)
             {
                 yield return new WaitForSeconds(2.0f);
-                isWait = true;
                 foldedPage.SetActive(false);
                 GameSceneLoad();
             }
@@ -169,12 +168,13 @@ public class TitleManager : MonoBehaviour
     {
         if(titleObjectSet != null)
         {
-            titleObjectSet.SetActive(false);    
+            titleObjectSet.SetActive(false);
         }
         imageSet.SetActive(false);
-        if(!isWait)
+        if(!isSatarted)
         {
             Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+            isSatarted = true;
         }
     }
 
