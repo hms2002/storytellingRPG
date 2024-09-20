@@ -203,7 +203,7 @@ public class Book : MonoBehaviour
 
             // Support덱 인스턴스화
             MakeKeywordsAndSetting(WhatDeck.SupportDeck, thisType);
-
+            
             // 11번째 Support 키워드부터 오리지널 Support덱 길이만큼 반복
             for (int i = 10; i < originalDeck.SupportDeck.Count; i++)
             {
@@ -297,7 +297,8 @@ public class Book : MonoBehaviour
                         mainKeywordsForDisplay[i].GetComponent<Button>().interactable = false;
 
                     // 키워드 각조 조절
-                    mainKeywordsForDisplay[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-3.0f, 3.0f));
+                    float randomAngle = Random.Range(-3.0f, 3.0f);
+                    mainKeywordsForDisplay[i].transform.rotation = Quaternion.Euler(0.0f, 0.0f, randomAngle);
                     mainKeywordsForDisplay[i].transform.GetChild(0).rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                 }
 
