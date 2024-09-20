@@ -16,15 +16,18 @@ public class JewelRecovery : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        if(caster.beforeDamage > 0)
+        if(caster.lastTurnProtectReduction > 0)
         {
-            keywordProtect = caster.beforeDamage;
-            if(caster.beforeDamage > 7)
+            keywordProtect = caster.lastTurnProtectReduction;
+            if(caster.lastTurnProtectReduction > 7)
             {
                 keywordProtect = 7;
             }
         }
-        caster.protect += keywordProtect;
+        else
+        {
+            caster.protect += keywordProtect;
+        }
     }
 
     public override void Check(KeywordSup _keywordSup)

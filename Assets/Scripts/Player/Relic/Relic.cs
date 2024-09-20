@@ -101,7 +101,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
             case Relics.DoOrDie:
 
                 // 5턴째라면
-                if (FightManager.currentTurn % 5 == 0)
+                if (FightManager.currentTurn % 5 == 0 || FightManager.currentTurn != 0)
                 {
                     // 플레이어에게 10 데미지
                     player.Damaged(player, new DamageInfo(10));
@@ -174,7 +174,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.IgnitingDice:
 
-                if (FightManager.currentTurn % 2 == 0)
+                if (FightManager.currentTurn % 2 == 0 || FightManager.currentTurn != 0)
                 {
                     int howMany;
 
@@ -272,7 +272,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
             case Relics.RefractivePolyhedron:
 
-                if (FightManager.currentTurn % 2 == 0)
+                if (FightManager.currentTurn % 2 == 0 || FightManager.currentTurn != 0)
                 {
                     player.charactorState.AddState(StateType.oneTimeProtect, 3);
                 }
@@ -283,7 +283,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
                 pickOne = Random.Range(1, 4);
 
-                if (FightManager.currentTurn % 3 == 0)
+                if (FightManager.currentTurn % 3 == 0 || FightManager.currentTurn != 0)
                 {
                     switch (pickOne)
                     {

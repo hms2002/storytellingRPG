@@ -48,6 +48,7 @@ public class FixedResolution : MonoBehaviour
             objLeftScissor.GetComponent<Camera>().rect = new Rect(0, 0, (Screen.width * fValue) / Screen.width, 1.0f);
 
             GameObject objRightScissor = (GameObject)Instantiate(m_objBackScissor);
+
             objRightScissor.GetComponent<Camera>().rect = new Rect((Screen.width - (Screen.width * fValue)) / Screen.width,
                                                                    0,
                                                                    (Screen.width * fValue) / Screen.width,
