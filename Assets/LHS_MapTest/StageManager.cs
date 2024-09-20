@@ -17,7 +17,7 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
     [SerializeField]
-    private StageState _nowStageState;
+    private StageState _nowStageState = StageState.Forest;
 
     [Header("0:숲 │ 1:동굴 │ 2: 바다 │ 3: 마탑")]
     [SerializeField] private GameObject[] mapBackGrounds = new GameObject[3];
@@ -34,6 +34,7 @@ public class StageManager : MonoBehaviour
             return;
         }
         instance = this;
+        _nowStageState = StageState.Forest;
     }
 
     public StageState nowStageState

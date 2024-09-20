@@ -163,6 +163,7 @@ public class ShopManager : MonoBehaviour
             // GameManager의 모든 Main 키워드 리스트 길이만큼 반복
             for (int i = 0; i < GameManager.instance.allMainKeywordsForPlayer.Count; i++)
             {
+                if (GameManager.instance.allMainKeywordsForPlayer[i] == null) continue;
                 // 오리지널덱의 키워드가 지우고자 하는 키워드와 일치하면
                 if (GameManager.instance.allMainKeywordsForPlayer[i].name.Split(')')[0]
                     == splitName)
