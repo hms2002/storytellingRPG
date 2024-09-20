@@ -226,8 +226,8 @@ public class GameManager : MonoBehaviour
         {
             _gameState = beforeState;
             _gameState = value;
-
-            AudioManager.instance.UpdateBGM();
+            if(AudioManager.instance != null)
+                AudioManager.instance.UpdateBGM();
         }
     }
 

@@ -105,6 +105,7 @@ public class AudioManager : MonoBehaviour
                 PlayBGM("타이틀화면");
                 break;
             case GameState.Map:
+                if (StageManager.instance == null) return;
                 if(StageManager.instance.nowStageState == StageState.Forest)
                 {
                     PlayBGM("숲");
