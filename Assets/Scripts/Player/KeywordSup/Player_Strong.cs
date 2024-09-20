@@ -16,6 +16,8 @@ public class Player_Strong : KeywordSup
     {
         if (caster.protect >= 3)
             caster.dmgList.Plus(keywordDamage);
+        else
+            caster.protect += 6;
     }
 
     public override void Check(KeywordMain _keywordMain) { }

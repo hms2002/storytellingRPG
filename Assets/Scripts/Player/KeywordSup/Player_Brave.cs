@@ -14,13 +14,15 @@ public class Player_Brave : KeywordSup
 
     public override void Execute(Actor caster, Actor target)
     {
-        if (caster.protect <= 2)
+        if (caster.protect >= 2)
         {
             caster.dmgList.Plus(keywordDamage);
-            caster.protect -= 2;
 
             target.charactorState.AddState(StateType.oneTimeReduction, 2);
         }
+        else
+            caster.dmgList.Plus(keywordDamage);
+
     }
 
     public override void Check(KeywordMain _keywordMain) { }

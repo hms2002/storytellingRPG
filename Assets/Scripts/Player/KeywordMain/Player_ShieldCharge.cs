@@ -23,6 +23,9 @@ public class Player_ShieldCharge : KeywordMain
                 target.charactorState.AddState(StateType.weaken, 2);
             };
         }
+        else
+            caster.dmgList.Add(8);
+        
     }
 
     public override void Check(KeywordSup _keywordSup)

@@ -14,11 +14,13 @@ public class Player_ShieldSlam : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        if(caster.protect >= 10)
+        if (caster.protect >= 10)
         {
             caster.protect -= 10;
             target.charactorState.AddState(StateType.faint, 1);
-        }   
+        }
+        else
+            target.charactorState.AddState(StateType.reduction, 4);
     }
 
     public override void Check(KeywordSup _keywordSup)
