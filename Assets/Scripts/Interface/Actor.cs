@@ -45,7 +45,7 @@ public class DamageList
             isPlus = false;
             if(damageL.Count == 0)
                 damageL.Add(new DamageInfo(damage, isPenetrate));
-            else if(damageL[0] == null)
+            else if(damageL[0] != null)
                 damageL[0].damage += damage;
             else
                 damageL.Add(new DamageInfo(damage, isPenetrate));
@@ -182,8 +182,8 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-/*            if (stateUIController != null)
-                stateUIController.UpdateHpUI(_hp, MAX_HP);*/
+            if (stateUIController != null)
+                stateUIController.UpdateHpUI(_hp, MAX_HP);
         }
     }
 
@@ -333,11 +333,6 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
-    }
-
-    private void Update()
-    {
-        stateUIController.UpdateHpUI(hp, MAX_HP);
     }
 
     public virtual void BeforeFightStart(Actor target)
@@ -794,7 +789,7 @@ public class Actor : MonoBehaviour
 
         // 피해량 있으면, 반격 플래그 TRUE
         CheckAttackCountFlag(totalDamage, attacker);
-
+        if (totalDamage < 0) totalDamage = 0;
         // 보호막 관련 모든 연산을 실행
         totalDamage = CalculateAllProtection(totalDamage);
         if (totalDamage <= 0)
