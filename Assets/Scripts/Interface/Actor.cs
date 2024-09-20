@@ -182,8 +182,8 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-            if (stateUIController != null)
-                stateUIController.UpdateHpUI(_hp, MAX_HP);
+/*            if (stateUIController != null)
+                stateUIController.UpdateHpUI(_hp, MAX_HP);*/
         }
     }
 
@@ -333,6 +333,11 @@ public class Actor : MonoBehaviour
         damage = 0;
         tension = 0;
         repeatStack = 1;
+    }
+
+    private void Update()
+    {
+        stateUIController.UpdateHpUI(hp, MAX_HP);
     }
 
     public virtual void BeforeFightStart(Actor target)
