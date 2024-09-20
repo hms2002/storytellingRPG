@@ -180,7 +180,7 @@ MonoBehaviour:
   keywordDescription: "5 \uD53C\uD574\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
-  selfDamage: 10
+  selfDamage: 5
 --- !u!1 &401838453675980795
 GameObject:
   m_ObjectHideFlags: 0
