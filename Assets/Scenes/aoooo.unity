@@ -2098,7 +2098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &118366172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16528,7 +16528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1050968789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30077,6 +30077,7 @@ MonoBehaviour:
   s1_NomalMonsterSet7:
   - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
   - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
+  s1_NomalMonsterSet8: []
   s1_EliteMonsterSet1:
   - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
   s1_EliteMonsterSet2:
