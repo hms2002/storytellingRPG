@@ -360,7 +360,6 @@ public class Actor : MonoBehaviour
         deck.ShuffleDeck();
         StackInit();
 
-
         #region 턴중 버프, 디버프 관리
         charactorState.StartTurnEffect(this);
         charactorState.StartTurnDamage(this);
@@ -387,7 +386,6 @@ public class Actor : MonoBehaviour
         _lastProtectReductTerminal = 0;
 
         dmgList.damageL.Clear();
-
     }
 
     /// <summary>

@@ -175,20 +175,6 @@ public class FightManager : MonoBehaviour
 
         if (preparedActorCount == 0)
         {
-            player.BeforeAction();
-
-            currentTurn++;
-            Debug.Log("턴 : " + currentTurn);
-
-            // 턴 시작 발동 유물 적용
-            playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
-
-            playSurive = CheckPlayerSurvive();
-
-            if (!playSurive)
-            {
-                return;
-            }
 
             foreach (Monster m in monsterList)
             {
@@ -216,6 +202,56 @@ public class FightManager : MonoBehaviour
                     }
                 }
             }
+
+            if (!CheckMonsterSurvive())
+            {
+                // 전투 승리 문구 출력
+                PlayerWin();
+                MonsterTargetter.monsterTargetter.TargetUIOff();
+                return;
+            }
+
+            player.BeforeAction();
+
+            currentTurn++;
+            Debug.Log("턴 : " + currentTurn);
+
+            // 턴 시작 발동 유물 적용
+            playerRelic.UseRelic(RelicData.RelicType.OnStartTurn);
+
+            playSurive = CheckPlayerSurvive();
+
+            if (!playSurive)
+            {
+                return;
+            }
+
+            /*foreach (Monster m in monsterList)
+            {
+                if (m != null)
+                    m.BeforeAction();
+
+                if (fleeFlag)
+                {
+                    break;
+                }
+            }
+
+            while (fleeFlag)
+            {
+                fleeFlag = false;
+
+                foreach (Monster m in monsterList)
+                {
+                    if (m != null)
+                        m.BeforeAction();
+
+                    if (fleeFlag)
+                    {
+                        break;
+                    }
+                }
+            }*/
 
             MonsterTargetter.monsterTargetter.ReAimTarget(monsterList);
         }
