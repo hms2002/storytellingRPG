@@ -527,7 +527,7 @@ MonoBehaviour:
   keywordDescription: "\uC77C\uD68C\uC131 \uC57D\uD654\uB97C debuffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
-  oneTimeReductionControl: 1
+  oneTimeReductionControl: 2
 --- !u!114 &309377539217952900
 MonoBehaviour:
   m_ObjectHideFlags: 0
