@@ -20,8 +20,10 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     [Header("유물 가격표")]
     [SerializeField] private GameObject priceTag;
 
-    private bool _isPerchased = false;
-    public bool isPerchased { get => _isPerchased; set => _isPerchased = value; }
+    private bool _isPurchased = false;
+    public bool isPurchased { get => _isPurchased; set => _isPurchased = value; }
+
+    private bool isAnimating = false;
 
 
     /*==================================================================================================================================*/
@@ -50,12 +52,17 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
     public void OnPointerClick(PointerEventData eventData)
     {
         // 게임 상태가 Shop이 아니거나 구매한 상태라면 반환
-        if (GameManager.instance.gameState != GameState.Shop || isPerchased) return;
+        if (GameManager.instance.gameState != GameState.Shop || isPurchased) return;
 
         if (ShopManager.instance.player.gold < price)
         {
-            // 좌우 횡이동 반복 연출 표현
-            gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1);
+            // 구매불가 연출 재생 (애니메이션 중일 때 클릭 막기)
+            if (!isAnimating)
+            {
+                isAnimating = true; // 애니메이션 시작
+                gameObject.transform.DOPunchPosition(new Vector3(10, 0, 0), 0.3f, 10, 1)
+                .OnComplete(() => isAnimating = false); // 애니메이션 종료 후 플래그 초기화
+            }
 
             return;
         }
@@ -72,7 +79,7 @@ public class Relic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
         gameObject.GetComponent<Image>().enabled = false;
 
         // 구매 여부 true
-        isPerchased = true;
+        isPurchased = true;
     }
 
     /// <summary>

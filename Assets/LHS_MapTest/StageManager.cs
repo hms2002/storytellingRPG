@@ -96,7 +96,7 @@ public class StageManager : MonoBehaviour
             MonsterSetDatabase.monsterSetDatabase.MonsterSetting();
             BackgroundSetting(nowStageState);
             MapState.InstanceMap.SpawnMap();
-            MapState.InstanceMap.MapMarkReBatch();
+           // MapState.InstanceMap.MapMarkReBatch();
         });
     }
 

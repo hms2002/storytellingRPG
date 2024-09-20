@@ -27,7 +27,7 @@ namespace Map
             if (mapMark != null && MapState.InstanceMap.noClickNode == false) // 이미 이동 중인 경우에는 무시
             {
                 MapState.InstanceMap.noClickNode = true;
-                MapState.InstanceMap.SavePlayerMarkPosition(targetPosition, Application.persistentDataPath + "/mapData.json");
+                //MapState.InstanceMap.SavePlayerMarkPosition(targetPosition, Application.persistentDataPath + "/mapData.json");
                 // 플레이어 마크 이동
                 mapMark.GetComponent<RectTransform>().DOAnchorPos(targetPosition, 1f).OnComplete(() =>
                 {
