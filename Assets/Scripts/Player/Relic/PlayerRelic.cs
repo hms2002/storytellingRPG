@@ -52,7 +52,7 @@ public class PlayerRelic : MonoBehaviour
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
         relics.Add(Instantiate(relic, playerRelicCanvas.transform));
 
-        relics[relics.Count - 1].GetComponent<Relic>().isPerchased = true;
+        relics[relics.Count - 1].GetComponent<Relic>().isPurchased = true;
 
         InitRelicList();
         GameManager.instance.relicCnt++;
@@ -63,14 +63,14 @@ public class PlayerRelic : MonoBehaviour
 
         if (relic == null) return;
 
-        relic.GetComponent<Relic>().isPerchased = true;
+        relic.GetComponent<Relic>().isPurchased = true;
         relic.SetActive(true);
         relic.transform.SetParent(playerRelicCanvas.transform);
 
         // 플레이어가 소지중인 유물의 리스트에 인스턴스화한 후 추가
         relics.Add(relic);
 
-        relics[relics.Count - 1].GetComponent<Relic>().isPerchased = true;
+        relics[relics.Count - 1].GetComponent<Relic>().isPurchased = true;
 
         InitRelicList();
         GameManager.instance.relicCnt++;
