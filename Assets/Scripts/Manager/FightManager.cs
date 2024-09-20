@@ -175,6 +175,15 @@ public class FightManager : MonoBehaviour
 
         if (preparedActorCount == 0)
         {
+
+            if (!CheckMonsterSurvive())
+            {
+                // 전투 승리 문구 출력
+                PlayerWin();
+                MonsterTargetter.monsterTargetter.TargetUIOff();
+                return;
+            }
+
             player.BeforeAction();
 
             currentTurn++;
