@@ -7,7 +7,7 @@ public class Melting : KeywordMain
     private void Awake()
     {
         keywordName = "녹이기";
-        SetKeywordColor(B);
+        SetKeywordColor(R);
         keywordTension = -10;
         keywordDamage = 4;
         Init();

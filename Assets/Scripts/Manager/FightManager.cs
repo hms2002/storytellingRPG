@@ -234,7 +234,6 @@ public class FightManager : MonoBehaviour
             FalseAllMonsterTurnUI();
             whoPlaying.stateUIController.SetTurnUIActive(true);
             player.stateUIController.SetTurnUIActive(false);
-            whoPlaying.StartTurn();
 
             if (!CheckMonsterSurvive())
             {
@@ -252,6 +251,7 @@ public class FightManager : MonoBehaviour
                 return;
             }
 
+            whoPlaying.StartTurn();
             whoPlaying.ShowSupKeywords();
             TextManager.instance.KeywordTextPlay(whoPlaying);
             return;
