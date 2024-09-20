@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
             AudioClip clip = clips.Find(c => c.name == clipName);
             if (clip != null && bgmSource.clip != clip)
             {
-                bgmSource.volume *= 0.5f;
+/*                bgmSource.volume *= 0.5f;*/
                 bgmSource.clip = clip;
                 bgmSource.Play();
             }
@@ -180,7 +180,9 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         ReturnAudioSource(audioSource);
-    }public void SetBGMVolume(float volume)
+    }
+    
+    public void SetBGMVolume(float volume)
     {
         bgmSource.volume = volume;
     }

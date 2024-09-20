@@ -265,6 +265,12 @@ public class FightManager : MonoBehaviour
             whoPlaying.stateUIController.SetTurnUIActive(true);
             player.StartTurn();
             CheckPlayerSurvive();
+            if (whoPlaying.charactorState.GetStateStack(StateType.faint) != 0)
+            {
+                preparedActorCount++;
+                Flow();
+                return;
+            }
             player.ShowSupKeywords();
             TextManager.instance.KeywordTextPlay(player);
             return;

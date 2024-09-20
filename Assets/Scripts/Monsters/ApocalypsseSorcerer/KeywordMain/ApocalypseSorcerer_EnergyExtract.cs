@@ -21,4 +21,13 @@ public class ApocalypseSorcerer_EnergyExtract : KeywordMain
         caster.charactorState.AddState(StateType.mana, buffStack);
         caster.tension += keywordTension;
     }
+
+    public override void CanUseCheck(Actor caster, Actor target)
+    {   
+        if(caster.charactorState.GetStateStack(StateType.end) > 2)
+        {
+            isCanUse = false;
+        }
+        
+    }
 }
