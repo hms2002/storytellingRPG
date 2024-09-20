@@ -15,7 +15,7 @@ namespace Map
 
             // 맵 데이터 불러오기
             //MapState.InstanceMap.LoadMapData(filePath);
-            MapState.InstanceMap.SpawnMap();
+            //MapState.InstanceMap.SpawnMap();
             StageManager.instance.StageReset();
         }
     }

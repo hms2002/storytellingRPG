@@ -125,7 +125,7 @@ namespace Map
 
 
         //저장된 맵 로드
-        
+        /*
         public void LoadMapData(string filePath)
         {
             startNode.SetActive(true);
@@ -201,5 +201,6 @@ namespace Map
         {
             mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
         }
+        */
     }
 }

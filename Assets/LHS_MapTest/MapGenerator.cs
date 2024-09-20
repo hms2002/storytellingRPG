@@ -100,14 +100,9 @@ namespace Map
             
             mapSetting[setNum].SetActive(true);
 
-            for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapCheck[0]; i++)
-            {
-                startNode.GetComponent<MapNode>().connectedNodes.Add(mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes[i].GetComponent<MapNode>());
-                startNode.GetComponent<MapNode>().connectedNodes[i].nodeStates = NodeStates.Attainable;
-                startNode.GetComponent<MapNode>().connectedNodes[i].SetStage();
-            }
-
-            nodes.Clear();
+            nodes.Clear();        // nodes 리스트 초기화
+            roadeLine.Clear();    // roadeLine 리스트 초기화
+            nodesEndLineCheck.Clear(); // nodesEndLineCheck 리스트 초기화
 
             for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes.Length; i++)
             {
@@ -135,7 +130,6 @@ namespace Map
             endNode.GetComponent<MapNode>().nodeStates = NodeStates.Locked;
             endNode.GetComponent<MapNode>().SetStage();
 
-
             for(int i=0; i < nodesEndLineCheck[0]; i++)
             {
                 ConnectRoadLine(startNode.GetComponent<RectTransform>(), nodes[i].GetComponent<RectTransform>());
@@ -147,6 +141,12 @@ namespace Map
                 {
                     ConnectRoadLine(nodes[i].GetComponent<RectTransform>(), nodes[i].connectedNodes[j].GetComponent<RectTransform>());
                 }
+            }
+
+            Debug.Log(nodes.Count);
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                Debug.Log(i + "개");
             }
         }
 
@@ -502,6 +502,7 @@ namespace Map
             // 선 이미지의 회전 설정
             float angle = Mathf.Atan2(endPos.y - startPos.y, endPos.x - startPos.x) * Mathf.Rad2Deg;
             roadRectTransform.rotation = Quaternion.Euler(0, 0, angle);
+            //Debug.Log(line.GetComponent<RectTransform>().anchoredPosition) ;
         }
 
         protected void StartEndConnection()
