@@ -18,7 +18,7 @@ public class RogueWave_ExplosiveBarrel : KeywordMain
 
     public override void Execute(Actor caster, Actor target)
     {
-        target.dmgList.Add(keywordDamage);
+        caster.Damaged(caster, new DamageInfo(keywordDamage));
         caster.tension += keywordTension;
     }
 }

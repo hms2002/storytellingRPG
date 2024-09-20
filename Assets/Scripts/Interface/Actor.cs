@@ -182,8 +182,8 @@ public class Actor : MonoBehaviour
             {
                 _hp = 0;
             }
-            if (stateUIController != null)
-                stateUIController.UpdateHpUI(_hp, MAX_HP);
+/*            if (stateUIController != null)
+                stateUIController.UpdateHpUI(_hp, MAX_HP);*/
         }
     }
 
@@ -259,6 +259,7 @@ public class Actor : MonoBehaviour
     #endregion
 
     public int beforeDamage = 0;      // 플레이어의 최근 준 데미지 계산
+    int tempBeforeDamage = 0;
 
     [SerializeField] private int _gold = 0; // 플레이어 소지금
     public int gold
@@ -334,6 +335,11 @@ public class Actor : MonoBehaviour
         repeatStack = 1;
     }
 
+    private void Update()
+    {
+        stateUIController.UpdateHpUI(hp, MAX_HP);
+    }
+
     public virtual void BeforeFightStart(Actor target)
     {
 
@@ -341,6 +347,8 @@ public class Actor : MonoBehaviour
 
     public virtual void BeforeAction()
     {
+        beforeDamage = tempBeforeDamage;
+        tempBeforeDamage = 0;
         // 씬에 존재하는 DeckPivot 태그의 오브젝트 찾기
         GameObject[] pivotTemp = GameObject.FindGameObjectsWithTag("DeckPivot");
 
@@ -497,6 +505,7 @@ public class Actor : MonoBehaviour
 
     public virtual void Action(Actor target)
     {
+
         charactorState.ReductionOnBeforeAttack();
         keywordSup.Check(keywordMain);
         keywordMain.Check(keywordSup);
@@ -504,6 +513,8 @@ public class Actor : MonoBehaviour
         keywordSup.Execute(this, target);
         keywordMain.Execute(this, target);
         Execute(target);
+
+
 
         if (afterAttackDel != null)
             afterAttackDel(this, target);
@@ -773,6 +784,7 @@ public class Actor : MonoBehaviour
         totalDamage = CalculateAllProtection(totalDamage);
         if (totalDamage < 0) totalDamage = 0;
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.black);
+        tempBeforeDamage += totalDamage;
         hp -= totalDamage;
     }
     protected virtual void DamagedOther(int totalDamage, Actor attacker)
@@ -793,7 +805,7 @@ public class Actor : MonoBehaviour
         }
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
 
-        beforeDamage = totalDamage;
+        tempBeforeDamage += totalDamage;
         hp -= totalDamage;
 
         // 공격자, 공격 시 스택 감소할 것들 감소
@@ -820,7 +832,7 @@ public class Actor : MonoBehaviour
 
         if (totalDamage < 0) totalDamage = 0;
         UIManager.instance.ActiveDamageText(transform.position, totalDamage, Color.red);
-
+        tempBeforeDamage += totalDamage;
         hp -= totalDamage;
 
         // 공격자, 공격 시 스택 감소할 것들 감소

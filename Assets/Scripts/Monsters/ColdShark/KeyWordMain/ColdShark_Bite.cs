@@ -9,7 +9,7 @@ public class ColdShark_Bite : KeywordMain
 
     void Awake()
     {
-        keywordName = "곡괭이";
+        keywordName = "깨물기";
         SetKeywordColor(R);
         keywordTension = 5;
         keywordDamage = damage;

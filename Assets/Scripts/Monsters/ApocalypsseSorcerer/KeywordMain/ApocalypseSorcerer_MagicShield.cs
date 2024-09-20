@@ -21,8 +21,8 @@ public class ApocalypseSorcerer_MagicShield : KeywordMain
         int manaStack = caster.charactorState.GetStateStack(StateType.mana);
         if (manaStack > 0)
         {
-            if (manaStack > 5)
-                usingManaStack = 5;
+            if (manaStack > 4)
+                usingManaStack = 4;
             else
                 usingManaStack = manaStack;
             caster.charactorState.ReductionByValue(StateType.mana, usingManaStack);

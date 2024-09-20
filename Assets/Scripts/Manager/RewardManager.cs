@@ -240,6 +240,7 @@ public class RewardManager : MonoBehaviour
             afterClickSkipReward = () => {
 
                 afterClickSkipReward = null;
+                rewardCnt = 0;
                 rewardCanvas.SetActive(false);
                 GameManager.instance.EndSelectReward();
                 foreach (GameObject g in btnList)

@@ -609,12 +609,11 @@ MonoBehaviour:
   _buffStack: 13
   _keywordTension: 10
   _isOneTimeUse: 0
-  _isIrregularCombo: 0
+  _isIrregularCombo: 1
   selectedColor: 0
   keywordDescription: "\uC77C\uD68C\uC131 \uAC15\uD654\uB97C buffstack \uC5BB\uC2B5\uB2C8\uB2E4."
   changeTensionText: 
   _isChangeTension: 0
-  amountOfReinforce: 13
 --- !u!1 &8850045263886830709
 GameObject:
   m_ObjectHideFlags: 0

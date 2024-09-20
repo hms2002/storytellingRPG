@@ -9,6 +9,7 @@ public class TitleManager : MonoBehaviour
 {
     public Book book;
     public bool isClick = false;
+    private bool isSatarted = false;
     public GameObject titleObjectSet;
     public GameObject imageSet;
     private List<CanvasGroup> images = new List<CanvasGroup>();
@@ -51,6 +52,7 @@ public class TitleManager : MonoBehaviour
             OnSound();
             DOVirtual.DelayedCall(2, () => { StartCoroutine(StartProduction()); });
             isClick = true;
+            isSatarted = false;
         }
     }
 
@@ -68,8 +70,7 @@ public class TitleManager : MonoBehaviour
     public void GameSceneLoad()
     {
         PageGo();
-        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); });
-        GameManager.instance.gameState = GameState.Map;
+        DOVirtual.DelayedCall(2, () => { SceneManager.LoadScene("aoooo"); GameManager.instance.gameState = GameState.Map; }).onComplete();
     }
 
     public void TitleSceneLoad()
@@ -167,10 +168,14 @@ public class TitleManager : MonoBehaviour
     {
         if(titleObjectSet != null)
         {
-            titleObjectSet.SetActive(false);    
+            titleObjectSet.SetActive(false);
         }
         imageSet.SetActive(false);
-        Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+        if(!isSatarted)
+        {
+            Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+            isSatarted = true;
+        }
     }
 
     public void ActiveTutorial()

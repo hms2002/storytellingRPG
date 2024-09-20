@@ -642,12 +642,13 @@ MonoBehaviour:
   _keywordHeal: 0
   _debuffType: 
   _debuffStack: 0
-  _buffStack: 3
+  _buffStack: 4
   _keywordTension: 0
   _isOneTimeUse: 0
   _isIrregularCombo: 0
   selectedColor: 3
   keywordDescription: "\uC790\uC2E0\uC758 \uBCF4\uD638 \uC911\uCCA9\uC774 3 \uC774\uC0C1\uC774\uB77C\uBA74,
-    \uC790\uC2E0\uC5D0\uAC8C \uAC15\uD654 +buffstack"
+    \uAC15\uD654\uB97C buffstack\uC5BB\uB294\uB2E4.\n\uC911\uCCA9\uC774 \uBD80\uC871\uD558\uBA74
+    \uAC15\uD654\uB97C 2 \uC5BB\uB294\uB2E4."
   changeTensionText: 
   _isChangeTension: 0

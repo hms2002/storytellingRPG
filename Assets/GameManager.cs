@@ -277,15 +277,20 @@ public class GameManager : MonoBehaviour
             case CursorType.Nib:
 
                 Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.ForceSoftware);
-
+                /*Cursor.SetCursor(cursorImage[(int)CursorType.Nib], new Vector2(50, 50), CursorMode.Auto);*/
                 break;
 
             case CursorType.Eraser:
 
                 Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.ForceSoftware);
-
+               /* Cursor.SetCursor(cursorImage[(int)CursorType.Eraser], new Vector2(50, 270), CursorMode.Auto);*/
                 break;
         }
+    }
+    public void UpdateResolution()
+    {
+        // 해상도 관련 처리 후
+        ChangeCursorImage(CursorType.Nib);  // 현재 커서를 다시 설정
     }
 
     Map.NodeType monsterType;

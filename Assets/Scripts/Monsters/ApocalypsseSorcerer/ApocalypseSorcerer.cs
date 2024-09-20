@@ -6,7 +6,7 @@ public class ApocalypseSorcerer : Monster
 {
     private void Awake()
     {
-        MAX_HP = 300;
+        MAX_HP = 270;
         hp = MAX_HP;
         encounterText = "종말을 알리는 불길한 주문이 시작된다.";
     }

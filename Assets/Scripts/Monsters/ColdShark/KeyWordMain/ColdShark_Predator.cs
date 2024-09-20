@@ -15,12 +15,12 @@ public class ColdShark_Predator : KeywordMain
     public override void Execute(Actor caster, Actor target)
     {
         caster.tension += keywordTension;
-        target.dmgList.Add(keywordDamage);
+        caster.dmgList.Add(keywordDamage);
     }
 
     public override void CanUseCheck(Actor caster, Actor target)
     {
-        if (target.beforeDamage == 0)
+        if (caster.beforeDamage == 0)
         {
             isCanUse = false;
             keywordDamage = 0;
@@ -28,7 +28,7 @@ public class ColdShark_Predator : KeywordMain
         else
         {
             isCanUse = true;
-            keywordDamage = target.beforeDamage;
+            keywordDamage = caster.beforeDamage;
         }
     }
 
