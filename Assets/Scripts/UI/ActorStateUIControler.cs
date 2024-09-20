@@ -68,7 +68,7 @@ public class ActorStateUIControler : MonoBehaviour
 
     public void UpdateHpUI(int hp, int MAX_HP)
     {
-        hpSlider.fillAmount = hp / (float)MAX_HP;
+        hpSlider.fillAmount = Mathf.Lerp(hpSlider.fillAmount, hp / (float)MAX_HP, Time.deltaTime * 10);
         hpText.text = hp + " / " + MAX_HP;
     }
 

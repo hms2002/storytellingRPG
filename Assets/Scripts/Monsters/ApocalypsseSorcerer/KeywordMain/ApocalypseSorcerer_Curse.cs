@@ -20,9 +20,9 @@ public class ApocalypseSorcerer_Curse : KeywordMain
         int usingManaStack = 0;
         int manaStack = caster.charactorState.GetStateStack(StateType.mana);
         if (manaStack > 0)
-        {
-            if (manaStack > 4)
-                usingManaStack = 4;
+        {   
+            if (manaStack > 3)
+                usingManaStack = 3;
             else
                 usingManaStack = manaStack;
             caster.charactorState.ReductionByValue(StateType.mana, usingManaStack);

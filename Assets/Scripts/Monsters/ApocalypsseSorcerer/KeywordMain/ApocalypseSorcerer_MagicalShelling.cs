@@ -21,8 +21,8 @@ public class ApocalypseSorcerer_MagicalShelling : KeywordMain
         int manaStack = caster.charactorState.GetStateStack(StateType.mana);
         if (manaStack > 0)
         {
-            if (manaStack > 8)
-                usingManaStack = 8;
+            if (manaStack > 6)
+                usingManaStack = 6;
             else
                 usingManaStack = manaStack;
             caster.charactorState.ReductionByValue(StateType.mana, usingManaStack);

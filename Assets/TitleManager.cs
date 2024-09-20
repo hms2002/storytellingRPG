@@ -9,6 +9,7 @@ public class TitleManager : MonoBehaviour
 {
     public Book book;
     public bool isClick = false;
+    private bool isWait = false;
     public GameObject titleObjectSet;
     public GameObject imageSet;
     private List<CanvasGroup> images = new List<CanvasGroup>();
@@ -104,6 +105,7 @@ public class TitleManager : MonoBehaviour
             if (i == images.Count - 1)
             {
                 yield return new WaitForSeconds(2.0f);
+                isWait = true;
                 foldedPage.SetActive(false);
                 GameSceneLoad();
             }
@@ -170,7 +172,10 @@ public class TitleManager : MonoBehaviour
             titleObjectSet.SetActive(false);    
         }
         imageSet.SetActive(false);
-        Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+        if(!isWait)
+        {
+            Book.instance.bookAnimator.SetTrigger("turnPageToRight");
+        }
     }
 
     public void ActiveTutorial()
