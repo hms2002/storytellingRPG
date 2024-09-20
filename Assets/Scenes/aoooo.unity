@@ -29508,7 +29508,8 @@ MonoBehaviour:
   s1_NomalMonsterSet7:
   - {fileID: 682207150685018480, guid: 109f18ddc16444145af73b84f29caf60, type: 3}
   - {fileID: 682207150685018480, guid: 3a4eb5e5a193094448e40dcc1f3979f3, type: 3}
-  s1_NomalMonsterSet8: []
+  s1_NomalMonsterSet8:
+  - {fileID: 6669021695438124642, guid: 17be2b1609dd07d49a3c96013b6b88af, type: 3}
   s1_EliteMonsterSet1:
   - {fileID: 4923922168147692485, guid: 5b85f9f5d2b2b1e47bdf887bf1f8e0c2, type: 3}
   s1_EliteMonsterSet2:
