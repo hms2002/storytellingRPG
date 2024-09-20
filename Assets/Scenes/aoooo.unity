@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &15451275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27303,7 +27303,8 @@ MonoBehaviour:
   isEndNode: 0
   initialScale: 1
   HoveScaleFactor: 1.2
-  connectedNodes: []
+  connectedNodes:
+  - {fileID: 1663834583}
 --- !u!1 &1757264538
 GameObject:
   m_ObjectHideFlags: 0

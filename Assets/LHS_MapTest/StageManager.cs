@@ -95,6 +95,7 @@ public class StageManager : MonoBehaviour
 
             MonsterSetDatabase.monsterSetDatabase.MonsterSetting();
             BackgroundSetting(nowStageState);
+
             MapState.InstanceMap.SpawnMap();
            // MapState.InstanceMap.MapMarkReBatch();
         });
@@ -126,8 +127,6 @@ public class StageManager : MonoBehaviour
                 Debug.LogWarning("스테이지 변경 오류");
                 break;
         }
-
-        SaveStageState();
     }
 
     public void SaveStageState()
