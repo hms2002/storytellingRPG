@@ -49,6 +49,7 @@ namespace Map
             // 맵 생성 후 저장
             //mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
             //SaveMapData(Application.persistentDataPath + "/mapData.json");
+            mapMark.GetComponent<RectTransform>().anchoredPosition = startNode.GetComponent<RectTransform>().anchoredPosition;
         }
 
         //맵 상태 세팅

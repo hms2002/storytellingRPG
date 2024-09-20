@@ -84,25 +84,30 @@ namespace Map
         virtual public void SpawnMap()
         {
             MakeSettingMapSet();
-            //GeneratorMap();
-            //StartEndConnection();
         }
 
         //임시 고정 맵 코드
         public void MakeSettingMapSet()
         {
-            for(int i =0; i < mapSetting.Length; i++)
+            if (roadeLine != null)
+            {
+                for (int i = 0; i < MapState.InstanceMap.roadeLine.Count; i++)
+                {
+                    Destroy(MapState.InstanceMap.roadeLine[i]);
+                }
+            }
+
+            nodes.Clear();        // nodes 리스트 초기화
+            roadeLine.Clear();    // roadeLine 리스트 초기화
+            nodesEndLineCheck.Clear(); // nodesEndLineCheck 리스트 초기화
+
+            for (int i =0; i < mapSetting.Length; i++)
             {
                 mapSetting[i].SetActive(false);
             }
 
             int setNum = Random.Range(0, mapSetting.Length);
-            
             mapSetting[setNum].SetActive(true);
-
-            nodes.Clear();        // nodes 리스트 초기화
-            roadeLine.Clear();    // roadeLine 리스트 초기화
-            nodesEndLineCheck.Clear(); // nodesEndLineCheck 리스트 초기화
 
             for (int i = 0; i < mapSetting[setNum].GetComponent<MapBatchSetting>().mapNodes.Length; i++)
             {
@@ -141,12 +146,6 @@ namespace Map
                 {
                     ConnectRoadLine(nodes[i].GetComponent<RectTransform>(), nodes[i].connectedNodes[j].GetComponent<RectTransform>());
                 }
-            }
-
-            Debug.Log(nodes.Count);
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                Debug.Log(i + "개");
             }
         }
 
