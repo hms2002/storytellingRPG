@@ -7,7 +7,7 @@ public class Ori : Monster
     Animator anim;
     private void Awake()
     {
-        MAX_HP = 50;
+        MAX_HP = 28;
         encounterText = "광물을 두드릴 때는 다시 한 번 생각해야 했다.";
         anim = GetComponent<Animator>();
     }

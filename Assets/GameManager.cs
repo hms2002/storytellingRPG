@@ -27,7 +27,6 @@ public enum GameState
     GameOver
 }
 
-
 /// <summary>
 /// 게임의 전체 흐름을 담당
 /// </summary>
